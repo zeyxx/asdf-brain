@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-01-08T01:14:41.853Z",
+  "repos": {
+    "holdex": {
+      "dev": {
+        "head": "384db9f",
+        "branch": "main",
+        "date": "2026-01-08 01:02:55 +0000"
+      },
+      "prod": {
+        "head": "49a6598",
+        "branch": "main",
+        "date": "2025-12-30 18:50:56 -0500"
+      },
+      "drift": {
+        "driftDays": 8,
+        "devAhead": true,
+        "needsSync": true
+      },
+      "files": {
+        "identical": [],
+        "devOnly": [
+          {
+            "file": "CLAUDE.md",
+            "hash": "fb0515188710"
+          }
+        ],
+        "prodOnly": [],
+        "different": [
+          {
+            "file": "src/tasks/kScoreUpdater.js",
+            "devHash": "64cf9217eb55",
+            "prodHash": "5d8a87c40947"
+          },
+          {
+            "file": "src/routes/tokens.js",
+            "devHash": "c51d4ea735c8",
+            "prodHash": "54e9cfd9fdf3"
+          },
+          {
+            "file": "src/services/database.js",
+            "devHash": "af18bfa57b59",
+            "prodHash": "bf72f60a4ba7"
+          },
+          {
+            "file": "src/config/env.js",
+            "devHash": "21e411d07574",
+            "prodHash": "b3ee53e54cc5"
+          },
+          {
+            "file": "package.json",
+            "devHash": "3416a64a1323",
+            "prodHash": "1205b9eb21e0"
+          }
+        ]
+      }
+    }
+  },
+  "summary": {
+    "synced": 0,
+    "drifted": 1,
+    "issues": [
+      "holdex: 8 days drift"
+    ]
+  }
+}

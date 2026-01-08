@@ -1,0 +1,14 @@
+{
+  "name": "asdf-brain",
+  "version": "0.1.0",
+  "description": "The living memory of the $asdfasdfa ecosystem",
+  "main": "scripts/brain.js",
+  "scripts": {
+    "brain:search": "node scripts/search.js",
+    "brain:analyze": "node scripts/analyze.js",
+    "brain:sync": "node scripts/sync.js",
+    "brain:index": "node scripts/indexer.js"
+  },
+  "keywords": ["asdfasdfa", "solana", "knowledge", "ai"],
+  "license": "MIT"
+}
