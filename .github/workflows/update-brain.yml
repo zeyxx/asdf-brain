@@ -27,14 +27,14 @@ jobs:
         with:
           repository: zeyxx/HolDex
           path: HolDex
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CROSS_REPO_TOKEN }}
 
       - name: Checkout GASdf
         uses: actions/checkout@v4
         with:
           repository: zeyxx/GASdf
           path: GASdf
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CROSS_REPO_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
