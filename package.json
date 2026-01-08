@@ -1,16 +1,28 @@
 {
   "name": "asdf-brain",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "The living memory of the $asdfasdfa ecosystem",
-  "main": "scripts/brain.js",
+  "main": "mcp-server.js",
+  "bin": {
+    "asdf-brain": "./mcp-server.js"
+  },
   "scripts": {
+    "start": "node mcp-server.js",
     "brain:search": "node scripts/search.js",
     "brain:analyze": "node scripts/analyze.js",
     "brain:index": "node scripts/indexer.js",
     "brain:sanitize": "node scripts/sanitizer.js --all",
     "brain:contributors": "node scripts/contributors.js",
-    "brain:check": "node scripts/sanitizer.js --check"
+    "brain:intent": "node scripts/extract-intent.js",
+    "brain:patterns": "node scripts/extract-patterns.js",
+    "brain:errors": "node scripts/extract-errors.js",
+    "brain:evolution": "node scripts/track-evolution.js",
+    "brain:philosophy": "node scripts/map-philosophy.js",
+    "brain:deps": "node scripts/analyze-dependencies.js",
+    "brain:health": "node scripts/health-check.js",
+    "brain:vision": "node scripts/extract-vision.js",
+    "brain:all": "npm run brain:index && npm run brain:intent && npm run brain:patterns && npm run brain:errors && npm run brain:evolution && npm run brain:philosophy && npm run brain:deps && npm run brain:health && npm run brain:vision"
   },
-  "keywords": ["asdfasdfa", "solana", "knowledge", "ai", "privacy"],
+  "keywords": ["asdfasdfa", "solana", "knowledge", "ai", "mcp", "claude"],
   "license": "MIT"
 }

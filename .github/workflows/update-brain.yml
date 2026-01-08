@@ -1,0 +1,69 @@
+name: Update Brain
+
+on:
+  # Run daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+
+  # Run on push to main
+  push:
+    branches: [main]
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  update-knowledge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout asdf-brain
+        uses: actions/checkout@v4
+        with:
+          path: asdf-brain
+
+      - name: Checkout HolDex
+        uses: actions/checkout@v4
+        with:
+          repository: zeyxx/HolDex
+          path: HolDex
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout GASdf
+        uses: actions/checkout@v4
+        with:
+          repository: zeyxx/GASdf
+          path: GASdf
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run brain analysis
+        working-directory: asdf-brain
+        run: |
+          # Run dependency analysis
+          node scripts/analyze-dependencies.js || true
+
+          # Run evolution tracking
+          node scripts/track-evolution.js || true
+
+          # Run health check
+          node scripts/health-check.js || true
+
+      - name: Commit and push if changed
+        working-directory: asdf-brain
+        run: |
+          git config user.name "asdf-brain[bot]"
+          git config user.email "asdf-brain[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: Auto-update brain knowledge"
+            git push
+          fi
