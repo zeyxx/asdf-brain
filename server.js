@@ -22,17 +22,118 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const cors = require('cors');
+const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const KNOWLEDGE_DIR = path.join(__dirname, 'knowledge');
 
 // =============================================================================
+// SECURITY CONFIGURATION
+// =============================================================================
+
+// API keys for authenticated access (comma-separated in env)
+const API_KEYS = new Set(
+  (process.env.BRAIN_API_KEYS || '').split(',').filter(k => k.length > 0)
+);
+
+// Rate limiting state
+const rateLimits = new Map();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX = process.env.RATE_LIMIT_MAX || 60; // requests per window
+
+// Allowed origins for CORS
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || '')
+  .split(',')
+  .filter(o => o.length > 0);
+
+// =============================================================================
+// SECURITY MIDDLEWARE
+// =============================================================================
+
+// Rate limiter
+function rateLimiter(req, res, next) {
+  const ip = req.ip || req.connection.remoteAddress;
+  const now = Date.now();
+
+  if (!rateLimits.has(ip)) {
+    rateLimits.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return next();
+  }
+
+  const limit = rateLimits.get(ip);
+  if (now > limit.resetAt) {
+    limit.count = 1;
+    limit.resetAt = now + RATE_LIMIT_WINDOW;
+    return next();
+  }
+
+  limit.count++;
+  if (limit.count > RATE_LIMIT_MAX) {
+    return res.status(429).json({
+      error: 'Rate limit exceeded',
+      retryAfter: Math.ceil((limit.resetAt - now) / 1000)
+    });
+  }
+
+  next();
+}
+
+// API key authentication (for sensitive endpoints)
+function requireApiKey(req, res, next) {
+  // Skip auth if no keys configured (dev mode)
+  if (API_KEYS.size === 0) {
+    return next();
+  }
+
+  const apiKey = req.headers['x-api-key'] || req.query.apiKey;
+
+  if (!apiKey || !API_KEYS.has(apiKey)) {
+    return res.status(401).json({
+      error: 'Unauthorized',
+      message: 'Valid API key required. Set x-api-key header.'
+    });
+  }
+
+  next();
+}
+
+// CORS configuration
+function corsMiddleware(req, res, next) {
+  const origin = req.headers.origin;
+
+  // Allow if no origins configured (dev mode) or origin is allowed
+  if (ALLOWED_ORIGINS.length === 0 || ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin || '*');
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-api-key');
+  res.setHeader('Access-Control-Max-Age', '86400');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+
+  next();
+}
+
+// Security headers
+function securityHeaders(req, res, next) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+}
+
+// =============================================================================
 // MIDDLEWARE
 // =============================================================================
 
-app.use(cors());
+app.use(securityHeaders);
+app.use(corsMiddleware);
+app.use(rateLimiter);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -61,8 +162,30 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Ecosystem health
-app.get('/api/health', (req, res) => {
+// =============================================================================
+// PUBLIC ENDPOINTS (no auth required)
+// =============================================================================
+
+// Public health summary (limited data)
+app.get('/api/public/health', (req, res) => {
+  const health = loadJson('health/ecosystem-health.json');
+  if (!health) {
+    return res.status(503).json({ error: 'Health data not available' });
+  }
+  // Only expose score, not details
+  res.json({
+    overall_score: health.overall_score,
+    status: health.overall_score >= 70 ? 'healthy' : 'needs_attention',
+    timestamp: health.timestamp
+  });
+});
+
+// =============================================================================
+// PROTECTED ENDPOINTS (API key required)
+// =============================================================================
+
+// Ecosystem health (full details)
+app.get('/api/health', requireApiKey, (req, res) => {
   const health = loadJson('health/ecosystem-health.json');
   if (!health) {
     return res.status(503).json({ error: 'Health data not available' });
@@ -71,7 +194,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Patterns
-app.get('/api/patterns', (req, res) => {
+app.get('/api/patterns', requireApiKey, (req, res) => {
   const patterns = loadJson('patterns/extracted-patterns.json');
   if (!patterns) {
     return res.status(503).json({ error: 'Pattern data not available' });
@@ -85,7 +208,7 @@ app.get('/api/patterns', (req, res) => {
 });
 
 // Search
-app.get('/api/search', async (req, res) => {
+app.get('/api/search', requireApiKey, async (req, res) => {
   const query = req.query.q;
   const limit = parseInt(req.query.limit) || 10;
 
@@ -141,7 +264,7 @@ app.get('/api/search', async (req, res) => {
 });
 
 // Ecosystem
-app.get('/api/ecosystem', (req, res) => {
+app.get('/api/ecosystem', requireApiKey, (req, res) => {
   const ecosystem = loadJson('relations/ecosystem-graph.json');
   if (!ecosystem) {
     return res.status(503).json({ error: 'Ecosystem data not available' });
@@ -150,7 +273,7 @@ app.get('/api/ecosystem', (req, res) => {
 });
 
 // Intent/POURQUOI
-app.get('/api/intent', (req, res) => {
+app.get('/api/intent', requireApiKey, (req, res) => {
   const intent = loadJson('intent/extracted-intents.json');
   if (!intent) {
     return res.status(503).json({ error: 'Intent data not available' });
@@ -164,7 +287,7 @@ app.get('/api/intent', (req, res) => {
 });
 
 // Vision/Roadmap
-app.get('/api/vision', (req, res) => {
+app.get('/api/vision', requireApiKey, (req, res) => {
   const vision = loadJson('vision/roadmap.json');
   if (!vision) {
     return res.status(503).json({ error: 'Vision data not available' });
@@ -176,7 +299,7 @@ app.get('/api/vision', (req, res) => {
 });
 
 // Dependencies
-app.get('/api/dependencies', (req, res) => {
+app.get('/api/dependencies', requireApiKey, (req, res) => {
   const deps = loadJson('dependencies/dependency-graph.json');
   if (!deps) {
     return res.status(503).json({ error: 'Dependency data not available' });
@@ -189,7 +312,7 @@ app.get('/api/dependencies', (req, res) => {
 });
 
 // Errors/Post-mortems
-app.get('/api/errors', (req, res) => {
+app.get('/api/errors', requireApiKey, (req, res) => {
   const errors = loadJson('errors/post-mortems.json');
   if (!errors) {
     return res.status(503).json({ error: 'Error data not available' });
@@ -217,7 +340,7 @@ const MCP_TOOLS = [
 ];
 
 // MCP JSON-RPC endpoint
-app.post('/mcp', async (req, res) => {
+app.post('/mcp', requireApiKey, async (req, res) => {
   const { id, method, params } = req.body;
 
   try {
@@ -291,7 +414,7 @@ app.post('/mcp', async (req, res) => {
 });
 
 // SSE endpoint for MCP streaming
-app.get('/sse', (req, res) => {
+app.get('/sse', requireApiKey, (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');

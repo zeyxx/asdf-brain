@@ -348,10 +348,23 @@
   <div class="footer">
     <p>asdf-brain v1.0 | Collective Memory</p>
     <p class="refresh-info">Auto-refreshes every 5 minutes | <span id="last-update">Never</span></p>
+    <p style="margin-top: 10px;"><button onclick="logout()" style="background: transparent; border: 1px solid var(--text-secondary); color: var(--text-secondary); padding: 5px 15px; border-radius: 4px; cursor: pointer; font-family: monospace;">Logout</button></p>
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="auth-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center;">
+    <div style="background: var(--ash-medium); padding: 30px; border-radius: 12px; border: 1px solid var(--fire-orange); max-width: 400px; width: 90%;">
+      <h2 style="color: var(--fire-yellow); margin-bottom: 20px;">Authentication Required</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 20px;">"Don't trust, verify" - Enter your API key</p>
+      <input type="password" id="api-key-input" placeholder="API Key" style="width: 100%; padding: 12px; background: var(--ash-dark); border: 1px solid var(--ash-light); border-radius: 6px; color: var(--text-primary); font-family: monospace; margin-bottom: 15px;">
+      <button onclick="authenticate()" style="width: 100%; padding: 12px; background: var(--fire-orange); border: none; border-radius: 6px; color: white; font-family: monospace; cursor: pointer; font-size: 1rem;">Verify</button>
+      <p id="auth-error" style="color: var(--error); margin-top: 10px; display: none;"></p>
+    </div>
   </div>
 
   <script>
     const API_BASE = '';
+    let apiKey = localStorage.getItem('brain_api_key') || '';
 
     function escapeHtml(text) {
       const div = document.createElement('div');
@@ -359,9 +372,68 @@
       return div.innerHTML;
     }
 
+    function showAuthModal() {
+      document.getElementById('auth-modal').style.display = 'flex';
+    }
+
+    function hideAuthModal() {
+      document.getElementById('auth-modal').style.display = 'none';
+    }
+
+    function logout() {
+      apiKey = '';
+      localStorage.removeItem('brain_api_key');
+      showAuthModal();
+    }
+
+    async function authenticate() {
+      const input = document.getElementById('api-key-input');
+      const key = input.value.trim();
+
+      if (!key) {
+        document.getElementById('auth-error').textContent = 'API key required';
+        document.getElementById('auth-error').style.display = 'block';
+        return;
+      }
+
+      // Test the key
+      try {
+        const res = await fetch(API_BASE + '/api/health', {
+          headers: { 'x-api-key': key }
+        });
+
+        if (res.status === 401) {
+          document.getElementById('auth-error').textContent = 'Invalid API key';
+          document.getElementById('auth-error').style.display = 'block';
+          return;
+        }
+
+        // Key is valid
+        apiKey = key;
+        localStorage.setItem('brain_api_key', key);
+        hideAuthModal();
+        loadAll();
+      } catch (e) {
+        document.getElementById('auth-error').textContent = 'Connection error';
+        document.getElementById('auth-error').style.display = 'block';
+      }
+    }
+
     async function fetchJson(endpoint) {
       try {
-        const res = await fetch(API_BASE + endpoint);
+        const headers = {};
+        if (apiKey) {
+          headers['x-api-key'] = apiKey;
+        }
+
+        const res = await fetch(API_BASE + endpoint, { headers });
+
+        if (res.status === 401) {
+          // Need authentication
+          showAuthModal();
+          return null;
+        }
+
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return await res.json();
       } catch (e) {
