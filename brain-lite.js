@@ -33,6 +33,9 @@ const readline = require('readline');
 // Context Layer - AI Superlayer
 const { getContextLayer, detectProject } = require('./lib/context-layer');
 
+// Provenance Layer - Cryptographic Verification
+const merkleProofs = require('./lib/merkle-proofs');
+
 // =============================================================================
 // PHI CONSTANTS - Golden Ratio Distribution (Kabbalah Sacred Geometry)
 // =============================================================================
@@ -333,6 +336,67 @@ const TOOLS = {
     phi_weight: 1.0,
     isContext: true,
   },
+
+  // PROVENANCE TOOLS - Cryptographic Verification ("Don't trust, verify")
+  brain_provenance_status: {
+    pardes: 'D',
+    name: 'brain_provenance_status',
+    description: '[PROVENANCE] Get current Merkle state, tracked files, and chain readiness',
+    inputSchema: { type: 'object', properties: {} },
+    phi_weight: PHI,
+    isProvenance: true,
+  },
+
+  brain_provenance_proof: {
+    pardes: 'D',
+    name: 'brain_provenance_proof',
+    description: '[PROVENANCE] Get inclusion proof for a pattern or knowledge item',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        item_id: { type: 'string', description: 'Pattern or item ID to get proof for' },
+        content_hash: { type: 'string', description: 'Or provide content hash directly' },
+      },
+    },
+    phi_weight: PHI * PHI,
+    isProvenance: true,
+  },
+
+  brain_provenance_verify: {
+    pardes: 'D',
+    name: 'brain_provenance_verify',
+    description: '[PROVENANCE] Verify an inclusion proof against stored Merkle root',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        leaf_hash: { type: 'string', description: 'Hash of the leaf to verify' },
+        proof: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Array of proof hashes',
+        },
+        expected_root: { type: 'string', description: 'Expected Merkle root (optional, uses current if not provided)' },
+      },
+      required: ['leaf_hash', 'proof'],
+    },
+    phi_weight: PHI * PHI,
+    isProvenance: true,
+  },
+
+  brain_provenance_snapshot: {
+    pardes: 'S',
+    name: 'brain_provenance_snapshot',
+    description: '[PROVENANCE] Generate weekly Merkle snapshot for on-chain publishing',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        force: { type: 'boolean', description: 'Force regeneration even if recent snapshot exists' },
+      },
+    },
+    phi_weight: PHI,
+    isProvenance: true,
+    isWrite: true,
+  },
 };
 
 // =============================================================================
@@ -492,42 +556,61 @@ function applyPhiWeight(result, tool) {
 
 async function handleSearch(args, adapter) {
   const { query, limit = 10 } = args;
-  const indexPath = path.join(__dirname, 'index/cross-repo.jsonl');
 
-  if (!fs.existsSync(indexPath)) {
-    return { results: [], message: 'Index not built. Run: npm run brain:index' };
+  // Search multiple sources: index + learned knowledge
+  const searchPaths = [
+    path.join(__dirname, 'index/cross-repo.jsonl'),
+    path.join(__dirname, 'knowledge/learned/live.jsonl'),
+    path.join(__dirname, 'knowledge/learned/transcripts.jsonl'),
+  ].filter(p => fs.existsSync(p));
+
+  if (searchPaths.length === 0) {
+    return { results: [], message: 'No searchable data. Run: npm run brain:index' };
   }
 
   const results = [];
   const queryLower = query.toLowerCase();
   const queryTerms = queryLower.split(/\s+/);
 
-  const fileStream = fs.createReadStream(indexPath);
-  const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+  for (const filePath of searchPaths) {
+    const fileStream = fs.createReadStream(filePath);
+    const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
 
-  for await (const line of rl) {
-    if (!line.trim()) continue;
-    try {
-      const entry = JSON.parse(line);
-      const text = ((entry.user?.content || '') + ' ' + (entry.assistant?.content || '')).toLowerCase();
+    for await (const line of rl) {
+      if (!line.trim()) continue;
+      try {
+        const entry = JSON.parse(line);
 
-      let score = 0;
-      for (const term of queryTerms) {
-        if (text.includes(term)) score++;
+        // Support multiple formats: conversations (user/assistant) AND learned (content)
+        const text = [
+          entry.user?.content || '',
+          entry.assistant?.content || '',
+          entry.content || '',
+          entry.context || '',
+          (entry.tags || []).join(' '),
+        ].join(' ').toLowerCase();
+
+        let score = 0;
+        for (const term of queryTerms) {
+          if (text.includes(term)) score++;
+        }
+
+        if (score > 0) {
+          results.push({
+            score,
+            id: entry.id || entry.session_id,
+            type: entry.type || 'conversation',
+            project: entry.project,
+            timestamp: entry.timestamp,
+            preview: (entry.content || entry.user?.content || '').slice(0, 200),
+            source: path.basename(filePath),
+          });
+        }
+
+        if (results.length >= limit * 10) break;
+      } catch (e) {
+        // Skip malformed lines
       }
-
-      if (score > 0) {
-        results.push({
-          score,
-          session_id: entry.session_id,
-          timestamp: entry.timestamp,
-          preview: (entry.user?.content || '').slice(0, 150),
-        });
-      }
-
-      if (results.length >= limit * 10) break;
-    } catch (e) {
-      // Skip malformed lines
     }
   }
 
@@ -536,6 +619,7 @@ async function handleSearch(args, adapter) {
     query,
     results: results.slice(0, limit),
     total: results.length,
+    sources: searchPaths.map(p => path.basename(p)),
     _quality: results.length > 0 ? 80 : 30,
   };
 }
@@ -833,6 +917,188 @@ async function handleContextSessions(args, adapter) {
   };
 }
 
+// =============================================================================
+// PROVENANCE HANDLERS - "Don't trust, verify"
+// =============================================================================
+
+async function handleProvenanceStatus(args, adapter) {
+  // Load current merkle state
+  const merkleState = await adapter.load('provenance/merkle-state.json');
+  const registry = await adapter.load('provenance/registry.json');
+
+  if (!merkleState) {
+    return {
+      status: 'not_initialized',
+      message: 'Provenance system not initialized. Run: npm run brain:snapshot',
+      chain_ready: false,
+      _quality: 30,
+    };
+  }
+
+  // Calculate time since last snapshot
+  const lastSnapshot = merkleState.timestamp ? new Date(merkleState.timestamp) : null;
+  const hoursSinceSnapshot = lastSnapshot
+    ? Math.floor((Date.now() - lastSnapshot.getTime()) / (1000 * 60 * 60))
+    : null;
+
+  return {
+    status: 'active',
+    merkle_root: merkleState.merkle_root,
+    file_count: merkleState.file_count,
+    files_tracked: Object.keys(merkleState.files || {}),
+    last_snapshot: lastSnapshot?.toISOString(),
+    hours_since_snapshot: hoursSinceSnapshot,
+    snapshot_stale: hoursSinceSnapshot > 168, // > 1 week
+    verification: merkleState.verification,
+    contributors: registry?.contributors ? Object.keys(registry.contributors) : [],
+    chain_ready: merkleState.verification?.chain_ready || false,
+    _quality: 90,
+  };
+}
+
+async function handleProvenanceProof(args, adapter) {
+  const { item_id, content_hash } = args;
+
+  if (!item_id && !content_hash) {
+    return {
+      success: false,
+      error: 'Must provide either item_id or content_hash',
+      _quality: 0,
+    };
+  }
+
+  // Try to get inclusion proof using merkle-proofs lib
+  if (item_id) {
+    const proof = merkleProofs.getInclusionProof(item_id);
+    if (proof) {
+      return {
+        success: true,
+        item_id,
+        ...proof,
+        _quality: 95,
+      };
+    }
+  }
+
+  // If content_hash provided, search in merkle state
+  const merkleState = await adapter.load('provenance/merkle-state.json');
+  if (!merkleState) {
+    return {
+      success: false,
+      error: 'Merkle state not found',
+      _quality: 0,
+    };
+  }
+
+  // Search for file with matching hash
+  const hashToFind = content_hash || item_id;
+  const files = merkleState.files || {};
+
+  for (const [filePath, fileInfo] of Object.entries(files)) {
+    if (fileInfo.hash === hashToFind || fileInfo.hash.startsWith(hashToFind)) {
+      const hashIndex = merkleState.hashes.indexOf(fileInfo.hash);
+      return {
+        success: true,
+        file_path: filePath,
+        leaf_hash: fileInfo.hash,
+        leaf_index: hashIndex,
+        merkle_root: merkleState.merkle_root,
+        file_size: fileInfo.size,
+        last_modified: fileInfo.modified,
+        message: 'File found in Merkle tree (proof path requires full tree rebuild)',
+        _quality: 85,
+      };
+    }
+  }
+
+  return {
+    success: false,
+    error: `No item found with id/hash: ${hashToFind}`,
+    available_files: Object.keys(files).slice(0, 10),
+    _quality: 30,
+  };
+}
+
+async function handleProvenanceVerify(args, adapter) {
+  const { leaf_hash, proof, expected_root } = args;
+
+  // Load current root if not provided
+  let rootToVerify = expected_root;
+  if (!rootToVerify) {
+    const merkleState = await adapter.load('provenance/merkle-state.json');
+    if (!merkleState) {
+      return {
+        success: false,
+        error: 'No Merkle state found and no expected_root provided',
+        _quality: 0,
+      };
+    }
+    rootToVerify = merkleState.merkle_root;
+  }
+
+  // Use merkle-proofs lib to verify
+  const isValid = merkleProofs.verifyInclusion(leaf_hash, proof, rootToVerify);
+
+  return {
+    success: true,
+    verified: isValid,
+    leaf_hash,
+    proof_length: proof.length,
+    expected_root: rootToVerify,
+    message: isValid
+      ? "✓ Proof verified - knowledge inclusion confirmed"
+      : "✗ Proof invalid - knowledge not in this Merkle tree",
+    philosophy: "Don't trust, verify",
+    _quality: isValid ? 100 : 50,
+  };
+}
+
+async function handleProvenanceSnapshot(args, adapter) {
+  const { force = false } = args;
+
+  // Check if recent snapshot exists
+  const merkleState = await adapter.load('provenance/merkle-state.json');
+  if (merkleState && !force) {
+    const lastSnapshot = new Date(merkleState.timestamp);
+    const hoursSince = (Date.now() - lastSnapshot.getTime()) / (1000 * 60 * 60);
+
+    if (hoursSince < 24) {
+      return {
+        success: false,
+        error: 'Recent snapshot exists (< 24h). Use force=true to regenerate.',
+        last_snapshot: lastSnapshot.toISOString(),
+        hours_since: Math.floor(hoursSince),
+        current_root: merkleState.merkle_root,
+        _quality: 70,
+      };
+    }
+  }
+
+  try {
+    // Generate new weekly snapshot
+    const snapshot = merkleProofs.createWeeklySnapshot();
+
+    return {
+      success: true,
+      week_number: snapshot.week_number,
+      timestamp: snapshot.timestamp_iso,
+      file_merkle_root: snapshot.file_merkle_root,
+      pattern_merkle_root: snapshot.pattern_merkle_root,
+      combined_root: snapshot.combined_root,
+      statistics: snapshot.statistics,
+      solana_payload: snapshot.solana_payload,
+      message: `Weekly snapshot created for week ${snapshot.week_number}`,
+      _quality: 95,
+    };
+  } catch (e) {
+    return {
+      success: false,
+      error: `Snapshot generation failed: ${e.message}`,
+      _quality: 0,
+    };
+  }
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -850,6 +1116,11 @@ const HANDLERS = {
   brain_context_end: handleContextEnd,
   brain_context_stats: handleContextStats,
   brain_context_sessions: handleContextSessions,
+  // Provenance Layer
+  brain_provenance_status: handleProvenanceStatus,
+  brain_provenance_proof: handleProvenanceProof,
+  brain_provenance_verify: handleProvenanceVerify,
+  brain_provenance_snapshot: handleProvenanceSnapshot,
 };
 
 // =============================================================================
