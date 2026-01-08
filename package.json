@@ -31,6 +31,8 @@
     "brain:learn": "node scripts/continuous-learn.js --once",
     "brain:daemon": "node scripts/continuous-learn.js",
     "brain:holdex": "node scripts/sync-holdex.js",
+    "brain:awaken": "node scripts/brain-awakening.js",
+    "brain:awaken:quiet": "node scripts/brain-awakening.js --quiet",
     "brain:solana": "node scripts/publish-to-solana.js",
     "brain:solana:status": "node scripts/publish-to-solana.js --status",
     "brain:solana:init": "node scripts/publish-to-solana.js --init",
