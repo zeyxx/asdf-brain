@@ -1,22 +1,37 @@
 {
   "metadata": {
-    "generated": "2026-01-08T02:20:44.444Z",
+    "generated": "2026-01-08T03:01:05.383Z",
     "philosophy": "$asdfasdfa: Evolution through verification"
   },
   "commits": {
     "holdex_dev": {
       "total": 500,
-      "first_commit": "2025-12-25T19:17:50-05:00",
-      "last_commit": "2026-01-08T02:13:20Z",
+      "first_commit": "2025-12-25T19:49:56-05:00",
+      "last_commit": "2026-01-08T02:45:11Z",
       "byMonth": {
-        "2026-01": 235,
-        "2025-12": 265
+        "2026-01": 238,
+        "2025-12": 262
       },
       "byAuthor": {
-        "jeanterre552": 264,
-        "Sollama": 236
+        "jeanterre552": 267,
+        "Sollama": 233
       },
       "byTopic": {
+        "oracle": {
+          "count": 2,
+          "samples": [
+            "fix(deps): Sync dependencies with GASdf ecosystem",
+            "feat(api): Add GASdf integration fields"
+          ]
+        },
+        "security": {
+          "count": 32,
+          "samples": [
+            "security: Rotate gcrtrd key pair (old key was exposed in git)",
+            "feat(security): Ed25519 heartbeat + node snapshots",
+            "fix(security): Re-sign all tokens on calculator startup"
+          ]
+        },
         "performance": {
           "count": 16,
           "samples": [
@@ -49,14 +64,6 @@
             "fix(arch): Remove kScoreUpdater from API - prevent race condition"
           ]
         },
-        "security": {
-          "count": 31,
-          "samples": [
-            "feat(security): Ed25519 heartbeat + node snapshots",
-            "fix(security): Re-sign all tokens on calculator startup",
-            "docs: Document API key whitelist and auth system"
-          ]
-        },
         "burn": {
           "count": 13,
           "samples": [
@@ -87,12 +94,6 @@
             "security(space): Input validation for card generator",
             "feat(nav): Add navigation to space.html and admin.html",
             "feat(space): Add cult member dashboard at /cult-space"
-          ]
-        },
-        "oracle": {
-          "count": 1,
-          "samples": [
-            "feat(api): Add GASdf integration fields"
           ]
         }
       }

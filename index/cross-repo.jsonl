@@ -3361,7 +3361,7 @@
 {"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0,"data_hash":"534d8c441fdf9914","type":"dev"}
 {"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0,"data_hash":"bc825e64aad03926","type":"dev"}
 {"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0,"data_hash":"2ea3a0ec0b6072fd","type":"dev"}
-{"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0.1,"data_hash":"9903fd8d38528a7e","type":"dev"}
+{"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0,"data_hash":"9903fd8d38528a7e","type":"dev"}
 {"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0,"data_hash":"989bc9072c784de1","type":"dev"}
 {"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0,"data_hash":"7ecd46c8f4b5e139","type":"dev"}
 {"source":"holdex/conversations-safe.jsonl","layer":"intelligence","phi_weight":2.618033988749895,"quality":0,"data_hash":"16972c49f4a7f70a","type":"dev"}

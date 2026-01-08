@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>asdf-brain | $asdfasdfa Ecosystem Memory</title>
+  <style>
+    :root {
+      --fire-orange: #ff6b35;
+      --fire-yellow: #ffd700;
+      --ash-dark: #1a1a2e;
+      --ash-medium: #16213e;
+      --ash-light: #0f3460;
+      --text-primary: #e8e8e8;
+      --text-secondary: #a0a0a0;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --error: #f87171;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background: var(--ash-dark);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: linear-gradient(135deg, var(--ash-medium), var(--ash-light));
+      border-radius: 12px;
+      border: 1px solid var(--fire-orange);
+    }
+
+    .ascii-art {
+      font-size: 8px;
+      line-height: 1;
+      color: var(--fire-orange);
+      white-space: pre;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 2rem;
+      color: var(--fire-yellow);
+      text-shadow: 0 0 10px var(--fire-orange);
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .philosophy {
+      font-style: italic;
+      color: var(--fire-orange);
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--ash-medium);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--ash-light);
+      transition: border-color 0.3s;
+    }
+
+    .card:hover {
+      border-color: var(--fire-orange);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--ash-light);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      color: var(--fire-yellow);
+    }
+
+    .card-badge {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      background: var(--ash-light);
+    }
+
+    .health-score {
+      font-size: 4rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .health-score.excellent { color: var(--success); }
+    .health-score.good { color: var(--fire-yellow); }
+    .health-score.warning { color: var(--warning); }
+    .health-score.critical { color: var(--error); }
+
+    .indicator-list {
+      list-style: none;
+    }
+
+    .indicator-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--ash-light);
+    }
+
+    .indicator-item:last-child {
+      border-bottom: none;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .status-dot.green { background: var(--success); }
+    .status-dot.yellow { background: var(--warning); }
+    .status-dot.red { background: var(--error); }
+
+    .pattern-tag {
+      display: inline-block;
+      background: var(--ash-light);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin: 4px;
+      font-size: 0.85rem;
+    }
+
+    .pattern-count {
+      color: var(--fire-orange);
+      font-weight: bold;
+    }
+
+    .recommendation {
+      padding: 10px;
+      margin: 8px 0;
+      background: var(--ash-light);
+      border-radius: 6px;
+      border-left: 3px solid var(--fire-orange);
+    }
+
+    .ecosystem-node {
+      display: inline-flex;
+      align-items: center;
+      background: var(--ash-light);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin: 4px;
+    }
+
+    .node-icon {
+      font-size: 1.2rem;
+      margin-right: 8px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background: var(--ash-light);
+      border-radius: 8px;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--fire-yellow);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 5px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-secondary);
+    }
+
+    .error {
+      color: var(--error);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .refresh-info {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .ascii-art {
+        font-size: 5px;
+      }
+      .title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <pre class="ascii-art">
+    ╔═══════════════════════════════════════════════════════════╗
+    ║     _   ___ ___  ___      ___ ___    _   ___ _  _         ║
+    ║    /_\ / __|   \| __|___ | _ ) _ \  /_\ |_ _| \| |        ║
+    ║   / _ \\__ \ |) | _|_____|  _ \   \/ _ \ | || .` |        ║
+    ║  /_/ \_\___/___/|_|      |___/_|_/_/ \_\___|_|\_|        ║
+    ║                                                           ║
+    ║          "This is fine." - Ecosystem Memory               ║
+    ╚═══════════════════════════════════════════════════════════╝
+    </pre>
+    <h1 class="title">asdf-brain</h1>
+    <p class="subtitle">Living Memory of the $asdfasdfa Ecosystem</p>
+    <p class="philosophy">"Don't trust, verify. Don't extract, burn."</p>
+  </div>
+
+  <div class="grid">
+    <!-- Health Score Card -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Ecosystem Health</span>
+        <span class="card-badge" id="health-timestamp">Loading...</span>
+      </div>
+      <div id="health-score" class="health-score loading">--</div>
+      <div id="health-status" style="text-align: center; color: var(--text-secondary);"></div>
+    </div>
+
+    <!-- Indicators Card -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Health Indicators</span>
+        <span class="card-badge" id="indicator-count">0 checks</span>
+      </div>
+      <ul class="indicator-list" id="indicators">
+        <li class="loading">Loading indicators...</li>
+      </ul>
+    </div>
+
+    <!-- Patterns Card -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Top Patterns</span>
+        <span class="card-badge" id="pattern-count">0 patterns</span>
+      </div>
+      <div id="patterns">
+        <div class="loading">Loading patterns...</div>
+      </div>
+    </div>
+
+    <!-- Recommendations Card -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Recommendations</span>
+        <span class="card-badge">Actions</span>
+      </div>
+      <div id="recommendations">
+        <div class="loading">Loading recommendations...</div>
+      </div>
+    </div>
+
+    <!-- Ecosystem Card -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Ecosystem Nodes</span>
+        <span class="card-badge" id="node-count">0 nodes</span>
+      </div>
+      <div id="ecosystem">
+        <div class="loading">Loading ecosystem...</div>
+      </div>
+    </div>
+
+    <!-- Stats Card -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Brain Stats</span>
+        <span class="card-badge">Knowledge</span>
+      </div>
+      <div class="stat-grid" id="stats">
+        <div class="stat-item">
+          <div class="stat-value" id="stat-intents">--</div>
+          <div class="stat-label">Intents</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="stat-patterns">--</div>
+          <div class="stat-label">Patterns</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="stat-errors">--</div>
+          <div class="stat-label">Post-mortems</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="stat-roadmap">--</div>
+          <div class="stat-label">Roadmap Items</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>asdf-brain v1.0 | Collective Memory</p>
+    <p class="refresh-info">Auto-refreshes every 5 minutes | <span id="last-update">Never</span></p>
+  </div>
+
+  <script>
+    const API_BASE = '';
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    async function fetchJson(endpoint) {
+      try {
+        const res = await fetch(API_BASE + endpoint);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (e) {
+        console.error(`Error fetching ${endpoint}:`, e);
+        return null;
+      }
+    }
+
+    function getHealthClass(score) {
+      if (score >= 85) return 'excellent';
+      if (score >= 70) return 'good';
+      if (score >= 50) return 'warning';
+      return 'critical';
+    }
+
+    function getStatusDot(status) {
+      if (status === true || status === 'ok' || status === 'green') return 'green';
+      if (status === 'warning' || status === 'yellow') return 'yellow';
+      return 'red';
+    }
+
+    async function loadHealth() {
+      const data = await fetchJson('/api/health');
+      if (!data) {
+        document.getElementById('health-score').textContent = 'ERR';
+        document.getElementById('health-score').className = 'health-score critical';
+        return;
+      }
+
+      const score = data.overall_score || 0;
+      const scoreEl = document.getElementById('health-score');
+      scoreEl.textContent = score;
+      scoreEl.className = `health-score ${getHealthClass(score)}`;
+
+      document.getElementById('health-status').textContent =
+        score >= 85 ? 'Ecosystem thriving' :
+        score >= 70 ? 'Ecosystem healthy' :
+        score >= 50 ? 'Needs attention' : 'Critical issues';
+
+      document.getElementById('health-timestamp').textContent =
+        new Date(data.timestamp).toLocaleDateString();
+
+      // Indicators
+      const indicators = data.indicators || {};
+      const indicatorList = document.getElementById('indicators');
+      indicatorList.innerHTML = '';
+
+      const indicatorNames = {
+        git_health: 'Git Health',
+        code_quality: 'Code Quality',
+        dependencies: 'Dependencies',
+        documentation: 'Documentation',
+        security: 'Security',
+        testing: 'Testing'
+      };
+
+      let indicatorCount = 0;
+      for (const [key, value] of Object.entries(indicators)) {
+        indicatorCount++;
+        const li = document.createElement('li');
+        li.className = 'indicator-item';
+
+        const nameSpan = document.createElement('span');
+        const dot = document.createElement('span');
+        dot.className = `status-dot ${getStatusDot(value.status)}`;
+        nameSpan.appendChild(dot);
+        nameSpan.appendChild(document.createTextNode(indicatorNames[key] || key));
+
+        const scoreSpan = document.createElement('span');
+        scoreSpan.textContent = `${value.score || 0}/100`;
+
+        li.appendChild(nameSpan);
+        li.appendChild(scoreSpan);
+        indicatorList.appendChild(li);
+      }
+
+      document.getElementById('indicator-count').textContent = `${indicatorCount} checks`;
+
+      // Recommendations
+      const recsDiv = document.getElementById('recommendations');
+      recsDiv.innerHTML = '';
+      const recs = data.recommendations || [];
+      if (recs.length === 0) {
+        const noRec = document.createElement('div');
+        noRec.className = 'recommendation';
+        noRec.textContent = 'No recommendations - ecosystem is healthy!';
+        recsDiv.appendChild(noRec);
+      } else {
+        recs.slice(0, 5).forEach(rec => {
+          const recDiv = document.createElement('div');
+          recDiv.className = 'recommendation';
+          recDiv.textContent = rec;
+          recsDiv.appendChild(recDiv);
+        });
+      }
+    }
+
+    async function loadPatterns() {
+      const data = await fetchJson('/api/patterns');
+      if (!data) return;
+
+      const patternsDiv = document.getElementById('patterns');
+      patternsDiv.innerHTML = '';
+
+      const topPatterns = data.top_patterns || {};
+      let totalCount = 0;
+
+      for (const [category, count] of Object.entries(topPatterns)) {
+        totalCount += count;
+        const tag = document.createElement('span');
+        tag.className = 'pattern-tag';
+        tag.innerHTML = `${escapeHtml(category)} <span class="pattern-count">${count}</span>`;
+        patternsDiv.appendChild(tag);
+      }
+
+      document.getElementById('pattern-count').textContent = `${totalCount} patterns`;
+      document.getElementById('stat-patterns').textContent = totalCount;
+    }
+
+    async function loadEcosystem() {
+      const data = await fetchJson('/api/ecosystem');
+      if (!data) return;
+
+      const ecosystemDiv = document.getElementById('ecosystem');
+      ecosystemDiv.innerHTML = '';
+
+      const nodes = data.nodes || [];
+      document.getElementById('node-count').textContent = `${nodes.length} nodes`;
+
+      const nodeIcons = {
+        core: '🔥',
+        service: '⚙️',
+        library: '📚',
+        tool: '🔧',
+        data: '💾'
+      };
+
+      nodes.slice(0, 10).forEach(node => {
+        const nodeDiv = document.createElement('div');
+        nodeDiv.className = 'ecosystem-node';
+
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'node-icon';
+        iconSpan.textContent = nodeIcons[node.type] || '📦';
+
+        nodeDiv.appendChild(iconSpan);
+        nodeDiv.appendChild(document.createTextNode(node.name || 'Unknown'));
+        ecosystemDiv.appendChild(nodeDiv);
+      });
+    }
+
+    async function loadStats() {
+      const [intent, errors, vision] = await Promise.all([
+        fetchJson('/api/intent'),
+        fetchJson('/api/errors'),
+        fetchJson('/api/vision')
+      ]);
+
+      if (intent) {
+        const totalIntents = Object.values(intent.by_category || {}).reduce((a, b) => a + b, 0);
+        document.getElementById('stat-intents').textContent = totalIntents;
+      }
+
+      if (errors) {
+        const totalErrors = Object.values(errors.by_category || {}).reduce((a, b) => a + b, 0);
+        document.getElementById('stat-errors').textContent = totalErrors;
+      }
+
+      if (vision) {
+        document.getElementById('stat-roadmap').textContent = vision.statistics?.total_items || 0;
+      }
+    }
+
+    async function loadAll() {
+      await Promise.all([
+        loadHealth(),
+        loadPatterns(),
+        loadEcosystem(),
+        loadStats()
+      ]);
+      document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+    }
+
+    // Initial load
+    loadAll();
+
+    // Auto-refresh every 5 minutes
+    setInterval(loadAll, 5 * 60 * 1000);
+  </script>
+</body>
+</html>

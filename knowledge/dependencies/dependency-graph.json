@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-08T02:45:18.028Z",
+    "generated": "2026-01-08T03:01:06.325Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -390,27 +390,36 @@
     "asdf-brain": {
       "package": {
         "name": "asdf-brain",
-        "version": "0.2.0",
+        "version": "1.0.0",
         "dependencies": {},
         "devDependencies": {},
         "scripts": [
+          "start",
           "brain:search",
           "brain:analyze",
           "brain:index",
           "brain:sanitize",
           "brain:contributors",
-          "brain:check"
+          "brain:intent",
+          "brain:patterns",
+          "brain:errors",
+          "brain:evolution",
+          "brain:philosophy",
+          "brain:deps",
+          "brain:health",
+          "brain:vision",
+          "brain:all"
         ]
       },
       "imports": {
         "internal": {},
         "external": {},
         "node": {
-          "fs": 13,
-          "path": 13,
+          "fs": 16,
+          "path": 16,
+          "readline": 8,
           "crypto": 2,
-          "child_process": 4,
-          "readline": 7
+          "child_process": 5
         }
       }
     }

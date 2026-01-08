@@ -1,0 +1,20 @@
+# asdf-brain Render configuration
+# The living memory of the $asdfasdfa ecosystem
+# "Don't trust, verify. Don't extract, burn."
+
+services:
+  - type: web
+    name: asdf-brain
+    runtime: node
+    region: frankfurt  # Close to EU users
+    plan: free
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+    autoDeploy: true

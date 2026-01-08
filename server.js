@@ -1,0 +1,333 @@
+#!/usr/bin/env node
+/**
+ * asdf-brain server
+ *
+ * Unified server for Dashboard + MCP over SSE
+ * Following $asdfasdfa: "Don't trust, verify" - all data from verified sources
+ *
+ * Endpoints:
+ * - GET /              → Dashboard
+ * - GET /health        → Health check
+ * - GET /api/health    → Ecosystem health JSON
+ * - GET /api/patterns  → Patterns JSON
+ * - GET /api/search    → Search endpoint
+ * - GET /api/ecosystem → Ecosystem graph
+ * - GET /api/vision    → Roadmap items
+ * - GET /sse           → MCP over SSE
+ * - POST /mcp          → MCP JSON-RPC
+ */
+
+'use strict';
+
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const cors = require('cors');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+const KNOWLEDGE_DIR = path.join(__dirname, 'knowledge');
+
+// =============================================================================
+// MIDDLEWARE
+// =============================================================================
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// =============================================================================
+// HELPERS
+// =============================================================================
+
+function loadJson(relativePath) {
+  try {
+    const fullPath = path.join(KNOWLEDGE_DIR, relativePath);
+    if (fs.existsSync(fullPath)) {
+      return JSON.parse(fs.readFileSync(fullPath, 'utf-8'));
+    }
+  } catch (e) {
+    console.error(`Error loading ${relativePath}:`, e.message);
+  }
+  return null;
+}
+
+// =============================================================================
+// API ENDPOINTS
+// =============================================================================
+
+// Health check for Render
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Ecosystem health
+app.get('/api/health', (req, res) => {
+  const health = loadJson('health/ecosystem-health.json');
+  if (!health) {
+    return res.status(503).json({ error: 'Health data not available' });
+  }
+  res.json(health);
+});
+
+// Patterns
+app.get('/api/patterns', (req, res) => {
+  const patterns = loadJson('patterns/extracted-patterns.json');
+  if (!patterns) {
+    return res.status(503).json({ error: 'Pattern data not available' });
+  }
+
+  // Return summary, not full data
+  res.json({
+    statistics: patterns.statistics,
+    top_patterns: patterns.statistics?.by_category || {},
+  });
+});
+
+// Search
+app.get('/api/search', async (req, res) => {
+  const query = req.query.q;
+  const limit = parseInt(req.query.limit) || 10;
+
+  if (!query) {
+    return res.status(400).json({ error: 'Query parameter "q" required' });
+  }
+
+  const indexPath = path.join(__dirname, 'index/cross-repo.jsonl');
+  if (!fs.existsSync(indexPath)) {
+    return res.status(503).json({ error: 'Search index not available' });
+  }
+
+  const results = [];
+  const queryLower = query.toLowerCase();
+  const queryTerms = queryLower.split(/\s+/);
+
+  const readline = require('readline');
+  const fileStream = fs.createReadStream(indexPath);
+  const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+
+  for await (const line of rl) {
+    if (!line.trim()) continue;
+    try {
+      const entry = JSON.parse(line);
+      const text = ((entry.user?.content || '') + ' ' + (entry.assistant?.content || '')).toLowerCase();
+
+      let score = 0;
+      for (const term of queryTerms) {
+        if (text.includes(term)) score++;
+      }
+
+      if (score > 0) {
+        results.push({
+          score,
+          session_id: entry.session_id,
+          timestamp: entry.timestamp,
+          preview: (entry.user?.content || '').slice(0, 150),
+        });
+      }
+
+      if (results.length >= limit * 10) break;
+    } catch (e) {
+      // Skip
+    }
+  }
+
+  results.sort((a, b) => b.score - a.score);
+  res.json({
+    query,
+    results: results.slice(0, limit),
+    total: results.length,
+  });
+});
+
+// Ecosystem
+app.get('/api/ecosystem', (req, res) => {
+  const ecosystem = loadJson('relations/ecosystem-graph.json');
+  if (!ecosystem) {
+    return res.status(503).json({ error: 'Ecosystem data not available' });
+  }
+  res.json(ecosystem);
+});
+
+// Intent/POURQUOI
+app.get('/api/intent', (req, res) => {
+  const intent = loadJson('intent/extracted-intents.json');
+  if (!intent) {
+    return res.status(503).json({ error: 'Intent data not available' });
+  }
+  res.json({
+    metadata: intent.metadata,
+    by_category: Object.fromEntries(
+      Object.entries(intent.by_category || {}).map(([k, v]) => [k, v.length])
+    ),
+  });
+});
+
+// Vision/Roadmap
+app.get('/api/vision', (req, res) => {
+  const vision = loadJson('vision/roadmap.json');
+  if (!vision) {
+    return res.status(503).json({ error: 'Vision data not available' });
+  }
+  res.json({
+    statistics: vision.statistics,
+    roadmap: vision.roadmap,
+  });
+});
+
+// Dependencies
+app.get('/api/dependencies', (req, res) => {
+  const deps = loadJson('dependencies/dependency-graph.json');
+  if (!deps) {
+    return res.status(503).json({ error: 'Dependency data not available' });
+  }
+  res.json({
+    statistics: deps.statistics,
+    version_mismatches: deps.version_mismatches,
+    shared: Object.keys(deps.shared_dependencies || {}),
+  });
+});
+
+// Errors/Post-mortems
+app.get('/api/errors', (req, res) => {
+  const errors = loadJson('errors/post-mortems.json');
+  if (!errors) {
+    return res.status(503).json({ error: 'Error data not available' });
+  }
+  res.json({
+    statistics: errors.statistics,
+    by_category: Object.fromEntries(
+      Object.entries(errors.errors_by_category || {}).map(([k, v]) => [k, v.count])
+    ),
+  });
+});
+
+// =============================================================================
+// MCP OVER SSE
+// =============================================================================
+
+const MCP_TOOLS = [
+  { name: 'brain_search', description: 'Search across all asdf-brain knowledge' },
+  { name: 'brain_health', description: 'Get ecosystem health status' },
+  { name: 'brain_patterns', description: 'Find recurring patterns' },
+  { name: 'brain_intent', description: 'Find decision rationale (POURQUOI)' },
+  { name: 'brain_ecosystem', description: 'Query ecosystem relationships' },
+  { name: 'brain_dependencies', description: 'Get dependency information' },
+  { name: 'brain_vision', description: 'Get roadmap items' },
+];
+
+// MCP JSON-RPC endpoint
+app.post('/mcp', async (req, res) => {
+  const { id, method, params } = req.body;
+
+  try {
+    let result;
+
+    switch (method) {
+      case 'initialize':
+        result = {
+          protocolVersion: '2024-11-05',
+          capabilities: { tools: {} },
+          serverInfo: { name: 'asdf-brain', version: '1.0.0' },
+        };
+        break;
+
+      case 'tools/list':
+        result = { tools: MCP_TOOLS };
+        break;
+
+      case 'tools/call':
+        const { name, arguments: args } = params;
+        let data;
+
+        switch (name) {
+          case 'brain_health':
+            data = loadJson('health/ecosystem-health.json');
+            break;
+          case 'brain_patterns':
+            data = loadJson('patterns/extracted-patterns.json')?.statistics;
+            break;
+          case 'brain_intent':
+            data = loadJson('intent/extracted-intents.json')?.metadata;
+            break;
+          case 'brain_ecosystem':
+            data = loadJson('relations/ecosystem-graph.json');
+            break;
+          case 'brain_dependencies':
+            data = loadJson('dependencies/dependency-graph.json')?.statistics;
+            break;
+          case 'brain_vision':
+            data = loadJson('vision/roadmap.json')?.roadmap;
+            break;
+          case 'brain_search':
+            // Simplified search for MCP
+            data = { message: 'Use /api/search endpoint for full search' };
+            break;
+          default:
+            throw new Error(`Unknown tool: ${name}`);
+        }
+
+        result = {
+          content: [{ type: 'text', text: JSON.stringify(data, null, 2) }],
+        };
+        break;
+
+      default:
+        return res.status(400).json({
+          jsonrpc: '2.0',
+          id,
+          error: { code: -32601, message: `Method not found: ${method}` },
+        });
+    }
+
+    res.json({ jsonrpc: '2.0', id, result });
+  } catch (e) {
+    res.status(500).json({
+      jsonrpc: '2.0',
+      id,
+      error: { code: -32000, message: e.message },
+    });
+  }
+});
+
+// SSE endpoint for MCP streaming
+app.get('/sse', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  // Send initial connection event
+  res.write(`data: ${JSON.stringify({ type: 'connected', server: 'asdf-brain' })}\n\n`);
+
+  // Keep connection alive
+  const keepAlive = setInterval(() => {
+    res.write(`: keepalive\n\n`);
+  }, 30000);
+
+  req.on('close', () => {
+    clearInterval(keepAlive);
+  });
+});
+
+// =============================================================================
+// DASHBOARD
+// =============================================================================
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// =============================================================================
+// START SERVER
+// =============================================================================
+
+app.listen(PORT, () => {
+  console.log('═══════════════════════════════════════════════════════════');
+  console.log('  asdf-brain server');
+  console.log("  $asdfasdfa: Don't trust, verify");
+  console.log('═══════════════════════════════════════════════════════════');
+  console.log(`  Dashboard:  http://localhost:${PORT}/`);
+  console.log(`  API:        http://localhost:${PORT}/api/health`);
+  console.log(`  MCP:        http://localhost:${PORT}/mcp`);
+  console.log('═══════════════════════════════════════════════════════════');
+});
