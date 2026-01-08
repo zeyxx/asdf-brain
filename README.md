@@ -35,25 +35,50 @@ O = Organic (naturally occurring, not forced)
 L = Longevity (will this last?)
 ```
 
-## Structure
+## Structure (PaRDeS)
 
 ```
 asdf-brain/
-├── knowledge/           # Indexed learnings by repo
-│   ├── holdex/         # HolDex patterns (11K+ conversations)
-│   ├── gasdf/          # GASdf security & transaction patterns
-│   ├── consumer-apps/  # ASDForecast, ASDev learnings
-│   ├── infra/          # Deployment patterns (sollama58)
-│   └── manifesto/      # Philosophy & architectural decisions
-├── agents/             # Operational modes
-│   ├── analyzer.js     # Read-only: analyze & report
-│   ├── proposer.js     # Create PRs across repos
-│   └── autonomous.js   # Direct changes (high confidence)
-├── index/              # Unified search
-│   ├── cross-repo.jsonl
-│   └── signatures.json
-└── scripts/            # Pipeline & utilities
+├── knowledge/              # Multi-dimensional indexed learnings
+│   ├── relations/         # Dimension Relationnelle - ecosystem graph
+│   │   ├── ecosystem-graph.json    # Verified connections
+│   │   └── ECOSYSTEM.md           # Mermaid visualization
+│   ├── intent/            # Dimension Intentionnelle - POURQUOI
+│   │   └── extracted-intents.json  # 3,031 decision patterns
+│   ├── patterns/          # Dimension Patterns - recurring themes
+│   │   └── extracted-patterns.json # 80,999 $asdfasdfa patterns
+│   ├── errors/            # Dimension Erreurs - post-mortems
+│   │   └── post-mortems.json       # 278 critical incidents
+│   ├── temporal/          # Dimension Temporelle - evolution
+│   │   └── evolution.json          # 777 commits tracked
+│   ├── philosophy/        # Dimension Philosophique - manifesto→code
+│   │   └── manifesto-mapping.json  # 100/100 alignment
+│   └── holdex/           # Raw indexed data
+├── scripts/               # Extraction & analysis tools
+│   ├── indexer.js        # φ-weighted indexing
+│   ├── search.js         # Semantic search
+│   ├── analyze.js        # Dev/prod drift detection
+│   ├── sanitizer.js      # Privacy protection (2,777 redactions)
+│   ├── contributors.js   # Contributor mapping
+│   ├── extract-intent.js # POURQUOI extraction
+│   ├── extract-patterns.js # Pattern recognition
+│   ├── extract-errors.js # Post-mortem generation
+│   ├── track-evolution.js # Temporal analysis
+│   └── map-philosophy.js # Manifesto→code verification
+└── .private/              # Drash level (gitignored)
 ```
+
+## The 7 Dimensions
+
+| Dimension | Purpose | Stats |
+|-----------|---------|-------|
+| **Relationnelle** | Verified ecosystem connections | GASdf↔HolDex bidirectional |
+| **Intentionnelle** | Extract the POURQUOI | 27.5% conversations with intent |
+| **Patterns** | Recurring themes & code patterns | 75.6% contain patterns |
+| **Erreurs** | Post-mortems & lessons learned | 278 critical incidents |
+| **Temporelle** | Evolution over time | 777 commits tracked |
+| **Philosophique** | Manifesto→code alignment | 100/100 score |
+| **Sécurité** | Privacy by design | 2,777 redactions applied |
 
 ## The Ecosystem
 

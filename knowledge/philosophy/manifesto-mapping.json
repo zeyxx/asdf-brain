@@ -1,0 +1,548 @@
+{
+  "metadata": {
+    "generated": "2026-01-08T02:22:17.949Z",
+    "philosophy": "$asdfasdfa: Don't trust, verify - verify the code matches the manifesto"
+  },
+  "principles": {
+    "burn_100": {
+      "name": "100% Burn",
+      "manifesto_excerpt": "Every fee paid to interact with $asdfasdfa is burned. Not 38%. Not 50%. One hundred percent.",
+      "weight": 2.618,
+      "repos": {
+        "HolDex": {
+          "matches": 14,
+          "files_with_matches": 7,
+          "by_type": {
+            "implementation": 10,
+            "anti-pattern": 2,
+            "explicit": 2
+          },
+          "samples": [
+            {
+              "file": "GASDF_INTEGRATION_GUIDE.md",
+              "match": "burn: Math.round(totalFee",
+              "context": "total: totalFee,         burn: Math.round(totalFee * RATIOS.BURN * 100000000) / 100000000,         r"
+            },
+            {
+              "file": "SECURITY_AUDIT_REPORT.md",
+              "match": "No | No | treasury",
+              "context": "| | `GET /api/config/fees` | No | No | treasury=null exposed | | `GET /api/proxy/balance/:wallet`"
+            },
+            {
+              "file": "docs/ECOSYSTEM-ARCHITECTURE.md",
+              "match": "100% Burn",
+              "context": "ata tampered'); } ```  ### 5. 100% Burn  All fees burn. No exceptions. No treasury skim o"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "routes/space.js"
+            ],
+            "missing": [
+              "services/burn.js"
+            ]
+          }
+        },
+        "GASdf": {
+          "matches": 78,
+          "files_with_matches": 22,
+          "by_type": {
+            "explicit": 27,
+            "implementation": 31,
+            "anti-pattern": 20
+          },
+          "samples": [
+            {
+              "file": ".claude/commands/check-tokenomics.md",
+              "match": "100% BURN",
+              "context": "Flow  ``` $ASDF Payment:   └→ 100% BURN (purist model)  Other Token Payment:   ├→ Ecosyst"
+            },
+            {
+              "file": "ARCHITECTURE.md",
+              "match": "100% BURN",
+              "context": "│      ├── If $asdfasdfa ──▶ 100% BURN (zero treasury cut)      │      └── If other toke"
+            },
+            {
+              "file": "CHANGELOG.md",
+              "match": "Burn Channel explanation (100%",
+              "context": "ted dimensions   - Added Dual Burn Channel explanation (100% burn for $asdfasdfa)   - All formulas n"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "services/burn.js"
+            ],
+            "missing": [
+              "routes/space.js"
+            ]
+          }
+        }
+      },
+      "status": "implemented",
+      "score": 1
+    },
+    "verify_not_trust": {
+      "name": "Don't Trust, Verify",
+      "manifesto_excerpt": "Every K-Score is cryptographically signed. 8 categories. HMAC-SHA256. Verifiable by anyone.",
+      "weight": 2.618,
+      "repos": {
+        "HolDex": {
+          "matches": 3275,
+          "files_with_matches": 93,
+          "by_type": {
+            "crypto": 1713,
+            "verification": 746,
+            "integrity": 816
+          },
+          "samples": [
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "Signature",
+              "context": "| integrity-auditor | haiku | Signature verification | ~90% | | commit-analyzer | sonnet"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "signature",
+              "context": "/deep-research Helius webhook signature verification\" ```  ### 2. Vague Research ``` Bad:"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "Verify",
+              "context": "hy Alignment  > \"Don't Trust, Verify\" - $asdfasdfa  Just as HolDex verifies every piec"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "tasks/integrityWatchdog.js",
+              "routes/tokens.js"
+            ],
+            "missing": [
+              "utils/signatures.js"
+            ]
+          }
+        },
+        "GASdf": {
+          "matches": 2624,
+          "files_with_matches": 102,
+          "by_type": {
+            "crypto": 1028,
+            "verification": 119,
+            "integrity": 1477
+          },
+          "samples": [
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "signature",
+              "context": "(burn total) | | `burn:proof:{signature}` | 365j | Preuve de burn vérifiable | | `burn:pr"
+            },
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "signature",
+              "context": "(burn total) | | `burn:proof:{signature}` | 365j | Preuve de burn vérifiable | | `burn:pr"
+            },
+            {
+              "file": ".claude/SETUP.md",
+              "match": "sign",
+              "context": "smallest possible set of high-signal tokens\" — Anthropic  Ce guide documente la conf"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "routes/tokens.js"
+            ],
+            "missing": [
+              "utils/signatures.js",
+              "tasks/integrityWatchdog.js"
+            ]
+          }
+        }
+      },
+      "status": "implemented",
+      "score": 1
+    },
+    "k_score_formula": {
+      "name": "K-Score Formula",
+      "manifesto_excerpt": "K = 100 × ∛(D × O × L). Diamond Hands, Organic Growth, Longevity.",
+      "weight": 1.618,
+      "repos": {
+        "HolDex": {
+          "matches": 3106,
+          "files_with_matches": 131,
+          "by_type": {
+            "naming": 979,
+            "D_factor": 711,
+            "O_factor": 149,
+            "L_factor": 1179,
+            "math": 88
+          },
+          "samples": [
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "kscore",
+              "context": "`` 1. Reproduce the issue 2. /kscore-debug or /verify-token     <- domain-specific deb"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "K-Score",
+              "context": "HolDex-Specific Patterns  ### K-Score Work ``` 1. /kscore-debug [token]              <-"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "conviction",
+              "context": "Use librarian to research how conviction_class is calculated\" ```  ### 3. Ignoring Subagen"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "tasks/kScoreUpdater.js"
+            ],
+            "missing": []
+          }
+        },
+        "GASdf": {
+          "matches": 1312,
+          "files_with_matches": 128,
+          "by_type": {
+            "naming": 259,
+            "L_factor": 991,
+            "O_factor": 27,
+            "D_factor": 35
+          },
+          "samples": [
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "k_score",
+              "context": "MP | Dernière utilisation | | k_score | VARCHAR(20) | Score HolDex | | created_at | TIM"
+            },
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "K-score",
+              "context": "| | `GET /api/token/{mint}` | K-score, tier, supply, burnedPercent | Token gating | | `"
+            },
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "age",
+              "context": "onfirmed/failed | | error_message | TEXT | Message erreur si failed | | ip_address"
+            }
+          ],
+          "expected_files": {
+            "found": [],
+            "missing": [
+              "tasks/kScoreUpdater.js"
+            ]
+          }
+        }
+      },
+      "status": "implemented",
+      "score": 1
+    },
+    "phi_ratio": {
+      "name": "φ (Phi) Ratio",
+      "manifesto_excerpt": "φ = 1.618... φ⁻¹ = 61.8%. φ⁻² = 38.2%. These ratios guide thresholds and weights.",
+      "weight": 1,
+      "repos": {
+        "HolDex": {
+          "matches": 755,
+          "files_with_matches": 65,
+          "by_type": {
+            "constant": 477,
+            "threshold": 77,
+            "symbol": 201
+          },
+          "samples": [
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "phi",
+              "context": "every piece of data cryptographically, we verify every piece of context for value-"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "phi",
+              "context": "every piece of data cryptographically, we verify every piece of context for value-"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "golden ratio",
+              "context": "i Ratio in Context  Apply the golden ratio to context management:  ``` Context Budget Distri"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "shared/harmony.js"
+            ],
+            "missing": [
+              "harmony.js"
+            ]
+          }
+        },
+        "GASdf": {
+          "matches": 323,
+          "files_with_matches": 27,
+          "by_type": {
+            "constant": 121,
+            "symbol": 136,
+            "threshold": 66
+          },
+          "samples": [
+            {
+              "file": ".claude/SETUP.md",
+              "match": "1.618",
+              "context": "Économie φ ```javascript φ = 1.618... BURN_RATIO = 76.4%    // 1 - 1/φ³ TREASURY_RAT"
+            },
+            {
+              "file": ".claude/SETUP.md",
+              "match": "φ",
+              "context": "s.md  # Vérification économie φ     └── security-review.md   # Checklist sécurité"
+            },
+            {
+              "file": ".claude/SETUP.md",
+              "match": "φ",
+              "context": "s.md  # Vérification économie φ     └── security-review.md   # Checklist sécurité"
+            }
+          ],
+          "expected_files": {
+            "found": [],
+            "missing": [
+              "harmony.js",
+              "shared/harmony.js"
+            ]
+          }
+        }
+      },
+      "status": "implemented",
+      "score": 1
+    },
+    "alignment": {
+      "name": "Perfect Alignment",
+      "manifesto_excerpt": "Everyone has the same incentive: maximize usage. The trader wants what the builder wants.",
+      "weight": 1.618,
+      "repos": {
+        "HolDex": {
+          "matches": 243,
+          "files_with_matches": 28,
+          "by_type": {
+            "concept": 58,
+            "oracle": 161,
+            "notification": 24
+          },
+          "samples": [
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "Align",
+              "context": "g token usage.  ## Philosophy Alignment  > \"Don't Trust, Verify\" - $asdfasdfa  Just a"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "align",
+              "context": "mode (shift+tab)      <- get alignment 3. Ask clarifying questions           <- redu"
+            },
+            {
+              "file": ".claude/TREE.md",
+              "match": "Oracle",
+              "context": "ooks for real-time tracking - Oracle API `/oracle/kscore/:mint`  **What's missing:** -"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "routes/oracle.js"
+            ],
+            "missing": [
+              "services/holdex.js"
+            ]
+          }
+        },
+        "GASdf": {
+          "matches": 179,
+          "files_with_matches": 32,
+          "by_type": {
+            "oracle": 151,
+            "notification": 11,
+            "concept": 17
+          },
+          "samples": [
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "oracle",
+              "context": "` | 10s | Prix SOL/USD |  ### oracle.js | Cache | TTL | Description | |-------|-----|-"
+            },
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "Fee calculation",
+              "context": "te` | Route, prix, slippage | Fee calculation + swaps | | `POST /swap` | Transaction encodée |"
+            },
+            {
+              "file": ".claude/agents/librarian.md",
+              "match": "oracle",
+              "context": "internals - Researching Pyth oracle integration - Looking up Redis patterns or Expres"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "services/holdex.js"
+            ],
+            "missing": [
+              "routes/oracle.js"
+            ]
+          }
+        }
+      },
+      "status": "implemented",
+      "score": 1
+    },
+    "open_source": {
+      "name": "Open Source as Moat",
+      "manifesto_excerpt": "Everything is MIT licensed. Fork it. Copy it. Compete with us.",
+      "weight": 0.618,
+      "repos": {
+        "HolDex": {
+          "matches": 1733,
+          "files_with_matches": 99,
+          "by_type": {
+            "license": 1436,
+            "concept": 297
+          },
+          "samples": [
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "mit",
+              "context": "re verification | ~90% | | commit-analyzer | sonnet | Git history analysis | ~70% |"
+            },
+            {
+              "file": ".claude/CONTEXT_ENGINEERING.md",
+              "match": "mit",
+              "context": "re verification | ~90% | | commit-analyzer | sonnet | Git history analysis | ~70% |"
+            },
+            {
+              "file": ".claude/TREE.md",
+              "match": "mit",
+              "context": "URN   (φ×)     - Permanent commitment ├── USE    (1.0×)   - Activity ├── BUILD  (φ²"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "LICENSE",
+              "README.md"
+            ],
+            "missing": []
+          }
+        },
+        "GASdf": {
+          "matches": 4479,
+          "files_with_matches": 124,
+          "by_type": {
+            "license": 3845,
+            "concept": 634
+          },
+          "samples": [
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "mit",
+              "context": "sh vue (SET NX) |  ### Rate Limiting | Clé | TTL | Description | |-----|-----|-----"
+            },
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "mit",
+              "context": "sh vue (SET NX) |  ### Rate Limiting | Clé | TTL | Description | |-----|-----|-----"
+            },
+            {
+              "file": ".claude/SETUP.md",
+              "match": "mit",
+              "context": "net) └── commands/     ├── commit-push.md       # Workflow git     ├── deploy.md"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "LICENSE",
+              "README.md"
+            ],
+            "missing": []
+          }
+        }
+      },
+      "status": "implemented",
+      "score": 1
+    },
+    "anti_obscurantism": {
+      "name": "Anti-Obscurantism",
+      "manifesto_excerpt": "No black box algorithms. Every metric signed. Every formula published.",
+      "weight": 1,
+      "repos": {
+        "HolDex": {
+          "matches": 1066,
+          "files_with_matches": 95,
+          "by_type": {
+            "concept": 368,
+            "math": 154,
+            "verification": 544
+          },
+          "samples": [
+            {
+              "file": ".claude/TREE.md",
+              "match": "Open",
+              "context": "chaos are REVEALED TRUTHS  **Open questions:** - [ ] How to formalize this axiom ri"
+            },
+            {
+              "file": ".claude/TREE.md",
+              "match": "Public",
+              "context": "t`  **What's missing:** - [ ] Public algorithm documentation - [ ] Explainability (why"
+            },
+            {
+              "file": ".claude/TREE.md",
+              "match": "Algorithm",
+              "context": "ival) ```  **What exists:** - Algorithm v10 in `kScoreUpdater.js` - 9 signature categorie"
+            }
+          ],
+          "expected_files": {
+            "found": [
+              "docs/KSCORE.md",
+              "docs/INTEGRITY.md"
+            ],
+            "missing": []
+          }
+        },
+        "GASdf": {
+          "matches": 1436,
+          "files_with_matches": 107,
+          "by_type": {
+            "math": 74,
+            "verification": 370,
+            "concept": 992
+          },
+          "samples": [
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "calculation",
+              "context": "| Route, prix, slippage | Fee calculation + swaps | | `POST /swap` | Transaction encodée |"
+            },
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "proof",
+              "context": "score (burn total) | | `burn:proof:{signature}` | 365j | Preuve de burn vérifiable |"
+            },
+            {
+              "file": ".claude/DATA_MATRIX.md",
+              "match": "proof",
+              "context": "score (burn total) | | `burn:proof:{signature}` | 365j | Preuve de burn vérifiable |"
+            }
+          ],
+          "expected_files": {
+            "found": [],
+            "missing": [
+              "docs/KSCORE.md",
+              "docs/INTEGRITY.md"
+            ]
+          }
+        }
+      },
+      "status": "implemented",
+      "score": 1
+    }
+  },
+  "summary": {
+    "total_principles": 7,
+    "implemented": 7,
+    "partial": 0,
+    "missing": 0
+  },
+  "alignment_score": 100
+}
