@@ -24,8 +24,9 @@ const PHI = 1.618033988749895;
 // =============================================================================
 
 const KNOWLEDGE_PATHS = {
-  holdex: '/workspaces/HolDex/training/raw/conversations.jsonl',
-  gasdf: '/workspaces/GASdf/training/raw/conversations.jsonl',
+  // Use sanitized versions only!
+  holdex: '/workspaces/HolDex/training/raw/conversations-safe.jsonl',
+  gasdf: '/workspaces/GASdf/training/raw/conversations-safe.jsonl',
 };
 
 // =============================================================================

@@ -1,0 +1,132 @@
+{
+  "timestamp": "2026-01-08T01:22:40.957Z",
+  "totalContributors": 4,
+  "totalContributions": 2153,
+  "contributors": [
+    {
+      "username": "sollama58",
+      "contributions": 1102,
+      "repos": [
+        {
+          "repo": "zeyxx/HolDex",
+          "contributions": 322
+        },
+        {
+          "repo": "zeyxx/ASDev",
+          "contributions": 213
+        },
+        {
+          "repo": "zeyxx/ASDForecast",
+          "contributions": 114
+        },
+        {
+          "repo": "sollama58/HolDex",
+          "contributions": 89
+        },
+        {
+          "repo": "sollama58/ASDev",
+          "contributions": 220
+        },
+        {
+          "repo": "sollama58/ASDForecast",
+          "contributions": 132
+        },
+        {
+          "repo": "sollama58/ASDFBurnTracker",
+          "contributions": 12
+        }
+      ],
+      "avatar": "https://avatars.githubusercontent.com/u/247263762?v=4",
+      "type": "User",
+      "trustScore": 100,
+      "trustLevel": "core",
+      "phiWeight": 2.618033988749895
+    },
+    {
+      "username": "zeyxx",
+      "contributions": 936,
+      "repos": [
+        {
+          "repo": "zeyxx/HolDex",
+          "contributions": 261
+        },
+        {
+          "repo": "zeyxx/GASdf",
+          "contributions": 274
+        },
+        {
+          "repo": "zeyxx/asdf-manifesto",
+          "contributions": 3
+        },
+        {
+          "repo": "zeyxx/asdf-oracle",
+          "contributions": 27
+        },
+        {
+          "repo": "zeyxx/asdf-validator",
+          "contributions": 26
+        },
+        {
+          "repo": "zeyxx/asdf-burn-engine",
+          "contributions": 287
+        },
+        {
+          "repo": "zeyxx/ASDev",
+          "contributions": 17
+        },
+        {
+          "repo": "sollama58/HolDex",
+          "contributions": 41
+        }
+      ],
+      "avatar": "https://avatars.githubusercontent.com/u/151752284?v=4",
+      "type": "User",
+      "trustScore": 100,
+      "trustLevel": "core",
+      "phiWeight": 2.618033988749895
+    },
+    {
+      "username": "claude",
+      "contributions": 114,
+      "repos": [
+        {
+          "repo": "zeyxx/asdf-burn-engine",
+          "contributions": 114
+        }
+      ],
+      "avatar": "https://avatars.githubusercontent.com/u/81847?v=4",
+      "type": "User",
+      "trustScore": 5.3,
+      "trustLevel": "occasional",
+      "phiWeight": 1
+    },
+    {
+      "username": "wzeyx",
+      "contributions": 1,
+      "repos": [
+        {
+          "repo": "zeyxx/asdf-burn-engine",
+          "contributions": 1
+        }
+      ],
+      "avatar": "https://avatars.githubusercontent.com/u/180273499?v=4",
+      "type": "User",
+      "trustScore": 0,
+      "trustLevel": "new",
+      "phiWeight": 0.6180339887498948
+    }
+  ],
+  "byLevel": {
+    "core": [
+      "sollama58",
+      "zeyxx"
+    ],
+    "contributor": [],
+    "occasional": [
+      "claude"
+    ],
+    "new": [
+      "wzeyx"
+    ]
+  }
+}

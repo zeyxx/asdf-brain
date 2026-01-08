@@ -103,10 +103,12 @@ async function indexRepo(name, config, type) {
     // Index from local path
     console.log(`  📂 Indexing ${name} from ${config.path}`);
 
-    // Check for existing training data
+    // Check for existing training data (use sanitized versions only!)
     const trainingPath = path.join(config.path, 'training/raw');
     if (fs.existsSync(trainingPath)) {
-      const files = fs.readdirSync(trainingPath).filter(f => f.endsWith('.jsonl'));
+      // Prefer sanitized files, skip raw sensitive data
+      const files = fs.readdirSync(trainingPath)
+        .filter(f => f.endsWith('-safe.jsonl') || (f.endsWith('.jsonl') && !f.includes('conversation')));
       for (const file of files) {
         const lines = fs.readFileSync(path.join(trainingPath, file), 'utf-8')
           .split('\n')
