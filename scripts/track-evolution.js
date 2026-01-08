@@ -324,16 +324,42 @@ async function main() {
     }
   }
 
-  // Write output
+  // =============================================================================
+  // SAFETY CHECKS - Prevent data loss ($asdfasdfa: Don't trust, verify)
+  // =============================================================================
+
   const outputPath = path.join(__dirname, '../knowledge/temporal/evolution.json');
   const outputDir = path.dirname(outputPath);
+  const forceMode = process.argv.includes('--force');
+  const newSize = JSON.stringify(results).length;
+
+  // SAFETY CHECK: Compare with existing data
+  if (fs.existsSync(outputPath)) {
+    try {
+      const existingSize = fs.statSync(outputPath).size;
+
+      // Size check: >50% smaller is suspicious
+      if (newSize < existingSize * 0.5) {
+        console.error(`\n❌ SAFETY ABORT: Output >50% smaller than existing!`);
+        console.error(`   Existing: ${existingSize} bytes | New: ${newSize} bytes`);
+        console.error('   Refusing to corrupt knowledge. Use --force to override.');
+        if (!forceMode) process.exit(1);
+        console.warn('   ⚠️  --force: Proceeding despite size reduction...');
+      }
+    } catch (e) {
+      // Existing file invalid, OK to overwrite
+    }
+  }
+
+  // Write output
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
 
-  console.log(`\n\n💾 Saved to: ${outputPath}`);
+  console.log(`\n✅ Safety checks passed (${newSize} bytes)`);
+  console.log(`💾 Saved to: ${outputPath}`);
   console.log('═══════════════════════════════════════════════════════════\n');
 }
 

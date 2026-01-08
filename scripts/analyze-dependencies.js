@@ -373,14 +373,60 @@ async function main() {
     },
   };
 
-  // Write output
+  // =============================================================================
+  // SAFETY CHECKS - Prevent data loss ($asdfasdfa: Don't trust, verify)
+  // =============================================================================
+
   const outputPath = path.join(__dirname, '../knowledge/dependencies/dependency-graph.json');
   const outputDir = path.dirname(outputPath);
+  const forceMode = process.argv.includes('--force');
+
+  // Count repos with actual package data
+  const reposWithData = Object.values(allDeps).filter(d => d.package !== null).length;
+
+  // SAFETY CHECK 1: Minimum valid data threshold
+  if (reposWithData === 0) {
+    console.error('\n❌ SAFETY ABORT: No repos with valid package.json found!');
+    console.error('   This would overwrite existing data with empty results.');
+    console.error('   Refusing to corrupt knowledge. Use --force to override.');
+    if (!forceMode) process.exit(1);
+  }
+
+  // SAFETY CHECK 2: Compare with existing data
+  if (fs.existsSync(outputPath)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(outputPath, 'utf-8'));
+      const existingWithData = Object.values(existing.repos || {}).filter(d => d?.package !== null).length;
+      const existingSize = JSON.stringify(existing).length;
+      const newSize = JSON.stringify(results).length;
+
+      // Regression check: fewer repos with data
+      if (existingWithData > 0 && reposWithData < existingWithData) {
+        console.error(`\n❌ SAFETY ABORT: Data regression detected!`);
+        console.error(`   Existing: ${existingWithData} repos | New: ${reposWithData} repos`);
+        if (!forceMode) process.exit(1);
+        console.warn('   ⚠️  --force: Proceeding despite regression...');
+      }
+
+      // Size check: >50% smaller is suspicious
+      if (newSize < existingSize * 0.5) {
+        console.error(`\n❌ SAFETY ABORT: Output >50% smaller than existing!`);
+        console.error(`   Existing: ${existingSize} bytes | New: ${newSize} bytes`);
+        if (!forceMode) process.exit(1);
+        console.warn('   ⚠️  --force: Proceeding despite size reduction...');
+      }
+    } catch (e) {
+      // Existing file invalid, OK to overwrite
+    }
+  }
+
+  // Write output
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
+  console.log(`\n✅ Safety checks passed (${reposWithData}/${Object.keys(REPOS).length} repos analyzed)`);
 
   console.log('\n═══════════════════════════════════════════════════════════');
   console.log('                      RESULTS');

@@ -1,37 +1,204 @@
 {
   "metadata": {
-    "generated": "2026-01-08T22:10:07.221Z",
+    "generated": "2026-01-08T14:34:04.718Z",
     "philosophy": "$asdfasdfa: Evolution through verification"
   },
   "commits": {
     "holdex_dev": {
-      "total": 1,
-      "first_commit": "2026-01-08T20:46:09Z",
-      "last_commit": "2026-01-08T20:46:09Z",
+      "total": 500,
+      "first_commit": "2025-12-25T20:09:38-05:00",
+      "last_commit": "2026-01-08T11:36:44Z",
       "byMonth": {
-        "2026-01": 1
+        "2026-01": 241,
+        "2025-12": 259
       },
       "byAuthor": {
-        "jeanterre552": 1
+        "jeanterre552": 270,
+        "Sollama": 230
       },
       "byTopic": {
-        "webhook": {
-          "count": 1,
+        "oracle": {
+          "count": 2,
           "samples": [
-            "fix: Stats endpoint now properly tracks webhook events"
+            "fix(deps): Sync dependencies with GASdf ecosystem",
+            "feat(api): Add GASdf integration fields"
+          ]
+        },
+        "security": {
+          "count": 32,
+          "samples": [
+            "security: Rotate gcrtrd key pair (old key was exposed in git)",
+            "feat(security): Ed25519 heartbeat + node snapshots",
+            "fix(security): Re-sign all tokens on calculator startup"
+          ]
+        },
+        "performance": {
+          "count": 16,
+          "samples": [
+            "fix(watchdog): Update Redis snapshot after healing to prevent infinite loop",
+            "fix(sig): Include signatures in Redis snapshots - ROOT CAUSE",
+            "fix(calculator): Clear stale Redis snapshots before re-signing"
+          ]
+        },
+        "integrity": {
+          "count": 20,
+          "samples": [
+            "fix(integrity): Stop identity field updates breaking signatures",
+            "debug(watchdog): Add detailed logging to diagnose signature mismatch",
+            "fix(watchdog): Only heal when signatures are actually tampered"
+          ]
+        },
+        "ui": {
+          "count": 34,
+          "samples": [
+            "docs: Add genesis node setup guide for sollama58 (gcrtrd)",
+            "security(space): Input validation for card generator",
+            "fix(cards): Footer slightly larger s(14)->s(17)"
+          ]
+        },
+        "k_score": {
+          "count": 33,
+          "samples": [
+            "feat(distributed): Add Ed25519-signed K-Score verification network",
+            "fix(sig): Include last_k_score_update in re-signing SELECTs",
+            "fix(arch): Remove kScoreUpdater from API - prevent race condition"
+          ]
+        },
+        "burn": {
+          "count": 13,
+          "samples": [
+            "docs(ecosystem): Add ECOSYSTEM.md with 100% burn model",
+            "docs: Mark PnL burn credits as completed",
+            "security(pnl): Add cache-aware burn credits for PnL endpoints"
+          ]
+        },
+        "database": {
+          "count": 13,
+          "samples": [
+            "fix(auth): Check whitelist BEFORE database API key lookup",
+            "fix(spaceAuth): Normalize PostgreSQL array and timestamp formats",
+            "fix(harmony): Add migration to rename operation_costs columns"
+          ]
+        },
+        "webhook": {
+          "count": 16,
+          "samples": [
+            "fix(kscore): Handle NULL conviction_class in webhook mode",
+            "feat(alerting): Integrate Discord alerts for Helius credits & tampering",
+            "fix(calculator): Preserve on-chain holder data in webhook mode"
+          ]
+        },
+        "space": {
+          "count": 4,
+          "samples": [
+            "security(space): Input validation for card generator",
+            "feat(nav): Add navigation to space.html and admin.html",
+            "feat(space): Add cult member dashboard at /cult-space"
           ]
         }
       }
     },
     "gasdf": {
-      "total": 1,
-      "first_commit": "2026-01-06T16:12:01Z",
+      "total": 274,
+      "first_commit": "2025-12-24T19:11:58+01:00",
       "last_commit": "2026-01-06T16:12:01Z",
       "byMonth": {
-        "2026-01": 1
+        "2026-01": 193,
+        "2025-12": 81
       },
       "byAuthor": {
-        "jeanterre552": 1
+        "jeanterre552": 274
+      },
+      "byTopic": {
+        "security": {
+          "count": 21,
+          "samples": [
+            "fix(security): Increase SOL drain threshold for ATA rent",
+            "fix(security): Increase balance check threshold for priority fees",
+            "feat(security): RPC proxy for Jupiter Terminal - no API key leaks"
+          ]
+        },
+        "oracle": {
+          "count": 11,
+          "samples": [
+            "feat(dx): Add optimized Claude Code setup for GASdf",
+            "docs: Add GASdf implementation status to Unified Score philosophy",
+            "feat(unified-score): Prepare GASdf for Unified Score migration"
+          ]
+        },
+        "burn": {
+          "count": 33,
+          "samples": [
+            "fix(security): Increase balance check threshold for priority fees",
+            "feat(swap): Show dual-burn flywheel in UI",
+            "fix: Remove missing burnRatePhi element, add favicon"
+          ]
+        },
+        "ui": {
+          "count": 27,
+          "samples": [
+            "fix(frontend): Use correct HolDex API filter parameter",
+            "fix(swap): Use formatted balance for quick amount buttons",
+            "feat(infra): Add circuit breaker and Redis L2 cache for HolDex integration"
+          ]
+        },
+        "database": {
+          "count": 8,
+          "samples": [
+            "feat(unified-score): Prepare GASdf for Unified Score migration",
+            "test(db): Add unit tests for database client",
+            "feat(sync): Add Redis ↔ PostgreSQL data sync service"
+          ]
+        },
+        "performance": {
+          "count": 6,
+          "samples": [
+            "feat(infra): Add circuit breaker and Redis L2 cache for HolDex integration",
+            "docs: Update TODO with redis.js coverage",
+            "feat(sync): Add Redis ↔ PostgreSQL data sync service"
+          ]
+        },
+        "webhook": {
+          "count": 3,
+          "samples": [
+            "fix(jupiter): Remove hardcoded Helius API key",
+            "feat(helius): Integrate Helius SDK for dynamic priority fees",
+            "feat(monitoring): Apply $ASDF brand harmony - Helius engineer quality"
+          ]
+        },
+        "k_score": {
+          "count": 4,
+          "samples": [
+            "docs: Fix URLs, K-Score tiers, and security checklist",
+            "feat(tiers): Lower acceptance threshold to Bronze+ (K-score >= 50)",
+            "feat(security): Add K-score token gating for treasury protection"
+          ]
+        },
+        "space": {
+          "count": 4,
+          "samples": [
+            "feat(ui): Enhanced space experience with comets and wider parallax",
+            "feat(ui): Production landing page with 3D space experience",
+            "feat(ui): Production landing page with 3D space experience"
+          ]
+        },
+        "integrity": {
+          "count": 1,
+          "samples": [
+            "fix: Replace confirmTransaction with checkSignatureStatus"
+          ]
+        }
+      }
+    },
+    "manifesto": {
+      "total": 3,
+      "first_commit": "2026-01-07T13:01:03Z",
+      "last_commit": "2026-01-07T16:39:31Z",
+      "byMonth": {
+        "2026-01": 3
+      },
+      "byAuthor": {
+        "jeanterre552": 3
       },
       "byTopic": {}
     }
