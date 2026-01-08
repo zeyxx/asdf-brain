@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-01-08T14:41:03.951Z",
+  "files": {
+    "dependencies/dependency-graph.json": {
+      "hash": "fed9a39377cd533462155e3562190d0fdf39c7076c30b0e1774bfbcfc91b6bdd",
+      "size": 22142,
+      "modified": "2026-01-08T14:34:04.830Z"
+    },
+    "errors/post-mortems.json": {
+      "hash": "0724cfe05f450a610a26751a9598905984025c56de867e4b788da8af39f5fa22",
+      "size": 2197,
+      "modified": "2026-01-08T14:40:41.822Z"
+    },
+    "health/ecosystem-health.json": {
+      "hash": "b7f55d8ac44dee2749fdaca8a14ce2143ce12f56e11e4919230b6a1edb38c65e",
+      "size": 1057,
+      "modified": "2026-01-08T14:34:04.877Z"
+    },
+    "intent/extracted-intents.json": {
+      "hash": "1ee608ea13abe114d07261bb058a3db8e547257f59123e3ed088fcd6ebf8e367",
+      "size": 25485,
+      "modified": "2026-01-08T14:37:44.682Z"
+    },
+    "patterns/extracted-patterns.json": {
+      "hash": "694fc3eb6c412d6529453fb7c6986be9a1fdd95a167976f705927a83883238a7",
+      "size": 7932,
+      "modified": "2026-01-08T14:40:38.482Z"
+    },
+    "philosophy/manifesto-mapping.json": {
+      "hash": "057a5fa6abd128a3b4dc3e7ea01553ef8ebc28fd5032a3b39b05181f743a0263",
+      "size": 17894,
+      "modified": "2026-01-08T02:22:18.672Z"
+    },
+    "provenance/merkle-state.json": {
+      "hash": "cb234631bb77ad7212566b48de69de79ca88bd1c35ba5dedb80b9443d5f8ffb1",
+      "size": 3450,
+      "modified": "2026-01-08T14:34:20.643Z"
+    },
+    "provenance/registry.json": {
+      "hash": "907a1908b7aa963c96cc9ccb2fc7e4bd5107c9ce923ac0a0e8b17c9161fef83d",
+      "size": 2517,
+      "modified": "2026-01-08T14:20:35.101Z"
+    },
+    "provenance/schema.json": {
+      "hash": "9a1241cbd87eca73383d0e3156cb73c9995489b9d6814109f44ff332bffd1720",
+      "size": 1506,
+      "modified": "2026-01-08T14:20:03.762Z"
+    },
+    "relations/ecosystem-graph.json": {
+      "hash": "214a0c037dce3b2f5e5b6f873afd0ab4d8518aac7441ea5af4ddd5cb5224ef9b",
+      "size": 8424,
+      "modified": "2026-01-08T14:18:18.756Z"
+    },
+    "temporal/evolution.json": {
+      "hash": "bab11896a59ced46767640b0ba30befaac5311eb7825979415805f54409d1b19",
+      "size": 7076,
+      "modified": "2026-01-08T14:34:04.760Z"
+    },
+    "vision/roadmap.json": {
+      "hash": "79b4dea84eece16d914cf9ff4d1b76aad31089fe7d5dc19e63b9ba174ccc02ce",
+      "size": 4601,
+      "modified": "2026-01-08T14:40:46.474Z"
+    }
+  },
+  "hashes": [
+    "fed9a39377cd533462155e3562190d0fdf39c7076c30b0e1774bfbcfc91b6bdd",
+    "0724cfe05f450a610a26751a9598905984025c56de867e4b788da8af39f5fa22",
+    "b7f55d8ac44dee2749fdaca8a14ce2143ce12f56e11e4919230b6a1edb38c65e",
+    "1ee608ea13abe114d07261bb058a3db8e547257f59123e3ed088fcd6ebf8e367",
+    "694fc3eb6c412d6529453fb7c6986be9a1fdd95a167976f705927a83883238a7",
+    "057a5fa6abd128a3b4dc3e7ea01553ef8ebc28fd5032a3b39b05181f743a0263",
+    "cb234631bb77ad7212566b48de69de79ca88bd1c35ba5dedb80b9443d5f8ffb1",
+    "907a1908b7aa963c96cc9ccb2fc7e4bd5107c9ce923ac0a0e8b17c9161fef83d",
+    "9a1241cbd87eca73383d0e3156cb73c9995489b9d6814109f44ff332bffd1720",
+    "214a0c037dce3b2f5e5b6f873afd0ab4d8518aac7441ea5af4ddd5cb5224ef9b",
+    "bab11896a59ced46767640b0ba30befaac5311eb7825979415805f54409d1b19",
+    "79b4dea84eece16d914cf9ff4d1b76aad31089fe7d5dc19e63b9ba174ccc02ce"
+  ],
+  "merkle_root": "09fb1b51b0fb88c4d138313f73f24aee39968170ee77885e0833d9baad863a82",
+  "file_count": 12,
+  "verification": {
+    "algorithm": "SHA256",
+    "tree_depth": 5,
+    "chain_ready": true
+  }
+}

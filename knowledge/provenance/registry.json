@@ -1,0 +1,104 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-08",
+    "last_updated": "2026-01-08",
+    "merkle_root": null,
+    "total_contributions": 0,
+    "verification_status": "pre-chain"
+  },
+
+  "contributors": {
+    "zeyxx": {
+      "id": "zeyxx",
+      "handle": "zeyxx",
+      "trust_level": "core",
+      "context": "development",
+      "joined": "2024-01-01",
+      "pubkey": null,
+      "contributions": 936,
+      "areas": ["holdex", "gasdf", "asdf-brain", "asdf-burn-engine"]
+    },
+    "sollama58": {
+      "id": "sollama58",
+      "handle": "sollama58",
+      "trust_level": "core",
+      "context": "production",
+      "joined": "2024-01-01",
+      "pubkey": null,
+      "contributions": 1102,
+      "areas": ["holdex", "asdforecast", "asdev"]
+    },
+    "ragnar-no-sleep": {
+      "id": "ragnar-no-sleep",
+      "handle": "Ragnar-no-sleep",
+      "trust_level": "contributor",
+      "context": "brain",
+      "joined": "2026-01-08",
+      "pubkey": null,
+      "contributions": 0,
+      "areas": ["asdf-brain"]
+    }
+  },
+
+  "contributions": [],
+
+  "knowledge_tree": {
+    "philosophy": {
+      "owner": "collective",
+      "files": ["manifesto-mapping.json"],
+      "contributors": ["zeyxx"]
+    },
+    "intent": {
+      "owner": "collective",
+      "files": ["extracted-intents.json"],
+      "contributors": ["zeyxx"]
+    },
+    "patterns": {
+      "owner": "collective",
+      "files": ["extracted-patterns.json"],
+      "contributors": ["zeyxx"]
+    },
+    "errors": {
+      "owner": "collective",
+      "files": ["post-mortems.json"],
+      "contributors": ["zeyxx", "sollama58"]
+    },
+    "temporal": {
+      "owner": "collective",
+      "files": ["evolution.json"],
+      "contributors": ["zeyxx"]
+    },
+    "dependencies": {
+      "owner": "collective",
+      "files": ["dependency-graph.json"],
+      "contributors": ["zeyxx"]
+    },
+    "vision": {
+      "owner": "collective",
+      "files": ["roadmap.json"],
+      "contributors": ["zeyxx"]
+    },
+    "health": {
+      "owner": "collective",
+      "files": ["ecosystem-health.json"],
+      "contributors": ["zeyxx", "sollama58"]
+    },
+    "relations": {
+      "owner": "collective",
+      "files": ["ecosystem-graph.json"],
+      "contributors": ["zeyxx", "ragnar-no-sleep"]
+    },
+    "provenance": {
+      "owner": "system",
+      "files": ["schema.json", "registry.json", "merkle.json"],
+      "contributors": ["zeyxx"]
+    }
+  },
+
+  "phi_weights": {
+    "core": 2.618,
+    "contributor": 1.618,
+    "community": 1.0
+  }
+}

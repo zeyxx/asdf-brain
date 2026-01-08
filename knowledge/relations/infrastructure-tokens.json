@@ -1,0 +1,291 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "generated": "2026-01-08",
+    "philosophy": "$asdfasdfa - Infrastructure is Yesod (Foundation)",
+    "principle": "Don't trust, verify - even the infrastructure we depend on",
+    "purpose": "Registry of Solana infrastructure tokens monitored by I_infra score"
+  },
+
+  "i_infra_formula": {
+    "formula": "I_infra = 100 × ∛(D × O × L)",
+    "D": {
+      "name": "Depth",
+      "description": "Liquidity and market depth",
+      "components": ["tvl", "order_book_depth", "venue_count", "pool_count"],
+      "formula": "D = log10(TVL) × venue_diversity × pool_health"
+    },
+    "O": {
+      "name": "Oracle",
+      "description": "Price feed reliability and consensus",
+      "components": ["oracle_count", "update_frequency", "deviation", "attestations"],
+      "formula": "O = (oracle_count / 3) × (1 - max_deviation) × attestation_bonus"
+    },
+    "L": {
+      "name": "Latency/Reliability",
+      "description": "Historical stability and uptime",
+      "components": ["uptime", "depeg_history", "slashing_history", "age_months"],
+      "formula": "L = uptime × (1 - depeg_severity) × age_factor"
+    },
+    "thresholds": {
+      "critical": {
+        "value": 38.2,
+        "ratio": "φ⁻²",
+        "action": "HALT operations using this token"
+      },
+      "warning": {
+        "value": 61.8,
+        "ratio": "φ⁻¹",
+        "action": "Increase monitoring, prepare fallback"
+      },
+      "healthy": {
+        "value": 80,
+        "action": "Normal operations"
+      }
+    }
+  },
+
+  "tokens": {
+    "native": {
+      "SOL": {
+        "mint": "So11111111111111111111111111111111111111112",
+        "name": "Solana",
+        "symbol": "SOL",
+        "category": "native",
+        "role": "Native gas token - reference point for all I_infra",
+        "sefirah": "Yesod",
+        "phi_weight": 2.618,
+        "baseline_i_infra": 100,
+        "note": "SOL is the baseline - all other infra tokens measured against it",
+        "oracles": ["Pyth", "Switchboard", "Chainlink"],
+        "ecosystem_usage": {
+          "gasdf": "Actual gas payment to Solana network",
+          "holdex": "I_infra baseline reference",
+          "brain": "Historical stability tracking"
+        },
+        "risk_factors": {
+          "network_congestion": "High TPS can cause gas spikes",
+          "validator_issues": "Network stability depends on validators"
+        }
+      },
+      "wSOL": {
+        "mint": "So11111111111111111111111111111111111111112",
+        "name": "Wrapped SOL",
+        "symbol": "wSOL",
+        "category": "wrapped",
+        "role": "Wrapped SOL for DeFi interactions",
+        "sefirah": "Yesod",
+        "phi_weight": 1.618,
+        "inherits_from": "SOL",
+        "note": "1:1 programmatic peg with SOL - score inherits from SOL",
+        "oracles": ["inherits_from_SOL"],
+        "ecosystem_usage": {
+          "gasdf": "DeFi operations requiring SPL token format"
+        },
+        "risk_factors": {
+          "wrap_unwrap": "No additional risk beyond SOL"
+        }
+      }
+    },
+
+    "stablecoins": {
+      "USDC": {
+        "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "name": "USD Coin",
+        "symbol": "USDC",
+        "category": "stablecoin",
+        "role": "Primary stablecoin - main fee payment path",
+        "issuer": "Circle",
+        "sefirah": "Yesod",
+        "phi_weight": 1.618,
+        "target_peg": 1.0,
+        "oracles": ["Pyth", "Switchboard", "Chainlink"],
+        "attestation": {
+          "type": "Monthly reserve attestation",
+          "provider": "Circle",
+          "url": "https://www.circle.com/en/usdc#transparency"
+        },
+        "ecosystem_usage": {
+          "gasdf": "Primary fee payment token",
+          "swap_path": "USDC → Jupiter → $asdfasdfa → BURN"
+        },
+        "risk_factors": {
+          "depeg_risk": "Regulatory or reserve issues",
+          "smart_contract_risk": "Circle mint authority",
+          "blacklist_risk": "Circle can freeze addresses"
+        },
+        "monitoring": {
+          "depeg_threshold": 0.01,
+          "depeg_action": "Switch to USDT, alert ecosystem"
+        }
+      },
+      "USDT": {
+        "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "category": "stablecoin",
+        "role": "Secondary stablecoin",
+        "issuer": "Tether",
+        "sefirah": "Yesod",
+        "phi_weight": 1.0,
+        "target_peg": 1.0,
+        "oracles": ["Pyth", "Switchboard"],
+        "attestation": {
+          "type": "Quarterly attestation",
+          "provider": "Tether"
+        },
+        "ecosystem_usage": {
+          "gasdf": "Secondary fee payment token",
+          "swap_path": "USDT → Jupiter → $asdfasdfa → BURN"
+        },
+        "risk_factors": {
+          "depeg_risk": "Historical depeg events",
+          "transparency_risk": "Less transparent reserves than USDC",
+          "blacklist_risk": "Tether can freeze addresses"
+        },
+        "monitoring": {
+          "depeg_threshold": 0.02,
+          "depeg_action": "Reduce acceptance priority"
+        }
+      }
+    },
+
+    "liquid_staking": {
+      "JitoSOL": {
+        "mint": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+        "name": "Jito Staked SOL",
+        "symbol": "JitoSOL",
+        "category": "lst",
+        "role": "Liquid staking token (Jito)",
+        "operator": "Jito",
+        "sefirah": "Yesod",
+        "phi_weight": 1.0,
+        "underlying": "SOL",
+        "oracles": ["Pyth", "Switchboard"],
+        "staking_features": {
+          "mev_rewards": true,
+          "auto_compound": true
+        },
+        "ecosystem_usage": {
+          "future": "Potential collateral or staking rewards"
+        },
+        "risk_factors": {
+          "slashing_risk": "Validator misbehavior",
+          "smart_contract_risk": "Jito stake pool contract",
+          "liquidity_risk": "LST/SOL ratio can deviate"
+        },
+        "monitoring": {
+          "ratio_threshold": 0.95,
+          "ratio_action": "Alert on significant deviation from expected ratio"
+        }
+      },
+      "mSOL": {
+        "mint": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+        "name": "Marinade Staked SOL",
+        "symbol": "mSOL",
+        "category": "lst",
+        "role": "Liquid staking token (Marinade)",
+        "operator": "Marinade",
+        "sefirah": "Yesod",
+        "phi_weight": 1.0,
+        "underlying": "SOL",
+        "oracles": ["Pyth", "Switchboard"],
+        "staking_features": {
+          "distributed_stake": true,
+          "auto_compound": true
+        },
+        "ecosystem_usage": {
+          "future": "Potential collateral or staking rewards"
+        },
+        "risk_factors": {
+          "slashing_risk": "Validator misbehavior (distributed)",
+          "smart_contract_risk": "Marinade stake pool contract",
+          "liquidity_risk": "mSOL/SOL ratio can deviate"
+        },
+        "monitoring": {
+          "ratio_threshold": 0.95,
+          "ratio_action": "Alert on significant deviation"
+        }
+      },
+      "bSOL": {
+        "mint": "bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1",
+        "name": "BlazeStake Staked SOL",
+        "symbol": "bSOL",
+        "category": "lst",
+        "role": "Liquid staking token (BlazeStake)",
+        "operator": "BlazeStake",
+        "sefirah": "Yesod",
+        "phi_weight": 1.0,
+        "underlying": "SOL",
+        "oracles": ["Pyth"],
+        "staking_features": {
+          "distributed_stake": true,
+          "auto_compound": true
+        },
+        "ecosystem_usage": {
+          "future": "Potential collateral or staking rewards"
+        },
+        "risk_factors": {
+          "slashing_risk": "Validator misbehavior",
+          "smart_contract_risk": "BlazeStake stake pool contract",
+          "liquidity_risk": "bSOL/SOL ratio can deviate",
+          "oracle_coverage": "Fewer oracles than JitoSOL/mSOL"
+        },
+        "monitoring": {
+          "ratio_threshold": 0.95,
+          "ratio_action": "Alert on significant deviation"
+        }
+      }
+    }
+  },
+
+  "fee_flow_diagram": {
+    "description": "How infrastructure tokens enable the burn singularity",
+    "paths": [
+      {
+        "name": "USDC Fee Path",
+        "flow": ["User pays fee in USDC", "GASdf receives USDC", "Jupiter swap: USDC → $asdfasdfa", "BURN $asdfasdfa"],
+        "depends_on": ["USDC liquidity", "USDC oracle", "$asdfasdfa liquidity"]
+      },
+      {
+        "name": "USDT Fee Path",
+        "flow": ["User pays fee in USDT", "GASdf receives USDT", "Jupiter swap: USDT → $asdfasdfa", "BURN $asdfasdfa"],
+        "depends_on": ["USDT liquidity", "USDT oracle", "$asdfasdfa liquidity"]
+      },
+      {
+        "name": "SOL Gas Path",
+        "flow": ["GASdf pays Solana gas in SOL", "User transaction submitted", "Network confirms"],
+        "depends_on": ["SOL availability", "Network congestion"]
+      }
+    ],
+    "singularity_requirement": "All paths must flow smoothly for the burn singularity to function"
+  },
+
+  "integration": {
+    "holdex": {
+      "responsibility": "Calculate and publish I_infra scores",
+      "endpoints": ["/api/infra/scores", "/api/infra/:mint"],
+      "update_frequency": "Every 5 minutes"
+    },
+    "gasdf": {
+      "responsibility": "Consume I_infra scores for fee path selection",
+      "behavior": {
+        "healthy": "Use optimal path",
+        "warning": "Use fallback path, log alert",
+        "critical": "Halt operations using affected token"
+      }
+    },
+    "brain": {
+      "responsibility": "Track historical I_infra patterns, detect anomalies",
+      "patterns": ["depeg_events", "liquidity_crises", "oracle_failures"]
+    }
+  },
+
+  "implementation_status": {
+    "registry": "DEFINED (this file)",
+    "holdex_integration": "TO_IMPLEMENT",
+    "gasdf_integration": "TO_IMPLEMENT",
+    "brain_tracking": "TO_IMPLEMENT",
+    "alerting": "TO_IMPLEMENT"
+  }
+}

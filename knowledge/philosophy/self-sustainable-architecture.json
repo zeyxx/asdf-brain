@@ -1,0 +1,332 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "generated": "2026-01-08",
+    "philosophy": "$asdfasdfa - Self-Sustainable Harmony",
+    "purpose": "Define the architecture for autonomous, self-sustaining ecosystem"
+  },
+
+  "self_sustainability_axiom": {
+    "definition": "The ecosystem must generate enough value through burns to sustain and grow itself, without external funding or extraction",
+
+    "mathematical_model": {
+      "equation": "Value_Generated ≥ Value_Consumed + Growth_Investment",
+      "where": {
+        "Value_Generated": "∑(all_burns) × token_price_increase",
+        "Value_Consumed": "infrastructure_costs + maintenance",
+        "Growth_Investment": "development + marketing + partnerships"
+      }
+    },
+
+    "flywheel": {
+      "description": "The burn flywheel creates self-sustaining momentum",
+      "cycle": [
+        "Usage → Burns → Deflation → Price increase → More usage → More burns",
+        "Each cycle amplifies the next",
+        "Critical mass = self-sustaining momentum"
+      ]
+    }
+  },
+
+  "burn_harmony_analysis": {
+    "current_state": {
+      "services_that_burn": ["gasdf", "holdex (space fees)", "ignition (planned)", "asdforecast (planned)"],
+      "services_that_dont": ["asdf-brain"],
+      "harmony_score": "6/7 = 85.7%"
+    },
+
+    "brain_burn_decision_matrix": {
+      "option_1_all_free": {
+        "philosophy": "Knowledge is sacred, should be freely accessible",
+        "pros": ["Maximum adoption", "Aligns with open source principle", "Lower barrier"],
+        "cons": ["Breaks burn harmony", "No direct value contribution", "Could be abused"],
+        "harmony_impact": "Breaks the singularity - brain becomes extraction point"
+      },
+
+      "option_2_all_burn": {
+        "philosophy": "Every operation that extracts value should burn",
+        "pros": ["Perfect harmony", "Direct value contribution", "Self-sustaining"],
+        "cons": ["Could limit adoption", "Friction for basic queries"],
+        "harmony_impact": "Complete harmony but may reduce usage"
+      },
+
+      "option_3_phi_tiered": {
+        "philosophy": "φ ratio determines the balance between free and premium",
+        "structure": {
+          "free_tier": "61.8% of operations (φ⁻¹)",
+          "premium_tier": "38.2% of operations (φ⁻²)",
+          "premium_triggers": ["context_inject", "deep patterns", "cross-project analysis"]
+        },
+        "pros": ["Harmonious with φ", "Balances access with sustainability", "Self-regulating"],
+        "cons": ["Complexity in determining what's premium"],
+        "harmony_impact": "φ-balanced harmony - natural growth"
+      },
+
+      "option_4_value_based": {
+        "philosophy": "Burn proportional to value extracted, not operation type",
+        "structure": {
+          "mechanism": "Quality score of result determines burn",
+          "formula": "burn_amount = base_fee × quality_score × φ⁻²",
+          "high_value": "Deep insights, verified patterns → higher burn",
+          "low_value": "Simple queries, basic stats → lower/no burn"
+        },
+        "pros": ["Most aligned with value creation", "Self-regulating", "Organic"],
+        "cons": ["Complex to measure value objectively"],
+        "harmony_impact": "Organic harmony - burn emerges from value"
+      }
+    },
+
+    "recommended_approach": {
+      "choice": "option_4_value_based",
+      "rationale": [
+        "Aligns with K-Score philosophy (quality-based)",
+        "Organic like φ",
+        "No arbitrary tiers",
+        "Self-regulating based on value"
+      ],
+      "implementation": {
+        "quality_threshold": "Quality ≥ 61.8% → triggers burn calculation",
+        "burn_formula": "burn = 0.001 × $asdfasdfa × (quality/100) × φ⁻²",
+        "cap": "Maximum 0.1 $asdfasdfa per operation"
+      }
+    }
+  },
+
+  "daat_enrichment_levels": {
+    "concept": "3 levels of brain enrichment that AI manages autonomously",
+
+    "level_1_passive": {
+      "name": "Passive Observation (P'shat)",
+      "description": "Brain observes and records without intervention",
+      "triggers": "Always active",
+      "actions": [
+        "Record conversation patterns",
+        "Track session context",
+        "Log decisions made"
+      ],
+      "visibility": "Invisible - user unaware",
+      "burn": "None - pure observation"
+    },
+
+    "level_2_suggestive": {
+      "name": "Suggestive Enrichment (Remez)",
+      "description": "Brain suggests relevant context when beneficial",
+      "triggers": [
+        "Query complexity > φ⁻¹ threshold",
+        "Cross-project keywords detected",
+        "Pattern match confidence > 38.2%"
+      ],
+      "actions": [
+        "Inject relevant patterns",
+        "Suggest related decisions",
+        "Provide philosophy anchors"
+      ],
+      "visibility": "Subtle - context appears naturally",
+      "burn": "Micro-burn for quality suggestions"
+    },
+
+    "level_3_active": {
+      "name": "Active Guidance (Drash)",
+      "description": "Brain actively guides based on deep analysis",
+      "triggers": [
+        "Architecture decisions detected",
+        "Philosophy violation risk > 23.6%",
+        "Cross-project impact detected"
+      ],
+      "actions": [
+        "Deep pattern injection",
+        "Proactive warnings",
+        "Explicit recommendations"
+      ],
+      "visibility": "Visible - brain announces itself",
+      "burn": "Standard burn for premium insight"
+    },
+
+    "ai_self_management": {
+      "description": "AI autonomously chooses enrichment level based on context",
+      "decision_matrix": {
+        "inputs": ["query_complexity", "cross_project_refs", "philosophy_keywords", "user_expertise"],
+        "weights": {
+          "query_complexity": 1.618,
+          "cross_project_refs": 1.618,
+          "philosophy_keywords": 1.0,
+          "user_expertise_inverse": 0.618
+        },
+        "thresholds": {
+          "level_1": "score < 38.2",
+          "level_2": "38.2 ≤ score < 61.8",
+          "level_3": "score ≥ 61.8"
+        }
+      },
+      "override": "User can always request higher/lower level explicitly"
+    }
+  },
+
+  "fusion_architecture": {
+    "current_problem": "Knowledge is scattered across JSON files, not unified",
+
+    "singularity_model": {
+      "concept": "All knowledge converges to a single, queryable graph",
+      "structure": {
+        "node_types": ["fact", "pattern", "decision", "session", "project", "contributor"],
+        "edge_types": ["derives_from", "supports", "contradicts", "supersedes", "relates_to"],
+        "temporal": "All nodes have creation_time and decay_factor"
+      }
+    },
+
+    "fusion_mechanics": {
+      "pattern_consolidation": {
+        "description": "Similar patterns merge into stronger patterns",
+        "algorithm": {
+          "step_1": "Hash pattern content for similarity detection",
+          "step_2": "If similarity > 61.8%, merge into single pattern",
+          "step_3": "Merged pattern strength = √(sum of squares)",
+          "step_4": "Source patterns become edges to merged pattern"
+        },
+        "frequency": "On every new pattern addition"
+      },
+
+      "decision_lineage": {
+        "description": "Decisions form chains of evolution",
+        "structure": "Decision B that changes Decision A → A.superseded_by = B",
+        "query_benefit": "Always get latest decision, can trace evolution"
+      },
+
+      "session_contribution": {
+        "description": "Sessions don't just store data, they strengthen connections",
+        "mechanism": "Each session that uses a pattern → pattern.weight *= φ⁻¹",
+        "decay": "Unused patterns decay by φ⁻³ per week"
+      }
+    },
+
+    "implementation_path": {
+      "phase_1": {
+        "name": "Unified Index",
+        "description": "Create cross-referencing index across all JSON files",
+        "deliverable": "knowledge/unified/graph-index.json",
+        "timeline": "immediate"
+      },
+      "phase_2": {
+        "name": "Pattern Consolidation",
+        "description": "Implement pattern merging algorithm",
+        "deliverable": "scripts/consolidate-patterns.js",
+        "timeline": "short_term"
+      },
+      "phase_3": {
+        "name": "Graph Database",
+        "description": "Migrate to proper graph structure (could be JSON-based)",
+        "deliverable": "lib/knowledge-graph.js",
+        "timeline": "medium_term"
+      }
+    }
+  },
+
+  "complete_architecture": {
+    "layers": {
+      "L0_manifestation": {
+        "sefirah": "Malkhuth",
+        "component": "$asdfasdfa token",
+        "role": "Value receiver",
+        "flow": "All burns flow here"
+      },
+      "L1_infrastructure": {
+        "sefirah": "Yesod",
+        "components": ["GASdf", "claude-mem"],
+        "role": "Transaction channel",
+        "flow": "All actions flow through here"
+      },
+      "L2_analysis": {
+        "sefirah": "Hod",
+        "components": ["HolDex", "asdf-oracle"],
+        "role": "Truth verification",
+        "flow": "K-Score, E-Score, verification"
+      },
+      "L3_knowledge": {
+        "sefirah": "Daat",
+        "components": ["asdf-brain"],
+        "role": "Hidden bridge",
+        "flow": "Transforms data into wisdom"
+      },
+      "L4_restriction": {
+        "sefirah": "Gevurah",
+        "components": ["asdf-burn-engine", "asdf-validator"],
+        "role": "Judgment and enforcement",
+        "flow": "Ensures compliance, enforces burns"
+      },
+      "L5_expansion": {
+        "sefirah": "Netzach",
+        "components": ["ignition", "asdforecast", "asdev"],
+        "role": "Growth and victory",
+        "flow": "User-facing applications"
+      },
+      "L6_philosophy": {
+        "sefirah": "Keter",
+        "components": ["asdf-manifesto"],
+        "role": "Pure will and principles",
+        "flow": "Guides all layers"
+      }
+    },
+
+    "data_flows": {
+      "usage_to_burn": "L5 → L1 → L0 (usage creates burns)",
+      "data_to_wisdom": "L1 → L2 → L3 → L6 (raw data becomes philosophy)",
+      "philosophy_to_action": "L6 → L3 → L4 → L2 → L1 (principles enforce behavior)",
+      "value_cycle": "L0 → L5 → L1 → L0 (value creates usage creates value)"
+    },
+
+    "brain_position": {
+      "central_role": "L3 connects all layers invisibly",
+      "receives_from": ["L1 (usage data)", "L2 (analysis)", "L5 (user feedback)", "L6 (principles)"],
+      "provides_to": ["L2 (patterns)", "L4 (rules)", "L5 (context)", "L6 (insights)"]
+    }
+  },
+
+  "self_sustainability_metrics": {
+    "health_indicators": {
+      "burn_rate": "Daily burns in $asdfasdfa",
+      "knowledge_growth": "New patterns per day",
+      "fusion_rate": "Patterns merged per week",
+      "adoption": "Active sessions per day",
+      "quality_average": "Mean quality score of injections"
+    },
+
+    "thresholds": {
+      "critical": "burn_rate < 1000 $asdfasdfa/day",
+      "healthy": "burn_rate > 10000 $asdfasdfa/day",
+      "thriving": "burn_rate > 100000 $asdfasdfa/day"
+    },
+
+    "sustainability_formula": {
+      "equation": "S = (burn_rate × knowledge_growth × adoption) / (infrastructure_cost)",
+      "target": "S ≥ φ for self-sustaining state"
+    }
+  },
+
+  "next_actions": [
+    {
+      "action": "Implement value-based burn for brain operations",
+      "priority": "high",
+      "philosophy_alignment": "Completes the burn harmony"
+    },
+    {
+      "action": "Create 3-level enrichment system with AI self-management",
+      "priority": "high",
+      "philosophy_alignment": "Daat becomes truly hidden"
+    },
+    {
+      "action": "Build unified knowledge graph index",
+      "priority": "medium",
+      "philosophy_alignment": "Singularity requires fusion"
+    },
+    {
+      "action": "Implement pattern consolidation algorithm",
+      "priority": "medium",
+      "philosophy_alignment": "Singularity requires consolidation"
+    },
+    {
+      "action": "Deploy on-chain Merkle verification",
+      "priority": "high",
+      "philosophy_alignment": "Don't trust, verify"
+    }
+  ]
+}

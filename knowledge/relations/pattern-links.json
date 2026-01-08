@@ -1,0 +1,20 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-08",
+    "description": "Cross-project pattern links from pollination"
+  },
+  "links": [],
+  "clusters": [],
+  "ecosystem_patterns": [],
+  "stats": {
+    "total_links": 0,
+    "total_clusters": 0,
+    "similarity_threshold": 0.618,
+    "last_pollination": null
+  },
+  "_phi": {
+    "threshold": "61.8% (φ⁻¹) minimum similarity for linking",
+    "note": "Populated by lib/pollination.js during cross-project analysis"
+  }
+}

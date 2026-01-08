@@ -1,0 +1,44 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-08",
+    "philosophy": "$asdfasdfa - Don't trust, verify",
+    "purpose": "Track knowledge provenance for on-chain verification"
+  },
+
+  "contributor_schema": {
+    "id": "string - unique identifier",
+    "handle": "string - display name",
+    "trust_level": "enum: core | contributor | community",
+    "context": "string - primary area (development, production, brain, etc)",
+    "joined": "ISO date string",
+    "pubkey": "string - optional Solana pubkey for on-chain attribution",
+    "contributions": "number - total contribution count"
+  },
+
+  "contribution_schema": {
+    "id": "string - SHA256 hash of content",
+    "type": "enum: knowledge | code | pattern | intent | vision | philosophy",
+    "contributor": "string - contributor id",
+    "timestamp": "ISO datetime",
+    "path": "string - file path in knowledge tree",
+    "content_hash": "string - SHA256 of actual content",
+    "parent_hash": "string - previous state hash (for chain)",
+    "signature": "string - contributor signature (optional until on-chain)",
+    "merkle_proof": "array - proof path to root (generated)"
+  },
+
+  "merkle_node_schema": {
+    "hash": "string - SHA256",
+    "left": "string - left child hash or null",
+    "right": "string - right child hash or null",
+    "data_id": "string - contribution id if leaf node"
+  },
+
+  "verification": {
+    "algorithm": "SHA256",
+    "encoding": "hex",
+    "chain_ready": true,
+    "target_chain": "solana"
+  }
+}

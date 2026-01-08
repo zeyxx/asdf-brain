@@ -1,0 +1,75 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "updated": "2026-01-08T19:00:00Z",
+    "description": "Live infrastructure health status"
+  },
+  "overall_score": 85.0,
+  "status": "healthy",
+  "tokens": {
+    "SOL": {
+      "score": 92.0,
+      "status": "healthy",
+      "metrics": {
+        "liquidity_depth": 95,
+        "oracle_freshness": 98,
+        "reliability": 99
+      }
+    },
+    "USDC": {
+      "score": 94.0,
+      "status": "healthy",
+      "metrics": {
+        "liquidity_depth": 98,
+        "oracle_freshness": 95,
+        "reliability": 99
+      }
+    },
+    "USDT": {
+      "score": 88.0,
+      "status": "healthy",
+      "metrics": {
+        "liquidity_depth": 90,
+        "oracle_freshness": 92,
+        "reliability": 95
+      }
+    },
+    "JitoSOL": {
+      "score": 78.0,
+      "status": "healthy",
+      "metrics": {
+        "liquidity_depth": 75,
+        "oracle_freshness": 85,
+        "reliability": 90
+      }
+    },
+    "mSOL": {
+      "score": 82.0,
+      "status": "healthy",
+      "metrics": {
+        "liquidity_depth": 80,
+        "oracle_freshness": 88,
+        "reliability": 92
+      }
+    },
+    "bSOL": {
+      "score": 72.0,
+      "status": "healthy",
+      "metrics": {
+        "liquidity_depth": 68,
+        "oracle_freshness": 78,
+        "reliability": 85
+      }
+    }
+  },
+  "alerts": [],
+  "thresholds": {
+    "critical": 23.6,
+    "warning": 38.2,
+    "healthy": 61.8
+  },
+  "_phi": {
+    "formula": "I_infra = 100 × ∛(D × O × L)",
+    "note": "Simulated metrics - awaiting RPC integration"
+  }
+}

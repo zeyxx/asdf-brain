@@ -16,7 +16,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const readline = require('readline');
+const { streamConversations, KNOWLEDGE_ROOT } = require('./lib/data-sources');
 
 // =============================================================================
 // PATTERN DEFINITIONS
@@ -147,19 +147,11 @@ function calculatePatternScore(patterns) {
   return totalWeight > 0 ? score / totalWeight : 0;
 }
 
-async function processConversations(inputPath, outputPath) {
+async function processConversations(outputPath) {
   console.log('═══════════════════════════════════════════════════════════');
   console.log('  asdf-brain pattern extractor');
   console.log('  Identifying recurring patterns in conversations');
   console.log('═══════════════════════════════════════════════════════════\n');
-
-  if (!fs.existsSync(inputPath)) {
-    console.error('Input file not found:', inputPath);
-    process.exit(1);
-  }
-
-  const fileStream = fs.createReadStream(inputPath);
-  const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
 
   // Aggregate patterns across all conversations
   const globalPatterns = {};
@@ -167,12 +159,10 @@ async function processConversations(inputPath, outputPath) {
   let processed = 0;
   let withPatterns = 0;
 
-  for await (const line of rl) {
-    if (!line.trim()) continue;
-    processed++;
+  try {
+    for await (const entry of streamConversations()) {
+      processed++;
 
-    try {
-      const entry = JSON.parse(line);
       const userText = entry.user?.content || '';
       const assistText = entry.assistant?.content || '';
       const fullText = userText + ' ' + assistText;
@@ -228,12 +218,14 @@ async function processConversations(inputPath, outputPath) {
         );
       }
 
-      if (processed % 1000 === 0) {
+      if (processed % 100 === 0) {
         process.stdout.write(`\r   Processed: ${processed}, with patterns: ${withPatterns}`);
       }
-    } catch (e) {
-      // Skip malformed JSON
     }
+  } catch (e) {
+    console.error('Error loading data:', e.message);
+    console.log('Run: npm run brain:learn  to extract transcripts first');
+    process.exit(1);
   }
 
   // Clean up samples (unique, limited)
@@ -300,7 +292,7 @@ async function processConversations(inputPath, outputPath) {
       {
         metadata: {
           generated: new Date().toISOString(),
-          source: inputPath,
+          source: 'brain-unified',
           philosophy: "$asdfasdfa: Don't trust, verify",
         },
         statistics: stats,
@@ -320,8 +312,6 @@ async function processConversations(inputPath, outputPath) {
 // MAIN
 // =============================================================================
 
-const inputPath = process.argv[2] || '/workspaces/HolDex/training/raw/conversations-safe.jsonl';
-const outputPath =
-  process.argv[3] || path.join(__dirname, '../knowledge/patterns/extracted-patterns.json');
+const outputPath = process.argv[2] || path.join(KNOWLEDGE_ROOT, 'patterns/extracted-patterns.json');
 
-processConversations(inputPath, outputPath).catch(console.error);
+processConversations(outputPath).catch(console.error);

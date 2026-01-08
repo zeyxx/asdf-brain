@@ -1,0 +1,16 @@
+{
+  "project": "holdex",
+  "active_patterns": [
+    "phi-weighted-scoring"
+  ],
+  "recent_decisions": [
+    {
+      "timestamp": "2026-01-08T15:01:37.466Z",
+      "type": "architecture",
+      "content": "Use φ weights for K-Score",
+      "rationale": "Golden ratio balance"
+    }
+  ],
+  "session_count": 1,
+  "last_updated": "2026-01-08T15:01:37.467Z"
+}

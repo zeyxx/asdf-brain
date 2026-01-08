@@ -1,20 +1,20 @@
 {
   "metadata": {
-    "generated": "2026-01-08T03:01:05.383Z",
+    "generated": "2026-01-08T14:34:04.718Z",
     "philosophy": "$asdfasdfa: Evolution through verification"
   },
   "commits": {
     "holdex_dev": {
       "total": 500,
-      "first_commit": "2025-12-25T19:49:56-05:00",
-      "last_commit": "2026-01-08T02:45:11Z",
+      "first_commit": "2025-12-25T20:09:38-05:00",
+      "last_commit": "2026-01-08T11:36:44Z",
       "byMonth": {
-        "2026-01": 238,
-        "2025-12": 262
+        "2026-01": 241,
+        "2025-12": 259
       },
       "byAuthor": {
-        "jeanterre552": 267,
-        "Sollama": 233
+        "jeanterre552": 270,
+        "Sollama": 230
       },
       "byTopic": {
         "oracle": {
@@ -73,7 +73,7 @@
           ]
         },
         "database": {
-          "count": 14,
+          "count": 13,
           "samples": [
             "fix(auth): Check whitelist BEFORE database API key lookup",
             "fix(spaceAuth): Normalize PostgreSQL array and timestamp formats",
@@ -203,210 +203,7 @@
       "byTopic": {}
     }
   },
-  "conversations": {
-    "total": 11011,
-    "by_date": {
-      "2025-12-30": 527,
-      "2026-01-06": 1219,
-      "2026-01-04": 1722,
-      "2026-01-03": 1863,
-      "2026-01-02": 914,
-      "2026-01-07": 1777,
-      "2026-01-05": 359,
-      "2026-01-08": 189,
-      "2025-12-31": 964,
-      "2026-01-01": 337,
-      "2025-12-29": 1140
-    },
-    "topics_by_month": {
-      "2025-12": {
-        "k_score": 4510,
-        "integrity": 728,
-        "burn": 3405,
-        "webhook": 2489,
-        "oracle": 234,
-        "space": 2922,
-        "security": 3941,
-        "performance": 3246,
-        "database": 967,
-        "ui": 4211
-      },
-      "2026-01": {
-        "space": 13586,
-        "security": 10595,
-        "performance": 9519,
-        "database": 3632,
-        "ui": 14450,
-        "integrity": 12477,
-        "k_score": 12285,
-        "burn": 10219,
-        "webhook": 8812,
-        "oracle": 2184
-      }
-    }
-  },
-  "evolution": {
-    "k_score": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 4510
-        },
-        {
-          "month": "2026-01",
-          "value": 12285
-        }
-      ],
-      "total": 16795,
-      "peak_month": "2026-01",
-      "peak_value": 12285
-    },
-    "integrity": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 728
-        },
-        {
-          "month": "2026-01",
-          "value": 12477
-        }
-      ],
-      "total": 13205,
-      "peak_month": "2026-01",
-      "peak_value": 12477
-    },
-    "burn": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 3405
-        },
-        {
-          "month": "2026-01",
-          "value": 10219
-        }
-      ],
-      "total": 13624,
-      "peak_month": "2026-01",
-      "peak_value": 10219
-    },
-    "webhook": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 2489
-        },
-        {
-          "month": "2026-01",
-          "value": 8812
-        }
-      ],
-      "total": 11301,
-      "peak_month": "2026-01",
-      "peak_value": 8812
-    },
-    "oracle": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 234
-        },
-        {
-          "month": "2026-01",
-          "value": 2184
-        }
-      ],
-      "total": 2418,
-      "peak_month": "2026-01",
-      "peak_value": 2184
-    },
-    "space": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 2922
-        },
-        {
-          "month": "2026-01",
-          "value": 13586
-        }
-      ],
-      "total": 16508,
-      "peak_month": "2026-01",
-      "peak_value": 13586
-    },
-    "security": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 3941
-        },
-        {
-          "month": "2026-01",
-          "value": 10595
-        }
-      ],
-      "total": 14536,
-      "peak_month": "2026-01",
-      "peak_value": 10595
-    },
-    "performance": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 3246
-        },
-        {
-          "month": "2026-01",
-          "value": 9519
-        }
-      ],
-      "total": 12765,
-      "peak_month": "2026-01",
-      "peak_value": 9519
-    },
-    "database": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 967
-        },
-        {
-          "month": "2026-01",
-          "value": 3632
-        }
-      ],
-      "total": 4599,
-      "peak_month": "2026-01",
-      "peak_value": 3632
-    },
-    "ui": {
-      "trend": [
-        {
-          "month": "2025-12",
-          "value": 4211
-        },
-        {
-          "month": "2026-01",
-          "value": 14450
-        }
-      ],
-      "total": 18661,
-      "peak_month": "2026-01",
-      "peak_value": 14450
-    }
-  },
-  "momentum": {
-    "k_score": 0,
-    "integrity": 0,
-    "burn": 0,
-    "webhook": 0,
-    "oracle": 0,
-    "space": 0,
-    "security": 0,
-    "performance": 0,
-    "database": 0,
-    "ui": 0
-  }
+  "conversations": null,
+  "evolution": {},
+  "momentum": {}
 }

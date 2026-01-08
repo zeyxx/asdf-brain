@@ -1,0 +1,61 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-08",
+    "description": "Unified K-E-I-Φ scoring system documentation"
+  },
+  "scores": {
+    "K_score": {
+      "name": "K-Score (Token Health)",
+      "source": "HolDex",
+      "formula": "K = 100 × ∛(D × O × L)",
+      "components": {
+        "D": "Diamond Hands - conviction metric",
+        "O": "Organic Growth - distribution metric",
+        "L": "Longevity - survival metric"
+      },
+      "range": [0, 100],
+      "implementation": "scripts/sync-holdex.js"
+    },
+    "E_score": {
+      "name": "E-Score (Contributor Value)",
+      "source": "asdf-brain",
+      "formula": "E = ∏(score_i^weight_i)^(1/Σweights)",
+      "dimensions": {
+        "HOLD": { "weight": 1.0, "description": "Holding tokens" },
+        "BURN": { "weight": 1.618, "description": "Burning through usage" },
+        "USE": { "weight": 1.0, "description": "Using services" },
+        "BUILD": { "weight": 2.618, "description": "Contributing code/knowledge" },
+        "RUN": { "weight": 2.618, "description": "Operating infrastructure" },
+        "REFER": { "weight": 1.618, "description": "Bringing new participants" },
+        "TIME": { "weight": 1.0, "description": "Duration of engagement" }
+      },
+      "implementation": "lib/contributors.js"
+    },
+    "I_score": {
+      "name": "I-Score (Integrity)",
+      "components": {
+        "I_token": "Token inclusion verification",
+        "I_pattern": "Pattern provenance",
+        "I_merkle": "State verification",
+        "I_infra": "Infrastructure health"
+      },
+      "implementation": ["lib/merkle-proofs.js", "lib/i-infra-monitor.js"]
+    },
+    "Phi_score": {
+      "name": "Φ-Score (Unified Health)",
+      "formula": "Φ = 100 × ∛(K̄^φ × Ē^1 × Ī^φ²)",
+      "status": "ready_for_integration"
+    }
+  },
+  "phi_constants": {
+    "φ": 1.618033988749895,
+    "φ²": 2.618033988749895,
+    "φ⁻¹": 0.618033988749895,
+    "φ⁻²": 0.381966011250105,
+    "φ⁻³": 0.236067977499790
+  },
+  "_phi": {
+    "philosophy": "Don't trust, verify - every score has cryptographic backing"
+  }
+}

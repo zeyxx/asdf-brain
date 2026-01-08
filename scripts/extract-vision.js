@@ -16,7 +16,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const readline = require('readline');
+const { streamConversations, KNOWLEDGE_ROOT } = require('./lib/data-sources');
 
 // =============================================================================
 // VISION PATTERNS
@@ -135,31 +135,21 @@ function extractVision(text) {
   return items;
 }
 
-async function processConversations(inputPath, outputPath) {
+async function processConversations(outputPath) {
   console.log('═══════════════════════════════════════════════════════════');
   console.log('  asdf-brain vision extractor');
   console.log('  Extracting roadmap and future plans');
   console.log('═══════════════════════════════════════════════════════════\n');
-
-  if (!fs.existsSync(inputPath)) {
-    console.error('Input file not found:', inputPath);
-    process.exit(1);
-  }
-
-  const fileStream = fs.createReadStream(inputPath);
-  const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
 
   const allItems = [];
   const byCategory = {};
   let processed = 0;
   let withVision = 0;
 
-  for await (const line of rl) {
-    if (!line.trim()) continue;
-    processed++;
+  try {
+    for await (const entry of streamConversations()) {
+      processed++;
 
-    try {
-      const entry = JSON.parse(line);
       const userText = entry.user?.content || '';
       const assistText = entry.assistant?.content || '';
       const fullText = userText + ' ' + assistText;
@@ -183,12 +173,14 @@ async function processConversations(inputPath, outputPath) {
         }
       }
 
-      if (processed % 1000 === 0) {
+      if (processed % 100 === 0) {
         process.stdout.write(`\r   Processed: ${processed}, with vision items: ${withVision}`);
       }
-    } catch (e) {
-      // Skip malformed
     }
+  } catch (e) {
+    console.error('Error loading data:', e.message);
+    console.log('Run: npm run brain:learn  to extract transcripts first');
+    process.exit(1);
   }
 
   // Deduplicate by content similarity
@@ -269,7 +261,7 @@ async function processConversations(inputPath, outputPath) {
       {
         metadata: {
           generated: new Date().toISOString(),
-          source: inputPath,
+          source: 'brain-unified',
           philosophy: "$asdfasdfa: Vision from actual discussions",
         },
         statistics: {
@@ -294,7 +286,6 @@ async function processConversations(inputPath, outputPath) {
 // MAIN
 // =============================================================================
 
-const inputPath = process.argv[2] || '/workspaces/HolDex/training/raw/conversations-safe.jsonl';
-const outputPath = process.argv[3] || path.join(__dirname, '../knowledge/vision/roadmap.json');
+const outputPath = process.argv[2] || path.join(KNOWLEDGE_ROOT, 'vision/roadmap.json');
 
-processConversations(inputPath, outputPath).catch(console.error);
+processConversations(outputPath).catch(console.error);

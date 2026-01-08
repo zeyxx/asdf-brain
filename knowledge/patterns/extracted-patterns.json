@@ -1,1809 +1,396 @@
 {
   "metadata": {
-    "generated": "2026-01-08T03:01:03.741Z",
-    "source": "/workspaces/HolDex/training/raw/conversations-safe.jsonl",
+    "generated": "2026-01-08T14:40:38.479Z",
+    "source": "brain-unified",
     "philosophy": "$asdfasdfa: Don't trust, verify"
   },
   "statistics": {
-    "total_conversations": 11011,
-    "with_patterns": 8324,
-    "pattern_rate": "75.6%",
+    "total_conversations": 134,
+    "with_patterns": 91,
+    "pattern_rate": "67.9%",
     "by_category": {
-      "technical": {
-        "total_occurrences": 52651,
-        "unique_patterns": 10,
-        "top_patterns": [
-          {
-            "name": "async_await",
-            "count": 12849,
-            "sessions": 2245
-          },
-          {
-            "name": "signature",
-            "count": 11658,
-            "sessions": 1436
-          },
-          {
-            "name": "burn_mechanism",
-            "count": 9834,
-            "sessions": 1198
-          },
-          {
-            "name": "try_catch",
-            "count": 7727,
-            "sessions": 1667
-          },
-          {
-            "name": "webhook",
-            "count": 5792,
-            "sessions": 845
-          }
-        ]
-      },
       "process": {
-        "total_occurrences": 46145,
-        "unique_patterns": 6,
+        "total_occurrences": 215,
+        "unique_patterns": 3,
         "top_patterns": [
           {
             "name": "pr_review",
-            "count": 40752,
-            "sessions": 5373
+            "count": 129,
+            "sessions": 56
           },
           {
             "name": "deploy",
-            "count": 3207,
-            "sessions": 921
-          },
-          {
-            "name": "hotfix",
-            "count": 1159,
-            "sessions": 481
+            "count": 85,
+            "sessions": 29
           },
           {
             "name": "migration",
-            "count": 674,
-            "sessions": 279
-          },
-          {
-            "name": "refactor",
-            "count": 306,
-            "sessions": 178
-          }
-        ]
-      },
-      "issues": {
-        "total_occurrences": 16694,
-        "unique_patterns": 8,
-        "top_patterns": [
-          {
-            "name": "null_undefined",
-            "count": 7613,
-            "sessions": 1828
-          },
-          {
-            "name": "data_integrity",
-            "count": 4738,
-            "sessions": 832
-          },
-          {
-            "name": "timeout",
-            "count": 1653,
-            "sessions": 512
-          },
-          {
-            "name": "auth_failure",
-            "count": 1360,
-            "sessions": 562
-          },
-          {
-            "name": "connection",
-            "count": 711,
-            "sessions": 41
-          }
-        ]
-      },
-      "solutions": {
-        "total_occurrences": 15934,
-        "unique_patterns": 6,
-        "top_patterns": [
-          {
-            "name": "cache_strategy",
-            "count": 7460,
-            "sessions": 1262
-          },
-          {
-            "name": "queue_pattern",
-            "count": 5048,
-            "sessions": 1135
-          },
-          {
-            "name": "validation",
-            "count": 2140,
-            "sessions": 612
-          },
-          {
-            "name": "retry_logic",
-            "count": 707,
-            "sessions": 288
-          },
-          {
-            "name": "graceful_shutdown",
-            "count": 347,
-            "sessions": 87
+            "count": 1,
+            "sessions": 1
           }
         ]
       },
       "asdfasdfa": {
-        "total_occurrences": 80999,
-        "unique_patterns": 7,
+        "total_occurrences": 105,
+        "unique_patterns": 6,
         "top_patterns": [
           {
-            "name": "diamond_hands",
-            "count": 38661,
-            "sessions": 2814
-          },
-          {
-            "name": "k_score",
-            "count": 16977,
-            "sessions": 3348
-          },
-          {
             "name": "longevity",
-            "count": 14720,
-            "sessions": 3154
-          },
-          {
-            "name": "metal_rank",
-            "count": 6370,
-            "sessions": 1103
+            "count": 41,
+            "sessions": 25
           },
           {
             "name": "phi_ratio",
-            "count": 2583,
-            "sessions": 626
+            "count": 33,
+            "sessions": 17
+          },
+          {
+            "name": "metal_rank",
+            "count": 20,
+            "sessions": 12
+          },
+          {
+            "name": "organic",
+            "count": 4,
+            "sessions": 3
+          },
+          {
+            "name": "burn_fee",
+            "count": 4,
+            "sessions": 3
+          }
+        ]
+      },
+      "solutions": {
+        "total_occurrences": 3,
+        "unique_patterns": 3,
+        "top_patterns": [
+          {
+            "name": "cache_strategy",
+            "count": 1,
+            "sessions": 1
+          },
+          {
+            "name": "queue_pattern",
+            "count": 1,
+            "sessions": 1
+          },
+          {
+            "name": "validation",
+            "count": 1,
+            "sessions": 1
+          }
+        ]
+      },
+      "issues": {
+        "total_occurrences": 2,
+        "unique_patterns": 2,
+        "top_patterns": [
+          {
+            "name": "null_undefined",
+            "count": 1,
+            "sessions": 1
+          },
+          {
+            "name": "connection",
+            "count": 1,
+            "sessions": 1
           }
         ]
       },
       "architecture": {
-        "total_occurrences": 1475,
-        "unique_patterns": 6,
+        "total_occurrences": 8,
+        "unique_patterns": 2,
         "top_patterns": [
           {
-            "name": "middleware",
-            "count": 1013,
-            "sessions": 382
-          },
-          {
             "name": "repository",
-            "count": 255,
-            "sessions": 128
+            "count": 4,
+            "sessions": 1
           },
           {
-            "name": "factory",
-            "count": 163,
-            "sessions": 77
+            "name": "middleware",
+            "count": 4,
+            "sessions": 4
+          }
+        ]
+      },
+      "technical": {
+        "total_occurrences": 17,
+        "unique_patterns": 2,
+        "top_patterns": [
+          {
+            "name": "burn_mechanism",
+            "count": 10,
+            "sessions": 5
           },
           {
-            "name": "singleton",
-            "count": 21,
-            "sessions": 19
-          },
-          {
-            "name": "event_driven",
-            "count": 18,
-            "sessions": 10
+            "name": "signature",
+            "count": 7,
+            "sessions": 5
           }
         ]
       }
     }
   },
   "global_patterns": {
-    "technical": {
-      "async_await": {
-        "count": 12849,
-        "sessions": 2245,
-        "samples": [
-          "async function",
-          "await sleep",
-          "await fetch",
-          "await bhRes",
-          "await solanaWeb3"
-        ]
-      },
-      "try_catch": {
-        "count": 7727,
-        "sessions": 1667,
-        "samples": [
-          "try {",
-          "catch (",
-          "catch(",
-          "try{"
-        ]
-      },
-      "rate_limit": {
-        "count": 3173,
-        "sessions": 896,
-        "samples": [
-          "RATE_LIMIT",
-          "rateLimit",
-          "rate-limit",
-          "429",
-          "RateLimit"
-        ]
-      },
-      "cron_job": {
-        "count": 261,
-        "sessions": 182,
-        "samples": [
-          "setInterval",
-          "cron",
-          "CRON",
-          "SETINTERVAL"
-        ]
-      },
-      "signature": {
-        "count": 11658,
-        "sessions": 1436,
-        "samples": [
-          "signature",
-          "Signature",
-          "sha256",
-          "HMAC",
-          "Signing"
-        ]
-      },
-      "burn_mechanism": {
-        "count": 9834,
-        "sessions": 1198,
-        "samples": [
-          "burn",
-          "BURN",
-          "Burn"
-        ]
-      },
-      "socket_io": {
-        "count": 482,
-        "sessions": 191,
-        "samples": [
-          "socket.io",
-          "socket.emit",
-          "Socket.IO",
-          "Socket.io",
-          "SOCKET.IO"
-        ]
-      },
-      "redis_usage": {
-        "count": 329,
-        "sessions": 161,
-        "samples": [
-          "redis.set",
-          "redis.get",
-          "redis.del",
-          "redis.lpush",
-          "redis.hset"
-        ]
-      },
-      "webhook": {
-        "count": 5792,
-        "sessions": 845,
-        "samples": [
-          "webhook",
-          "WEBHOOK",
-          "Webhook",
-          "heliusWebhook",
-          "Helius webhook"
-        ]
-      },
-      "postgres_query": {
-        "count": 546,
-        "sessions": 172,
-        "samples": [
-          ".query(",
-          "Pool.query",
-          "pool.query",
-          "db.query",
-          ".query ("
-        ]
-      }
-    },
     "process": {
+      "deploy": {
+        "count": 85,
+        "sessions": 29,
+        "samples": [
+          "DEPLOY",
+          "deploy",
+          "Render",
+          "staging",
+          "render"
+        ]
+      },
       "pr_review": {
-        "count": 40752,
-        "sessions": 5373,
+        "count": 129,
+        "sessions": 56,
         "samples": [
           "pr",
-          "Pr",
           "PR",
-          "pR",
+          "review",
+          "Pr",
           "merge"
         ]
       },
-      "deploy": {
-        "count": 3207,
-        "sessions": 921,
-        "samples": [
-          "production",
-          "render",
-          "Deploy",
-          "deploy",
-          "Render"
-        ]
-      },
-      "refactor": {
-        "count": 306,
-        "sessions": 178,
-        "samples": [
-          "cleanup",
-          "Cleanup",
-          "Refactor",
-          "refactor",
-          "Reorganize"
-        ]
-      },
       "migration": {
-        "count": 674,
-        "sessions": 279,
+        "count": 1,
+        "sessions": 1,
         "samples": [
-          "migration",
-          "migrate",
-          "Migration",
-          "schema change",
-          "Schema Change"
-        ]
-      },
-      "hotfix": {
-        "count": 1159,
-        "sessions": 481,
-        "samples": [
-          "CRITICAL",
-          "critical",
-          "Critical",
-          "emergency",
-          "Emergency"
-        ]
-      },
-      "rollback": {
-        "count": 47,
-        "sessions": 26,
-        "samples": [
-          "rollback",
-          "Revert",
-          "revert",
-          "ROLLBACK",
-          "undo"
-        ]
-      }
-    },
-    "issues": {
-      "timeout": {
-        "count": 1653,
-        "sessions": 512,
-        "samples": [
-          "Timeout",
-          "timeout",
-          "TIMEOUT",
-          "timed out"
-        ]
-      },
-      "null_undefined": {
-        "count": 7613,
-        "sessions": 1828,
-        "samples": [
-          "null",
-          "undefined",
-          "NULL",
-          "Null",
-          "UNDEFINED"
-        ]
-      },
-      "auth_failure": {
-        "count": 1360,
-        "sessions": 562,
-        "samples": [
-          "401",
-          "403",
-          "Unauthorized",
-          "UNAUTHORIZED",
-          "auth fail"
-        ]
-      },
-      "memory": {
-        "count": 337,
-        "sessions": 158,
-        "samples": [
-          "oom",
-          "heap",
-          "Heap",
-          "OOM",
-          "memory leak"
-        ]
-      },
-      "data_integrity": {
-        "count": 4738,
-        "sessions": 832,
-        "samples": [
-          "integrity",
-          "Tamper",
-          "tamper",
-          "Integrity",
-          "Invalid signature"
-        ]
-      },
-      "connection": {
-        "count": 711,
-        "sessions": 41,
-        "samples": [
-          "Connection Refused",
-          "connection error",
-          "ECONNREFUSED",
-          "Connection Error",
-          "connection refused"
-        ]
-      },
-      "infinite_loop": {
-        "count": 37,
-        "sessions": 32,
-        "samples": [
-          "infinite loop",
-          "Infinite loop",
-          "Infinite Loop",
-          "INFINITE LOOP",
-          "Recursion"
-        ]
-      },
-      "race_condition": {
-        "count": 245,
-        "sessions": 103,
-        "samples": [
-          "concurrent",
-          "race condition",
-          "Concurrent",
-          "Race condition",
-          "Race Condition"
-        ]
-      }
-    },
-    "solutions": {
-      "retry_logic": {
-        "count": 707,
-        "sessions": 288,
-        "samples": [
-          "Exponential",
-          "retry",
-          "RETRY",
-          "Retry",
-          "exponential"
-        ]
-      },
-      "cache_strategy": {
-        "count": 7460,
-        "sessions": 1262,
-        "samples": [
-          "cache",
-          "Cache",
-          "CACHE",
-          "TTL",
-          "ttl"
-        ]
-      },
-      "validation": {
-        "count": 2140,
-        "sessions": 612,
-        "samples": [
-          "Validate",
-          "xSs",
-          "validate",
-          "escape",
-          "sanitize"
-        ]
-      },
-      "queue_pattern": {
-        "count": 5048,
-        "sessions": 1135,
-        "samples": [
-          "background",
-          "Background",
-          "Worker",
-          "Queue",
-          "worker"
-        ]
-      },
-      "graceful_shutdown": {
-        "count": 347,
-        "sessions": 87,
-        "samples": [
-          "shutdown",
-          "Shutdown",
-          "graceful",
-          "Graceful",
-          "SIGTERM"
-        ]
-      },
-      "circuit_breaker": {
-        "count": 232,
-        "sessions": 111,
-        "samples": [
-          "circuit breaker",
-          "Circuit Breaker",
-          "CIRCUIT BREAKER",
-          "Circuit breaker",
-          "failover"
+          "migration"
         ]
       }
     },
     "asdfasdfa": {
-      "k_score": {
-        "count": 16977,
-        "sessions": 3348,
-        "samples": [
-          "K-Score",
-          "K-SCORE",
-          "K = 100",
-          "kscore",
-          "KScore"
-        ]
-      },
-      "diamond_hands": {
-        "count": 38661,
-        "sessions": 2814,
-        "samples": [
-          "DIAMOND",
-          "conviction",
-          "holder",
-          "Holder",
-          "Diamond"
-        ]
-      },
-      "organic": {
-        "count": 1397,
-        "sessions": 467,
-        "samples": [
-          "ORGANIC",
-          "distribution",
-          "Organic",
-          "organic",
-          "Distribution"
-        ]
-      },
-      "longevity": {
-        "count": 14720,
-        "sessions": 3154,
-        "samples": [
-          "LONGEVITY",
-          "age",
-          "Age",
-          "Longevity",
-          "aGE"
-        ]
-      },
       "metal_rank": {
-        "count": 6370,
-        "sessions": 1103,
+        "count": 20,
+        "sessions": 12,
         "samples": [
-          "DIAMOND",
-          "rust",
-          "RUST",
-          "Diamond",
-          "diamond"
+          "iron",
+          "rust"
         ]
       },
       "phi_ratio": {
-        "count": 2583,
-        "sessions": 626,
+        "count": 33,
+        "sessions": 17,
         "samples": [
-          "Phi",
           "phi",
-          "PHI",
-          "0.618",
+          "Phi",
           "1.618"
         ]
       },
-      "burn_fee": {
-        "count": 291,
-        "sessions": 125,
+      "organic": {
+        "count": 4,
+        "sessions": 3,
         "samples": [
-          "Fee Service  │  │ Burn",
+          "distribution",
+          "Organic",
+          "organic"
+        ]
+      },
+      "longevity": {
+        "count": 41,
+        "sessions": 25,
+        "samples": [
+          "age"
+        ]
+      },
+      "k_score": {
+        "count": 3,
+        "sessions": 3,
+        "samples": [
+          "K-Score"
+        ]
+      },
+      "burn_fee": {
+        "count": 4,
+        "sessions": 3,
+        "samples": [
           "100% burn",
-          "Fee Distribution**: 38.2% burn / 38.2% rewards / 23.6% treasury\\n\\n### Oracle Endpoints\\n```\\nGET /oracle/kscore/:mint      # Token acceptance check\\nGET /oracle/discount/:wallet  # Wallet discount calculation\\n```\\n\\n---\\n\\n## Security Hardening\\n\\n### Data Integrity\\n- 8-category HMAC signatures (Identity, Security, LP, Supply, K-Score, Market, Origin, Full)\\n- Chaos nonce for unpredictability\\n- Self-healing integrity watchdog\\n- 42-column token schema\\n\\n### Protection\\n- Unified rate limiting + burn",
-          "fees with any token instead of SOL. All collected fees are converted to $ASDFASDFA tokens and burn",
-          "fees with any token instead of SOL.\" The system converts all fees to $asdfasdfa and burn"
+          "Burns, fee"
+        ]
+      }
+    },
+    "solutions": {
+      "cache_strategy": {
+        "count": 1,
+        "sessions": 1,
+        "samples": [
+          "cache"
+        ]
+      },
+      "queue_pattern": {
+        "count": 1,
+        "sessions": 1,
+        "samples": [
+          "worker"
+        ]
+      },
+      "validation": {
+        "count": 1,
+        "sessions": 1,
+        "samples": [
+          "Validate"
+        ]
+      }
+    },
+    "issues": {
+      "null_undefined": {
+        "count": 1,
+        "sessions": 1,
+        "samples": [
+          "null"
+        ]
+      },
+      "connection": {
+        "count": 1,
+        "sessions": 1,
+        "samples": [
+          "connection error"
         ]
       }
     },
     "architecture": {
-      "middleware": {
-        "count": 1013,
-        "sessions": 382,
-        "samples": [
-          "middleware",
-          "MIDDLEWARE",
-          "pipe",
-          "Pipe",
-          "Middleware"
-        ]
-      },
       "repository": {
-        "count": 255,
-        "sessions": 128,
+        "count": 4,
+        "sessions": 1,
         "samples": [
-          "Repository",
-          "repository",
-          "REPOSITORY",
-          "Data Access",
-          "data access"
+          "repository"
         ]
       },
-      "factory": {
-        "count": 163,
-        "sessions": 77,
+      "middleware": {
+        "count": 4,
+        "sessions": 4,
         "samples": [
-          "createError instance",
-          "create\",{collection:this.collectionName},e),k.info(\"CHROMA_SYNC\",\"Creating collection\",{collection:this.collectionName});try{await this.client.callTool({name:\"chroma_create_collection\",arguments:{collection_name:this.collectionName,embedding_function_name:\"default\"}}),k.info(\"CHROMA_SYNC\",\"Collection created\",{collection:this.collectionName})}catch(i){throw k.error(\"CHROMA_SYNC\",\"Failed to create collection\",{collection:this.collectionName},i),new Error(`Collection creation failed: ${i instanceof Error?i.message:String(i)}`)}}}formatObservationDocs(e){let r=[],n=e.facts?JSON.parse(e.facts):[],i=e.concepts?JSON.parse(e.concepts):[],a=e.files_read?JSON.parse(e.files_read):[],o=e.files_modified?JSON.parse(e.files_modified):[],s={sqlite_id:e.id,doc_type:\"observation\",memory_session_id:e.memory_session_id,project:e.project,created_at_epoch:e.created_at_epoch,type:e.type||\"discovery\",title:e.title||\"Untitled\"};return e.subtitle&&(s.subtitle=e.subtitle),i.length>0&&(s.concepts=i.join(\",\")),a.length>0&&(s.files_read=a.join(\",\")),o.length>0&&(s.files_modified=o.join(\",\")),e.narrative&&r.push({id:`obs_${e.id}_narrative`,document:e.narrative,metadata:{...s,field_type:\"narrative\"}}),e.text&&r.push({id:`obs_${e.id}_text`,document:e.text,metadata:{...s,field_type:\"text\"}}),n.forEach((c,u)=>{r.push({id:`obs_${e.id}_fact_${u}`,document:c,metadata:{...s,field_type:\"fact\",fact_index:u}})}),r}formatSummaryDocs(e){let r=[],n={sqlite_id:e.id,doc_type:\"session_summary\",memory_session_id:e.memory_session_id,project:e.project,created_at_epoch:e.created_at_epoch,prompt_number:e.prompt_number||0};return e.request&&r.push({id:`summary_${e.id}_request`,document:e.request,metadata:{...n,field_type:\"request\"}}),e.investigated&&r.push({id:`summary_${e.id}_investigated`,document:e.investigated,metadata:{...n,field_type:\"investigated\"}}),e.learned&&r.push({id:`summary_${e.id}_learned`,document:e.learned,metadata:{...n,field_type:\"learned\"}}),e.completed&&r.push({id:`summary_${e.id}_completed`,document:e.completed,metadata:{...n,field_type:\"completed\"}}),e.next_steps&&r.push({id:`summary_${e.id}_next_steps`,document:e.next_steps,metadata:{...n,field_type:\"next_steps\"}}),e.notes&&r.push({id:`summary_${e.id}_notes`,document:e.notes,metadata:{...n,field_type:\"notes\"}}),r}async addDocuments(e){if(e.length!==0){if(await this.ensureCollection(),!this.client)throw new Error(`Chroma client not initialized. Call ensureConnection() before using client methods. Project: ${this.project}`);try{await this.client.callTool({name:\"chroma_add_documents\",arguments:{collection_name:this.collectionName,documents:e.map(r=>r.document),ids:e.map(r=>r.id),metadatas:e.map(r=>r.metadata)}}),k.debug(\"CHROMA_SYNC\",\"Documents added\",{collection:this.collectionName,count:e.length})}catch(r){throw k.error(\"CHROMA_SYNC\",\"Failed to add documents\",{collection:this.collectionName,count:e.length},r),new Error(`Document add failed: ${r instance",
-          "Builder",
-          "builder",
-          "FACTORY"
+          "pipe",
+          "Pipe"
+        ]
+      }
+    },
+    "technical": {
+      "burn_mechanism": {
+        "count": 10,
+        "sessions": 5,
+        "samples": [
+          "burn",
+          "Burn"
         ]
       },
-      "singleton": {
-        "count": 21,
-        "sessions": 19,
+      "signature": {
+        "count": 7,
+        "sessions": 5,
         "samples": [
-          "SINGLETON",
-          "Singleton",
-          "Shared State",
-          "singleton",
-          "Shared state"
-        ]
-      },
-      "event_driven": {
-        "count": 18,
-        "sessions": 10,
-        "samples": [
-          "Event-Driven",
-          "Event-driven",
-          "event-driven",
-          "PubSub"
-        ]
-      },
-      "microservice": {
-        "count": 5,
-        "sessions": 3,
-        "samples": [
-          "Microservice",
-          "microservice"
+          "signature",
+          "Signature",
+          "HMAC",
+          "SHA256",
+          "sha256"
         ]
       }
     }
   },
   "top_sessions": [
     {
-      "session_id": "fe473789-4559-4be3-9ccb-dd999483ca98",
+      "session_id": "unknown",
       "patterns": {
         "process": {
-          "pr_review": 2340,
-          "hotfix": 57,
-          "migration": 45,
-          "deploy": 88,
-          "refactor": 14
+          "pr_review": 56,
+          "deploy": 47
+        },
+        "solutions": {
+          "cache_strategy": 1,
+          "queue_pattern": 1,
+          "validation": 1
         },
         "issues": {
-          "null_undefined": 637,
-          "timeout": 142,
-          "auth_failure": 97,
-          "memory": 8,
-          "race_condition": 13,
-          "infinite_loop": 1,
-          "data_integrity": 13,
-          "connection": 146
+          "null_undefined": 1,
+          "connection": 1
+        },
+        "architecture": {
+          "repository": 4,
+          "middleware": 4
         },
         "asdfasdfa": {
-          "longevity": 1364,
-          "k_score": 1205,
-          "diamond_hands": 4754,
-          "organic": 169,
-          "metal_rank": 495,
+          "phi_ratio": 18,
+          "longevity": 8,
+          "metal_rank": 9,
+          "burn_fee": 4,
+          "organic": 1,
+          "k_score": 1
+        },
+        "technical": {
+          "burn_mechanism": 8,
+          "signature": 6
+        }
+      },
+      "score": 3.4180062492602974,
+      "conversationCount": 49
+    },
+    {
+      "session_id": "57d67b43-a0f5-4fc6-8604-68af1ba964a0",
+      "patterns": {
+        "process": {
+          "deploy": 34,
+          "pr_review": 50,
+          "migration": 1
+        },
+        "asdfasdfa": {
+          "metal_rank": 10,
           "phi_ratio": 8,
-          "burn_fee": 19
+          "organic": 1,
+          "k_score": 1,
+          "longevity": 4
         },
         "technical": {
-          "webhook": 650,
-          "rate_limit": 310,
-          "async_await": 1551,
-          "try_catch": 959,
-          "cron_job": 22,
-          "signature": 494,
-          "burn_mechanism": 1426,
-          "redis_usage": 13,
-          "socket_io": 13,
-          "postgres_query": 18
-        },
-        "solutions": {
-          "cache_strategy": 586,
-          "queue_pattern": 181,
-          "retry_logic": 115,
-          "validation": 95,
-          "circuit_breaker": 16,
-          "graceful_shutdown": 3
-        },
-        "architecture": {
-          "middleware": 31,
-          "factory": 7,
-          "singleton": 2,
-          "event_driven": 14,
-          "repository": 4
+          "burn_mechanism": 2
         }
       },
-      "score": 6.999994193885579,
-      "conversationCount": 569
+      "score": 3.412002463902915,
+      "conversationCount": 20
     },
     {
-      "session_id": "5202a97a-1789-40da-af13-5c925562702c",
+      "session_id": "9cc0db96-f0d1-434a-9d76-c33d75aeae99",
       "patterns": {
-        "technical": {
-          "async_await": 452,
-          "try_catch": 248,
-          "webhook": 389,
-          "rate_limit": 58,
-          "signature": 91,
-          "burn_mechanism": 195,
-          "socket_io": 22,
-          "cron_job": 44,
-          "postgres_query": 17,
-          "redis_usage": 4
+        "asdfasdfa": {
+          "longevity": 5,
+          "metal_rank": 1,
+          "phi_ratio": 7,
+          "k_score": 1,
+          "organic": 2
         },
         "process": {
-          "pr_review": 1432,
-          "hotfix": 11,
-          "migration": 27,
-          "deploy": 276,
-          "refactor": 2,
-          "rollback": 15
+          "deploy": 4,
+          "pr_review": 23
         },
-        "solutions": {
-          "cache_strategy": 151,
-          "validation": 29,
-          "queue_pattern": 178,
-          "graceful_shutdown": 54,
-          "retry_logic": 14,
-          "circuit_breaker": 9
-        },
-        "architecture": {
-          "middleware": 13,
-          "factory": 1,
-          "microservice": 1,
-          "repository": 2
-        },
-        "asdfasdfa": {
-          "k_score": 703,
-          "diamond_hands": 1190,
-          "longevity": 415,
-          "metal_rank": 60,
-          "phi_ratio": 16,
-          "organic": 17,
-          "burn_fee": 2
-        },
-        "issues": {
-          "null_undefined": 294,
-          "race_condition": 3,
-          "data_integrity": 5,
-          "connection": 80,
-          "timeout": 99,
-          "auth_failure": 31,
-          "memory": 28
+        "technical": {
+          "signature": 1
         }
       },
-      "score": 6.7999946374727225,
-      "conversationCount": 453
+      "score": 3.28467434941896,
+      "conversationCount": 10
     },
     {
-      "session_id": "fb25fe58-fc64-46b5-8fd5-c0d6befa272f",
+      "session_id": "19d555ec-ea0f-4c76-8b6a-21b011c3e6eb",
       "patterns": {
-        "technical": {
-          "async_await": 1081,
-          "try_catch": 573,
-          "rate_limit": 360,
-          "burn_mechanism": 1381,
-          "redis_usage": 44,
-          "postgres_query": 15,
-          "webhook": 823,
-          "signature": 1062,
-          "cron_job": 37,
-          "socket_io": 33
-        },
-        "process": {
-          "deploy": 167,
-          "pr_review": 3254,
-          "hotfix": 206,
-          "migration": 58,
-          "refactor": 44
-        },
-        "issues": {
-          "null_undefined": 614,
-          "auth_failure": 124,
-          "data_integrity": 533,
-          "timeout": 178,
-          "race_condition": 114,
-          "memory": 53,
-          "infinite_loop": 4,
-          "connection": 4
-        },
-        "architecture": {
-          "middleware": 129,
-          "singleton": 5,
-          "repository": 6,
-          "factory": 3
-        },
-        "solutions": {
-          "circuit_breaker": 22,
-          "cache_strategy": 999,
-          "queue_pattern": 533,
-          "validation": 365,
-          "retry_logic": 48,
-          "graceful_shutdown": 21
-        },
         "asdfasdfa": {
-          "k_score": 974,
-          "diamond_hands": 2575,
-          "longevity": 970,
-          "phi_ratio": 181,
-          "metal_rank": 253,
-          "organic": 50,
-          "burn_fee": 69
+          "longevity": 4
         }
       },
-      "score": 6.7999946374727225,
-      "conversationCount": 513
+      "score": 1,
+      "conversationCount": 2
     },
     {
-      "session_id": "fd971e4d-a5aa-4c4a-97af-224a10aa50cd",
+      "session_id": "3543dcf7-1015-430f-9352-d15f7b528e28",
       "patterns": {
-        "technical": {
-          "async_await": 466,
-          "try_catch": 250,
-          "postgres_query": 126,
-          "webhook": 78,
-          "socket_io": 6,
-          "rate_limit": 31,
-          "cron_job": 30,
-          "signature": 658,
-          "burn_mechanism": 138,
-          "redis_usage": 14
-        },
-        "process": {
-          "deploy": 67,
-          "pr_review": 1574,
-          "hotfix": 51,
-          "migration": 35,
-          "refactor": 42,
-          "rollback": 5
-        },
-        "issues": {
-          "timeout": 25,
-          "null_undefined": 239,
-          "data_integrity": 163,
-          "auth_failure": 15,
-          "race_condition": 3,
-          "memory": 6
-        },
-        "solutions": {
-          "graceful_shutdown": 63,
-          "cache_strategy": 84,
-          "queue_pattern": 80,
-          "validation": 36,
-          "retry_logic": 15,
-          "circuit_breaker": 1
-        },
-        "architecture": {
-          "middleware": 44,
-          "factory": 3,
-          "repository": 2,
-          "event_driven": 1
-        },
         "asdfasdfa": {
-          "k_score": 774,
-          "phi_ratio": 336,
-          "diamond_hands": 939,
-          "organic": 91,
-          "longevity": 399,
-          "metal_rank": 123,
-          "burn_fee": 12
+          "longevity": 20
         }
       },
-      "score": 6.723598395101722,
-      "conversationCount": 291
-    },
-    {
-      "session_id": "e75949e3-72f9-40d5-a6ad-d7f137f8f7a9",
-      "patterns": {
-        "technical": {
-          "async_await": 477,
-          "try_catch": 302,
-          "webhook": 222,
-          "signature": 1629,
-          "burn_mechanism": 450,
-          "rate_limit": 108,
-          "redis_usage": 19,
-          "postgres_query": 113,
-          "cron_job": 14,
-          "socket_io": 10
-        },
-        "process": {
-          "pr_review": 2373,
-          "hotfix": 137,
-          "deploy": 212,
-          "refactor": 25,
-          "migration": 51
-        },
-        "issues": {
-          "null_undefined": 418,
-          "data_integrity": 856,
-          "auth_failure": 71,
-          "timeout": 59,
-          "race_condition": 17,
-          "memory": 4,
-          "infinite_loop": 4
-        },
-        "solutions": {
-          "cache_strategy": 169,
-          "validation": 83,
-          "queue_pattern": 127,
-          "retry_logic": 32,
-          "circuit_breaker": 11,
-          "graceful_shutdown": 39
-        },
-        "asdfasdfa": {
-          "k_score": 810,
-          "diamond_hands": 999,
-          "longevity": 783,
-          "phi_ratio": 591,
-          "organic": 108,
-          "burn_fee": 50,
-          "metal_rank": 220
-        },
-        "architecture": {
-          "repository": 19,
-          "factory": 46,
-          "middleware": 58,
-          "singleton": 1
-        }
-      },
-      "score": 6.723598395101721,
-      "conversationCount": 477
-    },
-    {
-      "session_id": "491b295f-24a6-4e7e-84d7-32dac04a257d",
-      "patterns": {
-        "process": {
-          "deploy": 124,
-          "pr_review": 1100,
-          "hotfix": 38,
-          "refactor": 6,
-          "migration": 64
-        },
-        "solutions": {
-          "cache_strategy": 245,
-          "circuit_breaker": 8,
-          "queue_pattern": 86,
-          "retry_logic": 53,
-          "graceful_shutdown": 21,
-          "validation": 75
-        },
-        "asdfasdfa": {
-          "phi_ratio": 137,
-          "longevity": 183,
-          "metal_rank": 94,
-          "k_score": 334,
-          "diamond_hands": 293,
-          "burn_fee": 15,
-          "organic": 32
-        },
-        "technical": {
-          "signature": 430,
-          "burn_mechanism": 357,
-          "async_await": 279,
-          "try_catch": 167,
-          "webhook": 336,
-          "cron_job": 4,
-          "redis_usage": 11,
-          "rate_limit": 92,
-          "postgres_query": 23,
-          "socket_io": 16
-        },
-        "architecture": {
-          "middleware": 22,
-          "repository": 11,
-          "factory": 5,
-          "singleton": 5
-        },
-        "issues": {
-          "null_undefined": 200,
-          "race_condition": 2,
-          "auth_failure": 49,
-          "data_integrity": 43,
-          "timeout": 92,
-          "memory": 22
-        }
-      },
-      "score": 6.647202152730721,
-      "conversationCount": 147
-    },
-    {
-      "session_id": "7e7826b0-4075-4033-8caa-8d62d3d2212f",
-      "patterns": {
-        "process": {
-          "pr_review": 4761,
-          "deploy": 299,
-          "hotfix": 57,
-          "migration": 33,
-          "refactor": 18
-        },
-        "issues": {
-          "memory": 28,
-          "null_undefined": 911,
-          "auth_failure": 134,
-          "timeout": 88,
-          "data_integrity": 415,
-          "race_condition": 1
-        },
-        "solutions": {
-          "queue_pattern": 801,
-          "cache_strategy": 937,
-          "validation": 489,
-          "graceful_shutdown": 2,
-          "retry_logic": 69,
-          "circuit_breaker": 20
-        },
-        "asdfasdfa": {
-          "k_score": 1937,
-          "diamond_hands": 5468,
-          "longevity": 1614,
-          "metal_rank": 395,
-          "organic": 171,
-          "phi_ratio": 107,
-          "burn_fee": 16
-        },
-        "technical": {
-          "socket_io": 21,
-          "rate_limit": 475,
-          "burn_mechanism": 995,
-          "try_catch": 615,
-          "webhook": 511,
-          "async_await": 940,
-          "redis_usage": 31,
-          "cron_job": 20,
-          "signature": 1011,
-          "postgres_query": 13
-        },
-        "architecture": {
-          "middleware": 90,
-          "factory": 2,
-          "event_driven": 1,
-          "repository": 3
-        }
-      },
-      "score": 6.647202152730721,
-      "conversationCount": 1079
-    },
-    {
-      "session_id": "40887533-a33e-4331-b7ff-0549afae01c2",
-      "patterns": {
-        "process": {
-          "pr_review": 749,
-          "migration": 24,
-          "deploy": 18,
-          "hotfix": 13
-        },
-        "issues": {
-          "memory": 20,
-          "null_undefined": 66,
-          "auth_failure": 17,
-          "timeout": 20,
-          "data_integrity": 4,
-          "race_condition": 7
-        },
-        "solutions": {
-          "cache_strategy": 218,
-          "queue_pattern": 64,
-          "validation": 44,
-          "retry_logic": 38,
-          "graceful_shutdown": 7,
-          "circuit_breaker": 10
-        },
-        "asdfasdfa": {
-          "organic": 38,
-          "longevity": 308,
-          "metal_rank": 64,
-          "k_score": 148,
-          "diamond_hands": 408,
-          "phi_ratio": 10,
-          "burn_fee": 1
-        },
-        "technical": {
-          "signature": 110,
-          "burn_mechanism": 251,
-          "webhook": 244,
-          "rate_limit": 61,
-          "async_await": 210,
-          "try_catch": 99,
-          "redis_usage": 11,
-          "socket_io": 48,
-          "postgres_query": 6
-        },
-        "architecture": {
-          "factory": 2,
-          "middleware": 38,
-          "event_driven": 1,
-          "singleton": 1,
-          "repository": 1
-        }
-      },
-      "score": 6.57080591035972,
-      "conversationCount": 70
-    },
-    {
-      "session_id": "c6f6d2b6-7dbc-442f-81bd-d21d279fadbc",
-      "patterns": {
-        "technical": {
-          "socket_io": 28,
-          "signature": 481,
-          "async_await": 1055,
-          "try_catch": 699,
-          "rate_limit": 378,
-          "burn_mechanism": 718,
-          "webhook": 630,
-          "redis_usage": 28,
-          "postgres_query": 7,
-          "cron_job": 10
-        },
-        "process": {
-          "pr_review": 2254,
-          "hotfix": 107,
-          "rollback": 1,
-          "deploy": 145,
-          "migration": 42,
-          "refactor": 5
-        },
-        "asdfasdfa": {
-          "phi_ratio": 32,
-          "diamond_hands": 2269,
-          "k_score": 930,
-          "longevity": 961,
-          "metal_rank": 503,
-          "organic": 42,
-          "burn_fee": 1
-        },
-        "issues": {
-          "null_undefined": 482,
-          "timeout": 74,
-          "data_integrity": 25,
-          "auth_failure": 149,
-          "memory": 21,
-          "race_condition": 3
-        },
-        "solutions": {
-          "retry_logic": 15,
-          "validation": 212,
-          "cache_strategy": 576,
-          "circuit_breaker": 26,
-          "graceful_shutdown": 16,
-          "queue_pattern": 108
-        },
-        "architecture": {
-          "factory": 2,
-          "middleware": 154,
-          "repository": 2
-        }
-      },
-      "score": 6.523598838688862,
-      "conversationCount": 447
-    },
-    {
-      "session_id": "c8b38e2b-8994-4ba4-8948-11a5019d7ebb",
-      "patterns": {
-        "technical": {
-          "async_await": 746,
-          "try_catch": 591,
-          "rate_limit": 157,
-          "signature": 297,
-          "webhook": 310,
-          "burn_mechanism": 74,
-          "cron_job": 11,
-          "redis_usage": 20,
-          "postgres_query": 26,
-          "socket_io": 24
-        },
-        "process": {
-          "pr_review": 2338,
-          "hotfix": 35,
-          "deploy": 64,
-          "refactor": 25,
-          "migration": 41
-        },
-        "issues": {
-          "auth_failure": 112,
-          "null_undefined": 315,
-          "timeout": 139,
-          "memory": 42,
-          "infinite_loop": 3,
-          "data_integrity": 6,
-          "race_condition": 4,
-          "connection": 42
-        },
-        "solutions": {
-          "cache_strategy": 287,
-          "validation": 114,
-          "circuit_breaker": 35,
-          "retry_logic": 54,
-          "graceful_shutdown": 22,
-          "queue_pattern": 237
-        },
-        "asdfasdfa": {
-          "longevity": 693,
-          "k_score": 330,
-          "diamond_hands": 590,
-          "metal_rank": 83,
-          "phi_ratio": 6,
-          "organic": 10,
-          "burn_fee": 4
-        },
-        "architecture": {
-          "middleware": 42,
-          "repository": 8
-        }
-      },
-      "score": 6.399995524647004,
-      "conversationCount": 370
-    },
-    {
-      "session_id": "2d89464e-cd50-4ecb-b0de-6b069c19afde",
-      "patterns": {
-        "technical": {
-          "webhook": 194,
-          "signature": 312,
-          "burn_mechanism": 183,
-          "async_await": 70,
-          "try_catch": 60,
-          "rate_limit": 57,
-          "redis_usage": 6,
-          "postgres_query": 1,
-          "socket_io": 1
-        },
-        "process": {
-          "deploy": 73,
-          "pr_review": 469,
-          "migration": 23,
-          "hotfix": 21
-        },
-        "issues": {
-          "timeout": 32,
-          "null_undefined": 49,
-          "data_integrity": 76,
-          "auth_failure": 15,
-          "memory": 2,
-          "race_condition": 1
-        },
-        "solutions": {
-          "cache_strategy": 107,
-          "graceful_shutdown": 2,
-          "validation": 33,
-          "queue_pattern": 59,
-          "retry_logic": 2,
-          "circuit_breaker": 4
-        },
-        "architecture": {
-          "factory": 2,
-          "singleton": 3,
-          "repository": 5,
-          "middleware": 8
-        },
-        "asdfasdfa": {
-          "k_score": 181,
-          "diamond_hands": 170,
-          "organic": 26,
-          "longevity": 103,
-          "phi_ratio": 46,
-          "metal_rank": 35,
-          "burn_fee": 2
-        }
-      },
-      "score": 6.370806353946863,
-      "conversationCount": 45
-    },
-    {
-      "session_id": "d3a8e31e-ef75-4530-9cad-e60393136add",
-      "patterns": {
-        "process": {
-          "pr_review": 968,
-          "migration": 22,
-          "hotfix": 7,
-          "deploy": 27
-        },
-        "issues": {
-          "null_undefined": 149,
-          "timeout": 22,
-          "auth_failure": 59,
-          "data_integrity": 5,
-          "memory": 4,
-          "race_condition": 1
-        },
-        "asdfasdfa": {
-          "longevity": 448,
-          "k_score": 423,
-          "diamond_hands": 1047,
-          "metal_rank": 294,
-          "organic": 53,
-          "burn_fee": 16,
-          "phi_ratio": 6
-        },
-        "technical": {
-          "rate_limit": 65,
-          "async_await": 318,
-          "try_catch": 231,
-          "redis_usage": 9,
-          "signature": 142,
-          "socket_io": 7,
-          "burn_mechanism": 118,
-          "postgres_query": 10,
-          "cron_job": 2
-        },
-        "solutions": {
-          "cache_strategy": 162,
-          "queue_pattern": 88,
-          "validation": 25,
-          "retry_logic": 16,
-          "circuit_breaker": 3,
-          "graceful_shutdown": 3
-        },
-        "architecture": {
-          "middleware": 55,
-          "factory": 6,
-          "singleton": 1,
-          "repository": 2
-        }
-      },
-      "score": 6.370806353946862,
-      "conversationCount": 249
-    },
-    {
-      "session_id": "fd5a8744-9014-4f0c-9aec-07b45d0d5473",
-      "patterns": {
-        "technical": {
-          "async_await": 904,
-          "try_catch": 420,
-          "webhook": 296,
-          "rate_limit": 275,
-          "signature": 1362,
-          "redis_usage": 37,
-          "postgres_query": 45,
-          "burn_mechanism": 697,
-          "cron_job": 12,
-          "socket_io": 2
-        },
-        "process": {
-          "pr_review": 2416,
-          "refactor": 12,
-          "hotfix": 67,
-          "migration": 50,
-          "deploy": 206,
-          "rollback": 2
-        },
-        "issues": {
-          "timeout": 123,
-          "null_undefined": 367,
-          "auth_failure": 78,
-          "data_integrity": 904,
-          "race_condition": 27,
-          "memory": 13,
-          "infinite_loop": 3,
-          "connection": 10
-        },
-        "solutions": {
-          "circuit_breaker": 5,
-          "validation": 111,
-          "cache_strategy": 847,
-          "queue_pattern": 240,
-          "retry_logic": 50,
-          "graceful_shutdown": 12
-        },
-        "asdfasdfa": {
-          "k_score": 1188,
-          "diamond_hands": 2936,
-          "longevity": 642,
-          "metal_rank": 186,
-          "phi_ratio": 157,
-          "organic": 53
-        },
-        "architecture": {
-          "middleware": 95,
-          "factory": 3,
-          "singleton": 2
-        }
-      },
-      "score": 6.352792041154858,
-      "conversationCount": 462
-    },
-    {
-      "session_id": "fd859f5f-093a-46aa-914e-b441c8a82da7",
-      "patterns": {
-        "technical": {
-          "webhook": 481,
-          "rate_limit": 120,
-          "async_await": 638,
-          "try_catch": 340,
-          "redis_usage": 26,
-          "signature": 240,
-          "burn_mechanism": 128,
-          "cron_job": 1,
-          "socket_io": 13,
-          "postgres_query": 9
-        },
-        "process": {
-          "pr_review": 1234,
-          "migration": 15,
-          "refactor": 7,
-          "deploy": 145,
-          "hotfix": 21
-        },
-        "issues": {
-          "null_undefined": 355,
-          "timeout": 90,
-          "memory": 17,
-          "auth_failure": 71,
-          "data_integrity": 4,
-          "race_condition": 4,
-          "connection": 44
-        },
-        "solutions": {
-          "cache_strategy": 428,
-          "queue_pattern": 261,
-          "circuit_breaker": 13,
-          "validation": 49,
-          "retry_logic": 9,
-          "graceful_shutdown": 2
-        },
-        "architecture": {
-          "middleware": 54,
-          "repository": 1
-        },
-        "asdfasdfa": {
-          "k_score": 1112,
-          "diamond_hands": 2200,
-          "longevity": 478,
-          "metal_rank": 473,
-          "organic": 41,
-          "phi_ratio": 27,
-          "burn_fee": 2
-        }
-      },
-      "score": 6.323599282276005,
-      "conversationCount": 389
-    },
-    {
-      "session_id": "d6263874-f44f-450d-b20c-fd1dff615ef8",
-      "patterns": {
-        "technical": {
-          "async_await": 826,
-          "try_catch": 474,
-          "rate_limit": 106,
-          "cron_job": 16,
-          "signature": 10,
-          "socket_io": 129,
-          "burn_mechanism": 207,
-          "redis_usage": 8,
-          "postgres_query": 23
-        },
-        "process": {
-          "pr_review": 2299,
-          "deploy": 192,
-          "migration": 13,
-          "refactor": 26,
-          "hotfix": 2,
-          "rollback": 13
-        },
-        "issues": {
-          "timeout": 73,
-          "null_undefined": 644,
-          "auth_failure": 60,
-          "connection": 12,
-          "race_condition": 1,
-          "memory": 5,
-          "data_integrity": 1
-        },
-        "solutions": {
-          "cache_strategy": 273,
-          "queue_pattern": 264,
-          "retry_logic": 24,
-          "validation": 20,
-          "graceful_shutdown": 4
-        },
-        "asdfasdfa": {
-          "k_score": 1212,
-          "phi_ratio": 28,
-          "diamond_hands": 2798,
-          "longevity": 1025,
-          "metal_rank": 166,
-          "organic": 21,
-          "burn_fee": 2
-        },
-        "architecture": {
-          "middleware": 7,
-          "factory": 1,
-          "repository": 9
-        }
-      },
-      "score": 6.276386404490726,
-      "conversationCount": 532
-    },
-    {
-      "session_id": "c68cc8d9-9f93-42c6-b8b9-83bf072411fd",
-      "patterns": {
-        "technical": {
-          "async_await": 60,
-          "try_catch": 49,
-          "redis_usage": 6,
-          "postgres_query": 7,
-          "webhook": 5,
-          "socket_io": 7,
-          "rate_limit": 9,
-          "cron_job": 1,
-          "signature": 176,
-          "burn_mechanism": 33
-        },
-        "process": {
-          "deploy": 13,
-          "pr_review": 230,
-          "hotfix": 5,
-          "migration": 2,
-          "rollback": 1,
-          "refactor": 5
-        },
-        "issues": {
-          "timeout": 6,
-          "memory": 9,
-          "null_undefined": 34,
-          "race_condition": 2,
-          "auth_failure": 8,
-          "data_integrity": 27
-        },
-        "solutions": {
-          "retry_logic": 2,
-          "circuit_breaker": 1,
-          "graceful_shutdown": 22,
-          "cache_strategy": 78,
-          "queue_pattern": 98,
-          "validation": 12
-        },
-        "architecture": {
-          "middleware": 18,
-          "factory": 1,
-          "repository": 1
-        },
-        "asdfasdfa": {
-          "k_score": 161,
-          "phi_ratio": 63,
-          "diamond_hands": 111,
-          "organic": 38,
-          "longevity": 294,
-          "metal_rank": 40
-        }
-      },
-      "score": 6.19999955641286,
-      "conversationCount": 23
-    },
-    {
-      "session_id": "9fd9cd54-e678-4785-b5c0-0879cda75a94",
-      "patterns": {
-        "technical": {
-          "signature": 258,
-          "burn_mechanism": 548,
-          "webhook": 83,
-          "async_await": 71,
-          "rate_limit": 21,
-          "cron_job": 2,
-          "try_catch": 29,
-          "redis_usage": 3
-        },
-        "process": {
-          "pr_review": 1348,
-          "deploy": 72,
-          "refactor": 13,
-          "hotfix": 25,
-          "migration": 43,
-          "rollback": 2
-        },
-        "issues": {
-          "data_integrity": 97,
-          "null_undefined": 27,
-          "race_condition": 17,
-          "timeout": 26,
-          "memory": 1,
-          "auth_failure": 6
-        },
-        "asdfasdfa": {
-          "k_score": 147,
-          "phi_ratio": 157,
-          "diamond_hands": 215,
-          "longevity": 331,
-          "metal_rank": 153,
-          "burn_fee": 38,
-          "organic": 33
-        },
-        "solutions": {
-          "retry_logic": 26,
-          "cache_strategy": 134,
-          "queue_pattern": 49,
-          "circuit_breaker": 23,
-          "validation": 30,
-          "graceful_shutdown": 5
-        },
-        "architecture": {
-          "repository": 128,
-          "middleware": 26,
-          "factory": 1
-        }
-      },
-      "score": 6.123599725863146,
-      "conversationCount": 126
-    },
-    {
-      "session_id": "8370b071-3a81-41db-b077-4a6dfef6b1e4",
-      "patterns": {
-        "technical": {
-          "signature": 99,
-          "burn_mechanism": 86,
-          "rate_limit": 17,
-          "webhook": 61,
-          "async_await": 33,
-          "try_catch": 16,
-          "socket_io": 3,
-          "redis_usage": 1
-        },
-        "process": {
-          "deploy": 32,
-          "pr_review": 375,
-          "refactor": 7,
-          "hotfix": 7,
-          "migration": 2
-        },
-        "issues": {
-          "memory": 3,
-          "timeout": 32,
-          "data_integrity": 25,
-          "null_undefined": 42,
-          "auth_failure": 6
-        },
-        "architecture": {
-          "factory": 2,
-          "middleware": 6,
-          "repository": 7
-        },
-        "asdfasdfa": {
-          "longevity": 171,
-          "metal_rank": 43,
-          "k_score": 39,
-          "phi_ratio": 152,
-          "diamond_hands": 162,
-          "organic": 7,
-          "burn_fee": 3
-        },
-        "solutions": {
-          "queue_pattern": 109,
-          "cache_strategy": 65,
-          "graceful_shutdown": 2,
-          "circuit_breaker": 8,
-          "validation": 19,
-          "retry_logic": 6
-        }
-      },
-      "score": 5.970807241121147,
-      "conversationCount": 105
-    },
-    {
-      "session_id": "bdb249fe-7f18-4b3a-9f62-fb5eebb48d7f",
-      "patterns": {
-        "technical": {
-          "try_catch": 222,
-          "webhook": 153,
-          "rate_limit": 118,
-          "async_await": 248,
-          "socket_io": 14,
-          "burn_mechanism": 126,
-          "signature": 206,
-          "redis_usage": 1,
-          "postgres_query": 3
-        },
-        "process": {
-          "pr_review": 957,
-          "deploy": 211,
-          "hotfix": 8,
-          "migration": 14,
-          "refactor": 2
-        },
-        "issues": {
-          "null_undefined": 180,
-          "data_integrity": 76,
-          "timeout": 9,
-          "memory": 11,
-          "auth_failure": 41
-        },
-        "solutions": {
-          "cache_strategy": 112,
-          "queue_pattern": 170,
-          "validation": 69,
-          "retry_logic": 3,
-          "circuit_breaker": 5,
-          "graceful_shutdown": 2
-        },
-        "architecture": {
-          "middleware": 27,
-          "factory": 2
-        },
-        "asdfasdfa": {
-          "k_score": 481,
-          "diamond_hands": 886,
-          "longevity": 576,
-          "metal_rank": 651,
-          "organic": 42,
-          "phi_ratio": 102,
-          "burn_fee": 1
-        }
-      },
-      "score": 5.970807241121147,
-      "conversationCount": 195
-    },
-    {
-      "session_id": "80ecd78b-c294-4342-8a70-58205d583c45",
-      "patterns": {
-        "technical": {
-          "signature": 1145,
-          "async_await": 236,
-          "try_catch": 162,
-          "redis_usage": 18,
-          "postgres_query": 20,
-          "rate_limit": 18,
-          "cron_job": 9,
-          "burn_mechanism": 187,
-          "webhook": 11
-        },
-        "issues": {
-          "data_integrity": 730,
-          "timeout": 28,
-          "null_undefined": 211,
-          "race_condition": 5,
-          "infinite_loop": 9,
-          "auth_failure": 27,
-          "memory": 6
-        },
-        "asdfasdfa": {
-          "k_score": 510,
-          "phi_ratio": 32,
-          "diamond_hands": 1029,
-          "organic": 42,
-          "longevity": 248,
-          "metal_rank": 24
-        },
-        "process": {
-          "deploy": 57,
-          "pr_review": 1072,
-          "hotfix": 108,
-          "refactor": 8,
-          "rollback": 1,
-          "migration": 8
-        },
-        "solutions": {
-          "cache_strategy": 104,
-          "queue_pattern": 41,
-          "retry_logic": 12,
-          "validation": 14
-        },
-        "architecture": {
-          "factory": 16,
-          "middleware": 2,
-          "repository": 1
-        }
-      },
-      "score": 5.829178002058443,
-      "conversationCount": 118
+      "score": 1,
+      "conversationCount": 10
     }
   ]
 }

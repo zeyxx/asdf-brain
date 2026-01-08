@@ -1,0 +1,32 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-08",
+    "description": "Burn statistics for brain operations"
+  },
+  "totals": {
+    "total_burned": 0,
+    "total_operations": 0,
+    "burn_rate": 0.382
+  },
+  "by_operation": {
+    "context_inject": { "count": 0, "burned": 0, "rate": 1000 },
+    "pattern_create": { "count": 0, "burned": 0, "rate": 5000 },
+    "pattern_query": { "count": 0, "burned": 0, "rate": 500 },
+    "decision_record": { "count": 0, "burned": 0, "rate": 3000 },
+    "merkle_proof": { "count": 0, "burned": 0, "rate": 2000 }
+  },
+  "by_project": {
+    "holdex": 0,
+    "gasdf": 0,
+    "brain": 0,
+    "manifesto": 0,
+    "ecosystem": 0
+  },
+  "daily": [],
+  "weekly": [],
+  "_phi": {
+    "burn_rate": "38.2% (φ⁻²)",
+    "philosophy": "Don't extract. Burn."
+  }
+}

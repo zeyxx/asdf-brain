@@ -1,0 +1,22 @@
+[
+  {
+    "type": "decision",
+    "project": "holdex",
+    "content": {
+      "timestamp": "2026-01-08T15:01:37.466Z",
+      "type": "architecture",
+      "content": "Use φ weights for K-Score",
+      "rationale": "Golden ratio balance"
+    },
+    "session_id": "aa2adfe6acb7f550",
+    "timestamp": "2026-01-08T15:01:37.466Z"
+  },
+  {
+    "type": "cross_reference",
+    "from_project": "holdex",
+    "to_project": "manifesto",
+    "context": "φ distribution principle",
+    "session_id": "aa2adfe6acb7f550",
+    "timestamp": "2026-01-08T15:01:37.467Z"
+  }
+]

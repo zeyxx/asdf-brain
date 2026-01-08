@@ -1,0 +1,66 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-08",
+    "description": "Contributor registry with E-Score tracking"
+  },
+  "contributors": {
+    "zeyxx": {
+      "id": "zeyxx",
+      "joined": "2024-01-01",
+      "trust_level": "core",
+      "e_score": {
+        "current": 85.0,
+        "dimensions": {
+          "HOLD": { "score": 90, "weight": 1.0 },
+          "BURN": { "score": 80, "weight": 1.618 },
+          "USE": { "score": 95, "weight": 1.0 },
+          "BUILD": { "score": 95, "weight": 2.618 },
+          "RUN": { "score": 70, "weight": 2.618 },
+          "REFER": { "score": 75, "weight": 1.618 },
+          "TIME": { "score": 100, "weight": 1.0 }
+        }
+      },
+      "contributions": {
+        "patterns_created": 45,
+        "decisions_recorded": 23,
+        "code_commits": 156,
+        "knowledge_entries": 89
+      }
+    },
+    "sollama58": {
+      "id": "sollama58",
+      "joined": "2024-03-15",
+      "trust_level": "core",
+      "e_score": {
+        "current": 78.0,
+        "dimensions": {
+          "HOLD": { "score": 85, "weight": 1.0 },
+          "BURN": { "score": 75, "weight": 1.618 },
+          "USE": { "score": 90, "weight": 1.0 },
+          "BUILD": { "score": 70, "weight": 2.618 },
+          "RUN": { "score": 95, "weight": 2.618 },
+          "REFER": { "score": 80, "weight": 1.618 },
+          "TIME": { "score": 85, "weight": 1.0 }
+        }
+      },
+      "contributions": {
+        "patterns_created": 12,
+        "decisions_recorded": 8,
+        "infrastructure_ops": 234,
+        "knowledge_entries": 34
+      }
+    }
+  },
+  "trust_levels": {
+    "observer": { "min_score": 0, "permissions": ["read"] },
+    "contributor": { "min_score": 23.6, "permissions": ["read", "suggest"] },
+    "builder": { "min_score": 38.2, "permissions": ["read", "suggest", "create"] },
+    "maintainer": { "min_score": 61.8, "permissions": ["read", "suggest", "create", "approve"] },
+    "core": { "min_score": 80.0, "permissions": ["read", "suggest", "create", "approve", "admin"] }
+  },
+  "_phi": {
+    "thresholds": "φ⁻³, φ⁻², φ⁻¹ define trust boundaries",
+    "weights": "BUILD and RUN weighted by φ² for maximum impact"
+  }
+}

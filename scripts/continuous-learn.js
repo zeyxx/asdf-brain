@@ -23,19 +23,37 @@ const { spawn, spawnSync } = require('child_process');
 // CONFIGURATION
 // =============================================================================
 
+// =============================================================================
+// DETECT WORKSPACE STRUCTURE
+// =============================================================================
+
+const BRAIN_ROOT = path.join(__dirname, '..');
+const ECOSYSTEM_ROOT = process.env.ECOSYSTEM_ROOT || '/workspaces/asdfasdfa-ecosystem';
+
+// Auto-detect if we're in the ecosystem workspace (symlinks exist)
+const isEcosystem = fs.existsSync(path.join(ECOSYSTEM_ROOT, 'HolDex'));
+
 const CONFIG = {
   // Source directories to watch
   transcriptDirs: [
     path.join(process.env.HOME, '.claude/projects'),
   ],
 
-  // Output paths
-  conversationsRaw: '/workspaces/HolDex/training/raw/conversations.jsonl',
-  conversationsSafe: '/workspaces/HolDex/training/raw/conversations-safe.jsonl',
+  // Output paths - adapt to workspace structure
+  learnedPath: path.join(BRAIN_ROOT, 'knowledge/learned'),
+  ingestedPath: path.join(BRAIN_ROOT, 'knowledge/ingested'),
+  conversationsRaw: isEcosystem
+    ? path.join(ECOSYSTEM_ROOT, 'HolDex/training/raw/conversations.jsonl')
+    : path.join(BRAIN_ROOT, 'data/conversations.jsonl'),
+  conversationsSafe: isEcosystem
+    ? path.join(ECOSYSTEM_ROOT, 'HolDex/training/raw/conversations-safe.jsonl')
+    : path.join(BRAIN_ROOT, 'data/conversations-safe.jsonl'),
 
   // Scripts
-  extractScript: '/workspaces/HolDex/training/scripts/extractConversations.js',
-  sanitizeScript: '/workspaces/asdf-brain/scripts/sanitizer.js',
+  extractScript: isEcosystem
+    ? path.join(ECOSYSTEM_ROOT, 'HolDex/training/scripts/extractConversations.js')
+    : null, // Skip if not in ecosystem
+  sanitizeScript: path.join(BRAIN_ROOT, 'scripts/sanitizer.js'),
   brainScripts: [
     'extract-intent.js',
     'extract-patterns.js',
@@ -44,6 +62,7 @@ const CONFIG = {
     'analyze-dependencies.js',
     'health-check.js',
     'extract-vision.js',
+    'merkle.js', // Update merkle state after learning
   ],
 
   // Timing
@@ -86,14 +105,96 @@ function runScript(scriptPath, args = []) {
   return true;
 }
 
+/**
+ * Extract conversations directly from Claude transcripts
+ * Works without external scripts
+ */
+function extractTranscriptsDirect() {
+  log('📥', 'Extracting from Claude transcripts directly...');
+  const outputPath = path.join(CONFIG.learnedPath, 'transcripts.jsonl');
+  let count = 0;
+
+  for (const dir of CONFIG.transcriptDirs) {
+    if (!fs.existsSync(dir)) continue;
+
+    const projectDirs = fs.readdirSync(dir, { withFileTypes: true })
+      .filter(d => d.isDirectory())
+      .map(d => path.join(dir, d.name));
+
+    for (const projectDir of projectDirs) {
+      const transcripts = fs.readdirSync(projectDir)
+        .filter(f => f.endsWith('.jsonl') && !f.startsWith('agent-'));
+
+      for (const transcript of transcripts) {
+        const filePath = path.join(projectDir, transcript);
+        try {
+          const lines = fs.readFileSync(filePath, 'utf-8').split('\n').filter(l => l.trim());
+
+          for (const line of lines) {
+            try {
+              const entry = JSON.parse(line);
+
+              // Extract user/assistant messages (Claude Code format)
+              if (entry.type === 'user' || entry.type === 'assistant') {
+                // Handle different message formats
+                let content = '';
+                if (typeof entry.message === 'string') {
+                  content = entry.message;
+                } else if (entry.message?.content) {
+                  // message.content can be string or array
+                  if (typeof entry.message.content === 'string') {
+                    content = entry.message.content;
+                  } else if (Array.isArray(entry.message.content)) {
+                    // Extract text from content blocks
+                    content = entry.message.content
+                      .filter(b => b.type === 'text')
+                      .map(b => b.text)
+                      .join('\n');
+                  }
+                }
+
+                if (content && content.length > 10) {
+                  const extracted = {
+                    type: entry.type === 'user' ? 'human' : 'assistant',
+                    content: content.slice(0, 2000),
+                    timestamp: entry.timestamp || new Date().toISOString(),
+                    source: `transcript:${transcript}`,
+                    session_id: entry.sessionId,
+                  };
+
+                  fs.appendFileSync(outputPath, JSON.stringify(extracted) + '\n');
+                  count++;
+                }
+              }
+            } catch (e) {
+              // Skip malformed lines
+            }
+          }
+        } catch (e) {
+          log('⚠️', `Failed to read ${transcript}: ${e.message}`);
+        }
+      }
+    }
+  }
+
+  log('✅', `Extracted ${count} entries from transcripts`);
+  return count;
+}
+
 async function runFullPipeline() {
   const startTime = Date.now();
   log('🧠', '=== Starting brain update pipeline ===');
 
   // Step 1: Extract conversations from transcripts
   log('📥', 'Step 1/4: Extracting conversations from transcripts...');
-  if (!runScript(CONFIG.extractScript)) {
-    log('⚠️', 'Extraction failed, continuing with existing data');
+  if (CONFIG.extractScript && fs.existsSync(CONFIG.extractScript)) {
+    if (!runScript(CONFIG.extractScript)) {
+      log('⚠️', 'HolDex extraction failed, using direct extraction');
+      extractTranscriptsDirect();
+    }
+  } else {
+    // Direct extraction when no HolDex script
+    extractTranscriptsDirect();
   }
 
   // Step 2: Sanitize conversations

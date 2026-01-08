@@ -1,0 +1,77 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "generated": "2026-01-08",
+    "purpose": "Multi-context AI superlayer schema"
+  },
+
+  "session": {
+    "description": "Active conversation session",
+    "schema": {
+      "id": "string - unique session identifier",
+      "user_id": "string - contributor or anonymous hash",
+      "project": "string - holdex|gasdf|brain|manifesto|ecosystem",
+      "started_at": "ISO datetime",
+      "last_activity": "ISO datetime",
+      "context_stack": "array - accumulated context during session",
+      "decisions": "array - decisions made in this session",
+      "patterns_used": "array - patterns referenced",
+      "active": "boolean"
+    }
+  },
+
+  "user": {
+    "description": "User/contributor profile",
+    "schema": {
+      "id": "string - unique user identifier",
+      "type": "core|contributor|community|anonymous",
+      "projects": "array - projects they work on",
+      "sessions": "array - session history",
+      "expertise": "object - { project: level }",
+      "preferences": "object - context preferences"
+    }
+  },
+
+  "project_context": {
+    "description": "Project-specific knowledge layer",
+    "schema": {
+      "project": "string - project identifier",
+      "active_patterns": "array - currently relevant patterns",
+      "recent_decisions": "array - last N decisions",
+      "known_issues": "array - ongoing problems",
+      "conventions": "object - coding/process conventions",
+      "dependencies": "array - other projects this depends on"
+    }
+  },
+
+  "context_injection": {
+    "description": "What gets injected into AI context",
+    "schema": {
+      "session_context": "Current session state",
+      "project_context": "Relevant project knowledge",
+      "cross_project": "Related patterns from other projects",
+      "philosophy_anchor": "Relevant manifesto principles",
+      "recent_learnings": "Recent insights from all sessions"
+    },
+    "phi_weights": {
+      "session_context": 2.618,
+      "project_context": 1.618,
+      "cross_project": 1.0,
+      "philosophy_anchor": 0.618,
+      "recent_learnings": 1.0
+    }
+  },
+
+  "live_events": {
+    "description": "Real-time events the superlayer tracks",
+    "types": [
+      "session_start",
+      "session_end",
+      "decision_made",
+      "pattern_discovered",
+      "error_encountered",
+      "context_switch",
+      "cross_project_reference"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-08T03:01:06.325Z",
+    "generated": "2026-01-08T14:34:04.830Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -151,20 +151,15 @@
           "./src/utils/nodeKeys": 1,
           "./services/pool_finder": 1,
           "./utils/metaplex": 1,
-          "./services/solana": 1,
-          "./extractGitDecisions.js": 1,
-          "./exportClaudeMem.js": 1,
-          "./exportKScoreHistory.js": 1,
-          "./exportHolderSnapshots.js": 1,
-          "./labelTokenOutcomes.js": 1
+          "./services/solana": 1
         },
         "external": {
           "@eslint/js": 1,
           "globals": 1,
           "node-fetch": 1,
           "canvas": 2,
-          "dotenv": 30,
-          "pg": 23,
+          "dotenv": 26,
+          "pg": 20,
           "express": 6,
           "cors": 1,
           "helmet": 1,
@@ -180,13 +175,11 @@
           "redis": 1
         },
         "node": {
-          "fs": 11,
-          "path": 11,
-          "os": 2,
+          "fs": 3,
+          "path": 3,
+          "os": 1,
           "http": 1,
-          "crypto": 20,
-          "child_process": 2,
-          "readline": 2
+          "crypto": 20
         }
       }
     },
@@ -391,10 +384,16 @@
       "package": {
         "name": "asdf-brain",
         "version": "1.0.0",
-        "dependencies": {},
+        "dependencies": {
+          "express": "^4.21.0",
+          "cors": "^2.8.5"
+        },
         "devDependencies": {},
         "scripts": [
           "start",
+          "mcp",
+          "lite",
+          "lite:http",
           "brain:search",
           "brain:analyze",
           "brain:index",
@@ -408,18 +407,35 @@
           "brain:deps",
           "brain:health",
           "brain:vision",
+          "brain:merkle",
+          "brain:verify",
+          "brain:sync",
+          "brain:learn",
+          "brain:daemon",
           "brain:all"
         ]
       },
       "imports": {
-        "internal": {},
-        "external": {},
+        "internal": {
+          "./extractGitDecisions.js": 1,
+          "./exportClaudeMem.js": 1,
+          "./exportKScoreHistory.js": 1,
+          "./exportHolderSnapshots.js": 1,
+          "./labelTokenOutcomes.js": 1
+        },
+        "external": {
+          "pg": 3,
+          "dotenv": 4,
+          "express": 1
+        },
         "node": {
-          "fs": 16,
-          "path": 16,
-          "readline": 8,
-          "crypto": 2,
-          "child_process": 5
+          "fs": 28,
+          "path": 28,
+          "crypto": 6,
+          "readline": 12,
+          "http": 1,
+          "child_process": 8,
+          "os": 1
         }
       }
     }
@@ -458,11 +474,13 @@
     "cors": {
       "repos": [
         "holdex",
-        "gasdf"
+        "gasdf",
+        "asdf-brain"
       ],
       "versions": {
         "holdex": "^2.8.5",
-        "gasdf": "^2.8.5"
+        "gasdf": "^2.8.5",
+        "asdf-brain": "^2.8.5"
       }
     },
     "dotenv": {
@@ -478,11 +496,13 @@
     "express": {
       "repos": [
         "holdex",
-        "gasdf"
+        "gasdf",
+        "asdf-brain"
       ],
       "versions": {
         "holdex": "^4.21.0",
-        "gasdf": "^4.21.0"
+        "gasdf": "^4.21.0",
+        "asdf-brain": "^4.21.0"
       }
     },
     "express-rate-limit": {
@@ -571,11 +591,13 @@
     "express": {
       "used_in": [
         "holdex",
-        "gasdf"
+        "gasdf",
+        "asdf-brain"
       ],
       "versions": {
         "holdex": "^4.21.0",
-        "gasdf": "^4.21.0"
+        "gasdf": "^4.21.0",
+        "asdf-brain": "^4.21.0"
       }
     },
     "ioredis": {
@@ -756,6 +778,12 @@
         "version": "^2.8.5"
       },
       {
+        "from": "asdf-brain",
+        "to": "cors",
+        "type": "depends_on",
+        "version": "^2.8.5"
+      },
+      {
         "from": "holdex",
         "to": "dotenv",
         "type": "depends_on",
@@ -775,6 +803,12 @@
       },
       {
         "from": "gasdf",
+        "to": "express",
+        "type": "depends_on",
+        "version": "^4.21.0"
+      },
+      {
+        "from": "asdf-brain",
         "to": "express",
         "type": "depends_on",
         "version": "^4.21.0"
@@ -870,6 +904,6 @@
     "shared_deps": 13,
     "mismatches": 0,
     "graph_nodes": 16,
-    "graph_edges": 26
+    "graph_edges": 28
   }
 }

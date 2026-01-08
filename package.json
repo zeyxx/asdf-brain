@@ -4,11 +4,14 @@
   "description": "The living memory of the $asdfasdfa ecosystem",
   "main": "mcp-server.js",
   "bin": {
-    "asdf-brain": "./mcp-server.js"
+    "asdf-brain": "./mcp-server.js",
+    "brain-lite": "./brain-lite.js"
   },
   "scripts": {
     "start": "node server.js",
     "mcp": "node mcp-server.js",
+    "lite": "node brain-lite.js",
+    "lite:http": "node brain-lite.js --http --port=3002",
     "brain:search": "node scripts/search.js",
     "brain:analyze": "node scripts/analyze.js",
     "brain:index": "node scripts/indexer.js",
@@ -22,12 +25,25 @@
     "brain:deps": "node scripts/analyze-dependencies.js",
     "brain:health": "node scripts/health-check.js",
     "brain:vision": "node scripts/extract-vision.js",
-    "brain:all": "npm run brain:index && npm run brain:intent && npm run brain:patterns && npm run brain:errors && npm run brain:evolution && npm run brain:philosophy && npm run brain:deps && npm run brain:health && npm run brain:vision"
+    "brain:merkle": "node scripts/merkle.js state",
+    "brain:verify": "node scripts/merkle.js verify",
+    "brain:sync": "node scripts/sync-claude-mem.js",
+    "brain:learn": "node scripts/continuous-learn.js --once",
+    "brain:daemon": "node scripts/continuous-learn.js",
+    "brain:holdex": "node scripts/sync-holdex.js",
+    "brain:solana": "node scripts/publish-to-solana.js",
+    "brain:solana:status": "node scripts/publish-to-solana.js --status",
+    "brain:solana:init": "node scripts/publish-to-solana.js --init",
+    "brain:weekly": "node scripts/weekly-snapshot.js",
+    "brain:weekly:dry": "node scripts/weekly-snapshot.js --dry-run",
+    "brain:all": "npm run brain:index && npm run brain:intent && npm run brain:patterns && npm run brain:errors && npm run brain:evolution && npm run brain:philosophy && npm run brain:deps && npm run brain:health && npm run brain:vision && npm run brain:merkle"
   },
   "keywords": ["asdfasdfa", "solana", "knowledge", "ai", "mcp", "claude"],
   "license": "MIT",
   "dependencies": {
     "express": "^4.21.0",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "@solana/web3.js": "^1.95.0",
+    "js-sha3": "^0.9.3"
   }
 }

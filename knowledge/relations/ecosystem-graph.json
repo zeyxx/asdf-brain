@@ -1,49 +1,188 @@
 {
   "_metadata": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "generated": "2026-01-08",
     "philosophy": "$asdfasdfa - Don't trust, verify",
-    "verification": "All connections extracted from actual code, not assumed"
+    "verification": "All connections extracted from actual code, not assumed",
+    "onchain_ready": true
   },
 
   "nodes": {
     "asdfasdfa": {
       "type": "token",
       "mint": "9zB5wRarXMj86MymwLumSKA1Dx35zPqqKfcZtK1Spump",
-      "layer": "foundation",
+      "layer": "malkhuth",
+      "sefirah": "Malkhuth",
       "role": "Central token - all fees burn to this"
+    },
+
+    "_infrastructure_tokens": {
+      "_note": "Foundation tokens that the ecosystem depends on - tracked by I_infra score"
+    },
+    "SOL": {
+      "type": "infrastructure_token",
+      "mint": "So11111111111111111111111111111111111111112",
+      "layer": "foundation",
+      "sefirah": "Yesod",
+      "role": "Native gas token - reference point for all I_infra",
+      "i_infra_baseline": 100,
+      "category": "native"
+    },
+    "USDC": {
+      "type": "infrastructure_token",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "layer": "foundation",
+      "sefirah": "Yesod",
+      "role": "Primary stablecoin - main fee payment path",
+      "issuer": "Circle",
+      "category": "stablecoin"
+    },
+    "USDT": {
+      "type": "infrastructure_token",
+      "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+      "layer": "foundation",
+      "sefirah": "Yesod",
+      "role": "Secondary stablecoin",
+      "issuer": "Tether",
+      "category": "stablecoin"
+    },
+    "wSOL": {
+      "type": "infrastructure_token",
+      "mint": "So11111111111111111111111111111111111111112",
+      "layer": "foundation",
+      "sefirah": "Yesod",
+      "role": "Wrapped SOL for DeFi interactions",
+      "inherits_from": "SOL",
+      "category": "wrapped"
+    },
+    "JitoSOL": {
+      "type": "infrastructure_token",
+      "mint": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+      "layer": "foundation",
+      "sefirah": "Yesod",
+      "role": "Liquid staking token (Jito)",
+      "operator": "Jito",
+      "category": "lst"
+    },
+    "mSOL": {
+      "type": "infrastructure_token",
+      "mint": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+      "layer": "foundation",
+      "sefirah": "Yesod",
+      "role": "Liquid staking token (Marinade)",
+      "operator": "Marinade",
+      "category": "lst"
+    },
+    "bSOL": {
+      "type": "infrastructure_token",
+      "mint": "bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1",
+      "layer": "foundation",
+      "sefirah": "Yesod",
+      "role": "Liquid staking token (BlazeStake)",
+      "operator": "BlazeStake",
+      "category": "lst"
     },
     "holdex": {
       "type": "service",
       "layer": "intelligence",
+      "sefirah": "Hod",
       "role": "K-Score oracle, token verification, single source of truth",
-      "endpoints": ["/api/tokens", "/api/oracle/*", "/api/space/*"]
+      "endpoints": ["/api/tokens", "/api/oracle/*", "/api/space/*"],
+      "status": "live",
+      "url": "https://holdex-api.onrender.com"
     },
     "gasdf": {
       "type": "service",
       "layer": "infrastructure",
+      "sefirah": "Yesod",
       "role": "Gasless transactions, fee abstraction, burn mechanism",
-      "endpoints": ["/v1/quote", "/v1/submit", "/v1/holdex/*"]
+      "endpoints": ["/v1/quote", "/v1/submit", "/v1/holdex/*"],
+      "status": "live",
+      "url": "https://gasdf-43r8.onrender.com"
     },
     "asdf-brain": {
       "type": "intelligence",
       "layer": "meta",
-      "role": "Living memory, pattern extraction, ecosystem analysis"
+      "sefirah": "Daat",
+      "role": "Living memory, pattern extraction, ecosystem analysis, collective knowledge",
+      "status": "live",
+      "url": "https://asdf-brain.onrender.com"
     },
     "asdf-manifesto": {
       "type": "philosophy",
       "layer": "foundation",
+      "sefirah": "Keter",
       "role": "Core principles, economic model, alignment rules"
+    },
+    "asdf-oracle": {
+      "type": "service",
+      "layer": "intelligence",
+      "sefirah": "Hod",
+      "role": "Decentralized oracle infrastructure",
+      "status": "development"
+    },
+    "asdf-validator": {
+      "type": "service",
+      "layer": "infrastructure",
+      "sefirah": "Gevurah",
+      "role": "On-chain validation and verification",
+      "status": "development"
+    },
+    "asdf-burn-engine": {
+      "type": "service",
+      "layer": "infrastructure",
+      "sefirah": "Gevurah",
+      "role": "Core burn mechanism implementation",
+      "status": "development"
+    },
+    "ignition": {
+      "type": "app",
+      "layer": "consumer",
+      "sefirah": "Netzach",
+      "role": "Fair token launches with K-Score from birth",
+      "status": "planned"
+    },
+    "asdforecast": {
+      "type": "app",
+      "layer": "consumer",
+      "sefirah": "Netzach",
+      "role": "Prediction markets powered by K-Score",
+      "status": "development"
+    },
+    "asdev": {
+      "type": "app",
+      "layer": "consumer",
+      "sefirah": "Netzach",
+      "role": "Developer tools and integrations",
+      "status": "development"
+    },
+    "claude-mem": {
+      "type": "infrastructure",
+      "layer": "local",
+      "sefirah": "Yesod-local",
+      "role": "Local persistence, feeds into asdf-brain"
     },
     "sollama58": {
       "type": "contributor",
-      "role": "Production deployments",
-      "trust_level": "core"
+      "role": "Production deployments, operations",
+      "trust_level": "core",
+      "contributions": 1102,
+      "context": "production"
     },
     "zeyxx": {
       "type": "contributor",
-      "role": "Development",
-      "trust_level": "core"
+      "role": "Development, architecture",
+      "trust_level": "core",
+      "contributions": 936,
+      "context": "development"
+    },
+    "ragnar-no-sleep": {
+      "type": "contributor",
+      "role": "asdf-brain development",
+      "trust_level": "contributor",
+      "contributions": 0,
+      "context": "brain",
+      "joined": "2026-01-08"
     }
   },
 
@@ -79,6 +218,12 @@
       "description": "HolDex Space fees burn $ASDFASDFA"
     },
     {
+      "from": "asdf-burn-engine",
+      "to": "asdfasdfa",
+      "type": "burns",
+      "description": "Core burn mechanism"
+    },
+    {
       "from": "asdf-brain",
       "to": "holdex",
       "type": "indexes",
@@ -93,6 +238,13 @@
       "description": "Brain indexes GASdf knowledge"
     },
     {
+      "from": "claude-mem",
+      "to": "asdf-brain",
+      "type": "feeds",
+      "data_flow": ["observations", "sessions"],
+      "description": "Local memory feeds into collective brain"
+    },
+    {
       "from": "asdf-manifesto",
       "to": "holdex",
       "type": "guides",
@@ -105,8 +257,56 @@
       "description": "Manifesto principles implemented in GASdf"
     },
     {
+      "from": "asdf-manifesto",
+      "to": "asdf-brain",
+      "type": "guides",
+      "description": "Manifesto philosophy guides brain design"
+    },
+    {
+      "from": "asdf-oracle",
+      "to": "holdex",
+      "type": "extends",
+      "description": "Decentralized oracle for HolDex"
+    },
+    {
+      "from": "asdf-validator",
+      "to": "asdfasdfa",
+      "type": "verifies",
+      "description": "On-chain validation of burns and state"
+    },
+    {
+      "from": "ignition",
+      "to": "holdex",
+      "type": "uses",
+      "description": "Fair launches use K-Score"
+    },
+    {
+      "from": "ignition",
+      "to": "asdfasdfa",
+      "type": "burns",
+      "description": "Launch fees burn"
+    },
+    {
+      "from": "asdforecast",
+      "to": "holdex",
+      "type": "uses",
+      "description": "Predictions use K-Score signals"
+    },
+    {
       "from": "sollama58",
       "to": "holdex",
+      "type": "maintains",
+      "context": "production"
+    },
+    {
+      "from": "sollama58",
+      "to": "asdforecast",
+      "type": "maintains",
+      "context": "production"
+    },
+    {
+      "from": "sollama58",
+      "to": "asdev",
       "type": "maintains",
       "context": "production"
     },
@@ -121,6 +321,99 @@
       "to": "gasdf",
       "type": "maintains",
       "context": "development"
+    },
+    {
+      "from": "zeyxx",
+      "to": "asdf-brain",
+      "type": "maintains",
+      "context": "development"
+    },
+    {
+      "from": "zeyxx",
+      "to": "asdf-burn-engine",
+      "type": "maintains",
+      "context": "development"
+    },
+    {
+      "from": "ragnar-no-sleep",
+      "to": "asdf-brain",
+      "type": "contributes",
+      "context": "development"
+    },
+
+    {
+      "_section": "Infrastructure Token Edges",
+      "_note": "How infra tokens connect to ecosystem"
+    },
+    {
+      "from": "gasdf",
+      "to": "SOL",
+      "type": "uses",
+      "data_flow": ["gas_payment", "fee_relay"],
+      "description": "GASdf uses SOL for actual gas payment to Solana"
+    },
+    {
+      "from": "gasdf",
+      "to": "USDC",
+      "type": "accepts",
+      "data_flow": ["fee_payment", "swap_input"],
+      "description": "GASdf accepts USDC as fee payment token"
+    },
+    {
+      "from": "gasdf",
+      "to": "USDT",
+      "type": "accepts",
+      "data_flow": ["fee_payment", "swap_input"],
+      "description": "GASdf accepts USDT as fee payment token"
+    },
+    {
+      "from": "USDC",
+      "to": "asdfasdfa",
+      "type": "swap_path",
+      "via": "Jupiter",
+      "description": "USDC fees swapped to $asdfasdfa then burned"
+    },
+    {
+      "from": "USDT",
+      "to": "asdfasdfa",
+      "type": "swap_path",
+      "via": "Jupiter",
+      "description": "USDT fees swapped to $asdfasdfa then burned"
+    },
+    {
+      "from": "SOL",
+      "to": "asdfasdfa",
+      "type": "swap_path",
+      "via": "Jupiter",
+      "description": "SOL can be swapped directly to $asdfasdfa"
+    },
+    {
+      "from": "holdex",
+      "to": "SOL",
+      "type": "monitors",
+      "data_flow": ["i_infra_score", "baseline_reference"],
+      "description": "HolDex monitors SOL as I_infra baseline"
+    },
+    {
+      "from": "holdex",
+      "to": "USDC",
+      "type": "monitors",
+      "data_flow": ["i_infra_score", "depeg_alerts"],
+      "description": "HolDex monitors USDC stability for I_infra"
+    },
+    {
+      "from": "holdex",
+      "to": "JitoSOL",
+      "type": "monitors",
+      "data_flow": ["i_infra_score", "lst_ratio"],
+      "description": "HolDex monitors LST health for I_infra"
+    },
+    {
+      "from": "asdf-brain",
+      "to": "SOL",
+      "type": "tracks",
+      "data_flow": ["historical_stability", "oracle_reliability"],
+      "description": "Brain tracks SOL infrastructure patterns"
     }
   ],
 
@@ -128,9 +421,63 @@
     "asdfasdfa": 2.618,
     "holdex": 1.618,
     "gasdf": 1.618,
-    "asdf-brain": 1.0,
+    "asdf-brain": 1.618,
     "asdf-manifesto": 0.618,
+    "asdf-oracle": 1.0,
+    "asdf-validator": 1.0,
+    "asdf-burn-engine": 1.618,
+    "ignition": 1.0,
+    "asdforecast": 1.0,
+    "asdev": 1.0,
+    "claude-mem": 0.618,
     "sollama58": 2.618,
-    "zeyxx": 2.618
+    "zeyxx": 2.618,
+    "ragnar-no-sleep": 1.618,
+
+    "_infrastructure_tokens": "Foundation layer - φ weight reflects systemic importance",
+    "SOL": 2.618,
+    "USDC": 1.618,
+    "USDT": 1.0,
+    "wSOL": 1.618,
+    "JitoSOL": 1.0,
+    "mSOL": 1.0,
+    "bSOL": 1.0
+  },
+
+  "layers": {
+    "malkhuth": ["asdfasdfa"],
+    "infrastructure": ["gasdf", "asdf-burn-engine", "asdf-validator", "claude-mem"],
+    "intelligence": ["holdex", "asdf-oracle"],
+    "meta": ["asdf-brain"],
+    "consumer": ["ignition", "asdforecast", "asdev"],
+    "foundation": ["asdf-manifesto"],
+    "foundation_tokens": {
+      "_note": "Solana infrastructure tokens that the ecosystem depends on",
+      "native": ["SOL", "wSOL"],
+      "stablecoins": ["USDC", "USDT"],
+      "liquid_staking": ["JitoSOL", "mSOL", "bSOL"]
+    }
+  },
+
+  "sefirot_mapping": {
+    "Keter": "asdf-manifesto",
+    "Chokmah": "creative_impulse",
+    "Binah": "100%_burn_model",
+    "Daat": "asdf-brain",
+    "Chesed": "flywheel_expansion",
+    "Gevurah": ["asdf-burn-engine", "asdf-validator"],
+    "Tiferet": "perfect_alignment",
+    "Netzach": ["ignition", "asdforecast", "asdev"],
+    "Hod": ["holdex", "asdf-oracle"],
+    "Yesod": {
+      "_note": "Foundation - Infrastructure services AND infrastructure tokens",
+      "services": ["gasdf", "claude-mem"],
+      "infra_tokens": {
+        "native": ["SOL", "wSOL"],
+        "stablecoins": ["USDC", "USDT"],
+        "liquid_staking": ["JitoSOL", "mSOL", "bSOL"]
+      }
+    },
+    "Malkhuth": "asdfasdfa"
   }
 }
