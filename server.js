@@ -89,12 +89,14 @@ function requireApiKey(req, res, next) {
   const apiKey = req.headers['x-api-key'] || req.query.apiKey;
 
   if (!apiKey || !API_KEYS.has(apiKey)) {
+    auditLog(req, 'AUTH_FAILED', { reason: apiKey ? 'invalid_key' : 'missing_key' });
     return res.status(401).json({
       error: 'Unauthorized',
       message: 'Valid API key required. Set x-api-key header.'
     });
   }
 
+  auditLog(req, 'AUTH_SUCCESS');
   next();
 }
 
@@ -124,6 +126,35 @@ function securityHeaders(req, res, next) {
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
+  next();
+}
+
+// Audit logging
+function auditLog(req, action, details = {}) {
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    ip: req.ip || req.connection.remoteAddress,
+    action,
+    path: req.path,
+    userAgent: req.headers['user-agent']?.slice(0, 100),
+    ...details
+  };
+  // In production, send to external logging service
+  console.log('[AUDIT]', JSON.stringify(logEntry));
+}
+
+// IP whitelist for sensitive operations (optional)
+const IP_WHITELIST = (process.env.IP_WHITELIST || '').split(',').filter(ip => ip.length > 0);
+
+function checkIpWhitelist(req, res, next) {
+  if (IP_WHITELIST.length === 0) return next(); // Disabled if no whitelist
+
+  const clientIp = req.ip || req.connection.remoteAddress;
+  if (!IP_WHITELIST.includes(clientIp)) {
+    auditLog(req, 'IP_BLOCKED', { clientIp });
+    return res.status(403).json({ error: 'Access denied' });
+  }
   next();
 }
 
