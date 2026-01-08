@@ -58,17 +58,20 @@ asdf-brain/
 │   ├── indexer.js        # φ-weighted indexing
 │   ├── search.js         # Semantic search
 │   ├── analyze.js        # Dev/prod drift detection
-│   ├── sanitizer.js      # Privacy protection (2,777 redactions)
+│   ├── sanitizer.js      # Privacy protection
 │   ├── contributors.js   # Contributor mapping
 │   ├── extract-intent.js # POURQUOI extraction
 │   ├── extract-patterns.js # Pattern recognition
 │   ├── extract-errors.js # Post-mortem generation
 │   ├── track-evolution.js # Temporal analysis
-│   └── map-philosophy.js # Manifesto→code verification
+│   ├── map-philosophy.js # Manifesto→code verification
+│   ├── analyze-dependencies.js # Technical deps graph
+│   ├── health-check.js   # Ecosystem health metrics
+│   └── extract-vision.js # Roadmap extraction
 └── .private/              # Drash level (gitignored)
 ```
 
-## The 7 Dimensions
+## The 10 Dimensions
 
 | Dimension | Purpose | Stats |
 |-----------|---------|-------|
@@ -79,6 +82,9 @@ asdf-brain/
 | **Temporelle** | Evolution over time | 777 commits tracked |
 | **Philosophique** | Manifesto→code alignment | 100/100 score |
 | **Sécurité** | Privacy by design | 2,777 redactions applied |
+| **Dépendances** | Technical dependency graph | 9 version mismatches |
+| **Santé** | Ecosystem health metrics | 80/100 overall health |
+| **Vision** | Roadmap from discussions | 1,036 items extracted |
 
 ## The Ecosystem
 
