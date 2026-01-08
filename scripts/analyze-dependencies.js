@@ -21,11 +21,62 @@ const path = require('path');
 // CONFIGURATION
 // =============================================================================
 
-const REPOS = {
-  holdex: '/workspaces/HolDex',
-  gasdf: '/workspaces/GASdf',
-  'asdf-brain': '/workspaces/asdf-brain',
-};
+// Auto-detect environment and set appropriate paths
+function getRepoPaths() {
+  const scriptDir = __dirname;
+  const brainRoot = path.resolve(scriptDir, '..');
+
+  // Check if running in GitHub Actions
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    // In CI: repos are checked out as siblings in the workspace root
+    // Structure: /home/runner/work/asdf-brain/asdf-brain/
+    //            /home/runner/work/asdf-brain/HolDex/
+    //            /home/runner/work/asdf-brain/GASdf/
+    const workspaceRoot = path.resolve(brainRoot, '..');
+    return {
+      holdex: path.join(workspaceRoot, 'HolDex'),
+      gasdf: path.join(workspaceRoot, 'GASdf'),
+      'asdf-brain': brainRoot,
+    };
+  }
+
+  // Local development: check multiple possible locations
+  const possiblePaths = {
+    holdex: [
+      '/workspaces/HolDex',
+      '/workspaces/asdfasdfa-ecosystem/HolDex',
+      path.resolve(brainRoot, '../HolDex'),
+    ],
+    gasdf: [
+      '/workspaces/GASdf',
+      '/workspaces/asdfasdfa-ecosystem/GASdf',
+      path.resolve(brainRoot, '../GASdf'),
+    ],
+    'asdf-brain': [
+      brainRoot,
+      '/workspaces/asdf-brain',
+      '/workspaces/asdfasdfa-ecosystem/asdf-brain',
+    ],
+  };
+
+  const repos = {};
+  for (const [name, paths] of Object.entries(possiblePaths)) {
+    for (const p of paths) {
+      if (fs.existsSync(p) && fs.existsSync(path.join(p, 'package.json'))) {
+        repos[name] = p;
+        break;
+      }
+    }
+    // Fallback to first path if none found (will be reported as not found)
+    if (!repos[name]) {
+      repos[name] = paths[0];
+    }
+  }
+
+  return repos;
+}
+
+const REPOS = getRepoPaths();
 
 // Critical dependencies to track
 const CRITICAL_DEPS = [

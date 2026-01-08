@@ -26,6 +26,43 @@ const { spawnSync } = require('child_process');
 const PHI = 1.618033988749895;
 const KNOWLEDGE_DIR = path.join(__dirname, '../knowledge');
 
+// Auto-detect environment and set appropriate paths
+function getRepoPaths() {
+  const scriptDir = __dirname;
+  const brainRoot = path.resolve(scriptDir, '..');
+
+  // Check if running in GitHub Actions
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const workspaceRoot = path.resolve(brainRoot, '..');
+    return {
+      holdex_dev: path.join(workspaceRoot, 'HolDex'),
+      holdex_prod: path.join(brainRoot, 'repos-prod/sollama58/HolDex'),
+    };
+  }
+
+  // Local development: check multiple possible locations
+  const possibleDevPaths = [
+    '/workspaces/HolDex',
+    '/workspaces/asdfasdfa-ecosystem/HolDex',
+    path.resolve(brainRoot, '../HolDex'),
+  ];
+
+  let devPath = possibleDevPaths[0];
+  for (const p of possibleDevPaths) {
+    if (fs.existsSync(p)) {
+      devPath = p;
+      break;
+    }
+  }
+
+  return {
+    holdex_dev: devPath,
+    holdex_prod: path.join(brainRoot, 'repos-prod/sollama58/HolDex'),
+  };
+}
+
+const REPO_PATHS = getRepoPaths();
+
 // Health thresholds
 const THRESHOLDS = {
   error_rate: { good: 20, warning: 30, critical: 50 }, // % conversations with errors
@@ -51,8 +88,8 @@ function loadJsonSafe(filePath) {
 }
 
 function checkDevProdDrift() {
-  const devPath = '/workspaces/HolDex';
-  const prodPath = '/workspaces/asdf-brain/repos-prod/sollama58/HolDex';
+  const devPath = REPO_PATHS.holdex_dev;
+  const prodPath = REPO_PATHS.holdex_prod;
 
   if (!fs.existsSync(devPath) || !fs.existsSync(prodPath)) {
     return { status: 'unknown', drift_days: null };

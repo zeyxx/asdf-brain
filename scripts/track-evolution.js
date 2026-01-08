@@ -23,11 +23,57 @@ const readline = require('readline');
 // CONFIGURATION
 // =============================================================================
 
-const REPOS = {
-  holdex_dev: '/workspaces/HolDex',
-  gasdf: '/workspaces/GASdf',
-  manifesto: '/workspaces/asdf-manifesto',
-};
+// Auto-detect environment and set appropriate paths
+function getRepoPaths() {
+  const scriptDir = __dirname;
+  const brainRoot = path.resolve(scriptDir, '..');
+
+  // Check if running in GitHub Actions
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const workspaceRoot = path.resolve(brainRoot, '..');
+    return {
+      holdex_dev: path.join(workspaceRoot, 'HolDex'),
+      gasdf: path.join(workspaceRoot, 'GASdf'),
+      manifesto: path.join(workspaceRoot, 'asdf-manifesto'),
+    };
+  }
+
+  // Local development: check multiple possible locations
+  const possiblePaths = {
+    holdex_dev: [
+      '/workspaces/HolDex',
+      '/workspaces/asdfasdfa-ecosystem/HolDex',
+      path.resolve(brainRoot, '../HolDex'),
+    ],
+    gasdf: [
+      '/workspaces/GASdf',
+      '/workspaces/asdfasdfa-ecosystem/GASdf',
+      path.resolve(brainRoot, '../GASdf'),
+    ],
+    manifesto: [
+      '/workspaces/asdf-manifesto',
+      '/workspaces/asdfasdfa-ecosystem/asdf-manifesto',
+      path.resolve(brainRoot, '../asdf-manifesto'),
+    ],
+  };
+
+  const repos = {};
+  for (const [name, paths] of Object.entries(possiblePaths)) {
+    for (const p of paths) {
+      if (fs.existsSync(p)) {
+        repos[name] = p;
+        break;
+      }
+    }
+    if (!repos[name]) {
+      repos[name] = paths[0];
+    }
+  }
+
+  return repos;
+}
+
+const REPOS = getRepoPaths();
 
 const TOPIC_PATTERNS = {
   k_score: /k[_-]?score|kscore/gi,
@@ -249,7 +295,7 @@ async function main() {
 
   // Analyze conversations
   console.log('\n📊 Analyzing conversation timeline...');
-  const conversationsPath = '/workspaces/HolDex/training/raw/conversations-safe.jsonl';
+  const conversationsPath = path.join(REPOS.holdex_dev, 'training/raw/conversations-safe.jsonl');
   const convAnalysis = await analyzeConversationTimeline(conversationsPath);
 
   if (convAnalysis) {
