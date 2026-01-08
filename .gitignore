@@ -8,6 +8,11 @@ repos-prod/
 knowledge/holdex/conversations.jsonl
 knowledge/*/raw/
 
+# =============================================================================
+# DRASH LEVEL - Private internal data (gitignored)
+# =============================================================================
+.private/
+
 # Environment
 .env
 .env.local

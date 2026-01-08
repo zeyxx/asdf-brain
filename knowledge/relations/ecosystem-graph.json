@@ -1,0 +1,136 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "generated": "2026-01-08",
+    "philosophy": "$asdfasdfa - Don't trust, verify",
+    "verification": "All connections extracted from actual code, not assumed"
+  },
+
+  "nodes": {
+    "asdfasdfa": {
+      "type": "token",
+      "mint": "9zB5wRarXMj86MymwLumSKA1Dx35zPqqKfcZtK1Spump",
+      "layer": "foundation",
+      "role": "Central token - all fees burn to this"
+    },
+    "holdex": {
+      "type": "service",
+      "layer": "intelligence",
+      "role": "K-Score oracle, token verification, single source of truth",
+      "endpoints": ["/api/tokens", "/api/oracle/*", "/api/space/*"]
+    },
+    "gasdf": {
+      "type": "service",
+      "layer": "infrastructure",
+      "role": "Gasless transactions, fee abstraction, burn mechanism",
+      "endpoints": ["/v1/quote", "/v1/submit", "/v1/holdex/*"]
+    },
+    "asdf-brain": {
+      "type": "intelligence",
+      "layer": "meta",
+      "role": "Living memory, pattern extraction, ecosystem analysis"
+    },
+    "asdf-manifesto": {
+      "type": "philosophy",
+      "layer": "foundation",
+      "role": "Core principles, economic model, alignment rules"
+    },
+    "sollama58": {
+      "type": "contributor",
+      "role": "Production deployments",
+      "trust_level": "core"
+    },
+    "zeyxx": {
+      "type": "contributor",
+      "role": "Development",
+      "trust_level": "core"
+    }
+  },
+
+  "edges": [
+    {
+      "from": "gasdf",
+      "to": "holdex",
+      "type": "depends_on",
+      "verified_in": "src/services/holdex.js",
+      "data_flow": ["k_score", "token_acceptance", "metal_rank", "credit_rating"],
+      "description": "GASdf uses HolDex as single source of truth for token verification"
+    },
+    {
+      "from": "holdex",
+      "to": "gasdf",
+      "type": "notifies",
+      "verified_in": "src/routes/oracle.js",
+      "data_flow": ["burn_notifications", "fee_calculations"],
+      "description": "HolDex oracle endpoints used by GASdf"
+    },
+    {
+      "from": "gasdf",
+      "to": "asdfasdfa",
+      "type": "burns",
+      "verified_in": "src/services/burn.js",
+      "description": "All GASdf fees burn $ASDFASDFA"
+    },
+    {
+      "from": "holdex",
+      "to": "asdfasdfa",
+      "type": "burns",
+      "verified_in": "src/routes/space.js",
+      "description": "HolDex Space fees burn $ASDFASDFA"
+    },
+    {
+      "from": "asdf-brain",
+      "to": "holdex",
+      "type": "indexes",
+      "data_flow": ["conversations", "patterns", "decisions"],
+      "description": "Brain indexes HolDex knowledge"
+    },
+    {
+      "from": "asdf-brain",
+      "to": "gasdf",
+      "type": "indexes",
+      "data_flow": ["patterns", "security_rules"],
+      "description": "Brain indexes GASdf knowledge"
+    },
+    {
+      "from": "asdf-manifesto",
+      "to": "holdex",
+      "type": "guides",
+      "description": "Manifesto principles implemented in HolDex"
+    },
+    {
+      "from": "asdf-manifesto",
+      "to": "gasdf",
+      "type": "guides",
+      "description": "Manifesto principles implemented in GASdf"
+    },
+    {
+      "from": "sollama58",
+      "to": "holdex",
+      "type": "maintains",
+      "context": "production"
+    },
+    {
+      "from": "zeyxx",
+      "to": "holdex",
+      "type": "maintains",
+      "context": "development"
+    },
+    {
+      "from": "zeyxx",
+      "to": "gasdf",
+      "type": "maintains",
+      "context": "development"
+    }
+  ],
+
+  "phi_weights": {
+    "asdfasdfa": 2.618,
+    "holdex": 1.618,
+    "gasdf": 1.618,
+    "asdf-brain": 1.0,
+    "asdf-manifesto": 0.618,
+    "sollama58": 2.618,
+    "zeyxx": 2.618
+  }
+}
