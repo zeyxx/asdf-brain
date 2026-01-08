@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-08T22:01:27.205Z",
+  "timestamp": "2026-01-08T22:10:07.260Z",
   "philosophy": "$asdfasdfa: Health from actual data",
   "indicators": {
     "error_rate": {
@@ -21,23 +21,28 @@
       "details": "7/7 principles"
     },
     "version_mismatches": {
-      "value": 0,
+      "value": 9,
       "unit": "mismatches",
-      "status": "good",
-      "details": "0 shared dependencies"
+      "status": "warning",
+      "details": "13 shared dependencies"
     }
   },
   "scores": {
     "error_rate": 98.5,
     "pattern_coverage": 67.9,
     "philosophy_alignment": 100,
-    "version_health": 100
+    "version_health": 10
   },
   "overall": {
-    "score": 94,
+    "score": 85,
     "status": "healthy"
   },
   "recommendations": [
+    {
+      "priority": "high",
+      "action": "Sync dependency versions between HolDex and GASdf",
+      "impact": "Reduces potential compatibility issues"
+    },
     {
       "priority": "medium",
       "action": "Deploy latest dev changes to production",
