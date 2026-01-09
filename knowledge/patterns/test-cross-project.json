@@ -1,0 +1,74 @@
+{
+  "_metadata": {
+    "created": 1767925008051,
+    "description": "Test patterns for cross-project pollination"
+  },
+  "patterns": [
+    {
+      "id": "39ecad56454078b1",
+      "project": "holdex",
+      "type": "technical",
+      "category": "architecture",
+      "content": "K-Score algorithm uses phi-based weighting for token health metrics including diamond hands conviction and organic growth distribution",
+      "tags": [
+        "kscore",
+        "phi",
+        "token",
+        "health",
+        "metrics",
+        "conviction"
+      ],
+      "strength": 50,
+      "created_at": 1767925008051
+    },
+    {
+      "id": "161b127061e4a145",
+      "project": "brain",
+      "type": "technical",
+      "category": "architecture",
+      "content": "Pattern strength uses phi-based decay for knowledge health metrics including temporal conviction and cross-project distribution",
+      "tags": [
+        "phi",
+        "health",
+        "metrics",
+        "conviction",
+        "temporal",
+        "pattern"
+      ],
+      "strength": 50,
+      "created_at": 1767925008051
+    },
+    {
+      "id": "5100e936a58c51f3",
+      "project": "holdex",
+      "type": "process",
+      "category": "economics",
+      "content": "Token burns through transaction fees contribute to deflationary pressure and holder value alignment via asdfasdfa singularity",
+      "tags": [
+        "burn",
+        "fees",
+        "economics",
+        "deflationary",
+        "value"
+      ],
+      "strength": 50,
+      "created_at": 1767925008051
+    },
+    {
+      "id": "612d05d7384debca",
+      "project": "brain",
+      "type": "process",
+      "category": "economics",
+      "content": "Knowledge contributions track burns for E-Score attribution and ecosystem value alignment through asdfasdfa burn mechanism",
+      "tags": [
+        "burn",
+        "contribution",
+        "economics",
+        "value",
+        "escore"
+      ],
+      "strength": 50,
+      "created_at": 1767925008051
+    }
+  ]
+}

@@ -2,9 +2,73 @@
   "_metadata": {
     "version": "1.0.0",
     "created": "2026-01-08",
-    "description": "Cross-project pattern links from pollination"
+    "description": "Cross-project pattern links from pollination",
+    "last_updated": 1767925008058,
+    "total_links": 4,
+    "cross_project_links": 4
   },
-  "links": [],
+  "links": [
+    {
+      "id": "a1dbb268da3c3028",
+      "pattern_ids": [
+        "39ecad56454078b1",
+        "161b127061e4a145"
+      ],
+      "projects": [
+        "holdex",
+        "brain"
+      ],
+      "similarity": 0.6807692307692307,
+      "cross_project": true,
+      "created_at": 1767925008057,
+      "phi_boost": 0.3819660112501051
+    },
+    {
+      "id": "fd01e08c62e40b9c",
+      "pattern_ids": [
+        "161b127061e4a145",
+        "39ecad56454078b1"
+      ],
+      "projects": [
+        "brain",
+        "holdex"
+      ],
+      "similarity": 0.6807692307692307,
+      "cross_project": true,
+      "created_at": 1767925008058,
+      "phi_boost": 0.3819660112501051
+    },
+    {
+      "id": "d09b62b574640b0c",
+      "pattern_ids": [
+        "5100e936a58c51f3",
+        "612d05d7384debca"
+      ],
+      "projects": [
+        "holdex",
+        "brain"
+      ],
+      "similarity": 0.635978835978836,
+      "cross_project": true,
+      "created_at": 1767925008058,
+      "phi_boost": 0.3819660112501051
+    },
+    {
+      "id": "bca7e44eb1be1792",
+      "pattern_ids": [
+        "612d05d7384debca",
+        "5100e936a58c51f3"
+      ],
+      "projects": [
+        "brain",
+        "holdex"
+      ],
+      "similarity": 0.635978835978836,
+      "cross_project": true,
+      "created_at": 1767925008058,
+      "phi_boost": 0.3819660112501051
+    }
+  ],
   "clusters": [],
   "ecosystem_patterns": [],
   "stats": {

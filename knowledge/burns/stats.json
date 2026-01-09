@@ -10,23 +10,75 @@
     "burn_rate": 0.382
   },
   "by_operation": {
-    "context_inject": { "count": 0, "burned": 0, "rate": 1000 },
-    "pattern_create": { "count": 0, "burned": 0, "rate": 5000 },
-    "pattern_query": { "count": 0, "burned": 0, "rate": 500 },
-    "decision_record": { "count": 0, "burned": 0, "rate": 3000 },
-    "merkle_proof": { "count": 0, "burned": 0, "rate": 2000 }
+    "context_inject": {
+      "count": 0,
+      "burned": 0,
+      "rate": 1000
+    },
+    "pattern_create": {
+      "count": 6,
+      "burned": 0,
+      "rate": 5000,
+      "total": 9545
+    },
+    "pattern_query": {
+      "count": 0,
+      "burned": 0,
+      "rate": 500
+    },
+    "decision_record": {
+      "count": 5,
+      "burned": 0,
+      "rate": 3000,
+      "total": 4580
+    },
+    "merkle_proof": {
+      "count": 0,
+      "burned": 0,
+      "rate": 2000
+    }
   },
   "by_project": {
-    "holdex": 0,
+    "holdex": {
+      "count": 1,
+      "total": 1909
+    },
     "gasdf": 0,
     "brain": 0,
-    "manifesto": 0,
-    "ecosystem": 0
+    "manifesto": {
+      "count": 5,
+      "total": 5725
+    },
+    "ecosystem": {
+      "count": 5,
+      "total": 9545
+    }
   },
   "daily": [],
   "weekly": [],
   "_phi": {
-    "burn_rate": "38.2% (φ⁻²)",
-    "philosophy": "Don't extract. Burn."
-  }
+    "avg_burn_per_operation": 1561.7272727272727,
+    "burn_rate": 0.3819660112501051,
+    "velocity_24h": 357.8958333333333
+  },
+  "total_burned": 17179,
+  "total_operations": 11,
+  "by_session": {
+    "test-session-001": {
+      "count": 1,
+      "total": 1909
+    },
+    "unknown": {
+      "count": 10,
+      "total": 15270
+    }
+  },
+  "daily_burns": {
+    "2026-01-09": {
+      "count": 11,
+      "total": 17179
+    }
+  },
+  "created_at": 1767924494360,
+  "last_updated": 1767926198857
 }

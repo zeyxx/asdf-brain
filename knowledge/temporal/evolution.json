@@ -205,5 +205,49 @@
   },
   "conversations": null,
   "evolution": {},
-  "momentum": {}
+  "momentum": {},
+  "39ecad56454078b1": {
+    "pattern_id": "39ecad56454078b1",
+    "history": [
+      {
+        "event": "pollinated",
+        "timestamp": 1767925008058,
+        "related_count": 1,
+        "strength": 69.09830056250526
+      }
+    ]
+  },
+  "161b127061e4a145": {
+    "pattern_id": "161b127061e4a145",
+    "history": [
+      {
+        "event": "pollinated",
+        "timestamp": 1767925008059,
+        "related_count": 1,
+        "strength": 69.09830056250526
+      }
+    ]
+  },
+  "5100e936a58c51f3": {
+    "pattern_id": "5100e936a58c51f3",
+    "history": [
+      {
+        "event": "pollinated",
+        "timestamp": 1767925008059,
+        "related_count": 1,
+        "strength": 69.09830056250526
+      }
+    ]
+  },
+  "612d05d7384debca": {
+    "pattern_id": "612d05d7384debca",
+    "history": [
+      {
+        "event": "pollinated",
+        "timestamp": 1767925008060,
+        "related_count": 1,
+        "strength": 69.09830056250526
+      }
+    ]
+  }
 }

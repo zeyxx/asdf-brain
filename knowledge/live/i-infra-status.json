@@ -1,75 +1,140 @@
 {
-  "_metadata": {
-    "version": "1.0.0",
-    "updated": "2026-01-08T19:00:00Z",
-    "description": "Live infrastructure health status"
-  },
-  "overall_score": 85.0,
-  "status": "healthy",
+  "timestamp": 1767925280974,
+  "timestamp_iso": "2026-01-09T02:21:20.974Z",
   "tokens": {
     "SOL": {
-      "score": 92.0,
-      "status": "healthy",
-      "metrics": {
-        "liquidity_depth": 95,
-        "oracle_freshness": 98,
-        "reliability": 99
+      "symbol": "SOL",
+      "i_infra": 99.81,
+      "components": {
+        "d_liquidity": 1,
+        "o_oracle": 1,
+        "l_reliability": 1
+      },
+      "status": "HEALTHY",
+      "formula": "I_infra = 100 × ∛(D × O × L)",
+      "timestamp": 1767925280974,
+      "config": {
+        "mint": "So11111111111111111111111111111111111111112",
+        "name": "Solana",
+        "type": "native",
+        "phi_weight": 2.618033988749895,
+        "baseline": true
       }
     },
     "USDC": {
-      "score": 94.0,
-      "status": "healthy",
-      "metrics": {
-        "liquidity_depth": 98,
-        "oracle_freshness": 95,
-        "reliability": 99
+      "symbol": "USDC",
+      "i_infra": 98.02,
+      "components": {
+        "d_liquidity": 1,
+        "o_oracle": 0.94,
+        "l_reliability": 1
+      },
+      "status": "HEALTHY",
+      "formula": "I_infra = 100 × ∛(D × O × L)",
+      "timestamp": 1767925280974,
+      "config": {
+        "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "name": "USD Coin",
+        "type": "stablecoin",
+        "phi_weight": 1.618033988749895,
+        "peg_target": 1
       }
     },
     "USDT": {
-      "score": 88.0,
-      "status": "healthy",
-      "metrics": {
-        "liquidity_depth": 90,
-        "oracle_freshness": 92,
-        "reliability": 95
+      "symbol": "USDT",
+      "i_infra": 97.66,
+      "components": {
+        "d_liquidity": 1,
+        "o_oracle": 0.93,
+        "l_reliability": 1
+      },
+      "status": "HEALTHY",
+      "formula": "I_infra = 100 × ∛(D × O × L)",
+      "timestamp": 1767925280974,
+      "config": {
+        "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+        "name": "Tether USD",
+        "type": "stablecoin",
+        "phi_weight": 1,
+        "peg_target": 1
       }
     },
     "JitoSOL": {
-      "score": 78.0,
-      "status": "healthy",
-      "metrics": {
-        "liquidity_depth": 75,
-        "oracle_freshness": 85,
-        "reliability": 90
+      "symbol": "JitoSOL",
+      "i_infra": 95.05,
+      "components": {
+        "d_liquidity": 1,
+        "o_oracle": 0.86,
+        "l_reliability": 1
+      },
+      "status": "HEALTHY",
+      "formula": "I_infra = 100 × ∛(D × O × L)",
+      "timestamp": 1767925280974,
+      "config": {
+        "mint": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+        "name": "Jito Staked SOL",
+        "type": "lst",
+        "phi_weight": 0.6180339887498948,
+        "underlying": "SOL"
       }
     },
     "mSOL": {
-      "score": 82.0,
-      "status": "healthy",
-      "metrics": {
-        "liquidity_depth": 80,
-        "oracle_freshness": 88,
-        "reliability": 92
+      "symbol": "mSOL",
+      "i_infra": 95.14,
+      "components": {
+        "d_liquidity": 1,
+        "o_oracle": 0.87,
+        "l_reliability": 1
+      },
+      "status": "HEALTHY",
+      "formula": "I_infra = 100 × ∛(D × O × L)",
+      "timestamp": 1767925280974,
+      "config": {
+        "mint": "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
+        "name": "Marinade Staked SOL",
+        "type": "lst",
+        "phi_weight": 0.6180339887498948,
+        "underlying": "SOL"
       }
     },
     "bSOL": {
-      "score": 72.0,
-      "status": "healthy",
-      "metrics": {
-        "liquidity_depth": 68,
-        "oracle_freshness": 78,
-        "reliability": 85
+      "symbol": "bSOL",
+      "i_infra": 81.48,
+      "components": {
+        "d_liquidity": 0.69,
+        "o_oracle": 0.78,
+        "l_reliability": 1
+      },
+      "status": "HEALTHY",
+      "formula": "I_infra = 100 × ∛(D × O × L)",
+      "timestamp": 1767925280974,
+      "config": {
+        "mint": "bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1",
+        "name": "BlazeStake Staked SOL",
+        "type": "lst",
+        "phi_weight": 0.3819660112501051,
+        "underlying": "SOL"
       }
     }
   },
-  "alerts": [],
-  "thresholds": {
-    "critical": 23.6,
-    "warning": 38.2,
-    "healthy": 61.8
+  "aggregate": {
+    "i_infra_weighted": 97.2,
+    "total_tokens": 6,
+    "healthy_count": 6,
+    "warning_count": 0,
+    "critical_count": 0,
+    "all_healthy": true,
+    "ecosystem_stable": true
   },
+  "alerts": [],
   "_phi": {
-    "formula": "I_infra = 100 × ∛(D × O × L)",
-    "note": "Simulated metrics - awaiting RPC integration"
+    "thresholds": {
+      "CRITICAL": 23.606797749978963,
+      "WARNING": 38.19660112501051,
+      "HEALTHY": 61.803398874989476,
+      "OPTIMAL": 100
+    },
+    "philosophy": "Yesod (foundation) must be solid for the tree to stand",
+    "formula": "I_infra = 100 × ∛(D_liquidity × O_oracle × L_reliability)"
   }
 }
