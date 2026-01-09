@@ -37,6 +37,28 @@ const { getContextLayer, detectProject } = require('./lib/context-layer');
 const merkleProofs = require('./lib/merkle-proofs');
 
 // =============================================================================
+// ACTIVATED MODULES - From Dormant to Tiferet
+// =============================================================================
+
+// Daat Layer - 4-Level Intelligence (auto-detect + user override)
+const daatLevels = require('./lib/daat-levels');
+
+// Temporal - Pattern decay/strengthen (knowledge lives)
+const temporal = require('./lib/temporal');
+
+// Pollination - Cross-project pattern fusion
+const pollination = require('./lib/pollination');
+
+// Burn Mechanism - Contribution tracking (NOT fees - knowledge is FREE)
+const burnMechanism = require('./lib/burn-mechanism');
+
+// Infrastructure Monitor - Yesod health (SOL, USDC, LSTs)
+const infraMonitor = require('./lib/i-infra-monitor');
+
+// Contributors - E-Score tracking (7 dimensions)
+const contributors = require('./lib/contributors');
+
+// =============================================================================
 // PHI CONSTANTS - Golden Ratio Distribution (Kabbalah Sacred Geometry)
 // =============================================================================
 
@@ -184,7 +206,7 @@ const TOOLS = {
   brain_learn: {
     pardes: 'D',
     name: 'brain_learn',
-    description: '[WRITE] Record an insight, pattern, or decision during this session',
+    description: '[WRITE] Record an insight, pattern, or decision. Knowledge is FREE to access. Contributions are tracked for E-Score.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -200,6 +222,8 @@ const TOOLS = {
           items: { type: 'string' },
           description: 'Tags for categorization',
         },
+        contributor_id: { type: 'string', description: 'Optional contributor ID for E-Score attribution (BUILD dimension)' },
+        session_id: { type: 'string', description: 'Optional session ID for contribution tracking' },
       },
       required: ['type', 'content'],
     },
@@ -258,13 +282,19 @@ const TOOLS = {
   brain_context_inject: {
     pardes: 'S',
     name: 'brain_context_inject',
-    description: '[CONTEXT] Get context injection for current query - enriches AI with relevant knowledge',
+    description: '[CONTEXT] Get context injection for current query - enriches AI with relevant knowledge. Uses Daat-levels for intelligent depth.',
     inputSchema: {
       type: 'object',
       properties: {
         session_id: { type: 'string', description: 'Active session ID' },
         query: { type: 'string', description: 'Current query to contextualize' },
         project: { type: 'string', description: 'Project override (optional)' },
+        daat_level: {
+          type: 'number',
+          description: 'Daat level override (1=PASSIVE, 2=SUGGESTIVE, 3=ACTIVE, 4=STRATEGIC). Auto-detected if not provided.',
+          minimum: 1,
+          maximum: 4,
+        },
       },
     },
     phi_weight: PHI * PHI,
@@ -628,11 +658,39 @@ async function handleHealth(args, adapter) {
   const health = await adapter.load('health/ecosystem-health.json');
   if (!health) return { status: 'unknown', message: 'Health data not available' };
 
+  // Get infrastructure health status (Yesod - foundation)
+  let infraHealth = null;
+  try {
+    infraHealth = infraMonitor.getHealthStatus();
+  } catch (e) {
+    // infra monitoring not initialized - that's OK
+  }
+
+  // Get burn statistics
+  let burnStats = null;
+  try {
+    burnStats = burnMechanism.getBurnStats();
+  } catch (e) {
+    // burn tracking not initialized - that's OK
+  }
+
   return {
     overall_score: health.overall?.score || health.overall_score,
     status: health.overall?.status || health.status,
     indicators: health.indicators,
     recommendations: health.recommendations?.slice(0, 3),
+    // Yesod - Infrastructure foundation health
+    infrastructure: infraHealth ? {
+      aggregate_score: infraHealth.aggregate?.i_infra_weighted,
+      status: infraHealth.aggregate?.status,
+      tokens_monitored: Object.keys(infraHealth.tokens || {}),
+    } : { status: 'not_initialized', message: 'Run: npm run brain:infra-check' },
+    // Contribution tracking stats
+    contributions: burnStats ? {
+      total_tracked: burnStats.total_operations || 0,
+      total_value: burnStats.total_burned || 0,
+      philosophy: 'Knowledge is FREE. Contributions are VALUED.',
+    } : null,
     _quality: health.overall?.score || 80,
   };
 }
@@ -641,7 +699,35 @@ async function handlePatterns(args, adapter) {
   const patterns = await adapter.load('patterns/extracted-patterns.json');
   if (!patterns) return { message: 'Pattern data not available' };
 
-  const { category } = args;
+  const { category, apply_temporal = false, find_similar } = args;
+
+  // If apply_temporal, run decay/strengthen on patterns
+  if (apply_temporal) {
+    try {
+      const decayReport = temporal.processPatternDecay(
+        path.join(__dirname, 'knowledge/patterns')
+      );
+      // Patterns are now time-adjusted
+    } catch (e) {
+      // Silent - temporal processing is optional
+    }
+  }
+
+  // If find_similar query provided, use pollination
+  if (find_similar && patterns.all_patterns) {
+    const similarPatterns = pollination.findSimilarPatterns(
+      { content: find_similar },
+      patterns.all_patterns || []
+    );
+    return {
+      query: find_similar,
+      similar_patterns: similarPatterns.slice(0, 5),
+      count: similarPatterns.length,
+      message: `Found ${similarPatterns.length} similar patterns (φ⁻¹ = 61.8% threshold)`,
+      _quality: 85,
+    };
+  }
+
   if (category && patterns.statistics?.by_category?.[category]) {
     const categoryData = patterns.statistics.by_category[category];
     return {
@@ -726,7 +812,7 @@ async function handleVision(args, adapter) {
 // =============================================================================
 
 async function handleLearn(args, adapter) {
-  const { type, content, context, tags = [] } = args;
+  const { type, content, context, tags = [], contributor_id, session_id } = args;
 
   // Auto-detect project from content + context
   const textForDetection = `${content} ${context || ''}`;
@@ -742,8 +828,33 @@ async function handleLearn(args, adapter) {
     tags: [...tags, detectedProject],  // Include project in tags
     timestamp: new Date().toISOString(),
     hash: crypto.createHash('sha256').update(content).digest('hex').slice(0, 16),
-    contributor: 'claude-session',
+    contributor: contributor_id || 'claude-session',
+    // Temporal - pattern starts with strength 50
+    strength: 50,
+    access_count: 0,
+    created_at: Date.now(),
   };
+
+  // Track contribution (NOT a fee - knowledge is FREE to access)
+  // This tracks the VALUE of contributions for E-Score attribution
+  const contributionTracking = burnMechanism.trackOperation(
+    type === 'pattern' ? 'pattern_create' : 'decision_record',
+    session_id || 'unknown',
+    { project: detectedProject, contributor_id }
+  );
+
+  // Update contributor E-Score (BUILD dimension)
+  if (contributor_id) {
+    try {
+      contributors.recordContribution(contributor_id, 'BUILD', {
+        item_id: entry.id,
+        item_type: type,
+        project: detectedProject,
+      });
+    } catch (e) {
+      // Silent fail - contributor tracking is optional
+    }
+  }
 
   // Write to learned.jsonl (append mode)
   const result = await adapter.write('learned/live.jsonl', entry, { append: true });
@@ -758,7 +869,14 @@ async function handleLearn(args, adapter) {
     type: entry.type,
     project: detectedProject,
     hash: entry.hash,
+    contribution: {
+      tracked: true,
+      value: contributionTracking?.amount || 0,
+      contributor_id: contributor_id || null,
+      e_score_dimension: 'BUILD',
+    },
     message: `Learned: ${type} recorded for project ${detectedProject}`,
+    _philosophy: 'Knowledge is FREE. Contributions are VALUED.',
     _quality: 85,
   };
 }
@@ -834,19 +952,47 @@ async function handleContextStart(args, adapter) {
 }
 
 async function handleContextInject(args, adapter) {
-  const { session_id, query, project } = args;
+  const { session_id, query, project, daat_level } = args;
 
+  // Use Daat-levels for intelligent context enrichment
+  const sessionContext = contextLayer.getSession(session_id) || {};
+  const enrichment = daatLevels.enrichWithDaat(
+    query,
+    {
+      session_id,
+      session_depth: sessionContext.context_stack?.length || 0,
+      project: project || sessionContext.project,
+    },
+    {
+      patterns: await adapter.load('patterns/extracted-patterns.json'),
+      decisions: await adapter.load('intent/extracted-intents.json'),
+      philosophy: await adapter.load('philosophy/phi-scaling-unified-vision.json'),
+      ecosystem: await adapter.load('relations/ecosystem-graph.json'),
+    },
+    { level_override: daat_level }  // User can override
+  );
+
+  // Get base injection from context layer
   const injection = await contextLayer.getInjection({
     sessionId: session_id,
     query,
     project,
   });
 
+  // Merge Daat enrichment with context layer injection
   return {
     success: true,
     injection,
+    daat: {
+      level: enrichment.daat_level,
+      name: enrichment.daat_name,
+      auto_detected: enrichment.auto_detected_level,
+      was_overridden: enrichment.was_overridden,
+      guidance: enrichment.guidance,
+    },
+    context: enrichment.context,
     quality: injection.quality,
-    message: `Context injection built with ${Object.keys(injection.layers).length} layers`,
+    message: `Context injection at DAAT level ${enrichment.daat_level} (${enrichment.daat_name})`,
     _quality: injection.quality,
   };
 }
