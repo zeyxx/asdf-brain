@@ -1443,4 +1443,40 @@ function main() {
   }
 }
 
-main();
+// Export for testing
+module.exports = {
+  TOOLS,
+  HANDLERS,
+  DataAdapter,
+  MCPHandler,
+  // Individual handlers for direct testing
+  handleSearch,
+  handleHealth,
+  handlePatterns,
+  handleIntent,
+  handleEcosystem,
+  handleDependencies,
+  handleVision,
+  handleLearn,
+  handleIngest,
+  handleContextStart,
+  handleContextInject,
+  handleContextUpdate,
+  handleContextEnd,
+  handleContextStats,
+  handleContextSessions,
+  handleProvenanceStatus,
+  handleProvenanceProof,
+  handleProvenanceVerify,
+  handleProvenanceSnapshot,
+  // Constants
+  PHI,
+  PHI_INV,
+  PHI_INV_2,
+  PHI_INV_3
+};
+
+// Only run main if executed directly (not required)
+if (require.main === module) {
+  main();
+}
