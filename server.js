@@ -423,8 +423,53 @@ app.post('/mcp', requireApiKey, async (req, res) => {
             data = loadJson('vision/roadmap.json')?.roadmap;
             break;
           case 'brain_search':
-            // Simplified search for MCP
-            data = { message: 'Use /api/search endpoint for full search' };
+            // Implement actual search for MCP
+            const searchQuery = args?.query || '';
+            const searchLimit = args?.limit || 10;
+            if (!searchQuery) {
+              data = { error: 'Query parameter required', results: [] };
+            } else {
+              const indexPath = path.join(__dirname, 'index/cross-repo.jsonl');
+              if (fs.existsSync(indexPath)) {
+                const searchResults = [];
+                const queryLower = searchQuery.toLowerCase();
+                const queryTerms = queryLower.split(/\s+/);
+                const lines = fs.readFileSync(indexPath, 'utf8').split('\n');
+                for (const line of lines) {
+                  if (!line.trim()) continue;
+                  try {
+                    const entry = JSON.parse(line);
+                    const text = [
+                      entry.content || '',
+                      entry.context || '',
+                      (entry.tags || []).join(' '),
+                    ].join(' ').toLowerCase();
+                    let score = 0;
+                    for (const term of queryTerms) {
+                      if (text.includes(term)) score++;
+                    }
+                    if (score > 0) {
+                      searchResults.push({
+                        score,
+                        id: entry.id,
+                        type: entry.type,
+                        project: entry.project,
+                        timestamp: entry.timestamp,
+                        preview: (entry.content || '').slice(0, 200),
+                      });
+                    }
+                  } catch (e) { /* skip */ }
+                }
+                searchResults.sort((a, b) => b.score - a.score);
+                data = {
+                  query: searchQuery,
+                  results: searchResults.slice(0, searchLimit),
+                  total: searchResults.length,
+                };
+              } else {
+                data = { error: 'Search index not available', results: [] };
+              }
+            }
             break;
           default:
             throw new Error(`Unknown tool: ${name}`);
