@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-08T22:45:08.424Z",
+    "generated": "2026-01-09T00:00:01.334Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -413,6 +413,8 @@
           "brain:learn",
           "brain:daemon",
           "brain:holdex",
+          "brain:awaken",
+          "brain:awaken:quiet",
           "brain:solana",
           "brain:solana:status",
           "brain:solana:init",
@@ -426,6 +428,7 @@
           "./client": 1,
           "../target/types/asdf_merkle": 1,
           "./lib/context-layer": 1,
+          "./lib/merkle-proofs": 1,
           "./extractGitDecisions.js": 1,
           "./exportClaudeMem.js": 1,
           "./exportKScoreHistory.js": 1,
@@ -448,12 +451,12 @@
           "express": 1
         },
         "node": {
-          "fs": 41,
-          "path": 41,
+          "fs": 42,
+          "path": 42,
           "crypto": 15,
           "readline": 9,
           "http": 1,
-          "child_process": 10,
+          "child_process": 11,
           "os": 1,
           "https": 2
         }
