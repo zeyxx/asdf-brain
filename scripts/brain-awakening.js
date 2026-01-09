@@ -121,6 +121,46 @@ function analyzeGitState(repoPath) {
 }
 
 // =============================================================================
+// GITHUB PR/FORK STATUS (requires gh CLI)
+// =============================================================================
+
+// Fork relationships - CRITICAL KNOWLEDGE
+const FORK_MAP = {
+  'HolDex': {
+    upstream: 'sollama58/HolDex',
+    fork: 'zeyxx/HolDex',
+    targetBranch: 'NewDexSOCKETS',
+  },
+};
+
+function checkGitHubStatus() {
+  const results = { prs: [], forkSync: [] };
+
+  try {
+    // Check for open PRs on upstream repos
+    for (const [name, config] of Object.entries(FORK_MAP)) {
+      try {
+        const prsJson = execSync(`gh api repos/${config.upstream}/pulls --jq '[.[] | {number, title, state, draft}]'`, {
+          encoding: 'utf-8',
+          stdio: ['pipe', 'pipe', 'pipe'],
+          timeout: 5000,
+        });
+        const prs = JSON.parse(prsJson || '[]');
+        if (prs.length > 0) {
+          results.prs.push({ repo: name, upstream: config.upstream, prs });
+        }
+      } catch (e) {
+        // gh CLI not available or API error
+      }
+    }
+  } catch (e) {
+    // Silent fail - gh might not be installed
+  }
+
+  return results;
+}
+
+// =============================================================================
 // HEALTH CHECK
 // =============================================================================
 
@@ -234,6 +274,25 @@ async function awaken(options = {}) {
     log.success('All repositories in sync');
   }
   console.log('');
+
+  // 2b. GitHub PR Status (upstream repos)
+  const ghStatus = checkGitHubStatus();
+  if (ghStatus.prs.length > 0) {
+    console.log('── GITHUB PRs (UPSTREAM) ──────────────────────────────────');
+    for (const repo of ghStatus.prs) {
+      log.info(`${repo.repo} (${repo.upstream}):`);
+      for (const pr of repo.prs) {
+        const draft = pr.draft ? ' [DRAFT]' : '';
+        console.log(`   #${pr.number} ${pr.title}${draft}`);
+      }
+    }
+    console.log('');
+  } else if (!quiet) {
+    console.log('── GITHUB PRs ─────────────────────────────────────────────');
+    log.success('No open PRs on upstream repos');
+    log.info('Fork: zeyxx/HolDex → Upstream: sollama58/HolDex');
+    console.log('');
+  }
 
   // 3. Ecosystem Health
   console.log('── ECOSYSTEM HEALTH ───────────────────────────────────────');
