@@ -24,6 +24,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const gitIntel = require('../lib/git-intelligence');
 
 // =============================================================================
 // CONFIGURATION
@@ -240,31 +241,76 @@ async function awaken(options = {}) {
   log.info(`Working directory: ${cwd}`);
   console.log('');
 
-  // 2. Git State Analysis
-  const repos = [
-    { name: 'HolDex', path: '/workspaces/HolDex' },
-    { name: 'GASdf', path: '/workspaces/GASdf' },
-    { name: 'asdf-brain', path: '/workspaces/asdf-brain' },
-  ];
-
-  console.log('── GIT STATE ──────────────────────────────────────────────');
+  // 2. Git Intelligence (branches, PRs, post-merge commits)
+  console.log('── GIT INTELLIGENCE ───────────────────────────────────────');
   let hasGitAlerts = false;
+  let gitSuggestions = [];
 
-  for (const repo of repos) {
-    if (fs.existsSync(repo.path)) {
-      const state = analyzeGitState(repo.path);
-      if (state) {
-        const alerts = [];
-        if (state.modified > 0) alerts.push(`${state.modified} modified`);
-        if (state.untracked > 0) alerts.push(`${state.untracked} untracked`);
-        if (state.drift.behind > 0) alerts.push(`${state.drift.behind} behind`);
-        if (state.drift.ahead > 0) alerts.push(`${state.drift.ahead} ahead`);
+  try {
+    const intel = gitIntel.scanEcosystem();
 
-        if (alerts.length > 0) {
-          log.alert(`${repo.name} [${state.branch}]: ${alerts.join(', ')}`);
-          hasGitAlerts = true;
-        } else if (!quiet) {
-          log.success(`${repo.name} [${state.branch}]: clean`);
+    for (const [repoName, data] of Object.entries(intel.repos)) {
+      if (data.error) continue;
+
+      const branch = data.branch;
+      const pr = data.pr;
+
+      // Build status line
+      let status = `${repoName.toUpperCase()} [${branch.branch}]`;
+      if (pr) {
+        status += pr.merged
+          ? ` ← PR #${pr.number} MERGED`
+          : ` ← PR #${pr.number} ${pr.state.toUpperCase()}`;
+      }
+
+      // Determine alert level
+      const alerts = [];
+      if (branch.modified > 0) alerts.push(`${branch.modified} modified`);
+      if (branch.untracked > 0) alerts.push(`${branch.untracked} untracked`);
+      if (branch.behind > 0) alerts.push(`${branch.behind} behind`);
+
+      if (data.postMergeCommits?.length > 0) {
+        // Critical: commits after PR was merged
+        log.alert(`${status}`);
+        console.log(`   🔴 ${data.postMergeCommits.length} commits SINCE PR merged!`);
+        data.postMergeCommits.slice(0, 2).forEach(c => {
+          console.log(`      • ${c.hash} ${c.subject.substring(0, 50)}`);
+        });
+        hasGitAlerts = true;
+      } else if (alerts.length > 0) {
+        log.alert(`${status}: ${alerts.join(', ')}`);
+        hasGitAlerts = true;
+      } else if (!quiet) {
+        log.success(`${status}: clean`);
+      }
+    }
+
+    // Collect suggestions
+    gitSuggestions = intel.suggestions || [];
+
+  } catch (e) {
+    // Fallback to simple git state if intel fails
+    const repos = [
+      { name: 'HolDex', path: '/workspaces/HolDex' },
+      { name: 'GASdf', path: '/workspaces/GASdf' },
+      { name: 'asdf-brain', path: '/workspaces/asdf-brain' },
+    ];
+
+    for (const repo of repos) {
+      if (fs.existsSync(repo.path)) {
+        const state = analyzeGitState(repo.path);
+        if (state) {
+          const alerts = [];
+          if (state.modified > 0) alerts.push(`${state.modified} modified`);
+          if (state.untracked > 0) alerts.push(`${state.untracked} untracked`);
+          if (state.drift.behind > 0) alerts.push(`${state.drift.behind} behind`);
+
+          if (alerts.length > 0) {
+            log.alert(`${repo.name} [${state.branch}]: ${alerts.join(', ')}`);
+            hasGitAlerts = true;
+          } else if (!quiet) {
+            log.success(`${repo.name} [${state.branch}]: clean`);
+          }
         }
       }
     }
@@ -275,22 +321,14 @@ async function awaken(options = {}) {
   }
   console.log('');
 
-  // 2b. GitHub PR Status (upstream repos)
-  const ghStatus = checkGitHubStatus();
-  if (ghStatus.prs.length > 0) {
-    console.log('── GITHUB PRs (UPSTREAM) ──────────────────────────────────');
-    for (const repo of ghStatus.prs) {
-      log.info(`${repo.repo} (${repo.upstream}):`);
-      for (const pr of repo.prs) {
-        const draft = pr.draft ? ' [DRAFT]' : '';
-        console.log(`   #${pr.number} ${pr.title}${draft}`);
-      }
-    }
-    console.log('');
-  } else if (!quiet) {
-    console.log('── GITHUB PRs ─────────────────────────────────────────────');
-    log.success('No open PRs on upstream repos');
-    log.info('Fork: zeyxx/HolDex → Upstream: sollama58/HolDex');
+  // 2b. Action Required (from git intelligence)
+  const highPrioritySuggestions = gitSuggestions.filter(s => s.priority === 'high');
+  if (highPrioritySuggestions.length > 0) {
+    console.log('── 🔴 ACTION REQUIRED ─────────────────────────────────────');
+    highPrioritySuggestions.forEach(s => {
+      log.alert(`[${s.repo}] ${s.message}`);
+      if (s.action) console.log(`   → ${s.action}`);
+    });
     console.log('');
   }
 

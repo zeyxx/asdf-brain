@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-09T05:50:51.324Z",
+    "generated": "2026-01-09T12:19:34.652Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -10,19 +10,19 @@
         "version": "1.0.0",
         "dependencies": {
           "@socket.io/redis-adapter": "^8.2.1",
-          "@solana/spl-token": "^0.3.9",
-          "@solana/web3.js": "^1.87.6",
+          "@solana/spl-token": "^0.4.8",
+          "@solana/web3.js": "^1.95.0",
           "axios": "^1.6.2",
           "bs58": "^5.0.0",
           "compression": "^1.7.4",
           "cors": "^2.8.5",
-          "dotenv": "^16.3.1",
-          "express": "^4.18.2",
-          "express-rate-limit": "^7.1.5",
-          "helmet": "^7.1.0",
+          "dotenv": "^16.6.1",
+          "express": "^4.21.0",
+          "express-rate-limit": "^8.2.1",
+          "helmet": "^8.1.0",
           "ioredis": "^5.3.2",
-          "pg": "^8.11.3",
-          "redis": "^4.6.10",
+          "pg": "^8.16.0",
+          "redis": "^4.7.0",
           "socket.io": "^4.7.2",
           "tweetnacl": "^1.0.3",
           "winston": "^3.11.0"
@@ -80,10 +80,11 @@
           "./routes/oracle": 1,
           "./routes/space": 1,
           "./routes/nodes": 1,
+          "./routes/system": 1,
           "./services/heliusWebhook": 1,
           "../services/database": 17,
           "./tasks/snapshotter": 1,
-          "../services/logger": 21,
+          "../services/logger": 22,
           "../../services/database": 2,
           "../../config/env": 1,
           "../../services/logger": 3,
@@ -91,8 +92,8 @@
           "../../services/redis": 1,
           "../services/volume_tracker": 1,
           "../../services/pool_finder": 1,
-          "./indexer": 1,
-          "../services/redis": 13,
+          "./indexer": 2,
+          "../services/redis": 14,
           "../utils/apiKeyHash": 5,
           "../services/solana": 9,
           "../services/burnCredits": 4,
@@ -101,6 +102,7 @@
           "../services/nodeService": 3,
           "../services/harmonyEngine": 2,
           "../middleware/spaceAuth": 1,
+          "../shared/harmony": 5,
           "../utils/solana": 1,
           "../utils/validation": 2,
           "../tasks/kScoreUpdater": 2,
@@ -117,15 +119,16 @@
           "../services/newTokenWebhook": 3,
           "../services": 3,
           "../utils/dataSignature": 11,
-          "../shared/harmony": 2,
           "../tasks/integrityWatchdog": 1,
-          "./logger": 20,
-          "./redis": 8,
-          "./solana": 3,
+          "./logger": 24,
+          "./redis": 11,
+          "./solana": 4,
           "./nodeService": 1,
-          "../config/genesis": 3,
-          "./database": 3,
+          "../config/genesis": 4,
+          "./database": 4,
           "./nodeApproval": 3,
+          "./nodeRewards": 1,
+          "./harmonyEngine": 1,
           "./index": 1,
           "./pool_finder": 1,
           "../utils/metaplex": 1,
@@ -133,6 +136,7 @@
           "../utils/nodeKeys": 4,
           "./priceService": 1,
           "./claude-phi": 1,
+          "./shared/harmony": 1,
           "./harmony": 1,
           "./shared/holdexClient": 1,
           "../services/alerting": 2,
@@ -153,15 +157,15 @@
           "globals": 1,
           "node-fetch": 1,
           "canvas": 2,
-          "dotenv": 27,
-          "pg": 19,
-          "express": 7,
+          "dotenv": 28,
+          "pg": 20,
+          "express": 8,
           "cors": 1,
           "helmet": 1,
           "express-rate-limit": 4,
           "compression": 1,
           "axios": 11,
-          "@solana/web3.js": 16,
+          "@solana/web3.js": 17,
           "tweetnacl": 2,
           "bs58": 3,
           "ioredis": 1,
@@ -476,7 +480,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^0.3.9",
+        "holdex": "^0.4.8",
         "gasdf": "^0.4.8"
       }
     },
@@ -487,7 +491,7 @@
         "asdf-brain"
       ],
       "versions": {
-        "holdex": "^1.87.6",
+        "holdex": "^1.95.0",
         "gasdf": "^1.95.0",
         "asdf-brain": "^1.95.0"
       }
@@ -520,7 +524,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^16.3.1",
+        "holdex": "^16.6.1",
         "gasdf": "^16.6.1"
       }
     },
@@ -531,7 +535,7 @@
         "asdf-brain"
       ],
       "versions": {
-        "holdex": "^4.18.2",
+        "holdex": "^4.21.0",
         "gasdf": "^4.21.0",
         "asdf-brain": "^4.21.0"
       }
@@ -542,7 +546,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^7.1.5",
+        "holdex": "^8.2.1",
         "gasdf": "^8.2.1"
       }
     },
@@ -552,7 +556,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^7.1.0",
+        "holdex": "^8.1.0",
         "gasdf": "^8.1.0"
       }
     },
@@ -562,7 +566,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^8.11.3",
+        "holdex": "^8.16.0",
         "gasdf": "^8.16.0"
       }
     },
@@ -572,7 +576,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^4.6.10",
+        "holdex": "^4.7.0",
         "gasdf": "^4.7.0"
       }
     },
@@ -609,102 +613,10 @@
   },
   "version_mismatches": [
     {
-      "dependency": "@solana/spl-token",
-      "versions": {
-        "holdex": "^0.3.9",
-        "gasdf": "^0.4.8"
-      },
-      "repos": [
-        "holdex",
-        "gasdf"
-      ]
-    },
-    {
-      "dependency": "@solana/web3.js",
-      "versions": {
-        "holdex": "^1.87.6",
-        "gasdf": "^1.95.0",
-        "asdf-brain": "^1.95.0"
-      },
-      "repos": [
-        "holdex",
-        "gasdf",
-        "asdf-brain"
-      ]
-    },
-    {
       "dependency": "bs58",
       "versions": {
         "holdex": "^5.0.0",
         "gasdf": "^6.0.0"
-      },
-      "repos": [
-        "holdex",
-        "gasdf"
-      ]
-    },
-    {
-      "dependency": "dotenv",
-      "versions": {
-        "holdex": "^16.3.1",
-        "gasdf": "^16.6.1"
-      },
-      "repos": [
-        "holdex",
-        "gasdf"
-      ]
-    },
-    {
-      "dependency": "express",
-      "versions": {
-        "holdex": "^4.18.2",
-        "gasdf": "^4.21.0",
-        "asdf-brain": "^4.21.0"
-      },
-      "repos": [
-        "holdex",
-        "gasdf",
-        "asdf-brain"
-      ]
-    },
-    {
-      "dependency": "express-rate-limit",
-      "versions": {
-        "holdex": "^7.1.5",
-        "gasdf": "^8.2.1"
-      },
-      "repos": [
-        "holdex",
-        "gasdf"
-      ]
-    },
-    {
-      "dependency": "helmet",
-      "versions": {
-        "holdex": "^7.1.0",
-        "gasdf": "^8.1.0"
-      },
-      "repos": [
-        "holdex",
-        "gasdf"
-      ]
-    },
-    {
-      "dependency": "pg",
-      "versions": {
-        "holdex": "^8.11.3",
-        "gasdf": "^8.16.0"
-      },
-      "repos": [
-        "holdex",
-        "gasdf"
-      ]
-    },
-    {
-      "dependency": "redis",
-      "versions": {
-        "holdex": "^4.6.10",
-        "gasdf": "^4.7.0"
       },
       "repos": [
         "holdex",
@@ -720,7 +632,7 @@
         "asdf-brain"
       ],
       "versions": {
-        "holdex": "^1.87.6",
+        "holdex": "^1.95.0",
         "gasdf": "^1.95.0",
         "asdf-brain": "^1.95.0"
       }
@@ -732,7 +644,7 @@
         "asdf-brain"
       ],
       "versions": {
-        "holdex": "^4.18.2",
+        "holdex": "^4.21.0",
         "gasdf": "^4.21.0",
         "asdf-brain": "^4.21.0"
       }
@@ -751,7 +663,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^8.11.3",
+        "holdex": "^8.16.0",
         "gasdf": "^8.16.0"
       }
     },
@@ -769,7 +681,7 @@
         "gasdf"
       ],
       "versions": {
-        "holdex": "^7.1.0",
+        "holdex": "^8.1.0",
         "gasdf": "^8.1.0"
       }
     },
@@ -870,7 +782,7 @@
         "from": "holdex",
         "to": "@solana/spl-token",
         "type": "depends_on",
-        "version": "^0.3.9"
+        "version": "^0.4.8"
       },
       {
         "from": "gasdf",
@@ -882,7 +794,7 @@
         "from": "holdex",
         "to": "@solana/web3.js",
         "type": "depends_on",
-        "version": "^1.87.6"
+        "version": "^1.95.0"
       },
       {
         "from": "gasdf",
@@ -930,7 +842,7 @@
         "from": "holdex",
         "to": "dotenv",
         "type": "depends_on",
-        "version": "^16.3.1"
+        "version": "^16.6.1"
       },
       {
         "from": "gasdf",
@@ -942,7 +854,7 @@
         "from": "holdex",
         "to": "express",
         "type": "depends_on",
-        "version": "^4.18.2"
+        "version": "^4.21.0"
       },
       {
         "from": "gasdf",
@@ -960,7 +872,7 @@
         "from": "holdex",
         "to": "express-rate-limit",
         "type": "depends_on",
-        "version": "^7.1.5"
+        "version": "^8.2.1"
       },
       {
         "from": "gasdf",
@@ -972,7 +884,7 @@
         "from": "holdex",
         "to": "helmet",
         "type": "depends_on",
-        "version": "^7.1.0"
+        "version": "^8.1.0"
       },
       {
         "from": "gasdf",
@@ -984,7 +896,7 @@
         "from": "holdex",
         "to": "pg",
         "type": "depends_on",
-        "version": "^8.11.3"
+        "version": "^8.16.0"
       },
       {
         "from": "gasdf",
@@ -996,7 +908,7 @@
         "from": "holdex",
         "to": "redis",
         "type": "depends_on",
-        "version": "^4.6.10"
+        "version": "^4.7.0"
       },
       {
         "from": "gasdf",
@@ -1045,7 +957,7 @@
   "statistics": {
     "total_repos": 3,
     "shared_deps": 13,
-    "mismatches": 9,
+    "mismatches": 1,
     "graph_nodes": 16,
     "graph_edges": 29
   }
