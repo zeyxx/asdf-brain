@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-09T01:49:29.928Z",
+    "generated": "2026-01-09T02:04:33.926Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -429,6 +429,12 @@
           "../target/types/asdf_merkle": 1,
           "./lib/context-layer": 1,
           "./lib/merkle-proofs": 1,
+          "./lib/daat-levels": 1,
+          "./lib/temporal": 1,
+          "./lib/pollination": 1,
+          "./lib/burn-mechanism": 1,
+          "./lib/i-infra-monitor": 1,
+          "./lib/contributors": 1,
           "./extractGitDecisions.js": 1,
           "./exportClaudeMem.js": 1,
           "./exportKScoreHistory.js": 1,
