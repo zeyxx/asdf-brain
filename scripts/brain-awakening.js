@@ -302,7 +302,16 @@ async function awaken(options = {}) {
     console.log('');
   }
 
-  // 7. Closing
+  // 7. Codespaces Reminder (critical for multi-repo work)
+  if (process.env.CODESPACES === 'true' || process.env.GITHUB_TOKEN) {
+    console.log('── CODESPACES REMINDER ────────────────────────────────────');
+    log.alert('GITHUB_TOKEN is scoped to origin repo only!');
+    console.log('   To push to other repos: unset GITHUB_TOKEN first');
+    console.log('   Then: git push https://$(gh auth token)@github.com/OWNER/REPO.git');
+    console.log('');
+  }
+
+  // 8. Closing
   console.log('═══════════════════════════════════════════════════════════');
   log.brain('Brain is AWAKE and monitoring. φ guides all ratios.');
   console.log('═══════════════════════════════════════════════════════════');
