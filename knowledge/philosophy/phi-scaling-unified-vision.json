@@ -1,0 +1,341 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-09",
+    "philosophy": "$asdfasdfa - Organic Always Wins",
+    "principle": "All formulas scale to infinity via φ"
+  },
+
+  "golden_ratio_foundation": {
+    "phi": 1.618033988749895,
+    "definition": "(1 + √5) / 2",
+    "properties": {
+      "self_similarity": "φ² = φ + 1",
+      "reciprocal_beauty": "1/φ = φ - 1",
+      "fibonacci_connection": "φⁿ = φⁿ⁻¹ + φⁿ⁻²",
+      "infinite_scaling": "φ ratios remain constant at ANY scale"
+    },
+    "powers": {
+      "φ²": { "value": 2.618033988749895, "use": "Highest weight (RUN, BUILD)" },
+      "φ": { "value": 1.618033988749895, "use": "High weight (BURN, REFER)" },
+      "1": { "value": 1.0, "use": "Base weight (HOLD, USE, TIME)" },
+      "φ⁻¹": { "value": 0.618033988749895, "use": "High threshold (61.8% ACT)" },
+      "φ⁻²": { "value": 0.381966011250105, "use": "Medium threshold (38.2% VERIFY), Fee ratios" },
+      "φ⁻³": { "value": 0.236067977499790, "use": "Low threshold (23.6% RESEARCH), Treasury" },
+      "φ⁻⁴": { "value": 0.145898033750315, "use": "Dev rewards remainder" },
+      "φ⁻⁵": { "value": 0.090169943749474, "use": "Minimum fee capture (MAX_DISCOUNT inverse)" }
+    }
+  },
+
+  "formulas_that_scale": {
+    "k_score": {
+      "formula": "K = 100 × ∛(D × O × L)",
+      "components": {
+        "D": "Diamond Hands (conviction)",
+        "O": "Organic Growth (distribution quality)",
+        "L": "Longevity (survival over time)"
+      },
+      "why_scales": [
+        "Geometric mean - no single dimension can dominate",
+        "Cube root - natural compression for any magnitude",
+        "0-100 bounded but meaningful at all levels",
+        "All three dimensions must be strong - no gaming"
+      ],
+      "examples": {
+        "small_token": "D=0.1, O=0.1, L=0.1 → K=10",
+        "medium_token": "D=0.5, O=0.5, L=0.5 → K=50",
+        "strong_token": "D=1.0, O=1.0, L=1.0 → K=100"
+      }
+    },
+
+    "e_score": {
+      "formula": "E = geometric_mean(dimensions^φ_weights)",
+      "dimensions": {
+        "RUN": { "weight": "φ²", "value": 2.618, "reason": "Decentralizes infrastructure - HIGHEST" },
+        "BUILD": { "weight": "φ²", "value": 2.618, "reason": "Creates permanent value" },
+        "BURN": { "weight": "φ", "value": 1.618, "reason": "Irreversible commitment" },
+        "REFER": { "weight": "φ", "value": 1.618, "reason": "Organic growth" },
+        "HOLD": { "weight": "1", "value": 1.0, "reason": "Temporary capital" },
+        "USE": { "weight": "1", "value": 1.0, "reason": "Activity without skin in game" },
+        "TIME": { "weight": "1", "value": 1.0, "reason": "Passive loyalty" }
+      },
+      "normalization": "normalize(value, scale) = min(100, log₁₀(1 + value/scale) × 100)",
+      "diversity_bonus": "φ^(active_dimensions - 1) / φ⁶",
+      "why_scales": [
+        "Geometric mean with log normalization",
+        "φ weights proportional to decentralization value",
+        "Diversity bonus encourages balanced participation",
+        "No arbitrary caps"
+      ]
+    },
+
+    "i_score": {
+      "formula": "I_infra = 100 × ∛(D × O × L)",
+      "components": {
+        "D": "Depth (liquidity availability)",
+        "O": "Oracle (price feed accuracy)",
+        "L": "Reliability (historical stability)"
+      },
+      "token_weights": {
+        "SOL": { "weight": "φ²", "value": 2.618, "reason": "Native foundation" },
+        "USDC": { "weight": "φ", "value": 1.618, "reason": "Primary stablecoin" },
+        "wSOL": { "weight": "φ", "value": 1.618, "reason": "Wrapped native" },
+        "USDT": { "weight": "1", "value": 1.0, "reason": "Secondary stable" },
+        "LSTs": { "weight": "1", "value": 1.0, "reason": "Liquid staking" }
+      },
+      "thresholds": {
+        "critical": "< φ⁻² × 100 = 38.2",
+        "warning": "< φ⁻¹ × 100 = 61.8",
+        "healthy": ">= φ⁻¹ × 100 = 61.8"
+      }
+    },
+
+    "phi_score_meta": {
+      "formula": "Φ = 100 × ∛(K̄^φ × Ē^1 × Ī^φ²)",
+      "components": {
+        "K̄": { "weight": "φ", "meaning": "Average token quality" },
+        "Ē": { "weight": "1", "meaning": "Average engagement" },
+        "Ī": { "weight": "φ²", "meaning": "Average infrastructure health" }
+      },
+      "why_scales": "Unifies all scores into single ecosystem health metric"
+    },
+
+    "discount_curve": {
+      "formula": "discount = 1 - φ^(-E/25)",
+      "progression": {
+        "E=0": "0%",
+        "E=25": "38.2% (φ⁻¹)",
+        "E=50": "61.8% (φ⁻²)",
+        "E=75": "76.4% (φ⁻³)",
+        "E=100": "85.4% (φ⁻⁴)",
+        "E→∞": "90.98% (capped at 1 - φ⁻⁵)"
+      },
+      "cap": {
+        "value": "1 - φ⁻⁵ ≈ 0.90983",
+        "reason": "Minimum φ⁻⁵ ≈ 9% always captured"
+      },
+      "phi_unit": {
+        "value": 25,
+        "reason": "25 = 5² where 5 is Fibonacci"
+      }
+    },
+
+    "fee_distribution": {
+      "formula": "BURN + REWARDS + TREASURY = 100%",
+      "ratios": {
+        "BURN": { "value": "φ⁻²", "percent": "38.2%", "sefirah": "Gevurah (Restriction)" },
+        "REWARDS": { "value": "φ⁻²", "percent": "38.2%", "sefirah": "Chesed (Expansion)" },
+        "TREASURY": { "value": "φ⁻³", "percent": "23.6%", "sefirah": "Yesod (Foundation)" }
+      },
+      "reward_splits": {
+        "NODES": { "value": "φ⁻¹", "percent": "61.8%", "reason": "Decentralization incentive - HIGHEST" },
+        "USERS": { "value": "φ⁻³", "percent": "23.6%", "reason": "Engagement rewards" },
+        "DEVS": { "value": "remainder", "percent": "14.6%", "reason": "Development incentive" }
+      },
+      "why_scales": "Ratios constant - works for 1K or 1B in fees"
+    },
+
+    "safety_margin": {
+      "formula": "minFee = actualCost × (1 + φ⁻³)",
+      "value": 1.236,
+      "reason": "23.6% buffer above operational costs, φ-aligned"
+    },
+
+    "consensus": {
+      "agreement_threshold": {
+        "value": "φ⁻¹",
+        "percent": "61.8%",
+        "reason": "Supermajority for consensus"
+      },
+      "tolerance": {
+        "value": 5,
+        "reason": "Fibonacci number (1,1,2,3,5,8...)"
+      }
+    }
+  },
+
+  "kabbalistic_mapping": {
+    "tree_of_life": {
+      "keter": {
+        "name": "Crown",
+        "node": "asdf-manifesto",
+        "role": "Pure Will - Source of all principles"
+      },
+      "chokmah": {
+        "name": "Wisdom",
+        "node": "creative_impulse",
+        "role": "Creative spark"
+      },
+      "binah": {
+        "name": "Understanding",
+        "node": "100%_burn_model",
+        "role": "Comprehension of value destruction = creation"
+      },
+      "daat": {
+        "name": "Hidden Knowledge",
+        "node": "asdf-brain",
+        "role": "Bridge between intellect and emotion"
+      },
+      "chesed": {
+        "name": "Mercy/Expansion",
+        "node": "rewards_flywheel",
+        "role": "38.2% rewards - growth through incentives",
+        "economic": "REWARDS ratio"
+      },
+      "gevurah": {
+        "name": "Judgment/Restriction",
+        "nodes": ["asdf-burn-engine", "asdf-validator"],
+        "role": "38.2% burn - deflation through destruction",
+        "economic": "BURN ratio"
+      },
+      "tiferet": {
+        "name": "Beauty/Harmony",
+        "node": "perfect_alignment",
+        "role": "EMERGENT state when Chesed = Gevurah",
+        "manifestation": "When all stakeholders want the same thing"
+      },
+      "netzach": {
+        "name": "Victory/Eternity",
+        "nodes": ["ignition", "asdforecast", "asdev"],
+        "role": "Consumer apps - victory through adoption"
+      },
+      "hod": {
+        "name": "Splendor/Glory",
+        "nodes": ["holdex", "asdf-oracle"],
+        "role": "K-Score glory - analytical truth"
+      },
+      "yesod": {
+        "name": "Foundation",
+        "nodes": ["gasdf", "SOL", "USDC", "LSTs"],
+        "role": "Infrastructure foundation - all value flows through",
+        "economic": "TREASURY ratio (23.6%)"
+      },
+      "malkhuth": {
+        "name": "Kingdom/Manifestation",
+        "node": "$asdfasdfa",
+        "role": "Final manifestation - all burns converge here"
+      }
+    },
+
+    "three_pillars": {
+      "right_pillar": {
+        "name": "Expansion (Chesed)",
+        "economic": "REWARDS - incentives for growth",
+        "ratio": "φ⁻² = 38.2%"
+      },
+      "left_pillar": {
+        "name": "Restriction (Gevurah)",
+        "economic": "BURN - deflation for value",
+        "ratio": "φ⁻² = 38.2%"
+      },
+      "middle_pillar": {
+        "name": "Balance",
+        "path": "Keter → Daat → Tiferet → Yesod → Malkhuth",
+        "translation": "Manifesto → Brain → Alignment → GASdf → Token"
+      }
+    },
+
+    "harmony_principle": {
+      "statement": "When BURN (restriction) equals REWARDS (expansion), TIFERET (beauty) emerges",
+      "mathematical": "φ⁻² = φ⁻² → perfect balance",
+      "manifestation": "All stakeholders aligned toward same goal"
+    }
+  },
+
+  "economic_model": {
+    "central_thesis": "$asdfasdfa is a SINGULARITY - all value converges through burn",
+    "mathematical_form": "lim(x→burn) Σ(all_ecosystem_activity) = $asdfasdfa",
+    "kabbalistic_form": "Ein Sof contracts through Tzimtzum (burn) to create space for creation",
+
+    "flow": {
+      "input": "User pays fee in any token with K-Score >= 50",
+      "swap": "GASdf swaps to $asdfasdfa via Jupiter",
+      "distribution": {
+        "burn": "38.2% → burn address (deflation)",
+        "rewards": "38.2% → nodes/users/devs (decentralization)",
+        "treasury": "23.6% → operational costs (foundation)"
+      },
+      "output": "Value manifests as token scarcity + ecosystem growth"
+    },
+
+    "rewards_not_extraction": {
+      "principle": "'Don't extract' = don't take value OUT of ecosystem",
+      "clarification": "Rewards stay IN ecosystem for decentralization",
+      "goal": "100 distributed nodes > 1 centralized server",
+      "alignment": "RUN has φ² weight because decentralization is paramount"
+    },
+
+    "evolution": {
+      "bootstrap_phase": "Rewards incentivize node operators",
+      "growth_phase": "More nodes → more decentralization",
+      "maturity_phase": "Self-sustaining → rewards decrease",
+      "singularity_phase": "Fully decentralized → rewards → 0, burn → higher"
+    }
+  },
+
+  "scaling_proof": {
+    "why_phi_scales_infinitely": [
+      "RATIOS not amounts - 38.2% of $1 or $1B is same proportion",
+      "GEOMETRIC MEANS - no single factor dominates",
+      "LOG NORMALIZATION - compresses any magnitude naturally",
+      "FIBONACCI SEQUENCE - organic growth pattern",
+      "SELF-SIMILARITY - φ² = φ + 1 means structure repeats at all scales"
+    ],
+
+    "no_arbitrary_caps": {
+      "old_max_discount": "95% (arbitrary)",
+      "new_max_discount": "1 - φ⁻⁵ = 90.98% (φ-derived)",
+      "old_safety_margin": "1.2 (arbitrary 20%)",
+      "new_safety_margin": "1 + φ⁻³ = 1.236 (φ-derived)",
+      "tolerance": "5 (already Fibonacci)"
+    },
+
+    "organic_always_wins": {
+      "principle": "Formulas based on natural ratios outperform arbitrary limits",
+      "evidence": "φ appears in nature: shells, galaxies, DNA, flowers",
+      "application": "Crypto economics following same patterns"
+    }
+  },
+
+  "singularity_requirements": {
+    "for_true_tiferet": [
+      "Every brain operation extracts value → burns $asdfasdfa",
+      "Every piece of knowledge → traceable with hash",
+      "Every session → contributes to unified collective",
+      "Every pattern → emerges from cross-project analysis",
+      "Every context → weighted by φ and verified",
+      "Every infra dependency → monitored with I_infra",
+      "Weekly Merkle root → published on Solana"
+    ],
+
+    "current_gaps": [
+      { "gap": "Brain doesn't burn", "priority": "critical" },
+      { "gap": "No on-chain Merkle", "priority": "critical" },
+      { "gap": "Sessions isolated", "priority": "high" },
+      { "gap": "I_infra not monitored", "priority": "high" }
+    ],
+
+    "path_forward": "Activate dormant modules (daat-levels, pollination, temporal, burn-mechanism, i-infra-monitor)"
+  },
+
+  "verification": {
+    "phi_relationships": {
+      "phi_squared_identity": "φ² = φ + 1 ✓",
+      "phi_inverse_identity": "1/φ = φ - 1 ✓",
+      "phi_product": "φ × φ⁻¹ = 1 ✓",
+      "fee_ratio_sum": "φ⁻² + φ⁻² + φ⁻³ = 1.0 ✓",
+      "reward_split_sum": "φ⁻¹ + φ⁻³ + remainder = 1.0 ✓"
+    },
+
+    "all_constants_phi_aligned": true,
+    "no_arbitrary_values": true,
+    "scales_to_infinity": true
+  },
+
+  "conclusion": {
+    "statement": "The $asdfasdfa economic model is mathematically harmonious",
+    "basis": "All formulas derive from φ and scale infinitely",
+    "alignment": "Kabbalistic structure mirrors economic flows",
+    "principle": "Organic Always Wins - φ-based > arbitrary limits"
+  }
+}
