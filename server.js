@@ -264,7 +264,14 @@ app.get('/api/search', requireApiKey, async (req, res) => {
     if (!line.trim()) continue;
     try {
       const entry = JSON.parse(line);
-      const text = ((entry.user?.content || '') + ' ' + (entry.assistant?.content || '')).toLowerCase();
+      // Support multiple formats: conversations (user/assistant) AND learned (content/context/tags)
+      const text = [
+        entry.user?.content || '',
+        entry.assistant?.content || '',
+        entry.content || '',
+        entry.context || '',
+        (entry.tags || []).join(' '),
+      ].join(' ').toLowerCase();
 
       let score = 0;
       for (const term of queryTerms) {
@@ -274,9 +281,11 @@ app.get('/api/search', requireApiKey, async (req, res) => {
       if (score > 0) {
         results.push({
           score,
-          session_id: entry.session_id,
+          id: entry.id || entry.session_id,
+          type: entry.type || 'conversation',
+          project: entry.project,
           timestamp: entry.timestamp,
-          preview: (entry.user?.content || '').slice(0, 150),
+          preview: (entry.content || entry.user?.content || '').slice(0, 200),
         });
       }
 
