@@ -206,6 +206,53 @@ function brainVision() {
   };
 }
 
+// -----------------------------------------------------------------------------
+// CYNIC JUDGE
+// -----------------------------------------------------------------------------
+
+const { CYNIC, VERDICT } = require('./lib/cynic');
+const { SelfJudge } = require('./lib/self-judge');
+
+async function brainJudge(input, source = 'mcp', dimensions = []) {
+  // Create CYNIC with optional dimension-based evaluator
+  const judge = new SelfJudge();
+
+  // Load requested dimensions, or use simple mode
+  if (dimensions && dimensions.length > 0) {
+    for (const dim of dimensions) {
+      try {
+        judge.loadDimension(dim);
+      } catch (e) {
+        // Skip unknown dimensions
+      }
+    }
+  }
+
+  const cynic = new CYNIC({ evaluator: judge.dimensions.size > 0 ? judge : null });
+
+  // Process through CYNIC cycle
+  const result = await cynic.process(input, source);
+
+  return {
+    verdict: result.judgment.verdict,
+    confidence: result.judgment.confidence,
+    doubt: result.judgment.doubt,
+    reasoning: result.judgment.reasoning,
+    action: result.result.action,
+    needs_verification: result.result.transformed?._cynic?.needs_verification || false,
+    suggested_checks: result.result.transformed?._cynic?.suggested_checks || [],
+    _phi: {
+      ceiling_applied: result.judgment._phi.ceiling_applied,
+      floor_applied: result.judgment._phi.floor_applied,
+      philosophy: result.judgment._phi.philosophy
+    },
+    _config: {
+      mode: judge.dimensions.size > 0 ? 'dimensional' : 'simple',
+      dimensions_loaded: judge.getLoadedDimensions()
+    }
+  };
+}
+
 // =============================================================================
 // MCP SERVER MAIN
 // =============================================================================
@@ -269,6 +316,29 @@ const TOOLS = [
     description: 'Get roadmap items and future plans extracted from discussions',
     inputSchema: { type: 'object', properties: {} },
   },
+  {
+    name: 'brain_judge',
+    description: '[CYNIC] Judge input with φ-constrained confidence (max 61.8%, min 38.2% doubt). Returns verdict, confidence, and verification suggestions.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        input: {
+          type: 'string',
+          description: 'Content to judge (text, JSON, or any input)',
+        },
+        source: {
+          type: 'string',
+          description: 'Origin of the input (e.g., "user", "webhook", "api")',
+        },
+        dimensions: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Optional evaluation dimensions: truth, relevance, quality, ethics. Empty = simple mode.',
+        },
+      },
+      required: ['input'],
+    },
+  },
 ];
 
 async function handleRequest(request) {
@@ -313,6 +383,9 @@ async function handleRequest(request) {
           break;
         case 'brain_vision':
           result = brainVision();
+          break;
+        case 'brain_judge':
+          result = await brainJudge(args.input, args.source, args.dimensions);
           break;
         default:
           return sendError(id, -32601, `Unknown tool: ${name}`);
