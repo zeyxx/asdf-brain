@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T19:11:06.357Z",
+    "generated": "2026-01-10T19:18:32.280Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -469,6 +469,7 @@
           "./lib/burn-mechanism": 1,
           "./lib/i-infra-monitor": 1,
           "./lib/cynic/self-judge": 1,
+          "./lib/discovery/git-scanner": 1,
           "./lib/contributors": 1,
           "../../lib/temporal": 8,
           "./extractGitDecisions.js": 1,
@@ -483,6 +484,9 @@
           "./self-judge": 2,
           "../temporal": 1,
           "./cynic": 1,
+          "../repo-discovery": 1,
+          "../git-intelligence": 1,
+          "../cynic/self-judge": 1,
           "./lib/cynic": 2,
           "./lib/self-judge": 2,
           "../lib/temporal": 7,
@@ -503,12 +507,12 @@
           "express": 1
         },
         "node": {
-          "fs": 47,
-          "path": 47,
+          "fs": 48,
+          "path": 48,
           "crypto": 16,
           "readline": 9,
           "http": 1,
-          "child_process": 13,
+          "child_process": 14,
           "os": 1,
           "https": 2
         }
