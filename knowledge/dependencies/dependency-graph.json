@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T11:25:11.392Z",
+    "generated": "2026-01-10T11:33:21.589Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -149,8 +149,8 @@
           "./queue": 1,
           "../utils/nodeKeys": 4,
           "./priceService": 1,
+          "./heliusRateLimiter": 2,
           "./rpcMonitor": 1,
-          "./heliusRateLimiter": 1,
           "./claude-phi": 1,
           "./shared/harmony": 1,
           "./harmony": 1,
@@ -468,8 +468,8 @@
           "./contributors": 1,
           "./cynic": 1,
           "./self-judge": 1,
-          "./lib/cynic": 1,
-          "./lib/self-judge": 1,
+          "./lib/cynic": 2,
+          "./lib/self-judge": 2,
           "../lib/git-intelligence": 1,
           "./lib/data-sources": 4,
           "./publish-to-solana": 1
