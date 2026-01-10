@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T14:29:32.262Z",
+    "generated": "2026-01-10T16:23:16.141Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -160,6 +160,7 @@
           "./heliusRateLimiter": 1,
           "./providers/helius": 1,
           "./providers/public": 1,
+          "./rpcHardcap": 1,
           "./claude-phi": 1,
           "./shared/harmony": 1,
           "./harmony": 1,
