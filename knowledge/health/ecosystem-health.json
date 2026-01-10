@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-10T17:30:39.100Z",
+  "timestamp": "2026-01-10T18:41:26.840Z",
   "philosophy": "$asdfasdfa: Health from actual data",
   "indicators": {
     "error_rate": {
@@ -21,20 +21,20 @@
       "details": "undefined/undefined principles"
     },
     "version_mismatches": {
-      "value": 1,
+      "value": 2,
       "unit": "mismatches",
       "status": "good",
-      "details": "13 shared dependencies"
+      "details": "14 shared dependencies"
     }
   },
   "scores": {
     "error_rate": 98.5,
     "pattern_coverage": 67.9,
     "philosophy_alignment": 90,
-    "version_health": 90
+    "version_health": 80
   },
   "overall": {
-    "score": 89,
+    "score": 88,
     "status": "healthy"
   },
   "recommendations": [

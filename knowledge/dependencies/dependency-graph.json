@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T17:30:39.034Z",
+    "generated": "2026-01-10T18:41:26.773Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -63,7 +63,7 @@
           "../src/services/cardGenerator": 1,
           "../services/solana": 9,
           "../services/database": 21,
-          "../services/redis": 16,
+          "../services/redis": 15,
           "../services/logger": 24,
           "../services/tokenQueue": 6,
           "./config/env": 2,
@@ -415,9 +415,10 @@
         "name": "asdf-brain",
         "version": "1.0.0",
         "dependencies": {
-          "express": "^4.21.0",
-          "cors": "^2.8.5",
           "@solana/web3.js": "^1.95.0",
+          "cors": "^2.8.5",
+          "express": "^4.21.0",
+          "ioredis": "^5.9.1",
           "js-sha3": "^0.9.3"
         },
         "devDependencies": {},
@@ -462,25 +463,28 @@
           "./lib/context-layer": 1,
           "./lib/merkle-proofs": 1,
           "./lib/daat-levels": 1,
-          "./lib/temporal": 1,
+          "./lib/temporal": 2,
           "./lib/pollination": 1,
           "./lib/lang-detect": 1,
           "./lib/burn-mechanism": 1,
           "./lib/i-infra-monitor": 1,
           "./lib/contributors": 1,
+          "../../lib/temporal": 8,
           "./extractGitDecisions.js": 1,
           "./exportClaudeMem.js": 1,
           "./exportKScoreHistory.js": 1,
           "./exportHolderSnapshots.js": 1,
           "./labelTokenOutcomes.js": 1,
-          "./temporal": 7,
+          "./temporal": 9,
           "./merkle-proofs": 1,
           "../scripts/merkle": 2,
           "./contributors": 1,
           "./self-judge": 2,
+          "../temporal": 1,
           "./cynic": 1,
           "./lib/cynic": 2,
           "./lib/self-judge": 2,
+          "../lib/temporal": 7,
           "../lib/lang-detect": 1,
           "../lib/git-intelligence": 1,
           "../lib/repo-discovery": 1,
@@ -597,6 +601,16 @@
         "gasdf": "^8.1.0"
       }
     },
+    "ioredis": {
+      "repos": [
+        "holdex",
+        "asdf-brain"
+      ],
+      "versions": {
+        "holdex": "^5.3.2",
+        "asdf-brain": "^5.9.1"
+      }
+    },
     "pg": {
       "repos": [
         "holdex",
@@ -659,6 +673,17 @@
         "holdex",
         "gasdf"
       ]
+    },
+    {
+      "dependency": "ioredis",
+      "versions": {
+        "holdex": "^5.3.2",
+        "asdf-brain": "^5.9.1"
+      },
+      "repos": [
+        "holdex",
+        "asdf-brain"
+      ]
     }
   ],
   "critical_dependencies": {
@@ -688,10 +713,12 @@
     },
     "ioredis": {
       "used_in": [
-        "holdex"
+        "holdex",
+        "asdf-brain"
       ],
       "versions": {
-        "holdex": "^5.3.2"
+        "holdex": "^5.3.2",
+        "asdf-brain": "^5.9.1"
       }
     },
     "pg": {
@@ -785,6 +812,11 @@
       },
       {
         "id": "helmet",
+        "type": "dependency",
+        "layer": "npm"
+      },
+      {
+        "id": "ioredis",
         "type": "dependency",
         "layer": "npm"
       },
@@ -931,6 +963,18 @@
       },
       {
         "from": "holdex",
+        "to": "ioredis",
+        "type": "depends_on",
+        "version": "^5.3.2"
+      },
+      {
+        "from": "asdf-brain",
+        "to": "ioredis",
+        "type": "depends_on",
+        "version": "^5.9.1"
+      },
+      {
+        "from": "holdex",
         "to": "pg",
         "type": "depends_on",
         "version": "^8.16.0"
@@ -993,9 +1037,9 @@
   },
   "statistics": {
     "total_repos": 3,
-    "shared_deps": 13,
-    "mismatches": 1,
-    "graph_nodes": 16,
-    "graph_edges": 29
+    "shared_deps": 14,
+    "mismatches": 2,
+    "graph_nodes": 17,
+    "graph_edges": 31
   }
 }
