@@ -420,6 +420,174 @@ app.post('/api/judge', express.json(), async (req, res) => {
 });
 
 // =============================================================================
+// WEBHOOK ENDPOINTS - CYNIC-Guarded Ingestion
+// =============================================================================
+
+const WEBHOOK_LOG = path.join(KNOWLEDGE_DIR, 'webhooks', 'incoming.jsonl');
+const FLAGGED_LOG = path.join(KNOWLEDGE_DIR, 'webhooks', 'flagged.jsonl');
+
+// Ensure webhook directories exist
+const webhookDir = path.join(KNOWLEDGE_DIR, 'webhooks');
+if (!fs.existsSync(webhookDir)) {
+  fs.mkdirSync(webhookDir, { recursive: true });
+}
+
+/**
+ * Process webhook through CYNIC and store result
+ */
+async function processWebhookWithCynic(payload, source, dimensions = ['truth', 'relevance', 'ethics']) {
+  const judge = new SelfJudge();
+  for (const dim of dimensions) {
+    try { judge.loadDimension(dim); } catch (e) { /* skip */ }
+  }
+
+  const cynic = new CYNIC({ evaluator: judge });
+  const result = await cynic.process(payload, source);
+
+  const entry = {
+    timestamp: new Date().toISOString(),
+    source,
+    payload,
+    cynic: {
+      verdict: result.judgment.verdict,
+      confidence: result.judgment.confidence,
+      doubt: result.judgment.doubt,
+      reasoning: result.judgment.reasoning,
+      action: result.result.action,
+      needs_verification: result.result.transformed?._cynic?.needs_verification || false,
+      suggested_checks: result.result.transformed?._cynic?.suggested_checks || []
+    },
+    _phi: result.judgment._phi
+  };
+
+  // Store based on verdict
+  const logFile = result.judgment.verdict === 'ACCEPT' ? WEBHOOK_LOG : FLAGGED_LOG;
+  fs.appendFileSync(logFile, JSON.stringify(entry) + '\n');
+
+  return entry;
+}
+
+/**
+ * HolDex Webhook Endpoint
+ * Receives: K-Score updates, token events, space activities
+ */
+app.post('/webhook/holdex', express.json(), async (req, res) => {
+  try {
+    const payload = req.body;
+    const signature = req.headers['x-holdex-signature'];
+
+    // Add verification metadata
+    payload._webhook = {
+      received_at: new Date().toISOString(),
+      has_signature: !!signature,
+      ip: req.ip
+    };
+
+    // Process through CYNIC
+    const entry = await processWebhookWithCynic(payload, 'holdex-webhook');
+
+    console.log(`[HolDex Webhook] ${entry.cynic.verdict} - ${payload.event || 'unknown'} (${(entry.cynic.confidence * 100).toFixed(1)}%)`);
+
+    res.json({
+      received: true,
+      cynic: entry.cynic,
+      stored: entry.cynic.verdict === 'ACCEPT' ? 'accepted' : 'flagged'
+    });
+  } catch (error) {
+    console.error('HolDex webhook error:', error);
+    res.status(500).json({ error: 'Webhook processing failed' });
+  }
+});
+
+/**
+ * GASdf Webhook Endpoint
+ * Receives: Burn notifications, fee events, transaction confirmations
+ */
+app.post('/webhook/gasdf', express.json(), async (req, res) => {
+  try {
+    const payload = req.body;
+
+    payload._webhook = {
+      received_at: new Date().toISOString(),
+      ip: req.ip
+    };
+
+    // Process through CYNIC with ethics dimension (burn alignment)
+    const entry = await processWebhookWithCynic(payload, 'gasdf-webhook', ['truth', 'ethics']);
+
+    console.log(`[GASdf Webhook] ${entry.cynic.verdict} - ${payload.event || 'unknown'} (${(entry.cynic.confidence * 100).toFixed(1)}%)`);
+
+    res.json({
+      received: true,
+      cynic: entry.cynic,
+      stored: entry.cynic.verdict === 'ACCEPT' ? 'accepted' : 'flagged'
+    });
+  } catch (error) {
+    console.error('GASdf webhook error:', error);
+    res.status(500).json({ error: 'Webhook processing failed' });
+  }
+});
+
+/**
+ * Generic Webhook Endpoint
+ * For any ecosystem service to send data through CYNIC
+ */
+app.post('/webhook/ingest', express.json(), async (req, res) => {
+  try {
+    const { payload, source = 'unknown', dimensions } = req.body;
+
+    if (!payload) {
+      return res.status(400).json({ error: 'Payload required' });
+    }
+
+    const entry = await processWebhookWithCynic(
+      payload,
+      source,
+      dimensions || ['truth', 'relevance']
+    );
+
+    res.json({
+      received: true,
+      cynic: entry.cynic,
+      stored: entry.cynic.verdict === 'ACCEPT' ? 'accepted' : 'flagged'
+    });
+  } catch (error) {
+    console.error('Ingest webhook error:', error);
+    res.status(500).json({ error: 'Webhook processing failed' });
+  }
+});
+
+/**
+ * Get webhook stats
+ */
+app.get('/webhook/stats', (req, res) => {
+  try {
+    let accepted = 0, flagged = 0;
+
+    if (fs.existsSync(WEBHOOK_LOG)) {
+      accepted = fs.readFileSync(WEBHOOK_LOG, 'utf-8').split('\n').filter(l => l.trim()).length;
+    }
+    if (fs.existsSync(FLAGGED_LOG)) {
+      flagged = fs.readFileSync(FLAGGED_LOG, 'utf-8').split('\n').filter(l => l.trim()).length;
+    }
+
+    res.json({
+      total: accepted + flagged,
+      accepted,
+      flagged,
+      acceptance_rate: accepted + flagged > 0 ? (accepted / (accepted + flagged)).toFixed(3) : 0,
+      _phi: {
+        ceiling: 0.618,
+        floor: 0.382,
+        philosophy: "Don't trust, verify"
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Stats unavailable' });
+  }
+});
+
+// =============================================================================
 // MCP OVER SSE
 // =============================================================================
 
