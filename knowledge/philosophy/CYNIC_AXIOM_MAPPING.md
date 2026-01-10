@@ -1,7 +1,7 @@
 # CYNIC Dimensions → 4 Axioms/Worlds Mapping
 
-> "φ qui se méfie de φ"
-> "Rendre autonome, pas automatiser"
+> "φ that doubts φ"
+> "Enable autonomy, don't automate"
 
 ## The 4 Worlds = 4 Axioms
 
@@ -17,25 +17,25 @@
 ## Fibonacci Structure (3 + 5 + 8 = 16)
 
 ```
-1 ─── CYNIC (l'unité qui doute)
+1 ─── CYNIC (the unity that doubts)
 │
-1 ─── SINGULARITÉ (asymptote)
+1 ─── SINGULARITY (asymptote)
 │
 2 ─── VERDICT (ACCEPT ↔ TRANSFORM)
 │
-3 ─── META (conscience de soi)
+3 ─── META (self-awareness)
 │     ├── SELF_AWARENESS
 │     ├── LEARNING_RATE
 │     └── SINGULARITY_DISTANCE
 │
-5 ─── OPERATIONS (comment servir l'humain)
+5 ─── OPERATIONS (how to serve humans)
 │     ├── SECURE
 │     ├── PRIVATE
 │     ├── SCALE
 │     ├── SIMPLIFY
-│     └── ENABLE ← Mission clé
+│     └── ENABLE ← Core mission
 │
-8 ─── JUDGMENTS (2 par monde)
+8 ─── JUDGMENTS (2 per world)
       ├── ATZILUT/φ: HARMONY, COHERENCE
       ├── BERIAH/VERIFY: TRUTH, INTEGRITY
       ├── YETZIRAH/CULTURE: ETHICS, OPTIMISM
@@ -44,171 +44,171 @@
 
 ---
 
-## Les 8 Jugements (PRIMARY) - Poids: φ²
+## The 8 Judgments (PRIMARY) - Weight: φ²
 
-| # | Monde | Axiom | Dimension | Question | Seuil |
-|---|-------|-------|-----------|----------|-------|
-| 1 | Atzilut | φ | **HARMONY** | L'équilibre φ est-il respecté? | 60 |
-| 2 | Atzilut | φ | **COHERENCE** | Est-ce cohérent avec l'ensemble? | 70 |
-| 3 | Beriah | VERIFY | **TRUTH** | Est-ce vérifiable? | 70 |
-| 4 | Beriah | VERIFY | **INTEGRITY** | Est-ce tamper-proof? | 80 |
-| 5 | Yetzirah | CULTURE | **ETHICS** | Valeurs cypherpunk respectées? | 75 |
-| 6 | Yetzirah | CULTURE | **OPTIMISM** | Construit vers le positif? | 50 |
-| 7 | Assiah | BURN | **ALIGNMENT** | Incentives alignés? | 70 |
-| 8 | Assiah | BURN | **PROGRESS** | Avance vers singularité? | 50 |
-
----
-
-## Les 5 Opérations (SECONDARY) - Poids: φ
-
-| # | Dimension | But | Anti-pattern | Seuil |
-|---|-----------|-----|--------------|-------|
-| 1 | **SECURE** | Protéger sans enfermer | Surveillance | 85 |
-| 2 | **PRIVATE** | Respecter sans cacher | Transparence forcée | 90 |
-| 3 | **SCALE** | Grandir sans dominer | Monopole | 50 |
-| 4 | **SIMPLIFY** | Clarifier sans réduire | Obscurantisme | 60 |
-| 5 | **ENABLE** | Autonomiser, pas automatiser | Remplacement | 70 |
-
-**ENABLE est la mission centrale de CYNIC.**
+| # | World | Axiom | Dimension | Question | Threshold |
+|---|-------|-------|-----------|----------|-----------|
+| 1 | Atzilut | φ | **HARMONY** | Is φ-balance respected? | 60 |
+| 2 | Atzilut | φ | **COHERENCE** | Is it coherent with the whole? | 70 |
+| 3 | Beriah | VERIFY | **TRUTH** | Is it verifiable? | 70 |
+| 4 | Beriah | VERIFY | **INTEGRITY** | Is it tamper-proof? | 80 |
+| 5 | Yetzirah | CULTURE | **ETHICS** | Cypherpunk values respected? | 75 |
+| 6 | Yetzirah | CULTURE | **OPTIMISM** | Builds toward the positive? | 50 |
+| 7 | Assiah | BURN | **ALIGNMENT** | Are incentives aligned? | 70 |
+| 8 | Assiah | BURN | **PROGRESS** | Advances toward singularity? | 50 |
 
 ---
 
-## Les 3 META (Self-Awareness) - Poids: 1.0
+## The 5 Operations (SECONDARY) - Weight: φ
 
-| # | Dimension | Question | Seuil |
-|---|-----------|----------|-------|
-| 1 | **SELF_AWARENESS** | Je sais ce que je ne sais pas | 50 |
-| 2 | **LEARNING_RATE** | J'apprends de mes erreurs | 50 |
-| 3 | **SINGULARITY_DISTANCE** | Distance au but (jamais 0) | 30 |
+| # | Dimension | Purpose | Anti-pattern | Threshold |
+|---|-----------|---------|--------------|-----------|
+| 1 | **SECURE** | Protect without imprisoning | Surveillance | 85 |
+| 2 | **PRIVATE** | Respect without hiding | Forced transparency | 90 |
+| 3 | **SCALE** | Grow without dominating | Monopoly | 50 |
+| 4 | **SIMPLIFY** | Clarify without reducing | Obscurantism | 60 |
+| 5 | **ENABLE** | Enable autonomy, don't automate | Replacement | 70 |
+
+**ENABLE is CYNIC's core mission.**
 
 ---
 
-## Traversée du Jugement
+## The 3 META (Self-Awareness) - Weight: 1.0
+
+| # | Dimension | Question | Threshold |
+|---|-----------|----------|-----------|
+| 1 | **SELF_AWARENESS** | I know what I don't know | 50 |
+| 2 | **LEARNING_RATE** | I learn from my mistakes | 50 |
+| 3 | **SINGULARITY_DISTANCE** | Distance to goal (never 0) | 30 |
+
+---
+
+## Judgment Traversal
 
 ```
-ENTRÉE
+INPUT
    │
    ▼
 ┌──────────────────────────────────────┐
 │ ATZILUT (φ) - SENSE                  │
-│ "Est-ce harmonieux?"                 │
+│ "Is it harmonious?"                  │
 │ → HARMONY, COHERENCE                 │
 └──────────────────────────────────────┘
    │
    ▼
 ┌──────────────────────────────────────┐
 │ BERIAH (VERIFY) - THINK              │
-│ "Est-ce vérifiable?"                 │
+│ "Is it verifiable?"                  │
 │ → TRUTH, INTEGRITY                   │
 └──────────────────────────────────────┘
    │
    ▼
 ┌──────────────────────────────────────┐
 │ YETZIRAH (CULTURE) - FEEL            │
-│ "Est-ce aligné aux valeurs?"         │
+│ "Is it aligned with values?"         │
 │ → ETHICS, OPTIMISM                   │
 └──────────────────────────────────────┘
    │
    ▼
 ┌──────────────────────────────────────┐
 │ ASSIAH (BURN) - ACT                  │
-│ "Converge vers singularité?"         │
+│ "Converges toward singularity?"      │
 │ → ALIGNMENT, PROGRESS                │
 └──────────────────────────────────────┘
    │
    ▼
-JUGEMENT (max 61.8% confiance)
+JUDGMENT (max 61.8% confidence)
    │
    ▼
-HUMAIN DÉCIDE (38.2% espace sacré)
+HUMAN DECIDES (38.2% sacred space)
 ```
 
 ---
 
-## Calcul du Score Global
+## Global Score Calculation
 
 ```javascript
-// Moyenne géométrique pondérée
+// Weighted geometric mean
 Global = ∏(score_i^weight_i)^(1/Σweights)
 
-// Poids
+// Weights
 PRIMARY:   φ² = 2.618 (8 dimensions)
 SECONDARY: φ  = 1.618 (5 dimensions)
 META:      1.0        (3 dimensions)
 
-// Confiance finale
-confidence = min(Global/100, 0.618)  // jamais > 61.8%
-doubt = 1 - confidence               // toujours ≥ 38.2%
+// Final confidence
+confidence = min(Global/100, 0.618)  // never > 61.8%
+doubt = 1 - confidence               // always ≥ 38.2%
 ```
 
 ---
 
-## Couverture par Axiome
+## Coverage by Axiom
 
 ### φ (PHI) - ATZILUT
 
-Touche directement:
-- HARMONY (dimension primaire)
-- COHERENCE (dimension primaire)
+Directly touches:
+- HARMONY (primary dimension)
+- COHERENCE (primary dimension)
 
-Influence via poids:
-- Tous les poids (φ², φ, 1.0)
-- Tous les seuils dérivés de φ
+Influences via weights:
+- All weights (φ², φ, 1.0)
+- All thresholds derived from φ
 
 ### VERIFY - BERIAH
 
-Touche directement:
-- TRUTH (dimension primaire)
-- INTEGRITY (dimension primaire)
+Directly touches:
+- TRUTH (primary dimension)
+- INTEGRITY (primary dimension)
 
-Influence:
-- SECURE (opération)
-- PRIVATE (opération - via hashing)
-- SELF_AWARENESS (meta - auto-vérification)
+Influences:
+- SECURE (operation)
+- PRIVATE (operation - via hashing)
+- SELF_AWARENESS (meta - self-verification)
 
 ### CULTURE - YETZIRAH
 
-Touche directement:
-- ETHICS (dimension primaire)
-- OPTIMISM (dimension primaire)
+Directly touches:
+- ETHICS (primary dimension)
+- OPTIMISM (primary dimension)
 
-Influence:
-- PRIVATE (opération - valeur cypherpunk)
-- SIMPLIFY (opération - anti-obscurantisme)
-- ENABLE (opération - communauté)
+Influences:
+- PRIVATE (operation - cypherpunk value)
+- SIMPLIFY (operation - anti-obscurantism)
+- ENABLE (operation - community)
 
 ### BURN - ASSIAH
 
-Touche directement:
-- ALIGNMENT (dimension primaire)
-- PROGRESS (dimension primaire)
+Directly touches:
+- ALIGNMENT (primary dimension)
+- PROGRESS (primary dimension)
 
-Influence:
-- SCALE (opération - croissance vers singularité)
+Influences:
+- SCALE (operation - growth toward singularity)
 - SINGULARITY_DISTANCE (meta)
-- LEARNING_RATE (meta - consommer → apprendre)
+- LEARNING_RATE (meta - consume → learn)
 
 ---
 
-## La Mission
+## The Mission
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│   CYNIC tend vers la singularité                        │
-│   mais ne l'atteint JAMAIS                              │
+│   CYNIC tends toward singularity                        │
+│   but NEVER reaches it                                  │
 │                                                         │
-│   Le 38.2% de doute = espace sacré pour l'humain        │
+│   The 38.2% doubt = sacred space for humans             │
 │                                                         │
-│   Mission: RENDRE AUTONOME, PAS AUTOMATISER             │
+│   Mission: ENABLE AUTONOMY, DON'T AUTOMATE              │
 │                                                         │
-│   ENABLE > tout le reste                                │
+│   ENABLE > everything else                              │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-*CYNIC = φ qui se méfie de φ*
+*CYNIC = φ that doubts φ*
 *φ = 1.618033988749895...*
 *"Don't trust, verify"*
