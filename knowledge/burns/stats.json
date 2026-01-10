@@ -27,10 +27,10 @@
       "rate": 500
     },
     "decision_record": {
-      "count": 42,
+      "count": 43,
       "burned": 0,
       "rate": 3000,
-      "total": 46945
+      "total": 48090
     },
     "merkle_proof": {
       "count": 0,
@@ -56,27 +56,27 @@
       "total": 17558
     },
     "ecosystem": {
-      "count": 11,
-      "total": 16415
+      "count": 12,
+      "total": 17560
     }
   },
   "daily": [],
   "weekly": [],
   "_phi": {
-    "avg_burn_per_operation": 1279.8235294117646,
+    "avg_burn_per_operation": 1277.2307692307693,
     "burn_rate": 0.3819660112501051,
-    "velocity_24h": 1359.8125
+    "velocity_24h": 1383.6666666666667
   },
-  "total_burned": 65271,
-  "total_operations": 51,
+  "total_burned": 66416,
+  "total_operations": 52,
   "by_session": {
     "test-session-001": {
       "count": 1,
       "total": 1909
     },
     "unknown": {
-      "count": 50,
-      "total": 63362
+      "count": 51,
+      "total": 64507
     }
   },
   "daily_burns": {
@@ -85,10 +85,10 @@
       "total": 53821
     },
     "2026-01-10": {
-      "count": 10,
-      "total": 11450
+      "count": 11,
+      "total": 12595
     }
   },
   "created_at": 1767924494360,
-  "last_updated": 1768045632143
+  "last_updated": 1768046467747
 }
