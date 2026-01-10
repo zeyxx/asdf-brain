@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-01-10T13:23:03.466Z",
+  "timestamp": "2026-01-10T16:31:07.964Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-10T13:23:02.451Z",
+      "timestamp": "2026-01-10T16:31:06.888Z",
       "branch": {
         "branch": "main",
         "modified": 0,
-        "untracked": 1,
+        "untracked": 0,
         "staged": 0,
         "ahead": 0,
         "behind": 0,
-        "clean": false,
+        "clean": true,
         "lastCommit": {
-          "hash": "23d557c",
-          "subject": "perf(rpc): Quick wins - reduce RPC calls by ~60%",
-          "relative": "4 minutes ago"
+          "hash": "9118ad0",
+          "subject": "fix(webhooks): Prevent duplicate judgments + reduce log spam",
+          "relative": "3 minutes ago"
         }
       },
       "pr": {
@@ -32,14 +32,7 @@
         "drift": 0,
         "direction": "same"
       },
-      "suggestions": [
-        {
-          "priority": "low",
-          "type": "uncommitted_changes",
-          "message": "1 untracked",
-          "action": "Review and commit changes"
-        }
-      ],
+      "suggestions": [],
       "recentPRs": [
         {
           "number": 7,
@@ -75,19 +68,19 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-10T13:23:03.084Z",
+      "timestamp": "2026-01-10T16:31:07.435Z",
       "branch": {
         "branch": "main",
-        "modified": 1,
+        "modified": 0,
         "untracked": 0,
-        "staged": 1,
-        "ahead": 0,
+        "staged": 0,
+        "ahead": 1,
         "behind": 0,
-        "clean": false,
+        "clean": true,
         "lastCommit": {
-          "hash": "fe2c267",
-          "subject": "security: Replace test private keys with clear placeholders",
-          "relative": "51 minutes ago"
+          "hash": "5d6474e",
+          "subject": "chore: Add .mcp.json to gitignore",
+          "relative": "13 seconds ago"
         }
       },
       "pr": null,
@@ -98,29 +91,30 @@
       },
       "suggestions": [
         {
-          "priority": "low",
-          "type": "uncommitted_changes",
-          "message": "1 modified, 1 staged",
-          "action": "Review and commit changes"
+          "priority": "medium",
+          "type": "push_needed",
+          "message": "1 unpushed commits on 'main'",
+          "action": "Push changes to remote",
+          "command": "git push"
         }
       ],
       "recentPRs": []
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-10T13:23:03.466Z",
+      "timestamp": "2026-01-10T16:31:07.964Z",
       "branch": {
         "branch": "main",
-        "modified": 0,
+        "modified": 4,
         "untracked": 0,
-        "staged": 0,
+        "staged": 1,
         "ahead": 0,
         "behind": 1,
-        "clean": true,
+        "clean": false,
         "lastCommit": {
-          "hash": "80fd1a7",
-          "subject": "feat(philosophy): crystallize 4 axioms + CYNIC mapping",
-          "relative": "7 minutes ago"
+          "hash": "4297558",
+          "subject": "chore: Clean up claude-mem test entries",
+          "relative": "2 minutes ago"
         }
       },
       "pr": null,
@@ -136,12 +130,26 @@
           "message": "1 commits behind remote",
           "action": "Pull latest changes",
           "command": "git pull"
+        },
+        {
+          "priority": "low",
+          "type": "uncommitted_changes",
+          "message": "4 modified, 1 staged",
+          "action": "Review and commit changes"
         }
       ],
       "recentPRs": []
     }
   },
   "suggestions": [
+    {
+      "priority": "medium",
+      "type": "push_needed",
+      "message": "1 unpushed commits on 'main'",
+      "action": "Push changes to remote",
+      "command": "git push",
+      "repo": "gasdf"
+    },
     {
       "priority": "medium",
       "type": "pull_needed",
@@ -153,22 +161,15 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "1 untracked",
+      "message": "4 modified, 1 staged",
       "action": "Review and commit changes",
-      "repo": "holdex"
-    },
-    {
-      "priority": "low",
-      "type": "uncommitted_changes",
-      "message": "1 modified, 1 staged",
-      "action": "Review and commit changes",
-      "repo": "gasdf"
+      "repo": "brain"
     }
   ],
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 1,
-    "lowPriority": 2
+    "mediumPriority": 2,
+    "lowPriority": 1
   }
 }

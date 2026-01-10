@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-10T13:23:07.442Z",
+  "timestamp": "2026-01-10T16:31:14.150Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:23:03.524Z"
+      "discoveredAt": "2026-01-10T16:31:08.077Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -112,11 +112,11 @@
           ],
           "patterns": {
             "hotfixes": 6,
-            "features": 6,
+            "features": 8,
             "structured": 12,
             "quickFixes": 0
           },
-          "avgMessageLength": 52.9
+          "avgMessageLength": 54.05
         },
         "origin/update-newdexsockets": {
           "branch": "update-newdexsockets",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:23:03.700Z"
+      "discoveredAt": "2026-01-10T16:31:08.396Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -291,12 +291,14 @@
             "jeanterre552"
           ],
           "patterns": {
-            "hotfixes": 0,
+            "hotfixes": 1,
             "features": 6,
-            "structured": 20,
+            "structured": 19,
             "quickFixes": 0
           },
-          "avgMessageLength": 40.45
+          "avgMessageLength": 43.95,
+          "inferredRole": "production",
+          "prodScore": 3.000000000000001
         }
       },
       "operators": {
@@ -315,7 +317,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:23:03.747Z"
+      "discoveredAt": "2026-01-10T16:31:08.474Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -365,7 +367,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:23:03.814Z"
+      "discoveredAt": "2026-01-10T16:31:08.550Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5934,7 +5936,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:23:07.441Z"
+      "discoveredAt": "2026-01-10T16:31:14.150Z"
     }
   },
   "crossRepoSync": {},
@@ -5949,6 +5951,11 @@
         "branch": "NewDexSOCKETS",
         "remote": "upstream",
         "confidence": 0.765
+      },
+      "asdf-brain": {
+        "branch": "main",
+        "remote": "origin",
+        "confidence": 0.03000000000000001
       },
       "claude-mem": {
         "branch": "backup/4.3.0-borked-sad-face",
