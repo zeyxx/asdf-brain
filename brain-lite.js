@@ -954,9 +954,9 @@ async function handleContextStart(args, adapter) {
 async function handleContextInject(args, adapter) {
   const { session_id, query, project, daat_level } = args;
 
-  // Use Daat-levels for intelligent context enrichment
+  // Use Daat-levels + CYNIC for intelligent context enrichment with φ-constrained confidence
   const sessionContext = contextLayer.getSession(session_id) || {};
-  const enrichment = daatLevels.enrichWithDaat(
+  const enrichment = await daatLevels.enrichWithDaatAndCynic(
     query,
     {
       session_id,
@@ -979,7 +979,7 @@ async function handleContextInject(args, adapter) {
     project,
   });
 
-  // Merge Daat enrichment with context layer injection
+  // Merge Daat enrichment with context layer injection + CYNIC judgment
   return {
     success: true,
     injection,
@@ -990,10 +990,20 @@ async function handleContextInject(args, adapter) {
       was_overridden: enrichment.was_overridden,
       guidance: enrichment.guidance,
     },
+    cynic: enrichment._cynic ? {
+      verdict: enrichment._cynic.verdict,
+      confidence: enrichment._cynic.confidence,
+      doubt: enrichment._cynic.doubt,
+      needs_verification: enrichment._cynic.needs_verification,
+      suggested_checks: enrichment._cynic.suggested_checks,
+      ceiling_applied: enrichment._cynic.ceiling_applied,
+      philosophy: enrichment._cynic.philosophy,
+    } : null,
     context: enrichment.context,
     quality: injection.quality,
-    message: `Context injection at DAAT level ${enrichment.daat_level} (${enrichment.daat_name})`,
+    message: `Context injection at DAAT level ${enrichment.daat_level} (${enrichment.daat_name}) with CYNIC: ${enrichment._cynic?.verdict || 'N/A'}`,
     _quality: injection.quality,
+    _phi: enrichment._phi,
   };
 }
 
