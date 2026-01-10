@@ -76,6 +76,11 @@ const integration = require('./lib/integration');
 // Contributors - E-Score tracking (7 dimensions)
 const contributors = require('./lib/contributors');
 
+// Consciousness Layer - Pulse, Self-Monitor, Metrics
+const pulse = require('./lib/cynic/pulse');
+const selfMonitor = require('./lib/cynic/self-monitor');
+const metrics = require('./lib/cynic/metrics');
+
 // =============================================================================
 // PHI CONSTANTS - From temporal.js (single source of truth)
 // =============================================================================
@@ -978,6 +983,113 @@ const TOOLS = {
         }
       },
       required: ['query']
+    },
+    phi_weight: PHI_INV,
+  },
+
+  // =============================================================================
+  // CONSCIOUSNESS LAYER - CYNIC Self-Awareness
+  // =============================================================================
+
+  brain_pulse_start: {
+    pardes: 'S',
+    name: 'brain_pulse_start',
+    description: '[CONSCIOUSNESS] Start CYNIC heartbeat daemon. Enables self-monitoring with φ-based intervals (61.8s).',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI * PHI,
+    isWrite: true,
+  },
+
+  brain_pulse_stop: {
+    pardes: 'S',
+    name: 'brain_pulse_stop',
+    description: '[CONSCIOUSNESS] Stop CYNIC heartbeat daemon.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI,
+    isWrite: true,
+  },
+
+  brain_pulse_status: {
+    pardes: 'S',
+    name: 'brain_pulse_status',
+    description: '[CONSCIOUSNESS] Get CYNIC pulse status. Shows heartbeat, uptime, health, subsystems, and anomalies.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_diagnostic: {
+    pardes: 'S',
+    name: 'brain_diagnostic',
+    description: '[CONSCIOUSNESS] Run full CYNIC self-diagnostic. Checks integrations, knowledge, self-judge, and resources.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        quick: {
+          type: 'boolean',
+          default: false,
+          description: 'Quick check (integrations + resources only)'
+        }
+      }
+    },
+    phi_weight: PHI,
+  },
+
+  brain_metrics: {
+    pardes: 'S',
+    name: 'brain_metrics',
+    description: '[CONSCIOUSNESS] Get CYNIC metrics summary. Shows judgments, integrations, knowledge, and resource stats.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        full: {
+          type: 'boolean',
+          default: false,
+          description: 'Return full metrics (counters, gauges, histograms, rates)'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_anomalies: {
+    pardes: 'S',
+    name: 'brain_anomalies',
+    description: '[CONSCIOUSNESS] Get detected anomalies from CYNIC pulse. Shows health deviations and subsystem issues.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          default: 20,
+          description: 'Maximum anomalies to return'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_health_history: {
+    pardes: 'S',
+    name: 'brain_health_history',
+    description: '[CONSCIOUSNESS] Get CYNIC health history over time. Shows health trend and pulse data.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          default: 50,
+          description: 'Maximum history entries to return'
+        }
+      }
     },
     phi_weight: PHI_INV,
   },
@@ -2681,6 +2793,177 @@ async function handleSyncSearch(args, adapter) {
   }
 }
 
+// =============================================================================
+// CONSCIOUSNESS HANDLERS - Self-Awareness
+// =============================================================================
+
+async function handlePulseStart(args, adapter) {
+  try {
+    // Register self-monitor checks with pulse
+    selfMonitor.registerWithPulse(pulse);
+
+    const result = await pulse.start();
+
+    // Start recording metrics
+    if (result.success) {
+      pulse.on('pulse', (data) => {
+        metrics.recordPulse(data.overallHealth, data.pulseMs || 0, data.anomalies?.length || 0);
+      });
+    }
+
+    return {
+      success: result.success,
+      message: result.message,
+      interval: result.interval,
+      intervalHuman: result.intervalHuman,
+      philosophy: "φ qui se voit vivre.",
+      _quality: result.success ? 90 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handlePulseStop(args, adapter) {
+  try {
+    const result = pulse.stop();
+
+    return {
+      success: result.success,
+      message: result.message,
+      totalPulses: result.totalPulses,
+      uptimeMs: result.uptimeMs,
+      _quality: result.success ? 80 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handlePulseStatus(args, adapter) {
+  try {
+    const status = pulse.getStatus();
+
+    return {
+      success: true,
+      ...status,
+      philosophy: status.alive ? "CYNIC is alive. φ qui se voit vivre." : "CYNIC pulse not started.",
+      _quality: status.alive ? 85 : 60,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleDiagnostic(args, adapter) {
+  const { quick = false } = args;
+
+  try {
+    const report = quick
+      ? await selfMonitor.runQuickCheck()
+      : await selfMonitor.runFullDiagnostic();
+
+    return {
+      success: true,
+      ...report,
+      philosophy: "φ qui se diagnostique.",
+      _quality: report.healthy ? 90 : report.overallScore >= 38 ? 60 : 30,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleMetrics(args, adapter) {
+  const { full = false } = args;
+
+  try {
+    const data = full ? metrics.getAll() : metrics.getSummary();
+
+    return {
+      success: true,
+      ...data,
+      philosophy: "φ qui se mesure.",
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAnomalies(args, adapter) {
+  const { limit = 20 } = args;
+
+  try {
+    const anomalies = pulse.getAnomalies(limit);
+    const status = pulse.getStatus();
+
+    return {
+      success: true,
+      pulseAlive: status.alive,
+      totalAnomalies: status.anomalyCount,
+      anomalies,
+      message: anomalies.length === 0
+        ? "No anomalies detected. CYNIC is healthy."
+        : `${anomalies.length} anomalies in recent history`,
+      philosophy: "φ qui détecte ses anomalies.",
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleHealthHistory(args, adapter) {
+  const { limit = 50 } = args;
+
+  try {
+    const history = pulse.getHealthHistory(limit);
+    const status = pulse.getStatus();
+
+    return {
+      success: true,
+      pulseAlive: status.alive,
+      currentHealth: status.currentHealth,
+      healthTrend: status.healthTrend,
+      historySize: history.length,
+      history,
+      philosophy: "φ qui trace son évolution.",
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -2730,6 +3013,14 @@ const HANDLERS = {
   brain_sync_status: handleSyncStatus,
   brain_sync_events: handleSyncEvents,
   brain_sync_search: handleSyncSearch,
+  // Consciousness Layer
+  brain_pulse_start: handlePulseStart,
+  brain_pulse_stop: handlePulseStop,
+  brain_pulse_status: handlePulseStatus,
+  brain_diagnostic: handleDiagnostic,
+  brain_metrics: handleMetrics,
+  brain_anomalies: handleAnomalies,
+  brain_health_history: handleHealthHistory,
 };
 
 // =============================================================================
