@@ -125,6 +125,7 @@ const TOOLS = {
       properties: {
         query: { type: 'string', description: 'Search query' },
         limit: { type: 'number', description: 'Max results (default 10)' },
+        lang: { type: 'string', description: 'Filter by language (en, fr, mixed)' },
       },
       required: ['query'],
     },
@@ -588,7 +589,7 @@ function applyPhiWeight(result, tool) {
 // =============================================================================
 
 async function handleSearch(args, adapter) {
-  const { query, limit = 10 } = args;
+  const { query, limit = 10, lang } = args;
 
   // Search multiple sources: index + learned knowledge
   const searchPaths = [
@@ -614,6 +615,9 @@ async function handleSearch(args, adapter) {
       try {
         const entry = JSON.parse(line);
 
+        // Language filter (if specified) - strict: only return entries with matching lang
+        if (lang && entry.lang !== lang) continue;
+
         // Support multiple formats: conversations (user/assistant) AND learned (content)
         const text = [
           entry.user?.content || '',
@@ -634,6 +638,7 @@ async function handleSearch(args, adapter) {
             id: entry.id || entry.session_id,
             type: entry.type || 'conversation',
             project: entry.project,
+            lang: entry.lang,  // Include language in results
             timestamp: entry.timestamp,
             preview: (entry.content || entry.user?.content || '').slice(0, 200),
             source: path.basename(filePath),
@@ -650,6 +655,7 @@ async function handleSearch(args, adapter) {
   results.sort((a, b) => b.score - a.score);
   return {
     query,
+    lang: lang || 'all',  // Show active filter
     results: results.slice(0, limit),
     total: results.length,
     sources: searchPaths.map(p => path.basename(p)),
