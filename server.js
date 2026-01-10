@@ -23,6 +23,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
+const { PHI, PHI_2, PHI_INV } = require('./lib/temporal');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -653,12 +654,9 @@ app.post('/webhook/metrics', express.json(), async (req, res) => {
  * Based on φ-weighted components
  */
 function calculateIInfra(metrics) {
-  const PHI = 1.618;
-  const PHI_INV = 0.618;
-
-  // Weights for different metrics
+  // Weights for different metrics (using φ from temporal.js)
   const weights = {
-    uptime: PHI * PHI,      // 2.618 - most important
+    uptime: PHI_2,           // 2.618 - most important
     response_time: PHI,      // 1.618
     error_rate: PHI,         // 1.618 (inverted)
     availability: 1          // 1.0

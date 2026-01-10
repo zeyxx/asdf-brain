@@ -14,7 +14,7 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const PHI = 1.618033988749895;
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../../lib/temporal');
 
 const OUTPUT_DIR = path.join(__dirname, '..', 'raw');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'git-decisions.jsonl');

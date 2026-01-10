@@ -18,8 +18,7 @@ const path = require('path');
 // φ CONSTANTS
 // =============================================================================
 
-const PHI = 1.618033988749895;
-const PHI_INV = 1 / PHI;
+const { PHI, PHI_INV } = require('../lib/temporal');
 
 // =============================================================================
 // ECOSYSTEM ORGANIZATIONS & REPOS

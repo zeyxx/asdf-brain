@@ -62,13 +62,10 @@ const infraMonitor = require('./lib/i-infra-monitor');
 const contributors = require('./lib/contributors');
 
 // =============================================================================
-// PHI CONSTANTS - Golden Ratio Distribution (Kabbalah Sacred Geometry)
+// PHI CONSTANTS - From temporal.js (single source of truth)
 // =============================================================================
 
-const PHI = 1.618033988749895;
-const PHI_INV = 1 / PHI;              // 0.618 - high confidence
-const PHI_INV_2 = PHI_INV * PHI_INV;  // 0.382 - medium confidence
-const PHI_INV_3 = PHI_INV_2 * PHI_INV; // 0.236 - low confidence
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = temporal;
 
 const CONFIDENCE = {
   HIGH: { threshold: PHI_INV * 100, label: 'ACT' },      // 61.8%

@@ -20,7 +20,7 @@ const os = require('os');
 // φ CONSTANTS
 // =============================================================================
 
-const PHI = 1.618033988749895;
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../../lib/temporal');
 const PHI_SQ = PHI * PHI;           // 2.618
 const PHI_INV = 1 / PHI;            // 0.618
 

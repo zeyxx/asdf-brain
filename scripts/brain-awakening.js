@@ -36,10 +36,10 @@ const BRAIN_ROOT = path.join(__dirname, '..');
 const KNOWLEDGE_ROOT = path.join(BRAIN_ROOT, 'knowledge');
 
 // φ thresholds for alert severity
-const PHI = 1.618033988749895;
-const THRESHOLD_HIGH = 0.618;    // φ⁻¹ - Act immediately
-const THRESHOLD_MEDIUM = 0.382;  // φ⁻² - Verify soon
-const THRESHOLD_LOW = 0.236;     // φ⁻³ - Research when time
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../lib/temporal');
+const THRESHOLD_HIGH = PHI_INV;    // φ⁻¹ - Act immediately
+const THRESHOLD_MEDIUM = PHI_INV_2;  // φ⁻² - Verify soon
+const THRESHOLD_LOW = PHI_INV_3;     // φ⁻³ - Research when time
 
 // =============================================================================
 // LOGGING - Emoji-based severity (aligned with HolDex conventions)

@@ -17,6 +17,7 @@
 const fs = require('fs');
 const path = require('path');
 const { streamConversations, KNOWLEDGE_ROOT } = require('./lib/data-sources');
+const { PHI } = require('../lib/temporal');
 
 // =============================================================================
 // PATTERN DEFINITIONS
@@ -124,7 +125,6 @@ function extractPatterns(text) {
 
 function calculatePatternScore(patterns) {
   // φ-weighted scoring based on pattern categories
-  const PHI = 1.618;
   const weights = {
     asdfasdfa: PHI * PHI, // Core ecosystem patterns
     technical: PHI,

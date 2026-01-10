@@ -14,7 +14,7 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const PHI = 1.618033988749895;
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../../lib/temporal');
 
 // claude-mem data location (persistent)
 const CLAUDE_MEM_DB = '/workspaces/.claude-mem-data/claude-mem.db';

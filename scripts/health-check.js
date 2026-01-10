@@ -23,7 +23,7 @@ const { spawnSync } = require('child_process');
 // CONFIGURATION
 // =============================================================================
 
-const PHI = 1.618033988749895;
+const { PHI } = require('../lib/temporal');
 const KNOWLEDGE_DIR = path.join(__dirname, '../knowledge');
 
 // Auto-detect environment and set appropriate paths

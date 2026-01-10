@@ -13,7 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const PHI = 1.618033988749895;
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../../lib/temporal');
 
 const TRAINING_DIR = path.join(__dirname, '..');
 const MANIFEST_FILE = path.join(TRAINING_DIR, 'processed', 'training-manifest.json');

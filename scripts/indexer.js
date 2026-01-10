@@ -18,10 +18,7 @@ const crypto = require('crypto');
 // φ CONSTANTS
 // =============================================================================
 
-const PHI = 1.618033988749895;
-const PHI_INV = 1 / PHI;           // 0.618
-const PHI_INV_2 = PHI_INV * PHI_INV; // 0.382
-const PHI_INV_3 = PHI_INV_2 * PHI_INV; // 0.236
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../lib/temporal');
 
 // =============================================================================
 // ECOSYSTEM CONFIGURATION

@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 
 // φ constants for sampling ratios
-const PHI = 1.618033988749895;
+const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../../lib/temporal');
 const PHI_INVERSE = 1 / PHI;
 
 const OUTPUT_DIR = path.join(__dirname, '..', 'raw');
