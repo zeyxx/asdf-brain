@@ -1,0 +1,22 @@
+{
+  "total_events": 4,
+  "total_burned": 9705,
+  "burn_count": 3,
+  "swap_count": 1,
+  "by_type": {
+    "burn": 3,
+    "swap": 1
+  },
+  "by_day": {
+    "2026-01-10": {
+      "events": 4,
+      "burned": 9705
+    }
+  },
+  "first_event": "2026-01-10T20:17:04.385Z",
+  "last_event": "2026-01-10T20:22:29.399Z",
+  "phi": {
+    "avg_burn_per_day": 9705,
+    "burn_rate_phi": 1.85
+  }
+}

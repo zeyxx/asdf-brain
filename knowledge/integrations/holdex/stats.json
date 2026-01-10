@@ -1,0 +1,15 @@
+{
+  "total_events": 3,
+  "by_type": {
+    "kscore_update": 3
+  },
+  "by_day": {
+    "2026-01-10": 3
+  },
+  "first_event": "2026-01-10T20:17:03.959Z",
+  "last_event": "2026-01-10T20:22:28.629Z",
+  "phi_metrics": {
+    "avg_events_per_day": 1.85,
+    "type_distribution_phi": 1.9718648805759587
+  }
+}

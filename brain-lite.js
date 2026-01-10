@@ -70,6 +70,9 @@ const gitScanner = require('./lib/discovery/git-scanner');
 // Privacy Layer - Hasher & Ephemeral Storage
 const privacy = require('./lib/privacy');
 
+// Integration Layer - HolDex, GASdf webhooks
+const integration = require('./lib/integration');
+
 // Contributors - E-Score tracking (7 dimensions)
 const contributors = require('./lib/contributors');
 
@@ -701,6 +704,196 @@ const TOOLS = {
         }
       },
       required: ['key']
+    },
+    phi_weight: PHI_INV,
+  },
+
+  // =============================================================================
+  // INTEGRATION TOOLS - HolDex, GASdf webhooks
+  // =============================================================================
+
+  brain_webhook_holdex: {
+    pardes: 'D',
+    name: 'brain_webhook_holdex',
+    description: '[INTEGRATION] Handle HolDex webhook event (K-Score updates, token health, integrity alerts). Data is judged by CYNIC.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        type: {
+          type: 'string',
+          enum: ['kscore_update', 'token_listed', 'token_delisted', 'integrity_alert', 'holder_change', 'liquidity_event'],
+          description: 'Event type'
+        },
+        token: {
+          type: 'string',
+          description: 'Token mint address'
+        },
+        symbol: {
+          type: 'string',
+          description: 'Token symbol'
+        },
+        old_score: {
+          type: 'number',
+          description: 'Previous K-Score (for kscore_update)'
+        },
+        new_score: {
+          type: 'number',
+          description: 'New K-Score (for kscore_update)'
+        },
+        reason: {
+          type: 'string',
+          description: 'Reason for change'
+        },
+        alert_type: {
+          type: 'string',
+          description: 'Alert type (for integrity_alert)'
+        },
+        severity: {
+          type: 'string',
+          enum: ['low', 'medium', 'high', 'critical'],
+          description: 'Alert severity'
+        },
+        timestamp: {
+          type: 'string',
+          description: 'Event timestamp (ISO 8601)'
+        }
+      },
+      required: ['type']
+    },
+    phi_weight: PHI,
+    isWrite: true,
+  },
+
+  brain_webhook_gasdf: {
+    pardes: 'D',
+    name: 'brain_webhook_gasdf',
+    description: '[INTEGRATION] Handle GASdf event (burns, swaps, fees). User data is always hashed. Judged by CYNIC.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        type: {
+          type: 'string',
+          enum: ['burn', 'swap', 'fee_distributed', 'liquidity_add', 'liquidity_remove', 'stake', 'unstake', 'reward_claim'],
+          description: 'Event type'
+        },
+        amount: {
+          type: 'number',
+          description: 'Amount (for burns, fees)'
+        },
+        wallet: {
+          type: 'string',
+          description: 'User wallet (will be hashed)'
+        },
+        token_in: {
+          type: 'string',
+          description: 'Input token (for swaps)'
+        },
+        token_out: {
+          type: 'string',
+          description: 'Output token (for swaps)'
+        },
+        amount_in: {
+          type: 'number',
+          description: 'Input amount (for swaps)'
+        },
+        amount_out: {
+          type: 'number',
+          description: 'Output amount (for swaps)'
+        },
+        signature: {
+          type: 'string',
+          description: 'Transaction signature'
+        },
+        timestamp: {
+          type: 'string',
+          description: 'Event timestamp (ISO 8601)'
+        }
+      },
+      required: ['type']
+    },
+    phi_weight: PHI,
+    isWrite: true,
+  },
+
+  brain_integration_status: {
+    pardes: 'P',
+    name: 'brain_integration_status',
+    description: '[INTEGRATION] Get status of all external integrations (HolDex, GASdf). Shows event counts, health, and patterns.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        source: {
+          type: 'string',
+          enum: ['all', 'holdex', 'gasdf'],
+          default: 'all',
+          description: 'Which integration to check'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_integration_events: {
+    pardes: 'R',
+    name: 'brain_integration_events',
+    description: '[INTEGRATION] Load recent events from integrations. Returns transformed and judged events.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        sources: {
+          type: 'array',
+          items: { type: 'string', enum: ['holdex', 'gasdf'] },
+          default: ['holdex', 'gasdf'],
+          description: 'Which sources to load from'
+        },
+        limit: {
+          type: 'number',
+          default: 50,
+          description: 'Maximum events to return'
+        },
+        since: {
+          type: 'string',
+          description: 'Only events after this timestamp (ISO 8601)'
+        },
+        type: {
+          type: 'string',
+          description: 'Filter by event type'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_integration_patterns: {
+    pardes: 'R',
+    name: 'brain_integration_patterns',
+    description: '[INTEGRATION] Analyze patterns across all integrations. Discovers correlations between K-Score changes and burns.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          default: 1000,
+          description: 'Events to analyze'
+        }
+      }
+    },
+    phi_weight: PHI * PHI,
+  },
+
+  brain_burn_stats: {
+    pardes: 'P',
+    name: 'brain_burn_stats',
+    description: '[INTEGRATION] Get $asdfasdfa burn statistics from GASdf. "Don\'t extract, burn."',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        days: {
+          type: 'number',
+          default: 7,
+          description: 'Number of days to analyze'
+        }
+      }
     },
     phi_weight: PHI_INV,
   },
@@ -2108,6 +2301,178 @@ async function handleEphemeralGet(args, adapter) {
   };
 }
 
+// =============================================================================
+// INTEGRATION HANDLERS - HolDex, GASdf webhooks
+// =============================================================================
+
+async function handleWebhookHoldex(args, adapter) {
+  // Add timestamp if not provided
+  if (!args.timestamp) {
+    args.timestamp = new Date().toISOString();
+  }
+
+  try {
+    const result = await integration.holdex.handleWebhook(args, {
+      cynicInstance: cynicJudge,
+    });
+
+    return {
+      ...result,
+      _quality: result.success ? 85 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      message: 'HolDex webhook processing failed: ' + error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleWebhookGasdf(args, adapter) {
+  // Add timestamp if not provided
+  if (!args.timestamp) {
+    args.timestamp = new Date().toISOString();
+  }
+
+  try {
+    const result = await integration.gasdf.handleWebhook(args, {
+      cynicInstance: cynicJudge,
+    });
+
+    return {
+      ...result,
+      _quality: result.success ? 85 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      message: 'GASdf webhook processing failed: ' + error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleIntegrationStatus(args, adapter) {
+  const { source = 'all' } = args;
+
+  try {
+    if (source === 'holdex') {
+      return {
+        success: true,
+        source: 'holdex',
+        status: integration.holdex.getStatus(),
+        _quality: 80,
+      };
+    }
+
+    if (source === 'gasdf') {
+      return {
+        success: true,
+        source: 'gasdf',
+        status: integration.gasdf.getStatus(),
+        _quality: 80,
+      };
+    }
+
+    // All sources
+    const status = integration.getStatus();
+    return {
+      success: true,
+      sources: ['holdex', 'gasdf'],
+      holdex: status.holdex,
+      gasdf: status.gasdf,
+      unified: status.unified,
+      message: `Integration health: ${status.unified.health.status} (${status.unified.health.health_score}%)`,
+      philosophy: 'Everything connects through φ.',
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleIntegrationEvents(args, adapter) {
+  const { sources = ['holdex', 'gasdf'], limit = 50, since = null, type = null } = args;
+
+  try {
+    const events = integration.loadAllEvents({ limit, since, sources });
+
+    // Filter by type if specified
+    const filtered = type
+      ? events.filter(e => e.type === type)
+      : events;
+
+    return {
+      success: true,
+      count: filtered.length,
+      sources,
+      events: filtered,
+      message: `Loaded ${filtered.length} events from ${sources.join(', ')}`,
+      _quality: 75,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleIntegrationPatterns(args, adapter) {
+  const { limit = 1000 } = args;
+
+  try {
+    const patterns = integration.analyzeAllPatterns({ limit });
+
+    return {
+      success: true,
+      holdex: patterns.holdex,
+      gasdf: patterns.gasdf,
+      correlations: patterns.correlations,
+      message: 'Pattern analysis complete',
+      philosophy: 'Patterns emerge from chaos. φ reveals them.',
+      _quality: 85,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleBurnStats(args, adapter) {
+  const { days = 7 } = args;
+
+  try {
+    const stats = integration.getBurnStats({ days });
+
+    return {
+      success: true,
+      period_days: days,
+      ...stats,
+      message: `Burned ${stats.total_burned} $asdfasdfa in ${days} days (${stats.burn_count} burns)`,
+      philosophy: "Don't extract, burn.",
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -2145,6 +2510,13 @@ const HANDLERS = {
   brain_privacy_hash: handlePrivacyHash,
   brain_ephemeral_store: handleEphemeralStore,
   brain_ephemeral_get: handleEphemeralGet,
+  // Integration Layer
+  brain_webhook_holdex: handleWebhookHoldex,
+  brain_webhook_gasdf: handleWebhookGasdf,
+  brain_integration_status: handleIntegrationStatus,
+  brain_integration_events: handleIntegrationEvents,
+  brain_integration_patterns: handleIntegrationPatterns,
+  brain_burn_stats: handleBurnStats,
 };
 
 // =============================================================================

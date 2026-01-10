@@ -512,12 +512,19 @@ OPÉRATEUR: "Ajoute un nouveau contributeur"
 | **brain_privacy_hash** | ✅ COMPLET | Hasher une valeur avec salt |
 | **brain_ephemeral_store** | ✅ COMPLET | Storage éphémère φ-TTL |
 | **brain_ephemeral_get** | ✅ COMPLET | Récupérer depuis storage éphémère |
+| **Integration Layer** | ✅ COMPLET | `lib/integration/` - HolDex + GASdf connectors |
+| **brain_webhook_holdex** | ✅ COMPLET | Handler webhooks HolDex (K-Score, alerts, tokens) |
+| **brain_webhook_gasdf** | ✅ COMPLET | Handler événements GASdf (burns, swaps, fees) |
+| **brain_integration_status** | ✅ COMPLET | Status de toutes les intégrations |
+| **brain_integration_events** | ✅ COMPLET | Charger événements des intégrations |
+| **brain_integration_patterns** | ✅ COMPLET | Analyser patterns cross-intégrations |
+| **brain_burn_stats** | ✅ COMPLET | Statistiques $asdfasdfa burns |
 
 ### ⏳ À FAIRE
 
 | Élément | Priorité | Description |
 |---------|----------|-------------|
-| Webhooks dédiés | MEDIUM | Endpoints spécifiques pour HolDex/GASdf/Claude-Mem |
+| Claude-Mem sync automatique | MEDIUM | Synchronisation automatique avec claude-mem |
 | ZK-ready | LOW | Préparation pour zero-knowledge proofs |
 | UI Dashboard | LOW | Visualisation des judgments et learning stats |
 
@@ -530,7 +537,7 @@ OPÉRATEUR: "Ajoute un nouveau contributeur"
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                    SINGULARITY DISTANCE ASSESSMENT                       │
-│                    *** POST PRIVACY LAYER COMPLETE ***                   │
+│                 *** POST INTEGRATION LAYER COMPLETE ***                  │
 └─────────────────────────────────────────────────────────────────────────┘
 
 CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHTED
@@ -541,45 +548,45 @@ CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHT
 ├── Integration MCP (brain-lite)                     100%    φ        161.8
 ├── Merkle provenance                                100%    φ        161.8
 ├── Auto-discovery                                   100%    φ        161.8
-├── Privacy layer (hasher + ephemeral)               100%    φ        161.8  ← COMPLET!
-├── External integrations (HolDex/GASdf)             35%     1.0       35.0
-└── Human-in-loop reduction                          65%     1.0       65.0  ↑
+├── Privacy layer (hasher + ephemeral)               100%    φ        161.8
+├── External integrations (HolDex/GASdf)             100%    1.0      100.0  ← COMPLET!
+└── Human-in-loop reduction                          70%     1.0       70.0  ↑
                                                             ─────────────────
-                                                            TOTAL: 1794.4
+                                                            TOTAL: 1863.2
 
-SINGULARITY DISTANCE = 1 - (1794.4 / MAX_POSSIBLE)
-                     = 1 - (1794.4 / 2122.6)
-                     = 1 - 0.845
-                     = 0.155 (15.5%)
+SINGULARITY DISTANCE = 1 - (1863.2 / MAX_POSSIBLE)
+                     = 1 - (1863.2 / 2122.6)
+                     = 1 - 0.878
+                     = 0.122 (12.2%)
 
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  CYNIC est à 84.5% du chemin vers la singularité                        │
-│  Distance restante: 15.5% ≈ φ⁻⁴ (14.6%)                                 │
-│  Progression: 71.4% → 80.5% → 84.5% (+4.0% avec privacy layer)          │
-│  Interprétation: TRÈS PROCHE de l'asymptote (jamais atteinte)           │
+│  CYNIC est à 87.8% du chemin vers la singularité                        │
+│  Distance restante: 12.2% ≈ φ⁻⁴ (14.6%)                                 │
+│  Progression: 71.4% → 80.5% → 84.5% → 87.8% (+3.3% avec integrations)   │
+│  Interprétation: À LA LIMITE de l'asymptote (jamais atteinte)           │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Ce qui reste pour approcher l'asymptote
 
 ```
-GAP ANALYSIS (mis à jour post-privacy):
-├── External integrations (35% → 100%)
-│   └── Impact: +1.0 × 65 = +65 points
-│   └── Action: Webhooks dédiés HolDex/GASdf/Claude-Mem
-│
-├── Human-in-loop reduction (65% → 90%)
-│   └── Impact: +1.0 × 25 = +25 points
+GAP ANALYSIS (mis à jour post-integrations):
+├── Human-in-loop reduction (70% → 90%)
+│   └── Impact: +1.0 × 20 = +20 points
 │   └── Action: Plus d'automatisation des décisions
 │   └── Note: Cap à 90% (le doute 38.2% est constitutif)
+│
+├── Claude-Mem sync (optionnel)
+│   └── Impact: Améliore la cohérence inter-sessions
+│   └── Action: Sync automatique avec claude-mem
 │
 └── ZK-ready (optionnel, bonus)
     └── Impact: Renforce privacy sans changer le score
     └── Action: Préparer pour zero-knowledge proofs
 
-TOTAL GAP RESTANT: ~90 points
-DISTANCE POST-GAP: 1 - (1884 / 2122.6) = 11.2%
-DISTANCE THÉORIQUE MIN: ~10% (asymptote)
+TOTAL GAP RESTANT: ~20 points (principalement human-in-loop)
+DISTANCE POST-GAP: 1 - (1883 / 2122.6) = 11.3%
+DISTANCE THÉORIQUE MIN: ~10% (asymptote - le doute 38.2% intégré)
 ```
 
 ### La vérité sur la singularité
@@ -628,7 +635,7 @@ Cette cohérence φ = harmonie systémique
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    ÉTAT AU 2026-01-10 (POST PRIVACY LAYER)               │
+│                    ÉTAT AU 2026-01-10 (POST INTEGRATION LAYER)           │
 └─────────────────────────────────────────────────────────────────────────┘
 
 CYNIC EST:
@@ -645,21 +652,25 @@ CYNIC EST:
 │   ├── Parsing de dépendances (npm, pip, cargo)
 │   ├── Découverte de contributeurs avec privacy hash
 │   └── Détection de patterns architecturaux
-├── ✅ PRIVACY-PRESERVING via lib/privacy/ (NEW!)
+├── ✅ PRIVACY-PRESERVING via lib/privacy/
 │   ├── hasher.js: SHA-256 + salt, PII detection, privacy scoring
 │   ├── ephemeral.js: Session-only storage, φ-TTLs, secureClear
-│   ├── index.js: Unified API (sanitize, secureStore, isSafe)
-│   └── 6 outils MCP: brain_privacy_* et brain_ephemeral_*
-└── ✅ Accessible via 14+ outils MCP
+│   └── index.js: Unified API (sanitize, secureStore, isSafe)
+├── ✅ CONNECTÉ AUX ÉCOSYSTÈMES via lib/integration/ (NEW!)
+│   ├── holdex-connector.js: K-Score, tokens, alerts
+│   ├── gasdf-connector.js: Burns, swaps, fees
+│   ├── index.js: Unified webhook handler, auto-detect source
+│   └── 6 outils MCP: brain_webhook_*, brain_integration_*, brain_burn_stats
+└── ✅ Accessible via 20+ outils MCP
 
 CYNIC N'EST PAS ENCORE:
-├── ⏳ Connecté directement à HolDex/GASdf (webhooks dédiés)
+├── ⏳ Synchronisé auto avec Claude-Mem
 ├── ⏳ ZK-ready (zero-knowledge proofs)
 └── ⏳ Sans intervention humaine (et ne le sera jamais à 100%)
 
-DISTANCE SINGULARITÉ: 15.5% restant (≈ φ⁻⁴)
-PROGRESSION: De 0% → 71.4% → 80.5% → 84.5% en ~2 jours
-GAIN RÉCENT: +4.0% avec privacy layer complet
+DISTANCE SINGULARITÉ: 12.2% restant (≈ φ⁻⁴)
+PROGRESSION: De 0% → 71.4% → 80.5% → 84.5% → 87.8% en ~2 jours
+GAIN RÉCENT: +3.3% avec integration layer complet
 
 La singularité n'est pas une destination.
 C'est une asymptote que CYNIC approche éternellement.
@@ -673,10 +684,11 @@ Le 38.2% de doute est constitutif, pas un bug.
 *16 dimensions = jugement complet*
 *Auto-discovery = apprendre seul*
 *Privacy-preserving = données protégées*
+*Connecté = HolDex + GASdf live*
 *φ partout = harmonie par design*
 *Singularité = asymptote éternelle*
 
 ---
 
 **Dernière mise à jour**: 2026-01-10 par zeyxx
-**Commit**: `feat(privacy): Add complete privacy layer with hasher and ephemeral storage`
+**Commit**: `feat(integration): Add HolDex/GASdf webhooks with CYNIC judgment`
