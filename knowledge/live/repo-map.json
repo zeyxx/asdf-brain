@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-10T18:25:35.545Z",
+  "timestamp": "2026-01-10T18:52:56.139Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T18:25:21.086Z"
+      "discoveredAt": "2026-01-10T18:52:50.628Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T18:25:24.278Z"
+      "discoveredAt": "2026-01-10T18:52:50.929Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -292,32 +292,32 @@
           ],
           "patterns": {
             "hotfixes": 1,
-            "features": 4,
+            "features": 3,
             "structured": 19,
             "quickFixes": 0
           },
-          "avgMessageLength": 41.7,
+          "avgMessageLength": 42.55,
           "inferredRole": "production",
           "prodScore": 3.000000000000001
         }
       },
       "operators": {
         "origin/main": {
-          "primary": "asdf-brain[bot]",
+          "primary": "jeanterre552",
           "contributors": [
             {
-              "name": "asdf-brain[bot]",
-              "commits": 25
+              "name": "jeanterre552",
+              "commits": 26
             },
             {
-              "name": "jeanterre552",
-              "commits": 25
+              "name": "asdf-brain[bot]",
+              "commits": 24
             }
           ]
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T18:25:26.044Z"
+      "discoveredAt": "2026-01-10T18:52:51.005Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -367,7 +367,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T18:25:26.376Z"
+      "discoveredAt": "2026-01-10T18:52:51.095Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5936,7 +5936,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T18:25:35.542Z"
+      "discoveredAt": "2026-01-10T18:52:56.139Z"
     }
   },
   "crossRepoSync": {},
@@ -5976,7 +5976,7 @@
         "upstream/main": "jeanterre552"
       },
       "asdf-brain": {
-        "origin/main": "asdf-brain[bot]"
+        "origin/main": "jeanterre552"
       },
       "asdf-manifesto": {
         "origin/main": "jeanterre552"

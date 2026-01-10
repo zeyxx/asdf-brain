@@ -27,10 +27,10 @@
       "rate": 500
     },
     "decision_record": {
-      "count": 56,
+      "count": 58,
       "burned": 0,
       "rate": 3000,
-      "total": 62975
+      "total": 65265
     },
     "merkle_proof": {
       "count": 0,
@@ -48,12 +48,12 @@
       "total": 2290
     },
     "brain": {
-      "count": 7,
-      "total": 8779
+      "count": 8,
+      "total": 9924
     },
     "manifesto": {
-      "count": 17,
-      "total": 21757
+      "count": 18,
+      "total": 22902
     },
     "ecosystem": {
       "count": 23,
@@ -63,20 +63,20 @@
   "daily": [],
   "weekly": [],
   "_phi": {
-    "avg_burn_per_operation": 1288.9420289855072,
+    "avg_burn_per_operation": 1284.887323943662,
     "burn_rate": 0.3819660112501051,
-    "velocity_24h": 1852.8541666666667
+    "velocity_24h": 1900.5625
   },
-  "total_burned": 88937,
-  "total_operations": 69,
+  "total_burned": 91227,
+  "total_operations": 71,
   "by_session": {
     "test-session-001": {
       "count": 1,
       "total": 1909
     },
     "unknown": {
-      "count": 68,
-      "total": 87028
+      "count": 70,
+      "total": 89318
     }
   },
   "daily_burns": {
@@ -85,10 +85,10 @@
       "total": 53821
     },
     "2026-01-10": {
-      "count": 28,
-      "total": 35116
+      "count": 30,
+      "total": 37406
     }
   },
   "created_at": 1767924494360,
-  "last_updated": 1768067560207
+  "last_updated": 1768070973830
 }
