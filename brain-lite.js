@@ -58,6 +58,12 @@ const burnMechanism = require('./lib/burn-mechanism');
 // Infrastructure Monitor - Yesod health (SOL, USDC, LSTs)
 const infraMonitor = require('./lib/i-infra-monitor');
 
+// CYNIC - Self-Judge ("φ qui se méfie de φ")
+const { SelfJudge, LEARNING, FIBONACCI_N, DIVERSITY, REFINEMENT } = require('./lib/cynic/self-judge');
+
+// Initialize global CYNIC instance with persistent learning
+const cynicJudge = new SelfJudge({ logger: console });
+
 // Contributors - E-Score tracking (7 dimensions)
 const contributors = require('./lib/contributors');
 
@@ -426,6 +432,81 @@ const TOOLS = {
     },
     phi_weight: PHI,
     isProvenance: true,
+    isWrite: true,
+  },
+
+  // CYNIC TOOLS - Self-Judge ("φ qui se méfie de φ")
+  brain_cynic_judge: {
+    pardes: 'D',
+    name: 'brain_cynic_judge',
+    description: '[CYNIC] Judge an item using the complete CYNIC cycle (scaling + refinement + learning). Returns verdict with φ-constrained confidence (max 61.8%)',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        item: {
+          type: 'object',
+          description: 'Item to judge (knowledge, pattern, decision, etc.)',
+        },
+        mode: {
+          type: 'string',
+          enum: ['quick', 'standard', 'thorough', 'full'],
+          description: 'Judgment mode: quick (single pass), standard (scaling), thorough (scaling + refinement), full (complete cycle)',
+        },
+        context: {
+          type: 'object',
+          description: 'Optional context for judgment (singularityDistance, existing patterns, etc.)',
+        },
+      },
+      required: ['item'],
+    },
+    phi_weight: PHI * PHI,
+    isCynic: true,
+  },
+
+  brain_cynic_feedback: {
+    pardes: 'D',
+    name: 'brain_cynic_feedback',
+    description: '[CYNIC] Record outcome feedback for a previous judgment. Enables learning from human feedback.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        judgment_id: {
+          type: 'string',
+          description: 'The _judgmentId from a previous CYNIC judgment',
+        },
+        outcome: {
+          type: 'string',
+          enum: ['correct', 'incorrect', 'partial'],
+          description: 'Whether the judgment was correct',
+        },
+        feedback: {
+          type: 'object',
+          description: 'Optional additional feedback details',
+        },
+      },
+      required: ['judgment_id', 'outcome'],
+    },
+    phi_weight: PHI,
+    isCynic: true,
+    isWrite: true,
+  },
+
+  brain_cynic_stats: {
+    pardes: 'P',
+    name: 'brain_cynic_stats',
+    description: '[CYNIC] Get CYNIC learning statistics (accuracy, precision, recall, φ-Score, thresholds)',
+    inputSchema: { type: 'object', properties: {} },
+    phi_weight: 1.0,
+    isCynic: true,
+  },
+
+  brain_cynic_learn: {
+    pardes: 'D',
+    name: 'brain_cynic_learn',
+    description: '[CYNIC] Trigger manual learning cycle to adjust thresholds based on accumulated feedback',
+    inputSchema: { type: 'object', properties: {} },
+    phi_weight: PHI,
+    isCynic: true,
     isWrite: true,
   },
 };
@@ -818,7 +899,7 @@ async function handleVision(args, adapter) {
 // =============================================================================
 
 async function handleLearn(args, adapter) {
-  const { type, content, context, tags = [], contributor_id, session_id } = args;
+  const { type, content, context, tags = [], contributor_id, session_id, skip_cynic = false } = args;
 
   // Auto-detect project from content + context
   const textForDetection = `${content} ${context || ''}`;
@@ -827,7 +908,30 @@ async function handleLearn(args, adapter) {
   // Auto-detect language (φ-thresholds: 61.8% dominant, 38.2% mixed)
   const langResult = langDetect.detectLanguage(textForDetection);
 
-  // Create entry with provenance, project tagging, and language
+  // CYNIC judgment on incoming knowledge (unless skipped)
+  let cynicJudgment = null;
+  if (!skip_cynic) {
+    try {
+      // Build item for CYNIC judgment
+      const itemToJudge = {
+        content,
+        source: context ? true : false,
+        anonymous: !contributor_id || contributor_id === 'claude-session',
+        enablesHuman: true, // Knowledge enables humans by default
+        contributesBurn: type === 'pattern' || type === 'decision',
+      };
+
+      // Quick judgment for performance (single pass)
+      cynicJudgment = await cynicJudge.judge(itemToJudge, {
+        singularityDistance: 0.4,
+      });
+    } catch (e) {
+      // CYNIC failure is non-blocking
+      cynicJudgment = { error: e.message, global: 50, verdict: { action: 'TRANSFORM' } };
+    }
+  }
+
+  // Create entry with provenance, project tagging, language, and CYNIC score
   const entry = {
     id: crypto.randomBytes(8).toString('hex'),
     type,
@@ -843,6 +947,10 @@ async function handleLearn(args, adapter) {
     strength: 50,
     access_count: 0,
     created_at: Date.now(),
+    // CYNIC judgment metadata
+    cynic_score: cynicJudgment?.global || null,
+    cynic_verdict: cynicJudgment?.verdict?.action || null,
+    cynic_judgment_id: cynicJudgment?._judgmentId || null,
   };
 
   // Track contribution (NOT a fee - knowledge is FREE to access)
@@ -885,14 +993,23 @@ async function handleLearn(args, adapter) {
       contributor_id: contributor_id || null,
       e_score_dimension: 'BUILD',
     },
+    // CYNIC judgment results
+    cynic: cynicJudgment ? {
+      score: cynicJudgment.global,
+      verdict: cynicJudgment.verdict?.action,
+      confidence: cynicJudgment.confidence,
+      doubt: cynicJudgment.doubt,
+      judgment_id: cynicJudgment._judgmentId,
+      needs_review: cynicJudgment.verdict?.action === 'TRANSFORM',
+    } : null,
     message: `Learned: ${type} recorded for project ${detectedProject}`,
     _philosophy: 'Knowledge is FREE. Contributions are VALUED.',
-    _quality: 85,
+    _quality: cynicJudgment?.global || 85,
   };
 }
 
 async function handleIngest(args, adapter) {
-  const { source, entries } = args;
+  const { source, entries, skip_cynic = false } = args;
 
   if (!entries || entries.length === 0) {
     return { success: false, error: 'No entries to ingest', _quality: 0 };
@@ -901,6 +1018,7 @@ async function handleIngest(args, adapter) {
   const results = [];
   const projectCounts = {};
   const langCounts = {};  // Track language distribution
+  const cynicStats = { total: 0, accepted: 0, transform: 0, avgScore: 0 };
   const ingestPath = `ingested/${source}.jsonl`;
 
   for (const entry of entries) {
@@ -915,6 +1033,28 @@ async function handleIngest(args, adapter) {
     projectCounts[detectedProject] = (projectCounts[detectedProject] || 0) + 1;
     langCounts[langResult.lang] = (langCounts[langResult.lang] || 0) + 1;
 
+    // CYNIC judgment on ingested entry (unless skipped)
+    let cynicJudgment = null;
+    if (!skip_cynic) {
+      try {
+        const itemToJudge = {
+          content: entry.content || JSON.stringify(entry),
+          source: source ? true : false,
+          anonymous: true, // Ingested data is anonymous by default
+        };
+        cynicJudgment = await cynicJudge.judge(itemToJudge, { singularityDistance: 0.5 });
+        cynicStats.total++;
+        cynicStats.avgScore += cynicJudgment.global;
+        if (cynicJudgment.verdict?.action === 'ACCEPT') {
+          cynicStats.accepted++;
+        } else {
+          cynicStats.transform++;
+        }
+      } catch (e) {
+        // CYNIC failure is non-blocking
+      }
+    }
+
     const enriched = {
       ...entry,
       id: crypto.randomBytes(8).toString('hex'),
@@ -923,13 +1063,27 @@ async function handleIngest(args, adapter) {
       lang: langResult.lang,     // Auto-detected language (en/fr/mixed)
       ingested_at: new Date().toISOString(),
       hash: crypto.createHash('sha256').update(JSON.stringify(entry)).digest('hex').slice(0, 16),
+      // CYNIC metadata
+      cynic_score: cynicJudgment?.global || null,
+      cynic_verdict: cynicJudgment?.verdict?.action || null,
     };
 
     const result = await adapter.write(ingestPath, enriched, { append: true });
-    results.push({ id: enriched.id, project: detectedProject, lang: langResult.lang, success: result.success });
+    results.push({
+      id: enriched.id,
+      project: detectedProject,
+      lang: langResult.lang,
+      cynic_score: cynicJudgment?.global || null,
+      success: result.success,
+    });
   }
 
   const successful = results.filter(r => r.success).length;
+
+  // Calculate average CYNIC score
+  if (cynicStats.total > 0) {
+    cynicStats.avgScore = Math.round(cynicStats.avgScore / cynicStats.total);
+  }
 
   return {
     success: successful > 0,
@@ -939,7 +1093,13 @@ async function handleIngest(args, adapter) {
     failed: entries.length - successful,
     by_project: projectCounts,  // Show project distribution
     by_language: langCounts,    // Show language distribution
-    _quality: successful > 0 ? 80 : 0,
+    cynic: skip_cynic ? null : {
+      judged: cynicStats.total,
+      accepted: cynicStats.accepted,
+      needs_review: cynicStats.transform,
+      avg_score: cynicStats.avgScore,
+    },
+    _quality: cynicStats.avgScore || (successful > 0 ? 80 : 0),
   };
 }
 
@@ -1272,6 +1432,178 @@ async function handleProvenanceSnapshot(args, adapter) {
   }
 }
 
+// =============================================================================
+// CYNIC HANDLERS - Self-Judge ("φ qui se méfie de φ")
+// =============================================================================
+
+async function handleCynicJudge(args, adapter) {
+  const { item, mode = 'standard', context = {} } = args;
+
+  if (!item || typeof item !== 'object') {
+    return { success: false, error: 'Item must be an object', _quality: 0 };
+  }
+
+  const startTime = Date.now();
+  let result;
+
+  // Add default context values
+  const judgeContext = {
+    singularityDistance: 0.4, // φ⁻¹ default distance
+    ...context,
+  };
+
+  try {
+    switch (mode) {
+      case 'quick':
+        // Single pass judgment
+        result = await cynicJudge.judge(item, judgeContext);
+        result._mode = 'quick';
+        break;
+
+      case 'standard':
+        // Inference scaling (N=5)
+        result = await cynicJudge.judgeWithScaling(item, judgeContext, {
+          n: FIBONACCI_N.STANDARD,
+          diversity: DIVERSITY.MEDIUM,
+        });
+        result._mode = 'standard';
+        break;
+
+      case 'thorough':
+        // Scaling + Refinement
+        result = await cynicJudge.judgeWithRefinement(item, judgeContext, {
+          maxIterations: REFINEMENT.MAX_ITERATIONS,
+          autoTransform: true,
+          useScaling: true,
+        });
+        result._mode = 'thorough';
+        break;
+
+      case 'full':
+        // Complete cycle: thorough scaling + refinement
+        result = await cynicJudge.judgeWithRefinement(item, judgeContext, {
+          maxIterations: REFINEMENT.MAX_ITERATIONS,
+          autoTransform: true,
+          useScaling: true,
+        });
+        result._mode = 'full';
+        break;
+
+      default:
+        result = await cynicJudge.judge(item, judgeContext);
+        result._mode = 'default';
+    }
+
+    return {
+      success: true,
+      judgment_id: result._judgmentId,
+      global: result.global,
+      verdict: result.verdict,
+      confidence: result.confidence,
+      doubt: result.doubt,
+      scores: result.scores,
+      mode: result._mode,
+      scaling: result._scaling || null,
+      refinement: result._refinement || null,
+      transformed_item: result.item || null,
+      duration_ms: Date.now() - startTime,
+      philosophy: 'φ qui se méfie de φ - Rendre autonome, pas automatiser',
+      _quality: result.global,
+    };
+  } catch (e) {
+    return {
+      success: false,
+      error: e.message,
+      _quality: 0,
+    };
+  }
+}
+
+async function handleCynicFeedback(args, adapter) {
+  const { judgment_id, outcome, feedback = {} } = args;
+
+  if (!judgment_id) {
+    return { success: false, error: 'judgment_id is required', _quality: 0 };
+  }
+
+  // Map string outcome to LEARNING.OUTCOMES
+  const outcomeMap = {
+    'correct': LEARNING.OUTCOMES.CORRECT,
+    'incorrect': LEARNING.OUTCOMES.INCORRECT,
+    'partial': LEARNING.OUTCOMES.PARTIAL,
+  };
+
+  const mappedOutcome = outcomeMap[outcome];
+  if (!mappedOutcome) {
+    return {
+      success: false,
+      error: `Invalid outcome: ${outcome}. Must be: correct, incorrect, partial`,
+      _quality: 0,
+    };
+  }
+
+  const result = cynicJudge.recordOutcome(judgment_id, mappedOutcome, feedback);
+
+  if (result.error) {
+    return {
+      success: false,
+      error: result.error,
+      judgment_id,
+      _quality: 0,
+    };
+  }
+
+  return {
+    success: true,
+    judgment_id,
+    outcome,
+    reward: result.reward,
+    learned: result.learned,
+    adjustments: result.adjustments || {},
+    message: result.learned
+      ? `Feedback recorded and learning triggered. Reward: ${result.reward.toFixed(3)}`
+      : `Feedback recorded. Reward: ${result.reward.toFixed(3)}`,
+    philosophy: 'φ-weighted reinforcement learning from human feedback',
+    _quality: 85,
+  };
+}
+
+async function handleCynicStats(args, adapter) {
+  const stats = cynicJudge.getLearningStats();
+
+  return {
+    success: true,
+    ...stats,
+    message: `CYNIC has made ${stats.totalJudgments} judgments with ${stats.accuracy}% accuracy`,
+    philosophy: 'φ qui se méfie de φ',
+    _quality: 90,
+  };
+}
+
+async function handleCynicLearn(args, adapter) {
+  const result = cynicJudge.learn();
+
+  if (!result.learned) {
+    return {
+      success: false,
+      reason: result.reason,
+      message: 'Learning not triggered: ' + result.reason,
+      _quality: 50,
+    };
+  }
+
+  return {
+    success: true,
+    iteration: result.iteration,
+    accuracy: result.accuracy,
+    learning_rate: result.learningRate,
+    adjustments: result.adjustments,
+    message: `Learning iteration ${result.iteration} complete. Accuracy: ${result.accuracy}%`,
+    philosophy: result.philosophy,
+    _quality: 90,
+  };
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -1294,6 +1626,11 @@ const HANDLERS = {
   brain_provenance_proof: handleProvenanceProof,
   brain_provenance_verify: handleProvenanceVerify,
   brain_provenance_snapshot: handleProvenanceSnapshot,
+  // CYNIC Layer
+  brain_cynic_judge: handleCynicJudge,
+  brain_cynic_feedback: handleCynicFeedback,
+  brain_cynic_stats: handleCynicStats,
+  brain_cynic_learn: handleCynicLearn,
 };
 
 // =============================================================================
@@ -1496,11 +1833,23 @@ module.exports = {
   handleProvenanceProof,
   handleProvenanceVerify,
   handleProvenanceSnapshot,
+  // CYNIC handlers
+  handleCynicJudge,
+  handleCynicFeedback,
+  handleCynicStats,
+  handleCynicLearn,
+  // CYNIC instance (for direct access/testing)
+  cynicJudge,
   // Constants
   PHI,
   PHI_INV,
   PHI_INV_2,
-  PHI_INV_3
+  PHI_INV_3,
+  // CYNIC constants
+  LEARNING,
+  FIBONACCI_N,
+  DIVERSITY,
+  REFINEMENT,
 };
 
 // Only run main if executed directly (not required)
