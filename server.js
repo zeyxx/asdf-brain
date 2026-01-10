@@ -15,6 +15,9 @@
  * - GET /api/vision    → Roadmap items
  * - GET /sse           → MCP over SSE
  * - POST /mcp          → MCP JSON-RPC
+ * - GET /cynic         → CYNIC Dashboard (HTML)
+ * - GET /cynic/api     → CYNIC Dashboard (JSON)
+ * - GET /cynic/status  → CYNIC Pulse status
  */
 
 'use strict';
@@ -24,6 +27,13 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 const { PHI, PHI_2, PHI_INV } = require('./lib/temporal');
+
+// CYNIC modules
+const cynicDashboard = require('./lib/cynic/dashboard');
+const cynicDashboardWeb = require('./lib/cynic/dashboard-web');
+const cynicPulse = require('./lib/cynic/pulse');
+const cynicSelfMonitor = require('./lib/cynic/self-monitor');
+const cynicAlerts = require('./lib/cynic/alerts');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -748,6 +758,148 @@ app.get('/webhook/metrics', (req, res) => {
 });
 
 // =============================================================================
+// CYNIC DASHBOARD - φ qui se méfie de φ
+// =============================================================================
+
+/**
+ * CYNIC Dashboard - HTML view
+ * Auto-refreshes every 62 seconds (φ⁻¹ × 100)
+ */
+app.get('/cynic', async (req, res) => {
+  try {
+    const html = await cynicDashboardWeb.generateHTML();
+    res.setHeader('Content-Type', 'text/html');
+    res.send(html);
+  } catch (error) {
+    console.error('CYNIC dashboard error:', error);
+    res.status(500).send('Dashboard generation failed');
+  }
+});
+
+/**
+ * CYNIC Dashboard - JSON API
+ * Returns all dashboard data as JSON
+ */
+app.get('/cynic/api', async (req, res) => {
+  try {
+    const data = await cynicDashboardWeb.generateAPIResponse();
+    res.json(data);
+  } catch (error) {
+    console.error('CYNIC API error:', error);
+    res.status(500).json({ error: 'API generation failed' });
+  }
+});
+
+/**
+ * CYNIC Pulse Status
+ * Returns current pulse/health status
+ */
+app.get('/cynic/status', async (req, res) => {
+  try {
+    const pulseStatus = cynicPulse.getStatus();
+    const diagnostic = await cynicSelfMonitor.runFullDiagnostic();
+    const alertStats = cynicAlerts.getStats();
+    const activeAlerts = cynicAlerts.getActive();
+
+    res.json({
+      timestamp: new Date().toISOString(),
+      pulse: {
+        running: pulseStatus.running,
+        interval: pulseStatus.interval,
+        beatCount: pulseStatus.beatCount,
+        uptime: pulseStatus.uptime
+      },
+      health: {
+        score: diagnostic.overallScore,
+        status: diagnostic.status,
+        healthy: diagnostic.healthy
+      },
+      components: Object.fromEntries(
+        Object.entries(diagnostic.components).map(([k, v]) => [k, {
+          healthy: v.healthy,
+          score: v.score,
+          status: v.status
+        }])
+      ),
+      alerts: {
+        active: activeAlerts.length,
+        totalFired: alertStats.totalFired,
+        resolved: alertStats.resolved,
+        rules: alertStats.rulesCount
+      },
+      _phi: {
+        interval: '61.8s (φ⁻¹ × 100)',
+        thresholds: {
+          healthy: 62,
+          warning: 38,
+          critical: 24
+        },
+        philosophy: 'φ qui se méfie de φ'
+      }
+    });
+  } catch (error) {
+    console.error('CYNIC status error:', error);
+    res.status(500).json({ error: 'Status check failed' });
+  }
+});
+
+/**
+ * CYNIC Alerts - Active alerts
+ */
+app.get('/cynic/alerts', (req, res) => {
+  try {
+    const active = cynicAlerts.getActive();
+    const stats = cynicAlerts.getStats();
+
+    res.json({
+      active,
+      stats,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('CYNIC alerts error:', error);
+    res.status(500).json({ error: 'Alerts fetch failed' });
+  }
+});
+
+/**
+ * CYNIC CLI Dashboard - Plain text output
+ */
+app.get('/cynic/cli', async (req, res) => {
+  try {
+    const output = await cynicDashboard.generate();
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.send(output);
+  } catch (error) {
+    console.error('CYNIC CLI error:', error);
+    res.status(500).send('CLI dashboard generation failed');
+  }
+});
+
+/**
+ * Start/Stop CYNIC Pulse (protected)
+ */
+app.post('/cynic/pulse', requireApiKey, (req, res) => {
+  const { action } = req.body;
+
+  try {
+    if (action === 'start') {
+      cynicPulse.start();
+      cynicAlerts.connectToPulse(cynicPulse);
+      res.json({ success: true, message: 'Pulse started', status: cynicPulse.getStatus() });
+    } else if (action === 'stop') {
+      cynicPulse.stop();
+      res.json({ success: true, message: 'Pulse stopped', status: cynicPulse.getStatus() });
+    } else {
+      res.status(400).json({ error: 'Invalid action. Use "start" or "stop"' });
+    }
+  } catch (error) {
+    console.error('CYNIC pulse control error:', error);
+    res.status(500).json({ error: 'Pulse control failed' });
+  }
+});
+
+// =============================================================================
 // MCP OVER SSE
 // =============================================================================
 
@@ -915,8 +1067,10 @@ app.listen(PORT, () => {
   console.log('═══════════════════════════════════════════════════════════');
   console.log('  asdf-brain server');
   console.log("  $asdfasdfa: Don't trust, verify");
+  console.log('  CYNIC: φ qui se méfie de φ');
   console.log('═══════════════════════════════════════════════════════════');
   console.log(`  Dashboard:  http://localhost:${PORT}/`);
+  console.log(`  CYNIC:      http://localhost:${PORT}/cynic`);
   console.log(`  API:        http://localhost:${PORT}/api/health`);
   console.log(`  MCP:        http://localhost:${PORT}/mcp`);
   console.log('═══════════════════════════════════════════════════════════');
