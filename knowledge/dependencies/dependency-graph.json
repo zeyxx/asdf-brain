@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T11:41:25.746Z",
+    "generated": "2026-01-10T11:50:05.917Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -149,13 +149,13 @@
           "./queue": 1,
           "../utils/nodeKeys": 4,
           "./priceService": 1,
-          "./heliusRateLimiter": 2,
+          "./rpcProvider": 2,
           "../logger": 2,
           "./rpcHealth": 1,
+          "./heliusRateLimiter": 1,
           "./providers/helius": 1,
           "./providers/public": 1,
           "./rpcMonitor": 1,
-          "./rpcProvider": 1,
           "./claude-phi": 1,
           "./shared/harmony": 1,
           "./harmony": 1,
