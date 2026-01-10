@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T20:06:38.470Z",
+    "generated": "2026-01-10T20:24:52.913Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -471,6 +471,7 @@
           "./lib/cynic/self-judge": 1,
           "./lib/discovery/git-scanner": 1,
           "./lib/privacy": 1,
+          "./lib/integration": 1,
           "./lib/contributors": 1,
           "../../lib/temporal": 8,
           "./extractGitDecisions.js": 1,
@@ -488,6 +489,9 @@
           "../repo-discovery": 1,
           "../git-intelligence": 1,
           "../cynic/self-judge": 1,
+          "../privacy": 2,
+          "./holdex-connector": 1,
+          "./gasdf-connector": 1,
           "./hasher": 1,
           "./ephemeral": 1,
           "./lib/cynic": 2,
@@ -510,9 +514,9 @@
           "express": 1
         },
         "node": {
-          "fs": 49,
-          "path": 49,
-          "crypto": 18,
+          "fs": 51,
+          "path": 51,
+          "crypto": 20,
           "readline": 9,
           "http": 1,
           "child_process": 14,
