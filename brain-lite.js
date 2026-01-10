@@ -81,6 +81,10 @@ const pulse = require('./lib/cynic/pulse');
 const selfMonitor = require('./lib/cynic/self-monitor');
 const metrics = require('./lib/cynic/metrics');
 
+// Alerting Layer - Rules-based monitoring with φ-escalation
+const alerts = require('./lib/cynic/alerts');
+require('./lib/cynic/alert-rules'); // Auto-registers predefined rules
+
 // =============================================================================
 // PHI CONSTANTS - From temporal.js (single source of truth)
 // =============================================================================
@@ -1092,6 +1096,164 @@ const TOOLS = {
       }
     },
     phi_weight: PHI_INV,
+  },
+
+  // =========================================================================
+  // ALERTING LAYER - φ qui réagit
+  // =========================================================================
+
+  brain_alert_status: {
+    pardes: 'S',
+    name: 'brain_alert_status',
+    description: '[ALERTING] Get CYNIC alert system status. Shows active alerts, statistics, and rule count.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_alert_active: {
+    pardes: 'S',
+    name: 'brain_alert_active',
+    description: '[ALERTING] Get all active (firing) alerts. Shows severity, message, and duration.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        severity: {
+          type: 'string',
+          enum: ['critical', 'warning', 'info'],
+          description: 'Filter by severity level'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_alert_history: {
+    pardes: 'S',
+    name: 'brain_alert_history',
+    description: '[ALERTING] Get recent alert history. Shows fired, resolved, and acknowledged alerts.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          default: 50,
+          description: 'Maximum alerts to return'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_alert_rules: {
+    pardes: 'S',
+    name: 'brain_alert_rules',
+    description: '[ALERTING] List all registered alert rules. Shows rule conditions and thresholds.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        category: {
+          type: 'string',
+          enum: ['health', 'subsystem', 'integration', 'resource', 'knowledge', 'anomaly'],
+          description: 'Filter by rule category'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_alert_check: {
+    pardes: 'S',
+    name: 'brain_alert_check',
+    description: '[ALERTING] Manually check all alert rules against current state. Fires alerts if conditions match.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI,
+  },
+
+  brain_alert_acknowledge: {
+    pardes: 'S',
+    name: 'brain_alert_acknowledge',
+    description: '[ALERTING] Acknowledge an active alert. Prevents escalation while keeping alert visible.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        alertId: {
+          type: 'string',
+          description: 'Alert ID to acknowledge'
+        },
+        acknowledgedBy: {
+          type: 'string',
+          default: 'operator',
+          description: 'Who is acknowledging the alert'
+        }
+      },
+      required: ['alertId']
+    },
+    phi_weight: PHI,
+    isWrite: true,
+  },
+
+  brain_alert_resolve: {
+    pardes: 'S',
+    name: 'brain_alert_resolve',
+    description: '[ALERTING] Manually resolve an active alert. Use when the issue has been fixed.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        alertId: {
+          type: 'string',
+          description: 'Alert ID to resolve'
+        },
+        resolution: {
+          type: 'string',
+          default: 'Manually resolved',
+          description: 'Resolution message'
+        }
+      },
+      required: ['alertId']
+    },
+    phi_weight: PHI,
+    isWrite: true,
+  },
+
+  brain_alert_silence: {
+    pardes: 'S',
+    name: 'brain_alert_silence',
+    description: '[ALERTING] Silence a rule for specified duration. Prevents new alerts from firing.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        ruleId: {
+          type: 'string',
+          description: 'Rule ID to silence'
+        },
+        durationMs: {
+          type: 'number',
+          default: 3600000,
+          description: 'Silence duration in milliseconds (default 1 hour)'
+        }
+      },
+      required: ['ruleId']
+    },
+    phi_weight: PHI,
+    isWrite: true,
+  },
+
+  brain_alert_connect_pulse: {
+    pardes: 'S',
+    name: 'brain_alert_connect_pulse',
+    description: '[ALERTING] Connect alerting to pulse daemon. Alerts will fire automatically on each pulse.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI * PHI,
+    isWrite: true,
   },
 };
 
@@ -2802,6 +2964,9 @@ async function handlePulseStart(args, adapter) {
     // Register self-monitor checks with pulse
     selfMonitor.registerWithPulse(pulse);
 
+    // Connect alerting to pulse (will check rules on each heartbeat)
+    alerts.connectToPulse(pulse);
+
     const result = await pulse.start();
 
     // Start recording metrics
@@ -2816,7 +2981,8 @@ async function handlePulseStart(args, adapter) {
       message: result.message,
       interval: result.interval,
       intervalHuman: result.intervalHuman,
-      philosophy: "φ qui se voit vivre.",
+      alertRulesActive: alerts.getAllRules().length,
+      philosophy: "φ qui se voit vivre et réagit.",
       _quality: result.success ? 90 : 40,
     };
   } catch (error) {
@@ -2964,6 +3130,293 @@ async function handleHealthHistory(args, adapter) {
   }
 }
 
+// =============================================================================
+// ALERTING HANDLERS
+// =============================================================================
+
+async function handleAlertStatus(args, adapter) {
+  try {
+    const status = alerts.getStatus();
+    const stats = alerts.getStats();
+    const active = alerts.getActive();
+
+    return {
+      success: true,
+      ...status,
+      statistics: stats,
+      activeCount: active.length,
+      criticalCount: active.filter(a => a.severity === 'critical').length,
+      warningCount: active.filter(a => a.severity === 'warning').length,
+      philosophy: "φ qui surveille.",
+      _quality: 85,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertActive(args, adapter) {
+  const { severity } = args;
+
+  try {
+    let active = alerts.getActive();
+
+    if (severity) {
+      active = active.filter(a => a.severity === severity);
+    }
+
+    return {
+      success: true,
+      count: active.length,
+      alerts: active.map(a => ({
+        id: a.id,
+        ruleId: a.ruleId,
+        severity: a.severity,
+        message: a.message,
+        firedAt: a.firedAt,
+        durationMs: Date.now() - new Date(a.firedAt).getTime(),
+        acknowledged: a.acknowledged,
+        escalated: a.escalated,
+        fireCount: a.fireCount,
+      })),
+      message: active.length === 0
+        ? "No active alerts. CYNIC is calm."
+        : `${active.length} active alert(s)`,
+      philosophy: "φ qui alerte.",
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertHistory(args, adapter) {
+  const { limit = 50 } = args;
+
+  try {
+    const history = alerts.getHistory(limit);
+    const stats = alerts.getStats();
+
+    return {
+      success: true,
+      count: history.length,
+      totalFired: stats.totalFired,
+      totalResolved: stats.totalResolved,
+      totalAcknowledged: stats.totalAcknowledged,
+      alerts: history,
+      philosophy: "φ qui se souvient.",
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertRules(args, adapter) {
+  const { category } = args;
+
+  try {
+    const allRules = alerts.getAllRules();
+    let rules = allRules;
+
+    if (category) {
+      const alertRulesLib = require('./lib/cynic/alert-rules');
+      const categoryRules = alertRulesLib.getRulesByCategory(category);
+      const categoryIds = new Set(categoryRules.map(r => r.id));
+      rules = allRules.filter(r => categoryIds.has(r.id));
+    }
+
+    return {
+      success: true,
+      count: rules.length,
+      totalRules: allRules.length,
+      rules: rules.map(r => ({
+        id: r.id,
+        name: r.name,
+        description: r.description,
+        severity: r.severity,
+        enabled: r.enabled,
+        silencedUntil: r.silencedUntil,
+        throttleMs: r.throttleMs,
+        channels: r.channels,
+      })),
+      thresholds: require('./lib/cynic/alert-rules').THRESHOLDS,
+      philosophy: "φ qui définit ses règles.",
+      _quality: 80,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertCheck(args, adapter) {
+  try {
+    // Run full diagnostic first to get current state
+    const diagnostic = await selfMonitor.runFullDiagnostic();
+
+    // Check all rules against current state
+    const results = await alerts.checkAll(diagnostic);
+
+    const firedAlerts = results.filter(r => r.fired);
+    const active = alerts.getActive();
+
+    return {
+      success: true,
+      rulesChecked: results.length,
+      alertsFired: firedAlerts.length,
+      activeAlerts: active.length,
+      fired: firedAlerts.map(r => ({
+        ruleId: r.ruleId,
+        alertId: r.alertId,
+        severity: r.severity,
+        message: r.message,
+      })),
+      diagnosticScore: diagnostic.overallScore,
+      philosophy: "φ qui vérifie.",
+      _quality: firedAlerts.length > 0 ? 70 : 90,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertAcknowledge(args, adapter) {
+  const { alertId, acknowledgedBy = 'operator' } = args;
+
+  try {
+    const result = alerts.acknowledge(alertId, acknowledgedBy);
+
+    return {
+      success: result.success,
+      message: result.message,
+      alert: result.alert ? {
+        id: result.alert.id,
+        ruleId: result.alert.ruleId,
+        severity: result.alert.severity,
+        acknowledged: result.alert.acknowledged,
+        acknowledgedAt: result.alert.acknowledgedAt,
+        acknowledgedBy: result.alert.acknowledgedBy,
+      } : null,
+      philosophy: "φ qui prend acte.",
+      _quality: result.success ? 80 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertResolve(args, adapter) {
+  const { alertId, resolution = 'Manually resolved' } = args;
+
+  try {
+    const result = alerts.resolve(alertId, resolution);
+
+    return {
+      success: result.success,
+      message: result.message,
+      alert: result.alert ? {
+        id: result.alert.id,
+        ruleId: result.alert.ruleId,
+        severity: result.alert.severity,
+        resolvedAt: result.alert.resolvedAt,
+        resolution: result.alert.resolution,
+        totalDurationMs: result.alert.resolvedAt
+          ? new Date(result.alert.resolvedAt).getTime() - new Date(result.alert.firedAt).getTime()
+          : null,
+      } : null,
+      philosophy: "φ qui résout.",
+      _quality: result.success ? 85 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertSilence(args, adapter) {
+  const { ruleId, durationMs = 3600000 } = args;
+
+  try {
+    const result = alerts.silenceRule(ruleId, durationMs);
+    const rule = alerts.getRule(ruleId);
+
+    return {
+      success: result.success,
+      message: result.message,
+      rule: rule ? {
+        id: rule.id,
+        name: rule.name,
+        silencedUntil: rule.silencedUntil,
+        silenceDurationMs: durationMs,
+        silenceDurationHuman: `${Math.round(durationMs / 60000)} minutes`,
+      } : null,
+      philosophy: "φ qui fait silence.",
+      _quality: result.success ? 75 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleAlertConnectPulse(args, adapter) {
+  try {
+    // Connect alerts to pulse
+    alerts.connectToPulse(pulse);
+
+    // Check if pulse is running
+    const pulseStatus = pulse.getStatus();
+
+    return {
+      success: true,
+      connected: true,
+      pulseAlive: pulseStatus.alive,
+      message: pulseStatus.alive
+        ? "Alerts connected to pulse. Will check on each heartbeat."
+        : "Alerts connected to pulse. Start pulse with brain_pulse_start to activate.",
+      rulesCount: alerts.getAllRules().length,
+      philosophy: "φ qui écoute son cœur.",
+      _quality: 90,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -3021,6 +3474,16 @@ const HANDLERS = {
   brain_metrics: handleMetrics,
   brain_anomalies: handleAnomalies,
   brain_health_history: handleHealthHistory,
+  // Alerting Layer
+  brain_alert_status: handleAlertStatus,
+  brain_alert_active: handleAlertActive,
+  brain_alert_history: handleAlertHistory,
+  brain_alert_rules: handleAlertRules,
+  brain_alert_check: handleAlertCheck,
+  brain_alert_acknowledge: handleAlertAcknowledge,
+  brain_alert_resolve: handleAlertResolve,
+  brain_alert_silence: handleAlertSilence,
+  brain_alert_connect_pulse: handleAlertConnectPulse,
 };
 
 // =============================================================================
