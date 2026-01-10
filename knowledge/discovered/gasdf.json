@@ -1,0 +1,392 @@
+{
+  "name": "GASdf",
+  "path": "/workspaces/GASdf",
+  "scannedAt": "2026-01-10T19:15:22.015Z",
+  "patterns": [
+    {
+      "type": "async",
+      "value": "async function fetchMetrics",
+      "file": "monitoring/metrics-pusher.js"
+    },
+    {
+      "type": "async",
+      "value": "async function pushToGrafana",
+      "file": "monitoring/metrics-pusher.js"
+    },
+    {
+      "type": "async",
+      "value": "async function reportToBrain",
+      "file": "monitoring/metrics-pusher.js"
+    },
+    {
+      "type": "async",
+      "value": "async function scrape",
+      "file": "monitoring/metrics-pusher.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "monitoring/metrics-pusher.js"
+    },
+    {
+      "type": "import",
+      "value": "import { PublicKey, Transaction, VersionedTransaction } from '@solana/web3.js'",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { GASdf } from '@gasdf/sdk'",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class GASdf",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class for",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class GASdfError extends Error",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class QuoteExpiredError extends GASdfError",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class QuoteNotFoundError extends GASdfError",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class ValidationError extends GASdfError",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class TransactionError extends GASdfError",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class RateLimitError extends GASdfError",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class NetworkError extends GASdfError",
+      "file": "packages/sdk/dist/errors-CEsZX8T7.d.ts"
+    },
+    {
+      "type": "class",
+      "value": "class extends",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "class",
+      "value": "class extends",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "class",
+      "value": "class extends",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "class",
+      "value": "class extends",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "class",
+      "value": "class extends",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "class",
+      "value": "class extends",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "class",
+      "value": "class extends",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async function fetchWithTimeout",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async getQuote",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async submit",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async wrap",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async getTokens",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async getTokenScore",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async health",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async stats",
+      "file": "packages/sdk/dist/index.js"
+    },
+    {
+      "type": "async",
+      "value": "async fetch",
+      "file": "packages/sdk/dist/index.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@pythnetwork/client",
+      "version": "^2.22.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@pythnetwork/pyth-solana-receiver",
+      "version": "^0.13.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/spl-token",
+      "version": "^0.4.8",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/web3.js",
+      "version": "^1.95.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "bs58",
+      "version": "^6.0.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "cors",
+      "version": "^2.8.5",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "dotenv",
+      "version": "^16.6.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "express",
+      "version": "^4.21.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "express-rate-limit",
+      "version": "^8.2.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "gasdf-sdk",
+      "version": "^1.1.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "helius-sdk",
+      "version": "^2.0.5",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "helmet",
+      "version": "^8.1.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "pg",
+      "version": "^8.16.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "redis",
+      "version": "^4.7.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "tweetnacl",
+      "version": "^1.0.3",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "uuid",
+      "version": "^10.0.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@eslint/js",
+      "version": "^9.39.2",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "eslint",
+      "version": "^9.39.2",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "eslint-config-prettier",
+      "version": "^10.1.8",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "eslint-plugin-prettier",
+      "version": "^5.5.4",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "jest",
+      "version": "^29.7.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "prettier",
+      "version": "^3.7.4",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "puppeteer",
+      "version": "^24.34.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "supertest",
+      "version": "^6.3.3",
+      "type": "development",
+      "ecosystem": "npm"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "jeanterre552",
+      "commits": 278,
+      "firstSeen": "2026-01-10T16:30:54+00:00",
+      "lastSeen": "2026-01-10T16:30:54+00:00",
+      "emailHash": "h_3336e29"
+    }
+  ],
+  "coAuthors": [
+    {
+      "name": "Claude Opus 4.5",
+      "emailHash": "h_4dacd238",
+      "count": 92
+    }
+  ],
+  "architecture": [
+    {
+      "type": "architecture",
+      "value": "src-pattern",
+      "evidence": [
+        "packages/sdk/src",
+        "packages/sdk/src/react",
+        "src"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "api-layer",
+      "evidence": [
+        "docs/api"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "route-based",
+      "evidence": [
+        "src/routes",
+        "tests/integration/routes",
+        "tests/unit/routes"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "test-coverage",
+      "evidence": [
+        "tests",
+        "tests/integration",
+        "tests/integration/routes"
+      ]
+    }
+  ],
+  "files": {
+    "total": 190,
+    "byType": {
+      ".md": 24,
+      "no-ext": 7,
+      ".example": 2,
+      ".yml": 2,
+      ".js": 108,
+      ".yaml": 2,
+      ".json": 6,
+      ".mts": 3,
+      ".ts": 18,
+      ".mjs": 2,
+      ".tsx": 11,
+      ".html": 4,
+      ".svg": 1
+    }
+  },
+  "cynic": {
+    "available": true,
+    "verdict": {
+      "action": "TRANSFORM",
+      "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+      "blocking": "PRIVATE"
+    },
+    "confidence": 61.8
+  }
+}

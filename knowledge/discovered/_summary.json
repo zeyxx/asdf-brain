@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-01-10T19:17:48.080Z",
+  "totalRepos": 1,
+  "totalPatterns": 32,
+  "totalDependencies": 5,
+  "totalContributors": 2,
+  "repos": [
+    {
+      "name": "asdf-brain",
+      "patterns": 32,
+      "dependencies": 5,
+      "contributors": 2,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 61.8
+      }
+    }
+  ]
+}

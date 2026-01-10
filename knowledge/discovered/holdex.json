@@ -1,0 +1,373 @@
+{
+  "name": "HolDex",
+  "path": "/workspaces/HolDex",
+  "scannedAt": "2026-01-10T19:15:22.301Z",
+  "patterns": [
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": ".claude/hooks/session-quality.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "25 φ references",
+      "file": ".claude/hooks/session-quality.js"
+    },
+    {
+      "type": "async",
+      "value": "async function sleep",
+      "file": "scripts/analyze_token.js"
+    },
+    {
+      "type": "async",
+      "value": "async function rpcCall",
+      "file": "scripts/analyze_token.js"
+    },
+    {
+      "type": "async",
+      "value": "async function getTokenInfo",
+      "file": "scripts/analyze_token.js"
+    },
+    {
+      "type": "async",
+      "value": "async function getTokenAccounts",
+      "file": "scripts/analyze_token.js"
+    },
+    {
+      "type": "async",
+      "value": "async function getAccountOwner",
+      "file": "scripts/analyze_token.js"
+    },
+    {
+      "type": "async",
+      "value": "async function getSignatures",
+      "file": "scripts/analyze_token.js"
+    },
+    {
+      "type": "async",
+      "value": "async function analyzeHolder",
+      "file": "scripts/analyze_token.js"
+    },
+    {
+      "type": "async",
+      "value": "async function checkRedis",
+      "file": "scripts/diagnose-indexer.js"
+    },
+    {
+      "type": "async",
+      "value": "async function checkDatabase",
+      "file": "scripts/diagnose-indexer.js"
+    },
+    {
+      "type": "async",
+      "value": "async function checkSolanaRPC",
+      "file": "scripts/diagnose-indexer.js"
+    },
+    {
+      "type": "async",
+      "value": "async function checkWebSocket",
+      "file": "scripts/diagnose-indexer.js"
+    },
+    {
+      "type": "async",
+      "value": "async function checkListenerProcess",
+      "file": "scripts/diagnose-indexer.js"
+    },
+    {
+      "type": "async",
+      "value": "async function testTokenIndexing",
+      "file": "scripts/diagnose-indexer.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "scripts/diagnose-indexer.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "scripts/fixIntegerOverflow.js"
+    },
+    {
+      "type": "async",
+      "value": "async function fetchMetadata",
+      "file": "scripts/fixPlaceholderTokens.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "scripts/fixPlaceholderTokens.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "1 φ references",
+      "file": "scripts/generate-node-key.js"
+    },
+    {
+      "type": "async",
+      "value": "async function generateHeroCard",
+      "file": "scripts/generateArticleVisuals.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "scripts/generateArticleVisuals.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "scripts/register-nodes.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "scripts/wipeUnverifiedTokens.js"
+    },
+    {
+      "type": "async",
+      "value": "async function processNewPoolTx",
+      "file": "src/_legacy/newTokenListener.js"
+    },
+    {
+      "type": "async",
+      "value": "async function setupSubscriptions",
+      "file": "src/_legacy/newTokenListener.js"
+    },
+    {
+      "type": "async",
+      "value": "async function startNewTokenListener",
+      "file": "src/_legacy/newTokenListener.js"
+    },
+    {
+      "type": "async",
+      "value": "async function startPumpListener",
+      "file": "src/_legacy/pumpfun.js"
+    },
+    {
+      "type": "async",
+      "value": "async function shutdown",
+      "file": "src/calculator.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "src/calculator.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "1 φ references",
+      "file": "src/calculator.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "1 φ references",
+      "file": "src/config/env.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@socket.io/redis-adapter",
+      "version": "^8.2.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/spl-token",
+      "version": "^0.4.8",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/web3.js",
+      "version": "^1.95.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "axios",
+      "version": "^1.6.2",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "bs58",
+      "version": "^5.0.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "compression",
+      "version": "^1.7.4",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "cors",
+      "version": "^2.8.5",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "dotenv",
+      "version": "^16.6.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "express",
+      "version": "^4.21.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "express-rate-limit",
+      "version": "^8.2.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "helmet",
+      "version": "^8.1.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "ioredis",
+      "version": "^5.3.2",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "pg",
+      "version": "^8.16.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "redis",
+      "version": "^4.7.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "socket.io",
+      "version": "^4.7.2",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "tweetnacl",
+      "version": "^1.0.3",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "winston",
+      "version": "^3.11.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@eslint/js",
+      "version": "^9.39.2",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "eslint",
+      "version": "^9.39.2",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "globals",
+      "version": "^17.0.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "nodemon",
+      "version": "^3.0.1",
+      "type": "development",
+      "ecosystem": "npm"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Sollama",
+      "commits": 435,
+      "firstSeen": "2026-01-09T01:43:20-05:00",
+      "lastSeen": "2026-01-09T01:43:20-05:00",
+      "emailHash": "h_578e5213"
+    },
+    {
+      "name": "jeanterre552",
+      "commits": 421,
+      "firstSeen": "2026-01-10T18:20:25+00:00",
+      "lastSeen": "2026-01-10T18:20:25+00:00",
+      "emailHash": "h_3336e29"
+    }
+  ],
+  "coAuthors": [
+    {
+      "name": "Claude Opus 4.5",
+      "emailHash": "h_4dacd238",
+      "count": 97
+    },
+    {
+      "name": "sollama58",
+      "emailHash": "h_199fcfcd",
+      "count": 1
+    }
+  ],
+  "architecture": [
+    {
+      "type": "architecture",
+      "value": "src-pattern",
+      "evidence": [
+        "src",
+        "src/_legacy",
+        "src/config"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "route-based",
+      "evidence": [
+        "src/routes"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "test-coverage",
+      "evidence": [
+        "tests"
+      ]
+    }
+  ],
+  "files": {
+    "total": 186,
+    "byType": {
+      ".md": 37,
+      ".js": 128,
+      ".json": 4,
+      ".example": 1,
+      ".yml": 2,
+      "no-ext": 3,
+      ".html": 6,
+      ".mjs": 1,
+      ".sql": 2,
+      ".conf": 1,
+      ".yaml": 1
+    }
+  },
+  "cynic": {
+    "available": true,
+    "verdict": {
+      "action": "TRANSFORM",
+      "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+      "blocking": "PRIVATE"
+    },
+    "confidence": 61.8
+  }
+}

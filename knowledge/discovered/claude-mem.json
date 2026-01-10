@@ -1,0 +1,494 @@
+{
+  "name": "claude-mem",
+  "path": "/workspaces/claude-mem",
+  "scannedAt": "2026-01-10T19:15:23.266Z",
+  "patterns": [
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "docs/context/agent-sdk-v2-examples.ts"
+    },
+    {
+      "type": "async",
+      "value": "async function basicSession",
+      "file": "docs/context/agent-sdk-v2-examples.ts"
+    },
+    {
+      "type": "async",
+      "value": "async function multiTurn",
+      "file": "docs/context/agent-sdk-v2-examples.ts"
+    },
+    {
+      "type": "async",
+      "value": "async function oneShot",
+      "file": "docs/context/agent-sdk-v2-examples.ts"
+    },
+    {
+      "type": "async",
+      "value": "async function sessionResume",
+      "file": "docs/context/agent-sdk-v2-examples.ts"
+    },
+    {
+      "type": "async",
+      "value": "async function Z",
+      "file": "plugin/scripts/context-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function et",
+      "file": "plugin/scripts/context-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function rt",
+      "file": "plugin/scripts/context-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function v",
+      "file": "plugin/scripts/context-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function w",
+      "file": "plugin/scripts/context-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function q",
+      "file": "plugin/scripts/new-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function Z",
+      "file": "plugin/scripts/new-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function tt",
+      "file": "plugin/scripts/new-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function",
+      "file": "plugin/scripts/new-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function rt",
+      "file": "plugin/scripts/new-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function z",
+      "file": "plugin/scripts/save-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function Q",
+      "file": "plugin/scripts/save-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function Z",
+      "file": "plugin/scripts/save-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function k",
+      "file": "plugin/scripts/save-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function tt",
+      "file": "plugin/scripts/save-hook.js"
+    },
+    {
+      "type": "import",
+      "value": "import { existsSync, readFileSync, writeFileSync } from 'fs'",
+      "file": "plugin/scripts/smart-install.js"
+    },
+    {
+      "type": "import",
+      "value": "import { execSync, spawnSync } from 'child_process'",
+      "file": "plugin/scripts/smart-install.js"
+    },
+    {
+      "type": "import",
+      "value": "import { join } from 'path'",
+      "file": "plugin/scripts/smart-install.js"
+    },
+    {
+      "type": "import",
+      "value": "import { homedir } from 'os'",
+      "file": "plugin/scripts/smart-install.js"
+    },
+    {
+      "type": "async",
+      "value": "async function q",
+      "file": "plugin/scripts/summary-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function Z",
+      "file": "plugin/scripts/summary-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function tt",
+      "file": "plugin/scripts/summary-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function P",
+      "file": "plugin/scripts/summary-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function nt",
+      "file": "plugin/scripts/summary-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function z",
+      "file": "plugin/scripts/user-message-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function Q",
+      "file": "plugin/scripts/user-message-hook.js"
+    },
+    {
+      "type": "async",
+      "value": "async function Z",
+      "file": "plugin/scripts/user-message-hook.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@anthropic-ai/claude-agent-sdk",
+      "version": "^0.2.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "version": "^1.25.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "ansi-to-html",
+      "version": "^0.7.2",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "express",
+      "version": "^4.18.2",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "glob",
+      "version": "^11.0.3",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "handlebars",
+      "version": "^4.7.8",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "react",
+      "version": "^18.3.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "react-dom",
+      "version": "^18.3.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "yaml",
+      "version": "^2.8.2",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "zod-to-json-schema",
+      "version": "^3.24.6",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@types/cors",
+      "version": "^2.8.19",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@types/express",
+      "version": "^4.17.21",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@types/node",
+      "version": "^20.0.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@types/react",
+      "version": "^18.3.5",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@types/react-dom",
+      "version": "^18.3.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "esbuild",
+      "version": "^0.27.2",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "tsx",
+      "version": "^4.20.6",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "typescript",
+      "version": "^5.3.0",
+      "type": "development",
+      "ecosystem": "npm"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Alex Newman",
+      "commits": 1336,
+      "firstSeen": "2026-01-07T16:53:54-05:00",
+      "lastSeen": "2026-01-07T16:53:54-05:00",
+      "emailHash": "h_6e4a36db"
+    },
+    {
+      "name": "copilot-swe-agent[bot]",
+      "commits": 193,
+      "firstSeen": "2026-01-06T04:04:59-05:00",
+      "lastSeen": "2026-01-06T04:04:59-05:00",
+      "emailHash": "h_630d3507"
+    },
+    {
+      "name": "claude[bot]",
+      "commits": 10,
+      "firstSeen": null,
+      "lastSeen": null,
+      "emailHash": "h_6773147"
+    },
+    {
+      "name": "Claude",
+      "commits": 9,
+      "firstSeen": "2025-12-09T15:29:34+00:00",
+      "lastSeen": "2025-12-09T15:29:34+00:00",
+      "emailHash": "h_4dacd238"
+    },
+    {
+      "name": "jeanterre552",
+      "commits": 4,
+      "firstSeen": "2026-01-08T04:43:04+00:00",
+      "lastSeen": "2026-01-08T04:43:04+00:00",
+      "emailHash": "h_3336e29"
+    },
+    {
+      "name": "Dmytro Gaivoronsky",
+      "commits": 4,
+      "firstSeen": "2025-11-30T14:28:07-08:00",
+      "lastSeen": "2025-11-30T14:28:07-08:00",
+      "emailHash": "h_4c6721fc"
+    },
+    {
+      "name": "Jarad DeLorenzo",
+      "commits": 2,
+      "firstSeen": "2025-12-26T15:38:14-05:00",
+      "lastSeen": "2025-12-26T15:38:14-05:00",
+      "emailHash": "h_4ae37b17"
+    },
+    {
+      "name": "bigphoot",
+      "commits": 2,
+      "firstSeen": "2025-12-23T15:21:03-08:00",
+      "lastSeen": "2025-12-23T15:21:03-08:00",
+      "emailHash": "h_1afb7b8d"
+    },
+    {
+      "name": "ToxMox",
+      "commits": 2,
+      "firstSeen": "2025-12-20T16:50:32-05:00",
+      "lastSeen": "2025-12-20T16:50:32-05:00",
+      "emailHash": "h_32a3969c"
+    },
+    {
+      "name": "7Sageer",
+      "commits": 2,
+      "firstSeen": "2025-12-11T22:01:31+08:00",
+      "lastSeen": "2025-12-11T22:01:31+08:00",
+      "emailHash": "h_969a7d8"
+    },
+    {
+      "name": "kat-bell",
+      "commits": 2,
+      "firstSeen": "2025-12-09T05:27:26-06:00",
+      "lastSeen": "2025-12-09T05:27:26-06:00",
+      "emailHash": "h_698b4cc5"
+    },
+    {
+      "name": "Lindsey Catlett",
+      "commits": 1,
+      "firstSeen": "2025-12-29T23:30:04-05:00",
+      "lastSeen": "2025-12-29T23:30:04-05:00",
+      "emailHash": "h_5a25e3d6"
+    },
+    {
+      "name": "Erik M Jacobs",
+      "commits": 1,
+      "firstSeen": "2025-12-29T12:11:04-05:00",
+      "lastSeen": "2025-12-29T12:11:04-05:00",
+      "emailHash": "h_415457dd"
+    },
+    {
+      "name": "Lindsey Catlett",
+      "commits": 1,
+      "firstSeen": null,
+      "lastSeen": null,
+      "emailHash": "h_6c252a1a"
+    },
+    {
+      "name": "Trevor Wilson",
+      "commits": 1,
+      "firstSeen": "2025-12-13T21:15:05-05:00",
+      "lastSeen": "2025-12-13T21:15:05-05:00",
+      "emailHash": "h_3d64b8c3"
+    },
+    {
+      "name": "Justin Kowarsch",
+      "commits": 1,
+      "firstSeen": "2025-12-13T14:54:03-06:00",
+      "lastSeen": "2025-12-13T14:54:03-06:00",
+      "emailHash": "h_7c1698cb"
+    },
+    {
+      "name": "Jonas Hanisch",
+      "commits": 1,
+      "firstSeen": "2025-12-13T21:34:13+01:00",
+      "lastSeen": "2025-12-13T21:34:13+01:00",
+      "emailHash": "h_2630b6a7"
+    },
+    {
+      "name": "CrystallDEV",
+      "commits": 1,
+      "firstSeen": "2025-12-10T00:15:14+01:00",
+      "lastSeen": "2025-12-10T00:15:14+01:00",
+      "emailHash": "h_7296ed8d"
+    },
+    {
+      "name": "basher83",
+      "commits": 1,
+      "firstSeen": "2025-11-11T16:15:07-05:00",
+      "lastSeen": "2025-11-11T16:15:07-05:00",
+      "emailHash": "h_3016370a"
+    }
+  ],
+  "coAuthors": [
+    {
+      "name": "Claude Opus 4.5",
+      "emailHash": "h_4dacd238",
+      "count": 128
+    },
+    {
+      "name": "thedotmack",
+      "emailHash": "h_16c876cc",
+      "count": 4
+    },
+    {
+      "name": "copilot-swe-agent[bot]",
+      "emailHash": "h_630d3507",
+      "count": 1
+    },
+    {
+      "name": "Alex Newman",
+      "emailHash": "h_6e4a36db",
+      "count": 1
+    }
+  ],
+  "architecture": [
+    {
+      "type": "architecture",
+      "value": "src-pattern",
+      "evidence": [
+        "src",
+        "src/bin",
+        "src/cli"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "route-based",
+      "evidence": [
+        "src/services/worker/http/routes"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "test-coverage",
+      "evidence": [
+        "tests",
+        "tests/context",
+        "tests/context/formatters"
+      ]
+    }
+  ],
+  "files": {
+    "total": 568,
+    "byType": {
+      ".md": 178,
+      ".json": 45,
+      ".yml": 5,
+      "no-ext": 4,
+      ".ps1": 7,
+      ".sh": 10,
+      ".ts": 220,
+      ".mdx": 31,
+      ".webp": 7,
+      ".gif": 1,
+      ".svg": 14,
+      ".txt": 1,
+      ".cjs": 6,
+      ".js": 17,
+      ".woff": 2,
+      ".woff2": 2,
+      ".html": 2,
+      ".py": 2,
+      ".tsx": 14
+    }
+  },
+  "cynic": {
+    "available": true,
+    "verdict": {
+      "action": "TRANSFORM",
+      "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+      "blocking": "PRIVATE"
+    },
+    "confidence": 61.8
+  }
+}

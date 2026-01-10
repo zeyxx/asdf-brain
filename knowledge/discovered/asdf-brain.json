@@ -1,0 +1,282 @@
+{
+  "name": "asdf-brain",
+  "path": "/workspaces/asdf-brain",
+  "scannedAt": "2026-01-10T19:17:47.864Z",
+  "patterns": [
+    {
+      "type": "export",
+      "value": "export class AsdfMerkleClient",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { AsdfMerkleClient } from './client'",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "import",
+      "value": "import * as anchor from \"@coral-xyz/anchor\"",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { createHash } from \"crypto\"",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { keccak_256 } from \"js-sha3\"",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "class",
+      "value": "class AsdfMerkleClient",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "async",
+      "value": "async initialize",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "async",
+      "value": "async storeSnapshot",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "async",
+      "value": "async verifyProof",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "async",
+      "value": "async getConfig",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "async",
+      "value": "async getSnapshot",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "async",
+      "value": "async getCurrentRoot",
+      "file": "anchor/client/index.ts"
+    },
+    {
+      "type": "import",
+      "value": "import * as anchor from \"@coral-xyz/anchor\"",
+      "file": "anchor/migrations/deploy.ts"
+    },
+    {
+      "type": "async",
+      "value": "async function",
+      "file": "anchor/migrations/deploy.ts"
+    },
+    {
+      "type": "import",
+      "value": "import * as anchor from \"@coral-xyz/anchor\"",
+      "file": "anchor/tests/asdf-merkle.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { Program } from \"@coral-xyz/anchor\"",
+      "file": "anchor/tests/asdf-merkle.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { AsdfMerkle } from \"../target/types/asdf_merkle\"",
+      "file": "anchor/tests/asdf-merkle.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { expect } from \"chai\"",
+      "file": "anchor/tests/asdf-merkle.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { createHash } from \"crypto\"",
+      "file": "anchor/tests/asdf-merkle.ts"
+    },
+    {
+      "type": "async",
+      "value": "async function exportClaudeMem",
+      "file": "extractors/holdex/exportClaudeMem.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "29 φ references",
+      "file": "extractors/holdex/exportClaudeMem.js"
+    },
+    {
+      "type": "async",
+      "value": "async function exportHolderSnapshots",
+      "file": "extractors/holdex/exportHolderSnapshots.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "12 φ references",
+      "file": "extractors/holdex/exportHolderSnapshots.js"
+    },
+    {
+      "type": "async",
+      "value": "async function exportKScoreHistory",
+      "file": "extractors/holdex/exportKScoreHistory.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "8 φ references",
+      "file": "extractors/holdex/exportKScoreHistory.js"
+    },
+    {
+      "type": "async",
+      "value": "async function parseTranscript",
+      "file": "extractors/holdex/extractConversations.js"
+    },
+    {
+      "type": "async",
+      "value": "async function main",
+      "file": "extractors/holdex/extractConversations.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "24 φ references",
+      "file": "extractors/holdex/extractConversations.js"
+    },
+    {
+      "type": "async",
+      "value": "async function extractGitDecisions",
+      "file": "extractors/holdex/extractGitDecisions.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "22 φ references",
+      "file": "extractors/holdex/extractGitDecisions.js"
+    },
+    {
+      "type": "async",
+      "value": "async function labelTokenOutcomes",
+      "file": "extractors/holdex/labelTokenOutcomes.js"
+    },
+    {
+      "type": "phi_reference",
+      "value": "5 φ references",
+      "file": "extractors/holdex/labelTokenOutcomes.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@solana/web3.js",
+      "version": "^1.95.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "cors",
+      "version": "^2.8.5",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "express",
+      "version": "^4.21.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "ioredis",
+      "version": "^5.9.1",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "js-sha3",
+      "version": "^0.9.3",
+      "type": "production",
+      "ecosystem": "npm"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "jeanterre552",
+      "commits": 70,
+      "firstSeen": "2026-01-10T19:10:27+00:00",
+      "lastSeen": "2026-01-10T19:10:27+00:00",
+      "emailHash": "h_3336e29"
+    },
+    {
+      "name": "asdf-brain[bot]",
+      "commits": 53,
+      "firstSeen": null,
+      "lastSeen": null,
+      "emailHash": "h_4f3629b3"
+    }
+  ],
+  "coAuthors": [
+    {
+      "name": "Claude Opus 4.5",
+      "emailHash": "h_4dacd238",
+      "count": 48
+    }
+  ],
+  "architecture": [
+    {
+      "type": "architecture",
+      "value": "library-pattern",
+      "evidence": [
+        "lib",
+        "lib/cynic",
+        "scripts/lib"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "src-pattern",
+      "evidence": [
+        "anchor/programs/asdf-merkle/src"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "test-coverage",
+      "evidence": [
+        "anchor/tests"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "knowledge-graph",
+      "evidence": [
+        "knowledge",
+        "knowledge/architecture",
+        "knowledge/burns"
+      ]
+    }
+  ],
+  "files": {
+    "total": 153,
+    "byType": {
+      ".json": 46,
+      ".js": 53,
+      ".yml": 2,
+      "no-ext": 1,
+      ".md": 33,
+      ".toml": 3,
+      ".ts": 3,
+      ".rs": 1,
+      ".jsonl": 8,
+      ".log": 1,
+      ".html": 1,
+      ".yaml": 1
+    }
+  },
+  "cynic": {
+    "available": true,
+    "verdict": {
+      "action": "TRANSFORM",
+      "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+      "blocking": "PRIVATE"
+    },
+    "confidence": 61.8
+  }
+}
