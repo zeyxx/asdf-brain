@@ -1,0 +1,9 @@
+{"ts":"2026-01-09T10:00:00Z","type":"session_start","project":"HolDex","branch":"update-newdexsockets"}
+{"ts":"2026-01-09T10:30:00Z","type":"problem_identified","id":"helius-credits-explosion","severity":"critical","description":"Helius API credits exploding since recent updates"}
+{"ts":"2026-01-09T11:00:00Z","type":"analysis_complete","finding":"Delta mode disabled when USE_WEBHOOKS=true, TTL never reset by webhooks"}
+{"ts":"2026-01-09T11:30:00Z","type":"fix_applied","file":"src/tasks/kScoreUpdater.js","change":"Enabled delta mode in all modes"}
+{"ts":"2026-01-09T12:00:00Z","type":"fix_applied","file":"src/routes/webhooks.js","change":"Added affectedMints tracking and TTL update"}
+{"ts":"2026-01-09T12:15:00Z","type":"lint_fixed","files":["listener_worker.js","setup_new_token_webhook.js","test_new_token_webhook.js"]}
+{"ts":"2026-01-09T12:30:00Z","type":"commit_pushed","commits":7,"branch":"update-newdexsockets"}
+{"ts":"2026-01-09T12:45:00Z","type":"pr_created","pr":7,"repo":"sollama58/HolDex","title":"Critical Helius fix + Harmony v2.0 + Webhook Cost Reduction"}
+{"ts":"2026-01-09T13:00:00Z","type":"brain_work","action":"Creating operator memory system"}

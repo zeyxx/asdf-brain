@@ -1,0 +1,6137 @@
+{
+  "timestamp": "2026-01-10T11:51:14.033Z",
+  "repos": {
+    "gasdf": {
+      "name": "GASdf",
+      "path": "/workspaces/GASdf",
+      "remotes": {
+        "origin": {
+          "url": "https://github.com/zeyxx/GASdf.git",
+          "ownerRepo": "zeyxx/GASdf"
+        }
+      },
+      "branches": {
+        "local": [
+          "main"
+        ],
+        "remote": {
+          "origin": [
+            "main"
+          ]
+        }
+      },
+      "branchRoles": {
+        "origin/main": {
+          "branch": "main",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "jeanterre552"
+          ],
+          "patterns": {
+            "hotfixes": 9,
+            "features": 6,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 55.45,
+          "inferredRole": "production",
+          "prodScore": 27
+        }
+      },
+      "operators": {
+        "origin/main": {
+          "primary": "jeanterre552",
+          "contributors": [
+            {
+              "name": "jeanterre552",
+              "commits": 50
+            }
+          ]
+        }
+      },
+      "currentBranch": "main",
+      "discoveredAt": "2026-01-10T11:51:12.030Z"
+    },
+    "holdex": {
+      "name": "HolDex",
+      "path": "/workspaces/HolDex",
+      "remotes": {
+        "origin": {
+          "url": "https://github.com/zeyxx/HolDex",
+          "ownerRepo": "zeyxx/HolDex"
+        },
+        "upstream": {
+          "url": "https://github.com/sollama58/HolDex.git",
+          "ownerRepo": "sollama58/HolDex"
+        }
+      },
+      "branches": {
+        "local": [
+          "backup-before-merge",
+          "distributed-nodes-clean",
+          "main",
+          "update-newdexsockets"
+        ],
+        "remote": {
+          "origin": [
+            "distributed-nodes-clean",
+            "main",
+            "update-newdexsockets"
+          ],
+          "upstream": [
+            "NewDEX",
+            "NewDexSOCKETS",
+            "main"
+          ]
+        }
+      },
+      "branchRoles": {
+        "origin/distributed-nodes-clean": {
+          "branch": "distributed-nodes-clean",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "jeanterre552",
+            "sollama"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 8,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 48.15
+        },
+        "origin/main": {
+          "branch": "main",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "jeanterre552"
+          ],
+          "patterns": {
+            "hotfixes": 8,
+            "features": 7,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 59.7
+        },
+        "origin/update-newdexsockets": {
+          "branch": "update-newdexsockets",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "jeanterre552",
+            "Sollama"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 3,
+            "structured": 5,
+            "quickFixes": 10
+          },
+          "avgMessageLength": 32.1
+        },
+        "upstream/NewDEX": {
+          "branch": "NewDEX",
+          "remote": "upstream",
+          "commits": 20,
+          "authors": [
+            "Sollama"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 19
+          },
+          "avgMessageLength": 9.4
+        },
+        "upstream/NewDexSOCKETS": {
+          "branch": "NewDexSOCKETS",
+          "remote": "upstream",
+          "commits": 20,
+          "authors": [
+            "Sollama"
+          ],
+          "patterns": {
+            "hotfixes": 9,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 19
+          },
+          "avgMessageLength": 11.9,
+          "inferredRole": "production",
+          "prodScore": 76.5
+        },
+        "upstream/main": {
+          "branch": "main",
+          "remote": "upstream",
+          "commits": 20,
+          "authors": [
+            "sollama",
+            "jeanterre552"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 8,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 48.55
+        }
+      },
+      "operators": {
+        "origin/distributed-nodes-clean": {
+          "primary": "jeanterre552",
+          "contributors": [
+            {
+              "name": "jeanterre552",
+              "commits": 43
+            },
+            {
+              "name": "Sollama",
+              "commits": 6
+            },
+            {
+              "name": "sollama",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/main": {
+          "primary": "jeanterre552",
+          "contributors": [
+            {
+              "name": "jeanterre552",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/update-newdexsockets": {
+          "primary": "Sollama",
+          "contributors": [
+            {
+              "name": "Sollama",
+              "commits": 40
+            },
+            {
+              "name": "jeanterre552",
+              "commits": 10
+            }
+          ]
+        },
+        "upstream/NewDEX": {
+          "primary": "Sollama",
+          "contributors": [
+            {
+              "name": "Sollama",
+              "commits": 50
+            }
+          ]
+        },
+        "upstream/NewDexSOCKETS": {
+          "primary": "Sollama",
+          "contributors": [
+            {
+              "name": "Sollama",
+              "commits": 50
+            }
+          ]
+        },
+        "upstream/main": {
+          "primary": "jeanterre552",
+          "contributors": [
+            {
+              "name": "jeanterre552",
+              "commits": 43
+            },
+            {
+              "name": "Sollama",
+              "commits": 5
+            },
+            {
+              "name": "sollama",
+              "commits": 2
+            }
+          ]
+        }
+      },
+      "currentBranch": "main",
+      "discoveredAt": "2026-01-10T11:51:12.124Z"
+    },
+    "asdf-brain": {
+      "name": "asdf-brain",
+      "path": "/workspaces/asdf-brain",
+      "remotes": {
+        "origin": {
+          "url": "https://github.com/zeyxx/asdf-brain.git",
+          "ownerRepo": "zeyxx/asdf-brain"
+        }
+      },
+      "branches": {
+        "local": [
+          "main"
+        ],
+        "remote": {
+          "origin": [
+            "main"
+          ]
+        }
+      },
+      "branchRoles": {
+        "origin/main": {
+          "branch": "main",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "asdf-brain[bot]",
+            "jeanterre552"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 6,
+            "structured": 20,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 42.05
+        }
+      },
+      "operators": {
+        "origin/main": {
+          "primary": "asdf-brain[bot]",
+          "contributors": [
+            {
+              "name": "asdf-brain[bot]",
+              "commits": 26
+            },
+            {
+              "name": "jeanterre552",
+              "commits": 24
+            }
+          ]
+        }
+      },
+      "currentBranch": "main",
+      "discoveredAt": "2026-01-10T11:51:12.159Z"
+    },
+    "asdf-manifesto": {
+      "name": "asdf-manifesto",
+      "path": "/workspaces/asdf-manifesto",
+      "remotes": {
+        "origin": {
+          "url": "https://github.com/zeyxx/asdf-manifesto.git",
+          "ownerRepo": "zeyxx/asdf-manifesto"
+        }
+      },
+      "branches": {
+        "local": [
+          "main"
+        ],
+        "remote": {
+          "origin": [
+            "main"
+          ]
+        }
+      },
+      "branchRoles": {
+        "origin/main": {
+          "branch": "main",
+          "remote": "origin",
+          "commits": 3,
+          "authors": [
+            "jeanterre552"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 3,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 47.333333333333336
+        }
+      },
+      "operators": {
+        "origin/main": {
+          "primary": "jeanterre552",
+          "contributors": [
+            {
+              "name": "jeanterre552",
+              "commits": 3
+            }
+          ]
+        }
+      },
+      "currentBranch": "main",
+      "discoveredAt": "2026-01-10T11:51:12.184Z"
+    },
+    "claude-mem": {
+      "name": "claude-mem",
+      "path": "/workspaces/claude-mem",
+      "remotes": {
+        "fork": {
+          "url": "https://github.com/zeyxx/claude-mem.git",
+          "ownerRepo": "zeyxx/claude-mem"
+        },
+        "origin": {
+          "url": "https://github.com/thedotmack/claude-mem.git",
+          "ownerRepo": "thedotmack/claude-mem"
+        }
+      },
+      "branches": {
+        "local": [
+          "main"
+        ],
+        "remote": {
+          "fork": [
+            "main"
+          ],
+          "origin": [
+            "7Sageer/main",
+            "backup/4.3.0-borked-sad-face",
+            "backup/phase1-agent-work",
+            "beta/7.0",
+            "beta/endless-mode",
+            "bracket-nonsense",
+            "bugfix/cc-big-update",
+            "bugfix/chroma-mcp-orphan-cleanup",
+            "bugfix/chroma-not-connected",
+            "bugfix/duplicate-observations",
+            "bugfix/gh-issues-2026-01-05",
+            "bugfix/issues-2026-01-07",
+            "bugfix/linger",
+            "bugfix/new-hook",
+            "bugfix/session-continuity",
+            "bugfix/settings",
+            "bugfix/settings-and-new-hook",
+            "bugfix/smart-install",
+            "bugfix/spawn-worker",
+            "bugfix/summary-final-message",
+            "bugfix/try-catch-is-ruining-my-life",
+            "bugfix/win-revert-cc-path-to-executable",
+            "bugfix/windows",
+            "bugfix/windows-comprehensive",
+            "bugfix/worker",
+            "bugfix/worker-service",
+            "claude/bun-windows-evaluation-014reQcQhzHLT6c1vpKqQifJ",
+            "claude/increase-timeout-limits-ynxXc",
+            "claude/issue-50-20251105-0234",
+            "claude/multi-shot-benchmark-011CUZ9jESKDm9ocxt1hr22m",
+            "claude/patch-version-0.0.1-TlIGX",
+            "claude/release-7.0.4-windows-fixes-012Ny54FxUuyiNdJ28p1ohwd",
+            "claude/vscode-extension-build-011CV4fj353iYoJRoMez91yX",
+            "cleanup/anti-patterns",
+            "cleanup/settings",
+            "cleanup/worker",
+            "column-mismatch",
+            "context-preview-local",
+            "copilot/add-bun-executable-feature",
+            "copilot/add-bun-support",
+            "copilot/add-project-level-memory-option",
+            "copilot/fix-chromadb-backfill-error",
+            "copilot/fix-claude-mem-plugin-error",
+            "copilot/fix-claude-plugin-error",
+            "copilot/fix-console-windows-popup",
+            "copilot/fix-default-project-name",
+            "copilot/fix-documentation-links",
+            "copilot/fix-double-entries-claude-mem",
+            "copilot/fix-first-launch-error",
+            "copilot/fix-missing-session-summaries-table",
+            "copilot/fix-npm-audit-vulnerabilities",
+            "copilot/fix-path-to-claude-executable",
+            "copilot/fix-plugin-bun-installation",
+            "copilot/fix-plugin-hook-error",
+            "copilot/fix-plugin-hooks-fish-shell",
+            "copilot/fix-plugin-installation-bug",
+            "copilot/fix-pm2-race-condition",
+            "copilot/fix-port-change-issue",
+            "copilot/fix-search-server-build-references",
+            "copilot/fix-smart-install-js-bug",
+            "copilot/fix-windows-install-pathing",
+            "copilot/fix-worker-restart-loop",
+            "copilot/fix-worker-service-bug",
+            "copilot/fix-worker-service-port-37777",
+            "copilot/fix-worker-service-port-issue",
+            "copilot/implement-context-injection-solution",
+            "copilot/implement-context-injection-solution-again",
+            "copilot/implement-silent-debugger-workflow",
+            "copilot/improve-claude-mem-search-skill",
+            "copilot/patch-version-with-npm-fix",
+            "copilot/remove-dev-specific-config",
+            "copilot/sub-pr-135",
+            "copilot/sub-pr-145",
+            "copilot/sub-pr-242",
+            "copilot/sub-pr-470",
+            "copilot/sub-pr-500",
+            "copilot/sub-pr-96",
+            "copilot/troubleshoot-v5-2-2-issue",
+            "copilot/update-context-injection-logic",
+            "copilot/update-documentation-stop-claude-code",
+            "copilot/update-model-to-opus-4-5",
+            "copilot/update-troubleshoot-documentation",
+            "copilot/upgrade-better-sqlite3-dependency",
+            "cursor-hooks-integration",
+            "docs/cleanup-post-refactor",
+            "endless-mode-v7.1",
+            "enhancement/less-mcp-tokens",
+            "enhancement/roi",
+            "enhancement/search-6-tools",
+            "enhancement/supersession",
+            "enhancements/ui",
+            "experiment/chroma-mcp",
+            "experiment/endless-mode",
+            "failed/jit-context",
+            "feat/mcp-phase-2",
+            "feat/tests",
+            "feature/better-logging",
+            "feature/bun-executable",
+            "feature/bun-instead-of-pm2",
+            "feature/context-hook-updates",
+            "feature/context-preview",
+            "feature/endless-mode-beta-release",
+            "feature/error-handling-approved-overrides",
+            "feature/error-messages",
+            "feature/hybrid-search",
+            "feature/import-export",
+            "feature/jit-context",
+            "feature/live-context",
+            "feature/live-context-integrated",
+            "feature/mem-search-enhancements",
+            "feature/mem-search-timeline",
+            "feature/meta-observation-control",
+            "feature/multilingual-embeddings",
+            "feature/no-more-hook-files",
+            "feature/observation-status",
+            "feature/queue-indicator",
+            "feature/ragtime",
+            "feature/real-time-context",
+            "feature/remove-env-var-support",
+            "feature/roi",
+            "feature/skill-search",
+            "feature/source-repo",
+            "feature/tiered-readme-translations",
+            "feature/toggle-mcp",
+            "feature/vscode-extension",
+            "fix/514-orphaned-observer-sessions",
+            "fix/dynamic-project-name-detection",
+            "fix/hybrid-search-documentation",
+            "fix/pr-538-followups",
+            "fix/typescript-errors",
+            "fix/windows-console-popups",
+            "fix/worker-port-env-var",
+            "main",
+            "main-worktree",
+            "pr-412",
+            "queue-only",
+            "ragtime",
+            "refactor/context-hook-cleanup",
+            "refactor/hooks-to-worker",
+            "refactor/mcp-to-worker",
+            "research/autoclear",
+            "revert-to-before-rolling-replacement",
+            "review/pr-batch-2026-01-07",
+            "sdk-v2-migration",
+            "session-logging",
+            "thedotmack-patch-1",
+            "thedotmack-patch-1-1",
+            "thedotmack-patch-2",
+            "thedotmack-patch-3",
+            "thedotmack/ottawa",
+            "thedotmack/yokohama",
+            "updates/docs",
+            "upgrade/agent-sdk-ts-v2",
+            "viewer-ui",
+            "working/v5-docs"
+          ]
+        }
+      },
+      "branchRoles": {
+        "fork/main": {
+          "branch": "main",
+          "remote": "fork",
+          "commits": 20,
+          "authors": [
+            "jeanterre552",
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 4,
+            "structured": 13,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 42.45
+        },
+        "origin/7Sageer/main": {
+          "branch": "7Sageer/main",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 3,
+            "structured": 8,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 64.9
+        },
+        "origin/backup/4.3.0-borked-sad-face": {
+          "branch": "backup/4.3.0-borked-sad-face",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 9,
+            "features": 1,
+            "structured": 4,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 55.2,
+          "inferredRole": "production",
+          "prodScore": 38.5
+        },
+        "origin/backup/phase1-agent-work": {
+          "branch": "backup/phase1-agent-work",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 0,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 54.35
+        },
+        "origin/beta/7.0": {
+          "branch": "beta/7.0",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 4,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 63.9
+        },
+        "origin/beta/endless-mode": {
+          "branch": "beta/endless-mode",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 8,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 60.35
+        },
+        "origin/bracket-nonsense": {
+          "branch": "bracket-nonsense",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Dmytro Gaivoronsky",
+            "Dmitry Guyvoronsky"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 46.3
+        },
+        "origin/bugfix/cc-big-update": {
+          "branch": "bugfix/cc-big-update",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 2,
+            "structured": 7,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 57.45
+        },
+        "origin/bugfix/chroma-mcp-orphan-cleanup": {
+          "branch": "bugfix/chroma-mcp-orphan-cleanup",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 2,
+            "structured": 6,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 80.35
+        },
+        "origin/bugfix/chroma-not-connected": {
+          "branch": "bugfix/chroma-not-connected",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Lindsey Catlett"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 2,
+            "structured": 8,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 59.3
+        },
+        "origin/bugfix/duplicate-observations": {
+          "branch": "bugfix/duplicate-observations",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 56.9
+        },
+        "origin/bugfix/gh-issues-2026-01-05": {
+          "branch": "bugfix/gh-issues-2026-01-05",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 2,
+            "structured": 12,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 52.85
+        },
+        "origin/bugfix/issues-2026-01-07": {
+          "branch": "bugfix/issues-2026-01-07",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 3,
+            "structured": 6,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 60.6
+        },
+        "origin/bugfix/linger": {
+          "branch": "bugfix/linger",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 0,
+            "structured": 3,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 64.45
+        },
+        "origin/bugfix/new-hook": {
+          "branch": "bugfix/new-hook",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot",
+            "CrystallDEV"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 47.25
+        },
+        "origin/bugfix/session-continuity": {
+          "branch": "bugfix/session-continuity",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 0,
+            "structured": 6,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 64.85
+        },
+        "origin/bugfix/settings": {
+          "branch": "bugfix/settings",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Claude",
+            "kat-bell"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 55.75
+        },
+        "origin/bugfix/settings-and-new-hook": {
+          "branch": "bugfix/settings-and-new-hook",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Claude",
+            "kat-bell"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 0,
+            "structured": 4,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 73.3
+        },
+        "origin/bugfix/smart-install": {
+          "branch": "bugfix/smart-install",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 4,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 65
+        },
+        "origin/bugfix/spawn-worker": {
+          "branch": "bugfix/spawn-worker",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 2,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 53.7
+        },
+        "origin/bugfix/summary-final-message": {
+          "branch": "bugfix/summary-final-message",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 4,
+            "structured": 6,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 57.9
+        },
+        "origin/bugfix/try-catch-is-ruining-my-life": {
+          "branch": "bugfix/try-catch-is-ruining-my-life",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 5,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 62.6
+        },
+        "origin/bugfix/win-revert-cc-path-to-executable": {
+          "branch": "bugfix/win-revert-cc-path-to-executable",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 1,
+            "structured": 3,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 62.85
+        },
+        "origin/bugfix/windows": {
+          "branch": "bugfix/windows",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 6,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 70.5
+        },
+        "origin/bugfix/windows-comprehensive": {
+          "branch": "bugfix/windows-comprehensive",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "ToxMox"
+          ],
+          "patterns": {
+            "hotfixes": 8,
+            "features": 0,
+            "structured": 5,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 54.05
+        },
+        "origin/bugfix/worker": {
+          "branch": "bugfix/worker",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 3,
+            "structured": 7,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 60.55
+        },
+        "origin/bugfix/worker-service": {
+          "branch": "bugfix/worker-service",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 2,
+            "structured": 2,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 62.45
+        },
+        "origin/claude/bun-windows-evaluation-014reQcQhzHLT6c1vpKqQifJ": {
+          "branch": "claude/bun-windows-evaluation-014reQcQhzHLT6c1vpKqQifJ",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Claude",
+            "Alex Newman",
+            "7Sageer",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 3,
+            "structured": 7,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 51.45
+        },
+        "origin/claude/increase-timeout-limits-ynxXc": {
+          "branch": "claude/increase-timeout-limits-ynxXc",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Claude"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 6,
+            "structured": 14,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 58
+        },
+        "origin/claude/issue-50-20251105-0234": {
+          "branch": "claude/issue-50-20251105-0234",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "claude[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 2,
+            "structured": 3,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 62.3
+        },
+        "origin/claude/multi-shot-benchmark-011CUZ9jESKDm9ocxt1hr22m": {
+          "branch": "claude/multi-shot-benchmark-011CUZ9jESKDm9ocxt1hr22m",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Claude",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 69.8
+        },
+        "origin/claude/patch-version-0.0.1-TlIGX": {
+          "branch": "claude/patch-version-0.0.1-TlIGX",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Claude",
+            "ToxMox",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 56.1
+        },
+        "origin/claude/release-7.0.4-windows-fixes-012Ny54FxUuyiNdJ28p1ohwd": {
+          "branch": "claude/release-7.0.4-windows-fixes-012Ny54FxUuyiNdJ28p1ohwd",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Claude",
+            "Alex Newman",
+            "kat-bell"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 1,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 55.95
+        },
+        "origin/claude/vscode-extension-build-011CV4fj353iYoJRoMez91yX": {
+          "branch": "claude/vscode-extension-build-011CV4fj353iYoJRoMez91yX",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Claude",
+            "Alex Newman",
+            "Copilot",
+            "basher83"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 5,
+            "structured": 5,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.55
+        },
+        "origin/cleanup/anti-patterns": {
+          "branch": "cleanup/anti-patterns",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "ToxMox"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 0,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 44.45
+        },
+        "origin/cleanup/settings": {
+          "branch": "cleanup/settings",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 6,
+            "structured": 8,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 60.3
+        },
+        "origin/cleanup/worker": {
+          "branch": "cleanup/worker",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "claude[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 5,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 67
+        },
+        "origin/column-mismatch": {
+          "branch": "column-mismatch",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 5,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 64.45
+        },
+        "origin/context-preview-local": {
+          "branch": "context-preview-local",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 9,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 67.35
+        },
+        "origin/copilot/add-bun-executable-feature": {
+          "branch": "copilot/add-bun-executable-feature",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "7Sageer",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 2,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 41.75
+        },
+        "origin/copilot/add-bun-support": {
+          "branch": "copilot/add-bun-support",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "copilot-swe-agent[bot]",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 6,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 56.6
+        },
+        "origin/copilot/add-project-level-memory-option": {
+          "branch": "copilot/add-project-level-memory-option",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Trevor Wilson",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 47.5
+        },
+        "origin/copilot/fix-chromadb-backfill-error": {
+          "branch": "copilot/fix-chromadb-backfill-error",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 3,
+            "structured": 12,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 46.7
+        },
+        "origin/copilot/fix-claude-mem-plugin-error": {
+          "branch": "copilot/fix-claude-mem-plugin-error",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 55.2
+        },
+        "origin/copilot/fix-claude-plugin-error": {
+          "branch": "copilot/fix-claude-plugin-error",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 53.6
+        },
+        "origin/copilot/fix-console-windows-popup": {
+          "branch": "copilot/fix-console-windows-popup",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Trevor Wilson",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 44.55
+        },
+        "origin/copilot/fix-default-project-name": {
+          "branch": "copilot/fix-default-project-name",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Trevor Wilson",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 0,
+            "structured": 9,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 46.8
+        },
+        "origin/copilot/fix-documentation-links": {
+          "branch": "copilot/fix-documentation-links",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 3,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 47.05
+        },
+        "origin/copilot/fix-double-entries-claude-mem": {
+          "branch": "copilot/fix-double-entries-claude-mem",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 48.3
+        },
+        "origin/copilot/fix-first-launch-error": {
+          "branch": "copilot/fix-first-launch-error",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 55.75
+        },
+        "origin/copilot/fix-missing-session-summaries-table": {
+          "branch": "copilot/fix-missing-session-summaries-table",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 1,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 58.8
+        },
+        "origin/copilot/fix-npm-audit-vulnerabilities": {
+          "branch": "copilot/fix-npm-audit-vulnerabilities",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 63.55
+        },
+        "origin/copilot/fix-path-to-claude-executable": {
+          "branch": "copilot/fix-path-to-claude-executable",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 5,
+            "structured": 7,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 57.65
+        },
+        "origin/copilot/fix-plugin-bun-installation": {
+          "branch": "copilot/fix-plugin-bun-installation",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Copilot",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 3,
+            "structured": 11,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 41.1
+        },
+        "origin/copilot/fix-plugin-hook-error": {
+          "branch": "copilot/fix-plugin-hook-error",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 1,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 57.85
+        },
+        "origin/copilot/fix-plugin-hooks-fish-shell": {
+          "branch": "copilot/fix-plugin-hooks-fish-shell",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 2,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 48.35
+        },
+        "origin/copilot/fix-plugin-installation-bug": {
+          "branch": "copilot/fix-plugin-installation-bug",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Trevor Wilson",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 44.75
+        },
+        "origin/copilot/fix-pm2-race-condition": {
+          "branch": "copilot/fix-pm2-race-condition",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 3,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 48.8
+        },
+        "origin/copilot/fix-port-change-issue": {
+          "branch": "copilot/fix-port-change-issue",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 8,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 58.8
+        },
+        "origin/copilot/fix-search-server-build-references": {
+          "branch": "copilot/fix-search-server-build-references",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 4,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 56.25
+        },
+        "origin/copilot/fix-smart-install-js-bug": {
+          "branch": "copilot/fix-smart-install-js-bug",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 3,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 63.65
+        },
+        "origin/copilot/fix-windows-install-pathing": {
+          "branch": "copilot/fix-windows-install-pathing",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 3,
+            "structured": 8,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 62.25
+        },
+        "origin/copilot/fix-worker-restart-loop": {
+          "branch": "copilot/fix-worker-restart-loop",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 3,
+            "structured": 11,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 40.1
+        },
+        "origin/copilot/fix-worker-service-bug": {
+          "branch": "copilot/fix-worker-service-bug",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 2,
+            "structured": 13,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 47.35
+        },
+        "origin/copilot/fix-worker-service-port-37777": {
+          "branch": "copilot/fix-worker-service-port-37777",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 0,
+            "structured": 11,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 38.9
+        },
+        "origin/copilot/fix-worker-service-port-issue": {
+          "branch": "copilot/fix-worker-service-port-issue",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 11,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 55.4
+        },
+        "origin/copilot/implement-context-injection-solution": {
+          "branch": "copilot/implement-context-injection-solution",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Dmytro Gaivoronsky"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 11,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 49.85
+        },
+        "origin/copilot/implement-context-injection-solution-again": {
+          "branch": "copilot/implement-context-injection-solution-again",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 1,
+            "structured": 5,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 53.8
+        },
+        "origin/copilot/implement-silent-debugger-workflow": {
+          "branch": "copilot/implement-silent-debugger-workflow",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 2,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 43.9
+        },
+        "origin/copilot/improve-claude-mem-search-skill": {
+          "branch": "copilot/improve-claude-mem-search-skill",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 3,
+            "structured": 5,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 55.5
+        },
+        "origin/copilot/patch-version-with-npm-fix": {
+          "branch": "copilot/patch-version-with-npm-fix",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Copilot",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 2,
+            "structured": 3,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 54.55
+        },
+        "origin/copilot/remove-dev-specific-config": {
+          "branch": "copilot/remove-dev-specific-config",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Justin Kowarsch",
+            "Jonas Hanisch"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 47.45
+        },
+        "origin/copilot/sub-pr-135": {
+          "branch": "copilot/sub-pr-135",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 5,
+            "structured": 15,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 52.75
+        },
+        "origin/copilot/sub-pr-145": {
+          "branch": "copilot/sub-pr-145",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "claude[bot]",
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 13,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 49.9
+        },
+        "origin/copilot/sub-pr-242": {
+          "branch": "copilot/sub-pr-242",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "claude[bot]",
+            "Alex Newman",
+            "7Sageer",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 4,
+            "structured": 8,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 50.05
+        },
+        "origin/copilot/sub-pr-470": {
+          "branch": "copilot/sub-pr-470",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 1,
+            "structured": 2,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 58.7
+        },
+        "origin/copilot/sub-pr-500": {
+          "branch": "copilot/sub-pr-500",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Lindsey Catlett"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 1,
+            "structured": 11,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 56.45
+        },
+        "origin/copilot/sub-pr-96": {
+          "branch": "copilot/sub-pr-96",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "basher83",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 3,
+            "structured": 3,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 47.3
+        },
+        "origin/copilot/troubleshoot-v5-2-2-issue": {
+          "branch": "copilot/troubleshoot-v5-2-2-issue",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "claude[bot]",
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 1,
+            "structured": 3,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 60.05
+        },
+        "origin/copilot/update-context-injection-logic": {
+          "branch": "copilot/update-context-injection-logic",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Dmytro Gaivoronsky"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 11,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 49.85
+        },
+        "origin/copilot/update-documentation-stop-claude-code": {
+          "branch": "copilot/update-documentation-stop-claude-code",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 65.3
+        },
+        "origin/copilot/update-model-to-opus-4-5": {
+          "branch": "copilot/update-model-to-opus-4-5",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "CrystallDEV"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.75
+        },
+        "origin/copilot/update-troubleshoot-documentation": {
+          "branch": "copilot/update-troubleshoot-documentation",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman",
+            "Trevor Wilson",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 44.25
+        },
+        "origin/copilot/upgrade-better-sqlite3-dependency": {
+          "branch": "copilot/upgrade-better-sqlite3-dependency",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "copilot-swe-agent[bot]",
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 4,
+            "structured": 9,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 55.05
+        },
+        "origin/cursor-hooks-integration": {
+          "branch": "cursor-hooks-integration",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 6,
+            "structured": 16,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 63.35
+        },
+        "origin/docs/cleanup-post-refactor": {
+          "branch": "docs/cleanup-post-refactor",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 5,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 67.3
+        },
+        "origin/endless-mode-v7.1": {
+          "branch": "endless-mode-v7.1",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 7,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 61.4
+        },
+        "origin/enhancement/less-mcp-tokens": {
+          "branch": "enhancement/less-mcp-tokens",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "ToxMox"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 1,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 44.75
+        },
+        "origin/enhancement/roi": {
+          "branch": "enhancement/roi",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot",
+            "basher83"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 6,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 57
+        },
+        "origin/enhancement/search-6-tools": {
+          "branch": "enhancement/search-6-tools",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 4,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.9
+        },
+        "origin/enhancement/supersession": {
+          "branch": "enhancement/supersession",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "ToxMox"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 45.2
+        },
+        "origin/enhancements/ui": {
+          "branch": "enhancements/ui",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot",
+            "basher83"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 4,
+            "structured": 7,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 49.4
+        },
+        "origin/experiment/chroma-mcp": {
+          "branch": "experiment/chroma-mcp",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 68.1
+        },
+        "origin/experiment/endless-mode": {
+          "branch": "experiment/endless-mode",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 4,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 51.55
+        },
+        "origin/failed/jit-context": {
+          "branch": "failed/jit-context",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 4,
+            "structured": 5,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 62.55
+        },
+        "origin/feat/mcp-phase-2": {
+          "branch": "feat/mcp-phase-2",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 5,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 54.1
+        },
+        "origin/feat/tests": {
+          "branch": "feat/tests",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 4,
+            "structured": 11,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 55.2
+        },
+        "origin/feature/better-logging": {
+          "branch": "feature/better-logging",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 1,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 49.35
+        },
+        "origin/feature/bun-executable": {
+          "branch": "feature/bun-executable",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "7Sageer",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 5,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 53
+        },
+        "origin/feature/bun-instead-of-pm2": {
+          "branch": "feature/bun-instead-of-pm2",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 7,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 61.7
+        },
+        "origin/feature/context-hook-updates": {
+          "branch": "feature/context-hook-updates",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 3,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.2
+        },
+        "origin/feature/context-preview": {
+          "branch": "feature/context-preview",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 9,
+            "structured": 13,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 66.25
+        },
+        "origin/feature/endless-mode-beta-release": {
+          "branch": "feature/endless-mode-beta-release",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 6,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 62.85
+        },
+        "origin/feature/error-handling-approved-overrides": {
+          "branch": "feature/error-handling-approved-overrides",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 5,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 66
+        },
+        "origin/feature/error-messages": {
+          "branch": "feature/error-messages",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Trevor Wilson",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 8,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 52.2
+        },
+        "origin/feature/hybrid-search": {
+          "branch": "feature/hybrid-search",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 2,
+            "structured": 2,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 51.35
+        },
+        "origin/feature/import-export": {
+          "branch": "feature/import-export",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "7Sageer",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 45.45
+        },
+        "origin/feature/jit-context": {
+          "branch": "feature/jit-context",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 4,
+            "structured": 5,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 62.35
+        },
+        "origin/feature/live-context": {
+          "branch": "feature/live-context",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 5,
+            "structured": 15,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 44.2
+        },
+        "origin/feature/live-context-integrated": {
+          "branch": "feature/live-context-integrated",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 2,
+            "structured": 6,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 48.85
+        },
+        "origin/feature/mem-search-enhancements": {
+          "branch": "feature/mem-search-enhancements",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 3,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 63.75
+        },
+        "origin/feature/mem-search-timeline": {
+          "branch": "feature/mem-search-timeline",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 3,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.15
+        },
+        "origin/feature/meta-observation-control": {
+          "branch": "feature/meta-observation-control",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Dmytro Gaivoronsky",
+            "Dmitry Guyvoronsky"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 4,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 48
+        },
+        "origin/feature/multilingual-embeddings": {
+          "branch": "feature/multilingual-embeddings",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot",
+            "Justin Kowarsch"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 2,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 53.55
+        },
+        "origin/feature/no-more-hook-files": {
+          "branch": "feature/no-more-hook-files",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 10,
+            "structured": 10,
+            "quickFixes": 5
+          },
+          "avgMessageLength": 48.8
+        },
+        "origin/feature/observation-status": {
+          "branch": "feature/observation-status",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 4,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 46.85
+        },
+        "origin/feature/queue-indicator": {
+          "branch": "feature/queue-indicator",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "basher83",
+            "Copilot",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 3,
+            "structured": 3,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 47.15
+        },
+        "origin/feature/ragtime": {
+          "branch": "feature/ragtime",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 6,
+            "structured": 6,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 96.9
+        },
+        "origin/feature/real-time-context": {
+          "branch": "feature/real-time-context",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "basher83",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 5,
+            "structured": 5,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 49.9
+        },
+        "origin/feature/remove-env-var-support": {
+          "branch": "feature/remove-env-var-support",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 4,
+            "quickFixes": 6
+          },
+          "avgMessageLength": 37.45
+        },
+        "origin/feature/roi": {
+          "branch": "feature/roi",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 3,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 52.3
+        },
+        "origin/feature/skill-search": {
+          "branch": "feature/skill-search",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 7,
+            "features": 3,
+            "structured": 4,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 61.65
+        },
+        "origin/feature/source-repo": {
+          "branch": "feature/source-repo",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 8,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 64.45
+        },
+        "origin/feature/tiered-readme-translations": {
+          "branch": "feature/tiered-readme-translations",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot",
+            "7Sageer"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 49.35
+        },
+        "origin/feature/toggle-mcp": {
+          "branch": "feature/toggle-mcp",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 4,
+            "structured": 6,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 61.45
+        },
+        "origin/feature/vscode-extension": {
+          "branch": "feature/vscode-extension",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 3,
+            "structured": 14,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 45.15
+        },
+        "origin/fix/514-orphaned-observer-sessions": {
+          "branch": "fix/514-orphaned-observer-sessions",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Lindsey Catlett"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 61.95
+        },
+        "origin/fix/dynamic-project-name-detection": {
+          "branch": "fix/dynamic-project-name-detection",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 3,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 48.3
+        },
+        "origin/fix/hybrid-search-documentation": {
+          "branch": "fix/hybrid-search-documentation",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 2,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 55.95
+        },
+        "origin/fix/pr-538-followups": {
+          "branch": "fix/pr-538-followups",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 3,
+            "structured": 16,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 54.15
+        },
+        "origin/fix/typescript-errors": {
+          "branch": "fix/typescript-errors",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 0,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 44.1
+        },
+        "origin/fix/windows-console-popups": {
+          "branch": "fix/windows-console-popups",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 0,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 52.8
+        },
+        "origin/fix/worker-port-env-var": {
+          "branch": "fix/worker-port-env-var",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Claude",
+            "kat-bell"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 55.6
+        },
+        "origin/main": {
+          "branch": "main",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 4,
+            "structured": 13,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 43.05
+        },
+        "origin/main-worktree": {
+          "branch": "main-worktree",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "ToxMox"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 44.05
+        },
+        "origin/pr-412": {
+          "branch": "pr-412",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 3,
+            "structured": 15,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 60.85
+        },
+        "origin/queue-only": {
+          "branch": "queue-only",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 2,
+            "structured": 15,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 54.4
+        },
+        "origin/ragtime": {
+          "branch": "ragtime",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "ToxMox"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 0,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 41.5
+        },
+        "origin/refactor/context-hook-cleanup": {
+          "branch": "refactor/context-hook-cleanup",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 8,
+            "features": 0,
+            "structured": 1,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 58.6
+        },
+        "origin/refactor/hooks-to-worker": {
+          "branch": "refactor/hooks-to-worker",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 3,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 64
+        },
+        "origin/refactor/mcp-to-worker": {
+          "branch": "refactor/mcp-to-worker",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 4,
+            "structured": 8,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 76.35
+        },
+        "origin/research/autoclear": {
+          "branch": "research/autoclear",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Dmytro Gaivoronsky"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 3,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 52.7
+        },
+        "origin/revert-to-before-rolling-replacement": {
+          "branch": "revert-to-before-rolling-replacement",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "claude[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 4,
+            "structured": 8,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 58.85
+        },
+        "origin/review/pr-batch-2026-01-07": {
+          "branch": "review/pr-batch-2026-01-07",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Copilot"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 4,
+            "structured": 13,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 43.05
+        },
+        "origin/sdk-v2-migration": {
+          "branch": "sdk-v2-migration",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Lindsey Catlett"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 75.7
+        },
+        "origin/session-logging": {
+          "branch": "session-logging",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 2,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 60.15
+        },
+        "origin/thedotmack-patch-1": {
+          "branch": "thedotmack-patch-1",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 63.3
+        },
+        "origin/thedotmack-patch-1-1": {
+          "branch": "thedotmack-patch-1-1",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 63.5
+        },
+        "origin/thedotmack-patch-2": {
+          "branch": "thedotmack-patch-2",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 3,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 47.9
+        },
+        "origin/thedotmack-patch-3": {
+          "branch": "thedotmack-patch-3",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Justin Kowarsch",
+            "Jonas Hanisch"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 2,
+            "structured": 14,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.3
+        },
+        "origin/thedotmack/ottawa": {
+          "branch": "thedotmack/ottawa",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 3,
+            "structured": 15,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 48.9
+        },
+        "origin/thedotmack/yokohama": {
+          "branch": "thedotmack/yokohama",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 5,
+            "structured": 16,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 50.15
+        },
+        "origin/updates/docs": {
+          "branch": "updates/docs",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 1,
+            "structured": 4,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 87
+        },
+        "origin/upgrade/agent-sdk-ts-v2": {
+          "branch": "upgrade/agent-sdk-ts-v2",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "Lindsey Catlett"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 1,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 59.65
+        },
+        "origin/viewer-ui": {
+          "branch": "viewer-ui",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman",
+            "copilot-swe-agent[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 5,
+            "structured": 5,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 58.85
+        },
+        "origin/working/v5-docs": {
+          "branch": "working/v5-docs",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Alex Newman"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 2,
+            "structured": 2,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 52.05
+        }
+      },
+      "operators": {
+        "fork/main": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "jeanterre552",
+              "commits": 3
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/7Sageer/main": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "7Sageer",
+              "commits": 2
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/backup/4.3.0-borked-sad-face": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            }
+          ]
+        },
+        "origin/backup/phase1-agent-work": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/beta/7.0": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/beta/endless-mode": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/bracket-nonsense": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 41
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 3
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/cc-big-update": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/chroma-mcp-orphan-cleanup": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/bugfix/chroma-not-connected": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/duplicate-observations": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/gh-issues-2026-01-05": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/bugfix/issues-2026-01-07": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/linger": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Jarad DeLorenzo",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/bugfix/new-hook": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/session-continuity": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Jarad DeLorenzo",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/bugfix/settings": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/settings-and-new-hook": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/smart-install": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/bugfix/spawn-worker": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "bigphoot",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/summary-final-message": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 40
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 6
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/bugfix/try-catch-is-ruining-my-life": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/win-revert-cc-path-to-executable": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/bugfix/windows": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/bugfix/windows-comprehensive": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/bugfix/worker": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Jarad DeLorenzo",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/bugfix/worker-service": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/claude/bun-windows-evaluation-014reQcQhzHLT6c1vpKqQifJ": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "Claude",
+              "commits": 2
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/claude/increase-timeout-limits-ynxXc": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "Claude",
+              "commits": 4
+            },
+            {
+              "name": "bigphoot",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/claude/issue-50-20251105-0234": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/claude/multi-shot-benchmark-011CUZ9jESKDm9ocxt1hr22m": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/claude/patch-version-0.0.1-TlIGX": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/claude/release-7.0.4-windows-fixes-012Ny54FxUuyiNdJ28p1ohwd": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/claude/vscode-extension-build-011CV4fj353iYoJRoMez91yX": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 32
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 13
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/cleanup/anti-patterns": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "ToxMox",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/cleanup/settings": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 40
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 6
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/cleanup/worker": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/column-mismatch": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/context-preview-local": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/add-bun-executable-feature": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 40
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/add-bun-support": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 41
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 6
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/add-project-level-memory-option": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 39
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 6
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-chromadb-backfill-error": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/fix-claude-mem-plugin-error": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 8
+            }
+          ]
+        },
+        "origin/copilot/fix-claude-plugin-error": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 37
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 13
+            }
+          ]
+        },
+        "origin/copilot/fix-console-windows-popup": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-default-project-name": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 40
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-documentation-links": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 35
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 12
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-double-entries-claude-mem": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 32
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 16
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/fix-first-launch-error": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 41
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 9
+            }
+          ]
+        },
+        "origin/copilot/fix-missing-session-summaries-table": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 8
+            }
+          ]
+        },
+        "origin/copilot/fix-npm-audit-vulnerabilities": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            }
+          ]
+        },
+        "origin/copilot/fix-path-to-claude-executable": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 40
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 10
+            }
+          ]
+        },
+        "origin/copilot/fix-plugin-bun-installation": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-plugin-hook-error": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 8
+            }
+          ]
+        },
+        "origin/copilot/fix-plugin-hooks-fish-shell": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-plugin-installation-bug": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-pm2-race-condition": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 35
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 13
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/fix-port-change-issue": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 40
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 6
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/fix-search-server-build-references": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 2
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-smart-install-js-bug": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/fix-windows-install-pathing": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 41
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/fix-worker-restart-loop": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            }
+          ]
+        },
+        "origin/copilot/fix-worker-service-bug": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-worker-service-port-37777": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/fix-worker-service-port-issue": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/implement-context-injection-solution": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 2
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 1
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/implement-context-injection-solution-again": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 39
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 8
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 2
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/implement-silent-debugger-workflow": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/copilot/improve-claude-mem-search-skill": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 39
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 7
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/patch-version-with-npm-fix": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 6
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/remove-dev-specific-config": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 41
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/sub-pr-135": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/sub-pr-145": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/sub-pr-242": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            },
+            {
+              "name": "kat-bell",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/sub-pr-470": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/sub-pr-500": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/sub-pr-96": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 32
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 15
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/troubleshoot-v5-2-2-issue": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 38
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 7
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/copilot/update-context-injection-logic": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 2
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 1
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/update-documentation-stop-claude-code": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            }
+          ]
+        },
+        "origin/copilot/update-model-to-opus-4-5": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/update-troubleshoot-documentation": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/copilot/upgrade-better-sqlite3-dependency": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/cursor-hooks-integration": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/cleanup-post-refactor": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/endless-mode-v7.1": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/enhancement/less-mcp-tokens": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/enhancement/roi": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 37
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 10
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/enhancement/search-6-tools": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/enhancement/supersession": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "ToxMox",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/enhancements/ui": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 37
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 10
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/experiment/chroma-mcp": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/experiment/endless-mode": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/failed/jit-context": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feat/mcp-phase-2": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feat/tests": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/better-logging": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 31
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 16
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/bun-executable": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            },
+            {
+              "name": "kat-bell",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/bun-instead-of-pm2": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/context-hook-updates": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feature/context-preview": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/endless-mode-beta-release": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feature/error-handling-approved-overrides": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/error-messages": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/hybrid-search": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/feature/import-export": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/jit-context": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feature/live-context": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/feature/live-context-integrated": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/feature/mem-search-enhancements": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/mem-search-timeline": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feature/meta-observation-control": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 41
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 3
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/multilingual-embeddings": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/no-more-hook-files": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/feature/observation-status": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feature/queue-indicator": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 34
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 13
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/ragtime": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/real-time-context": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 34
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 13
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/remove-env-var-support": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 5
+            }
+          ]
+        },
+        "origin/feature/roi": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 37
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 10
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/skill-search": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feature/source-repo": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/feature/tiered-readme-translations": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 43
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            },
+            {
+              "name": "CrystallDEV",
+              "commits": 1
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feature/toggle-mcp": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/feature/vscode-extension": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/514-orphaned-observer-sessions": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/dynamic-project-name-detection": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/fix/hybrid-search-documentation": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 38
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 8
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "basher83",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/pr-538-followups": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/typescript-errors": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/windows-console-popups": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/worker-port-env-var": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "kat-bell",
+              "commits": 2
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Claude",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/main": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/main-worktree": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "ToxMox",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/pr-412": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/queue-only": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "Trevor Wilson",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/ragtime": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "ToxMox",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/refactor/context-hook-cleanup": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Copilot",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/refactor/hooks-to-worker": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/refactor/mcp-to-worker": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 44
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/research/autoclear": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 42
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Dmitry Guyvoronsky",
+              "commits": 2
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            },
+            {
+              "name": "Dmytro Gaivoronsky",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/revert-to-before-rolling-replacement": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/review/pr-batch-2026-01-07": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/sdk-v2-migration": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/session-logging": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/thedotmack-patch-1": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/thedotmack-patch-1-1": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/thedotmack-patch-2": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Copilot",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/thedotmack-patch-3": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 45
+            },
+            {
+              "name": "Justin Kowarsch",
+              "commits": 1
+            },
+            {
+              "name": "Jonas Hanisch",
+              "commits": 1
+            },
+            {
+              "name": "Copilot",
+              "commits": 1
+            },
+            {
+              "name": "claude[bot]",
+              "commits": 1
+            },
+            {
+              "name": "7Sageer",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/thedotmack/ottawa": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/thedotmack/yokohama": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 49
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/updates/docs": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 50
+            }
+          ]
+        },
+        "origin/upgrade/agent-sdk-ts-v2": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 48
+            },
+            {
+              "name": "Lindsey Catlett",
+              "commits": 1
+            },
+            {
+              "name": "Erik M Jacobs",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/viewer-ui": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 46
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 4
+            }
+          ]
+        },
+        "origin/working/v5-docs": {
+          "primary": "Alex Newman",
+          "contributors": [
+            {
+              "name": "Alex Newman",
+              "commits": 47
+            },
+            {
+              "name": "copilot-swe-agent[bot]",
+              "commits": 3
+            }
+          ]
+        }
+      },
+      "currentBranch": "main",
+      "discoveredAt": "2026-01-10T11:51:14.033Z"
+    }
+  },
+  "crossRepoSync": {},
+  "inferences": {
+    "prodBranches": {
+      "gasdf": {
+        "branch": "main",
+        "remote": "origin",
+        "confidence": 0.27
+      },
+      "holdex": {
+        "branch": "NewDexSOCKETS",
+        "remote": "upstream",
+        "confidence": 0.765
+      },
+      "claude-mem": {
+        "branch": "backup/4.3.0-borked-sad-face",
+        "remote": "origin",
+        "confidence": 0.385
+      }
+    },
+    "primaryOperators": {
+      "gasdf": {
+        "origin/main": "jeanterre552"
+      },
+      "holdex": {
+        "origin/distributed-nodes-clean": "jeanterre552",
+        "origin/main": "jeanterre552",
+        "origin/update-newdexsockets": "Sollama",
+        "upstream/NewDEX": "Sollama",
+        "upstream/NewDexSOCKETS": "Sollama",
+        "upstream/main": "jeanterre552"
+      },
+      "asdf-brain": {
+        "origin/main": "asdf-brain[bot]"
+      },
+      "asdf-manifesto": {
+        "origin/main": "jeanterre552"
+      },
+      "claude-mem": {
+        "fork/main": "Alex Newman",
+        "origin/7Sageer/main": "Alex Newman",
+        "origin/backup/4.3.0-borked-sad-face": "Alex Newman",
+        "origin/backup/phase1-agent-work": "Alex Newman",
+        "origin/beta/7.0": "Alex Newman",
+        "origin/beta/endless-mode": "Alex Newman",
+        "origin/bracket-nonsense": "Alex Newman",
+        "origin/bugfix/cc-big-update": "Alex Newman",
+        "origin/bugfix/chroma-mcp-orphan-cleanup": "Alex Newman",
+        "origin/bugfix/chroma-not-connected": "Alex Newman",
+        "origin/bugfix/duplicate-observations": "Alex Newman",
+        "origin/bugfix/gh-issues-2026-01-05": "Alex Newman",
+        "origin/bugfix/issues-2026-01-07": "Alex Newman",
+        "origin/bugfix/linger": "Alex Newman",
+        "origin/bugfix/new-hook": "Alex Newman",
+        "origin/bugfix/session-continuity": "Alex Newman",
+        "origin/bugfix/settings": "Alex Newman",
+        "origin/bugfix/settings-and-new-hook": "Alex Newman",
+        "origin/bugfix/smart-install": "Alex Newman",
+        "origin/bugfix/spawn-worker": "Alex Newman",
+        "origin/bugfix/summary-final-message": "Alex Newman",
+        "origin/bugfix/try-catch-is-ruining-my-life": "Alex Newman",
+        "origin/bugfix/win-revert-cc-path-to-executable": "Alex Newman",
+        "origin/bugfix/windows": "Alex Newman",
+        "origin/bugfix/windows-comprehensive": "Alex Newman",
+        "origin/bugfix/worker": "Alex Newman",
+        "origin/bugfix/worker-service": "Alex Newman",
+        "origin/claude/bun-windows-evaluation-014reQcQhzHLT6c1vpKqQifJ": "Alex Newman",
+        "origin/claude/increase-timeout-limits-ynxXc": "Alex Newman",
+        "origin/claude/issue-50-20251105-0234": "Alex Newman",
+        "origin/claude/multi-shot-benchmark-011CUZ9jESKDm9ocxt1hr22m": "Alex Newman",
+        "origin/claude/patch-version-0.0.1-TlIGX": "Alex Newman",
+        "origin/claude/release-7.0.4-windows-fixes-012Ny54FxUuyiNdJ28p1ohwd": "Alex Newman",
+        "origin/claude/vscode-extension-build-011CV4fj353iYoJRoMez91yX": "Alex Newman",
+        "origin/cleanup/anti-patterns": "Alex Newman",
+        "origin/cleanup/settings": "Alex Newman",
+        "origin/cleanup/worker": "Alex Newman",
+        "origin/column-mismatch": "Alex Newman",
+        "origin/context-preview-local": "Alex Newman",
+        "origin/copilot/add-bun-executable-feature": "Alex Newman",
+        "origin/copilot/add-bun-support": "Alex Newman",
+        "origin/copilot/add-project-level-memory-option": "Alex Newman",
+        "origin/copilot/fix-chromadb-backfill-error": "Alex Newman",
+        "origin/copilot/fix-claude-mem-plugin-error": "Alex Newman",
+        "origin/copilot/fix-claude-plugin-error": "Alex Newman",
+        "origin/copilot/fix-console-windows-popup": "Alex Newman",
+        "origin/copilot/fix-default-project-name": "Alex Newman",
+        "origin/copilot/fix-documentation-links": "Alex Newman",
+        "origin/copilot/fix-double-entries-claude-mem": "Alex Newman",
+        "origin/copilot/fix-first-launch-error": "Alex Newman",
+        "origin/copilot/fix-missing-session-summaries-table": "Alex Newman",
+        "origin/copilot/fix-npm-audit-vulnerabilities": "Alex Newman",
+        "origin/copilot/fix-path-to-claude-executable": "Alex Newman",
+        "origin/copilot/fix-plugin-bun-installation": "Alex Newman",
+        "origin/copilot/fix-plugin-hook-error": "Alex Newman",
+        "origin/copilot/fix-plugin-hooks-fish-shell": "Alex Newman",
+        "origin/copilot/fix-plugin-installation-bug": "Alex Newman",
+        "origin/copilot/fix-pm2-race-condition": "Alex Newman",
+        "origin/copilot/fix-port-change-issue": "Alex Newman",
+        "origin/copilot/fix-search-server-build-references": "Alex Newman",
+        "origin/copilot/fix-smart-install-js-bug": "Alex Newman",
+        "origin/copilot/fix-windows-install-pathing": "Alex Newman",
+        "origin/copilot/fix-worker-restart-loop": "Alex Newman",
+        "origin/copilot/fix-worker-service-bug": "Alex Newman",
+        "origin/copilot/fix-worker-service-port-37777": "Alex Newman",
+        "origin/copilot/fix-worker-service-port-issue": "Alex Newman",
+        "origin/copilot/implement-context-injection-solution": "Alex Newman",
+        "origin/copilot/implement-context-injection-solution-again": "Alex Newman",
+        "origin/copilot/implement-silent-debugger-workflow": "Alex Newman",
+        "origin/copilot/improve-claude-mem-search-skill": "Alex Newman",
+        "origin/copilot/patch-version-with-npm-fix": "Alex Newman",
+        "origin/copilot/remove-dev-specific-config": "Alex Newman",
+        "origin/copilot/sub-pr-135": "Alex Newman",
+        "origin/copilot/sub-pr-145": "Alex Newman",
+        "origin/copilot/sub-pr-242": "Alex Newman",
+        "origin/copilot/sub-pr-470": "Alex Newman",
+        "origin/copilot/sub-pr-500": "Alex Newman",
+        "origin/copilot/sub-pr-96": "Alex Newman",
+        "origin/copilot/troubleshoot-v5-2-2-issue": "Alex Newman",
+        "origin/copilot/update-context-injection-logic": "Alex Newman",
+        "origin/copilot/update-documentation-stop-claude-code": "Alex Newman",
+        "origin/copilot/update-model-to-opus-4-5": "Alex Newman",
+        "origin/copilot/update-troubleshoot-documentation": "Alex Newman",
+        "origin/copilot/upgrade-better-sqlite3-dependency": "Alex Newman",
+        "origin/cursor-hooks-integration": "Alex Newman",
+        "origin/docs/cleanup-post-refactor": "Alex Newman",
+        "origin/endless-mode-v7.1": "Alex Newman",
+        "origin/enhancement/less-mcp-tokens": "Alex Newman",
+        "origin/enhancement/roi": "Alex Newman",
+        "origin/enhancement/search-6-tools": "Alex Newman",
+        "origin/enhancement/supersession": "Alex Newman",
+        "origin/enhancements/ui": "Alex Newman",
+        "origin/experiment/chroma-mcp": "Alex Newman",
+        "origin/experiment/endless-mode": "Alex Newman",
+        "origin/failed/jit-context": "Alex Newman",
+        "origin/feat/mcp-phase-2": "Alex Newman",
+        "origin/feat/tests": "Alex Newman",
+        "origin/feature/better-logging": "Alex Newman",
+        "origin/feature/bun-executable": "Alex Newman",
+        "origin/feature/bun-instead-of-pm2": "Alex Newman",
+        "origin/feature/context-hook-updates": "Alex Newman",
+        "origin/feature/context-preview": "Alex Newman",
+        "origin/feature/endless-mode-beta-release": "Alex Newman",
+        "origin/feature/error-handling-approved-overrides": "Alex Newman",
+        "origin/feature/error-messages": "Alex Newman",
+        "origin/feature/hybrid-search": "Alex Newman",
+        "origin/feature/import-export": "Alex Newman",
+        "origin/feature/jit-context": "Alex Newman",
+        "origin/feature/live-context": "Alex Newman",
+        "origin/feature/live-context-integrated": "Alex Newman",
+        "origin/feature/mem-search-enhancements": "Alex Newman",
+        "origin/feature/mem-search-timeline": "Alex Newman",
+        "origin/feature/meta-observation-control": "Alex Newman",
+        "origin/feature/multilingual-embeddings": "Alex Newman",
+        "origin/feature/no-more-hook-files": "Alex Newman",
+        "origin/feature/observation-status": "Alex Newman",
+        "origin/feature/queue-indicator": "Alex Newman",
+        "origin/feature/ragtime": "Alex Newman",
+        "origin/feature/real-time-context": "Alex Newman",
+        "origin/feature/remove-env-var-support": "Alex Newman",
+        "origin/feature/roi": "Alex Newman",
+        "origin/feature/skill-search": "Alex Newman",
+        "origin/feature/source-repo": "Alex Newman",
+        "origin/feature/tiered-readme-translations": "Alex Newman",
+        "origin/feature/toggle-mcp": "Alex Newman",
+        "origin/feature/vscode-extension": "Alex Newman",
+        "origin/fix/514-orphaned-observer-sessions": "Alex Newman",
+        "origin/fix/dynamic-project-name-detection": "Alex Newman",
+        "origin/fix/hybrid-search-documentation": "Alex Newman",
+        "origin/fix/pr-538-followups": "Alex Newman",
+        "origin/fix/typescript-errors": "Alex Newman",
+        "origin/fix/windows-console-popups": "Alex Newman",
+        "origin/fix/worker-port-env-var": "Alex Newman",
+        "origin/main": "Alex Newman",
+        "origin/main-worktree": "Alex Newman",
+        "origin/pr-412": "Alex Newman",
+        "origin/queue-only": "Alex Newman",
+        "origin/ragtime": "Alex Newman",
+        "origin/refactor/context-hook-cleanup": "Alex Newman",
+        "origin/refactor/hooks-to-worker": "Alex Newman",
+        "origin/refactor/mcp-to-worker": "Alex Newman",
+        "origin/research/autoclear": "Alex Newman",
+        "origin/revert-to-before-rolling-replacement": "Alex Newman",
+        "origin/review/pr-batch-2026-01-07": "Alex Newman",
+        "origin/sdk-v2-migration": "Alex Newman",
+        "origin/session-logging": "Alex Newman",
+        "origin/thedotmack-patch-1": "Alex Newman",
+        "origin/thedotmack-patch-1-1": "Alex Newman",
+        "origin/thedotmack-patch-2": "Alex Newman",
+        "origin/thedotmack-patch-3": "Alex Newman",
+        "origin/thedotmack/ottawa": "Alex Newman",
+        "origin/thedotmack/yokohama": "Alex Newman",
+        "origin/updates/docs": "Alex Newman",
+        "origin/upgrade/agent-sdk-ts-v2": "Alex Newman",
+        "origin/viewer-ui": "Alex Newman",
+        "origin/working/v5-docs": "Alex Newman"
+      }
+    }
+  }
+}

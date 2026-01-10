@@ -1,0 +1,71 @@
+{
+  "project": "HolDex",
+  "indexed": "2026-01-09T13:00:00Z",
+  "source": "/workspaces/HolDex/docs/",
+  "totalLines": 3442,
+  "files": [
+    {
+      "name": "KSCORE.md",
+      "lines": 298,
+      "topics": ["K-Score formula", "D×O×L pillars", "Conviction analysis", "Geometric mean"],
+      "keyFormulas": ["K = 100 × ∛(D × O × L)", "D = √(C × R × F)", "O = √(H × T)", "L = A × S"]
+    },
+    {
+      "name": "API.md",
+      "lines": 484,
+      "topics": ["REST endpoints", "Authentication", "Rate limits", "Oracle API"],
+      "keyEndpoints": ["/api/tokens", "/api/token/:mint", "/oracle/kscore/:mint", "/oracle/escore/:wallet"]
+    },
+    {
+      "name": "HARMONY.md",
+      "lines": 334,
+      "topics": ["E-Score system", "Phi ratios", "Discounts", "Fee distribution"],
+      "keyFormulas": ["E = geometricMean × diversityBonus", "discount = 1 - φ^(-E/25)"]
+    },
+    {
+      "name": "INTEGRITY.md",
+      "lines": 512,
+      "topics": ["9-category signatures", "HMAC-SHA256", "Watchdog", "Multi-node verification"],
+      "keyCategories": ["identity", "security", "lp", "supply", "kscore", "market", "origin", "holders", "full"]
+    },
+    {
+      "name": "ECOSYSTEM-ARCHITECTURE.md",
+      "lines": 468,
+      "topics": ["Monorepo structure", "Shared packages", "Three scores (K/E/I)", "Migration path"],
+      "keyPackages": ["@asdf/phi", "@asdf/harmony", "@asdf/geometric", "@asdf/integrity"]
+    },
+    {
+      "name": "DECENTRALIZATION.md",
+      "lines": 418,
+      "topics": ["Node architecture", "Consensus", "Optimistic burn protocol"]
+    },
+    {
+      "name": "DISTRIBUTED_NODES.md",
+      "lines": 523,
+      "topics": ["Node setup", "Environment variables", "Verification", "Troubleshooting"]
+    },
+    {
+      "name": "CONFIGURATION.md",
+      "lines": 245,
+      "topics": ["Environment variables", "Required secrets", "Optional settings"]
+    },
+    {
+      "name": "SETUP_GCRTRD_NODE.md",
+      "lines": 160,
+      "topics": ["Second node setup", "gcrtrd operator", "Deployment checklist"]
+    }
+  ],
+  "coreConstants": {
+    "PHI": 1.618033988749895,
+    "BURN_RATIO": 0.382,
+    "REWARDS_RATIO": 0.382,
+    "TREASURY_RATIO": 0.236
+  },
+  "signatureCategories": 9,
+  "kscoreVersion": "v10",
+  "threeScores": {
+    "K": "Token health (D×O×L)",
+    "E": "Participant engagement (7 dimensions)",
+    "I": "Infrastructure health (coverage×consistency×recency)"
+  }
+}

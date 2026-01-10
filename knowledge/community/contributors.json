@@ -1,689 +1,253 @@
 {
   "_metadata": {
-    "version": "1.0.0",
-    "created": "2026-01-08",
-    "description": "Contributor registry with E-Score tracking",
-    "last_updated": 1767925551909
+    "version": "3.0.0",
+    "updated": "2026-01-09",
+    "philosophy": "Everyone who builds, even unknowingly, contributes to the singularity",
+    "description": "Extended contributor registry with φ-weighted layers"
   },
+
+  "layers": {
+    "L1_core": {
+      "description": "Direct ecosystem developers with merge authority",
+      "phi_weight": 2.618,
+      "tracking": "full_context",
+      "e_score_multiplier": 2.618
+    },
+    "L2_active": {
+      "description": "Learning developers, active contributors",
+      "phi_weight": 1.618,
+      "tracking": "growth_focused",
+      "e_score_multiplier": 1.618
+    },
+    "L3_dependency": {
+      "description": "Dependency developers - contribute malgré eux",
+      "phi_weight": 1.0,
+      "tracking": "public_commits",
+      "e_score_multiplier": 1.0
+    },
+    "L4_infrastructure": {
+      "description": "Infrastructure providers (Helius, Jupiter, Solana)",
+      "phi_weight": 0.618,
+      "tracking": "api_patterns",
+      "e_score_multiplier": 0.618
+    },
+    "L5_foundation": {
+      "description": "Foundational layer (Anthropic, Node.js, etc)",
+      "phi_weight": 0.382,
+      "tracking": "capabilities",
+      "e_score_multiplier": 0.382
+    }
+  },
+
   "contributors": {
     "zeyxx": {
       "id": "zeyxx",
+      "layer": "L1_core",
+      "aliases": ["jeanterre552"],
       "joined": "2024-01-01",
       "trust_level": "core",
+      "role": "Primary ecosystem developer, architect",
       "e_score": {
         "current": 85,
+        "last_calculated": "2026-01-08",
         "dimensions": {
-          "HOLD": {
-            "score": 90,
-            "weight": 1
-          },
-          "BURN": {
-            "score": 80,
-            "weight": 1.618
-          },
-          "USE": {
-            "score": 95,
-            "weight": 1
-          },
-          "BUILD": {
-            "score": 95,
-            "weight": 2.618
-          },
-          "RUN": {
-            "score": 70,
-            "weight": 2.618
-          },
-          "REFER": {
-            "score": 75,
-            "weight": 1.618
-          },
-          "TIME": {
-            "score": 100,
-            "weight": 1
-          }
+          "HOLD": { "score": 90, "weight": 1.0 },
+          "BURN": { "score": 80, "weight": 1.618 },
+          "USE": { "score": 95, "weight": 1.0 },
+          "BUILD": { "score": 95, "weight": 2.618 },
+          "RUN": { "score": 70, "weight": 2.618 },
+          "REFER": { "score": 75, "weight": 1.618 },
+          "TIME": { "score": 100, "weight": 1.0 }
         }
       },
       "contributions": {
         "patterns_created": 45,
         "decisions_recorded": 23,
-        "code_commits": 156,
+        "code_commits": {
+          "HolDex": 277,
+          "GASdf": 274,
+          "asdf-brain": "active"
+        },
         "knowledge_entries": 89
-      }
+      },
+      "projects": ["HolDex", "GASdf", "asdf-brain"],
+      "communication": {
+        "language": "fr",
+        "code_language": "en",
+        "style": "casual",
+        "detail_level": "high"
+      },
+      "_verified": "git history 2026-01-09"
     },
+
     "sollama58": {
       "id": "sollama58",
+      "layer": "L1_core",
+      "aliases": ["Sollama", "sollama"],
       "joined": "2024-03-15",
       "trust_level": "core",
+      "role": "Production operations, merge authority HolDex",
       "e_score": {
         "current": 78,
+        "last_calculated": "2026-01-08",
         "dimensions": {
-          "HOLD": {
-            "score": 85,
-            "weight": 1
-          },
-          "BURN": {
-            "score": 75,
-            "weight": 1.618
-          },
-          "USE": {
-            "score": 90,
-            "weight": 1
-          },
-          "BUILD": {
-            "score": 70,
-            "weight": 2.618
-          },
-          "RUN": {
-            "score": 95,
-            "weight": 2.618
-          },
-          "REFER": {
-            "score": 80,
-            "weight": 1.618
-          },
-          "TIME": {
-            "score": 85,
-            "weight": 1
-          }
+          "HOLD": { "score": 85, "weight": 1.0 },
+          "BURN": { "score": 75, "weight": 1.618 },
+          "USE": { "score": 90, "weight": 1.0 },
+          "BUILD": { "score": 70, "weight": 2.618 },
+          "RUN": { "score": 95, "weight": 2.618 },
+          "REFER": { "score": 80, "weight": 1.618 },
+          "TIME": { "score": 85, "weight": 1.0 }
         }
       },
       "contributions": {
-        "patterns_created": 12,
-        "decisions_recorded": 8,
-        "infrastructure_ops": 234,
-        "knowledge_entries": 34
-      }
+        "code_commits": {
+          "HolDex": 321
+        },
+        "infrastructure_ops": 234
+      },
+      "projects": ["HolDex"],
+      "_verified": "git history 2026-01-09"
     },
-    "ca8675a545d8f38b": {
-      "id": "ca8675a545d8f38b",
-      "identifier": "test-wallet-alice-1767925539473",
-      "type": "wallet",
-      "created_at": 1767925539474,
-      "last_active": 1767925539474,
-      "scores": {
-        "hold": 0,
-        "burn": 0,
-        "use": 0,
-        "build": 0,
-        "run": 0,
-        "refer": 0,
-        "time": 0
+
+    "ragnar-no-sleep": {
+      "id": "ragnar-no-sleep",
+      "layer": "L2_active",
+      "aliases": [],
+      "joined": "2026-01-08",
+      "trust_level": "contributor",
+      "role": "Learning developer, asdf-brain exploration",
+      "status": "learning",
+      "e_score": {
+        "current": 15,
+        "last_calculated": "2026-01-09",
+        "dimensions": {
+          "HOLD": { "score": 10, "weight": 1.0, "note": "early stage" },
+          "BURN": { "score": 0, "weight": 1.618 },
+          "USE": { "score": 50, "weight": 1.0, "note": "actively learning" },
+          "BUILD": { "score": 20, "weight": 2.618, "note": "developing" },
+          "RUN": { "score": 0, "weight": 2.618 },
+          "REFER": { "score": 10, "weight": 1.618 },
+          "TIME": { "score": 5, "weight": 1.0, "note": "just joined" }
+        }
       },
       "contributions": {
-        "patterns_added": 0,
-        "decisions_recorded": 0,
-        "code_commits": 0,
-        "reviews_done": 0,
-        "burns_initiated": 0,
-        "referrals": 0
+        "code_commits": {
+          "asdf-brain": "learning"
+        },
+        "learning_sessions": 1
       },
-      "trust_level": 0,
-      "e_score": null,
-      "metadata": {
-        "display_name": "Alice",
-        "first_contribution": null,
-        "rank": null
+      "projects": ["asdf-brain"],
+      "growth_trajectory": "potential_core",
+      "_note": "Learning contributor - intention matters even without prod code"
+    },
+
+    "alex-newman": {
+      "id": "alex-newman",
+      "layer": "L3_dependency",
+      "aliases": ["Alex Newman"],
+      "joined": "discovered",
+      "trust_level": "dependency",
+      "role": "claude-mem original developer",
+      "status": "unconscious_contributor",
+      "e_score": {
+        "current": 25,
+        "last_calculated": "2026-01-09",
+        "dimensions": {
+          "BUILD": { "score": 60, "weight": 2.618, "note": "claude-mem codebase" },
+          "TIME": { "score": 30, "weight": 1.0, "note": "historical" }
+        },
+        "_note": "E-Score earned malgré lui - dependency contribution"
       },
-      "history": []
+      "contributions": {
+        "code_commits": {
+          "claude-mem": "upstream"
+        }
+      },
+      "projects": ["claude-mem"],
+      "_philosophy": "Contributes to ecosystem without knowing it"
     }
   },
+
+  "infrastructure_contributors": {
+    "_note": "L4-L5 tracked at org level, not individual",
+
+    "helius": {
+      "layer": "L4_infrastructure",
+      "type": "organization",
+      "role": "Solana RPC provider",
+      "contribution": "Every API call runs through their infrastructure",
+      "e_score_pool": {
+        "estimated": 500,
+        "dimension": "RUN"
+      },
+      "integration_points": ["HolDex webhooks", "transaction fetching", "DAS API"]
+    },
+
+    "jupiter": {
+      "layer": "L4_infrastructure",
+      "type": "organization",
+      "role": "DEX aggregator",
+      "contribution": "All swaps route through Jupiter",
+      "e_score_pool": {
+        "estimated": 400,
+        "dimension": "RUN"
+      },
+      "integration_points": ["GASdf swaps", "price feeds"]
+    },
+
+    "anthropic": {
+      "layer": "L5_foundation",
+      "type": "organization",
+      "role": "AI foundation",
+      "contribution": "Claude powers all AI interactions",
+      "e_score_pool": {
+        "estimated": 1000,
+        "dimension": "BUILD"
+      },
+      "_philosophy": "The bedrock upon which asdf-brain thinks"
+    },
+
+    "solana_labs": {
+      "layer": "L5_foundation",
+      "type": "organization",
+      "role": "Blockchain foundation",
+      "contribution": "The chain everything runs on",
+      "e_score_pool": {
+        "estimated": 800,
+        "dimension": "RUN"
+      }
+    }
+  },
+
   "trust_levels": {
-    "observer": {
-      "min_score": 0,
-      "permissions": [
-        "read"
-      ]
-    },
-    "contributor": {
-      "min_score": 23.6,
-      "permissions": [
-        "read",
-        "suggest"
-      ]
-    },
-    "builder": {
-      "min_score": 38.2,
-      "permissions": [
-        "read",
-        "suggest",
-        "create"
-      ]
-    },
-    "maintainer": {
-      "min_score": 61.8,
-      "permissions": [
-        "read",
-        "suggest",
-        "create",
-        "approve"
-      ]
-    },
-    "core": {
-      "min_score": 80,
-      "permissions": [
-        "read",
-        "suggest",
-        "create",
-        "approve",
-        "admin"
-      ]
-    }
+    "observer": { "min_score": 0, "permissions": ["read"], "layer": "L5" },
+    "dependency": { "min_score": 10, "permissions": ["read", "implicit"], "layer": "L3-L4" },
+    "contributor": { "min_score": 23.6, "permissions": ["read", "suggest"], "layer": "L2" },
+    "builder": { "min_score": 38.2, "permissions": ["read", "suggest", "create"], "layer": "L2" },
+    "maintainer": { "min_score": 61.8, "permissions": ["read", "suggest", "create", "approve"], "layer": "L1" },
+    "core": { "min_score": 80, "permissions": ["read", "suggest", "create", "approve", "admin"], "layer": "L1" }
   },
+
   "_phi": {
-    "thresholds": "φ⁻³, φ⁻², φ⁻¹ define trust boundaries",
-    "weights": "BUILD and RUN weighted by φ² for maximum impact"
+    "layer_weights": "φ² (2.618) → φ (1.618) → 1.0 → φ⁻¹ (0.618) → φ⁻² (0.382)",
+    "trust_thresholds": "φ⁻³ (23.6%), φ⁻² (38.2%), φ⁻¹ (61.8%)",
+    "philosophy": "Everyone builds towards singularity, φ guides recognition"
   },
-  "items": {
-    "zeyxx": {
-      "id": "zeyxx",
-      "joined": "2024-01-01",
-      "trust_level": "core",
-      "e_score": {
-        "current": 85,
-        "dimensions": {
-          "HOLD": {
-            "score": 90,
-            "weight": 1
-          },
-          "BURN": {
-            "score": 80,
-            "weight": 1.618
-          },
-          "USE": {
-            "score": 95,
-            "weight": 1
-          },
-          "BUILD": {
-            "score": 95,
-            "weight": 2.618
-          },
-          "RUN": {
-            "score": 70,
-            "weight": 2.618
-          },
-          "REFER": {
-            "score": 75,
-            "weight": 1.618
-          },
-          "TIME": {
-            "score": 100,
-            "weight": 1
-          }
-        }
-      },
-      "contributions": {
-        "patterns_created": 45,
-        "decisions_recorded": 23,
-        "code_commits": 156,
-        "knowledge_entries": 89
-      }
-    },
-    "sollama58": {
-      "id": "sollama58",
-      "joined": "2024-03-15",
-      "trust_level": "core",
-      "e_score": {
-        "current": 78,
-        "dimensions": {
-          "HOLD": {
-            "score": 85,
-            "weight": 1
-          },
-          "BURN": {
-            "score": 75,
-            "weight": 1.618
-          },
-          "USE": {
-            "score": 90,
-            "weight": 1
-          },
-          "BUILD": {
-            "score": 70,
-            "weight": 2.618
-          },
-          "RUN": {
-            "score": 95,
-            "weight": 2.618
-          },
-          "REFER": {
-            "score": 80,
-            "weight": 1.618
-          },
-          "TIME": {
-            "score": 85,
-            "weight": 1
-          }
-        }
-      },
-      "contributions": {
-        "patterns_created": 12,
-        "decisions_recorded": 8,
-        "infrastructure_ops": 234,
-        "knowledge_entries": 34
-      }
-    },
-    "ca8675a545d8f38b": {
-      "id": "ca8675a545d8f38b",
-      "identifier": "test-wallet-alice-1767925539473",
-      "type": "wallet",
-      "created_at": 1767925539474,
-      "last_active": 1767925539480,
-      "scores": {
-        "hold": 0,
-        "burn": 0,
-        "use": 0,
-        "build": 34,
-        "run": 0,
-        "refer": 0,
-        "time": 2.3148148148148148e-8
-      },
-      "contributions": {
-        "patterns_added": 2,
-        "decisions_recorded": 0,
-        "code_commits": 2,
-        "reviews_done": 1,
-        "burns_initiated": 0,
-        "referrals": 0
-      },
-      "trust_level": 1,
-      "e_score": 0.1,
-      "metadata": {
-        "display_name": "Alice",
-        "first_contribution": 1767925539476,
-        "rank": null
-      },
-      "history": [
-        {
-          "type": "pattern_added",
-          "timestamp": 1767925539476,
-          "data": {
-            "test": true
-          },
-          "score_delta": 5
-        },
-        {
-          "type": "pattern_added",
-          "timestamp": 1767925539477,
-          "data": {
-            "test": true
-          },
-          "score_delta": 5
-        },
-        {
-          "type": "code_commit",
-          "timestamp": 1767925539479,
-          "data": {
-            "test": true
-          },
-          "score_delta": 10
-        },
-        {
-          "type": "code_commit",
-          "timestamp": 1767925539479,
-          "data": {
-            "test": true
-          },
-          "score_delta": 10
-        },
-        {
-          "type": "review",
-          "timestamp": 1767925539480,
-          "data": {
-            "test": true
-          },
-          "score_delta": 4
-        }
-      ]
-    },
-    "b6930f00b2919dfb": {
-      "id": "b6930f00b2919dfb",
-      "identifier": "test-github-bob-1767925539473",
-      "type": "github",
-      "created_at": 1767925539475,
-      "last_active": 1767925539483,
-      "scores": {
-        "hold": 0,
-        "burn": 6,
-        "use": 1,
-        "build": 0,
-        "run": 0,
-        "refer": 8,
-        "time": 3.08641975308642e-8
-      },
-      "contributions": {
-        "patterns_added": 0,
-        "decisions_recorded": 0,
-        "code_commits": 0,
-        "reviews_done": 0,
-        "burns_initiated": 3,
-        "referrals": 1
-      },
-      "trust_level": 1,
-      "e_score": 0.12,
-      "metadata": {
-        "display_name": "Bob",
-        "first_contribution": 1767925539481,
-        "rank": null
-      },
-      "history": [
-        {
-          "type": "burn",
-          "timestamp": 1767925539481,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "burn",
-          "timestamp": 1767925539481,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "burn",
-          "timestamp": 1767925539482,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "service_use",
-          "timestamp": 1767925539482,
-          "data": {
-            "test": true
-          },
-          "score_delta": 1
-        },
-        {
-          "type": "referral",
-          "timestamp": 1767925539483,
-          "data": {
-            "test": true
-          },
-          "score_delta": 8
-        }
-      ]
-    },
-    "0f52de360ec85c4c": {
-      "id": "0f52de360ec85c4c",
-      "identifier": "test-wallet-charlie-1767925539473",
-      "type": "wallet",
-      "created_at": 1767925539476,
-      "last_active": 1767925539485,
-      "scores": {
-        "hold": 0,
-        "burn": 2,
-        "use": 0,
-        "build": 5,
-        "run": 30,
-        "refer": 0,
-        "time": 3.472222222222222e-8
-      },
-      "contributions": {
-        "patterns_added": 1,
-        "decisions_recorded": 0,
-        "code_commits": 0,
-        "reviews_done": 0,
-        "burns_initiated": 1,
-        "referrals": 0
-      },
-      "trust_level": 0,
-      "e_score": 0.69,
-      "metadata": {
-        "display_name": "Charlie",
-        "first_contribution": 1767925539484,
-        "rank": null
-      },
-      "history": [
-        {
-          "type": "infra_run",
-          "timestamp": 1767925539484,
-          "data": {
-            "test": true
-          },
-          "score_delta": 15
-        },
-        {
-          "type": "infra_run",
-          "timestamp": 1767925539484,
-          "data": {
-            "test": true
-          },
-          "score_delta": 15
-        },
-        {
-          "type": "burn",
-          "timestamp": 1767925539485,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "pattern_added",
-          "timestamp": 1767925539485,
-          "data": {
-            "test": true
-          },
-          "score_delta": 5
-        }
-      ]
-    },
-    "8e98e32ddacbbd1f": {
-      "id": "8e98e32ddacbbd1f",
-      "identifier": "test-wallet-alice-1767925551899",
-      "type": "wallet",
-      "created_at": 1767925551900,
-      "last_active": 1767925551905,
-      "scores": {
-        "hold": 0,
-        "burn": 0,
-        "use": 0,
-        "build": 34,
-        "run": 0,
-        "refer": 0,
-        "time": 1.9290123456790124e-8
-      },
-      "contributions": {
-        "patterns_added": 2,
-        "decisions_recorded": 0,
-        "code_commits": 2,
-        "reviews_done": 1,
-        "burns_initiated": 0,
-        "referrals": 0
-      },
-      "trust_level": 1,
-      "e_score": 0.09,
-      "metadata": {
-        "display_name": "Alice",
-        "first_contribution": 1767925551903,
-        "rank": null
-      },
-      "history": [
-        {
-          "type": "pattern_added",
-          "timestamp": 1767925551903,
-          "data": {
-            "test": true
-          },
-          "score_delta": 5
-        },
-        {
-          "type": "pattern_added",
-          "timestamp": 1767925551904,
-          "data": {
-            "test": true
-          },
-          "score_delta": 5
-        },
-        {
-          "type": "code_commit",
-          "timestamp": 1767925551904,
-          "data": {
-            "test": true
-          },
-          "score_delta": 10
-        },
-        {
-          "type": "code_commit",
-          "timestamp": 1767925551904,
-          "data": {
-            "test": true
-          },
-          "score_delta": 10
-        },
-        {
-          "type": "review",
-          "timestamp": 1767925551905,
-          "data": {
-            "test": true
-          },
-          "score_delta": 4
-        }
-      ]
-    },
-    "bb79eb3b7d9e28f5": {
-      "id": "bb79eb3b7d9e28f5",
-      "identifier": "test-github-bob-1767925551899",
-      "type": "github",
-      "created_at": 1767925551901,
-      "last_active": 1767925551907,
-      "scores": {
-        "hold": 0,
-        "burn": 6,
-        "use": 1,
-        "build": 0,
-        "run": 0,
-        "refer": 8,
-        "time": 2.3148148148148148e-8
-      },
-      "contributions": {
-        "patterns_added": 0,
-        "decisions_recorded": 0,
-        "code_commits": 0,
-        "reviews_done": 0,
-        "burns_initiated": 3,
-        "referrals": 1
-      },
-      "trust_level": 1,
-      "e_score": 0.12,
-      "metadata": {
-        "display_name": "Bob",
-        "first_contribution": 1767925551905,
-        "rank": null
-      },
-      "history": [
-        {
-          "type": "burn",
-          "timestamp": 1767925551905,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "burn",
-          "timestamp": 1767925551906,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "burn",
-          "timestamp": 1767925551906,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "service_use",
-          "timestamp": 1767925551907,
-          "data": {
-            "test": true
-          },
-          "score_delta": 1
-        },
-        {
-          "type": "referral",
-          "timestamp": 1767925551907,
-          "data": {
-            "test": true
-          },
-          "score_delta": 8
-        }
-      ]
-    },
-    "6bfe221d16d2137e": {
-      "id": "6bfe221d16d2137e",
-      "identifier": "test-wallet-charlie-1767925551899",
-      "type": "wallet",
-      "created_at": 1767925551902,
-      "last_active": 1767925551909,
-      "scores": {
-        "hold": 0,
-        "burn": 2,
-        "use": 0,
-        "build": 5,
-        "run": 30,
-        "refer": 0,
-        "time": 2.7006172839506172e-8
-      },
-      "contributions": {
-        "patterns_added": 1,
-        "decisions_recorded": 0,
-        "code_commits": 0,
-        "reviews_done": 0,
-        "burns_initiated": 1,
-        "referrals": 0
-      },
-      "trust_level": 0,
-      "e_score": 0.67,
-      "metadata": {
-        "display_name": "Charlie",
-        "first_contribution": 1767925551908,
-        "rank": null
-      },
-      "history": [
-        {
-          "type": "infra_run",
-          "timestamp": 1767925551908,
-          "data": {
-            "test": true
-          },
-          "score_delta": 15
-        },
-        {
-          "type": "infra_run",
-          "timestamp": 1767925551908,
-          "data": {
-            "test": true
-          },
-          "score_delta": 15
-        },
-        {
-          "type": "burn",
-          "timestamp": 1767925551909,
-          "data": {
-            "test": true
-          },
-          "score_delta": 2
-        },
-        {
-          "type": "pattern_added",
-          "timestamp": 1767925551909,
-          "data": {
-            "test": true
-          },
-          "score_delta": 5
-        }
-      ]
-    }
+
+  "_kabbalah": {
+    "L1_core": "Chesed (expansion through creation)",
+    "L2_active": "Tiferet (beauty of learning)",
+    "L3_dependency": "Netzach (victory through persistence)",
+    "L4_infrastructure": "Yesod (foundation)",
+    "L5_foundation": "Malkhuth (kingdom manifested)"
   },
-  "count": 8
+
+  "count": {
+    "L1_core": 2,
+    "L2_active": 1,
+    "L3_dependency": 1,
+    "L4_infrastructure": 4,
+    "total_tracked": 8
+  }
 }

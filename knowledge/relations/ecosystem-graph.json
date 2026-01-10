@@ -162,27 +162,82 @@
       "sefirah": "Yesod-local",
       "role": "Local persistence, feeds into asdf-brain"
     },
-    "sollama58": {
-      "type": "contributor",
-      "role": "Production deployments, operations",
-      "trust_level": "core",
-      "contributions": 1102,
-      "context": "production"
+    "_contributors_philosophy": "Everyone who builds, even unknowingly, contributes to the singularity",
+    "_contributors_layers": {
+      "L1_core": "φ² weight - Direct ecosystem developers",
+      "L2_active": "φ weight - Learning developers",
+      "L3_dependency": "1.0 weight - Dependency developers (malgré eux)",
+      "L4_infrastructure": "φ⁻¹ weight - Infrastructure providers",
+      "L5_foundation": "φ⁻² weight - Foundation layer"
     },
+
     "zeyxx": {
       "type": "contributor",
-      "role": "Development, architecture",
+      "layer": "L1_core",
+      "sefirah": "Chesed",
+      "aliases": ["jeanterre552"],
+      "role": "Primary ecosystem developer, architecture",
       "trust_level": "core",
-      "contributions": 936,
-      "context": "development"
+      "context": "development",
+      "_contributions": "Discovered from git history"
+    },
+    "sollama58": {
+      "type": "contributor",
+      "layer": "L1_core",
+      "sefirah": "Chesed",
+      "aliases": ["Sollama"],
+      "role": "Production deployments, merge authority",
+      "trust_level": "core",
+      "context": "production",
+      "_contributions": "Discovered from git history"
     },
     "ragnar-no-sleep": {
       "type": "contributor",
-      "role": "asdf-brain development",
+      "layer": "L2_active",
+      "sefirah": "Tiferet",
+      "role": "Learning developer, asdf-brain exploration",
       "trust_level": "contributor",
-      "contributions": 0,
-      "context": "brain",
-      "joined": "2026-01-08"
+      "context": "learning",
+      "status": "growing",
+      "_note": "Intention matters - even without prod code"
+    },
+    "alex-newman": {
+      "type": "contributor",
+      "layer": "L3_dependency",
+      "sefirah": "Netzach",
+      "role": "claude-mem original developer",
+      "trust_level": "dependency",
+      "context": "upstream",
+      "status": "unconscious_contributor",
+      "_philosophy": "Contributes malgré lui"
+    },
+    "helius": {
+      "type": "infrastructure",
+      "layer": "L4_infrastructure",
+      "sefirah": "Yesod",
+      "role": "Solana RPC provider",
+      "contribution": "Every API call runs through their infrastructure"
+    },
+    "jupiter": {
+      "type": "infrastructure",
+      "layer": "L4_infrastructure",
+      "sefirah": "Yesod",
+      "role": "DEX aggregator",
+      "contribution": "All swaps route through Jupiter"
+    },
+    "anthropic": {
+      "type": "foundation",
+      "layer": "L5_foundation",
+      "sefirah": "Malkhuth-meta",
+      "role": "AI foundation - Claude",
+      "contribution": "The bedrock upon which asdf-brain thinks"
+    },
+    "solana-labs": {
+      "type": "foundation",
+      "layer": "L5_foundation",
+      "sefirah": "Malkhuth-chain",
+      "role": "Blockchain foundation",
+      "contribution": "The chain everything runs on"
     }
   },
 
@@ -334,11 +389,54 @@
       "type": "maintains",
       "context": "development"
     },
+
     {
       "from": "ragnar-no-sleep",
       "to": "asdf-brain",
-      "type": "contributes",
-      "context": "development"
+      "type": "learning",
+      "context": "development",
+      "status": "growing"
+    },
+    {
+      "from": "alex-newman",
+      "to": "claude-mem",
+      "type": "created",
+      "context": "upstream",
+      "_note": "Contributes malgré lui"
+    },
+    {
+      "from": "helius",
+      "to": "holdex",
+      "type": "powers",
+      "data_flow": ["RPC", "webhooks", "DAS_API"],
+      "description": "All Solana data flows through Helius"
+    },
+    {
+      "from": "helius",
+      "to": "gasdf",
+      "type": "powers",
+      "data_flow": ["transactions", "confirmations"],
+      "description": "Transaction infrastructure"
+    },
+    {
+      "from": "jupiter",
+      "to": "gasdf",
+      "type": "powers",
+      "data_flow": ["swaps", "quotes", "routes"],
+      "description": "All token swaps route through Jupiter"
+    },
+    {
+      "from": "anthropic",
+      "to": "asdf-brain",
+      "type": "powers",
+      "data_flow": ["intelligence", "reasoning", "analysis"],
+      "description": "Claude is the mind of asdf-brain"
+    },
+    {
+      "from": "solana-labs",
+      "to": "asdfasdfa",
+      "type": "hosts",
+      "description": "The blockchain where $asdfasdfa lives"
     },
 
     {
@@ -430,9 +528,15 @@
     "asdforecast": 1.0,
     "asdev": 1.0,
     "claude-mem": 0.618,
-    "sollama58": 2.618,
+    "_contributor_weights": "Layer-based φ weighting",
     "zeyxx": 2.618,
+    "sollama58": 2.618,
     "ragnar-no-sleep": 1.618,
+    "alex-newman": 1.0,
+    "helius": 0.618,
+    "jupiter": 0.618,
+    "anthropic": 0.382,
+    "solana-labs": 0.382,
 
     "_infrastructure_tokens": "Foundation layer - φ weight reflects systemic importance",
     "SOL": 2.618,

@@ -25,6 +25,8 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const gitIntel = require('../lib/git-intelligence');
+const repoDiscovery = require('../lib/repo-discovery');
+const { getOperatorLoader } = require('../lib/operator-loader');
 
 // =============================================================================
 // CONFIGURATION
@@ -68,6 +70,22 @@ function detectProject(cwd) {
   if (cwdLower.includes('forecast')) return 'asdforecast';
 
   return 'ecosystem';
+}
+
+/**
+ * Detect operator from git config (hardcoded command - safe from injection)
+ */
+function detectOperatorFromGit() {
+  try {
+    // Hardcoded git command - no user input - safe
+    const username = execSync('git config user.name', {
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'pipe']
+    }).trim();
+    return username || null;
+  } catch (e) {
+    return null;
+  }
 }
 
 // =============================================================================
@@ -239,6 +257,24 @@ async function awaken(options = {}) {
   // 1. Project Context
   log.info(`Project detected: ${project.toUpperCase()}`);
   log.info(`Working directory: ${cwd}`);
+
+  // 1b. Operator Context (if available)
+  let operatorContext = null;
+  const operatorId = options.operator || process.env.OPERATOR_ID || detectOperatorFromGit();
+  if (operatorId) {
+    try {
+      const loader = getOperatorLoader();
+      operatorContext = loader.getOperatorSummary(operatorId);
+      if (operatorContext) {
+        log.info(`Operator: ${operatorContext.displayName}`);
+        if (operatorContext.roles?.length > 0) {
+          console.log(`   Roles: ${operatorContext.roles.join(', ')}`);
+        }
+      }
+    } catch (e) {
+      // Operator loading is optional
+    }
+  }
   console.log('');
 
   // 2. Git Intelligence (branches, PRs, post-merge commits)
@@ -332,6 +368,37 @@ async function awaken(options = {}) {
     console.log('');
   }
 
+  // 2c. Auto-Discovered Repository Structure
+  if (!quiet) {
+    console.log('── DISCOVERED ECOSYSTEM ───────────────────────────────────');
+    try {
+      const ecosystem = repoDiscovery.discoverEcosystem();
+      const prodBranches = ecosystem.inferences?.prodBranches || {};
+
+      if (Object.keys(prodBranches).length > 0) {
+        for (const [repoName, inference] of Object.entries(prodBranches)) {
+          const confidence = Math.round((inference.confidence || 0) * 100);
+          log.vision(`${repoName.toUpperCase()} PROD: ${inference.remote}/${inference.branch} (${confidence}% confidence)`);
+        }
+      }
+
+      // Show operator insights if available
+      const operators = ecosystem.inferences?.primaryOperators || {};
+      const operatorSummary = new Set();
+      for (const [repo, branches] of Object.entries(operators)) {
+        for (const op of Object.values(branches)) {
+          operatorSummary.add(op);
+        }
+      }
+      if (operatorSummary.size > 0) {
+        log.info(`Active operators: ${[...operatorSummary].join(', ')}`);
+      }
+    } catch (e) {
+      log.info('Repository discovery: run manually for full analysis');
+    }
+    console.log('');
+  }
+
   // 3. Ecosystem Health
   console.log('── ECOSYSTEM HEALTH ───────────────────────────────────────');
   const health = loadHealth();
@@ -417,6 +484,7 @@ async function awaken(options = {}) {
   // Return structured data for programmatic use
   return {
     project,
+    operator: operatorContext,
     health: health?.overall_score || 0,
     alerts: {
       git: hasGitAlerts,

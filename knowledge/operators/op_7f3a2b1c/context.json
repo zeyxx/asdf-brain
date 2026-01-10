@@ -1,0 +1,85 @@
+{
+  "operatorId": "op_7f3a2b1c",
+  "currentSession": {
+    "id": "session-2026-01-09-01",
+    "startedAt": "2026-01-09T10:00:00Z",
+    "project": "HolDex",
+    "branch": "update-newdexsockets"
+  },
+  "activeWork": {
+    "HolDex": {
+      "status": "pr-pending-review",
+      "pr": {
+        "number": 7,
+        "repo": "sollama58/HolDex",
+        "title": "Critical Helius fix + Harmony v2.0 + Webhook Cost Reduction",
+        "status": "open",
+        "reviewedBy": null
+      },
+      "recentProblems": [
+        {
+          "id": "helius-credits-explosion",
+          "severity": "critical",
+          "status": "fixed",
+          "fixedAt": "2026-01-09T12:30:00Z",
+          "files": ["src/tasks/kScoreUpdater.js", "src/routes/webhooks.js"],
+          "rootCause": "TTL never reset by webhooks + delta mode disabled in webhook mode",
+          "impact": "~131 API calls per token instead of 0"
+        }
+      ],
+      "wipFiles": [
+        "src/services/feeDistribution.js",
+        "src/services/infraScore.js",
+        "src/services/nodeRewards.js"
+      ],
+      "recentlyModified": [
+        "src/tasks/kScoreUpdater.js",
+        "src/routes/webhooks.js",
+        "src/listener_worker.js",
+        "src/scripts/setup_new_token_webhook.js",
+        "src/scripts/test_new_token_webhook.js"
+      ]
+    },
+    "asdf-brain": {
+      "status": "active-development",
+      "recentWork": [
+        "Created git-intelligence.js",
+        "Created repo-discovery.js",
+        "Created feedback-ingestion.js",
+        "Rotated exposed Ed25519 key",
+        "Created operator memory system"
+      ],
+      "pendingTasks": [
+        "Index HolDex documentation",
+        "Implement cross-session memory",
+        "Add problem tracking system"
+      ]
+    }
+  },
+  "recentDecisions": [
+    {
+      "ts": "2026-01-09T12:45:00Z",
+      "decision": "Created PR instead of direct merge",
+      "rationale": "jeanterre552 cannot merge to sollama58/HolDex - needs review"
+    },
+    {
+      "ts": "2026-01-09T12:00:00Z",
+      "decision": "Fixed TTL in webhooks.js",
+      "rationale": "Root cause of Helius credit explosion identified"
+    },
+    {
+      "ts": "2026-01-09T11:00:00Z",
+      "decision": "Enabled delta mode in all webhook modes",
+      "rationale": "Delta should work as fallback when webhook cache expires"
+    }
+  ],
+  "openQuestions": [],
+  "knownPreferences": {
+    "language": "fr",
+    "codeComments": "en",
+    "commitMessages": "en",
+    "noHardcodedOperatorNames": true,
+    "brainShouldDiscover": true
+  },
+  "lastUpdated": "2026-01-09T13:00:00Z"
+}

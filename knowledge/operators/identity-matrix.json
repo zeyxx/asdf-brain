@@ -1,0 +1,74 @@
+{
+  "_metadata": {
+    "version": "2.0.0",
+    "updated": "2026-01-09",
+    "cleaned": "2026-01-09",
+    "philosophy": "Operators discovered from git history, not hardcoded",
+    "note": "Test data (Alex Newman) removed, identities unified"
+  },
+  "operators": {
+    "op_7f3a2b1c": {
+      "canonicalName": "zeyxx",
+      "displayName": "zeyxx",
+      "aliases": ["jeanterre552"],
+      "roles": ["primary-dev", "operator"],
+      "primaryProjects": ["HolDex", "GASdf", "asdf-brain"],
+      "authority": {
+        "HolDex": "dev",
+        "GASdf": "dev",
+        "asdf-brain": "owner"
+      },
+      "communicationStyle": {
+        "preferredLanguage": "fr",
+        "codeLanguage": "en",
+        "formality": "casual",
+        "detailLevel": "high"
+      },
+      "lastSeen": "2026-01-09T13:00:00Z",
+      "sessionCount": 1,
+      "_verifiedIn": ["HolDex git", "GASdf git"]
+    },
+    "op_9d4e5f6a": {
+      "canonicalName": "sollama58",
+      "displayName": "sollama58",
+      "aliases": ["Sollama", "sollama"],
+      "roles": ["maintainer", "merge-authority"],
+      "primaryProjects": ["HolDex"],
+      "authority": {
+        "HolDex": "merge"
+      },
+      "communicationStyle": {
+        "preferredLanguage": "en",
+        "codeLanguage": "en",
+        "formality": "professional",
+        "detailLevel": "concise"
+      },
+      "lastSeen": "2026-01-08T00:00:00Z",
+      "sessionCount": 0,
+      "_verifiedIn": ["HolDex git"]
+    }
+  },
+  "projectAuthority": {
+    "HolDex": {
+      "mergeAuthority": "op_9d4e5f6a",
+      "primaryDev": "op_7f3a2b1c",
+      "prodBranch": "NewDexSOCKETS",
+      "upstreamRepo": "sollama58/HolDex"
+    },
+    "GASdf": {
+      "mergeAuthority": "op_7f3a2b1c",
+      "primaryDev": "op_7f3a2b1c",
+      "prodBranch": "main"
+    },
+    "asdf-brain": {
+      "mergeAuthority": "op_7f3a2b1c",
+      "primaryDev": "op_7f3a2b1c",
+      "prodBranch": "main"
+    }
+  },
+  "_verifiedContributors": {
+    "_note": "Verified from git history 2026-01-09",
+    "HolDex": ["Sollama (321 commits)", "jeanterre552 (277 commits)"],
+    "GASdf": ["jeanterre552 (274 commits)"]
+  }
+}

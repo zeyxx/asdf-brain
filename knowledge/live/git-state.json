@@ -1,82 +1,53 @@
 {
-  "timestamp": "2026-01-09T12:33:02.530Z",
+  "timestamp": "2026-01-10T11:51:12.003Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-09T12:33:01.976Z",
+      "timestamp": "2026-01-10T11:51:11.344Z",
       "branch": {
-        "branch": "update-newdexsockets",
-        "modified": 1,
-        "untracked": 7,
+        "branch": "main",
+        "modified": 0,
+        "untracked": 0,
         "staged": 0,
-        "ahead": 0,
+        "ahead": 1,
         "behind": 0,
-        "clean": false,
+        "clean": true,
         "lastCommit": {
-          "hash": "6d617d3",
-          "subject": "chore(deps): sync versions with GASdf ecosystem",
-          "relative": "12 minutes ago"
+          "hash": "db43389",
+          "subject": "fix(database): Add null check for DATABASE_URL",
+          "relative": "52 seconds ago"
         }
       },
       "pr": {
-        "number": 6,
-        "title": "chore: Add CI pipeline, tests, and latest features",
+        "number": 3,
+        "title": "feat: Distributed Node Network with Ed25519 Signatures",
         "state": "closed",
-        "merged": true,
-        "mergedAt": "2026-01-08T18:58:59Z",
+        "merged": false,
+        "mergedAt": null,
         "draft": false,
         "author": "zeyxx"
       },
-      "postMergeCommits": [
-        {
-          "hash": "6d617d3",
-          "subject": "chore(deps): sync versions with GASdf ecosystem"
-        },
-        {
-          "hash": "29603dc",
-          "subject": "feat(harmony): Upgrade to v2.0 with φ-aligned constants"
-        },
-        {
-          "hash": "4bb9533",
-          "subject": "fix: Stats endpoint now properly tracks webhook events"
-        },
-        {
-          "hash": "73f0c37",
-          "subject": "refactor: Disable legacy token discovery in listener_worker"
-        },
-        {
-          "hash": "11639ff",
-          "subject": "feat: Add Helius webhook for new token discovery"
-        }
-      ],
+      "postMergeCommits": [],
       "drift": {
-        "drift": 9,
-        "ahead": 9,
-        "behind": 0,
-        "direction": "ahead"
+        "drift": 0,
+        "direction": "same"
       },
       "suggestions": [
         {
-          "priority": "high",
-          "type": "new_pr_needed",
-          "message": "5 commits on 'update-newdexsockets' since PR #6 was merged",
-          "action": "Create new PR for: chore(deps): sync versions with GASdf ecosystem, feat(harmony): Upgrade to v2.0 with φ-aligned constants, fix: Stats endpoint now properly tracks webhook events, refactor: Disable legacy token discovery in listener_worker, feat: Add Helius webhook for new token discovery",
-          "command": "gh pr create"
-        },
-        {
-          "priority": "low",
-          "type": "uncommitted_changes",
-          "message": "1 modified, 7 untracked",
-          "action": "Review and commit changes"
-        },
-        {
           "priority": "medium",
-          "type": "prod_drift",
-          "message": "9 commits ahead of production",
-          "action": "Consider merging to prod or creating PR"
+          "type": "push_needed",
+          "message": "1 unpushed commits on 'main'",
+          "action": "Push changes to remote",
+          "command": "git push"
         }
       ],
       "recentPRs": [
+        {
+          "number": 7,
+          "title": "fix(helius): Critical API credit explosion fix + H",
+          "state": "open",
+          "branch": "update-newdexsockets"
+        },
         {
           "number": 6,
           "title": "chore: Add CI pipeline, tests, and latest features",
@@ -100,18 +71,12 @@
           "title": "feat: Distributed Node Network with Ed25519 Signat",
           "state": "closed",
           "branch": "main"
-        },
-        {
-          "number": 2,
-          "title": "feat: K-Score v10 + Harmony E-Score + Security Har",
-          "state": "merged",
-          "branch": "kscore-v8-rebased"
         }
       ]
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-09T12:33:02.242Z",
+      "timestamp": "2026-01-10T11:51:11.643Z",
       "branch": {
         "branch": "main",
         "modified": 3,
@@ -123,7 +88,7 @@
         "lastCommit": {
           "hash": "8815174",
           "subject": "docs: Add data architecture reference to CLAUDE.md",
-          "relative": "3 days ago"
+          "relative": "4 days ago"
         }
       },
       "pr": null,
@@ -144,19 +109,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-09T12:33:02.530Z",
+      "timestamp": "2026-01-10T11:51:12.002Z",
       "branch": {
         "branch": "main",
-        "modified": 6,
-        "untracked": 3,
+        "modified": 7,
+        "untracked": 10,
         "staged": 1,
-        "ahead": 0,
+        "ahead": 1,
         "behind": 0,
         "clean": false,
         "lastCommit": {
-          "hash": "5bb89f1",
-          "subject": "chore: Auto-update brain knowledge",
-          "relative": "7 hours ago"
+          "hash": "1599cac",
+          "subject": "feat(metrics): Add I_infra metrics webhook",
+          "relative": "76 seconds ago"
         }
       },
       "pr": null,
@@ -167,9 +132,16 @@
       },
       "suggestions": [
         {
+          "priority": "medium",
+          "type": "push_needed",
+          "message": "1 unpushed commits on 'main'",
+          "action": "Push changes to remote",
+          "command": "git push"
+        },
+        {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "6 modified, 3 untracked, 1 staged",
+          "message": "7 modified, 10 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -178,26 +150,20 @@
   },
   "suggestions": [
     {
-      "priority": "high",
-      "type": "new_pr_needed",
-      "message": "5 commits on 'update-newdexsockets' since PR #6 was merged",
-      "action": "Create new PR for: chore(deps): sync versions with GASdf ecosystem, feat(harmony): Upgrade to v2.0 with φ-aligned constants, fix: Stats endpoint now properly tracks webhook events, refactor: Disable legacy token discovery in listener_worker, feat: Add Helius webhook for new token discovery",
-      "command": "gh pr create",
+      "priority": "medium",
+      "type": "push_needed",
+      "message": "1 unpushed commits on 'main'",
+      "action": "Push changes to remote",
+      "command": "git push",
       "repo": "holdex"
     },
     {
       "priority": "medium",
-      "type": "prod_drift",
-      "message": "9 commits ahead of production",
-      "action": "Consider merging to prod or creating PR",
-      "repo": "holdex"
-    },
-    {
-      "priority": "low",
-      "type": "uncommitted_changes",
-      "message": "1 modified, 7 untracked",
-      "action": "Review and commit changes",
-      "repo": "holdex"
+      "type": "push_needed",
+      "message": "1 unpushed commits on 'main'",
+      "action": "Push changes to remote",
+      "command": "git push",
+      "repo": "brain"
     },
     {
       "priority": "low",
@@ -209,15 +175,15 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "6 modified, 3 untracked, 1 staged",
+      "message": "7 modified, 10 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
   ],
   "summary": {
     "totalRepos": 3,
-    "highPriority": 1,
-    "mediumPriority": 1,
-    "lowPriority": 3
+    "highPriority": 0,
+    "mediumPriority": 2,
+    "lowPriority": 2
   }
 }
