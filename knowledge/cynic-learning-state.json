@@ -1,0 +1,73 @@
+{
+  "version": "1.0.0",
+  "timestamp": 1768088979912,
+  "history": [
+    {
+      "id": "jdg_1768087455398_17rs8d",
+      "timestamp": 1768087455398,
+      "item": "item_2rq739",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 30,
+        "INTEGRITY": 0,
+        "ETHICS": 100,
+        "OPTIMISM": 50,
+        "ALIGNMENT": 50,
+        "PROGRESS": 50,
+        "SECURE": 60,
+        "PRIVATE": 70,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 60,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 98
+      },
+      "global": 60,
+      "verdict": "TRANSFORM",
+      "confidence": 60,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768088672027_yzlbvc",
+      "timestamp": 1768088672027,
+      "item": "item_7a9d4x",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 30,
+        "INTEGRITY": 0,
+        "ETHICS": 100,
+        "OPTIMISM": 50,
+        "ALIGNMENT": 50,
+        "PROGRESS": 50,
+        "SECURE": 60,
+        "PRIVATE": 70,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 60,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 98
+      },
+      "global": 60,
+      "verdict": "TRANSFORM",
+      "confidence": 60,
+      "outcome": "unknown",
+      "reward": 0
+    }
+  ],
+  "thresholds": {},
+  "stats": {
+    "totalJudgments": 2,
+    "correctAccepts": 0,
+    "correctTransforms": 0,
+    "falsePositives": 0,
+    "falseNegatives": 0,
+    "totalReward": 0,
+    "learningIterations": 0,
+    "thresholdAdjustments": {}
+  }
+}

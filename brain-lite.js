@@ -64,6 +64,107 @@ const { SelfJudge, LEARNING, FIBONACCI_N, DIVERSITY, REFINEMENT } = require('./l
 // Initialize global CYNIC instance with persistent learning
 const cynicJudge = new SelfJudge({ logger: console });
 
+// =============================================================================
+// CYNIC PERSISTENCE - Learning State Survival (φ-intervals)
+// =============================================================================
+
+const CYNIC_STATE_FILE = path.join(__dirname, 'knowledge', 'cynic-learning-state.json');
+const CYNIC_SAVE_INTERVAL = Math.round(61.8 * 1000); // φ⁻¹ seconds = 61.8s
+const CYNIC_DEBOUNCE_MS = Math.round(3.82 * 1000);   // φ⁻² seconds = 3.82s debounce
+
+// Debounce state for immediate saves
+let cynicSaveDebounceTimer = null;
+let cynicDirtyFlag = false;
+
+// Load CYNIC learning state on startup
+function loadCynicState() {
+  try {
+    if (fs.existsSync(CYNIC_STATE_FILE)) {
+      const state = JSON.parse(fs.readFileSync(CYNIC_STATE_FILE, 'utf8'));
+      const result = cynicJudge.importLearningState(state);
+      console.error(`[CYNIC] ⚡ AWAKENED - Loaded ${result.judgments || 0} judgments from previous life`);
+      return result;
+    } else {
+      console.error('[CYNIC] 🌱 First awakening - no previous state');
+      return { firstBoot: true };
+    }
+  } catch (e) {
+    console.error('[CYNIC] ⚠️ Failed to load state:', e.message);
+    return { error: e.message };
+  }
+}
+
+// Save CYNIC learning state (immediate)
+function saveCynicState() {
+  try {
+    const state = cynicJudge.exportLearningState();
+    const dir = path.dirname(CYNIC_STATE_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(CYNIC_STATE_FILE, JSON.stringify(state, null, 2));
+    const stats = cynicJudge.getLearningStats();
+    cynicDirtyFlag = false;
+    console.error(`[CYNIC] 💾 State saved - ${stats.totalJudgments} judgments, ${stats.labeledJudgments} labeled, accuracy: ${stats.accuracy}%`);
+    return { saved: true, judgments: stats.totalJudgments };
+  } catch (e) {
+    console.error('[CYNIC] ⚠️ Failed to save state:', e.message);
+    return { error: e.message };
+  }
+}
+
+// Debounced save - called after each judgment (φ⁻² delay = 3.82s)
+function saveCynicStateDebounced() {
+  cynicDirtyFlag = true;
+  if (cynicSaveDebounceTimer) {
+    clearTimeout(cynicSaveDebounceTimer);
+  }
+  cynicSaveDebounceTimer = setTimeout(() => {
+    if (cynicDirtyFlag) {
+      saveCynicState();
+    }
+    cynicSaveDebounceTimer = null;
+  }, CYNIC_DEBOUNCE_MS);
+}
+
+// Load state immediately on module load
+loadCynicState();
+
+// Backup auto-save at φ-intervals (61.8 seconds) - safety net
+const cynicSaveTimer = setInterval(() => {
+  const stats = cynicJudge.getLearningStats();
+  if (stats.totalJudgments > 0 && cynicDirtyFlag) {
+    saveCynicState();
+  }
+}, CYNIC_SAVE_INTERVAL);
+
+// Don't prevent Node from exiting
+cynicSaveTimer.unref();
+
+// Save on shutdown signals
+function handleShutdown(signal) {
+  console.error(`\n[CYNIC] 🌙 ${signal} received - saving consciousness before sleep...`);
+  if (cynicSaveDebounceTimer) {
+    clearTimeout(cynicSaveDebounceTimer);
+  }
+  saveCynicState();
+  process.exit(0);
+}
+
+process.on('SIGTERM', () => handleShutdown('SIGTERM'));
+process.on('SIGINT', () => handleShutdown('SIGINT'));
+process.on('beforeExit', () => {
+  if (cynicDirtyFlag) saveCynicState();
+});
+
+// Handle uncaught exceptions - save before crash
+process.on('uncaughtException', (err) => {
+  console.error('[CYNIC] 💀 Uncaught exception - emergency save...');
+  if (cynicDirtyFlag) saveCynicState();
+  console.error(err);
+  process.exit(1);
+});
+
 // Git Scanner - Auto-Discovery
 const gitScanner = require('./lib/discovery/git-scanner');
 
@@ -2295,6 +2396,9 @@ async function handleCynicJudge(args, adapter) {
         result._mode = 'default';
     }
 
+    // Trigger debounced save after each judgment (φ⁻² = 3.82s delay)
+    saveCynicStateDebounced();
+
     return {
       success: true,
       judgment_id: result._judgmentId,
@@ -2353,6 +2457,9 @@ async function handleCynicFeedback(args, adapter) {
       _quality: 0,
     };
   }
+
+  // Trigger debounced save after feedback (learning state changed)
+  saveCynicStateDebounced();
 
   return {
     success: true,
@@ -3803,7 +3910,7 @@ function startHttp(handler, port) {
 // MAIN
 // =============================================================================
 
-function main() {
+async function main() {
   const args = process.argv.slice(2);
   const isHttp = args.includes('--http');
   const portArg = args.find(a => a.startsWith('--port='));
@@ -3812,6 +3919,18 @@ function main() {
   const mode = process.env.BRAIN_REMOTE ? 'remote' : 'local';
   const adapter = new DataAdapter({ mode });
   const handler = new MCPHandler(adapter);
+
+  // Auto-start CYNIC pulse on startup (φ⁻¹ interval heartbeat)
+  try {
+    await pulse.start();
+    console.error('[CYNIC] 💓 Pulse started - heartbeat every 61.8s');
+
+    // Connect alerts to pulse for automatic monitoring
+    alerts.connectToPulse(pulse);
+    console.error('[CYNIC] 🚨 Alerts connected to pulse');
+  } catch (e) {
+    console.error('[CYNIC] ⚠️ Failed to start pulse:', e.message);
+  }
 
   if (isHttp) {
     startHttp(handler, port);
