@@ -125,7 +125,7 @@ const TOOLS = {
       properties: {
         query: { type: 'string', description: 'Search query' },
         limit: { type: 'number', description: 'Max results (default 10)' },
-        lang: { type: 'string', description: 'Filter by language (en, fr, es, de, mixed)' },
+        lang: { type: 'string', description: 'Filter by language (en, fr, es, de, it, pt, mixed)' },
       },
       required: ['query'],
     },
