@@ -126,7 +126,7 @@ function addToHistory(history, snapshot, signature) {
 // Pre-flight Checks
 // ============================================================================
 
-async function preflight(publisher, collector) {
+async function preflight(publisher, collector, dryRun = false) {
   const checks = {
     wallet: false,
     balance: false,
@@ -134,28 +134,35 @@ async function preflight(publisher, collector) {
     knowledge: false,
   };
 
-  // Check wallet
-  try {
-    const balance = await publisher.getBalance();
-    checks.wallet = true;
-    checks.balance = balance > 10_000_000; // > 0.01 SOL
-    if (!checks.balance) {
-      await notify(`Low balance: ${(balance / 1e9).toFixed(4)} SOL`, 'warning');
+  // Skip wallet/program checks if no publisher (dry-run without keypair)
+  if (!publisher) {
+    checks.wallet = dryRun; // OK for dry-run
+    checks.balance = dryRun;
+    checks.program = dryRun;
+  } else {
+    // Check wallet
+    try {
+      const balance = await publisher.getBalance();
+      checks.wallet = true;
+      checks.balance = balance > 10_000_000; // > 0.01 SOL
+      if (!checks.balance) {
+        await notify(`Low balance: ${(balance / 1e9).toFixed(4)} SOL`, 'warning');
+      }
+    } catch (err) {
+      await notify(`Wallet error: ${err.message}`, 'error');
+      if (!dryRun) return checks;
     }
-  } catch (err) {
-    await notify(`Wallet error: ${err.message}`, 'error');
-    return checks;
-  }
 
-  // Check program
-  try {
-    const config = await publisher.getConfig();
-    checks.program = !!config;
-    if (!checks.program) {
-      await notify('Program not initialized', 'error');
+    // Check program
+    try {
+      const config = await publisher.getConfig();
+      checks.program = !!config;
+      if (!checks.program) {
+        await notify('Program not initialized', 'error');
+      }
+    } catch (err) {
+      await notify(`Program error: ${err.message}`, 'error');
     }
-  } catch (err) {
-    await notify(`Program error: ${err.message}`, 'error');
   }
 
   // Check knowledge
@@ -186,13 +193,25 @@ async function runWeeklySnapshot(options = {}) {
   console.log();
 
   const network = process.env.SOLANA_NETWORK || 'devnet';
-  const publisher = new SolanaPublisher(network);
   const collector = new KnowledgeCollector();
   const history = loadHistory();
 
+  // In dry-run mode, skip Solana publisher if no keypair configured
+  let publisher = null;
+  if (!dryRun) {
+    publisher = new SolanaPublisher(network);
+  } else {
+    try {
+      publisher = new SolanaPublisher(network);
+    } catch (err) {
+      console.log('⚠️  No Solana keypair configured (OK for dry-run)');
+      publisher = null;
+    }
+  }
+
   // Pre-flight checks
   console.log('🔍 Running pre-flight checks...');
-  const checks = await preflight(publisher, collector);
+  const checks = await preflight(publisher, collector, dryRun);
 
   const allPassed = Object.values(checks).every(v => v);
   console.log(`   Wallet: ${checks.wallet ? '✓' : '✗'}`);
