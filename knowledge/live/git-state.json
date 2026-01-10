@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-10T16:31:07.964Z",
+  "timestamp": "2026-01-10T18:32:52.369Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-10T16:31:06.888Z",
+      "timestamp": "2026-01-10T18:32:50.582Z",
       "branch": {
         "branch": "main",
         "modified": 0,
@@ -13,9 +13,9 @@
         "behind": 0,
         "clean": true,
         "lastCommit": {
-          "hash": "9118ad0",
-          "subject": "fix(webhooks): Prevent duplicate judgments + reduce log spam",
-          "relative": "3 minutes ago"
+          "hash": "9c613a6",
+          "subject": "fix(rpc): Fix undefined connection in volume_tracker retryRPC calls",
+          "relative": "12 minutes ago"
         }
       },
       "pr": {
@@ -68,19 +68,19 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-10T16:31:07.435Z",
+      "timestamp": "2026-01-10T18:32:51.634Z",
       "branch": {
         "branch": "main",
         "modified": 0,
         "untracked": 0,
         "staged": 0,
-        "ahead": 1,
+        "ahead": 0,
         "behind": 0,
         "clean": true,
         "lastCommit": {
           "hash": "5d6474e",
           "subject": "chore: Add .mcp.json to gitignore",
-          "relative": "13 seconds ago"
+          "relative": "2 hours ago"
         }
       },
       "pr": null,
@@ -89,32 +89,24 @@
         "drift": 0,
         "direction": "same"
       },
-      "suggestions": [
-        {
-          "priority": "medium",
-          "type": "push_needed",
-          "message": "1 unpushed commits on 'main'",
-          "action": "Push changes to remote",
-          "command": "git push"
-        }
-      ],
+      "suggestions": [],
       "recentPRs": []
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-10T16:31:07.964Z",
+      "timestamp": "2026-01-10T18:32:52.369Z",
       "branch": {
         "branch": "main",
-        "modified": 4,
+        "modified": 28,
         "untracked": 0,
         "staged": 1,
         "ahead": 0,
         "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "4297558",
-          "subject": "chore: Clean up claude-mem test entries",
-          "relative": "2 minutes ago"
+          "hash": "1f86534",
+          "subject": "docs: Add comprehensive state machine diagrams",
+          "relative": "63 minutes ago"
         }
       },
       "pr": null,
@@ -134,7 +126,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "4 modified, 1 staged",
+          "message": "28 modified, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -142,14 +134,6 @@
     }
   },
   "suggestions": [
-    {
-      "priority": "medium",
-      "type": "push_needed",
-      "message": "1 unpushed commits on 'main'",
-      "action": "Push changes to remote",
-      "command": "git push",
-      "repo": "gasdf"
-    },
     {
       "priority": "medium",
       "type": "pull_needed",
@@ -161,7 +145,7 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "4 modified, 1 staged",
+      "message": "28 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
@@ -169,7 +153,7 @@
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 2,
+    "mediumPriority": 1,
     "lowPriority": 1
   }
 }

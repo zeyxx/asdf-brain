@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-10T16:31:14.150Z",
+  "timestamp": "2026-01-10T18:25:35.545Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -30,11 +30,11 @@
           ],
           "patterns": {
             "hotfixes": 9,
-            "features": 6,
+            "features": 5,
             "structured": 10,
             "quickFixes": 0
           },
-          "avgMessageLength": 53.2,
+          "avgMessageLength": 51.75,
           "inferredRole": "production",
           "prodScore": 28
         }
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T16:31:08.077Z"
+      "discoveredAt": "2026-01-10T18:25:21.086Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -111,12 +111,12 @@
             "jeanterre552"
           ],
           "patterns": {
-            "hotfixes": 6,
-            "features": 8,
-            "structured": 12,
+            "hotfixes": 13,
+            "features": 4,
+            "structured": 5,
             "quickFixes": 0
           },
-          "avgMessageLength": 54.05
+          "avgMessageLength": 57.4
         },
         "origin/update-newdexsockets": {
           "branch": "update-newdexsockets",
@@ -147,7 +147,9 @@
             "structured": 0,
             "quickFixes": 19
           },
-          "avgMessageLength": 9.4
+          "avgMessageLength": 9.4,
+          "inferredRole": "production",
+          "prodScore": 70.5
         },
         "upstream/NewDexSOCKETS": {
           "branch": "NewDexSOCKETS",
@@ -157,14 +159,12 @@
             "Sollama"
           ],
           "patterns": {
-            "hotfixes": 9,
+            "hotfixes": 2,
             "features": 0,
             "structured": 0,
             "quickFixes": 19
           },
-          "avgMessageLength": 11.9,
-          "inferredRole": "production",
-          "prodScore": 76.5
+          "avgMessageLength": 12.25
         },
         "upstream/main": {
           "branch": "main",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T16:31:08.396Z"
+      "discoveredAt": "2026-01-10T18:25:24.278Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -292,11 +292,11 @@
           ],
           "patterns": {
             "hotfixes": 1,
-            "features": 6,
+            "features": 4,
             "structured": 19,
             "quickFixes": 0
           },
-          "avgMessageLength": 43.95,
+          "avgMessageLength": 41.7,
           "inferredRole": "production",
           "prodScore": 3.000000000000001
         }
@@ -317,7 +317,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T16:31:08.474Z"
+      "discoveredAt": "2026-01-10T18:25:26.044Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -367,7 +367,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T16:31:08.550Z"
+      "discoveredAt": "2026-01-10T18:25:26.376Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5936,7 +5936,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T16:31:14.150Z"
+      "discoveredAt": "2026-01-10T18:25:35.542Z"
     }
   },
   "crossRepoSync": {},
@@ -5948,9 +5948,9 @@
         "confidence": 0.28
       },
       "holdex": {
-        "branch": "NewDexSOCKETS",
+        "branch": "NewDEX",
         "remote": "upstream",
-        "confidence": 0.765
+        "confidence": 0.705
       },
       "asdf-brain": {
         "branch": "main",

@@ -40,12 +40,20 @@
     "brain:weekly:dry": "node scripts/weekly-snapshot.js --dry-run",
     "brain:all": "npm run brain:index && npm run brain:intent && npm run brain:patterns && npm run brain:errors && npm run brain:evolution && npm run brain:philosophy && npm run brain:deps && npm run brain:health && npm run brain:vision && npm run brain:merkle"
   },
-  "keywords": ["asdfasdfa", "solana", "knowledge", "ai", "mcp", "claude"],
+  "keywords": [
+    "asdfasdfa",
+    "solana",
+    "knowledge",
+    "ai",
+    "mcp",
+    "claude"
+  ],
   "license": "MIT",
   "dependencies": {
-    "express": "^4.21.0",
-    "cors": "^2.8.5",
     "@solana/web3.js": "^1.95.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "ioredis": "^5.9.1",
     "js-sha3": "^0.9.3"
   }
 }
