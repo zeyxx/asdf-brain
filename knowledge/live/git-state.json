@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-01-10T12:34:42.264Z",
+  "timestamp": "2026-01-10T13:12:11.215Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-10T12:34:41.551Z",
+      "timestamp": "2026-01-10T13:12:10.175Z",
       "branch": {
         "branch": "main",
-        "modified": 2,
+        "modified": 0,
         "untracked": 0,
-        "staged": 1,
-        "ahead": 0,
+        "staged": 0,
+        "ahead": 1,
         "behind": 0,
-        "clean": false,
+        "clean": true,
         "lastCommit": {
-          "hash": "1f88e79",
-          "subject": "fix(lint): Resolve 8 ESLint errors for CI",
-          "relative": "6 minutes ago"
+          "hash": "ce3e654",
+          "subject": "perf(rpc): Aggressive caching to reduce Helius credit consumption",
+          "relative": "11 seconds ago"
         }
       },
       "pr": {
@@ -34,10 +34,11 @@
       },
       "suggestions": [
         {
-          "priority": "low",
-          "type": "uncommitted_changes",
-          "message": "2 modified, 1 staged",
-          "action": "Review and commit changes"
+          "priority": "medium",
+          "type": "push_needed",
+          "message": "1 unpushed commits on 'main'",
+          "action": "Push changes to remote",
+          "command": "git push"
         }
       ],
       "recentPRs": [
@@ -75,19 +76,19 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-10T12:34:41.897Z",
+      "timestamp": "2026-01-10T13:12:10.685Z",
       "branch": {
         "branch": "main",
-        "modified": 0,
-        "untracked": 1,
-        "staged": 0,
+        "modified": 1,
+        "untracked": 0,
+        "staged": 1,
         "ahead": 0,
         "behind": 0,
         "clean": false,
         "lastCommit": {
           "hash": "fe2c267",
           "subject": "security: Replace test private keys with clear placeholders",
-          "relative": "2 minutes ago"
+          "relative": "40 minutes ago"
         }
       },
       "pr": null,
@@ -100,7 +101,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "1 untracked",
+          "message": "1 modified, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -108,19 +109,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-10T12:34:42.264Z",
+      "timestamp": "2026-01-10T13:12:11.215Z",
       "branch": {
         "branch": "main",
-        "modified": 2,
-        "untracked": 0,
+        "modified": 5,
+        "untracked": 1,
         "staged": 1,
         "ahead": 0,
-        "behind": 1,
+        "behind": 0,
         "clean": false,
         "lastCommit": {
-          "hash": "bc8731d",
-          "subject": "chore: Resolve merge and sync state",
-          "relative": "19 minutes ago"
+          "hash": "a8746d3",
+          "subject": "chore: Auto-update brain knowledge",
+          "relative": "12 minutes ago"
         }
       },
       "pr": null,
@@ -131,16 +132,9 @@
       },
       "suggestions": [
         {
-          "priority": "medium",
-          "type": "pull_needed",
-          "message": "1 commits behind remote",
-          "action": "Pull latest changes",
-          "command": "git pull"
-        },
-        {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "2 modified, 1 staged",
+          "message": "5 modified, 1 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -150,30 +144,23 @@
   "suggestions": [
     {
       "priority": "medium",
-      "type": "pull_needed",
-      "message": "1 commits behind remote",
-      "action": "Pull latest changes",
-      "command": "git pull",
-      "repo": "brain"
-    },
-    {
-      "priority": "low",
-      "type": "uncommitted_changes",
-      "message": "2 modified, 1 staged",
-      "action": "Review and commit changes",
+      "type": "push_needed",
+      "message": "1 unpushed commits on 'main'",
+      "action": "Push changes to remote",
+      "command": "git push",
       "repo": "holdex"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "1 untracked",
+      "message": "1 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "gasdf"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "2 modified, 1 staged",
+      "message": "5 modified, 1 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
@@ -182,6 +169,6 @@
     "totalRepos": 3,
     "highPriority": 0,
     "mediumPriority": 1,
-    "lowPriority": 3
+    "lowPriority": 2
   }
 }
