@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T11:55:00.826Z",
+    "generated": "2026-01-10T12:14:33.223Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -91,6 +91,7 @@
           "./routes/space": 1,
           "./routes/nodes": 1,
           "./services/heliusWebhook": 1,
+          "./services/brainReporter": 1,
           "./services/tokenQueue": 2,
           "./services/signalAccumulator": 1,
           "./tasks/tokenCatchup": 1,
@@ -135,7 +136,8 @@
           "../services/priceProvider": 2,
           "../utils/dataSignature": 10,
           "../tasks/integrityWatchdog": 1,
-          "./logger": 32,
+          "./logger": 33,
+          "./rpcHealth": 2,
           "./redis": 19,
           "./solana": 5,
           "./nodeService": 1,
@@ -151,7 +153,6 @@
           "./priceService": 1,
           "./rpcProvider": 2,
           "../logger": 2,
-          "./rpcHealth": 1,
           "./heliusRateLimiter": 1,
           "./providers/helius": 1,
           "./providers/public": 1,
@@ -204,7 +205,7 @@
           "child_process": 1,
           "http": 2,
           "crypto": 23,
-          "https": 1
+          "https": 2
         }
       }
     },
