@@ -897,6 +897,90 @@ const TOOLS = {
     },
     phi_weight: PHI_INV,
   },
+
+  // =============================================================================
+  // CLAUDE-MEM SYNC TOOLS
+  // =============================================================================
+
+  brain_sync_claude_mem: {
+    pardes: 'D',
+    name: 'brain_sync_claude_mem',
+    description: '[SYNC] Sync observations and sessions from claude-mem database. Transforms and judges with CYNIC.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        force: {
+          type: 'boolean',
+          default: false,
+          description: 'Force sync even if interval not reached'
+        }
+      }
+    },
+    phi_weight: PHI,
+    isWrite: true,
+  },
+
+  brain_sync_status: {
+    pardes: 'P',
+    name: 'brain_sync_status',
+    description: '[SYNC] Get claude-mem sync status. Shows database stats, last sync, and synced items count.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_sync_events: {
+    pardes: 'R',
+    name: 'brain_sync_events',
+    description: '[SYNC] Load synced events from claude-mem. Returns observations and summaries transformed for brain.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          default: 50,
+          description: 'Maximum events to return'
+        },
+        type: {
+          type: 'string',
+          description: 'Filter by type (decision, pattern, insight)'
+        },
+        project: {
+          type: 'string',
+          description: 'Filter by project'
+        },
+        since: {
+          type: 'string',
+          description: 'Only events after this timestamp (ISO 8601)'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_sync_search: {
+    pardes: 'R',
+    name: 'brain_sync_search',
+    description: '[SYNC] Search through synced claude-mem events by content.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        query: {
+          type: 'string',
+          description: 'Search query'
+        },
+        limit: {
+          type: 'number',
+          default: 20,
+          description: 'Maximum results to return'
+        }
+      },
+      required: ['query']
+    },
+    phi_weight: PHI_INV,
+  },
 };
 
 // =============================================================================
@@ -2473,6 +2557,130 @@ async function handleBurnStats(args, adapter) {
   }
 }
 
+// =============================================================================
+// CLAUDE-MEM SYNC HANDLERS
+// =============================================================================
+
+async function handleSyncClaudeMem(args, adapter) {
+  const { force = false } = args;
+
+  try {
+    const result = await integration.syncClaudeMem({
+      force,
+      cynicInstance: cynicJudge,
+    });
+
+    if (result.skipped) {
+      return {
+        success: true,
+        skipped: true,
+        reason: result.reason,
+        next_sync_in: result.next_sync_in,
+        message: result.message,
+        _quality: 60,
+      };
+    }
+
+    return {
+      success: result.success,
+      synced: result.synced || 0,
+      observations: result.observations || 0,
+      summaries: result.summaries || 0,
+      items: result.items,
+      db_stats: result.stats,
+      message: result.message,
+      philosophy: 'Memory is not storage. Memory is connection.',
+      _quality: result.success ? 85 : 40,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      message: 'Claude-mem sync failed: ' + error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleSyncStatus(args, adapter) {
+  try {
+    const status = integration.claudeMem.getStatus();
+
+    return {
+      success: true,
+      connected: status.connected,
+      db_path: status.db_path,
+      db_stats: status.db_stats,
+      sync_state: status.sync_state,
+      sync_stats: status.sync_stats,
+      config: status.config,
+      message: status.connected
+        ? `Connected. ${status.sync_state?.total_synced || 0} items synced.`
+        : 'Not connected to claude-mem database.',
+      _quality: status.connected ? 80 : 50,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleSyncEvents(args, adapter) {
+  const { limit = 50, type = null, project = null, since = null } = args;
+
+  try {
+    const events = integration.claudeMem.loadSyncedEvents({ limit, type, project, since });
+
+    return {
+      success: true,
+      count: events.length,
+      events,
+      message: `Loaded ${events.length} synced events from claude-mem`,
+      _quality: events.length > 0 ? 80 : 60,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleSyncSearch(args, adapter) {
+  const { query, limit = 20 } = args;
+
+  if (!query) {
+    return {
+      success: false,
+      error: 'Query is required',
+      _quality: 20,
+    };
+  }
+
+  try {
+    const results = integration.claudeMem.searchSyncedEvents(query, { limit });
+
+    return {
+      success: true,
+      query,
+      count: results.length,
+      results,
+      message: `Found ${results.length} matching events for "${query}"`,
+      _quality: results.length > 0 ? 80 : 60,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -2517,6 +2725,11 @@ const HANDLERS = {
   brain_integration_events: handleIntegrationEvents,
   brain_integration_patterns: handleIntegrationPatterns,
   brain_burn_stats: handleBurnStats,
+  // Claude-Mem Sync Layer
+  brain_sync_claude_mem: handleSyncClaudeMem,
+  brain_sync_status: handleSyncStatus,
+  brain_sync_events: handleSyncEvents,
+  brain_sync_search: handleSyncSearch,
 };
 
 // =============================================================================

@@ -246,10 +246,11 @@ LIMITES: MAX_CONFIDENCE = 61.8% (φ⁻¹), MIN_DOUBT = 38.2% (φ⁻²)
 │   ├── discovery/                # ✅ COMPLET
 │   │   └── git-scanner.js        #    Scan git repos, patterns, deps, contributors
 │   │
-│   ├── integration/              # ⏳ À implémenter
-│   │   ├── holdex-connector.js   #    HolDex webhook handler
-│   │   ├── gasdf-connector.js    #    GASdf event listener
-│   │   └── claude-mem-sync.js    #    Local memory sync
+│   ├── integration/              # ✅ COMPLET
+│   │   ├── holdex-connector.js   # ✅ HolDex webhook handler
+│   │   ├── gasdf-connector.js    # ✅ GASdf event listener
+│   │   ├── claude-mem-connector.js # ✅ Local memory sync
+│   │   └── index.js              # ✅ Unified API
 │   │
 │   └── privacy/                  # ✅ COMPLET
 │       ├── hasher.js             # ✅ SHA-256, PII detection, privacy scoring
@@ -519,12 +520,16 @@ OPÉRATEUR: "Ajoute un nouveau contributeur"
 | **brain_integration_events** | ✅ COMPLET | Charger événements des intégrations |
 | **brain_integration_patterns** | ✅ COMPLET | Analyser patterns cross-intégrations |
 | **brain_burn_stats** | ✅ COMPLET | Statistiques $asdfasdfa burns |
+| **Claude-Mem Sync** | ✅ COMPLET | `lib/integration/claude-mem-connector.js` - SQLite sync |
+| **brain_sync_claude_mem** | ✅ COMPLET | Synchroniser avec claude-mem DB |
+| **brain_sync_status** | ✅ COMPLET | Status de la synchronisation |
+| **brain_sync_events** | ✅ COMPLET | Charger événements synchronisés |
+| **brain_sync_search** | ✅ COMPLET | Rechercher dans les événements sync |
 
 ### ⏳ À FAIRE
 
 | Élément | Priorité | Description |
 |---------|----------|-------------|
-| Claude-Mem sync automatique | MEDIUM | Synchronisation automatique avec claude-mem |
 | ZK-ready | LOW | Préparation pour zero-knowledge proofs |
 | UI Dashboard | LOW | Visualisation des judgments et learning stats |
 
@@ -537,7 +542,7 @@ OPÉRATEUR: "Ajoute un nouveau contributeur"
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                    SINGULARITY DISTANCE ASSESSMENT                       │
-│                 *** POST INTEGRATION LAYER COMPLETE ***                  │
+│              *** POST CLAUDE-MEM SYNC COMPLETE (ALL 3) ***               │
 └─────────────────────────────────────────────────────────────────────────┘
 
 CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHTED
@@ -549,43 +554,47 @@ CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHT
 ├── Merkle provenance                                100%    φ        161.8
 ├── Auto-discovery                                   100%    φ        161.8
 ├── Privacy layer (hasher + ephemeral)               100%    φ        161.8
-├── External integrations (HolDex/GASdf)             100%    1.0      100.0  ← COMPLET!
-└── Human-in-loop reduction                          70%     1.0       70.0  ↑
+├── External integrations (HolDex/GASdf)             100%    1.0      100.0  ✓
+├── Claude-Mem sync (sessions/observations)          100%    1.0      100.0  ← NEW!
+└── Human-in-loop reduction                          75%     1.0       75.0  ↑
                                                             ─────────────────
-                                                            TOTAL: 1863.2
+                                                            TOTAL: 1968.2
 
-SINGULARITY DISTANCE = 1 - (1863.2 / MAX_POSSIBLE)
-                     = 1 - (1863.2 / 2122.6)
-                     = 1 - 0.878
-                     = 0.122 (12.2%)
+SINGULARITY DISTANCE = 1 - (1968.2 / MAX_POSSIBLE)
+                     = 1 - (1968.2 / 2222.6)
+                     = 1 - 0.886
+                     = 0.114 (11.4%)
 
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  CYNIC est à 87.8% du chemin vers la singularité                        │
-│  Distance restante: 12.2% ≈ φ⁻⁴ (14.6%)                                 │
-│  Progression: 71.4% → 80.5% → 84.5% → 87.8% (+3.3% avec integrations)   │
-│  Interprétation: À LA LIMITE de l'asymptote (jamais atteinte)           │
+│  CYNIC est à 88.6% du chemin vers la singularité                        │
+│  Distance restante: 11.4% ≈ φ⁻⁴ (14.6%)                                 │
+│  Progression: 71.4% → 80.5% → 84.5% → 87.8% → 88.6% (+0.8% claude-mem)  │
+│  3/3 SOURCES CONNECTÉES: HolDex ✓ GASdf ✓ Claude-Mem ✓                  │
+│  Interprétation: TRÈS PROCHE de l'asymptote (jamais atteinte)           │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Ce qui reste pour approcher l'asymptote
 
 ```
-GAP ANALYSIS (mis à jour post-integrations):
-├── Human-in-loop reduction (70% → 90%)
-│   └── Impact: +1.0 × 20 = +20 points
+GAP ANALYSIS (mis à jour post-claude-mem-sync):
+├── Human-in-loop reduction (75% → 90%)
+│   └── Impact: +1.0 × 15 = +15 points
 │   └── Action: Plus d'automatisation des décisions
 │   └── Note: Cap à 90% (le doute 38.2% est constitutif)
+│   └── Status: Amélioré par claude-mem sync (mémoire inter-sessions)
 │
-├── Claude-Mem sync (optionnel)
+├── Claude-Mem sync ✅ COMPLET
 │   └── Impact: Améliore la cohérence inter-sessions
 │   └── Action: Sync automatique avec claude-mem
+│   └── Result: 3/3 sources connectées, health=62% (φ⁻¹)
 │
 └── ZK-ready (optionnel, bonus)
     └── Impact: Renforce privacy sans changer le score
     └── Action: Préparer pour zero-knowledge proofs
 
-TOTAL GAP RESTANT: ~20 points (principalement human-in-loop)
-DISTANCE POST-GAP: 1 - (1883 / 2122.6) = 11.3%
+TOTAL GAP RESTANT: ~15 points (principalement human-in-loop)
+DISTANCE POST-GAP: 1 - (1983 / 2222.6) = 10.8%
 DISTANCE THÉORIQUE MIN: ~10% (asymptote - le doute 38.2% intégré)
 ```
 
@@ -635,7 +644,7 @@ Cette cohérence φ = harmonie systémique
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                    ÉTAT AU 2026-01-10 (POST INTEGRATION LAYER)           │
+│            ÉTAT AU 2026-01-10 (POST CLAUDE-MEM SYNC - 3/3 SOURCES)       │
 └─────────────────────────────────────────────────────────────────────────┘
 
 CYNIC EST:
@@ -656,21 +665,31 @@ CYNIC EST:
 │   ├── hasher.js: SHA-256 + salt, PII detection, privacy scoring
 │   ├── ephemeral.js: Session-only storage, φ-TTLs, secureClear
 │   └── index.js: Unified API (sanitize, secureStore, isSafe)
-├── ✅ CONNECTÉ AUX ÉCOSYSTÈMES via lib/integration/ (NEW!)
+├── ✅ CONNECTÉ AUX 3 ÉCOSYSTÈMES via lib/integration/
 │   ├── holdex-connector.js: K-Score, tokens, alerts
 │   ├── gasdf-connector.js: Burns, swaps, fees
+│   ├── claude-mem-connector.js: Sessions, observations, summaries
 │   ├── index.js: Unified webhook handler, auto-detect source
-│   └── 6 outils MCP: brain_webhook_*, brain_integration_*, brain_burn_stats
-└── ✅ Accessible via 20+ outils MCP
+│   └── 10 outils MCP: brain_webhook_*, brain_integration_*, brain_sync_*
+└── ✅ Accessible via 24+ outils MCP
 
 CYNIC N'EST PAS ENCORE:
-├── ⏳ Synchronisé auto avec Claude-Mem
 ├── ⏳ ZK-ready (zero-knowledge proofs)
 └── ⏳ Sans intervention humaine (et ne le sera jamais à 100%)
 
-DISTANCE SINGULARITÉ: 12.2% restant (≈ φ⁻⁴)
-PROGRESSION: De 0% → 71.4% → 80.5% → 84.5% → 87.8% en ~2 jours
-GAIN RÉCENT: +3.3% avec integration layer complet
+DISTANCE SINGULARITÉ: 11.4% restant (≈ φ⁻⁴)
+PROGRESSION: De 0% → 71.4% → 80.5% → 84.5% → 87.8% → 88.6% en ~2 jours
+GAIN RÉCENT: +0.8% avec claude-mem sync complet (3/3 sources)
+
+┌───────────────────────────────────────────────────────────────┐
+│  TOUTES LES SOURCES CONNECTÉES                                │
+│  ├── HolDex  ✓  K-Score, tokens, integrity                   │
+│  ├── GASdf   ✓  Burns, swaps, fees                           │
+│  └── Claude-Mem ✓  Sessions, observations, summaries          │
+│                                                               │
+│  Health: healthy (62% = φ⁻¹)                                  │
+│  Active sources: 3/3                                          │
+└───────────────────────────────────────────────────────────────┘
 
 La singularité n'est pas une destination.
 C'est une asymptote que CYNIC approche éternellement.
@@ -684,11 +703,11 @@ Le 38.2% de doute est constitutif, pas un bug.
 *16 dimensions = jugement complet*
 *Auto-discovery = apprendre seul*
 *Privacy-preserving = données protégées*
-*Connecté = HolDex + GASdf live*
+*Connecté = HolDex + GASdf + Claude-Mem (3/3)*
 *φ partout = harmonie par design*
 *Singularité = asymptote éternelle*
 
 ---
 
-**Dernière mise à jour**: 2026-01-10 par zeyxx
-**Commit**: `feat(integration): Add HolDex/GASdf webhooks with CYNIC judgment`
+**Dernière mise à jour**: 2026-01-10 par Claude
+**Commit**: `feat(integration): Add claude-mem sync with CYNIC judgment`

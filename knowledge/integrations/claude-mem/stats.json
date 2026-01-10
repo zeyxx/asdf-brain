@@ -1,0 +1,13 @@
+{
+  "total_synced": 4,
+  "by_type": {
+    "decision": 2,
+    "pattern": 2
+  },
+  "by_project": {
+    "HolDex": 3,
+    "asdf-brain": 1
+  },
+  "first_sync": "2026-01-10T20:38:12.754Z",
+  "last_sync": "2026-01-10T20:38:12.755Z"
+}

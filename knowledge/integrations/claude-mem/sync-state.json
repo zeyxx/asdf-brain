@@ -1,0 +1,14 @@
+{
+  "lastSyncAt": "2026-01-10T20:40:24.195Z",
+  "lastObservationId": 4,
+  "lastSessionId": 0,
+  "lastSummaryId": 0,
+  "totalSynced": 4,
+  "syncHistory": [
+    {
+      "timestamp": "2026-01-10T20:38:12.747Z",
+      "observations": 4,
+      "summaries": 0
+    }
+  ]
+}
