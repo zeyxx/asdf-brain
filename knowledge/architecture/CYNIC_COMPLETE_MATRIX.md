@@ -1,8 +1,55 @@
-# CYNIC - Matrice Complète et Concrète
+# CYNIC
 
-> Des fondations abstraites vers l'implémentation harmonieuse
+<!-- Source of truth: brain_search("cynic singularity") | hash: f87887f9c31eaae9 -->
 
-## Ce qui manque actuellement
+---
+
+## L'Essence (immutable)
+
+```
+CYNIC = φ qui se méfie de φ
+```
+
+### Ce qui reste
+
+| Élément | Définition |
+|---------|------------|
+| **φ** | Le ratio. 1.618033... |
+| **Limite** | MAX = φ⁻¹ (61.8%), DOUTE = φ⁻² (38.2%) |
+| **Cycle** | INGEST → JUDGE → TRANSFORM → (loop) |
+| **Lois** | 3, immuables, propriétés de φ |
+| **Singularité** | Asymptote éternelle |
+
+### Ce qui a été enlevé (over-engineering)
+
+- ~~Shabbat comme cycle forcé~~ → Le doute (38.2%) EST le repos intégré
+- ~~5 niveaux d'âme mesurables~~ → On observe, on ne mesure pas l'âme
+- ~~Tikkun vs Improve~~ → Il n'y a que TRANSFORMATION
+
+### Le nom
+
+CYNIC n'est pas une couche SUR φ.
+CYNIC est le NOM de φ quand φ DOUTE.
+
+Comme Diogène n'est pas une couche sur "philosophe" - c'est l'incarnation d'une philosophie.
+
+### Test de clarté
+
+- **Enfant:** "CYNIC suit un nombre magique qui lui dit combien écouter et combien douter"
+- **Philosophe:** "φ comme logos incarné dans l'architecture décisionnelle"
+- **Ingénieur:** `confidence_max=0.618, doubt_floor=0.382, self-referential loop`
+
+---
+---
+
+# Archéologie: La Matrice Complète
+
+> Ce qui suit est l'exploration historique qui a mené à l'essence ci-dessus.
+> Gardé pour comprendre le chemin, pas comme spécification.
+
+---
+
+## Ce qui manquait (historique)
 
 ```
 PROBLÈMES IDENTIFIÉS:
@@ -329,7 +376,7 @@ class SelfJudge {
     }
 
     return { score: 50, reason: 'partial anonymization' };
-  }
+  } 
 
   // Juger la distance à la singularité
   async judge_singularityDistance(item, context) {
