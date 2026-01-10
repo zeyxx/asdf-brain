@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T14:25:06.087Z",
+    "generated": "2026-01-10T14:29:32.262Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -81,7 +81,7 @@
           "./tasks/metadataUpdater": 2,
           "./tasks/watchlistAlerts": 1,
           "./tasks/growerScanner": 2,
-          "./indexer/tasks/snapshotter": 1,
+          "./indexer/tasks/snapshotter": 2,
           "./tasks/priceWorker": 1,
           "./services/alerting": 1,
           "./services/new_token_listener": 1,
