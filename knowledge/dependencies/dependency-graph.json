@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T12:16:04.714Z",
+    "generated": "2026-01-10T12:59:57.210Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -108,10 +108,10 @@
           "../utils/apiKeyHash": 5,
           "../services/burnCredits": 4,
           "./rateLimiter": 1,
-          "../config/env": 38,
+          "../config/env": 37,
           "../services/nodeService": 3,
           "../services/harmonyEngine": 2,
-          "../services/rpcMonitor": 2,
+          "../services/rpcMonitor": 3,
           "../middleware/spaceAuth": 1,
           "../shared/harmony": 5,
           "../utils/solana": 1,
@@ -126,7 +126,6 @@
           "../services/dataVerification": 1,
           "../services/backup": 1,
           "../services/cardGenerator": 1,
-          "../services/nodeApproval": 1,
           "../config/genesis": 5,
           "../services/pnlService": 1,
           "../middleware/pnlRateLimiter": 1,
@@ -152,7 +151,8 @@
           "../utils/nodeKeys": 4,
           "./priceService": 1,
           "./rpcProvider": 2,
-          "../logger": 2,
+          "../rpcMonitor": 1,
+          "../logger": 1,
           "./heliusRateLimiter": 1,
           "./providers/helius": 1,
           "./providers/public": 1,
@@ -201,7 +201,7 @@
         "node": {
           "fs": 3,
           "path": 3,
-          "os": 1,
+          "os": 2,
           "child_process": 1,
           "http": 2,
           "crypto": 23,
