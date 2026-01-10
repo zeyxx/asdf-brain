@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T18:55:59.281Z",
+    "generated": "2026-01-10T19:06:07.168Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -468,6 +468,7 @@
           "./lib/lang-detect": 1,
           "./lib/burn-mechanism": 1,
           "./lib/i-infra-monitor": 1,
+          "./lib/cynic/self-judge": 1,
           "./lib/contributors": 1,
           "../../lib/temporal": 8,
           "./extractGitDecisions.js": 1,
