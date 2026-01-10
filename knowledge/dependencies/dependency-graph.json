@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T14:14:19.734Z",
+    "generated": "2026-01-10T14:19:17.404Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -68,6 +68,7 @@
           "../services/tokenQueue": 6,
           "./config/env": 2,
           "./services/logger": 4,
+          "./services/rpcHardcap": 4,
           "./services/database": 4,
           "./services/nodeApproval": 1,
           "./services/redis": 5,
