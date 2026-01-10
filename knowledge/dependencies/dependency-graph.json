@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T11:50:05.917Z",
+    "generated": "2026-01-10T11:55:00.826Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -476,6 +476,8 @@
           "./lib/cynic": 2,
           "./lib/self-judge": 2,
           "../lib/git-intelligence": 1,
+          "../lib/repo-discovery": 1,
+          "../lib/operator-loader": 1,
           "./lib/data-sources": 4,
           "./publish-to-solana": 1
         },
@@ -489,12 +491,12 @@
           "express": 1
         },
         "node": {
-          "fs": 43,
-          "path": 43,
-          "crypto": 15,
+          "fs": 46,
+          "path": 46,
+          "crypto": 16,
           "readline": 9,
           "http": 1,
-          "child_process": 12,
+          "child_process": 13,
           "os": 1,
           "https": 2
         }
