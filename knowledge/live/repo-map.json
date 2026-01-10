@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-10T13:12:16.808Z",
+  "timestamp": "2026-01-10T13:23:07.442Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:12:11.317Z"
+      "discoveredAt": "2026-01-10T13:23:03.524Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -111,12 +111,12 @@
             "jeanterre552"
           ],
           "patterns": {
-            "hotfixes": 7,
-            "features": 7,
-            "structured": 13,
+            "hotfixes": 6,
+            "features": 6,
+            "structured": 12,
             "quickFixes": 0
           },
-          "avgMessageLength": 53.65
+          "avgMessageLength": 52.9
         },
         "origin/update-newdexsockets": {
           "branch": "update-newdexsockets",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:12:11.764Z"
+      "discoveredAt": "2026-01-10T13:23:03.700Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -296,7 +296,7 @@
             "structured": 20,
             "quickFixes": 0
           },
-          "avgMessageLength": 41.05
+          "avgMessageLength": 40.45
         }
       },
       "operators": {
@@ -315,7 +315,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:12:11.852Z"
+      "discoveredAt": "2026-01-10T13:23:03.747Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -365,7 +365,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:12:11.936Z"
+      "discoveredAt": "2026-01-10T13:23:03.814Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5934,7 +5934,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-10T13:12:16.808Z"
+      "discoveredAt": "2026-01-10T13:23:07.441Z"
     }
   },
   "crossRepoSync": {},

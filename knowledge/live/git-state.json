@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-01-10T13:12:11.215Z",
+  "timestamp": "2026-01-10T13:23:03.466Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-10T13:12:10.175Z",
+      "timestamp": "2026-01-10T13:23:02.451Z",
       "branch": {
         "branch": "main",
         "modified": 0,
-        "untracked": 0,
+        "untracked": 1,
         "staged": 0,
-        "ahead": 1,
+        "ahead": 0,
         "behind": 0,
-        "clean": true,
+        "clean": false,
         "lastCommit": {
-          "hash": "ce3e654",
-          "subject": "perf(rpc): Aggressive caching to reduce Helius credit consumption",
-          "relative": "11 seconds ago"
+          "hash": "23d557c",
+          "subject": "perf(rpc): Quick wins - reduce RPC calls by ~60%",
+          "relative": "4 minutes ago"
         }
       },
       "pr": {
@@ -34,11 +34,10 @@
       },
       "suggestions": [
         {
-          "priority": "medium",
-          "type": "push_needed",
-          "message": "1 unpushed commits on 'main'",
-          "action": "Push changes to remote",
-          "command": "git push"
+          "priority": "low",
+          "type": "uncommitted_changes",
+          "message": "1 untracked",
+          "action": "Review and commit changes"
         }
       ],
       "recentPRs": [
@@ -76,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-10T13:12:10.685Z",
+      "timestamp": "2026-01-10T13:23:03.084Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -88,7 +87,7 @@
         "lastCommit": {
           "hash": "fe2c267",
           "subject": "security: Replace test private keys with clear placeholders",
-          "relative": "40 minutes ago"
+          "relative": "51 minutes ago"
         }
       },
       "pr": null,
@@ -109,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-10T13:12:11.215Z",
+      "timestamp": "2026-01-10T13:23:03.466Z",
       "branch": {
         "branch": "main",
-        "modified": 5,
-        "untracked": 1,
-        "staged": 1,
+        "modified": 0,
+        "untracked": 0,
+        "staged": 0,
         "ahead": 0,
-        "behind": 0,
-        "clean": false,
+        "behind": 1,
+        "clean": true,
         "lastCommit": {
-          "hash": "a8746d3",
-          "subject": "chore: Auto-update brain knowledge",
-          "relative": "12 minutes ago"
+          "hash": "80fd1a7",
+          "subject": "feat(philosophy): crystallize 4 axioms + CYNIC mapping",
+          "relative": "7 minutes ago"
         }
       },
       "pr": null,
@@ -132,10 +131,11 @@
       },
       "suggestions": [
         {
-          "priority": "low",
-          "type": "uncommitted_changes",
-          "message": "5 modified, 1 untracked, 1 staged",
-          "action": "Review and commit changes"
+          "priority": "medium",
+          "type": "pull_needed",
+          "message": "1 commits behind remote",
+          "action": "Pull latest changes",
+          "command": "git pull"
         }
       ],
       "recentPRs": []
@@ -144,10 +144,17 @@
   "suggestions": [
     {
       "priority": "medium",
-      "type": "push_needed",
-      "message": "1 unpushed commits on 'main'",
-      "action": "Push changes to remote",
-      "command": "git push",
+      "type": "pull_needed",
+      "message": "1 commits behind remote",
+      "action": "Pull latest changes",
+      "command": "git pull",
+      "repo": "brain"
+    },
+    {
+      "priority": "low",
+      "type": "uncommitted_changes",
+      "message": "1 untracked",
+      "action": "Review and commit changes",
       "repo": "holdex"
     },
     {
@@ -156,13 +163,6 @@
       "message": "1 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "gasdf"
-    },
-    {
-      "priority": "low",
-      "type": "uncommitted_changes",
-      "message": "5 modified, 1 untracked, 1 staged",
-      "action": "Review and commit changes",
-      "repo": "brain"
     }
   ],
   "summary": {
