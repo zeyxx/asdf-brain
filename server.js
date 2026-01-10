@@ -366,6 +366,60 @@ app.get('/api/errors', requireApiKey, (req, res) => {
 });
 
 // =============================================================================
+// CYNIC JUDGE ENDPOINT
+// =============================================================================
+
+const { CYNIC } = require('./lib/cynic');
+const { SelfJudge } = require('./lib/self-judge');
+
+app.post('/api/judge', express.json(), async (req, res) => {
+  try {
+    const { input, source = 'api', dimensions = [] } = req.body;
+
+    if (!input) {
+      return res.status(400).json({ error: 'Input required' });
+    }
+
+    // Create CYNIC with optional dimensions
+    const judge = new SelfJudge();
+    if (dimensions && dimensions.length > 0) {
+      for (const dim of dimensions) {
+        try {
+          judge.loadDimension(dim);
+        } catch (e) {
+          // Skip unknown dimensions
+        }
+      }
+    }
+
+    const cynic = new CYNIC({ evaluator: judge.dimensions.size > 0 ? judge : null });
+    const result = await cynic.process(input, source);
+
+    res.json({
+      verdict: result.judgment.verdict,
+      confidence: result.judgment.confidence,
+      doubt: result.judgment.doubt,
+      reasoning: result.judgment.reasoning,
+      action: result.result.action,
+      needs_verification: result.result.transformed?._cynic?.needs_verification || false,
+      suggested_checks: result.result.transformed?._cynic?.suggested_checks || [],
+      _phi: {
+        ceiling_applied: result.judgment._phi.ceiling_applied,
+        floor_applied: result.judgment._phi.floor_applied,
+        philosophy: result.judgment._phi.philosophy
+      },
+      _config: {
+        mode: judge.dimensions.size > 0 ? 'dimensional' : 'simple',
+        dimensions_loaded: judge.getLoadedDimensions()
+      }
+    });
+  } catch (error) {
+    console.error('Judge error:', error);
+    res.status(500).json({ error: 'Judge failed', message: error.message });
+  }
+});
+
+// =============================================================================
 // MCP OVER SSE
 // =============================================================================
 
