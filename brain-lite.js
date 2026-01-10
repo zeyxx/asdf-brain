@@ -49,6 +49,9 @@ const temporal = require('./lib/temporal');
 // Pollination - Cross-project pattern fusion
 const pollination = require('./lib/pollination');
 
+// Language Detection - Multi-lingual knowledge
+const langDetect = require('./lib/lang-detect');
+
 // Burn Mechanism - Contribution tracking (NOT fees - knowledge is FREE)
 const burnMechanism = require('./lib/burn-mechanism');
 
@@ -818,14 +821,18 @@ async function handleLearn(args, adapter) {
   const textForDetection = `${content} ${context || ''}`;
   const detectedProject = detectProject(textForDetection);
 
-  // Create entry with provenance and project tagging
+  // Auto-detect language (φ-thresholds: 61.8% dominant, 38.2% mixed)
+  const langResult = langDetect.detectLanguage(textForDetection);
+
+  // Create entry with provenance, project tagging, and language
   const entry = {
     id: crypto.randomBytes(8).toString('hex'),
     type,
     content,
     context: context || 'session',
     project: detectedProject,  // Auto-tagged project
-    tags: [...tags, detectedProject],  // Include project in tags
+    lang: langResult.lang,     // Auto-detected language (en/fr/mixed)
+    tags: [...tags, detectedProject, `lang:${langResult.lang}`],
     timestamp: new Date().toISOString(),
     hash: crypto.createHash('sha256').update(content).digest('hex').slice(0, 16),
     contributor: contributor_id || 'claude-session',
@@ -890,6 +897,7 @@ async function handleIngest(args, adapter) {
 
   const results = [];
   const projectCounts = {};
+  const langCounts = {};  // Track language distribution
   const ingestPath = `ingested/${source}.jsonl`;
 
   for (const entry of entries) {
@@ -897,20 +905,25 @@ async function handleIngest(args, adapter) {
     const textForDetection = entry.content || JSON.stringify(entry);
     const detectedProject = detectProject(textForDetection);
 
-    // Track project distribution
+    // Auto-detect language (φ-thresholds: 61.8% dominant, 38.2% mixed)
+    const langResult = langDetect.detectLanguage(textForDetection);
+
+    // Track distributions
     projectCounts[detectedProject] = (projectCounts[detectedProject] || 0) + 1;
+    langCounts[langResult.lang] = (langCounts[langResult.lang] || 0) + 1;
 
     const enriched = {
       ...entry,
       id: crypto.randomBytes(8).toString('hex'),
       source,
       project: detectedProject,  // Auto-tagged project
+      lang: langResult.lang,     // Auto-detected language (en/fr/mixed)
       ingested_at: new Date().toISOString(),
       hash: crypto.createHash('sha256').update(JSON.stringify(entry)).digest('hex').slice(0, 16),
     };
 
     const result = await adapter.write(ingestPath, enriched, { append: true });
-    results.push({ id: enriched.id, project: detectedProject, success: result.success });
+    results.push({ id: enriched.id, project: detectedProject, lang: langResult.lang, success: result.success });
   }
 
   const successful = results.filter(r => r.success).length;
@@ -922,6 +935,7 @@ async function handleIngest(args, adapter) {
     ingested: successful,
     failed: entries.length - successful,
     by_project: projectCounts,  // Show project distribution
+    by_language: langCounts,    // Show language distribution
     _quality: successful > 0 ? 80 : 0,
   };
 }
