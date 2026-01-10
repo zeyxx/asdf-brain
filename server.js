@@ -588,6 +588,168 @@ app.get('/webhook/stats', (req, res) => {
 });
 
 // =============================================================================
+// METRICS WEBHOOK - I_infra Tracking
+// =============================================================================
+
+const METRICS_LOG = path.join(KNOWLEDGE_DIR, 'metrics', 'services.jsonl');
+const METRICS_SUMMARY = path.join(KNOWLEDGE_DIR, 'metrics', 'summary.json');
+
+// Ensure metrics directory exists
+const metricsDir = path.join(KNOWLEDGE_DIR, 'metrics');
+if (!fs.existsSync(metricsDir)) {
+  fs.mkdirSync(metricsDir, { recursive: true });
+}
+
+/**
+ * Metrics Webhook - Track service health for I_infra scoring
+ * Accepts: uptime, response_time, error_rate, request_count, etc.
+ */
+app.post('/webhook/metrics', express.json(), async (req, res) => {
+  try {
+    const { service, metrics, node, period } = req.body;
+
+    if (!service || !metrics) {
+      return res.status(400).json({ error: 'service and metrics required' });
+    }
+
+    const entry = {
+      timestamp: new Date().toISOString(),
+      service,
+      node: node || 'unknown',
+      period: period || 'snapshot',
+      metrics: {
+        uptime: metrics.uptime,
+        response_time_ms: metrics.response_time_ms,
+        error_rate: metrics.error_rate,
+        request_count: metrics.request_count,
+        success_count: metrics.success_count,
+        ...metrics
+      },
+      _i_infra: calculateIInfra(metrics)
+    };
+
+    // Append to log
+    fs.appendFileSync(METRICS_LOG, JSON.stringify(entry) + '\n');
+
+    // Update summary
+    updateMetricsSummary(service, entry);
+
+    console.log(`[Metrics] ${service}@${entry.node}: uptime=${metrics.uptime}% i_infra=${entry._i_infra.score}`);
+
+    res.json({
+      received: true,
+      service,
+      i_infra: entry._i_infra,
+      message: `Metrics recorded for ${service}`
+    });
+  } catch (error) {
+    console.error('Metrics webhook error:', error);
+    res.status(500).json({ error: 'Metrics processing failed' });
+  }
+});
+
+/**
+ * Calculate I_infra score from metrics
+ * Based on φ-weighted components
+ */
+function calculateIInfra(metrics) {
+  const PHI = 1.618;
+  const PHI_INV = 0.618;
+
+  // Weights for different metrics
+  const weights = {
+    uptime: PHI * PHI,      // 2.618 - most important
+    response_time: PHI,      // 1.618
+    error_rate: PHI,         // 1.618 (inverted)
+    availability: 1          // 1.0
+  };
+
+  let score = 0;
+  let totalWeight = 0;
+  const components = {};
+
+  // Uptime (0-100 → 0-1 normalized)
+  if (metrics.uptime !== undefined) {
+    const uptimeScore = metrics.uptime / 100;
+    components.uptime = uptimeScore;
+    score += uptimeScore * weights.uptime;
+    totalWeight += weights.uptime;
+  }
+
+  // Response time (lower is better, cap at 2000ms)
+  if (metrics.response_time_ms !== undefined) {
+    const rtScore = Math.max(0, 1 - (metrics.response_time_ms / 2000));
+    components.response_time = rtScore;
+    score += rtScore * weights.response_time;
+    totalWeight += weights.response_time;
+  }
+
+  // Error rate (lower is better)
+  if (metrics.error_rate !== undefined) {
+    const errorScore = 1 - Math.min(1, metrics.error_rate);
+    components.error_rate = errorScore;
+    score += errorScore * weights.error_rate;
+    totalWeight += weights.error_rate;
+  }
+
+  const finalScore = totalWeight > 0 ? (score / totalWeight) * 100 : 0;
+
+  return {
+    score: Math.round(finalScore * 100) / 100,
+    components,
+    weights,
+    _phi: {
+      method: 'weighted_average',
+      philosophy: 'Infrastructure reliability is the foundation'
+    }
+  };
+}
+
+/**
+ * Update metrics summary file
+ */
+function updateMetricsSummary(service, entry) {
+  let summary = {};
+
+  if (fs.existsSync(METRICS_SUMMARY)) {
+    try {
+      summary = JSON.parse(fs.readFileSync(METRICS_SUMMARY, 'utf-8'));
+    } catch (e) { /* start fresh */ }
+  }
+
+  if (!summary.services) summary.services = {};
+
+  summary.services[service] = {
+    last_update: entry.timestamp,
+    node: entry.node,
+    latest_metrics: entry.metrics,
+    i_infra: entry._i_infra.score,
+    history_count: (summary.services[service]?.history_count || 0) + 1
+  };
+
+  summary.last_update = entry.timestamp;
+  summary.total_services = Object.keys(summary.services).length;
+
+  fs.writeFileSync(METRICS_SUMMARY, JSON.stringify(summary, null, 2));
+}
+
+/**
+ * Get metrics summary
+ */
+app.get('/webhook/metrics', (req, res) => {
+  try {
+    if (!fs.existsSync(METRICS_SUMMARY)) {
+      return res.json({ services: {}, message: 'No metrics recorded yet' });
+    }
+
+    const summary = JSON.parse(fs.readFileSync(METRICS_SUMMARY, 'utf-8'));
+    res.json(summary);
+  } catch (error) {
+    res.status(500).json({ error: 'Metrics unavailable' });
+  }
+});
+
+// =============================================================================
 // MCP OVER SSE
 // =============================================================================
 
