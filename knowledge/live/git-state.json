@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-01-10T12:01:23.674Z",
+  "timestamp": "2026-01-10T12:34:42.264Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-10T12:01:23.063Z",
+      "timestamp": "2026-01-10T12:34:41.551Z",
       "branch": {
         "branch": "main",
-        "modified": 0,
+        "modified": 2,
         "untracked": 0,
-        "staged": 0,
-        "ahead": 1,
+        "staged": 1,
+        "ahead": 0,
         "behind": 0,
-        "clean": true,
+        "clean": false,
         "lastCommit": {
-          "hash": "6a33bad",
-          "subject": "feat(metrics): Add asdf-brain metrics reporting",
-          "relative": "2 minutes ago"
+          "hash": "1f88e79",
+          "subject": "fix(lint): Resolve 8 ESLint errors for CI",
+          "relative": "6 minutes ago"
         }
       },
       "pr": {
@@ -34,11 +34,10 @@
       },
       "suggestions": [
         {
-          "priority": "medium",
-          "type": "push_needed",
-          "message": "1 unpushed commits on 'main'",
-          "action": "Push changes to remote",
-          "command": "git push"
+          "priority": "low",
+          "type": "uncommitted_changes",
+          "message": "2 modified, 1 staged",
+          "action": "Review and commit changes"
         }
       ],
       "recentPRs": [
@@ -76,19 +75,19 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-10T12:01:23.348Z",
+      "timestamp": "2026-01-10T12:34:41.897Z",
       "branch": {
         "branch": "main",
-        "modified": 3,
+        "modified": 0,
         "untracked": 1,
-        "staged": 1,
+        "staged": 0,
         "ahead": 0,
         "behind": 0,
         "clean": false,
         "lastCommit": {
-          "hash": "8815174",
-          "subject": "docs: Add data architecture reference to CLAUDE.md",
-          "relative": "4 days ago"
+          "hash": "fe2c267",
+          "subject": "security: Replace test private keys with clear placeholders",
+          "relative": "2 minutes ago"
         }
       },
       "pr": null,
@@ -101,7 +100,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "3 modified, 1 untracked, 1 staged",
+          "message": "1 untracked",
           "action": "Review and commit changes"
         }
       ],
@@ -109,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-10T12:01:23.674Z",
+      "timestamp": "2026-01-10T12:34:42.264Z",
       "branch": {
         "branch": "main",
-        "modified": 5,
-        "untracked": 1,
+        "modified": 2,
+        "untracked": 0,
         "staged": 1,
         "ahead": 0,
         "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "451be17",
-          "subject": "feat(cynic): Complete CYNIC ecosystem with operators and docs",
-          "relative": "7 minutes ago"
+          "hash": "bc8731d",
+          "subject": "chore: Resolve merge and sync state",
+          "relative": "19 minutes ago"
         }
       },
       "pr": null,
@@ -141,7 +140,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "5 modified, 1 untracked, 1 staged",
+          "message": "2 modified, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -149,14 +148,6 @@
     }
   },
   "suggestions": [
-    {
-      "priority": "medium",
-      "type": "push_needed",
-      "message": "1 unpushed commits on 'main'",
-      "action": "Push changes to remote",
-      "command": "git push",
-      "repo": "holdex"
-    },
     {
       "priority": "medium",
       "type": "pull_needed",
@@ -168,14 +159,21 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "3 modified, 1 untracked, 1 staged",
+      "message": "2 modified, 1 staged",
+      "action": "Review and commit changes",
+      "repo": "holdex"
+    },
+    {
+      "priority": "low",
+      "type": "uncommitted_changes",
+      "message": "1 untracked",
       "action": "Review and commit changes",
       "repo": "gasdf"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "5 modified, 1 untracked, 1 staged",
+      "message": "2 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
@@ -183,7 +181,7 @@
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 2,
-    "lowPriority": 2
+    "mediumPriority": 1,
+    "lowPriority": 3
   }
 }
