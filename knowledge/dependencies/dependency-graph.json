@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T13:16:02.390Z",
+    "generated": "2026-01-10T13:40:58.529Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -113,7 +113,7 @@
           "../services/harmonyEngine": 2,
           "../services/rpcMonitor": 3,
           "../middleware/spaceAuth": 1,
-          "../shared/harmony": 5,
+          "../shared/harmony": 6,
           "../utils/solana": 1,
           "../utils/validation": 2,
           "../tasks/kScoreUpdater": 2,
@@ -153,6 +153,7 @@
           "./rpcProvider": 2,
           "../rpcMonitor": 1,
           "../logger": 1,
+          "./rpcHarmony": 2,
           "./heliusRateLimiter": 1,
           "./providers/helius": 1,
           "./providers/public": 1,
@@ -471,8 +472,8 @@
           "./merkle-proofs": 1,
           "../scripts/merkle": 2,
           "./contributors": 1,
+          "./self-judge": 2,
           "./cynic": 1,
-          "./self-judge": 1,
           "./lib/cynic": 2,
           "./lib/self-judge": 2,
           "../lib/git-intelligence": 1,
