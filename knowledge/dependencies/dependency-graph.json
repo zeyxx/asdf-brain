@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T13:56:24.418Z",
+    "generated": "2026-01-10T14:12:00.353Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -126,6 +126,7 @@
           "../services/dataVerification": 1,
           "../services/backup": 1,
           "../services/cardGenerator": 1,
+          "../services/rpcHardcap": 1,
           "../config/genesis": 5,
           "../services/pnlService": 1,
           "../middleware/pnlRateLimiter": 1,
