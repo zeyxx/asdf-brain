@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-10T13:46:11.178Z",
+    "generated": "2026-01-10T13:56:24.418Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -135,9 +135,9 @@
           "../services/priceProvider": 2,
           "../utils/dataSignature": 10,
           "../tasks/integrityWatchdog": 1,
-          "./logger": 33,
+          "./logger": 34,
           "./rpcHealth": 2,
-          "./redis": 19,
+          "./redis": 20,
           "./solana": 5,
           "./nodeService": 1,
           "./database": 6,
@@ -152,8 +152,9 @@
           "./priceService": 1,
           "./rpcProvider": 2,
           "../rpcMonitor": 1,
+          "../rpcHardcap": 1,
           "../logger": 1,
-          "./rpcHarmony": 2,
+          "./rpcHarmony": 3,
           "./heliusRateLimiter": 1,
           "./providers/helius": 1,
           "./providers/public": 1,
@@ -201,7 +202,7 @@
         "node": {
           "fs": 3,
           "path": 3,
-          "os": 2,
+          "os": 3,
           "child_process": 1,
           "http": 2,
           "crypto": 23,
@@ -460,6 +461,7 @@
           "./lib/daat-levels": 1,
           "./lib/temporal": 1,
           "./lib/pollination": 1,
+          "./lib/lang-detect": 1,
           "./lib/burn-mechanism": 1,
           "./lib/i-infra-monitor": 1,
           "./lib/contributors": 1,
