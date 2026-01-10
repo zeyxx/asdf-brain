@@ -85,6 +85,10 @@ const metrics = require('./lib/cynic/metrics');
 const alerts = require('./lib/cynic/alerts');
 require('./lib/cynic/alert-rules'); // Auto-registers predefined rules
 
+// Dashboard Layer - Visual monitoring
+const dashboard = require('./lib/cynic/dashboard');
+const dashboardWeb = require('./lib/cynic/dashboard-web');
+
 // =============================================================================
 // PHI CONSTANTS - From temporal.js (single source of truth)
 // =============================================================================
@@ -1253,6 +1257,57 @@ const TOOLS = {
       properties: {}
     },
     phi_weight: PHI * PHI,
+    isWrite: true,
+  },
+
+  // =========================================================================
+  // DASHBOARD LAYER - φ qui se voit en un coup d'œil
+  // =========================================================================
+
+  brain_dashboard: {
+    pardes: 'S',
+    name: 'brain_dashboard',
+    description: '[DASHBOARD] Get CYNIC dashboard view. Returns formatted dashboard with health, alerts, metrics, and anomalies.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        format: {
+          type: 'string',
+          enum: ['text', 'json', 'compact'],
+          default: 'text',
+          description: 'Output format: text (CLI-formatted), json (full data), compact (summary)'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_dashboard_html: {
+    pardes: 'S',
+    name: 'brain_dashboard_html',
+    description: '[DASHBOARD] Get CYNIC web dashboard as HTML. Responsive design with φ-golden theme.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_dashboard_live: {
+    pardes: 'S',
+    name: 'brain_dashboard_live',
+    description: '[DASHBOARD] Start web dashboard server. Serves HTML dashboard with auto-refresh.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        port: {
+          type: 'number',
+          default: 3003,
+          description: 'Port for web server'
+        }
+      }
+    },
+    phi_weight: PHI,
     isWrite: true,
   },
 };
@@ -3417,6 +3472,107 @@ async function handleAlertConnectPulse(args, adapter) {
   }
 }
 
+// =============================================================================
+// DASHBOARD HANDLERS
+// =============================================================================
+
+async function handleDashboard(args, adapter) {
+  const { format = 'text' } = args;
+
+  try {
+    let result;
+
+    switch (format) {
+      case 'json':
+        result = await dashboard.generateJSON();
+        break;
+      case 'compact':
+        result = await dashboard.generateCompact();
+        break;
+      case 'text':
+      default:
+        result = await dashboard.generate();
+        break;
+    }
+
+    return {
+      success: true,
+      format,
+      dashboard: result,
+      philosophy: "φ qui se voit en un coup d'œil.",
+      _quality: 85,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleDashboardHTML(args, adapter) {
+  try {
+    const html = await dashboardWeb.generateHTML();
+
+    return {
+      success: true,
+      contentType: 'text/html',
+      html,
+      philosophy: "φ qui se voit dans le navigateur.",
+      _quality: 85,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+// Keep track of dashboard server
+let dashboardServer = null;
+
+async function handleDashboardLive(args, adapter) {
+  const { port = 3003 } = args;
+
+  try {
+    // Stop existing server if running
+    if (dashboardServer) {
+      dashboardServer.close();
+    }
+
+    // Ensure pulse is running
+    const pulseStatus = pulse.getStatus();
+    if (!pulseStatus.alive) {
+      selfMonitor.registerWithPulse(pulse);
+      alerts.connectToPulse(pulse);
+      pulse.start();
+    }
+
+    // Start web server
+    dashboardServer = dashboardWeb.createServer(port);
+
+    return {
+      success: true,
+      running: true,
+      url: `http://localhost:${port}`,
+      apiUrl: `http://localhost:${port}/api`,
+      pulseActive: true,
+      message: `Dashboard server running at http://localhost:${port}`,
+      philosophy: "φ qui se montre au monde.",
+      _quality: 90,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -3484,6 +3640,10 @@ const HANDLERS = {
   brain_alert_resolve: handleAlertResolve,
   brain_alert_silence: handleAlertSilence,
   brain_alert_connect_pulse: handleAlertConnectPulse,
+  // Dashboard Layer
+  brain_dashboard: handleDashboard,
+  brain_dashboard_html: handleDashboardHTML,
+  brain_dashboard_live: handleDashboardLive,
 };
 
 // =============================================================================
