@@ -24,3 +24,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# CYNIC sync backups (generated at runtime)
+knowledge/cynic/sync/*_backup_*.json
