@@ -1,22 +1,27 @@
 {
-  "total_events": 4,
-  "total_burned": 9705,
-  "burn_count": 3,
+  "total_events": 5,
+  "total_burned": 10125,
+  "burn_count": 4,
   "swap_count": 1,
   "by_type": {
-    "burn": 3,
+    "burn": 4,
     "swap": 1
   },
   "by_day": {
     "2026-01-10": {
       "events": 4,
       "burned": 9705
+    },
+    "2026-01-11": {
+      "events": 1,
+      "burned": 420
     }
   },
   "first_event": "2026-01-10T20:17:04.385Z",
-  "last_event": "2026-01-10T20:22:29.399Z",
+  "last_event": "2026-01-11T12:35:00.000Z",
+  "last_event_time": "2026-01-10T20:22:29.399Z",
   "phi": {
-    "avg_burn_per_day": 9705,
-    "burn_rate_phi": 1.85
+    "avg_burn_per_day": 5062.5,
+    "burn_rate_phi": 2.47
   }
 }

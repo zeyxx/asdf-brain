@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "timestamp": 1768131356987,
+  "timestamp": 1768133190012,
   "history": [
     {
       "id": "jdg_1768090661068_an9j11",
@@ -33,7 +33,7 @@
         "reason": "Test d'apprentissage par burning - faux négatif simulé",
         "philosophy": "Learn by burning errors"
       },
-      "decayWeight": 0.9945911395304218
+      "decayWeight": 0.7891355953076522
     },
     {
       "id": "jdg_1768090915947_ljjrft",
@@ -66,7 +66,7 @@
         "reason": "Test burning #2 - faux positif simulé",
         "philosophy": "Burn to learn"
       },
-      "decayWeight": 0.9960040332054017
+      "decayWeight": 0.790256623483952
     },
     {
       "id": "jdg_1768091615055_cx6ve1",
@@ -99,7 +99,7 @@
         "reason": "Test burning #3 - faux négatif",
         "philosophy": "Accumulate to trigger learn()"
       },
-      "decayWeight": 0.9998897729221917
+      "decayWeight": 0.7933396748029768
     },
     {
       "id": "jdg_1768091628139_7shhzi",
@@ -131,7 +131,7 @@
       "feedback": {
         "reason": "Test burning #4"
       },
-      "decayWeight": 0.9999626399464864
+      "decayWeight": 0.7933974894770772
     },
     {
       "id": "jdg_1768091628203_p182io",
@@ -163,7 +163,7 @@
       "feedback": {
         "reason": "Test burning #5 - should trigger learn()"
       },
-      "decayWeight": 0.9999629963864365
+      "decayWeight": 0.7933977722862046
     },
     {
       "id": "jdg_1768130808025_q7sysh",
@@ -191,7 +191,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.9868715652306158
     },
     {
       "id": "jdg_1768130916973_0a2kez",
@@ -219,7 +220,8 @@
       "verdict": "TRANSFORM",
       "confidence": 59,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.9874705754295412
     },
     {
       "id": "jdg_1768131010995_veoadz",
@@ -247,7 +249,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.9879878128223657
     },
     {
       "id": "jdg_1768131353161_gud23p",
@@ -275,7 +278,38 @@
       "verdict": "TRANSFORM",
       "confidence": 60,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.9898724375131145
+    },
+    {
+      "id": "jdg_1768133180626_wsy42n",
+      "timestamp": 1768133180626,
+      "item": "item_br3lp3",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 30,
+        "INTEGRITY": 0,
+        "ETHICS": 100,
+        "OPTIMISM": 50,
+        "ALIGNMENT": 50,
+        "PROGRESS": 50,
+        "SECURE": 60,
+        "PRIVATE": 70,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 60,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 98
+      },
+      "global": 60,
+      "verdict": "TRANSFORM",
+      "confidence": 60,
+      "outcome": "correct",
+      "reward": 1.618033988749895,
+      "decayWeight": 0.9999990197541702,
+      "feedback": {}
     }
   ],
   "thresholds": {
@@ -286,13 +320,13 @@
     "ENABLE": 69
   },
   "stats": {
-    "totalJudgments": 9,
+    "totalJudgments": 10,
     "correctAccepts": 0,
-    "correctTransforms": 0,
+    "correctTransforms": 1,
     "falsePositives": 1,
     "falseNegatives": 4,
-    "totalReward": -9.090169943749475,
-    "learningIterations": 1,
+    "totalReward": -7.47213595499958,
+    "learningIterations": 2,
     "thresholdAdjustments": {
       "INTEGRITY": {
         "up": 0,

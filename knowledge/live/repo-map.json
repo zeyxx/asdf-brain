@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-11T11:41:52.957Z",
+  "timestamp": "2026-01-11T12:40:29.954Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T11:41:50.965Z"
+      "discoveredAt": "2026-01-11T12:40:26.237Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T11:41:51.059Z"
+      "discoveredAt": "2026-01-11T12:40:26.649Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -287,18 +287,18 @@
           "remote": "origin",
           "commits": 20,
           "authors": [
-            "asdf-brain[bot]",
-            "jeanterre552"
+            "jeanterre552",
+            "asdf-brain[bot]"
           ],
           "patterns": {
-            "hotfixes": 2,
-            "features": 8,
-            "structured": 18,
+            "hotfixes": 6,
+            "features": 4,
+            "structured": 14,
             "quickFixes": 0
           },
-          "avgMessageLength": 47.15,
+          "avgMessageLength": 46.85,
           "inferredRole": "production",
-          "prodScore": 6
+          "prodScore": 18
         }
       },
       "operators": {
@@ -317,7 +317,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T11:41:51.090Z"
+      "discoveredAt": "2026-01-11T12:40:26.738Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -367,7 +367,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T11:41:51.116Z"
+      "discoveredAt": "2026-01-11T12:40:26.810Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5936,7 +5936,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T11:41:52.957Z"
+      "discoveredAt": "2026-01-11T12:40:29.946Z"
     }
   },
   "crossRepoSync": {},
@@ -5955,7 +5955,7 @@
       "asdf-brain": {
         "branch": "main",
         "remote": "origin",
-        "confidence": 0.06
+        "confidence": 0.18
       },
       "claude-mem": {
         "branch": "backup/4.3.0-borked-sad-face",

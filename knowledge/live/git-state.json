@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-11T11:41:50.936Z",
+  "timestamp": "2026-01-11T12:40:26.131Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-11T11:41:50.439Z",
+      "timestamp": "2026-01-11T12:40:25.068Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -15,7 +15,7 @@
         "lastCommit": {
           "hash": "274d7b7",
           "subject": "fix(rpc): Disable bulk K-Score updates - save 320k cr/day",
-          "relative": "13 hours ago"
+          "relative": "14 hours ago"
         }
       },
       "pr": {
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-11T11:41:50.678Z",
+      "timestamp": "2026-01-11T12:40:25.698Z",
       "branch": {
         "branch": "main",
         "modified": 4,
@@ -87,7 +87,7 @@
         "lastCommit": {
           "hash": "5d6474e",
           "subject": "chore: Add .mcp.json to gitignore",
-          "relative": "19 hours ago"
+          "relative": "20 hours ago"
         }
       },
       "pr": null,
@@ -108,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-11T11:41:50.936Z",
+      "timestamp": "2026-01-11T12:40:26.131Z",
       "branch": {
         "branch": "main",
         "modified": 11,
-        "untracked": 5,
+        "untracked": 0,
         "staged": 1,
         "ahead": 0,
         "behind": 0,
         "clean": false,
         "lastCommit": {
-          "hash": "66bfadf",
-          "subject": "chore: Auto-update brain knowledge",
-          "relative": "10 hours ago"
+          "hash": "c03efbc",
+          "subject": "fix(dashboard): Add overallScore alias to runQuickCheck",
+          "relative": "69 seconds ago"
         }
       },
       "pr": null,
@@ -133,7 +133,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "11 modified, 5 untracked, 1 staged",
+          "message": "11 modified, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -158,7 +158,7 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "11 modified, 5 untracked, 1 staged",
+      "message": "11 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
