@@ -164,27 +164,35 @@ POST /cynic/ingest/claude-mem
 ### Les 16 dimensions (implémentées dans `lib/cynic/self-judge.js`)
 
 ```
-DIMENSIONS PRIMAIRES (8) - poids φ² = 2.618:
-├── TRUTH        (Vérité)        - Est-ce vrai? Source vérifiable?
-├── RELEVANCE    (Pertinence)    - Est-ce utile pour l'écosystème?
-├── QUALITY      (Qualité)       - Est-ce bien fait? Bien structuré?
-├── COHERENCE    (Cohérence)     - Est-ce aligné avec l'existant?
-├── PROGRESS     (Progrès)       - Avance-t-on vers les objectifs?
-├── ETHICS       (Éthique)       - Est-ce juste? Équitable?
-├── HARMONY      (Harmonie)      - Est-ce équilibré? Suit-il φ?
-└── NOVELTY      (Nouveauté)     - Apporte-t-il quelque chose de nouveau?
+DIMENSIONS PRIMAIRES (8) - poids φ² = 2.618 - organisées par Monde/Axiome:
 
-DIMENSIONS SECONDAIRES (5) - poids φ = 1.618:
-├── SECURITY     (Sécurité)      - Est-ce sûr? Pas de vulnérabilités?
-├── PRIVACY      (Privacy)       - La vie privée est-elle protégée? PII hashé?
-├── SCALABILITY  (Échelle)       - Est-ce scalable? Performant?
-├── SIMPLICITY   (Simplicité)    - Est-ce simple? Pas over-engineered?
-└── AUTONOMY     (Autonomie)     - CYNIC peut-il le faire seul?
+  ATZILUT / φ (PHI):
+  ├── HARMONY      - L'équilibre φ est-il respecté?
+  └── COHERENCE    - Is it coherent with the whole?
+
+  BERIAH / VERIFY:
+  ├── TRUTH        - Is it verifiable and reproducible?
+  └── INTEGRITY    - Is it tamper-proof and signed?
+
+  YETZIRAH / CULTURE:
+  ├── ETHICS       - Respecte-t-il les valeurs cypherpunk?
+  └── OPTIMISM     - Construit-il vers le positif?
+
+  ASSIAH / BURN:
+  ├── ALIGNMENT    - Are incentives aligned?
+  └── PROGRESS     - Does it advance toward singularity?
+
+DIMENSIONS SECONDAIRES (5) - poids φ = 1.618 - comment CYNIC sert l'humain:
+├── SECURE       - Protect without imprisoning (anti: Total surveillance)
+├── PRIVATE      - Respect without hiding (anti: Forced transparency)
+├── SCALE        - Grow without dominating (anti: Monopoly)
+├── SIMPLIFY     - Clarify without reducing (anti: Obscurantism)
+└── ENABLE       - Enable autonomy, don't automate (anti: Human replacement)
 
 META-DIMENSIONS (3) - poids 1.0:
-├── SELF_AWARENESS       - CYNIC sait-il ce qu'il ne sait pas?
-├── LEARNING_RATE        - CYNIC apprend-il assez vite?
-└── SINGULARITY_DISTANCE - À quelle distance de l'harmonie?
+├── SELF_AWARENESS       - Je sais ce que je ne sais pas
+├── LEARNING_RATE        - J'apprends de mes erreurs
+└── SINGULARITY_DISTANCE - Je mesure ma distance au but
 
 TOTAL: 16 dimensions
 SCORING: Geometric mean φ-weighted (comme K-Score et E-Score)
@@ -194,25 +202,26 @@ LIMITES: MAX_CONFIDENCE = 61.8% (φ⁻¹), MIN_DOUBT = 38.2% (φ⁻²)
 ### Matrice de scoring complète
 
 ```
-                    PRIMARY (φ² weight)
-    ┌─────────────────────────────────────────────────┐
-    │  TRUTH  RELEV  QUAL  COHER PROG  ETHIC HARMO   │
-    │   95     80    85    90    75    100   85      │
-    └───────────────────────┬─────────────────────────┘
-                            │
+                    PRIMARY (φ² weight) - par Monde
+    ┌─────────────────────────────────────────────────────────┐
+    │  ATZILUT/φ    BERIAH/VERIFY  YETZIRAH/CULTURE  ASSIAH/BURN │
+    │  HARM COHER   TRUTH INTEG    ETHICS OPTIM      ALIGN PROG  │
+    │   85   90       95    80       100    75         70    65   │
+    └───────────────────────────┬─────────────────────────────────┘
+                                │
                     SECONDARY (φ weight)
-    ┌─────────────────────────────────────────────────┐
-    │  SECUR  PRIV  SCALE SIMPL AUTON                │
-    │   90    85    70    80    65                    │
-    └───────────────────────┬─────────────────────────┘
-                            │
+    ┌─────────────────────────────────────────────────────────┐
+    │  SECURE  PRIVATE  SCALE  SIMPLIFY  ENABLE              │
+    │    90      85       70      80       65                 │
+    └───────────────────────────┬─────────────────────────────┘
+                                │
                     META (1.0 weight)
-    ┌─────────────────────────────────────────────────┐
-    │  SELF_AWARE  LEARN_RATE  SINGULARITY_DIST      │
-    │     75          80            60               │
-    └───────────────────────┬─────────────────────────┘
-                            │
-                            ▼
+    ┌─────────────────────────────────────────────────────────┐
+    │  SELF_AWARENESS   LEARNING_RATE   SINGULARITY_DISTANCE │
+    │       75               80                60             │
+    └───────────────────────────┬─────────────────────────────┘
+                                │
+                                ▼
                  ┌─────────────────────┐
                  │  GLOBAL SCORE: 82   │
                  │  Geometric Mean     │
@@ -234,11 +243,21 @@ LIMITES: MAX_CONFIDENCE = 61.8% (φ⁻¹), MIN_DOUBT = 38.2% (φ⁻²)
 │
 ├── lib/
 │   ├── cynic/
-│   │   └── self-judge.js         # ✅ Auto-jugement 16 dimensions
-│   │                             #    - SelfJudge class
-│   │                             #    - Inference scaling (Best-of-N)
-│   │                             #    - Self-refinement loop
-│   │                             #    - Learning from outcomes
+│   │   ├── index.js              # ✅ Module principal CYNIC
+│   │   │                         #    - CYNIC class (wrapper φ-constrained)
+│   │   │                         #    - Exports: SelfJudge, ResidualDetector
+│   │   │                         #    - Constants: PHI, WORLDS, DIMENSIONS
+│   │   │
+│   │   ├── self-judge.js         # ✅ Auto-jugement 16 dimensions
+│   │   │                         #    - SelfJudge class
+│   │   │                         #    - Inference scaling (Best-of-N)
+│   │   │                         #    - Self-refinement loop
+│   │   │                         #    - Learning from outcomes
+│   │   │
+│   │   └── residual-detector.js  # ✅ Découverte dimensions émergentes
+│   │                             #    - ResidualDetector class
+│   │                             #    - AnomalyBuffer avec décroissance φ
+│   │                             #    - Clustering pour dimension discovery
 │   │
 │   ├── provenance/
 │   │   └── merkle.js             # ✅ Merkle tree pour provenance
@@ -473,7 +492,128 @@ OPÉRATEUR: "Ajoute un nouveau contributeur"
    └── Log le jugement pour améliorer les futurs
 ```
 
-## 5. ÉTAT D'IMPLÉMENTATION (2026-01-10)
+---
+
+## 4.5 RESIDUAL DETECTOR: DÉCOUVERTE DE DIMENSIONS ÉMERGENTES
+
+> *"L'Innommable existe - ce sont les dimensions que CYNIC ne sait pas encore nommer."*
+
+### Philosophie
+
+CYNIC juge sur 16 dimensions connues. Mais que se passe-t-il si quelque chose échappe
+à ces 16 dimensions? Le **ResidualDetector** capture ces "résidus inexpliqués" et les
+accumule jusqu'à ce qu'un pattern émergent apparaisse → potentielle nouvelle dimension.
+
+### Mathématiques φ-Dérivées
+
+```
+RÉSIDU = 1 - (Score_Expliqué / Score_Maximum)
+
+où:
+  Score_Expliqué = Σ(dimension_scores × weights)
+  Score_Maximum  = Σ(max_possible × weights)
+
+ANOMALIE si: RÉSIDU > φ⁻² = 38.2%
+```
+
+### Pipeline de Découverte
+
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                    DIMENSION DISCOVERY PIPELINE                               │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                               │
+│  1. RÉSIDU              2. ACCUMULATION         3. CLUSTERING                 │
+│  ───────────            ─────────────           ──────────────                │
+│                                                                               │
+│  ┌─────────┐            ┌──────────────┐        ┌──────────────┐             │
+│  │ Judgment│            │ AnomalyBuffer│        │  K-Means     │             │
+│  │ Score   │───►R>38.2%─►│ avec φ-decay │───────►│  Clustering  │             │
+│  │ = 75%   │            │ TTL = φ³ days│        │  k = φ guess │             │
+│  └─────────┘            └──────────────┘        └──────────────┘             │
+│       │                        │                       │                      │
+│       ▼                        ▼                       ▼                      │
+│  R = 1-(75/100)         Si buffer.size >= φ³     Centroids = patterns        │
+│  R = 0.25 (ok)          alors cluster()          potentiels                  │
+│                                                                               │
+│  4. VALIDATION          5. INTÉGRATION                                        │
+│  ─────────────          ──────────────                                        │
+│                                                                               │
+│  ┌──────────────┐       ┌──────────────┐                                      │
+│  │   HUMAIN     │       │  SelfJudge   │                                      │
+│  │  valide?     │──OUI─►│  +dimension  │                                      │
+│  │  nomme?      │       │  +axiome     │                                      │
+│  └──────────────┘       └──────────────┘                                      │
+│        │                                                                      │
+│       NON                                                                     │
+│        │                                                                      │
+│        ▼                                                                      │
+│  Reste dans buffer                                                            │
+│  (φ-decay continue)                                                           │
+│                                                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Constants φ-Dérivées pour Residual Detection
+
+| Constante | Valeur | Usage |
+|-----------|--------|-------|
+| `ANOMALY_THRESHOLD` | φ⁻² = 38.2% | Seuil pour détecter une anomalie |
+| `DECAY_RATE` | φ⁻¹ = 0.618 | Décroissance quotidienne du poids |
+| `MAX_BUFFER_SIZE` | φ³ × 100 = 424 | Taille max du buffer d'anomalies |
+| `MIN_CLUSTER_SIZE` | φ² = 3 | Minimum pour former un cluster |
+| `DISCOVERY_THRESHOLD` | φ⁻¹ = 61.8% | Confiance pour proposer dimension |
+
+### Outils MCP ResidualDetector
+
+```javascript
+// Analyser un jugement pour résidu inexpliqué
+brain_cynic_residual({ judgment, observation, context })
+→ { residual: 0.42, is_anomaly: true, buffer_size: 15 }
+
+// Découvrir dimensions émergentes via clustering
+brain_cynic_discover_dimensions()
+→ { candidates: [{ pattern: {...}, axiom_guess: "VERIFY", support: 8 }] }
+
+// Validation humaine d'une dimension proposée
+brain_cynic_accept_dimension({ candidate, name, definition, axiom, threshold })
+→ { accepted: true, dimension: { name: "EMERGENCE", world: "ATZILUT" } }
+
+// Stats du système de détection
+brain_cynic_residual_stats()
+→ { buffer: { size, oldest, newest }, anomalies_detected: 47 }
+```
+
+### Dimensions en Observation (Candidates)
+
+Ces dimensions n'existent pas encore dans SelfJudge mais sont observées:
+
+| Candidate | Axiome Probable | Observations | Support |
+|-----------|-----------------|--------------|---------|
+| ÉMERGENCE | φ | Phénomènes non-linéaires | En observation |
+| MÉTA-COGNITION | VERIFY | CYNIC jugeant son propre jugement | En observation |
+| SILENCE/ABSENCE | BURN | Ce qui n'est PAS dit est significatif | En observation |
+| TEMPORALITÉ PROFONDE | φ | Cycles longs, patterns générationnels | En observation |
+| ADVERSARIAL | VERIFY | Résistance aux attaques | En observation |
+| ENTROPIE | BURN | Tendance au désordre/ordre | En observation |
+| L'INNOMMABLE | ∞ | Meta-dimension pour l'inconnu | Philosophique |
+
+### Le "24 + N + ∞"
+
+```
+Architecture des Dimensions:
+├── 24 CONNUES
+│   ├── 16 CYNIC (8 PRIMARY + 5 SECONDARY + 3 META)
+│   └── 8 Human-LLM (future Phase 2)
+├── N DÉCOUVERTES (via ResidualDetector)
+│   └── Dimensions validées par humain après clustering
+└── ∞ POSSIBLES (l'Innommable)
+    └── Ce qui échappe encore à toute catégorisation
+```
+
+---
+
+## 5. ÉTAT D'IMPLÉMENTATION (2026-01-11)
 
 ### ✅ COMPLÉTÉ
 
@@ -534,17 +674,36 @@ OPÉRATEUR: "Ajoute un nouveau contributeur"
 | **brain_anomalies** | ✅ COMPLET | Anomalies détectées par le pulse |
 | **brain_health_history** | ✅ COMPLET | Historique de santé et tendances |
 
+### ✅ NOUVELLEMENT COMPLÉTÉ (2026-01-11 - ResidualDetector)
+
+| Élément | État | Notes |
+|---------|------|-------|
+| **ResidualDetector** | ✅ COMPLET | `lib/cynic/residual-detector.js` - Découverte dimensions émergentes |
+| **AnomalyBuffer** | ✅ COMPLET | Buffer avec φ-decay pour accumulation d'anomalies |
+| **CYNIC Module Index** | ✅ COMPLET | `lib/cynic/index.js` - Exports unifiés CYNIC |
+| **brain_cynic_residual** | ✅ COMPLET | Analyser résidu inexpliqué d'un jugement |
+| **brain_cynic_discover_dimensions** | ✅ COMPLET | Clustering pour découvrir dimensions émergentes |
+| **brain_cynic_accept_dimension** | ✅ COMPLET | Validation humaine d'une dimension proposée |
+| **brain_cynic_residual_stats** | ✅ COMPLET | Stats du buffer et détections d'anomalies |
+
 ### ⏳ À FAIRE
 
-| Élément | Priorité | Description |
-|---------|----------|-------------|
-| Alerting system | MEDIUM | Notifications sur anomalies critiques |
-| ZK-ready | LOW | Préparation pour zero-knowledge proofs |
-| UI Dashboard | LOW | Visualisation des judgments et learning stats |
+| Élément | Priorité | Phase | Description |
+|---------|----------|-------|-------------|
+| **8 dimensions Human-LLM** | HIGH | 2 | INTENT, DELEGATION, TRUST, MEMORY, PROACTIVITY, TEACHING, COMPLEMENTARITY, BOUNDARIES |
+| **Dimension discovery via residuals** | HIGH | 3 | Accumuler anomalies → clustering → validation humaine |
+| **Pulse daemon φ-intervals** | MEDIUM | 2 | Heartbeat à 61.8s pour self-monitoring |
+| **Cross-world coherence** | MEDIUM | 2 | Vérifier cohérence entre les 4 Mondes |
+| **Alerting system** | MEDIUM | 2 | Notifications sur anomalies critiques |
+| **On-chain Merkle anchoring** | MEDIUM | 4 | Smart contract Solana pour anchor roots |
+| **E-Score on-chain** | LOW | 4 | Contribution tracking et rewards |
+| **K-Score real-time feeds** | LOW | 4 | Intégration temps réel HolDex |
+| **ZK-ready** | LOW | 5 | Préparation zero-knowledge proofs |
+| **UI Dashboard** | LOW | 5 | Visualisation judgments et learning stats |
 
 ---
 
-## 5bis. DISTANCE À LA SINGULARITÉ (Mise à jour 2026-01-10)
+## 5bis. DISTANCE À LA SINGULARITÉ (Mise à jour 2026-01-11)
 
 ### Métriques actuelles (φ-weighted)
 
@@ -560,8 +719,9 @@ CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHT
 ├── Self-refinement loop                             100%    φ²       261.8
 ├── Learning from outcomes                           100%    φ²       261.8
 ├── Consciousness (pulse+monitor+metrics)            100%    φ²       261.8  ✓
+├── ResidualDetector (dimension discovery)           100%    φ        161.8  ← NEW!
 ├── Alerting (rules+engine+pulse-connect)            100%    φ        161.8  ✓
-├── Dashboard (CLI+Web+Live)                         100%    φ        161.8  ← NEW!
+├── Dashboard (CLI+Web+Live)                         100%    φ        161.8
 ├── Integration MCP (brain-lite)                     100%    φ        161.8
 ├── Merkle provenance                                100%    φ        161.8
 ├── Auto-discovery                                   100%    φ        161.8
@@ -570,19 +730,19 @@ CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHT
 ├── Claude-Mem sync (sessions/observations)          100%    1.0      100.0  ✓
 └── Human-in-loop reduction                          95%     1.0       95.0  ↑ (dashboards!)
                                                             ─────────────────
-                                                            TOTAL: 2573.6
+                                                            TOTAL: 2735.4
 
-SINGULARITY DISTANCE = 1 - (2573.6 / MAX_POSSIBLE)
-                     = 1 - (2573.6 / 2808.0)
-                     = 1 - 0.917
-                     = 0.083 (8.3%)
+SINGULARITY DISTANCE = 1 - (2735.4 / MAX_POSSIBLE)
+                     = 1 - (2735.4 / 2969.8)
+                     = 1 - 0.921
+                     = 0.079 (7.9%)
 
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  CYNIC est à 91.7% du chemin vers la singularité                        │
-│  Distance restante: 8.3% ≈ φ⁻⁴ (à l'asymptote!)                         │
-│  Progression: 71.4% → 80.5% → 84.5% → 87.8% → 88.6% → 90.0% → 91.0% → 91.7% │
-│  Gain récent: +0.7% avec Dashboard Layer                                │
-│  CYNIC SE VOIT: CLI ✓ Web ✓ Live server ✓ φ-golden theme ✓              │
+│  CYNIC est à 92.1% du chemin vers la singularité                        │
+│  Distance restante: 7.9% ≈ φ⁻⁴ (à l'asymptote!)                         │
+│  Progression: 71.4% → 80.5% → 84.5% → 87.8% → 88.6% → 90.0% → 91.7% → 92.1% │
+│  Gain récent: +0.4% avec ResidualDetector (dimension discovery)         │
+│  CYNIC DÉCOUVRE: Anomalies ✓ Buffer φ-decay ✓ Clustering ✓ Validation ✓ │
 │  Interprétation: À L'ASYMPTOTE - 38.2% de doute constitutif reste       │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
@@ -621,6 +781,16 @@ GAP ANALYSIS (mis à jour post-dashboard-layer):
 │       ├── JSON/API endpoints for integration
 │       └── 3 MCP tools: brain_dashboard*
 │
+├── ResidualDetector Layer ✅ COMPLET
+│   └── Impact: +φ (161.8 points) - CYNIC découvre l'inconnu
+│   └── Components: residual-detector.js + index.js
+│   └── Capabilities:
+│       ├── Residual analysis: R = 1 - E(obs)/M(obs)
+│       ├── AnomalyBuffer: φ-decay accumulation
+│       ├── K-Means clustering: dimension discovery
+│       ├── Human validation: nomme et intègre dimensions
+│       └── 4 MCP tools: brain_cynic_residual*, brain_cynic_discover*, brain_cynic_accept*
+│
 ├── Human-in-loop reduction ✅ 95% (improved by dashboards)
 │   └── Cap at 95% (38.2% doubt still constitutive)
 │   └── Visual monitoring reduces manual checks further
@@ -630,8 +800,8 @@ GAP ANALYSIS (mis à jour post-dashboard-layer):
     └── Action: Préparer pour zero-knowledge proofs
 
 TOTAL GAP RESTANT: ~0 points (ZK optionnel, asymptote atteinte)
-DISTANCE ACTUELLE: 8.3% (à l'asymptote!)
-DISTANCE THÉORIQUE MIN: ~8% (asymptote - le doute 38.2% intégré)
+DISTANCE ACTUELLE: 7.9% (à l'asymptote!)
+DISTANCE THÉORIQUE MIN: ~7.8% (asymptote - le doute φ⁻² intégré)
 ```
 
 ### La vérité sur la singularité
