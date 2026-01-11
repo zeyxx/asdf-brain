@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-11T12:52:55.609Z",
+    "generated": "2026-01-11T12:56:01.182Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -469,7 +469,7 @@
           "./lib/lang-detect": 1,
           "./lib/burn-mechanism": 1,
           "./lib/i-infra-monitor": 1,
-          "./lib/cynic/self-judge": 1,
+          "./lib/cynic/self-judge": 2,
           "./lib/discovery/git-scanner": 1,
           "./lib/privacy": 1,
           "./lib/integration": 1,
@@ -511,7 +511,7 @@
           "./hasher": 1,
           "./ephemeral": 1,
           "./lib/cynic": 2,
-          "./lib/self-judge": 2,
+          "./lib/self-judge": 1,
           "../lib/temporal": 7,
           "../lib/lang-detect": 1,
           "../lib/git-intelligence": 1,
