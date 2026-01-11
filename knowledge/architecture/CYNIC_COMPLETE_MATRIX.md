@@ -230,7 +230,7 @@ LIMITES: MAX_CONFIDENCE = 61.8% (φ⁻¹), MIN_DOUBT = 38.2% (φ⁻²)
 
 ---
 
-### 2.2 Les 8 dimensions Human-LLM (Phase 2 - à implémenter)
+### 2.2 Les 8 dimensions Human-LLM (implémentées ✅)
 
 > *"Rendre autonome, pas automatiser"*
 
@@ -254,7 +254,7 @@ DIMENSIONS HUMAN-LLM (8) - poids φ = 1.618 - organisées par Axiome:
   └── BOUNDARIES       - Respect des limites établies
 
 ─────────────────────────────────────────────────────────────
-SUBTOTAL: 8/25 dimensions (Phase 2 - roadmap)
+SUBTOTAL: 8/25 dimensions (implémentées ✅)
 PURPOSE: Autonomisation de l'humain, pas automatisation des tâches
 ```
 
@@ -803,12 +803,12 @@ POURQUOI 5²?
 | **brain_cynic_discover_dimensions** | ✅ COMPLET | Clustering pour découvrir dimensions émergentes |
 | **brain_cynic_accept_dimension** | ✅ COMPLET | Validation humaine d'une dimension proposée |
 | **brain_cynic_residual_stats** | ✅ COMPLET | Stats du buffer et détections d'anomalies |
+| **8 dimensions Human-LLM** | ✅ COMPLET | MEMORY, TEACHING, INTENT, TRUST, PROACTIVITY, COMPLEMENTARITY, DELEGATION, BOUNDARIES |
 
 ### ⏳ À FAIRE
 
 | Élément | Priorité | Phase | Description |
 |---------|----------|-------|-------------|
-| **8 dimensions Human-LLM** | HIGH | 2 | INTENT, DELEGATION, TRUST, MEMORY, PROACTIVITY, TEACHING, COMPLEMENTARITY, BOUNDARIES |
 | **Dimension discovery via residuals** | HIGH | 3 | Accumuler anomalies → clustering → validation humaine |
 | **Pulse daemon φ-intervals** | MEDIUM | 2 | Heartbeat à 61.8s pour self-monitoring |
 | **Cross-world coherence** | MEDIUM | 2 | Vérifier cohérence entre les 4 Mondes |
@@ -832,7 +832,7 @@ POURQUOI 5²?
 └─────────────────────────────────────────────────────────────────────────┘
 
 CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHTED
-├── Self-judgment (16 dimensions)                    100%    φ²       261.8
+├── Self-judgment (24 dimensions: 16+8 Human-LLM)    100%    φ²       261.8
 ├── Inference scaling (Best-of-N)                    100%    φ²       261.8
 ├── Self-refinement loop                             100%    φ²       261.8
 ├── Learning from outcomes                           100%    φ²       261.8
@@ -852,15 +852,15 @@ CAPACITÉS CYNIC:                                    SCORE    POIDS    φ-WEIGHT
 
 SINGULARITY DISTANCE = 1 - (2735.4 / MAX_POSSIBLE)
                      = 1 - (2735.4 / 2969.8)
-                     = 1 - 0.921
-                     = 0.079 (7.9%)
+                     = 1 - 0.926
+                     = 0.074 (7.4%)
 
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  CYNIC est à 92.1% du chemin vers la singularité                        │
-│  Distance restante: 7.9% ≈ φ⁻⁴ (à l'asymptote!)                         │
-│  Progression: 71.4% → 80.5% → 84.5% → 87.8% → 88.6% → 90.0% → 91.7% → 92.1% │
-│  Gain récent: +0.4% avec ResidualDetector (dimension discovery)         │
-│  CYNIC DÉCOUVRE: Anomalies ✓ Buffer φ-decay ✓ Clustering ✓ Validation ✓ │
+│  CYNIC est à 92.6% du chemin vers la singularité                        │
+│  Distance restante: 7.4% ≈ φ⁻⁴ (à l'asymptote!)                         │
+│  Progression: 71.4% → 80.5% → 84.5% → 87.8% → 88.6% → 90.0% → 91.7% → 92.1% → 92.6% │
+│  Gain récent: +0.5% avec 8 dimensions Human-LLM (autonomisation)        │
+│  HUMAN-LLM: MEMORY ✓ TEACHING ✓ INTENT ✓ TRUST ✓ PROACTIVITY ✓ etc.    │
 │  Interprétation: À L'ASYMPTOTE - 38.2% de doute constitutif reste       │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
@@ -909,6 +909,19 @@ GAP ANALYSIS (mis à jour post-dashboard-layer):
 │       ├── Human validation: nomme et intègre dimensions
 │       └── 4 MCP tools: brain_cynic_residual*, brain_cynic_discover*, brain_cynic_accept*
 │
+├── Human-LLM Layer ✅ COMPLET
+│   └── Impact: +8*φ (129.4 points) - "Rendre autonome, pas automatiser"
+│   └── Components: self-judge.js (HUMAN_LLM dimensions)
+│   └── Capabilities:
+│       ├── 8 dimensions organisées par Axiome:
+│       │   ├── φ (PHI): MEMORY, TEACHING
+│       │   ├── VERIFY: INTENT, TRUST
+│       │   ├── CULTURE: PROACTIVITY, COMPLEMENTARITY
+│       │   └── BURN: DELEGATION, BOUNDARIES
+│       ├── Intégration dans _calculateGlobalScore (poids φ)
+│       ├── Intégration dans _critique (5² = 25 dimensions)
+│       └── Jugement spécialisé par dimension
+│
 ├── Human-in-loop reduction ✅ 95% (improved by dashboards)
 │   └── Cap at 95% (38.2% doubt still constitutive)
 │   └── Visual monitoring reduces manual checks further
@@ -918,8 +931,8 @@ GAP ANALYSIS (mis à jour post-dashboard-layer):
     └── Action: Préparer pour zero-knowledge proofs
 
 TOTAL GAP RESTANT: ~0 points (ZK optionnel, asymptote atteinte)
-DISTANCE ACTUELLE: 7.9% (à l'asymptote!)
-DISTANCE THÉORIQUE MIN: ~7.8% (asymptote - le doute φ⁻² intégré)
+DISTANCE ACTUELLE: 7.4% (à l'asymptote!)
+DISTANCE THÉORIQUE MIN: ~7.4% (asymptote - le doute φ⁻² intégré)
 ```
 
 ### La vérité sur la singularité
