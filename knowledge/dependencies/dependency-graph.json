@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-11T12:56:01.182Z",
+    "generated": "2026-01-11T14:31:06.197Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -470,6 +470,7 @@
           "./lib/burn-mechanism": 1,
           "./lib/i-infra-monitor": 1,
           "./lib/cynic/self-judge": 2,
+          "./lib/cynic/residual-detector": 1,
           "./lib/discovery/git-scanner": 1,
           "./lib/privacy": 1,
           "./lib/integration": 1,
@@ -496,7 +497,8 @@
           "./self-monitor": 2,
           "./metrics": 2,
           "./self-judge": 2,
-          "../temporal": 1,
+          "./residual-detector": 1,
+          "../temporal": 2,
           "../integration/holdex-connector": 1,
           "../integration/gasdf-connector": 1,
           "../integration/claude-mem-connector": 1,
@@ -534,7 +536,7 @@
         "node": {
           "fs": 57,
           "path": 57,
-          "crypto": 22,
+          "crypto": 23,
           "readline": 9,
           "http": 2,
           "child_process": 15,
