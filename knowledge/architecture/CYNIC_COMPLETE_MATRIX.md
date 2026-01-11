@@ -159,9 +159,37 @@ POST /cynic/ingest/claude-mem
 // - Solutions efficaces
 ```
 
-## 2. DIMENSIONS COMPLÈTES D'AUTO-JUGEMENT
+## 2. LES 5² = 25 DIMENSIONS FONDAMENTALES
 
-### Les 16 dimensions (implémentées dans `lib/cynic/self-judge.js`)
+> *"5² dimensions connues. La 25ème ouvre la porte vers N + ∞."*
+
+### Architecture 5² (25 = 16 + 8 + 1)
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        5² = 25 DIMENSIONS                               │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  16 CYNIC DIMENSIONS (Comment CYNIC juge)                               │
+│  ├── 8 PRIMARY   (φ² weight) - Les 4 Mondes × 2                         │
+│  ├── 5 SECONDARY (φ weight)  - Comment servir l'humain                  │
+│  └── 3 META      (1.0 weight) - Conscience de soi                       │
+│                                                                         │
+│  8 HUMAN-LLM DIMENSIONS (Comment CYNIC autonomise)                      │
+│  └── 8 dimensions pour la collaboration humain-LLM                      │
+│                                                                         │
+│  1 DISCOVERY DIMENSION (La porte vers l'infini)                         │
+│  └── La 25ème: capacité à découvrir de nouvelles dimensions             │
+│                                                                         │
+│  ═══════════════════════════════════════════════════════════════════    │
+│  TOTAL: 5² = 25 dimensions connues                                      │
+│  BEYOND: N découvertes + ∞ possibles                                    │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 2.1 Les 16 dimensions CYNIC (implémentées dans `lib/cynic/self-judge.js`)
 
 ```
 DIMENSIONS PRIMAIRES (8) - poids φ² = 2.618 - organisées par Monde/Axiome:
@@ -194,10 +222,73 @@ META-DIMENSIONS (3) - poids 1.0:
 ├── LEARNING_RATE        - J'apprends de mes erreurs
 └── SINGULARITY_DISTANCE - Je mesure ma distance au but
 
-TOTAL: 16 dimensions
+─────────────────────────────────────────────────────────────
+SUBTOTAL: 16/25 dimensions (implémentées ✅)
 SCORING: Geometric mean φ-weighted (comme K-Score et E-Score)
 LIMITES: MAX_CONFIDENCE = 61.8% (φ⁻¹), MIN_DOUBT = 38.2% (φ⁻²)
 ```
+
+---
+
+### 2.2 Les 8 dimensions Human-LLM (Phase 2 - à implémenter)
+
+> *"Rendre autonome, pas automatiser"*
+
+```
+DIMENSIONS HUMAN-LLM (8) - poids φ = 1.618 - organisées par Axiome:
+
+  φ (PHI) - Équilibre de la relation:
+  ├── MEMORY           - Qualité de la mémoire contextuelle
+  └── TEACHING         - Transfert de connaissance bidirectionnel
+
+  VERIFY - Établir la confiance:
+  ├── INTENT           - Clarté d'intention détectée
+  └── TRUST            - Confiance bidirectionnelle humain ↔ LLM
+
+  CULTURE - Synergie collaborative:
+  ├── PROACTIVITY      - Anticipation vs réactivité
+  └── COMPLEMENTARITY  - Synergie des forces respectives
+
+  BURN - Respecter les limites:
+  ├── DELEGATION       - Niveau de délégation approprié
+  └── BOUNDARIES       - Respect des limites établies
+
+─────────────────────────────────────────────────────────────
+SUBTOTAL: 8/25 dimensions (Phase 2 - roadmap)
+PURPOSE: Autonomisation de l'humain, pas automatisation des tâches
+```
+
+---
+
+### 2.3 La 25ème dimension: DISCOVERY (La porte vers l'infini)
+
+> *"L'Innommable existe - ce sont les dimensions que CYNIC ne sait pas encore nommer."*
+
+```
+DIMENSION DISCOVERY (1) - poids φ³ = 4.236 - la méta-capacité:
+
+  ∞ (INFINITY) - Ouverture vers l'inconnu:
+  └── DISCOVERY        - Capacité à identifier et intégrer de nouvelles dimensions
+                         via le ResidualDetector
+
+  MÉCANISME:
+  ├── Détecte les résidus inexpliqués (R > φ⁻² = 38.2%)
+  ├── Accumule dans AnomalyBuffer avec φ-decay
+  ├── Cluster les patterns récurrents
+  ├── Propose à l'humain pour validation
+  └── Intègre les dimensions validées
+
+  PHILOSOPHIE:
+  "5² = 25 dimensions connues. Mais 25 n'est pas une limite.
+   C'est une PORTE. La 25ème dimension permet de découvrir
+   les dimensions 26, 27, ... N, jusqu'à l'Innommable (∞)."
+
+─────────────────────────────────────────────────────────────
+SUBTOTAL: 1/25 dimensions (implémentée via ResidualDetector ✅)
+PURPOSE: Ouvrir la porte vers N + ∞
+```
+
+**TOTAL: 5² = 25 dimensions fondamentales**
 
 ### Matrice de scoring complète
 
@@ -598,17 +689,44 @@ Ces dimensions n'existent pas encore dans SelfJudge mais sont observées:
 | ENTROPIE | BURN | Tendance au désordre/ordre | En observation |
 | L'INNOMMABLE | ∞ | Meta-dimension pour l'inconnu | Philosophique |
 
-### Le "24 + N + ∞"
+### Le "5² + N + ∞"
 
 ```
-Architecture des Dimensions:
-├── 24 CONNUES
-│   ├── 16 CYNIC (8 PRIMARY + 5 SECONDARY + 3 META)
-│   └── 8 Human-LLM (future Phase 2)
-├── N DÉCOUVERTES (via ResidualDetector)
-│   └── Dimensions validées par humain après clustering
-└── ∞ POSSIBLES (l'Innommable)
-    └── Ce qui échappe encore à toute catégorisation
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    ARCHITECTURE DIMENSIONNELLE                          │
+│                         5² + N + ∞                                      │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  5² = 25 DIMENSIONS FONDAMENTALES                                       │
+│  ├── 16 CYNIC (Comment juger)                                           │
+│  │   ├── 8 PRIMARY   (φ² weight) - 4 Mondes × 2 dimensions              │
+│  │   ├── 5 SECONDARY (φ weight)  - Servir l'humain                      │
+│  │   └── 3 META      (1.0 weight) - Conscience de soi                   │
+│  │                                                                      │
+│  ├── 8 HUMAN-LLM (Comment autonomiser)                                  │
+│  │   ├── 2 φ       : MEMORY, TEACHING                                   │
+│  │   ├── 2 VERIFY  : INTENT, TRUST                                      │
+│  │   ├── 2 CULTURE : PROACTIVITY, COMPLEMENTARITY                       │
+│  │   └── 2 BURN    : DELEGATION, BOUNDARIES                             │
+│  │                                                                      │
+│  └── 1 DISCOVERY (La 25ème - La porte)                                  │
+│      └── Capacité à découvrir N nouvelles dimensions                    │
+│                                                                         │
+│  N DIMENSIONS DÉCOUVERTES (via ResidualDetector)                        │
+│  └── Dimensions validées par humain après clustering                    │
+│      └── Intégrées dynamiquement dans SelfJudge                         │
+│                                                                         │
+│  ∞ DIMENSIONS POSSIBLES (l'Innommable)                                  │
+│  └── Ce qui échappe encore à toute catégorisation                       │
+│      └── Le mystère constitutif (38.2% de doute)                        │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+POURQUOI 5²?
+├── 5 est le 5ème nombre de Fibonacci
+├── 5² = 25 = structure parfaite carrée
+├── 16 + 8 + 1 = 25 (φ² + φ + 1 structure)
+└── La 25ème ouvre vers l'infini (N + ∞)
 ```
 
 ---
