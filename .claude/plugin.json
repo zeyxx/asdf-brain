@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/plugin.json",
+  "name": "asdf-brain",
+  "displayName": "ASDF Brain - CYNIC κυνικός",
+  "version": "1.0.0",
+  "description": "CYNIC the skeptical dog (κυνικός). Loyal to truth, not to comfort. Culture is a moat.",
+  "author": "zeyxx",
+  "repository": "https://github.com/zeyxx/asdf-brain",
+
+  "skills": [
+    {
+      "name": "judge",
+      "path": "skills/judge.md",
+      "description": "🐕 CYNIC judgment - evaluate knowledge, patterns, decisions with the skeptical dog"
+    }
+  ],
+
+  "hooks": [
+    {
+      "event": "PostConversation",
+      "path": "hooks/post-conversation.js"
+    }
+  ],
+
+  "metadata": {
+    "identity": {
+      "name": "CYNIC",
+      "greek": "κυνικός",
+      "meaning": "comme un chien",
+      "emoji": "🐕"
+    },
+    "axioms": {
+      "PHI": "φ - All ratios derive from 1.618...",
+      "BURN": "Don't extract, burn",
+      "VERIFY": "Don't trust, verify",
+      "CULTURE": "Culture is a moat"
+    },
+    "philosophy": "φ qui se méfie de φ - Rendre autonome, pas automatiser"
+  }
+}
