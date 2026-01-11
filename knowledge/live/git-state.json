@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-01-10T18:52:50.536Z",
+  "timestamp": "2026-01-11T11:41:50.936Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-10T18:52:49.431Z",
+      "timestamp": "2026-01-11T11:41:50.439Z",
       "branch": {
         "branch": "main",
-        "modified": 0,
+        "modified": 1,
         "untracked": 0,
-        "staged": 0,
+        "staged": 1,
         "ahead": 0,
         "behind": 0,
-        "clean": true,
+        "clean": false,
         "lastCommit": {
-          "hash": "9c613a6",
-          "subject": "fix(rpc): Fix undefined connection in volume_tracker retryRPC calls",
-          "relative": "32 minutes ago"
+          "hash": "274d7b7",
+          "subject": "fix(rpc): Disable bulk K-Score updates - save 320k cr/day",
+          "relative": "13 hours ago"
         }
       },
       "pr": {
@@ -32,7 +32,14 @@
         "drift": 0,
         "direction": "same"
       },
-      "suggestions": [],
+      "suggestions": [
+        {
+          "priority": "low",
+          "type": "uncommitted_changes",
+          "message": "1 modified, 1 staged",
+          "action": "Review and commit changes"
+        }
+      ],
       "recentPRs": [
         {
           "number": 7,
@@ -68,45 +75,19 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-10T18:52:49.926Z",
-      "branch": {
-        "branch": "main",
-        "modified": 0,
-        "untracked": 0,
-        "staged": 0,
-        "ahead": 0,
-        "behind": 0,
-        "clean": true,
-        "lastCommit": {
-          "hash": "5d6474e",
-          "subject": "chore: Add .mcp.json to gitignore",
-          "relative": "2 hours ago"
-        }
-      },
-      "pr": null,
-      "postMergeCommits": [],
-      "drift": {
-        "drift": 0,
-        "direction": "same"
-      },
-      "suggestions": [],
-      "recentPRs": []
-    },
-    "brain": {
-      "repo": "brain",
-      "timestamp": "2026-01-10T18:52:50.536Z",
+      "timestamp": "2026-01-11T11:41:50.678Z",
       "branch": {
         "branch": "main",
         "modified": 4,
         "untracked": 0,
         "staged": 1,
         "ahead": 0,
-        "behind": 1,
+        "behind": 0,
         "clean": false,
         "lastCommit": {
-          "hash": "b1859b5",
-          "subject": "feat(cynic): Add self-refinement loop for iterative improvement",
-          "relative": "4 minutes ago"
+          "hash": "5d6474e",
+          "subject": "chore: Add .mcp.json to gitignore",
+          "relative": "19 hours ago"
         }
       },
       "pr": null,
@@ -117,16 +98,42 @@
       },
       "suggestions": [
         {
-          "priority": "medium",
-          "type": "pull_needed",
-          "message": "1 commits behind remote",
-          "action": "Pull latest changes",
-          "command": "git pull"
-        },
-        {
           "priority": "low",
           "type": "uncommitted_changes",
           "message": "4 modified, 1 staged",
+          "action": "Review and commit changes"
+        }
+      ],
+      "recentPRs": []
+    },
+    "brain": {
+      "repo": "brain",
+      "timestamp": "2026-01-11T11:41:50.936Z",
+      "branch": {
+        "branch": "main",
+        "modified": 11,
+        "untracked": 5,
+        "staged": 1,
+        "ahead": 0,
+        "behind": 0,
+        "clean": false,
+        "lastCommit": {
+          "hash": "66bfadf",
+          "subject": "chore: Auto-update brain knowledge",
+          "relative": "10 hours ago"
+        }
+      },
+      "pr": null,
+      "postMergeCommits": [],
+      "drift": {
+        "drift": 0,
+        "direction": "same"
+      },
+      "suggestions": [
+        {
+          "priority": "low",
+          "type": "uncommitted_changes",
+          "message": "11 modified, 5 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -135,17 +142,23 @@
   },
   "suggestions": [
     {
-      "priority": "medium",
-      "type": "pull_needed",
-      "message": "1 commits behind remote",
-      "action": "Pull latest changes",
-      "command": "git pull",
-      "repo": "brain"
+      "priority": "low",
+      "type": "uncommitted_changes",
+      "message": "1 modified, 1 staged",
+      "action": "Review and commit changes",
+      "repo": "holdex"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
       "message": "4 modified, 1 staged",
+      "action": "Review and commit changes",
+      "repo": "gasdf"
+    },
+    {
+      "priority": "low",
+      "type": "uncommitted_changes",
+      "message": "11 modified, 5 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
@@ -153,7 +166,7 @@
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 1,
-    "lowPriority": 1
+    "mediumPriority": 0,
+    "lowPriority": 3
   }
 }

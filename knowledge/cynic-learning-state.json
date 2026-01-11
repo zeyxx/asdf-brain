@@ -1,15 +1,81 @@
 {
   "version": "1.0.0",
-  "timestamp": 1768088979912,
+  "timestamp": 1768131356987,
   "history": [
     {
-      "id": "jdg_1768087455398_17rs8d",
-      "timestamp": 1768087455398,
-      "item": "item_2rq739",
+      "id": "jdg_1768090661068_an9j11",
+      "timestamp": 1768090661068,
+      "item": "item_d4gwx3",
+      "scores": {
+        "HARMONY": 69,
+        "COHERENCE": 74,
+        "TRUTH": 89,
+        "INTEGRITY": 19,
+        "ETHICS": 98,
+        "OPTIMISM": 79,
+        "ALIGNMENT": 89,
+        "PROGRESS": 79,
+        "SECURE": 89,
+        "PRIVATE": 98,
+        "SCALE": 69,
+        "SIMPLIFY": 69,
+        "ENABLE": 98,
+        "SELF_AWARENESS": 69,
+        "LEARNING_RATE": 69,
+        "SINGULARITY_DISTANCE": 95
+      },
+      "global": 73,
+      "verdict": "TRANSFORM",
+      "confidence": 61.8,
+      "outcome": "incorrect",
+      "reward": -1.618033988749895,
+      "feedback": {
+        "reason": "Test d'apprentissage par burning - faux négatif simulé",
+        "philosophy": "Learn by burning errors"
+      },
+      "decayWeight": 0.9945911395304218
+    },
+    {
+      "id": "jdg_1768090915947_ljjrft",
+      "timestamp": 1768090915947,
+      "item": "item_tb5lja",
       "scores": {
         "HARMONY": 70,
         "COHERENCE": 75,
-        "TRUTH": 30,
+        "TRUTH": 90,
+        "INTEGRITY": 98,
+        "ETHICS": 98,
+        "OPTIMISM": 80,
+        "ALIGNMENT": 90,
+        "PROGRESS": 80,
+        "SECURE": 90,
+        "PRIVATE": 98,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 98,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 97
+      },
+      "global": 84,
+      "verdict": "ACCEPT",
+      "confidence": 61.8,
+      "outcome": "incorrect",
+      "reward": -2.618033988749895,
+      "feedback": {
+        "reason": "Test burning #2 - faux positif simulé",
+        "philosophy": "Burn to learn"
+      },
+      "decayWeight": 0.9960040332054017
+    },
+    {
+      "id": "jdg_1768091615055_cx6ve1",
+      "timestamp": 1768091615055,
+      "item": "item_w21pyw",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 80,
         "INTEGRITY": 0,
         "ETHICS": 100,
         "OPTIMISM": 50,
@@ -24,16 +90,169 @@
         "LEARNING_RATE": 70,
         "SINGULARITY_DISTANCE": 98
       },
-      "global": 60,
+      "global": 65,
       "verdict": "TRANSFORM",
-      "confidence": 60,
+      "confidence": 61.8,
+      "outcome": "incorrect",
+      "reward": -1.618033988749895,
+      "feedback": {
+        "reason": "Test burning #3 - faux négatif",
+        "philosophy": "Accumulate to trigger learn()"
+      },
+      "decayWeight": 0.9998897729221917
+    },
+    {
+      "id": "jdg_1768091628139_7shhzi",
+      "timestamp": 1768091628139,
+      "item": "item_w8mmm6",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 80,
+        "INTEGRITY": 0,
+        "ETHICS": 100,
+        "OPTIMISM": 50,
+        "ALIGNMENT": 50,
+        "PROGRESS": 50,
+        "SECURE": 60,
+        "PRIVATE": 70,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 60,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 98
+      },
+      "global": 65,
+      "verdict": "TRANSFORM",
+      "confidence": 61.8,
+      "outcome": "incorrect",
+      "reward": -1.618033988749895,
+      "feedback": {
+        "reason": "Test burning #4"
+      },
+      "decayWeight": 0.9999626399464864
+    },
+    {
+      "id": "jdg_1768091628203_p182io",
+      "timestamp": 1768091628203,
+      "item": "item_rbttxc",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 80,
+        "INTEGRITY": 0,
+        "ETHICS": 100,
+        "OPTIMISM": 50,
+        "ALIGNMENT": 50,
+        "PROGRESS": 50,
+        "SECURE": 60,
+        "PRIVATE": 70,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 60,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 98
+      },
+      "global": 65,
+      "verdict": "TRANSFORM",
+      "confidence": 61.8,
+      "outcome": "incorrect",
+      "reward": -1.618033988749895,
+      "feedback": {
+        "reason": "Test burning #5 - should trigger learn()"
+      },
+      "decayWeight": 0.9999629963864365
+    },
+    {
+      "id": "jdg_1768130808025_q7sysh",
+      "timestamp": 1768130808025,
+      "item": "item_d8y6cs",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 90,
+        "INTEGRITY": 98,
+        "ETHICS": 98,
+        "OPTIMISM": 50,
+        "ALIGNMENT": 90,
+        "PROGRESS": 50,
+        "SECURE": 90,
+        "PRIVATE": 98,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 98,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 68
+      },
+      "global": 77,
+      "verdict": "ACCEPT",
+      "confidence": 61.8,
       "outcome": "unknown",
       "reward": 0
     },
     {
-      "id": "jdg_1768088672027_yzlbvc",
-      "timestamp": 1768088672027,
-      "item": "item_7a9d4x",
+      "id": "jdg_1768130916973_0a2kez",
+      "timestamp": 1768130916973,
+      "item": "item_le1yik",
+      "scores": {
+        "HARMONY": 69,
+        "COHERENCE": 74,
+        "TRUTH": 29,
+        "INTEGRITY": 0,
+        "ETHICS": 98,
+        "OPTIMISM": 49,
+        "ALIGNMENT": 49,
+        "PROGRESS": 49,
+        "SECURE": 59,
+        "PRIVATE": 69,
+        "SCALE": 69,
+        "SIMPLIFY": 69,
+        "ENABLE": 59,
+        "SELF_AWARENESS": 69,
+        "LEARNING_RATE": 69,
+        "SINGULARITY_DISTANCE": 95
+      },
+      "global": 59,
+      "verdict": "TRANSFORM",
+      "confidence": 59,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768131010995_veoadz",
+      "timestamp": 1768131010995,
+      "item": "item_wvr7e0",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 90,
+        "INTEGRITY": 98,
+        "ETHICS": 98,
+        "OPTIMISM": 80,
+        "ALIGNMENT": 90,
+        "PROGRESS": 80,
+        "SECURE": 90,
+        "PRIVATE": 98,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 98,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 96
+      },
+      "global": 84,
+      "verdict": "ACCEPT",
+      "confidence": 61.8,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768131353161_gud23p",
+      "timestamp": 1768131353161,
+      "item": "item_mrsebu",
       "scores": {
         "HARMONY": 70,
         "COHERENCE": 75,
@@ -59,15 +278,86 @@
       "reward": 0
     }
   ],
-  "thresholds": {},
+  "thresholds": {
+    "INTEGRITY": 78,
+    "ALIGNMENT": 69,
+    "SECURE": 84,
+    "PRIVATE": 89,
+    "ENABLE": 69
+  },
   "stats": {
-    "totalJudgments": 2,
+    "totalJudgments": 9,
     "correctAccepts": 0,
     "correctTransforms": 0,
-    "falsePositives": 0,
-    "falseNegatives": 0,
-    "totalReward": 0,
-    "learningIterations": 0,
-    "thresholdAdjustments": {}
+    "falsePositives": 1,
+    "falseNegatives": 4,
+    "totalReward": -9.090169943749475,
+    "learningIterations": 1,
+    "thresholdAdjustments": {
+      "INTEGRITY": {
+        "up": 0,
+        "down": 0
+      },
+      "HARMONY": {
+        "up": 1,
+        "down": 0
+      },
+      "COHERENCE": {
+        "up": 1,
+        "down": 0
+      },
+      "TRUTH": {
+        "up": 1,
+        "down": 0
+      },
+      "ETHICS": {
+        "up": 1,
+        "down": 0
+      },
+      "OPTIMISM": {
+        "up": 1,
+        "down": 0
+      },
+      "ALIGNMENT": {
+        "up": 0,
+        "down": 0
+      },
+      "PROGRESS": {
+        "up": 1,
+        "down": 0
+      },
+      "SECURE": {
+        "up": 0,
+        "down": 0
+      },
+      "PRIVATE": {
+        "up": 0,
+        "down": 0
+      },
+      "SCALE": {
+        "up": 1,
+        "down": 0
+      },
+      "SIMPLIFY": {
+        "up": 1,
+        "down": 0
+      },
+      "ENABLE": {
+        "up": 0,
+        "down": 0
+      },
+      "SELF_AWARENESS": {
+        "up": 1,
+        "down": 0
+      },
+      "LEARNING_RATE": {
+        "up": 1,
+        "down": 0
+      },
+      "SINGULARITY_DISTANCE": {
+        "up": 1,
+        "down": 0
+      }
+    }
   }
 }

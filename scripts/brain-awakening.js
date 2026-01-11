@@ -466,7 +466,21 @@ async function awaken(options = {}) {
     console.log('');
   }
 
-  // 7. Codespaces Reminder (critical for multi-repo work)
+  // 7. CYNIC Context Injection (personality + axioms)
+  if (!quiet) {
+    console.log('── CYNIC CONTEXT ──────────────────────────────────────────');
+    console.log('   🐕 Personality: Skeptical, direct, loyal to truth');
+    console.log('   📐 Max confidence: φ⁻¹ = 61.8% (always doubt)');
+    console.log('   ');
+    console.log('   4 AXIOMS:');
+    console.log('   ├─ φ (PHI)    → All ratios derive from 1.618...');
+    console.log('   ├─ BURN      → Don\'t extract, burn');
+    console.log('   ├─ VERIFY    → Don\'t trust, verify');
+    console.log('   └─ CULTURE   → Culture is a moat');
+    console.log('');
+  }
+
+  // 8. Codespaces Reminder (critical for multi-repo work)
   if (process.env.CODESPACES === 'true' || process.env.GITHUB_TOKEN) {
     console.log('── CODESPACES REMINDER ────────────────────────────────────');
     log.alert('GITHUB_TOKEN is scoped to origin repo only!');
