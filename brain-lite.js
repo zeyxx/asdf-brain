@@ -60,9 +60,13 @@ const infraMonitor = require('./lib/i-infra-monitor');
 
 // CYNIC - Self-Judge ("φ qui se méfie de φ")
 const { SelfJudge, LEARNING, FIBONACCI_N, DIVERSITY, REFINEMENT } = require('./lib/cynic/self-judge');
+const { ResidualDetector } = require('./lib/cynic/residual-detector');
 
 // Initialize global CYNIC instance with persistent learning
 const cynicJudge = new SelfJudge({ logger: console });
+
+// Initialize global Residual Detector (discovers unknown dimensions)
+const residualDetector = new ResidualDetector({ logger: console });
 
 // =============================================================================
 // CYNIC PERSISTENCE - Learning State Survival (φ-intervals)
@@ -631,6 +635,86 @@ const TOOLS = {
     phi_weight: PHI,
     isCynic: true,
     isWrite: true,
+  },
+
+  brain_cynic_residual: {
+    pardes: 'D',
+    name: 'brain_cynic_residual',
+    description: '[CYNIC] Analyze a judgment for unexplained residual. Detects anomalies (residual > 38.2%) and accumulates them for dimension discovery.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        judgment: {
+          type: 'object',
+          description: 'CYNIC judgment result (from brain_cynic_judge)',
+        },
+        observation: {
+          type: 'object',
+          description: 'Original observation that was judged',
+        },
+        context: {
+          type: 'object',
+          description: 'Optional context (source, project, etc.)',
+        },
+      },
+      required: ['judgment', 'observation'],
+    },
+    phi_weight: PHI_SQ,
+    isCynic: true,
+  },
+
+  brain_cynic_discover_dimensions: {
+    pardes: 'S',
+    name: 'brain_cynic_discover_dimensions',
+    description: '[CYNIC] Attempt to discover new dimensions from accumulated anomalies. Returns dimension candidates for human validation.',
+    inputSchema: { type: 'object', properties: {} },
+    phi_weight: PHI_SQ,
+    isCynic: true,
+  },
+
+  brain_cynic_accept_dimension: {
+    pardes: 'S',
+    name: 'brain_cynic_accept_dimension',
+    description: '[CYNIC] Accept a proposed dimension (human validation required). Integrates the dimension into CYNIC.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        candidate: {
+          type: 'object',
+          description: 'The dimension candidate to accept (from brain_cynic_discover_dimensions)',
+        },
+        name: {
+          type: 'string',
+          description: 'Final name for the dimension (optional, uses suggested name if not provided)',
+        },
+        definition: {
+          type: 'string',
+          description: 'Human-provided definition of what this dimension measures',
+        },
+        axiom: {
+          type: 'string',
+          enum: ['PHI', 'VERIFY', 'CULTURE', 'BURN'],
+          description: 'Which axiom this dimension aligns with',
+        },
+        threshold: {
+          type: 'number',
+          description: 'Score threshold for this dimension (default: 50)',
+        },
+      },
+      required: ['candidate'],
+    },
+    phi_weight: PHI_SQ,
+    isCynic: true,
+    isWrite: true,
+  },
+
+  brain_cynic_residual_stats: {
+    pardes: 'R',
+    name: 'brain_cynic_residual_stats',
+    description: '[CYNIC] Get residual detector statistics: anomalies accumulated, dimensions discovered, buffer status.',
+    inputSchema: { type: 'object', properties: {} },
+    phi_weight: 1.0,
+    isCynic: true,
   },
 
   brain_discover: {
@@ -2513,6 +2597,187 @@ async function handleCynicLearn(args, adapter) {
 }
 
 // =============================================================================
+// RESIDUAL DETECTION HANDLERS - Unknown Dimension Discovery
+// =============================================================================
+
+async function handleCynicResidual(args, adapter) {
+  const { judgment, observation, context = {} } = args;
+
+  if (!judgment || !observation) {
+    return {
+      success: false,
+      error: 'Both judgment and observation are required',
+      _quality: 0,
+    };
+  }
+
+  try {
+    const result = residualDetector.analyze(judgment, observation, context);
+
+    return {
+      success: true,
+      residual: result.residual,
+      is_anomaly: result.is_anomaly,
+      magnitude: result.magnitude,
+      explained: result.explained,
+      dimensions_involved: result.dimensions_involved,
+      buffer_size: result.buffer_size,
+      ready_to_cluster: result.ready_to_cluster,
+      message: result.is_anomaly
+        ? `Anomaly detected! Residual: ${(result.residual * 100).toFixed(1)}% unexplained`
+        : `Normal observation. Residual: ${(result.residual * 100).toFixed(1)}%`,
+      philosophy: 'What we cannot explain, we must discover',
+      _quality: 75,
+    };
+  } catch (e) {
+    return {
+      success: false,
+      error: e.message,
+      _quality: 0,
+    };
+  }
+}
+
+async function handleCynicDiscoverDimensions(args, adapter) {
+  try {
+    const result = residualDetector.discoverDimensions();
+
+    if (!result.candidates || result.candidates.length === 0) {
+      return {
+        success: true,
+        candidates: [],
+        buffer_size: result.buffer_size,
+        message: result.message || 'No new dimensions discovered yet',
+        philosophy: 'Patience - dimensions reveal themselves in φ-time',
+        _quality: 60,
+      };
+    }
+
+    return {
+      success: true,
+      candidates: result.candidates.map(c => ({
+        id: c.id,
+        name: c.name,
+        confidence: c.confidence,
+        pattern_count: c.pattern_count,
+        common_sources: c.common_sources,
+        suggested_axiom: c.suggested_axiom,
+        suggested_threshold: c.suggested_threshold,
+      })),
+      buffer_size: result.buffer_size,
+      message: `Discovered ${result.candidates.length} potential new dimension(s)`,
+      philosophy: 'From residuals emerge dimensions - φ guides discovery',
+      _quality: 85,
+    };
+  } catch (e) {
+    return {
+      success: false,
+      error: e.message,
+      _quality: 0,
+    };
+  }
+}
+
+async function handleCynicAcceptDimension(args, adapter) {
+  const { candidate, name, definition, axiom, threshold } = args;
+
+  if (!candidate || !name || !definition || !axiom) {
+    return {
+      success: false,
+      error: 'Required: candidate (id), name, definition, axiom',
+      _quality: 0,
+    };
+  }
+
+  try {
+    const validation = {
+      name,
+      definition,
+      axiom,
+      threshold: threshold || 0.618, // Default to φ⁻¹
+    };
+
+    const result = residualDetector.acceptDimension(candidate, validation);
+
+    if (!result.accepted) {
+      return {
+        success: false,
+        error: result.error || 'Dimension not accepted',
+        _quality: 30,
+      };
+    }
+
+    // Record the new dimension in brain knowledge
+    const knowledgeEntry = {
+      type: 'insight',
+      content: `NEW DIMENSION ACCEPTED: ${name}\n\nDefinition: ${definition}\nAxiom: ${axiom}\nThreshold: ${validation.threshold}\n\nOrigin: Discovered from ${result.pattern_count} anomalous observations via ResidualDetector.`,
+      context: 'CYNIC ResidualDetector - Dimension Discovery',
+      tags: ['cynic', 'dimension', 'discovery', 'residual', axiom.toLowerCase()],
+    };
+
+    await handleLearn(knowledgeEntry, adapter);
+
+    return {
+      success: true,
+      accepted: true,
+      dimension: {
+        name,
+        definition,
+        axiom,
+        threshold: validation.threshold,
+        origin: 'residual_detection',
+        pattern_count: result.pattern_count,
+      },
+      message: `Dimension "${name}" accepted and integrated into CYNIC`,
+      philosophy: 'From the unnamed emerges the named - φ completes the circle',
+      _quality: 95,
+    };
+  } catch (e) {
+    return {
+      success: false,
+      error: e.message,
+      _quality: 0,
+    };
+  }
+}
+
+async function handleCynicResidualStats(args, adapter) {
+  try {
+    const stats = residualDetector.getStats();
+
+    return {
+      success: true,
+      buffer: {
+        size: stats.buffer_size,
+        oldest_age_hours: stats.oldest_anomaly_age_hours,
+        newest_age_hours: stats.newest_anomaly_age_hours,
+        ready_to_cluster: stats.ready_to_cluster,
+      },
+      accepted_dimensions: stats.accepted_dimensions,
+      rejected_dimensions: stats.rejected_dimensions,
+      pending_candidates: stats.pending_candidates,
+      total_observations: stats.total_observations,
+      anomaly_rate: stats.anomaly_rate,
+      constants: {
+        anomaly_threshold: stats.constants.ANOMALY_THRESHOLD,
+        cluster_min_count: stats.constants.CLUSTER_MIN_COUNT,
+        decay_factor: stats.constants.DECAY_FACTOR,
+        similarity_threshold: stats.constants.SIMILARITY_THRESHOLD,
+      },
+      message: `ResidualDetector: ${stats.buffer_size} anomalies buffered, ${stats.pending_candidates} candidates pending`,
+      philosophy: 'φ⁻² = 38.2% - the threshold of the unexplained',
+      _quality: 80,
+    };
+  } catch (e) {
+    return {
+      success: false,
+      error: e.message,
+      _quality: 0,
+    };
+  }
+}
+
+// =============================================================================
 // DISCOVERY HANDLERS - Auto-Discovery with CYNIC
 // =============================================================================
 
@@ -3707,6 +3972,11 @@ const HANDLERS = {
   brain_cynic_feedback: handleCynicFeedback,
   brain_cynic_stats: handleCynicStats,
   brain_cynic_learn: handleCynicLearn,
+  // CYNIC Residual Detection Layer (Unknown Dimension Discovery)
+  brain_cynic_residual: handleCynicResidual,
+  brain_cynic_discover_dimensions: handleCynicDiscoverDimensions,
+  brain_cynic_accept_dimension: handleCynicAcceptDimension,
+  brain_cynic_residual_stats: handleCynicResidualStats,
   // Discovery Layer
   brain_discover: handleDiscover,
   brain_discover_status: handleDiscoverStatus,
