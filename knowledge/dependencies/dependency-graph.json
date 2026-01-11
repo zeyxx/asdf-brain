@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-11T16:18:58.585Z",
+    "generated": "2026-01-11T20:35:19.514Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -497,8 +497,19 @@
           "./pulse": 2,
           "./self-monitor": 2,
           "./metrics": 2,
-          "./self-judge": 2,
+          "../llm/provider": 2,
+          "./self-judge": 3,
           "./residual-detector": 1,
+          "./gate": 2,
+          "./score": 2,
+          "./judge": 1,
+          "./shield": 1,
+          "./matrix": 2,
+          "./learn": 1,
+          "./sync": 1,
+          "./clarify": 1,
+          "./vision": 1,
+          "./discover": 1,
           "../temporal": 2,
           "../integration/holdex-connector": 1,
           "../integration/gasdf-connector": 1,
@@ -535,9 +546,9 @@
           "express": 1
         },
         "node": {
-          "fs": 57,
-          "path": 57,
-          "crypto": 23,
+          "fs": 64,
+          "path": 64,
+          "crypto": 24,
           "readline": 9,
           "http": 2,
           "child_process": 15,
