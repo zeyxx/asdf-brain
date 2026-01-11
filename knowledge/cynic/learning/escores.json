@@ -1,0 +1,23 @@
+{
+  "scores": {
+    "user-123": {
+      "total": 1.4999999988065182,
+      "contributions": [
+        {
+          "timestamp": 1768159741146,
+          "outcome": "correct",
+          "judgmentScore": 75,
+          "contribution": 0.75
+        },
+        {
+          "timestamp": 1768159741148,
+          "outcome": "correct",
+          "judgmentScore": 75,
+          "contribution": 0.75
+        }
+      ],
+      "created": 1768159741146
+    }
+  },
+  "lastUpdated": "2026-01-11T19:29:01.148Z"
+}

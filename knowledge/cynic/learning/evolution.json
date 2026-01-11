@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "created": "2026-01-11T19:29:01.149Z",
+  "epochs": [
+    {
+      "number": 1,
+      "timestamp": 1768159741150,
+      "stats": {
+        "totalOutcomes": 4,
+        "accuracy": 75,
+        "harmonyUpdates": 5,
+        "thresholdCalibrations": 12,
+        "avgHarmony": 0.01
+      },
+      "outcomeDistribution": {
+        "correct": 3,
+        "incorrect": 1,
+        "partial": 0
+      }
+    }
+  ],
+  "currentEpoch": 1,
+  "milestones": []
+}
