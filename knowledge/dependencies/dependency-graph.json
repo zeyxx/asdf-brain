@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-11T12:39:32.864Z",
+    "generated": "2026-01-11T12:52:55.609Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -517,6 +517,7 @@
           "../lib/git-intelligence": 1,
           "../lib/repo-discovery": 1,
           "../lib/operator-loader": 1,
+          "../lib/context-layer": 1,
           "./lib/data-sources": 4,
           "./publish-to-solana": 1
         },
@@ -531,12 +532,12 @@
           "express": 1
         },
         "node": {
-          "fs": 56,
-          "path": 56,
+          "fs": 57,
+          "path": 57,
           "crypto": 22,
           "readline": 9,
           "http": 2,
-          "child_process": 14,
+          "child_process": 15,
           "os": 1,
           "events": 2,
           "https": 2
