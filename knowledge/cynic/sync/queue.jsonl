@@ -1,0 +1,3 @@
+{"id":"q_mka5pwov_vjci","timestamp":1768161525439,"type":"harmony","data":{"dim1":"HARMONY","dim2":"TRUTH","value":0.85,"source":"test-node"},"source":"test","status":"pushed","attempts":0,"processedAt":1768161525449}
+{"id":"q_mka5pwow_886o","timestamp":1768161525440,"type":"threshold","data":{"dimension":"ETHICS","severity":"warning","newValue":42,"source":"test-node"},"source":"test","status":"pushed","attempts":0,"processedAt":1768161525449}
+{"id":"q_mka5pwox_kvs8","timestamp":1768161525441,"type":"outcome","data":{"outcome":"correct","dimensions":{"HARMONY":80,"TRUTH":75},"source":"test-user"},"source":"test","status":"pushed","attempts":0,"processedAt":1768161525449}

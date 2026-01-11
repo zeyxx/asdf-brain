@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "created": "2026-01-11T19:58:45.448Z",
+  "lastUpdated": "2026-01-11T19:58:45.449Z",
+  "contributors": {
+    "test-user": {
+      "outcomes": 1,
+      "correct": 1,
+      "joined": 1768161525449
+    }
+  },
+  "insights": [],
+  "patterns": {
+    "HARMONY+TRUTH": {
+      "count": 1,
+      "avgScore": 77.5,
+      "outcomes": {
+        "correct": 1,
+        "incorrect": 0
+      }
+    }
+  },
+  "dimensionCorrelations": {},
+  "emergentBehaviors": []
+}
