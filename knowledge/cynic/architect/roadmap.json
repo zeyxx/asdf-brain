@@ -1,306 +1,104 @@
 {
-  "version": "1.0.0",
-  "created": "2026-01-11T23:42:57.419Z",
-  "updated": "2026-01-11T23:43:17.367Z",
-  "tasks": [
-    {
-      "id": "task_1768174977419_4q78pa",
-      "created": "2026-01-11T23:42:57.419Z",
-      "updated": "2026-01-11T23:43:17.364Z",
-      "title": "CYNIC-WITNESS: Real-time commit monitoring",
-      "description": "Agent that listens to git commits across asdf-* repos in real-time",
-      "category": "core",
-      "tags": [],
-      "state": "PLANNED",
-      "priority": "high",
-      "complexity": "COMPLEX",
-      "estimate": {
-        "hours": 24,
-        "complexity": "COMPLEX",
-        "tokens": {
-          "estimated": 65000,
-          "cost": "1.6950"
-        },
-        "humanCost": "2400.00",
-        "totalCost": "2401.70",
-        "confidence": 0.6180339887498948
+  "version": "2.0.0",
+  "structure": "PYRAMID",
+  "philosophy": "Chaque niveau valide avant de monter",
+  "created": "2026-01-11T23:48:31.662Z",
+  "updated": "2026-01-11T23:48:31.663Z",
+  "pyramid": {
+    "description": "Levels must be validated before proceeding to next",
+    "levels": [
+      {
+        "level": 0,
+        "name": "FONDATION",
+        "status": "ACTIVE",
+        "validation": "CYNIC-ARCHITECT opérationnel",
+        "tasks": [
+          "CYNIC-ARCHITECT module"
+        ],
+        "completed": true
       },
-      "blockedBy": [],
-      "enables": [],
-      "pardes": {
-        "pshat": "Monitors git repos and ingests commit data",
-        "remez": "Every commit is a learning opportunity",
-        "drash": "Connects development activity to knowledge evolution",
-        "sod": "The watcher that never sleeps"
+      {
+        "level": 1,
+        "name": "PERCEPTION",
+        "status": "NEXT",
+        "validation": "CYNIC peut voir ce qui se passe en temps réel",
+        "tasks": [
+          "CYNIC-WITNESS (commit monitoring)",
+          "Error-to-learning pipeline"
+        ],
+        "estimated_hours": 32,
+        "estimated_cost": 3202.38
       },
-      "history": [
-        {
-          "timestamp": "2026-01-11T23:42:57.419Z",
-          "action": "created",
-          "from": null,
-          "to": "IDEA"
-        },
-        {
-          "timestamp": "2026-01-11T23:43:17.364Z",
-          "action": "state_change",
-          "from": "IDEA",
-          "to": "PLANNED",
-          "note": "Ready for implementation"
-        }
-      ]
-    },
-    {
-      "id": "task_1768174977420_76xksi",
-      "created": "2026-01-11T23:42:57.420Z",
-      "updated": "2026-01-11T23:43:17.365Z",
-      "title": "Error-to-learning pipeline",
-      "description": "Convert system errors into CYNIC training data",
-      "category": "core",
-      "tags": [],
-      "state": "PLANNED",
-      "priority": "high",
-      "complexity": "MODERATE",
-      "estimate": {
-        "hours": 8,
-        "complexity": "MODERATE",
-        "tokens": {
-          "estimated": 26000,
-          "cost": "0.6780"
-        },
-        "humanCost": "800.00",
-        "totalCost": "800.68",
-        "confidence": 0.6180339887498948
+      {
+        "level": 2,
+        "name": "RÉACTION",
+        "status": "PLANNED",
+        "validation": "CYNIC peut réagir instantanément",
+        "tasks": [
+          "SSE endpoint (real-time push)",
+          "WebSocket fallback"
+        ],
+        "estimated_hours": 4,
+        "estimated_cost": 400.68,
+        "requires": "PERCEPTION validated"
       },
-      "blockedBy": [],
-      "enables": [],
-      "pardes": {
-        "pshat": "Capture and analyze errors systematically",
-        "remez": "Errors are teachers in disguise",
-        "drash": "Self-improvement through failure analysis",
-        "sod": "The wound is where the light enters"
+      {
+        "level": 3,
+        "name": "VISUALISATION",
+        "status": "PLANNED",
+        "validation": "Tout est visible dans le dashboard 3D",
+        "tasks": [
+          "Commit visualization",
+          "Error visualization",
+          "Pattern emergence display"
+        ],
+        "estimated_hours": 24,
+        "estimated_cost": 2402.04,
+        "requires": "RÉACTION validated"
       },
-      "history": [
-        {
-          "timestamp": "2026-01-11T23:42:57.420Z",
-          "action": "created",
-          "from": null,
-          "to": "IDEA"
-        },
-        {
-          "timestamp": "2026-01-11T23:43:17.365Z",
-          "action": "state_change",
-          "from": "IDEA",
-          "to": "PLANNED",
-          "note": "Ready for implementation"
-        }
-      ]
-    },
-    {
-      "id": "task_1768174977421_how3g6",
-      "created": "2026-01-11T23:42:57.421Z",
-      "updated": "2026-01-11T23:43:17.365Z",
-      "title": "SSE endpoint for real-time dashboard",
-      "description": "Replace polling with Server-Sent Events for instant updates",
-      "category": "dashboard",
-      "tags": [],
-      "state": "PLANNED",
-      "priority": "medium",
-      "complexity": "SIMPLE",
-      "estimate": {
-        "hours": 2,
-        "complexity": "SIMPLE",
-        "tokens": {
-          "estimated": 13000,
-          "cost": "0.3390"
-        },
-        "humanCost": "200.00",
-        "totalCost": "200.34",
-        "confidence": 0.6180339887498948
+      {
+        "level": 4,
+        "name": "ÉMERGENCE",
+        "status": "PLANNED",
+        "validation": "CYNIC détecte des patterns inconnus",
+        "tasks": [
+          "Pattern emergence detection",
+          "THE_INNOMMABLE integration",
+          "New dimension proposals"
+        ],
+        "estimated_hours": 32,
+        "estimated_cost": 4803.4,
+        "requires": "VISUALISATION validated"
       },
-      "blockedBy": [],
-      "enables": [],
-      "pardes": {
-        "pshat": "Add SSE endpoint to server.js",
-        "remez": "Push beats pull for live data",
-        "drash": "The dashboard becomes truly alive",
-        "sod": "Reducing latency between insight and awareness"
-      },
-      "history": [
-        {
-          "timestamp": "2026-01-11T23:42:57.421Z",
-          "action": "created",
-          "from": null,
-          "to": "IDEA"
-        },
-        {
-          "timestamp": "2026-01-11T23:43:17.365Z",
-          "action": "state_change",
-          "from": "IDEA",
-          "to": "PLANNED",
-          "note": "Ready for implementation"
-        }
-      ]
-    },
-    {
-      "id": "task_1768174977421_v01rob",
-      "created": "2026-01-11T23:42:57.421Z",
-      "updated": "2026-01-11T23:43:17.366Z",
-      "title": "Commit visualization in 3D dashboard",
-      "description": "Visualize commits as particles/events in the 3D space",
-      "category": "dashboard",
-      "tags": [],
-      "state": "PLANNED",
-      "priority": "medium",
-      "complexity": "MODERATE",
-      "estimate": {
-        "hours": 8,
-        "complexity": "MODERATE",
-        "tokens": {
-          "estimated": 26000,
-          "cost": "0.6780"
-        },
-        "humanCost": "800.00",
-        "totalCost": "800.68",
-        "confidence": 0.6180339887498948
-      },
-      "blockedBy": [],
-      "enables": [],
-      "pardes": {
-        "pshat": "Add commit visualization layer to Three.js scene",
-        "remez": "Code changes have spatial representation",
-        "drash": "Development activity visible in the singularity",
-        "sod": "The ecosystem breathing"
-      },
-      "history": [
-        {
-          "timestamp": "2026-01-11T23:42:57.421Z",
-          "action": "created",
-          "from": null,
-          "to": "IDEA"
-        },
-        {
-          "timestamp": "2026-01-11T23:43:17.366Z",
-          "action": "state_change",
-          "from": "IDEA",
-          "to": "PLANNED",
-          "note": "Ready for implementation"
-        }
-      ]
-    },
-    {
-      "id": "task_1768174977422_890f2k",
-      "created": "2026-01-11T23:42:57.422Z",
-      "updated": "2026-01-11T23:43:17.367Z",
-      "title": "Pattern emergence detection",
-      "description": "Detect and visualize organically emerging patterns",
-      "category": "core",
-      "tags": [],
-      "state": "PLANNED",
-      "priority": "medium",
-      "complexity": "COMPLEX",
-      "estimate": {
-        "hours": 24,
-        "complexity": "COMPLEX",
-        "tokens": {
-          "estimated": 65000,
-          "cost": "1.6950"
-        },
-        "humanCost": "2400.00",
-        "totalCost": "2401.70",
-        "confidence": 0.6180339887498948
-      },
-      "blockedBy": [],
-      "enables": [],
-      "pardes": {
-        "pshat": "Analyze residuals for new patterns",
-        "remez": "Let patterns reveal themselves",
-        "drash": "The system discovers what it doesn't know it knows",
-        "sod": "THE_INNOMMABLE frontier"
-      },
-      "history": [
-        {
-          "timestamp": "2026-01-11T23:42:57.422Z",
-          "action": "created",
-          "from": null,
-          "to": "IDEA"
-        },
-        {
-          "timestamp": "2026-01-11T23:43:17.367Z",
-          "action": "state_change",
-          "from": "IDEA",
-          "to": "PLANNED",
-          "note": "Ready for implementation"
-        }
-      ]
-    },
-    {
-      "id": "task_1768174977422_u388mj",
-      "created": "2026-01-11T23:42:57.422Z",
-      "updated": "2026-01-11T23:43:17.367Z",
-      "title": "Deploy to Render production",
-      "description": "Push updated dashboard to live production",
-      "category": "infrastructure",
-      "tags": [],
-      "state": "PLANNED",
-      "priority": "low",
-      "complexity": "SIMPLE",
-      "estimate": {
-        "hours": 2,
-        "complexity": "SIMPLE",
-        "tokens": {
-          "estimated": 13000,
-          "cost": "0.3390"
-        },
-        "humanCost": "200.00",
-        "totalCost": "200.34",
-        "confidence": 0.6180339887498948
-      },
-      "blockedBy": [],
-      "enables": [],
-      "pardes": {
-        "pshat": "Git push triggers auto-deploy",
-        "remez": "Ship when ready",
-        "drash": "Production is where value is realized",
-        "sod": "From potential to actual"
-      },
-      "history": [
-        {
-          "timestamp": "2026-01-11T23:42:57.422Z",
-          "action": "created",
-          "from": null,
-          "to": "IDEA"
-        },
-        {
-          "timestamp": "2026-01-11T23:43:17.367Z",
-          "action": "state_change",
-          "from": "IDEA",
-          "to": "PLANNED",
-          "note": "Ready for implementation"
-        }
-      ]
-    }
-  ],
+      {
+        "level": 5,
+        "name": "PRODUCTION",
+        "status": "PLANNED",
+        "validation": "Tout est live et stable",
+        "tasks": [
+          "Deploy to Render",
+          "Monitoring & alerts",
+          "Documentation"
+        ],
+        "estimated_hours": 8,
+        "estimated_cost": 800.68,
+        "requires": "ÉMERGENCE validated"
+      }
+    ]
+  },
+  "tasks": [],
   "categories": [
-    "core",
-    "dashboard",
-    "integration",
-    "infrastructure",
-    "research"
+    "perception",
+    "reaction",
+    "visualization",
+    "emergence",
+    "infrastructure"
   ],
   "_meta": {
-    "totalTasks": 6,
-    "completedTasks": 0,
-    "completionRate": "0.0",
-    "totalEstimatedHours": 68,
-    "totalEstimatedCost": "0.00",
-    "byState": {
-      "IDEA": 0,
-      "PLANNED": 6,
-      "IN_PROGRESS": 0,
-      "REVIEW": 0,
-      "DONE": 0,
-      "BLOCKED": 0,
-      "ARCHIVED": 0
-    }
+    "totalLevels": 6,
+    "completedLevels": 1,
+    "currentLevel": 1,
+    "totalEstimatedHours": 100,
+    "totalEstimatedCost": 11609.16
   }
 }
