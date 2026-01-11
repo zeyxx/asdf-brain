@@ -1,0 +1,1 @@
+{"timestamp":1768148268689,"source":"health","input":88,"severity":"healthy","thresholds":{"healthy":62,"warning":38,"critical":24},"status":"healthy","project":"brain"}

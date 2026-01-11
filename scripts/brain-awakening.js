@@ -35,27 +35,13 @@ const { getOperatorLoader } = require('../lib/operator-loader');
 const BRAIN_ROOT = path.join(__dirname, '..');
 const KNOWLEDGE_ROOT = path.join(BRAIN_ROOT, 'knowledge');
 
-// φ thresholds for alert severity (normalized 0-1 scale)
-const { PHI, PHI_INV, PHI_INV_2, PHI_INV_3 } = require('../lib/temporal');
-const THRESHOLD_HIGH = PHI_INV;      // φ⁻¹ ≈ 0.618 - Healthy threshold
-const THRESHOLD_MEDIUM = PHI_INV_2;  // φ⁻² ≈ 0.382 - Warning threshold
-const THRESHOLD_LOW = PHI_INV_3;     // φ⁻³ ≈ 0.236 - Critical threshold
-
-// Convert 0-100 score to severity using φ thresholds
-function classifySeverity(score, max = 100) {
-  const normalized = score / max;
-  if (normalized >= THRESHOLD_HIGH) return 'healthy';      // ≥ 61.8%
-  if (normalized >= THRESHOLD_MEDIUM) return 'warning';    // ≥ 38.2%
-  if (normalized >= THRESHOLD_LOW) return 'critical';      // ≥ 23.6%
-  return 'severe';                                          // < 23.6%
-}
-
-// Get φ-based threshold as percentage (for display)
-const PHI_THRESHOLDS = {
-  healthy: Math.round(THRESHOLD_HIGH * 100),    // 62
-  warning: Math.round(THRESHOLD_MEDIUM * 100),  // 38
-  critical: Math.round(THRESHOLD_LOW * 100),    // 24
-};
+// φ severity classification (from temporal.js - single source of truth)
+const {
+  PHI_THRESHOLDS,
+  classifySeverity,
+  classifyCountSeverity,
+  trackSeverity,
+} = require('../lib/temporal');
 
 // =============================================================================
 // LOGGING - Emoji-based severity (aligned with HolDex conventions)
@@ -423,6 +409,9 @@ async function awaken(options = {}) {
     const status = health.status || health.overall?.status || 'unknown';
     const severity = classifySeverity(score);
 
+    // Track for future calibration
+    trackSeverity('health', score, severity, { status, project });
+
     // φ-based health classification:
     // ≥ 62 (φ⁻¹) = healthy, ≥ 38 (φ⁻²) = warning, ≥ 24 (φ⁻³) = critical, < 24 = severe
     if (severity === 'healthy') {
@@ -454,12 +443,14 @@ async function awaken(options = {}) {
   if (mismatches.length > 0) {
     console.log('── DEPENDENCY ALERTS ──────────────────────────────────────');
 
-    // Use φ thresholds: >5 = severe, >3 = critical, >1 = warning
-    // Scaled: 5 mismatches = ~24% of a "10 mismatch disaster"
-    const depSeverity = classifySeverity(10 - mismatches.length, 10);
+    // Direct count → severity (0=healthy, 1-2=warning, 3-4=critical, 5+=severe)
+    const depSeverity = classifyCountSeverity(mismatches.length);
+
+    // Track for future calibration
+    trackSeverity('dependencies', mismatches.length, depSeverity, { project });
 
     if (depSeverity === 'severe' || depSeverity === 'critical') {
-      log.error(`${mismatches.length} version mismatches detected [φ-severity: ${depSeverity}]`);
+      log.error(`${mismatches.length} version mismatches [φ-severity: ${depSeverity}]`);
     } else {
       log.alert(`${mismatches.length} version mismatches detected`);
     }
@@ -579,4 +570,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { awaken, detectProject, classifySeverity, PHI_THRESHOLDS };
+module.exports = { awaken, detectProject, classifySeverity, classifyCountSeverity, PHI_THRESHOLDS };
