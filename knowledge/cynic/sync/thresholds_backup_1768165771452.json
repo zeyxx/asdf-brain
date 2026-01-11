@@ -5,11 +5,11 @@
     "version": "1.0.0",
     "status": "CALIBRATING",
     "created": "2026-01-11",
-    "lastCalibrated": "2026-01-11T21:14:08.386Z",
-    "calibrationCount": 129,
+    "lastCalibrated": "2026-01-11T20:57:23.488Z",
+    "calibrationCount": 116,
     "philosophy": "Thresholds adjust based on outcomes (correct/false_pos/false_neg)",
-    "lastMerged": "2026-01-11T21:09:31.459Z",
-    "mergeCount": 3
+    "lastMerged": "2026-01-11T19:58:45.457Z",
+    "mergeCount": 1
   },
   "_config": {
     "severities": [
@@ -73,79 +73,79 @@
   "thresholds": {
     "HARMONY": {
       "healthy": 62,
-      "warning": 56.2,
+      "warning": 71.3,
       "critical": 24,
       "severe": 0
     },
     "COHERENCE": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "TRUTH": {
       "healthy": 62,
-      "warning": 46.3,
+      "warning": 61.4,
       "critical": 24,
       "severe": 0
     },
     "INTEGRITY": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "ETHICS": {
       "healthy": 62,
-      "warning": 55.7,
+      "warning": 71.1,
       "critical": 24,
       "severe": 0
     },
     "OPTIMISM": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "ALIGNMENT": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "PROGRESS": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "SECURE": {
       "healthy": 62,
-      "warning": 42.5,
+      "warning": 57.6,
       "critical": 24,
       "severe": 0
     },
     "PRIVATE": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "SCALE": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "SIMPLIFY": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
     "ENABLE": {
       "healthy": 62,
-      "warning": 50.5,
+      "warning": 65.6,
       "critical": 24,
       "severe": 0
     },
@@ -225,79 +225,79 @@
   "matrix": [
     [
       62,
-      56.2,
+      71.3,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      46.3,
+      61.4,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      55.7,
+      71.1,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      42.5,
+      57.6,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
     [
       62,
-      50.5,
+      65.6,
       24,
       0
     ],
@@ -375,6 +375,123 @@
     ]
   ],
   "_calibrationHistory": [
+    {
+      "timestamp": 1768165043394,
+      "dimension": "ETHICS",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 43.45197334262446,
+      "newValue": 45.4,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043394,
+      "dimension": "OPTIMISM",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043394,
+      "dimension": "ALIGNMENT",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043394,
+      "dimension": "PROGRESS",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043395,
+      "dimension": "SECURE",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 30,
+      "newValue": 31.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043395,
+      "dimension": "PRIVATE",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043396,
+      "dimension": "SCALE",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043396,
+      "dimension": "SIMPLIFY",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043396,
+      "dimension": "ENABLE",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043400,
+      "dimension": "HARMONY",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 45.6,
+      "newValue": 47.5,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043400,
+      "dimension": "COHERENCE",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 39.9,
+      "newValue": 41.8,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043400,
+      "dimension": "TRUTH",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 35.7,
+      "newValue": 37.6,
+      "delta": 1.91
+    },
+    {
+      "timestamp": 1768165043401,
+      "dimension": "INTEGRITY",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 39.9,
+      "newValue": 41.8,
+      "delta": 1.91
+    },
     {
       "timestamp": 1768165043401,
       "dimension": "ETHICS",
@@ -1156,123 +1273,6 @@
       "outcome": "correct",
       "oldValue": 63.7,
       "newValue": 65.6,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048366,
-      "dimension": "HARMONY",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 54.242261910502904,
-      "newValue": 56.2,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048367,
-      "dimension": "COHERENCE",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048368,
-      "dimension": "TRUTH",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 44.34226191050289,
-      "newValue": 46.3,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048370,
-      "dimension": "INTEGRITY",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048373,
-      "dimension": "ETHICS",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 53.76455314650323,
-      "newValue": 55.7,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048374,
-      "dimension": "OPTIMISM",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048375,
-      "dimension": "ALIGNMENT",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048377,
-      "dimension": "PROGRESS",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048378,
-      "dimension": "SECURE",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 40.5422619105029,
-      "newValue": 42.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048382,
-      "dimension": "PRIVATE",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048383,
-      "dimension": "SCALE",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048385,
-      "dimension": "SIMPLIFY",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
-      "delta": 1.91
-    },
-    {
-      "timestamp": 1768166048386,
-      "dimension": "ENABLE",
-      "severity": "warning",
-      "outcome": "correct",
-      "oldValue": 48.542261910502894,
-      "newValue": 50.5,
       "delta": 1.91
     }
   ]

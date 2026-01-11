@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-11T12:40:26.131Z",
+  "timestamp": "2026-01-11T20:51:17.532Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-11T12:40:25.068Z",
+      "timestamp": "2026-01-11T20:51:16.920Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -15,7 +15,7 @@
         "lastCommit": {
           "hash": "274d7b7",
           "subject": "fix(rpc): Disable bulk K-Score updates - save 320k cr/day",
-          "relative": "14 hours ago"
+          "relative": "22 hours ago"
         }
       },
       "pr": {
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-11T12:40:25.698Z",
+      "timestamp": "2026-01-11T20:51:17.231Z",
       "branch": {
         "branch": "main",
         "modified": 4,
@@ -87,7 +87,7 @@
         "lastCommit": {
           "hash": "5d6474e",
           "subject": "chore: Add .mcp.json to gitignore",
-          "relative": "20 hours ago"
+          "relative": "28 hours ago"
         }
       },
       "pr": null,
@@ -108,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-11T12:40:26.131Z",
+      "timestamp": "2026-01-11T20:51:17.532Z",
       "branch": {
         "branch": "main",
-        "modified": 11,
-        "untracked": 0,
+        "modified": 13,
+        "untracked": 1,
         "staged": 1,
         "ahead": 0,
-        "behind": 0,
+        "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "c03efbc",
-          "subject": "fix(dashboard): Add overallScore alias to runQuickCheck",
-          "relative": "69 seconds ago"
+          "hash": "9913d02",
+          "subject": "docs(cynic): Update CYNIC_COMPLETE_MATRIX with 9-subagent architecture",
+          "relative": "17 minutes ago"
         }
       },
       "pr": null,
@@ -131,9 +131,16 @@
       },
       "suggestions": [
         {
+          "priority": "medium",
+          "type": "pull_needed",
+          "message": "1 commits behind remote",
+          "action": "Pull latest changes",
+          "command": "git pull"
+        },
+        {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "11 modified, 1 staged",
+          "message": "13 modified, 1 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -141,6 +148,14 @@
     }
   },
   "suggestions": [
+    {
+      "priority": "medium",
+      "type": "pull_needed",
+      "message": "1 commits behind remote",
+      "action": "Pull latest changes",
+      "command": "git pull",
+      "repo": "brain"
+    },
     {
       "priority": "low",
       "type": "uncommitted_changes",
@@ -158,7 +173,7 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "11 modified, 1 staged",
+      "message": "13 modified, 1 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
@@ -166,7 +181,7 @@
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 0,
+    "mediumPriority": 1,
     "lowPriority": 3
   }
 }

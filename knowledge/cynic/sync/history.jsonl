@@ -3,3 +3,9 @@
 {"type":"pull","nodeId":"node_mka5pwot_rrbzsp","pulled":["harmony","thresholds","wisdom"],"conflicts":0,"latencyMs":1,"timestamp":1768161525455,"iso":"2026-01-11T19:58:45.455Z"}
 {"type":"merge","nodeId":"node_mka5pwot_rrbzsp","strategy":"phi_weighted","merged":["harmony","thresholds"],"conflicts":0,"latencyMs":2,"timestamp":1768161525457,"iso":"2026-01-11T19:58:45.457Z"}
 {"type":"full_sync","nodeId":"node_mka5pwot_rrbzsp","results":{"pulled":["harmony","thresholds","wisdom"],"merged":{"harmony":true,"thresholds":true},"pushed":0},"latencyMs":6,"timestamp":1768161525458,"iso":"2026-01-11T19:58:45.458Z"}
+{"type":"pull","nodeId":"node_mka5pwot_rrbzsp","pulled":["harmony","thresholds","wisdom"],"conflicts":0,"latencyMs":2,"timestamp":1768165771448,"iso":"2026-01-11T21:09:31.448Z"}
+{"type":"push","nodeId":"node_mka5pwot_rrbzsp","pushed":3,"errors":2,"breakdown":{"harmony":0,"threshold":0,"discovery":1,"outcome":0},"latencyMs":1,"timestamp":1768165771449,"iso":"2026-01-11T21:09:31.449Z"}
+{"type":"merge","nodeId":"node_mka5pwot_rrbzsp","strategy":"phi_weighted","merged":["harmony","thresholds"],"conflicts":89,"latencyMs":4,"timestamp":1768165771454,"iso":"2026-01-11T21:09:31.454Z"}
+{"type":"pull","nodeId":"node_mka5pwot_rrbzsp","pulled":["harmony","thresholds","wisdom"],"conflicts":0,"latencyMs":1,"timestamp":1768165771456,"iso":"2026-01-11T21:09:31.456Z"}
+{"type":"merge","nodeId":"node_mka5pwot_rrbzsp","strategy":"phi_weighted","merged":["harmony","thresholds"],"conflicts":88,"latencyMs":3,"timestamp":1768165771459,"iso":"2026-01-11T21:09:31.459Z"}
+{"type":"full_sync","nodeId":"node_mka5pwot_rrbzsp","results":{"pulled":["harmony","thresholds","wisdom"],"merged":{"harmony":true,"thresholds":true},"pushed":0},"latencyMs":4,"timestamp":1768165771459,"iso":"2026-01-11T21:09:31.459Z"}

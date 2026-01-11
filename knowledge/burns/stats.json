@@ -16,10 +16,10 @@
       "rate": 1000
     },
     "pattern_create": {
-      "count": 23,
+      "count": 24,
       "burned": 0,
       "rate": 5000,
-      "total": 41998
+      "total": 43907
     },
     "pattern_query": {
       "count": 0,
@@ -27,10 +27,10 @@
       "rate": 500
     },
     "decision_record": {
-      "count": 75,
+      "count": 83,
       "burned": 0,
       "rate": 3000,
-      "total": 84730
+      "total": 93890
     },
     "merkle_proof": {
       "count": 0,
@@ -44,39 +44,39 @@
       "total": 38934
     },
     "gasdf": {
-      "count": 9,
-      "total": 14125
+      "count": 10,
+      "total": 15270
     },
     "brain": {
-      "count": 9,
-      "total": 11069
+      "count": 14,
+      "total": 17558
     },
     "manifesto": {
-      "count": 23,
-      "total": 28627
+      "count": 25,
+      "total": 30917
     },
     "ecosystem": {
-      "count": 27,
-      "total": 37027
+      "count": 28,
+      "total": 38172
     }
   },
   "daily": [],
   "weekly": [],
   "_phi": {
-    "avg_burn_per_operation": 1324.3061224489795,
+    "avg_burn_per_operation": 1316.3644859813085,
     "burn_rate": 0.3819660112501051,
-    "velocity_24h": 1582.5208333333333
+    "velocity_24h": 1813.125
   },
-  "total_burned": 129782,
-  "total_operations": 98,
+  "total_burned": 140851,
+  "total_operations": 107,
   "by_session": {
     "test-session-001": {
       "count": 1,
       "total": 1909
     },
     "unknown": {
-      "count": 97,
-      "total": 127873
+      "count": 106,
+      "total": 138942
     }
   },
   "daily_burns": {
@@ -89,10 +89,10 @@
       "total": 74816
     },
     "2026-01-11": {
-      "count": 1,
-      "total": 1145
+      "count": 10,
+      "total": 12214
     }
   },
   "created_at": 1767924494360,
-  "last_updated": 1768131738371
+  "last_updated": 1768140405702
 }

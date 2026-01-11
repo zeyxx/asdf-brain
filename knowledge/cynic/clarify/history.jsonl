@@ -1,3 +1,4 @@
 {"timestamp":1768161907283,"iso":"2026-01-11T20:05:07.283Z","input":"Ça marche toujours pas!! Encore ce bug!!!","state":"FRUSTRATED","confidence":1,"questions":2}
 {"timestamp":1768161907284,"iso":"2026-01-11T20:05:07.284Z","input":"Je comprends pas...","state":"CONFUSED","confidence":1,"questions":2}
 {"timestamp":1768161907286,"iso":"2026-01-11T20:05:07.286Z","input":"URGENT!! Deadline...","state":"ANXIOUS","confidence":1,"questions":2}
+{"timestamp":1768165558619,"iso":"2026-01-11T21:05:58.619Z","input":"Argh!!! Le build est cassé ENCORE, je comprends pas, ça marchait hier!!!","state":"FRUSTRATED","confidence":0.8999999999999999,"questions":2}

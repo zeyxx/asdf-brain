@@ -17,7 +17,73 @@
         }
       ],
       "created": 1768159741146
+    },
+    "test-user": {
+      "total": 2.7055498951748738,
+      "contributions": [
+        {
+          "timestamp": 1768165043397,
+          "outcome": "correct",
+          "judgmentScore": 59.97,
+          "contribution": 0.5997
+        },
+        {
+          "timestamp": 1768165043407,
+          "outcome": "correct",
+          "judgmentScore": 59.97,
+          "contribution": 0.5997
+        },
+        {
+          "timestamp": 1768165043418,
+          "outcome": "incorrect",
+          "judgmentScore": 59.97,
+          "contribution": -0.29985
+        },
+        {
+          "timestamp": 1768165043428,
+          "outcome": "partial",
+          "judgmentScore": 61.67,
+          "contribution": 0.30835
+        },
+        {
+          "timestamp": 1768165043440,
+          "outcome": "correct",
+          "judgmentScore": 61.59,
+          "contribution": 0.6159
+        },
+        {
+          "timestamp": 1768165043454,
+          "outcome": "incorrect",
+          "judgmentScore": 59.97,
+          "contribution": -0.29985
+        },
+        {
+          "timestamp": 1768165043472,
+          "outcome": "correct",
+          "judgmentScore": 59.97,
+          "contribution": 0.5997
+        },
+        {
+          "timestamp": 1768165043489,
+          "outcome": "correct",
+          "judgmentScore": 58.19,
+          "contribution": 0.5819
+        }
+      ],
+      "created": 1768165043397
+    },
+    "test": {
+      "total": 0.5997,
+      "contributions": [
+        {
+          "timestamp": 1768166048387,
+          "outcome": "correct",
+          "judgmentScore": 59.97,
+          "contribution": 0.5997
+        }
+      ],
+      "created": 1768166048387
     }
   },
-  "lastUpdated": "2026-01-11T19:29:01.148Z"
+  "lastUpdated": "2026-01-11T21:14:08.387Z"
 }
