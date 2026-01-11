@@ -61,6 +61,7 @@ const infraMonitor = require('./lib/i-infra-monitor');
 // CYNIC - Self-Judge ("φ qui se méfie de φ")
 const { SelfJudge, LEARNING, FIBONACCI_N, DIVERSITY, REFINEMENT } = require('./lib/cynic/self-judge');
 const { ResidualDetector } = require('./lib/cynic/residual-detector');
+const { getCynicVoice, CYNIC_IDENTITY } = require('./lib/cynic/index');
 
 // Initialize global CYNIC instance with persistent learning
 const cynicJudge = new SelfJudge({ logger: console });
@@ -2483,12 +2484,17 @@ async function handleCynicJudge(args, adapter) {
     // Trigger debounced save after each judgment (φ⁻² = 3.82s delay)
     saveCynicStateDebounced();
 
+    // κυνικός speaks - "Culture is a moat"
+    const confidence01 = (result.confidence || 61.8) / 100;
+    const voice = getCynicVoice(result.verdict?.action || 'ACCEPT', confidence01);
+
     return {
       success: true,
       judgment_id: result._judgmentId,
       global: result.global,
       verdict: result.verdict,
       confidence: result.confidence,
+      rawConfidence: result.rawConfidence, // Transparency: show true value
       doubt: result.doubt,
       scores: result.scores,
       mode: result._mode,
@@ -2496,6 +2502,14 @@ async function handleCynicJudge(args, adapter) {
       refinement: result._refinement || null,
       transformed_item: result.item || null,
       duration_ms: Date.now() - startTime,
+      // κυνικός - the skeptical dog
+      _kynikos: {
+        bark: voice.bark,
+        mood: voice.mood,
+        axiom: voice.axiom,
+        greek: CYNIC_IDENTITY.greek,
+        meaning: CYNIC_IDENTITY.meaning,
+      },
       philosophy: 'φ qui se méfie de φ - Rendre autonome, pas automatiser',
       _quality: result.global,
     };
