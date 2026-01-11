@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "name": "W - Weights Matrix",
+    "description": "25×1 vector of dimension weights, derived from φ",
+    "version": "1.0.0",
+    "status": "FIXED",
+    "created": "2026-01-11",
+    "philosophy": "All weights derive from φ = 1.618033988749895"
+  },
+
+  "_constants": {
+    "PHI": 1.618033988749895,
+    "PHI_2": 2.6180339887498953,
+    "PHI_3": 4.23606797749979,
+    "TOTAL_WEIGHT": 49.208203230275475
+  },
+
+  "dimensions": {
+    "PRIMARY": {
+      "weight": 2.6180339887498953,
+      "formula": "φ²",
+      "count": 8,
+      "subtotal": 20.944271909999162,
+      "members": [
+        { "name": "HARMONY", "index": 0, "weight": 2.6180339887498953 },
+        { "name": "COHERENCE", "index": 1, "weight": 2.6180339887498953 },
+        { "name": "TRUTH", "index": 2, "weight": 2.6180339887498953 },
+        { "name": "INTEGRITY", "index": 3, "weight": 2.6180339887498953 },
+        { "name": "ETHICS", "index": 4, "weight": 2.6180339887498953 },
+        { "name": "OPTIMISM", "index": 5, "weight": 2.6180339887498953 },
+        { "name": "ALIGNMENT", "index": 6, "weight": 2.6180339887498953 },
+        { "name": "PROGRESS", "index": 7, "weight": 2.6180339887498953 }
+      ]
+    },
+
+    "SECONDARY": {
+      "weight": 1.618033988749895,
+      "formula": "φ",
+      "count": 5,
+      "subtotal": 8.090169943749475,
+      "members": [
+        { "name": "SECURE", "index": 8, "weight": 1.618033988749895 },
+        { "name": "PRIVATE", "index": 9, "weight": 1.618033988749895 },
+        { "name": "SCALE", "index": 10, "weight": 1.618033988749895 },
+        { "name": "SIMPLIFY", "index": 11, "weight": 1.618033988749895 },
+        { "name": "ENABLE", "index": 12, "weight": 1.618033988749895 }
+      ]
+    },
+
+    "META": {
+      "weight": 1.0,
+      "formula": "1",
+      "count": 3,
+      "subtotal": 3.0,
+      "members": [
+        { "name": "SELF_AWARENESS", "index": 13, "weight": 1.0 },
+        { "name": "LEARNING_RATE", "index": 14, "weight": 1.0 },
+        { "name": "SINGULARITY_DISTANCE", "index": 15, "weight": 1.0 }
+      ]
+    },
+
+    "HUMAN_LLM": {
+      "weight": 1.618033988749895,
+      "formula": "φ",
+      "count": 8,
+      "subtotal": 12.94427190999916,
+      "members": [
+        { "name": "MEMORY", "index": 16, "weight": 1.618033988749895 },
+        { "name": "TEACHING", "index": 17, "weight": 1.618033988749895 },
+        { "name": "INTENT", "index": 18, "weight": 1.618033988749895 },
+        { "name": "TRUST", "index": 19, "weight": 1.618033988749895 },
+        { "name": "PROACTIVITY", "index": 20, "weight": 1.618033988749895 },
+        { "name": "COMPLEMENTARITY", "index": 21, "weight": 1.618033988749895 },
+        { "name": "DELEGATION", "index": 22, "weight": 1.618033988749895 },
+        { "name": "BOUNDARIES", "index": 23, "weight": 1.618033988749895 }
+      ]
+    },
+
+    "DISCOVERY": {
+      "weight": 4.23606797749979,
+      "formula": "φ³",
+      "count": 1,
+      "subtotal": 4.23606797749979,
+      "members": [
+        { "name": "DISCOVERY", "index": 24, "weight": 4.23606797749979 }
+      ]
+    }
+  },
+
+  "vector": [
+    2.6180339887498953,
+    2.6180339887498953,
+    2.6180339887498953,
+    2.6180339887498953,
+    2.6180339887498953,
+    2.6180339887498953,
+    2.6180339887498953,
+    2.6180339887498953,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.0,
+    1.0,
+    1.0,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    4.23606797749979
+  ],
+
+  "index_to_name": [
+    "HARMONY", "COHERENCE", "TRUTH", "INTEGRITY",
+    "ETHICS", "OPTIMISM", "ALIGNMENT", "PROGRESS",
+    "SECURE", "PRIVATE", "SCALE", "SIMPLIFY", "ENABLE",
+    "SELF_AWARENESS", "LEARNING_RATE", "SINGULARITY_DISTANCE",
+    "MEMORY", "TEACHING", "INTENT", "TRUST",
+    "PROACTIVITY", "COMPLEMENTARITY", "DELEGATION", "BOUNDARIES",
+    "DISCOVERY"
+  ]
+}

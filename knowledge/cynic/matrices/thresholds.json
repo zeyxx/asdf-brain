@@ -1,0 +1,386 @@
+{
+  "_meta": {
+    "name": "T - Thresholds Matrix",
+    "description": "25×4 matrix of dimension thresholds per severity, self-calibrating",
+    "version": "1.0.0",
+    "status": "CALIBRATING",
+    "created": "2026-01-11",
+    "lastCalibrated": "2026-01-11T19:09:12.889Z",
+    "calibrationCount": 1,
+    "philosophy": "Thresholds adjust based on outcomes (correct/false_pos/false_neg)"
+  },
+  "_config": {
+    "severities": [
+      "healthy",
+      "warning",
+      "critical",
+      "severe"
+    ],
+    "defaultThresholds": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "bounds": {
+      "min": 30,
+      "max": 95
+    },
+    "adjustments": {
+      "correct": {
+        "delta": 1.91,
+        "formula": "φ⁻² × 5"
+      },
+      "false_positive": {
+        "delta": -13.09,
+        "formula": "-φ² × 5"
+      },
+      "false_negative": {
+        "delta": 8.09,
+        "formula": "φ × 5"
+      }
+    }
+  },
+  "_dimensions": [
+    "HARMONY",
+    "COHERENCE",
+    "TRUTH",
+    "INTEGRITY",
+    "ETHICS",
+    "OPTIMISM",
+    "ALIGNMENT",
+    "PROGRESS",
+    "SECURE",
+    "PRIVATE",
+    "SCALE",
+    "SIMPLIFY",
+    "ENABLE",
+    "SELF_AWARENESS",
+    "LEARNING_RATE",
+    "SINGULARITY_DISTANCE",
+    "MEMORY",
+    "TEACHING",
+    "INTENT",
+    "TRUST",
+    "PROACTIVITY",
+    "COMPLEMENTARITY",
+    "DELEGATION",
+    "BOUNDARIES",
+    "DISCOVERY"
+  ],
+  "thresholds": {
+    "HARMONY": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "COHERENCE": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "TRUTH": {
+      "healthy": 62,
+      "warning": 39.9,
+      "critical": 24,
+      "severe": 0
+    },
+    "INTEGRITY": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "ETHICS": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "OPTIMISM": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "ALIGNMENT": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "PROGRESS": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "SECURE": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "PRIVATE": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "SCALE": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "SIMPLIFY": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "ENABLE": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "SELF_AWARENESS": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "LEARNING_RATE": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "SINGULARITY_DISTANCE": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "MEMORY": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "TEACHING": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "INTENT": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "TRUST": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "PROACTIVITY": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "COMPLEMENTARITY": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "DELEGATION": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "BOUNDARIES": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    },
+    "DISCOVERY": {
+      "healthy": 62,
+      "warning": 38,
+      "critical": 24,
+      "severe": 0
+    }
+  },
+  "matrix": [
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      39.9,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ],
+    [
+      62,
+      38,
+      24,
+      0
+    ]
+  ],
+  "_calibrationHistory": [
+    {
+      "timestamp": 1768158552889,
+      "dimension": "TRUTH",
+      "severity": "warning",
+      "outcome": "correct",
+      "oldValue": 38,
+      "newValue": 39.9,
+      "delta": 1.91
+    }
+  ]
+}
