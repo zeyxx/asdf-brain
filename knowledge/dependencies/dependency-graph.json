@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-11T00:08:25.903Z",
+    "generated": "2026-01-11T00:18:49.883Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -495,7 +495,7 @@
           "./pulse": 2,
           "./self-monitor": 2,
           "./metrics": 2,
-          "./self-judge": 3,
+          "./self-judge": 2,
           "../temporal": 1,
           "../integration/holdex-connector": 1,
           "../integration/gasdf-connector": 1,
