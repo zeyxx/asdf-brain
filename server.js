@@ -381,7 +381,7 @@ app.get('/api/errors', requireApiKey, (req, res) => {
 // =============================================================================
 
 const { CYNIC } = require('./lib/cynic');
-const { SelfJudge } = require('./lib/self-judge');
+const { SelfJudge } = require('./lib/cynic/self-judge');
 
 app.post('/api/judge', express.json(), async (req, res) => {
   try {
