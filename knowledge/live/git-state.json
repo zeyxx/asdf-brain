@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-12T01:01:57.052Z",
+  "timestamp": "2026-01-12T01:29:56.147Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-12T01:01:56.329Z",
+      "timestamp": "2026-01-12T01:29:55.213Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -15,7 +15,7 @@
         "lastCommit": {
           "hash": "274d7b7",
           "subject": "fix(rpc): Disable bulk K-Score updates - save 320k cr/day",
-          "relative": "26 hours ago"
+          "relative": "27 hours ago"
         }
       },
       "pr": {
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-12T01:01:56.571Z",
+      "timestamp": "2026-01-12T01:29:55.624Z",
       "branch": {
         "branch": "main",
         "modified": 4,
@@ -108,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-12T01:01:57.052Z",
+      "timestamp": "2026-01-12T01:29:56.147Z",
       "branch": {
         "branch": "main",
-        "modified": 17,
-        "untracked": 7,
+        "modified": 1,
+        "untracked": 0,
         "staged": 1,
         "ahead": 0,
         "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "b5f10d8",
-          "subject": "feat(cynic): LEVEL 2 RÉACTION - SSE + WebSocket realtime",
-          "relative": "48 minutes ago"
+          "hash": "9b04974",
+          "subject": "feat(cynic): Self-judgment + Dual-view dashboard toggle",
+          "relative": "9 minutes ago"
         }
       },
       "pr": null,
@@ -140,7 +140,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "17 modified, 7 untracked, 1 staged",
+          "message": "1 modified, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -173,7 +173,7 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "17 modified, 7 untracked, 1 staged",
+      "message": "1 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }

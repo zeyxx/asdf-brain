@@ -1,0 +1,28 @@
+{
+  "adjustments": {
+    "SIMPLIFY": {
+      "factor": 0.05729490168751576,
+      "samples": 1,
+      "history": [
+        {
+          "timestamp": "2026-01-12T01:31:20.613Z",
+          "delta": 0.15,
+          "outcome": "partial"
+        }
+      ]
+    },
+    "TRUTH": {
+      "factor": -0.03819660112501051,
+      "samples": 1,
+      "history": [
+        {
+          "timestamp": "2026-01-12T01:31:20.613Z",
+          "delta": -0.1,
+          "outcome": "partial"
+        }
+      ]
+    }
+  },
+  "version": 2,
+  "updated": "2026-01-12T01:31:20.613Z"
+}
