@@ -337,8 +337,8 @@ function updateRoadmapHUD(data) {
   title.textContent = '◊ CYNIC ROADMAP';
   hudEl.appendChild(title);
 
-  // Current level
-  const currentLevel = levels.find(l => l.status === 'ACTIVE' || l.status === 'NEXT');
+  // Current level (first non-completed level with ACTIVE or NEXT status)
+  const currentLevel = levels.find(l => !l.completed && (l.status === 'ACTIVE' || l.status === 'NEXT'));
   if (currentLevel) {
     const levelDiv = document.createElement('div');
     levelDiv.style.cssText = 'color: #ffff00; margin-bottom: 4px;';
