@@ -1178,12 +1178,35 @@ app.get('/singularity/api/roadmap', async (req, res) => {
   }
 });
 
-// Singularity API - Judge
+// Singularity API - Judge (GET for default test, POST for custom input)
 app.get('/singularity/api/judge', async (req, res) => {
   try {
     const { cynic } = getSingularityModules();
     const result = await cynic.judge({ test: 'singularity-check', timestamp: Date.now() });
     res.json({
+      scores: result.scores || {},
+      global: result.global || 0,
+      verdict: result.verdict || 'UNKNOWN',
+      confidence: result.confidence || 61.8,
+      residual: result.residual || null,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Singularity API - Judge with custom input (triggers residual detection)
+app.post('/singularity/api/judge', express.json(), async (req, res) => {
+  try {
+    const { input, source = 'singularity-test' } = req.body;
+    if (!input) {
+      return res.status(400).json({ error: 'input required' });
+    }
+    const { cynic } = getSingularityModules();
+    const result = await cynic.judge(input, { source });
+    res.json({
+      input_received: typeof input === 'object' ? Object.keys(input) : typeof input,
       scores: result.scores || {},
       global: result.global || 0,
       verdict: result.verdict || 'UNKNOWN',
