@@ -1,8 +1,8 @@
 {
   "adjustments": {
     "SIMPLIFY": {
-      "factor": 0.07360679774997897,
-      "samples": 2,
+      "factor": 0.12188470506254731,
+      "samples": 3,
       "history": [
         {
           "timestamp": "2026-01-12T01:31:20.613Z",
@@ -12,6 +12,11 @@
         {
           "timestamp": "2026-01-12T01:40:11.634Z",
           "delta": 0.1,
+          "outcome": "confirmed"
+        },
+        {
+          "timestamp": "2026-01-12T01:46:04.598Z",
+          "delta": 0.2,
           "outcome": "confirmed"
         }
       ]
@@ -33,6 +38,6 @@
       ]
     }
   },
-  "version": 8,
-  "updated": "2026-01-12T01:40:11.650Z"
+  "version": 9,
+  "updated": "2026-01-12T01:46:04.599Z"
 }
