@@ -778,3 +778,5 @@
 {"timestamp":"2026-01-11T23:04:03.968Z","severity":"warning","rule":"anomaly_detected","message":"Anomaly: subsystem_degraded - critical","context":{"type":"subsystem_degraded","severity":"critical","subsystem":"memory","failures":141}}
 {"timestamp":"2026-01-11T23:05:05.769Z","severity":"warning","rule":"anomaly_detected","message":"Anomaly: subsystem_degraded - critical","context":{"type":"subsystem_degraded","severity":"critical","subsystem":"memory","failures":142}}
 {"timestamp":"2026-01-11T23:05:05.770Z","severity":"warning","rule":"pulse_slowdown","message":"Pulse slowdown: 4ms (avg: 2ms)","context":{"type":"pulse_slowdown","currentMs":4,"averageMs":2,"deviation":100,"severity":"warning"}}
+{"timestamp":"2026-01-12T04:52:37.825Z","severity":"warning","rule":"git_pr_needed","message":"PR needed: holdex has 5 commits since PR #42 was merged","context":{"repo":"holdex","commits":"5","prNumber":"42"}}
+{"timestamp":"2026-01-12T04:52:38.186Z","severity":"warning","rule":"git_prod_drift","message":"Drift alert: gasdf is 12 commits ahead of production","context":{"repo":"gasdf","ahead":"12"}}
