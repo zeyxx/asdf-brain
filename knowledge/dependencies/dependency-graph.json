@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T03:13:46.482Z",
+    "generated": "2026-01-12T03:28:44.834Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -420,7 +420,8 @@
           "cors": "^2.8.5",
           "express": "^4.21.0",
           "ioredis": "^5.9.1",
-          "js-sha3": "^0.9.3"
+          "js-sha3": "^0.9.3",
+          "pg": "^8.16.3"
         },
         "devDependencies": {},
         "scripts": [
@@ -554,7 +555,7 @@
           "@coral-xyz/anchor": 4,
           "js-sha3": 3,
           "chai": 1,
-          "pg": 3,
+          "pg": 4,
           "dotenv": 4,
           "ws": 1,
           "better-sqlite3": 1,
@@ -562,9 +563,9 @@
           "express": 1
         },
         "node": {
-          "fs": 74,
-          "path": 74,
-          "crypto": 29,
+          "fs": 75,
+          "path": 75,
+          "crypto": 30,
           "readline": 9,
           "http": 3,
           "child_process": 16,
@@ -675,11 +676,13 @@
     "pg": {
       "repos": [
         "holdex",
-        "gasdf"
+        "gasdf",
+        "asdf-brain"
       ],
       "versions": {
         "holdex": "^8.16.0",
-        "gasdf": "^8.16.0"
+        "gasdf": "^8.16.0",
+        "asdf-brain": "^8.16.3"
       }
     },
     "redis": {
@@ -745,6 +748,19 @@
         "holdex",
         "asdf-brain"
       ]
+    },
+    {
+      "dependency": "pg",
+      "versions": {
+        "holdex": "^8.16.0",
+        "gasdf": "^8.16.0",
+        "asdf-brain": "^8.16.3"
+      },
+      "repos": [
+        "holdex",
+        "gasdf",
+        "asdf-brain"
+      ]
     }
   ],
   "critical_dependencies": {
@@ -785,11 +801,13 @@
     "pg": {
       "used_in": [
         "holdex",
-        "gasdf"
+        "gasdf",
+        "asdf-brain"
       ],
       "versions": {
         "holdex": "^8.16.0",
-        "gasdf": "^8.16.0"
+        "gasdf": "^8.16.0",
+        "asdf-brain": "^8.16.3"
       }
     },
     "socket.io": {
@@ -1047,6 +1065,12 @@
         "version": "^8.16.0"
       },
       {
+        "from": "asdf-brain",
+        "to": "pg",
+        "type": "depends_on",
+        "version": "^8.16.3"
+      },
+      {
         "from": "holdex",
         "to": "redis",
         "type": "depends_on",
@@ -1099,8 +1123,8 @@
   "statistics": {
     "total_repos": 3,
     "shared_deps": 14,
-    "mismatches": 2,
+    "mismatches": 3,
     "graph_nodes": 17,
-    "graph_edges": 31
+    "graph_edges": 32
   }
 }
