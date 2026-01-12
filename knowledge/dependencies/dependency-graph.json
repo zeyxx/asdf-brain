@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T13:50:37.713Z",
+    "generated": "2026-01-12T14:11:22.592Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -605,7 +605,6 @@
           "./lib/data-sources": 4,
           "./publish-to-solana": 1,
           "./lib/cynic/realtime": 1,
-          "./packages/@cynic/loader.cjs": 1,
           "./lib/cynic/judge": 1,
           "./lib/cynic/innommable": 1,
           "./lib/cynic/matrix": 1
