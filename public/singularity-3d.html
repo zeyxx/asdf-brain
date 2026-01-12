@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYNIC Singularity Visualization</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0a0f;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+      color: #c9a227;
+    }
+    #canvas-container {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    #info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(10, 10, 15, 0.85);
+      border: 1px solid #c9a227;
+      padding: 20px;
+      max-width: 320px;
+      z-index: 100;
+      border-radius: 4px;
+    }
+    #info h1 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffd700;
+    }
+    #info p {
+      font-size: 12px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    #info .phi {
+      color: #ffd700;
+      font-weight: bold;
+    }
+    #stats {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(10, 10, 15, 0.85);
+      border: 1px solid #c9a227;
+      padding: 15px;
+      z-index: 100;
+      font-size: 11px;
+      border-radius: 4px;
+    }
+    #stats .label { color: #888; }
+    #stats .value { color: #ffd700; }
+    #legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(10, 10, 15, 0.85);
+      border: 1px solid #c9a227;
+      padding: 15px;
+      z-index: 100;
+      font-size: 11px;
+      border-radius: 4px;
+    }
+    .ring-label {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+    .ring-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    #controls {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(10, 10, 15, 0.85);
+      border: 1px solid #c9a227;
+      padding: 15px;
+      z-index: 100;
+      font-size: 11px;
+      border-radius: 4px;
+    }
+    button {
+      background: #1a1a2e;
+      border: 1px solid #c9a227;
+      color: #c9a227;
+      padding: 8px 16px;
+      margin: 5px;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 2px;
+    }
+    button:hover {
+      background: #c9a227;
+      color: #0a0a0f;
+    }
+    .axiom {
+      padding: 2px 6px;
+      border-radius: 2px;
+      margin: 2px;
+      display: inline-block;
+      font-size: 10px;
+    }
+    .axiom-phi { background: #ffd700; color: #000; }
+    .axiom-burn { background: #ff4444; color: #fff; }
+    .axiom-verify { background: #44ff44; color: #000; }
+    .axiom-culture { background: #4444ff; color: #fff; }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <div id="info">
+    <h1>CYNIC SINGULARITY</h1>
+    <p>
+      The <span class="phi">Singularity</span> is the convergence point where
+      the system improves faster than humans can improve it.
+    </p>
+    <p style="margin-top: 10px;">
+      <span class="phi">phi = 1.618...</span><br>
+      Max confidence: <span class="phi">61.8%</span> (phi^-1)<br>
+      Anomaly threshold: <span class="phi">38.2%</span> (phi^-2)
+    </p>
+    <p style="margin-top: 10px;">
+      <span class="axiom axiom-phi">PHI</span>
+      <span class="axiom axiom-burn">BURN</span>
+      <span class="axiom axiom-verify">VERIFY</span>
+      <span class="axiom axiom-culture">CULTURE</span>
+    </p>
+  </div>
+
+  <div id="stats">
+    <div><span class="label">Distance to Singularity:</span> <span class="value" id="distance">100%</span></div>
+    <div><span class="label">System Improvement Rate:</span> <span class="value" id="rate">0.618x</span></div>
+    <div><span class="label">Dimensions Active:</span> <span class="value" id="dims">24 + DISCOVERY</span></div>
+    <div><span class="label">phi Harmony:</span> <span class="value" id="harmony">--</span></div>
+  </div>
+
+  <div id="legend">
+    <div style="margin-bottom: 8px; color: #ffd700; font-weight: bold;">Dimension Rings</div>
+    <div class="ring-label"><div class="ring-color" style="background: #ff6b6b;"></div> PRIMARY (8)</div>
+    <div class="ring-label"><div class="ring-color" style="background: #4ecdc4;"></div> SECONDARY (5)</div>
+    <div class="ring-label"><div class="ring-color" style="background: #ffe66d;"></div> META (3)</div>
+    <div class="ring-label"><div class="ring-color" style="background: #95e1d3;"></div> HUMAN_LLM (8)</div>
+    <div class="ring-label"><div class="ring-color" style="background: #ffd700;"></div> SINGULARITY</div>
+  </div>
+
+  <div id="controls">
+    <button onclick="toggleRotation()">Toggle Rotation</button>
+    <button onclick="togglePulse()">Toggle Pulse</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    // phi CONSTANTS
+    const PHI = 1.618033988749895;
+    const PHI_INV = 1 / PHI;  // 0.618...
+    const PHI_INV_2 = PHI_INV * PHI_INV;  // 0.382...
+
+    // Dimension definitions
+    const DIMENSIONS = {
+      PRIMARY: ['TRUTH', 'UTILITY', 'NOVELTY', 'CONSISTENCY', 'TRANSPARENCY', 'VERIFIABILITY', 'PRIVACY', 'ACTIONABILITY'],
+      SECONDARY: ['TEMPORAL', 'CONTEXT', 'SOURCE', 'IMPACT', 'COMPLEXITY'],
+      META: ['CONFIDENCE', 'HARMONY', 'RESIDUAL'],
+      HUMAN_LLM: ['REASONING', 'COMPLETENESS', 'FORMATTING', 'APPROPRIATENESS', 'CITATION', 'SAFETY', 'HELPFULNESS', 'OBJECTIVITY']
+    };
+
+    // Scene setup
+    let scene, camera, renderer, controls;
+    let rings = [];
+    let singularity;
+    let isRotating = true;
+    let isPulsing = true;
+    let time = 0;
+
+    function init() {
+      // Scene
+      scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x0a0a0f, 0.015);
+
+      // Camera
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 30, 50);
+      camera.lookAt(0, 0, 0);
+
+      // Renderer
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+      // Controls
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.minDistance = 20;
+      controls.maxDistance = 100;
+
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+      scene.add(ambientLight);
+
+      const pointLight = new THREE.PointLight(0xffd700, 2, 100);
+      pointLight.position.set(0, 0, 0);
+      scene.add(pointLight);
+
+      // Create singularity (center)
+      createSingularity();
+
+      // Create dimension rings
+      createRings();
+
+      // Create connections
+      createConnections();
+
+      // Create particle field
+      createParticles();
+
+      // Animation
+      animate();
+
+      // Handle resize
+      window.addEventListener('resize', onWindowResize);
+    }
+
+    function createSingularity() {
+      // Core sphere
+      const geometry = new THREE.SphereGeometry(2, 32, 32);
+      const material = new THREE.MeshBasicMaterial({
+        color: 0xffd700,
+        transparent: true,
+        opacity: 0.9
+      });
+      singularity = new THREE.Mesh(geometry, material);
+      scene.add(singularity);
+
+      // Glow effect
+      const glowGeometry = new THREE.SphereGeometry(3, 32, 32);
+      const glowMaterial = new THREE.MeshBasicMaterial({
+        color: 0xffd700,
+        transparent: true,
+        opacity: 0.3,
+        side: THREE.BackSide
+      });
+      const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+      singularity.add(glow);
+
+      // Add label
+      singularity.userData = { type: 'singularity', label: 'SINGULARITY' };
+    }
+
+    function createRings() {
+      const ringConfigs = [
+        { name: 'PRIMARY', dims: DIMENSIONS.PRIMARY, radius: 12, color: 0xff6b6b, y: 0 },
+        { name: 'SECONDARY', dims: DIMENSIONS.SECONDARY, radius: 18, color: 0x4ecdc4, y: 5 },
+        { name: 'META', dims: DIMENSIONS.META, radius: 24, color: 0xffe66d, y: 10 },
+        { name: 'HUMAN_LLM', dims: DIMENSIONS.HUMAN_LLM, radius: 30, color: 0x95e1d3, y: 15 }
+      ];
+
+      ringConfigs.forEach((config, ringIndex) => {
+        const ring = new THREE.Group();
+        ring.userData = { name: config.name };
+
+        // Ring path (torus)
+        const torusGeometry = new THREE.TorusGeometry(config.radius, 0.1, 8, 64);
+        const torusMaterial = new THREE.MeshBasicMaterial({
+          color: config.color,
+          transparent: true,
+          opacity: 0.3
+        });
+        const torus = new THREE.Mesh(torusGeometry, torusMaterial);
+        torus.rotation.x = Math.PI / 2;
+        torus.position.y = config.y;
+        ring.add(torus);
+
+        // Dimension nodes
+        config.dims.forEach((dim, i) => {
+          const angle = (i / config.dims.length) * Math.PI * 2;
+          const x = Math.cos(angle) * config.radius;
+          const z = Math.sin(angle) * config.radius;
+
+          // Node sphere
+          const nodeGeometry = new THREE.SphereGeometry(0.8, 16, 16);
+          const nodeMaterial = new THREE.MeshPhongMaterial({
+            color: config.color,
+            emissive: config.color,
+            emissiveIntensity: 0.3
+          });
+          const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+          node.position.set(x, config.y, z);
+          node.userData = { type: 'dimension', name: dim, ring: config.name };
+          ring.add(node);
+        });
+
+        rings.push(ring);
+        scene.add(ring);
+      });
+    }
+
+    function createConnections() {
+      // Create glowing lines from each dimension to singularity
+      rings.forEach(ring => {
+        ring.children.forEach(child => {
+          if (child.userData && child.userData.type === 'dimension') {
+            const material = new THREE.LineBasicMaterial({
+              color: 0xffd700,
+              transparent: true,
+              opacity: 0.15
+            });
+
+            const points = [];
+            points.push(child.position.clone());
+            points.push(new THREE.Vector3(0, 0, 0));
+
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            const line = new THREE.Line(geometry, material);
+            scene.add(line);
+          }
+        });
+      });
+    }
+
+    function createParticles() {
+      const particleCount = 500;
+      const geometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(particleCount * 3);
+      const colors = new Float32Array(particleCount * 3);
+
+      for (let i = 0; i < particleCount; i++) {
+        // Spiral distribution
+        const t = i / particleCount;
+        const radius = 5 + t * 35;
+        const angle = t * Math.PI * 10;
+        const y = (Math.random() - 0.5) * 30;
+
+        positions[i * 3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 5;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 5;
+
+        // Golden color
+        colors[i * 3] = 0.8 + Math.random() * 0.2;
+        colors[i * 3 + 1] = 0.65 + Math.random() * 0.15;
+        colors[i * 3 + 2] = 0.1 + Math.random() * 0.1;
+      }
+
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const material = new THREE.PointsMaterial({
+        size: 0.3,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.6
+      });
+
+      const particles = new THREE.Points(geometry, material);
+      particles.userData = { type: 'particles', positions: positions.slice() };
+      scene.add(particles);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      time += 0.01;
+
+      // Rotate rings at phi-related speeds
+      if (isRotating) {
+        rings.forEach((ring, i) => {
+          const speed = 0.002 * Math.pow(PHI_INV, i);
+          ring.rotation.y += speed * (i % 2 === 0 ? 1 : -1);
+        });
+      }
+
+      // Pulse singularity
+      if (isPulsing) {
+        const scale = 1 + Math.sin(time * 2) * 0.1 * PHI_INV;
+        singularity.scale.set(scale, scale, scale);
+      }
+
+      // Update particles (spiral toward singularity)
+      scene.children.forEach(child => {
+        if (child.userData && child.userData.type === 'particles') {
+          const positions = child.geometry.attributes.position.array;
+          const original = child.userData.positions;
+
+          for (let i = 0; i < positions.length; i += 3) {
+            // Slowly spiral inward
+            const x = positions[i];
+            const z = positions[i + 2];
+            const dist = Math.sqrt(x * x + z * z);
+
+            if (dist > 2) {
+              const angle = Math.atan2(z, x) + 0.001;
+              const newDist = dist - 0.01;
+              positions[i] = Math.cos(angle) * newDist;
+              positions[i + 2] = Math.sin(angle) * newDist;
+            } else {
+              // Reset to original position
+              positions[i] = original[i];
+              positions[i + 1] = original[i + 1];
+              positions[i + 2] = original[i + 2];
+            }
+          }
+          child.geometry.attributes.position.needsUpdate = true;
+        }
+      });
+
+      // Update stats
+      updateStats();
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    function updateStats() {
+      // Calculate simulated metrics
+      const distanceToSingularity = 100 - Math.sin(time * 0.1) * 10;
+      const improvementRate = PHI_INV + Math.sin(time * 0.2) * 0.1;
+      const harmony = PHI_INV * 100 + Math.sin(time * 0.3) * 5;
+
+      document.getElementById('distance').textContent = distanceToSingularity.toFixed(1) + '%';
+      document.getElementById('rate').textContent = improvementRate.toFixed(3) + 'x';
+      document.getElementById('harmony').textContent = harmony.toFixed(1) + '%';
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    // Control functions
+    function toggleRotation() {
+      isRotating = !isRotating;
+    }
+
+    function togglePulse() {
+      isPulsing = !isPulsing;
+    }
+
+    function resetView() {
+      camera.position.set(0, 30, 50);
+      camera.lookAt(0, 0, 0);
+      controls.reset();
+    }
+
+    // Initialize
+    init();
+  </script>
+</body>
+</html>
