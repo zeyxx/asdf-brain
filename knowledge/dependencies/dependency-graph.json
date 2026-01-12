@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-11T23:49:07.674Z",
+    "generated": "2026-01-12T00:03:20.983Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -546,12 +546,12 @@
           "express": 1
         },
         "node": {
-          "fs": 65,
-          "path": 65,
-          "crypto": 24,
+          "fs": 67,
+          "path": 67,
+          "crypto": 26,
           "readline": 9,
           "http": 2,
-          "child_process": 15,
+          "child_process": 16,
           "os": 1,
           "events": 2,
           "https": 2
