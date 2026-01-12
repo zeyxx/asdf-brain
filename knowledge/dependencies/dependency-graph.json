@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T23:44:47.998Z",
+    "generated": "2026-01-12T23:53:38.301Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -515,7 +515,7 @@
           "./contributors": 1,
           "./cynic/data-adapter": 1,
           "./alerts": 3,
-          "./index": 3,
+          "./index": 4,
           "../../temporal": 5,
           "../realtime": 1,
           "../matrices/live-matrix": 3,
@@ -548,6 +548,7 @@
           "./matrix-5x5": 1,
           "./cache": 1,
           "./evidence": 1,
+          "../axioms": 2,
           "./innommable": 1,
           "./dashboard-dimensions": 1,
           "./data-adapter": 1,
@@ -555,6 +556,8 @@
           "./axioms": 1,
           "./axioms/q-score": 1,
           "./axioms/law-checker": 1,
+          "./laws": 1,
+          "./laws/checker": 1,
           "../integration/holdex-connector": 1,
           "../integration/gasdf-connector": 1,
           "../integration/claude-mem-connector": 1,
