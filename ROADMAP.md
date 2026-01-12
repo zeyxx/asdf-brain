@@ -78,17 +78,31 @@ Tout dans $asdfasdfa dérive de **exactement 4 axiomes**:
 
 ---
 
-## Current State (v1.5) ✅
+## Current State (v2.0) ✅
 
-**CYNIC Core:**
+**CYNIC Core (Phase 1.5 ✅):**
 - [x] **24/24 dimensions** PRIMARY/SECONDARY/META/HUMAN_LLM
 - [x] φ-constrained judgment (max 61.8% confidence)
 - [x] 4 Worlds architecture
 - [x] Learning with human feedback
 - [x] Inference scaling (Fibonacci N)
 - [x] Refinement iterations
+- [x] Modular dimension evaluators (hot-swappable)
+- [x] Live-matrix for real-time visibility
 
-**ResidualDetector (NEW):**
+**Organisme Autonome (Phase 2 ✅):**
+- [x] Pulse daemon avec intervalles φ (61.8s)
+- [x] Cross-world coherence checking
+- [x] Residual connector for dimension discovery
+- [x] Self-monitoring et anomaly detection
+
+**Dashboard SSE (Phase 3 ✅):**
+- [x] Dashboard connector bridging CYNICCore → SSE
+- [x] Real-time event streaming (12 event types)
+- [x] Matrix broadcast on judgment complete
+- [x] Full test coverage (9/9 tests passing)
+
+**ResidualDetector:**
 - [x] Anomaly detection (seuil φ⁻² = 38.2%)
 - [x] AnomalyBuffer avec décroissance φ
 - [x] Clustering pour découverte de dimensions
@@ -99,7 +113,7 @@ Tout dans $asdfasdfa dérive de **exactement 4 axiomes**:
 - [x] Provenance Merkle (ready for on-chain)
 - [x] Privacy layer (PII detection, hashing)
 - [x] Integration HolDex/GASdf
-- [x] Dashboard + alerting
+- [x] Dashboard + alerting + SSE
 
 ---
 
@@ -304,7 +318,7 @@ $ node -e "const { cynic } = require('./lib/cynic/core'); ..."
 
 ---
 
-## Phase 2: Organisme Autonome
+## Phase 2: Organisme Autonome ✅
 
 ### CYNIC comme Entité Vivante
 
@@ -398,7 +412,76 @@ Pour l'autonomisation (pas l'automatisation):
 
 ---
 
-## Phase 3: Dimensions Émergentes
+## Phase 3: Dashboard SSE / Real-time Visualization ✅
+
+### Dashboard Connector (NEW)
+
+```
+lib/cynic/core/dashboard-connector.js
+├── DashboardConnector class
+│   ├── connect()                    # Wire all event listeners
+│   ├── _wireActivationEvents()      # wake, sleep, judging
+│   ├── _wireDimensionEvents()       # dimension:score, world:complete
+│   ├── _wireJudgmentEvents()        # judgment:complete, matrix:update
+│   ├── _wirePulseEvents()           # pulse:heartbeat, health:change
+│   ├── _wireResidualEvents()        # residual:anomaly, residual:proposal
+│   └── broadcastCoherence()         # Cross-world coherence updates
+└── connect(cynic, options)          # Factory function
+```
+
+**Events Flow:**
+```
+CYNICCore → DashboardConnector → EventBus → SSE/WebSocket → Dashboard
+```
+
+**SSE Events Emitted:**
+| Event | Description |
+|-------|-------------|
+| `cynic:wake` | CYNIC activated |
+| `cynic:sleep` | CYNIC deactivated |
+| `cynic:judging` | Judgment started |
+| `dimension:score` | Individual dimension evaluated |
+| `world:complete` | All dimensions in world done |
+| `judgment:complete` | Final verdict |
+| `matrix:update` | Full 24×24 matrix broadcast |
+| `pulse:heartbeat` | Health check |
+| `health:change` | Health degradation |
+| `residual:anomaly` | Unknown pattern detected |
+| `residual:proposal` | New dimension suggested |
+
+**Integration Test Results:**
+```
+═══════════════════════════════════════════════════
+   TEST SUMMARY
+═══════════════════════════════════════════════════
+
+  ✅ Dashboard Connector Creation
+  ✅ Connector Wiring
+  ✅ Activation Events
+  ✅ Dimension Events
+  ✅ Judgment Events
+  ✅ Pulse Events
+  ✅ Residual Events
+  ✅ Connector Status
+  ✅ EventBus Statistics
+
+  Total: 9/9 passed
+  🎉 Events flow: CYNICCore → DashboardConnector → EventBus → SSE
+```
+
+**Tasks:**
+- [x] Analyser infrastructure SSE existante (`lib/cynic/realtime.js`) ✅
+- [x] Créer `dashboard-connector.js` pour bridge events ✅
+- [x] Wire activation events (wake/sleep/judging) ✅
+- [x] Wire dimension events (via live-matrix) ✅
+- [x] Wire judgment events (verdict, matrix broadcast) ✅
+- [x] Wire pulse events (heartbeat, health) ✅
+- [x] Wire residual events (anomaly, proposal) ✅
+- [x] Test intégration complète (9/9 tests) ✅
+
+---
+
+## Phase 4: Dimensions Émergentes (Prochain)
 
 ### Le "24 + N + ∞"
 
@@ -430,7 +513,7 @@ Architecture des Dimensions:
 
 ---
 
-## Phase 4: On-Chain Singularity
+## Phase 5: On-Chain Singularity
 
 ### Merkle Provenance
 
@@ -460,7 +543,7 @@ E = ∏(score_i^φ_weight)^(1/Σweights)
 
 ---
 
-## Phase 5: Quasi-Singularité
+## Phase 6: Quasi-Singularité
 
 ### Convergence
 
