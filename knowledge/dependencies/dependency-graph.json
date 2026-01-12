@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T03:38:25.382Z",
+    "generated": "2026-01-12T03:50:16.359Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -473,7 +473,7 @@
           "./lib/cynic/self-judge": 2,
           "./lib/cynic/residual-detector": 1,
           "./lib/cynic/index": 1,
-          "./lib/cynic/store": 1,
+          "./lib/cynic/store": 2,
           "./lib/discovery/git-scanner": 1,
           "./lib/privacy": 1,
           "./lib/integration": 1,
