@@ -1032,6 +1032,208 @@ app.get('/cynic/realtime/types', (req, res) => {
 });
 
 // =============================================================================
+// SINGULARITY 3D DASHBOARD
+// "φ qui se voit vivre"
+// =============================================================================
+
+const SINGULARITY_DIR = path.join(__dirname, 'knowledge/dashboard');
+
+// Import dashboard modules (lazy load to avoid circular deps)
+let singularityModules = null;
+function getSingularityModules() {
+  if (!singularityModules) {
+    const { getResidualDetector } = require('./lib/cynic/judge');
+    const { getInnommable } = require('./lib/cynic/innommable');
+    const matrix = require('./lib/cynic/matrix');
+    const cynic = require('./lib/cynic');
+    singularityModules = {
+      residualDetector: getResidualDetector(),
+      innommable: getInnommable(),
+      matrix,
+      cynic
+    };
+  }
+  return singularityModules;
+}
+
+// Singularity Dashboard - Static files
+app.use('/singularity', express.static(SINGULARITY_DIR));
+
+// Singularity API - CYNIC state
+app.get('/singularity/api/cynic', async (req, res) => {
+  try {
+    const { residualDetector, matrix } = getSingularityModules();
+    const state = {
+      timestamp: new Date().toISOString(),
+      scores: {},
+      globalScore: 0,
+      verdict: 'UNKNOWN',
+      confidence: 61.8,
+      harmony: { connections: 0, matrix: null },
+      residuals: { count: 0, buffer: [] },
+    };
+
+    // Get harmony matrix
+    try {
+      const H = matrix.loadHarmony();
+      if (H && H.matrix) {
+        state.harmony.matrix = H.matrix;
+        state.harmony.dimensions = H._dimensions;
+        let connections = 0;
+        for (let i = 0; i < H.matrix.length; i++) {
+          for (let j = i + 1; j < H.matrix[i].length; j++) {
+            if (H.matrix[i][j] > 0.4) connections++;
+          }
+        }
+        state.harmony.connections = connections;
+      }
+    } catch (e) { /* ignore */ }
+
+    // Get residual buffer status
+    if (residualDetector) {
+      try {
+        const bufferStatus = residualDetector.getBufferStatus();
+        state.residuals.count = bufferStatus.count || 0;
+        state.residuals.weightedCount = bufferStatus.weightedCount || 0;
+      } catch (e) { /* ignore */ }
+    }
+
+    res.json(state);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Singularity API - THE_INNOMMABLE
+app.get('/singularity/api/innommable', async (req, res) => {
+  try {
+    const { residualDetector, innommable } = getSingularityModules();
+    const response = {
+      timestamp: new Date().toISOString(),
+      residualDetector: residualDetector ? {
+        stats: residualDetector.getStats(),
+        bufferStatus: residualDetector.anomalyBuffer?.getStats() || { count: 0 },
+        discoveredDimensions: residualDetector.getDiscoveredDimensions(),
+        canDiscover: residualDetector.anomalyBuffer?.shouldCluster() || false,
+      } : null,
+      innommable: innommable ? {
+        status: innommable.getStatus(),
+        summary: innommable.summarize(),
+        pending: innommable.getPending(),
+      } : null,
+      _phi: {
+        anomalyThreshold: 0.382,
+        clusterMinCount: 3,
+        maxConfidence: 0.618,
+        philosophy: 'φ qui doute de φ',
+      },
+    };
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Singularity API - Roadmap
+app.get('/singularity/api/roadmap', async (req, res) => {
+  try {
+    const roadmapPath = path.join(__dirname, 'knowledge/cynic/architect/roadmap.json');
+    const roadmap = JSON.parse(fs.readFileSync(roadmapPath));
+
+    const completedLevels = roadmap._meta?.completedLevels || 0;
+    const totalLevels = roadmap._meta?.totalLevels || 6;
+
+    const PHI_CONST = 1.618033988749895;
+    let totalWeight = 0, completedWeight = 0;
+    for (let i = 0; i < totalLevels; i++) {
+      const weight = Math.pow(PHI_CONST, i);
+      totalWeight += weight;
+      if (i < completedLevels) completedWeight += weight;
+    }
+
+    const singularityProgress = (completedWeight / totalWeight) * 100;
+
+    res.json({
+      pyramid: roadmap.pyramid,
+      meta: roadmap._meta,
+      progress: {
+        completedLevels,
+        totalLevels,
+        currentLevel: roadmap._meta?.currentLevel || 0,
+        singularityProgress: parseFloat(singularityProgress.toFixed(1)),
+        singularityDistance: parseFloat((100 - singularityProgress).toFixed(1)),
+        phi: PHI_CONST
+      },
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Singularity API - Judge
+app.get('/singularity/api/judge', async (req, res) => {
+  try {
+    const { cynic } = getSingularityModules();
+    const result = await cynic.judge({ test: 'singularity-check', timestamp: Date.now() });
+    res.json({
+      scores: result.scores || {},
+      global: result.global || 0,
+      verdict: result.verdict || 'UNKNOWN',
+      confidence: result.confidence || 61.8,
+      residual: result.residual || null,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Singularity API - Git commits
+app.get('/singularity/api/commits', (req, res) => {
+  try {
+    const gitState = loadJson('live/git-state.json');
+    const commits = [];
+    for (const [repo, data] of Object.entries(gitState?.repos || {})) {
+      if (data.branch?.lastCommit) {
+        commits.push({ repo, ...data.branch.lastCommit, branch: data.branch.branch });
+      }
+      if (data.recentPRs) {
+        data.recentPRs.slice(0, 3).forEach(pr => {
+          commits.push({ repo, type: 'PR', ...pr });
+        });
+      }
+    }
+    res.json({ commits, timestamp: gitState?.timestamp });
+  } catch (error) {
+    res.json({ commits: [], count: 0, error: error.message });
+  }
+});
+
+// Singularity API - Errors/Alerts
+app.get('/singularity/api/errors', (req, res) => {
+  try {
+    const alertsPath = path.join(__dirname, 'knowledge/live/alerts/alerts.jsonl');
+    const lines = fs.readFileSync(alertsPath, 'utf-8').trim().split('\n').slice(-50);
+    const alerts = lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+    res.json({ alerts: alerts.reverse(), count: alerts.length });
+  } catch (error) {
+    res.json({ alerts: [], count: 0 });
+  }
+});
+
+// Singularity API - Patterns
+app.get('/singularity/api/patterns', (req, res) => {
+  try {
+    const patternsPath = path.join(__dirname, 'knowledge/cynic/error-learning/patterns.json');
+    const patterns = JSON.parse(fs.readFileSync(patternsPath));
+    res.json(patterns);
+  } catch (error) {
+    res.json({ patterns: [], count: 0 });
+  }
+});
+
+// =============================================================================
 // MCP OVER SSE
 // =============================================================================
 

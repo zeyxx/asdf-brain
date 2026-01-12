@@ -12,10 +12,18 @@ export const PHI_INV_SQ = PHI_INV * PHI_INV; // 0.382... (min doubt)
 // Polling interval: φ⁻¹ × 10000 = 6180ms
 export const POLL_INTERVAL = Math.round(PHI_INV * 10000);
 
-// API endpoints
-export const API_BASE = typeof window !== 'undefined' && window.location.port === '8888'
-  ? ''
-  : 'http://localhost:8888';
+// API endpoints - detect environment dynamically
+function getApiBase() {
+  if (typeof window === 'undefined') return 'http://localhost:8888';
+  const loc = window.location;
+  // Local dashboard server (port 8888)
+  if (loc.port === '8888') return '';
+  // Production: served from /singularity route
+  if (loc.pathname.startsWith('/singularity')) return '/singularity';
+  // Fallback to local dashboard server
+  return 'http://localhost:8888';
+}
+export const API_BASE = getApiBase();
 
 // Verdicts
 export const VERDICTS = {
