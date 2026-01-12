@@ -1141,6 +1141,40 @@ app.get('/singularity/api/innommable', async (req, res) => {
   }
 });
 
+// Singularity API - Test Anomaly Injection (for testing emergence pipeline)
+app.post('/singularity/api/innommable/test-anomaly', express.json(), async (req, res) => {
+  try {
+    const { residualDetector } = getSingularityModules();
+    const { count = 3, residualMin = 0.5, residualMax = 0.95 } = req.body;
+
+    const injected = [];
+    for (let i = 0; i < Math.min(count, 10); i++) {
+      const residual = residualMin + Math.random() * (residualMax - residualMin);
+      const features = {
+        structural: { type: 'test_anomaly', complexity: 'synthetic' },
+        semantic: { category: 'TEST', keywords: ['anomaly', 'test', 'emergence'] },
+        temporal: { hour: new Date().getHours(), isTest: true },
+      };
+      const bufferStatus = residualDetector.anomalyBuffer.add({
+        residual,
+        features,
+        observationType: 'synthetic_test',
+        judgment: { global: 50, verdict: 'TRANSFORM', confidence: 50 },
+      });
+      injected.push({ residual: residual.toFixed(3), bufferStatus });
+    }
+
+    res.json({
+      message: `Injected ${injected.length} test anomalies`,
+      injected,
+      bufferStats: residualDetector.anomalyBuffer.getStats(),
+      canDiscover: residualDetector.anomalyBuffer.shouldCluster(),
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Singularity API - Roadmap
 app.get('/singularity/api/roadmap', async (req, res) => {
   try {
