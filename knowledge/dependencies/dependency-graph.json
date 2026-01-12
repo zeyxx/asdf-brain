@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T15:50:59.827Z",
+    "generated": "2026-01-12T19:57:56.319Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -626,7 +626,9 @@
           "../../lib/cynic/matrices/live-matrix": 1,
           "../../lib/cynic/residual-detector": 1,
           "../../lib/cynic/dimensions/emergent": 1,
-          "../../lib/cynic/dimensions/base": 1
+          "../../lib/cynic/dimensions/base": 1,
+          "../../lib/merkle-proofs": 1,
+          "../../lib/contributors": 1
         },
         "external": {
           "@coral-xyz/anchor": 4,
