@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYNIC Singularity - 25D Meta Dashboard</title>
+  <link rel="stylesheet" href="css/singularity.css">
+</head>
+<body>
+  <div id="container"></div>
+
+  <div class="hud hud-tl">
+    <h3>CYNIC SINGULARITY</h3>
+    <div class="label" id="view-label">4 MONDES - Internal View</div>
+    <div id="view-toggle" style="margin: 10px 0; pointer-events: auto;">
+      <button id="toggle-view" style="
+        background: transparent;
+        border: 1px solid #d4a017;
+        color: #d4a017;
+        padding: 5px 10px;
+        font-family: 'Orbitron', monospace;
+        font-size: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+      ">Switch to 5×5 Matrix</button>
+    </div>
+    <div class="category-legend" id="legend-4mondes">
+      <div class="category-item active" data-category="ALL">
+        <span class="category-dot" style="background: #d4a017;"></span>
+        <span>ALL (26)</span>
+      </div>
+      <div class="category-item" data-category="PRIMARY">
+        <span class="category-dot" style="background: #ffd700;"></span>
+        <span>PRIMARY (8)</span>
+      </div>
+      <div class="category-item" data-category="SECONDARY">
+        <span class="category-dot" style="background: #00aaff;"></span>
+        <span>SECONDARY (5)</span>
+      </div>
+      <div class="category-item" data-category="META">
+        <span class="category-dot" style="background: #aa00ff;"></span>
+        <span>META (3)</span>
+      </div>
+      <div class="category-item" data-category="HUMAN_LLM">
+        <span class="category-dot" style="background: #00ff88;"></span>
+        <span>HUMAN_LLM (8)</span>
+      </div>
+      <div class="category-item" data-category="DISCOVERY">
+        <span class="category-dot" style="background: #ff3366;"></span>
+        <span>DISCOVERY (1)</span>
+      </div>
+      <div class="category-item" data-category="DISCOVERED">
+        <span class="category-dot" style="background: #ff8c00;"></span>
+        <span>DISCOVERED (1+)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hud hud-tr">
+    <div class="label">GLOBAL SCORE</div>
+    <div class="value" id="global-score">--</div>
+    <div class="label" style="margin-top: 15px;">VERDICT</div>
+    <div class="value" id="verdict" style="font-size: 16px;">--</div>
+    <div class="label" style="margin-top: 15px;">CONFIDENCE</div>
+    <div id="confidence">--</div>
+    <div class="label" style="margin-top: 15px;">DOUBT (min 38.2%)</div>
+    <div id="doubt">--</div>
+  </div>
+
+  <div class="hud hud-bl">
+    <div class="label">HARMONY CONNECTIONS</div>
+    <div id="connections">--</div>
+    <div class="label" style="margin-top: 10px;">RESIDUALS</div>
+    <div id="residuals">--</div>
+  </div>
+
+  <div class="hud hud-br">
+    <div class="label">phi = 1.618</div>
+    <div class="label">max conf = 61.8%</div>
+    <div class="label">min doubt = 38.2%</div>
+  </div>
+
+  <div id="detail-panel">
+    <h4 id="detail-name">DIMENSION</h4>
+    <div class="detail-row">
+      <span class="label">Score</span>
+      <span id="detail-score">--</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Weight</span>
+      <span id="detail-weight">--</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Category</span>
+      <span id="detail-category">--</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">World</span>
+      <span id="detail-world">--</span>
+    </div>
+    <div class="harmony-list">
+      <div class="label">Top Harmonies</div>
+      <div id="harmony-items"></div>
+    </div>
+  </div>
+
+  <div id="instructions">
+    Drag/Scroll = navigate | 1-5 filter | 0 reset | J = judgment | H = hands | V = view toggle
+  </div>
+
+  <!-- 5x5 Legend (hidden by default) -->
+  <div id="legend-5x5" style="display: none; position: fixed; top: 100px; left: 20px; z-index: 100;">
+    <div class="category-legend">
+      <div class="category-item active" data-category="ALL" data-view="5x5">
+        <span class="category-dot" style="background: #d4a017;"></span>
+        <span>ALL (25)</span>
+      </div>
+      <div class="category-item" data-category="FOUNDATION" data-view="5x5">
+        <span class="category-dot" style="background: #ff6b6b;"></span>
+        <span>FOUNDATION (5)</span>
+      </div>
+      <div class="category-item" data-category="STRUCTURE" data-view="5x5">
+        <span class="category-dot" style="background: #4ecdc4;"></span>
+        <span>STRUCTURE (5)</span>
+      </div>
+      <div class="category-item" data-category="DYNAMICS" data-view="5x5">
+        <span class="category-dot" style="background: #45b7d1;"></span>
+        <span>DYNAMICS (5)</span>
+      </div>
+      <div class="category-item" data-category="RELATIONSHIPS" data-view="5x5">
+        <span class="category-dot" style="background: #96ceb4;"></span>
+        <span>RELATIONSHIPS (5)</span>
+      </div>
+      <div class="category-item" data-category="META_5x5" data-view="5x5">
+        <span class="category-dot" style="background: #dda0dd;"></span>
+        <span>META (5)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading" id="loading">Loading CYNIC Singularity...</div>
+
+  <!-- Video for hand tracking -->
+  <video id="video" autoplay playsinline style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 160px;
+    border: 2px solid #d4a017;
+    border-radius: 8px;
+    opacity: 0.7;
+    transform: scaleX(-1);
+    z-index: 100;
+    display: none;
+  "></video>
+
+  <!-- Hand tracking HUD -->
+  <div id="hand-hud" style="
+    position: fixed;
+    bottom: 200px;
+    right: 20px;
+    font-size: 10px;
+    color: #d4a017;
+    z-index: 100;
+    text-align: right;
+    display: none;
+  ">
+    <div>LEFT: <span id="left-fingers">--</span></div>
+    <div>RIGHT: <span id="right-fingers">--</span></div>
+    <div style="margin-top: 5px; color: #666;">H = toggle hands</div>
+  </div>
+
+  <!-- MediaPipe Scripts (global, for hand tracking) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+
+  <!-- Three.js Import Map -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <!-- Main Entry Point -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
