@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T04:31:02.364Z",
+    "generated": "2026-01-12T04:45:46.869Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -533,7 +533,7 @@
           "./judge/evidence": 1,
           "./cynic": 1,
           "../repo-discovery": 1,
-          "../git-intelligence": 1,
+          "../git-intelligence": 3,
           "../cynic/self-judge": 2,
           "../context-layer": 2,
           "../lang-detect": 1,
@@ -567,6 +567,7 @@
           "./alert-handlers": 1,
           "./dashboard-handlers": 1,
           "./store-handlers": 1,
+          "./git-handlers": 1,
           "../integration": 2,
           "../privacy": 4,
           "../merkle-proofs": 1,
