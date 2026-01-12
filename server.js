@@ -1195,12 +1195,13 @@ app.post('/singularity/api/innommable/discover', express.json(), async (req, res
     // If dimensions proposed, send to THE_INNOMMABLE
     if (discoveryResult.discovered && discoveryResult.candidates?.length > 0) {
       for (const candidate of discoveryResult.candidates) {
-        innommable.propose({
-          name: candidate.proposedName || 'UNNAMED_DIMENSION',
+        await innommable.receiveDimensionProposal({
+          suggestedName: candidate.proposedName || 'UNNAMED_DIMENSION',
           source: 'residual_clustering',
           features: candidate.features,
-          anomalyCount: candidate.anomalyCount,
+          clusterSize: candidate.anomalyCount,
           confidence: candidate.confidence,
+          averageResidual: candidate.averageResidual,
           timestamp: new Date().toISOString(),
         });
       }
