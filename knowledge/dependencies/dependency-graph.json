@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T06:31:59.158Z",
+    "generated": "2026-01-12T06:40:18.307Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -492,8 +492,8 @@
           "./exportKScoreHistory.js": 1,
           "./exportHolderSnapshots.js": 1,
           "./labelTokenOutcomes.js": 1,
-          "./constants.js": 9,
-          "./state.js": 10,
+          "./constants.js": 10,
+          "./state.js": 11,
           "./hud.js": 4,
           "./discovered.js": 1,
           "./scene.js": 5,
@@ -503,10 +503,12 @@
           "./errors.js": 1,
           "./patterns.js": 1,
           "./roadmap.js": 1,
+          "./innommable.js": 1,
           "./dimensions.js": 1,
           "../../lib/cynic": 1,
           "../../lib/cynic/matrix": 1,
           "../../lib/cynic/residual-detector": 1,
+          "../../lib/cynic/innommable": 1,
           "./temporal": 7,
           "./merkle-proofs": 1,
           "../scripts/merkle": 2,
@@ -606,7 +608,7 @@
           "chai": 1,
           "pg": 4,
           "dotenv": 4,
-          "three": 7,
+          "three": 8,
           "ws": 1,
           "better-sqlite3": 1,
           "@solana/web3.js": 1,
