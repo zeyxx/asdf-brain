@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T07:12:17.360Z",
+    "generated": "2026-01-12T07:58:27.920Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -590,7 +590,7 @@
           "./claude-mem-connector": 1,
           "./hasher": 1,
           "./ephemeral": 1,
-          "./lib/cynic": 2,
+          "./lib/cynic": 3,
           "./lib/self-judge": 1,
           "../lib/temporal": 7,
           "../lib/lang-detect": 1,
@@ -600,7 +600,10 @@
           "../lib/context-layer": 1,
           "./lib/data-sources": 4,
           "./publish-to-solana": 1,
-          "./lib/cynic/realtime": 1
+          "./lib/cynic/realtime": 1,
+          "./lib/cynic/judge": 1,
+          "./lib/cynic/innommable": 1,
+          "./lib/cynic/matrix": 1
         },
         "external": {
           "@coral-xyz/anchor": 4,
