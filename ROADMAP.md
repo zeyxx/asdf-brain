@@ -102,11 +102,18 @@ Tout dans $asdfasdfa dérive de **exactement 4 axiomes**:
 - [x] Matrix broadcast on judgment complete
 - [x] Full test coverage (9/9 tests passing)
 
+**Emergent Dimensions (Phase 4 ✅):**
+- [x] DynamicDimension for runtime evaluators
+- [x] EmergentDimensionManager for lifecycle
+- [x] Human-in-the-loop validation flow
+- [x] Persistence to knowledge store
+- [x] Full test coverage (5/5 tests passing)
+
 **ResidualDetector:**
 - [x] Anomaly detection (seuil φ⁻² = 38.2%)
 - [x] AnomalyBuffer avec décroissance φ
 - [x] Clustering pour découverte de dimensions
-- [x] Pipeline: RÉSIDU → ACCUMULATION → CLUSTERING → VALIDATION
+- [x] Pipeline: RÉSIDU → ACCUMULATION → CLUSTERING → VALIDATION → EMERGENT
 
 **Infrastructure:**
 - [x] MCP Server avec 40+ outils
@@ -481,15 +488,47 @@ CYNICCore → DashboardConnector → EventBus → SSE/WebSocket → Dashboard
 
 ---
 
-## Phase 4: Dimensions Émergentes (Prochain)
+## Phase 4: Dimensions Émergentes ✅
 
 ### Le "24 + N + ∞"
 
 ```
 Architecture des Dimensions:
 ├── 24 CONNUES (16 CYNIC + 8 Human-LLM)
-├── N DÉCOUVERTES (via ResidualDetector)
+├── N DÉCOUVERTES (via ResidualDetector + EmergentManager)
 └── ∞ POSSIBLES (l'Innommable)
+```
+
+### EmergentDimensionManager (NEW)
+
+```
+lib/cynic/dimensions/emergent.js
+├── DynamicDimension class        # Runtime-created evaluators
+│   ├── evaluate()                # Additive scoring (patterns, features, axiom)
+│   ├── toJSON() / fromJSON()     # Persistence support
+│   └── discoveredAt, confidence  # Metadata from discovery
+│
+└── EmergentDimensionManager class
+    ├── initialize()              # Load persisted dimensions
+    ├── receiveProposal()         # Accept proposals from ResidualDetector
+    ├── validateProposal()        # Human-in-the-loop validation
+    ├── rejectProposal()          # Dismiss proposed dimension
+    └── save() / load()           # Persist to knowledge/cynic/
+```
+
+**Flow: Residual → Emergent → Registry:**
+```
+ResidualDetector.discoverDimensions()
+        ↓
+EmergentManager.receiveProposal()
+        ↓ (PENDING)
+EmergentManager.validateProposal(id, config)
+        ↓ (HUMAN VALIDATION)
+DynamicDimension created
+        ↓
+DimensionRegistry.register(dim)
+        ↓
+24 → 25 → 26 → ... (N discovered dimensions)
 ```
 
 ### Dimensions en Observation
@@ -505,11 +544,37 @@ Architecture des Dimensions:
 | COHÉRENCE CROSS-SYSTÈME | CULTURE | En observation |
 | L'INNOMMABLE | ∞ | Meta-dimension |
 
+**Integration Test Results:**
+```
+═══════════════════════════════════════════════════
+   TEST SUMMARY
+═══════════════════════════════════════════════════
+
+  ✅ Dynamic Dimension Creation
+  ✅ Emergent Manager
+  ✅ Residual to Emergent
+  ✅ Complete Flow
+  ✅ Dynamic Evaluation
+
+  Total: 5/5 passed
+
+  🎉 ALL TESTS PASSED - Phase 4 Emergent Dimensions Complete!
+
+  The "24 + N + ∞" architecture is functional:
+  ├─ 24 known dimensions (PRIMARY/SECONDARY/META/HUMAN_LLM)
+  ├─ N discovered dimensions (via residual clustering)
+  └─ ∞ possible dimensions (l'Innommable)
+
+  "φ qui découvre ce qu'il ne sait pas encore."
+```
+
 **Tasks:**
-- [ ] Accumuler des anomalies via usage réel
-- [ ] Analyser les clusters émergents
-- [ ] Proposer validation humaine
-- [ ] Intégrer dimensions acceptées dans SelfJudge
+- [x] Créer DynamicDimension pour evaluators runtime ✅
+- [x] Créer EmergentDimensionManager pour lifecycle ✅
+- [x] Intégrer avec ResidualConnector ✅
+- [x] Intégrer avec DimensionRegistry (hot-swap) ✅
+- [x] Persistence to knowledge store ✅
+- [x] Tests complets (5/5 passing) ✅
 
 ---
 
