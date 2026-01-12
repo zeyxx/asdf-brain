@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T15:42:44.357Z",
+    "generated": "2026-01-12T15:50:59.827Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -515,7 +515,7 @@
           "./contributors": 1,
           "./cynic/data-adapter": 1,
           "./alerts": 3,
-          "../../temporal": 4,
+          "../../temporal": 5,
           "../realtime": 1,
           "../matrices/live-matrix": 3,
           "./activation": 1,
@@ -523,12 +523,13 @@
           "./index": 1,
           "../pulse": 2,
           "../residual-detector": 1,
+          "../dimensions/emergent": 1,
           "../base": 25,
           "./pulse": 2,
           "./self-monitor": 2,
           "./metrics": 2,
+          "./base": 2,
           "./dimensions/registry": 1,
-          "./base": 1,
           "./realtime": 2,
           "../llm/provider": 2,
           "./self-judge": 4,
@@ -619,10 +620,13 @@
           "./lib/cynic/judge": 1,
           "./lib/cynic/innommable": 1,
           "./lib/cynic/matrix": 1,
-          "../../lib/cynic/core": 1,
+          "../../lib/cynic/core": 2,
           "../../lib/cynic/core/dashboard-connector": 1,
           "../../lib/cynic/realtime": 1,
-          "../../lib/cynic/matrices/live-matrix": 1
+          "../../lib/cynic/matrices/live-matrix": 1,
+          "../../lib/cynic/residual-detector": 1,
+          "../../lib/cynic/dimensions/emergent": 1,
+          "../../lib/cynic/dimensions/base": 1
         },
         "external": {
           "@coral-xyz/anchor": 4,
@@ -637,8 +641,8 @@
           "express": 1
         },
         "node": {
-          "fs": 78,
-          "path": 78,
+          "fs": 79,
+          "path": 79,
           "crypto": 33,
           "readline": 10,
           "http": 3,
