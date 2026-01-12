@@ -24,11 +24,11 @@ let innommable = null;
 try {
   cynic = require('../../lib/cynic');
   matrix = require('../../lib/cynic/matrix');
-  const { ResidualDetector } = require('../../lib/cynic/residual-detector');
+  const { getResidualDetector } = require('../../lib/cynic/judge');
   const { getInnommable } = require('../../lib/cynic/innommable');
-  residualDetector = new ResidualDetector();
+  residualDetector = getResidualDetector();  // Use singleton, not new instance
   innommable = getInnommable();
-  console.log('[Server] CYNIC modules loaded (including THE_INNOMMABLE)');
+  console.log('[Server] CYNIC modules loaded (using shared ResidualDetector singleton)');
 } catch (e) {
   console.error('[Server] Failed to load CYNIC:', e.message);
 }
@@ -123,9 +123,15 @@ async function runJudgment(item) {
       global: result.global || 0,
       verdict: result.verdict || 'UNKNOWN',
       confidence: result.confidence || 61.8,
+      residual: result.residual || null,
       timestamp: new Date().toISOString(),
     };
     lastJudgmentTime = Date.now();
+
+    // Log if anomaly detected for visibility
+    if (result.residual?.isAnomaly) {
+      console.log(`[Server] Anomaly detected: residual=${result.residual.value?.toFixed(3)}`);
+    }
 
     return lastJudgment;
   } catch (e) {
@@ -306,6 +312,93 @@ async function handleRequest(req, res) {
           const result = await innommable.humanValidate(proposalId, { accept, feedback });
           res.writeHead(200, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify(result, null, 2));
+        } catch (e) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: e.message }));
+        }
+      });
+      return;
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+      return;
+    }
+  }
+
+  // API: TEST - Inject fake anomaly (for testing emergence pipeline)
+  if (url.pathname === '/api/innommable/test-anomaly' && req.method === 'POST') {
+    try {
+      if (!residualDetector || !residualDetector.anomalyBuffer) {
+        res.writeHead(503, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'ResidualDetector/AnomalyBuffer not available' }));
+        return;
+      }
+
+      let body = '';
+      req.on('data', chunk => body += chunk);
+      req.on('end', () => {
+        try {
+          const input = body ? JSON.parse(body) : {};
+
+          // Generate fake anomaly with random dimension focus
+          const dimensions = [
+            'SOURCE_ORIGIN', 'EVIDENCE_BASE', 'LOGICAL_COHERENCE', 'TEMPORAL_VALIDITY', 'DOMAIN_FIT',
+            'SIMPLICITY', 'MODULARITY', 'EXTENSIBILITY', 'ROBUSTNESS', 'ELEGANCE',
+            'ADAPTABILITY', 'SCALABILITY', 'FEEDBACK_LOOPS', 'ENERGY_EFFICIENCY', 'MOMENTUM',
+            'DEPENDENCY_HEALTH', 'INTERFACE_CLARITY', 'NETWORK_EFFECTS', 'COMPOSABILITY', 'TRUST_GRADIENT',
+            'SELF_AWARENESS', 'REVERSIBILITY', 'MEASURABILITY', 'LEARNABILITY', 'ALIGNMENT'
+          ];
+
+          // Pick a random dimension to focus the anomaly on
+          const focusDim = input.focusDimension || dimensions[Math.floor(Math.random() * dimensions.length)];
+          const residual = input.residual || 0.45 + Math.random() * 0.15;  // 0.45-0.60 (above threshold)
+
+          // Create feature vector - high value for focus dimension
+          const features = {};
+          dimensions.forEach(d => {
+            features[d] = d === focusDim ? 0.8 + Math.random() * 0.2 : Math.random() * 0.3;
+          });
+
+          // Create fake anomaly entry
+          const fakeAnomaly = {
+            residual,
+            features,
+            judgment: {
+              global: 0.3 + Math.random() * 0.2,
+              scores: { [focusDim]: 0.15 + Math.random() * 0.1 },
+              verdict: 'BARK',
+            },
+            observation: `test_obs_${Date.now()}`,
+            context: {
+              source: 'test-injection',
+              timestamp: new Date().toISOString(),
+            },
+            gapAnalysis: {
+              totalGap: residual,
+              dominantGaps: [{ dimension: focusDim, gap: residual }],
+            },
+          };
+
+          // Inject into buffer
+          const addResult = residualDetector.anomalyBuffer.add(fakeAnomaly);
+
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({
+            success: true,
+            injected: {
+              id: addResult.id,
+              residual,
+              focusDimension: focusDim,
+            },
+            bufferStatus: {
+              count: addResult.count,
+              weightedCount: addResult.weightedCount,
+              shouldCluster: addResult.shouldCluster,
+            },
+            _hint: addResult.shouldCluster
+              ? 'Buffer ready for clustering! POST to /api/innommable/discover'
+              : `Need ${Math.ceil(3 - addResult.weightedCount)} more anomalies for clustering`,
+          }, null, 2));
         } catch (e) {
           res.writeHead(400, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ error: e.message }));
