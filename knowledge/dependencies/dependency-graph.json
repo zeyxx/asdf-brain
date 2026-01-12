@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T14:23:58.872Z",
+    "generated": "2026-01-12T15:30:25.862Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -515,9 +515,19 @@
           "./contributors": 1,
           "./cynic/data-adapter": 1,
           "./alerts": 3,
+          "../../temporal": 4,
+          "./activation": 1,
+          "../matrices/live-matrix": 2,
+          "../dimensions/base": 3,
+          "./index": 1,
+          "../pulse": 2,
+          "../residual-detector": 1,
+          "../base": 25,
           "./pulse": 2,
           "./self-monitor": 2,
           "./metrics": 2,
+          "./dimensions/registry": 1,
+          "./base": 1,
           "./realtime": 2,
           "../llm/provider": 2,
           "./self-judge": 4,
@@ -622,14 +632,14 @@
           "express": 1
         },
         "node": {
-          "fs": 77,
-          "path": 77,
-          "crypto": 32,
+          "fs": 78,
+          "path": 78,
+          "crypto": 33,
           "readline": 10,
           "http": 3,
           "child_process": 16,
           "os": 1,
-          "events": 3,
+          "events": 6,
           "https": 2
         }
       }
