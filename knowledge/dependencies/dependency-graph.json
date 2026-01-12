@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T00:03:20.983Z",
+    "generated": "2026-01-12T00:14:20.829Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -497,6 +497,7 @@
           "./pulse": 2,
           "./self-monitor": 2,
           "./metrics": 2,
+          "./realtime": 2,
           "../llm/provider": 2,
           "./self-judge": 3,
           "./residual-detector": 1,
@@ -533,7 +534,8 @@
           "../lib/operator-loader": 1,
           "../lib/context-layer": 1,
           "./lib/data-sources": 4,
-          "./publish-to-solana": 1
+          "./publish-to-solana": 1,
+          "./lib/cynic/realtime": 1
         },
         "external": {
           "@coral-xyz/anchor": 4,
@@ -541,6 +543,7 @@
           "chai": 1,
           "pg": 3,
           "dotenv": 4,
+          "ws": 1,
           "better-sqlite3": 1,
           "@solana/web3.js": 1,
           "express": 1
@@ -548,12 +551,12 @@
         "node": {
           "fs": 67,
           "path": 67,
-          "crypto": 26,
+          "crypto": 27,
           "readline": 9,
           "http": 2,
           "child_process": 16,
           "os": 1,
-          "events": 2,
+          "events": 3,
           "https": 2
         }
       }
