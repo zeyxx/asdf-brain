@@ -35,10 +35,14 @@ const cynicPulse = require('./lib/cynic/pulse');
 const cynicSelfMonitor = require('./lib/cynic/self-monitor');
 const cynicAlerts = require('./lib/cynic/alerts');
 const cynicRealtime = require('./lib/cynic/realtime');
+const { getStore } = require('./lib/cynic/store');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const KNOWLEDGE_DIR = path.join(__dirname, 'knowledge');
+
+// CYNIC Store (PostgreSQL persistence)
+let cynicStore = null;
 
 // =============================================================================
 // SECURITY CONFIGURATION
@@ -845,6 +849,35 @@ app.get('/cynic/status', async (req, res) => {
 });
 
 /**
+ * CYNIC Store Status
+ * Returns store connection status and mode
+ */
+app.get('/cynic/store', async (req, res) => {
+  try {
+    if (!cynicStore) {
+      return res.json({
+        status: 'not_initialized',
+        mode: 'none',
+        message: 'Store not initialized yet'
+      });
+    }
+
+    const health = await cynicStore.health();
+    res.json({
+      status: 'ok',
+      mode: health.mode,
+      connected: health.healthy,
+      _phi: {
+        philosophy: "Don't trust, verify - persistence is memory's guarantee"
+      }
+    });
+  } catch (error) {
+    console.error('CYNIC store status error:', error);
+    res.status(500).json({ error: 'Store status check failed', message: error.message });
+  }
+});
+
+/**
  * CYNIC Alerts - Active alerts
  */
 app.get('/cynic/alerts', (req, res) => {
@@ -1103,7 +1136,7 @@ app.get('/', (req, res) => {
 // START SERVER
 // =============================================================================
 
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, async () => {
   console.log('═══════════════════════════════════════════════════════════');
   console.log('  asdf-brain server');
   console.log("  $asdfasdfa: Don't trust, verify");
@@ -1116,6 +1149,22 @@ const server = app.listen(PORT, () => {
   console.log(`  API:        http://localhost:${PORT}/api/health`);
   console.log(`  MCP:        http://localhost:${PORT}/mcp`);
   console.log('═══════════════════════════════════════════════════════════');
+
+  // Initialize CYNIC Store (PostgreSQL persistence)
+  try {
+    cynicStore = await getStore();
+    const health = await cynicStore.health();
+    console.log(`[CYNIC-STORE] ${health.mode === 'postgres' ? '🐘' : '💾'} Running in ${health.mode} mode`);
+
+    if (health.mode === 'postgres') {
+      const migration = await cynicStore.migrate();
+      if (migration.success) {
+        console.log('[CYNIC-STORE] ✅ Schema migrated');
+      }
+    }
+  } catch (e) {
+    console.log('[CYNIC-STORE] ⚠️ Init failed:', e.message, '- running in memory mode');
+  }
 });
 
 // Attach WebSocket server for CYNIC realtime
