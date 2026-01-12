@@ -223,6 +223,53 @@ async function handleRequest(req, res) {
     }
   }
 
+  // API: Roadmap (pyramid levels and progress)
+  if (url.pathname === '/api/roadmap') {
+    try {
+      const roadmapPath = path.join(__dirname, '../cynic/architect/roadmap.json');
+      const roadmap = JSON.parse(fs.readFileSync(roadmapPath));
+
+      // Calculate singularity distance
+      const completedLevels = roadmap._meta?.completedLevels || 0;
+      const totalLevels = roadmap._meta?.totalLevels || 6;
+      const currentLevel = roadmap._meta?.currentLevel || 0;
+
+      // φ-based progress: each level contributes φ^(level) weight
+      const PHI = 1.618033988749895;
+      let totalWeight = 0;
+      let completedWeight = 0;
+
+      for (let i = 0; i < totalLevels; i++) {
+        const weight = Math.pow(PHI, i);
+        totalWeight += weight;
+        if (i < completedLevels) completedWeight += weight;
+      }
+
+      const singularityProgress = (completedWeight / totalWeight) * 100;
+      const singularityDistance = 100 - singularityProgress;
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        pyramid: roadmap.pyramid,
+        meta: roadmap._meta,
+        progress: {
+          completedLevels,
+          totalLevels,
+          currentLevel,
+          singularityProgress: parseFloat(singularityProgress.toFixed(1)),
+          singularityDistance: parseFloat(singularityDistance.toFixed(1)),
+          phi: PHI
+        },
+        timestamp: new Date().toISOString()
+      }));
+      return;
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+      return;
+    }
+  }
+
   // Static files
   let filePath = url.pathname === '/' ? '/index.html' : url.pathname;
   filePath = path.join(STATIC_DIR, filePath);
@@ -259,9 +306,10 @@ server.listen(PORT, () => {
 ╔═══════════════════════════════════════════════════════════╗
 ║         CYNIC SINGULARITY DASHBOARD SERVER                ║
 ╠═══════════════════════════════════════════════════════════╣
-║  Dashboard:  http://localhost:${PORT}/                       ║
-║  API State:  http://localhost:${PORT}/api/cynic              ║
-║  API Judge:  http://localhost:${PORT}/api/judge              ║
+║  Dashboard:   http://localhost:${PORT}/                      ║
+║  API State:   http://localhost:${PORT}/api/cynic             ║
+║  API Judge:   http://localhost:${PORT}/api/judge             ║
+║  API Roadmap: http://localhost:${PORT}/api/roadmap           ║
 ╠═══════════════════════════════════════════════════════════╣
 ║  φ = 1.618 | Max Confidence = 61.8% | Min Doubt = 38.2%   ║
 ╚═══════════════════════════════════════════════════════════╝

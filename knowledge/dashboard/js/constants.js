@@ -43,6 +43,24 @@ export const COLORS = {
   EDGE: 0x333333
 };
 
+// Pyramid level colors (from base to apex)
+export const PYRAMID_COLORS = {
+  FONDATION:     0x8b4513,  // Brown - solid earth
+  PERCEPTION:    0x00aaff,  // Blue - seeing
+  REACTION:      0x00ff88,  // Green - acting
+  VISUALISATION: 0xaa00ff,  // Purple - showing
+  EMERGENCE:     0xff3366,  // Pink - discovering
+  PRODUCTION:    0xffd700   // Gold - apex/singularity
+};
+
+// Pyramid level status colors
+export const PYRAMID_STATUS = {
+  COMPLETED: 0x00ff00,  // Bright green
+  ACTIVE:    0xffff00,  // Yellow
+  NEXT:      0xffa500,  // Orange
+  PLANNED:   0x666666   // Gray
+};
+
 // Layout configurations for 4 Mondes view
 export const LAYOUT_4MONDES = {
   PRIMARY:    { radius: 120, y: 0, offset: 0 },

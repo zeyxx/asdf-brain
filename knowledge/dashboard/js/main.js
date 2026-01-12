@@ -11,6 +11,7 @@ import { toggleHandTracking } from './hands.js';
 import { animateCommits, fetchAndVisualizeCommits } from './commits.js';
 import { animateErrors, fetchAndVisualizeErrors } from './errors.js';
 import { animatePatterns, fetchAndVisualizePatterns } from './patterns.js';
+import { initPyramid, animatePyramid, fetchAndUpdateRoadmap } from './roadmap.js';
 
 /**
  * Handle click events for dimension selection
@@ -109,6 +110,9 @@ function animate() {
   animateCommits();
   animateErrors();
   animatePatterns();
+
+  // Roadmap pyramid
+  animatePyramid();
 }
 
 /**
@@ -119,11 +123,13 @@ function startVisualizationPolling() {
   fetchAndVisualizeCommits();
   fetchAndVisualizeErrors();
   fetchAndVisualizePatterns();
+  fetchAndUpdateRoadmap();
 
   // Periodic updates (staggered to avoid API spam)
   setInterval(fetchAndVisualizeCommits, 10000);   // 10s
   setInterval(fetchAndVisualizeErrors, 15000);    // 15s
   setInterval(fetchAndVisualizePatterns, 30000);  // 30s
+  setInterval(fetchAndUpdateRoadmap, 30000);      // 30s
 }
 
 /**
@@ -134,6 +140,9 @@ function init() {
 
   // Initialize Three.js scene
   initScene();
+
+  // Initialize roadmap pyramid
+  initPyramid();
 
   // Update HUD with initial values
   updateHUD();
@@ -158,6 +167,7 @@ function init() {
 
   console.log('[CYNIC] Dashboard ready. Keys: 1-6 filter, V view, J judge, H hands');
   console.log('[CYNIC] Level 3 VISUALISATION: Commits, Errors, Patterns active');
+  console.log('[CYNIC] ROADMAP: Pyramid visualization active (left side)');
 }
 
 // Initialize when DOM is ready
