@@ -1,0 +1,70 @@
+{
+  "byEmail": {
+    "151752284+zeyxx@users.noreply.github.com": {
+      "id": "d1a8ffa988a6",
+      "name": "jeanterre552",
+      "email": "151752284+zeyxx@users.noreply.github.com",
+      "firstSeen": "2026-01-10T22:48:24.000Z",
+      "lastSeen": "2026-01-07T22:46:48.000Z",
+      "totalCommits": 21,
+      "totalImpact": 1396.5,
+      "repos": {
+        "holdex": 5,
+        "gasdf": 5,
+        "brain": 3,
+        "manifesto": 4,
+        "claudeMem": 4
+      },
+      "categories": {
+        "bugfix": 5,
+        "feature": 4,
+        "maintenance": 6,
+        "testing": 1,
+        "documentation": 3,
+        "refactor": 2
+      },
+      "eScore": 100
+    },
+    "asdf-brain[bot]@users.noreply.github.com": {
+      "id": "e3cc8e8861af",
+      "name": "asdf-brain[bot]",
+      "email": "asdf-brain[bot]@users.noreply.github.com",
+      "firstSeen": "2026-01-11T23:48:16.000Z",
+      "lastSeen": "2026-01-11T23:16:51.000Z",
+      "totalCommits": 2,
+      "totalImpact": 61.6,
+      "repos": {
+        "brain": 2
+      },
+      "categories": {
+        "maintenance": 2
+      },
+      "eScore": 76
+    },
+    "thedotmack@gmail.com": {
+      "id": "e60955dffb2d",
+      "name": "Alex Newman",
+      "email": "thedotmack@gmail.com",
+      "firstSeen": "2026-01-07T21:53:54.000Z",
+      "lastSeen": "2026-01-07T21:53:54.000Z",
+      "totalCommits": 1,
+      "totalImpact": 53.7,
+      "repos": {
+        "claudeMem": 1
+      },
+      "categories": {
+        "other": 1
+      },
+      "eScore": 85
+    }
+  },
+  "byName": {
+    "jeanterre552": "151752284+zeyxx@users.noreply.github.com",
+    "asdf-brain[bot]": "asdf-brain[bot]@users.noreply.github.com",
+    "Alex Newman": "thedotmack@gmail.com"
+  },
+  "_meta": {
+    "totalContributors": 3,
+    "lastUpdated": "2026-01-11T23:52:05.394Z"
+  }
+}

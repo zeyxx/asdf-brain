@@ -1,0 +1,104 @@
+{
+  "patterns": [
+    {
+      "id": "pat_1768175909933_593b0c",
+      "created": "2026-01-11T23:58:29.933Z",
+      "lastSeen": "2026-01-11T23:58:29.934Z",
+      "type": "DATA",
+      "component": "unknown",
+      "messageSignature": "cannot read property x of undefined",
+      "occurrences": 6,
+      "severity": "medium",
+      "examples": [
+        "Cannot read property x of undefined",
+        "Cannot read property x of undefined",
+        "Cannot read property x of undefined"
+      ],
+      "lesson": "les_1768176017839_55e290",
+      "prevention": [
+        "Implement retry with exponential backoff",
+        "Add circuit breaker pattern"
+      ],
+      "status": "learned"
+    },
+    {
+      "id": "pat_1768175989113_bc229f",
+      "created": "2026-01-11T23:59:49.113Z",
+      "lastSeen": "2026-01-11T23:59:49.111Z",
+      "type": "DATA",
+      "component": "test-module",
+      "messageSignature": "cannot read property x of undefined",
+      "occurrences": 7,
+      "severity": "medium",
+      "examples": [
+        "Cannot read property x of undefined",
+        "Cannot read property x of undefined",
+        "Cannot read property x of undefined"
+      ],
+      "lesson": "les_1768176036992_d3feef",
+      "prevention": [
+        "Client-side validation",
+        "Schema validation at API boundary"
+      ],
+      "status": "learned"
+    },
+    {
+      "id": "pat_1768175989118_825f7f",
+      "created": "2026-01-11T23:59:49.118Z",
+      "lastSeen": "2026-01-11T23:59:49.119Z",
+      "type": "DATA",
+      "component": "test-module",
+      "messageSignature": "cannot read property y of undefined",
+      "occurrences": 4,
+      "severity": "medium",
+      "examples": [
+        "Cannot read property y of undefined",
+        "Cannot read property y of undefined",
+        "Cannot read property y of undefined"
+      ],
+      "lesson": null,
+      "prevention": [],
+      "status": "new"
+    },
+    {
+      "id": "pat_1768176017837_1b8dce",
+      "created": "2026-01-12T00:00:17.837Z",
+      "lastSeen": "2026-01-12T00:00:17.836Z",
+      "type": "INTEGRATION",
+      "component": "api",
+      "messageSignature": "network fetch failed",
+      "occurrences": 3,
+      "severity": "medium",
+      "examples": [
+        "Network fetch failed",
+        "Network fetch failed",
+        "Network fetch failed"
+      ],
+      "lesson": null,
+      "prevention": [],
+      "status": "new"
+    },
+    {
+      "id": "pat_1768176036991_58d29e",
+      "created": "2026-01-12T00:00:36.991Z",
+      "lastSeen": "2026-01-12T00:00:36.990Z",
+      "type": "INTEGRATION",
+      "component": "api",
+      "messageSignature": "api validation failed: missing required field",
+      "occurrences": 3,
+      "severity": "medium",
+      "examples": [
+        "API validation failed: missing required field",
+        "API validation failed: missing required field",
+        "API validation failed: missing required field"
+      ],
+      "lesson": null,
+      "prevention": [],
+      "status": "new"
+    }
+  ],
+  "_meta": {
+    "lastUpdated": "2026-01-12T00:00:36.992Z",
+    "totalPatterns": 5
+  }
+}

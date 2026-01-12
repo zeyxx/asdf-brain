@@ -1,0 +1,52 @@
+{
+  "lessons": [
+    {
+      "id": "les_1768176017839_55e290",
+      "created": "2026-01-12T00:00:17.839Z",
+      "patternId": "pat_1768175909933_593b0c",
+      "errorType": "DATA",
+      "component": "unknown",
+      "title": "Handle network failures gracefully",
+      "description": "Network calls can fail - always have retry logic",
+      "rootCause": "Network instability or service unavailability",
+      "prevention": [
+        "Implement retry with exponential backoff",
+        "Add circuit breaker pattern"
+      ],
+      "fix": "Add try-catch with retry logic",
+      "dimensions": [
+        "ROBUSTNESS",
+        "ADAPTABILITY"
+      ],
+      "impact": "high",
+      "applied": false,
+      "verified": false
+    },
+    {
+      "id": "les_1768176036992_d3feef",
+      "created": "2026-01-12T00:00:36.992Z",
+      "patternId": "pat_1768175989113_bc229f",
+      "errorType": "DATA",
+      "component": "test-module",
+      "title": "Validate inputs before API calls",
+      "description": "Missing required fields cause validation failures",
+      "rootCause": "Incomplete form data submitted",
+      "prevention": [
+        "Client-side validation",
+        "Schema validation at API boundary"
+      ],
+      "fix": "Add required field checks",
+      "dimensions": [
+        "INTEGRITY",
+        "LEARNING_RATE"
+      ],
+      "impact": "medium",
+      "applied": false,
+      "verified": false
+    }
+  ],
+  "_meta": {
+    "lastUpdated": "2026-01-12T00:00:36.992Z",
+    "totalLessons": 2
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "totalErrors": 19,
+  "byType": {
+    "DATA": 11,
+    "RESOURCE": 1,
+    "INTEGRATION": 7
+  },
+  "bySeverity": {
+    "medium": 18,
+    "high": 1
+  },
+  "byComponent": {
+    "unknown": 6,
+    "test-module": 5,
+    "database": 1,
+    "api": 6,
+    "service-a": 1
+  },
+  "last24h": 19,
+  "last7d": 19,
+  "lastUpdated": "2026-01-12T00:00:36.993Z"
+}
