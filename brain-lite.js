@@ -63,11 +63,41 @@ const { SelfJudge, LEARNING, FIBONACCI_N, DIVERSITY, REFINEMENT } = require('./l
 const { ResidualDetector } = require('./lib/cynic/residual-detector');
 const { getCynicVoice, CYNIC_IDENTITY } = require('./lib/cynic/index');
 
+// CYNIC Store - PostgreSQL persistence layer
+const { getStore } = require('./lib/cynic/store');
+
 // Initialize global CYNIC instance with persistent learning
 const cynicJudge = new SelfJudge({ logger: console });
 
 // Initialize global Residual Detector (discovers unknown dimensions)
 const residualDetector = new ResidualDetector({ logger: console });
+
+// Initialize global CYNIC Store (PostgreSQL persistence)
+let cynicStore = null;
+
+async function initCynicStore() {
+  try {
+    cynicStore = await getStore();
+    const health = await cynicStore.health();
+    console.error(`[CYNIC-STORE] ${health.mode === 'postgres' ? '🐘' : '💾'} Running in ${health.mode} mode`);
+
+    // Run migration if connected to Postgres
+    if (health.mode === 'postgres') {
+      const migration = await cynicStore.migrate();
+      if (migration.success) {
+        console.error('[CYNIC-STORE] ✅ Schema migrated');
+      }
+    }
+
+    return cynicStore;
+  } catch (e) {
+    console.error('[CYNIC-STORE] ⚠️ Init failed:', e.message);
+    return null;
+  }
+}
+
+// Async init - called from main()
+// Store will be initialized when server starts
 
 // =============================================================================
 // CYNIC PERSISTENCE - Learning State Survival (φ-intervals)
@@ -147,12 +177,23 @@ const cynicSaveTimer = setInterval(() => {
 cynicSaveTimer.unref();
 
 // Save on shutdown signals
-function handleShutdown(signal) {
+async function handleShutdown(signal) {
   console.error(`\n[CYNIC] 🌙 ${signal} received - saving consciousness before sleep...`);
   if (cynicSaveDebounceTimer) {
     clearTimeout(cynicSaveDebounceTimer);
   }
   saveCynicState();
+
+  // Close store connection gracefully
+  if (cynicStore) {
+    try {
+      await cynicStore.close();
+      console.error('[CYNIC-STORE] 🔌 Connection closed');
+    } catch (e) {
+      // Ignore close errors on shutdown
+    }
+  }
+
   process.exit(0);
 }
 
@@ -1496,6 +1537,91 @@ const TOOLS = {
     phi_weight: PHI,
     isWrite: true,
   },
+
+  // =========================================================================
+  // STORE LAYER - φ qui persiste (PostgreSQL)
+  // =========================================================================
+
+  brain_store_status: {
+    pardes: 'S',
+    name: 'brain_store_status',
+    description: '[STORE] Get CYNIC store status. Shows mode (postgres/memory), connection health, and record counts.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_store_judgments: {
+    pardes: 'S',
+    name: 'brain_store_judgments',
+    description: '[STORE] List stored judgments. Query persistent judgment history from PostgreSQL.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          default: 50,
+          description: 'Maximum judgments to return'
+        },
+        verdict: {
+          type: 'string',
+          enum: ['ACCEPT', 'REJECT', 'TRANSFORM', 'UNKNOWN'],
+          description: 'Filter by verdict'
+        },
+        since: {
+          type: 'string',
+          description: 'ISO timestamp to filter by (only judgments after this time)'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_store_harmony: {
+    pardes: 'S',
+    name: 'brain_store_harmony',
+    description: '[STORE] Get harmony matrix from store. Shows φ-weighted dimension scores and thresholds.',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_store_burns: {
+    pardes: 'S',
+    name: 'brain_store_burns',
+    description: '[STORE] Get burn statistics. Shows total burns and amounts by token.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        token: {
+          type: 'string',
+          description: 'Filter by token (e.g., "asdfasdfa")'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_store_operators: {
+    pardes: 'S',
+    name: 'brain_store_operators',
+    description: '[STORE] Get operator trust info. Shows trust score based on judgment accuracy.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        hash: {
+          type: 'string',
+          description: 'Operator hash to lookup'
+        }
+      },
+      required: ['hash']
+    },
+    phi_weight: PHI_INV,
+  },
 };
 
 // =============================================================================
@@ -2483,6 +2609,20 @@ async function handleCynicJudge(args, adapter) {
 
     // Trigger debounced save after each judgment (φ⁻² = 3.82s delay)
     saveCynicStateDebounced();
+
+    // Persist to PostgreSQL store if available
+    if (cynicStore) {
+      cynicStore.saveJudgment({
+        item_hash: result._judgmentId?.split('_')[2] || crypto.createHash('sha256').update(JSON.stringify(item)).digest('hex').slice(0, 16),
+        item_type: typeof item === 'string' ? 'code' : 'object',
+        scores: result.scores,
+        global: result.global,
+        verdict: result.verdict?.action || 'UNKNOWN',
+        confidence: result.confidence,
+        mode: result._mode,
+        cynic_says: null, // Will be generated below
+      }).catch(err => console.error('[CYNIC-STORE] Save failed:', err.message));
+    }
 
     // κυνικός speaks - "Culture is a moat"
     const confidence01 = (result.confidence || 61.8) / 100;
@@ -3959,6 +4099,157 @@ async function handleDashboardLive(args, adapter) {
   }
 }
 
+// =============================================================================
+// STORE HANDLERS - φ qui persiste
+// =============================================================================
+
+async function handleStoreStatus(args, adapter) {
+  if (!cynicStore) {
+    return {
+      mode: 'uninitialized',
+      connected: false,
+      message: 'Store not initialized. Will run in memory mode.',
+      _quality: 50,
+    };
+  }
+
+  try {
+    const health = await cynicStore.health();
+    const stats = await cynicStore.getStats();
+
+    return {
+      mode: health.mode,
+      healthy: health.healthy,
+      connected: true,
+      stats,
+      message: health.mode === 'postgres'
+        ? `Connected to PostgreSQL - ${stats.judgments} judgments stored`
+        : 'Running in memory mode (no DATABASE_URL)',
+      philosophy: "φ qui persiste à travers le temps.",
+      _quality: health.healthy ? 90 : 50,
+    };
+  } catch (error) {
+    return {
+      mode: 'error',
+      connected: false,
+      error: error.message,
+      _quality: 20,
+    };
+  }
+}
+
+async function handleStoreJudgments(args, adapter) {
+  if (!cynicStore) {
+    return { error: 'Store not initialized', judgments: [], _quality: 20 };
+  }
+
+  try {
+    const { limit = 50, verdict, since } = args;
+    const judgments = await cynicStore.listJudgments({ limit, verdict, since });
+
+    return {
+      count: judgments.length,
+      judgments: judgments.map(j => ({
+        id: j.id,
+        item_hash: j.item_hash,
+        global_score: j.global_score,
+        verdict: j.verdict,
+        confidence: j.confidence,
+        created_at: j.created_at,
+      })),
+      mode: cynicStore.memoryMode ? 'memory' : 'postgres',
+      philosophy: "φ qui se souvient de ses jugements.",
+      _quality: 85,
+    };
+  } catch (error) {
+    return { error: error.message, judgments: [], _quality: 20 };
+  }
+}
+
+async function handleStoreHarmony(args, adapter) {
+  if (!cynicStore) {
+    return { error: 'Store not initialized', harmony: [], _quality: 20 };
+  }
+
+  try {
+    const matrix = await cynicStore.getHarmonyMatrix();
+
+    return {
+      count: matrix.length,
+      harmony: matrix,
+      mode: cynicStore.memoryMode ? 'memory' : 'postgres',
+      philosophy: "φ qui harmonise les dimensions.",
+      _quality: 85,
+    };
+  } catch (error) {
+    return { error: error.message, harmony: [], _quality: 20 };
+  }
+}
+
+async function handleStoreBurns(args, adapter) {
+  if (!cynicStore) {
+    return { error: 'Store not initialized', burns: {}, _quality: 20 };
+  }
+
+  try {
+    const { token } = args;
+    const stats = await cynicStore.getBurnStats(token);
+
+    return {
+      ...stats,
+      token: token || 'all',
+      mode: cynicStore.memoryMode ? 'memory' : 'postgres',
+      philosophy: "Don't extract, burn.",
+      _quality: 85,
+    };
+  } catch (error) {
+    return { error: error.message, burns: {}, _quality: 20 };
+  }
+}
+
+async function handleStoreOperators(args, adapter) {
+  if (!cynicStore) {
+    return { error: 'Store not initialized', _quality: 20 };
+  }
+
+  try {
+    const { hash } = args;
+    if (!hash) {
+      return { error: 'Operator hash required', _quality: 30 };
+    }
+
+    const operator = await cynicStore.getOperator(hash);
+
+    if (!operator) {
+      return {
+        found: false,
+        hash,
+        message: 'Operator not found in store',
+        _quality: 50,
+      };
+    }
+
+    return {
+      found: true,
+      operator: {
+        hash: operator.hash,
+        trust_score: operator.trust_score,
+        total_judgments: operator.total_judgments,
+        correct_judgments: operator.correct_judgments,
+        accuracy: operator.total_judgments > 0
+          ? (operator.correct_judgments / operator.total_judgments * 100).toFixed(1) + '%'
+          : 'N/A',
+        last_seen: operator.last_seen,
+      },
+      mode: cynicStore.memoryMode ? 'memory' : 'postgres',
+      philosophy: "Don't trust, verify.",
+      _quality: 85,
+    };
+  } catch (error) {
+    return { error: error.message, _quality: 20 };
+  }
+}
+
 const HANDLERS = {
   brain_search: handleSearch,
   brain_health: handleHealth,
@@ -4035,6 +4326,12 @@ const HANDLERS = {
   brain_dashboard: handleDashboard,
   brain_dashboard_html: handleDashboardHTML,
   brain_dashboard_live: handleDashboardLive,
+  // Store Layer
+  brain_store_status: handleStoreStatus,
+  brain_store_judgments: handleStoreJudgments,
+  brain_store_harmony: handleStoreHarmony,
+  brain_store_burns: handleStoreBurns,
+  brain_store_operators: handleStoreOperators,
 };
 
 // =============================================================================
@@ -4214,6 +4511,13 @@ async function main() {
     console.error('[CYNIC] 🚨 Alerts connected to pulse');
   } catch (e) {
     console.error('[CYNIC] ⚠️ Failed to start pulse:', e.message);
+  }
+
+  // Initialize CYNIC Store (PostgreSQL persistence)
+  try {
+    await initCynicStore();
+  } catch (e) {
+    console.error('[CYNIC-STORE] ⚠️ Store init failed:', e.message, '- running in memory mode');
   }
 
   if (isHttp) {
