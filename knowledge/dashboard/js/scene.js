@@ -319,11 +319,9 @@ export function updateVisibility() {
 }
 
 /**
- * Animation loop
+ * Animation tick (called from main.js animation loop)
  */
 export function animate() {
-  requestAnimationFrame(animate);
-
   const time = Date.now() * 0.001;
 
   // Rotate core

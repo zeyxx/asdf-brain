@@ -163,8 +163,68 @@ async function handleRequest(req, res) {
     return;
   }
 
+  // API: Git commits
+  if (url.pathname === '/api/commits') {
+    try {
+      const gitState = JSON.parse(fs.readFileSync(path.join(__dirname, '../live/git-state.json')));
+      const commits = [];
+      for (const [repo, data] of Object.entries(gitState.repos || {})) {
+        if (data.branch?.lastCommit) {
+          commits.push({
+            repo,
+            ...data.branch.lastCommit,
+            branch: data.branch.branch
+          });
+        }
+        if (data.recentPRs) {
+          data.recentPRs.slice(0, 3).forEach(pr => {
+            commits.push({ repo, type: 'PR', ...pr });
+          });
+        }
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ commits, timestamp: gitState.timestamp }));
+      return;
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+      return;
+    }
+  }
+
+  // API: Errors/Alerts
+  if (url.pathname === '/api/errors') {
+    try {
+      const alertsPath = path.join(__dirname, '../live/alerts/alerts.jsonl');
+      const lines = fs.readFileSync(alertsPath, 'utf-8').trim().split('\n').slice(-50);
+      const alerts = lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ alerts: alerts.reverse(), count: alerts.length }));
+      return;
+    } catch (e) {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ alerts: [], count: 0 }));
+      return;
+    }
+  }
+
+  // API: Patterns (from temporal data)
+  if (url.pathname === '/api/patterns') {
+    try {
+      const patternsPath = path.join(__dirname, '../cynic/error-learning/patterns.json');
+      const patterns = JSON.parse(fs.readFileSync(patternsPath));
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(patterns));
+      return;
+    } catch (e) {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ patterns: [], count: 0 }));
+      return;
+    }
+  }
+
   // Static files
-  let filePath = url.pathname === '/' ? '/singularity-3d.html' : url.pathname;
+  let filePath = url.pathname === '/' ? '/index.html' : url.pathname;
   filePath = path.join(STATIC_DIR, filePath);
 
   // Security: prevent directory traversal

@@ -4,10 +4,13 @@
  */
 
 import * as state from './state.js';
-import { initScene, animate, onResize, updateVisibility } from './scene.js';
+import { initScene, animate as sceneAnimate, onResize, updateVisibility } from './scene.js';
 import { updateHUD, showDimensionDetail, hideDetailPanel, toggleView, updateLiveIndicator, updateCategoryUI } from './hud.js';
 import { startLivePolling, triggerJudgment, updateFromLiveData } from './api.js';
 import { toggleHandTracking } from './hands.js';
+import { animateCommits, fetchAndVisualizeCommits } from './commits.js';
+import { animateErrors, fetchAndVisualizeErrors } from './errors.js';
+import { animatePatterns, fetchAndVisualizePatterns } from './patterns.js';
 
 /**
  * Handle click events for dimension selection
@@ -94,6 +97,36 @@ function setupToggleButton() {
 }
 
 /**
+ * Combined animation loop
+ */
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Core scene animation
+  sceneAnimate();
+
+  // Level 3 visualizations
+  animateCommits();
+  animateErrors();
+  animatePatterns();
+}
+
+/**
+ * Start visualization data fetching
+ */
+function startVisualizationPolling() {
+  // Initial fetch
+  fetchAndVisualizeCommits();
+  fetchAndVisualizeErrors();
+  fetchAndVisualizePatterns();
+
+  // Periodic updates (staggered to avoid API spam)
+  setInterval(fetchAndVisualizeCommits, 10000);   // 10s
+  setInterval(fetchAndVisualizeErrors, 15000);    // 15s
+  setInterval(fetchAndVisualizePatterns, 30000);  // 30s
+}
+
+/**
  * Initialize the dashboard
  */
 function init() {
@@ -117,10 +150,14 @@ function init() {
   setupCategoryLegend();
   setupToggleButton();
 
-  // Start animation loop
+  // Start animation loop (now includes Level 3 visualizations)
   animate();
 
+  // Start visualization polling
+  startVisualizationPolling();
+
   console.log('[CYNIC] Dashboard ready. Keys: 1-6 filter, V view, J judge, H hands');
+  console.log('[CYNIC] Level 3 VISUALISATION: Commits, Errors, Patterns active');
 }
 
 // Initialize when DOM is ready
