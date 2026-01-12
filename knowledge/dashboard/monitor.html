@@ -224,7 +224,7 @@
     async function fetchHealth() {
       const grid = document.getElementById('health-grid');
       try {
-        const res = await fetch(`${API_BASE}/singularity/health`);
+        const res = await fetch(`${API_BASE}/health`);
         const data = await res.json();
 
         grid.replaceChildren(); // Clear safely
@@ -276,7 +276,7 @@
     async function fetchMetrics() {
       const grid = document.getElementById('metrics-grid');
       try {
-        const res = await fetch(`${API_BASE}/singularity/metrics?period=1h`);
+        const res = await fetch(`${API_BASE}/metrics?period=1h`);
         const data = await res.json();
         const m = data.metrics;
 
@@ -326,7 +326,7 @@
     async function fetchAlerts() {
       const list = document.getElementById('alerts-list');
       try {
-        const res = await fetch(`${API_BASE}/singularity/alerts?limit=10`);
+        const res = await fetch(`${API_BASE}/alerts?limit=10`);
         const data = await res.json();
 
         list.replaceChildren();
