@@ -386,10 +386,20 @@ TOTAL: 9 SUBAGENTS
 │   │   │                         #    - CYNIC class (wrapper φ-constrained)
 │   │   │                         #    - Constants: PHI, WORLDS, DIMENSIONS
 │   │   │
-│   │   ├── self-judge.js         # ✅ Auto-jugement 25 dimensions
-│   │   │                         #    - SelfJudge class
-│   │   │                         #    - Inference scaling (Best-of-N)
-│   │   │                         #    - Self-refinement loop
+│   │   ├── self-judge.js         # ✅ Auto-jugement interne (4 Mondes)
+│   │   │                         #    - SelfJudge class (24 dimensions internes)
+│   │   │                         #    - Code-aware evaluation methods
+│   │   │                         #    - _judgeTruthForCode, _judgeTrustForCode, etc.
+│   │   │
+│   │   ├── skill-judge.js        # ✅ Interface publique (5×5 → 4 Mondes)
+│   │   │                         #    - SkillJudge class (25 dimensions publiques)
+│   │   │                         #    - Mapping transparent vers 4 Mondes
+│   │   │                         #    - Modes: quick, standard, thorough, full
+│   │   │
+│   │   ├── judge/                # ✅ Modules de jugement
+│   │   │   ├── index.js          #    Exports unifiés
+│   │   │   ├── matrix-5x5.js     #    25 dimensions + mappings + φ-verdicts
+│   │   │   └── ...               #    Autres modules de support
 │   │   │
 │   │   ├── residual-detector.js  # ✅ Détection anomalies (legacy)
 │   │   │
@@ -937,6 +947,20 @@ POURQUOI 5²?
 | **brain_anomalies** | ✅ COMPLET | Anomalies détectées par le pulse |
 | **brain_health_history** | ✅ COMPLET | Historique de santé et tendances |
 
+### ✅ NOUVELLEMENT COMPLÉTÉ (2026-01-12 - Skill-Judge Interface)
+
+| Élément | État | Notes |
+|---------|------|-------|
+| **skill-judge.js** | ✅ COMPLET | Interface publique 5×5 → 4 Mondes |
+| **matrix-5x5.js** | ✅ COMPLET | 25 dimensions publiques avec mappings |
+| **Verdict φ-thresholds** | ✅ COMPLET | HOWL≥60%, WAG≥52%, GROWL≥38%, BARK<38% |
+| **Code-aware evaluation** | ✅ COMPLET | Toutes les 25 dimensions évaluent du code |
+| **TRUST_GRADIENT** | ✅ COMPLET | Détecte validation, null-safety, try/catch, no-eval |
+| **TEMPORAL_VALIDITY** | ✅ COMPLET | Détecte ES6+, async/await, modern patterns |
+| **SOURCE_ORIGIN** | ✅ COMPLET | Détecte JSDoc, imports, @author, @source |
+| **MOMENTUM** | ✅ COMPLET | Détecte patterns constructifs, santé TODO |
+| **DOMAIN_FIT** | ✅ COMPLET | Détecte APIs appropriées, single responsibility |
+
 ### ✅ NOUVELLEMENT COMPLÉTÉ (2026-01-11 - ResidualDetector)
 
 | Élément | État | Notes |
@@ -1132,6 +1156,12 @@ THRESHOLDS:
 ├── Medium:               50 (moitié)
 └── Low:                  30 (φ⁻² × 100 ≈ 38, arrondi)
 
+VERDICT THRESHOLDS (φ-based, max = 61.8%):
+├── HOWL  (exceptional):  ≥ 60%  (near φ⁻¹ ceiling, truly rare)
+├── WAG   (good):         ≥ 52%  (above average)
+├── GROWL (issues):       ≥ 38%  (φ⁻², needs work)
+└── BARK  (concerns):     < 38%  (serious problems)
+
 SCORING:
 └── Geometric mean (comme K-Score et E-Score)
 
@@ -1241,5 +1271,8 @@ CYNIC se distribue pour mieux voir - 9 yeux valent mieux qu'un.
 
 ---
 
-**Dernière mise à jour**: 2026-01-11 par Claude
-**Commit**: `feat(cynic): CYNIC-DISCOVER - residual analysis & dimension discovery`
+**Dernière mise à jour**: 2026-01-12 par Claude
+**Commits**:
+- `feat(cynic): TRUST_GRADIENT - Code-aware TRUST evaluation`
+- `feat(cynic): φ-based verdict thresholds (HOWL≥60%, WAG≥52%, GROWL≥38%)`
+- `refactor(cynic): Split skill-judge.js into modules (5×5 → 4 Mondes interface)`
