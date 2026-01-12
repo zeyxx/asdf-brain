@@ -578,33 +578,141 @@ DimensionRegistry.register(dim)
 
 ---
 
-## Phase 5: On-Chain Singularity
+## Phase 5: On-Chain Singularity 🔄 (Infrastructure Complete)
+
+### Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                  ON-CHAIN SINGULARITY                         │
+├──────────────────────────────────────────────────────────────┤
+│                                                               │
+│   BRAIN (Local)                    SOLANA (On-Chain)          │
+│   ┌─────────────┐                  ┌─────────────────┐        │
+│   │ Knowledge   │──Merkle Root───► │ asdf-merkle     │        │
+│   │ Patterns    │                  │ (Anchor)        │        │
+│   │ Decisions   │                  │                 │        │
+│   └─────────────┘                  │ • store_snapshot│        │
+│         │                          │ • verify_proof  │        │
+│         ▼                          └─────────────────┘        │
+│   ┌─────────────┐                           │                 │
+│   │ merkle-     │                           │                 │
+│   │ proofs.js   │◄──────Inclusion Proof─────┘                 │
+│   └─────────────┘                                             │
+│         │                                                     │
+│         ▼                                                     │
+│   ┌─────────────┐                  ┌─────────────────┐        │
+│   │ E-Score     │──Contributor───► │ E-Score Oracle  │        │
+│   │ (7 dims)    │    Hash          │ (future)        │        │
+│   └─────────────┘                  └─────────────────┘        │
+│                                                               │
+└──────────────────────────────────────────────────────────────┘
+```
 
 ### Merkle Provenance
 
+**Infrastructure READY ✅:**
 ```
-Weekly Snapshot → Merkle Root → Solana Anchor
+lib/merkle-proofs.js          # Complete Merkle implementation
+├── PatternMerkleTree         # Pattern-level proofs
+├── KnowledgeMerkleTree       # Knowledge aggregation
+├── ContextSigner             # HMAC context signing
+└── WeeklySnapshot            # Automated weekly snapshots
+
+scripts/publish-to-solana.js  # Complete CLI publisher
+├── MerkleTree class          # Proof generation
+├── SolanaPublisher class     # Anchor integration
+├── KnowledgeCollector class  # Knowledge gathering
+└── Commands: publish, verify, status, init
+
+anchor/programs/asdf-merkle/  # Complete Anchor program
+├── initialize()              # Create BrainConfig
+├── store_snapshot()          # Store weekly Merkle root
+├── verify_proof()            # On-chain proof verification
+└── transfer_authority()      # Authority management
 ```
 
-- [ ] Smart contract pour anchor des roots
-- [ ] Inclusion proofs on-chain
-- [ ] History immutable de toutes décisions
+**Tasks:**
+- [x] Merkle tree implementation (PatternMerkle, KnowledgeMerkle) ✅
+- [x] Weekly snapshot generation ✅
+- [x] Solana publisher CLI (publish, verify, status) ✅
+- [x] Anchor program (initialize, store, verify) ✅
+- [ ] Deploy Anchor to Solana devnet
+- [ ] First weekly snapshot published on-chain
+- [ ] Inclusion proof verification from Solana
 
-### E-Score On-Chain
+### E-Score System
 
+**Infrastructure READY ✅:**
 ```
-E = ∏(score_i^φ_weight)^(1/Σweights)
+lib/contributors.js           # Complete E-Score implementation
+├── E_SCORE_DIMENSIONS (7)    # HOLD, BURN, USE, BUILD, RUN, REFER, TIME
+├── computeEScore()           # φ-weighted geometric mean
+├── getTrustLevel()           # Observer → Guardian (5 levels)
+└── updateContributor()       # Score management
+
+Formula: E = ∏(score_i^φ_weight)^(1/Σweights)
+
+Dimensions with φ-weights:
+├── HOLD:  φ²   = 2.618 (long-term alignment)
+├── BURN:  φ²   = 2.618 (sacrifice for ecosystem)
+├── USE:   φ    = 1.618 (active participation)
+├── BUILD: φ²   = 2.618 (contribution)
+├── RUN:   φ    = 1.618 (infrastructure)
+├── REFER: 1.0           (network effects)
+└── TIME:  φ    = 1.618 (tenure decay)
 ```
 
-- [ ] Contribution tracking on-chain
-- [ ] Rewards basés sur E-Score
-- [ ] Gouvernance φ-weighted
+**Tasks:**
+- [x] E-Score 7-dimension system ✅
+- [x] φ-weighted scoring ✅
+- [x] Trust level mapping ✅
+- [ ] E-Score inclusion in Merkle snapshots
+- [ ] Contribution tracking persistence
+- [ ] E-Score oracle for on-chain queries
 
-### K-Score Integration
+### K-Score Integration (HolDex)
 
-- [ ] Real-time K-Score feeds
-- [ ] CYNIC judgment de tokens
-- [ ] Alerting on integrity events
+**Infrastructure READY ✅:**
+```
+lib/integration/holdex-connector.js  # Complete K-Score integration
+├── handleKScoreWebhook()            # Real-time K-Score events
+├── processTokenEvent()              # Token lifecycle events
+├── extractPatterns()                # K-Score pattern analysis
+└── integrateWithCYNIC()             # CYNIC judgment pipeline
+
+Event Types:
+├── kscore_update      # K-Score change
+├── token_listed       # New token
+├── token_delisted     # Token removed
+├── integrity_alert    # Integrity warning
+├── holder_change      # Holder dynamics
+└── liquidity_event    # Liquidity change
+```
+
+**Tasks:**
+- [x] HolDex webhook handler ✅
+- [x] K-Score event processing ✅
+- [x] Pattern extraction ✅
+- [x] CYNIC judgment integration ✅
+- [ ] Live HolDex connection testing
+- [ ] K-Score alerts → CYNIC notifications
+
+### Deployment Status
+
+| Component | Local | Devnet | Mainnet |
+|-----------|-------|--------|---------|
+| Merkle Proofs | ✅ | ⏳ | ❌ |
+| Anchor Program | ✅ | ⏳ | ❌ |
+| Publisher CLI | ✅ | ⏳ | ❌ |
+| E-Score | ✅ | ❌ | ❌ |
+| K-Score | ✅ | ❌ | ❌ |
+
+**Next Steps:**
+1. Install Solana/Anchor toolchain
+2. Build and deploy to devnet
+3. Run `anchor test` in anchor/
+4. Publish first weekly snapshot
 
 ---
 
