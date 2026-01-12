@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T01:40:45.879Z",
+    "generated": "2026-01-12T01:46:42.001Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -515,6 +515,9 @@
           "./clarify": 1,
           "./vision": 1,
           "./discover": 1,
+          "./matrix-5x5": 1,
+          "./cache": 1,
+          "./evidence": 1,
           "./innommable": 1,
           "./dashboard-dimensions": 1,
           "./data-adapter": 1,
@@ -522,6 +525,9 @@
           "../integration/holdex-connector": 1,
           "../integration/gasdf-connector": 1,
           "../integration/claude-mem-connector": 1,
+          "./judge/matrix-5x5": 1,
+          "./judge/cache": 1,
+          "./judge/evidence": 1,
           "./cynic": 1,
           "../repo-discovery": 1,
           "../git-intelligence": 1,
@@ -556,8 +562,8 @@
           "express": 1
         },
         "node": {
-          "fs": 73,
-          "path": 73,
+          "fs": 74,
+          "path": 74,
           "crypto": 29,
           "readline": 9,
           "http": 3,
