@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CYNIC Monitor - φ Production</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #0a0a0f;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    h1 { color: #ffd700; margin-bottom: 10px; }
+    h2 { color: #00aaff; margin: 25px 0 15px; font-size: 1.1em; text-transform: uppercase; letter-spacing: 1px; }
+    .subtitle { color: #888; font-style: italic; margin-bottom: 20px; }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: #111118;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 15px;
+      transition: border-color 0.3s;
+    }
+    .card:hover { border-color: #555; }
+    .card.healthy { border-color: #00ff88; }
+    .card.warning { border-color: #ffaa00; }
+    .card.critical { border-color: #ff3366; }
+    .card h3 {
+      font-size: 0.75em;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .value {
+      font-size: 2.2em;
+      font-weight: bold;
+      line-height: 1.1;
+    }
+    .value.healthy { color: #00ff88; }
+    .value.warning { color: #ffaa00; }
+    .value.critical { color: #ff3366; }
+    .label {
+      font-size: 0.75em;
+      color: #555;
+      margin-top: 8px;
+    }
+    .alerts-section { margin-top: 25px; }
+    .alert-item {
+      padding: 12px 15px;
+      margin: 8px 0;
+      border-radius: 6px;
+      font-size: 0.85em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .alert-item.critical {
+      background: rgba(255,51,102,0.15);
+      border-left: 4px solid #ff3366;
+    }
+    .alert-item.warning {
+      background: rgba(255,170,0,0.15);
+      border-left: 4px solid #ffaa00;
+    }
+    .alert-item.info {
+      background: rgba(0,170,255,0.15);
+      border-left: 4px solid #00aaff;
+    }
+    .alert-time { color: #666; font-size: 0.8em; }
+    .phi { color: #ffd700; }
+    .refresh-indicator {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      color: #444;
+      font-size: 0.75em;
+    }
+    .refresh-indicator .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #00ff88;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .nav-links {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #222;
+      font-size: 0.8em;
+    }
+    .nav-links a {
+      color: #00aaff;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    .nav-links a:hover { text-decoration: underline; }
+    .endpoint-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #1a1a2a;
+      border-radius: 4px;
+      font-size: 0.7em;
+      color: #888;
+      margin-left: 10px;
+    }
+    .loading { color: #666; }
+    .thresholds {
+      display: flex;
+      gap: 20px;
+      margin-top: 15px;
+      font-size: 0.8em;
+      color: #666;
+    }
+    .thresholds span { display: flex; align-items: center; gap: 5px; }
+    .thresholds .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .thresholds .dot.healthy { background: #00ff88; }
+    .thresholds .dot.warning { background: #ffaa00; }
+    .thresholds .dot.critical { background: #ff3366; }
+  </style>
+</head>
+<body>
+  <div class="refresh-indicator">
+    <span class="dot"></span>
+    Auto-refresh: <span class="phi">φ⁻¹ × 10s</span>
+  </div>
+
+  <div class="container">
+    <h1>🐕 CYNIC Production Monitor</h1>
+    <p class="subtitle">"Don't trust, verify" — φ constrains all confidence</p>
+
+    <div class="thresholds">
+      <span><span class="dot healthy"></span> Healthy ≥75%</span>
+      <span><span class="dot warning"></span> Warning ≥38.2%</span>
+      <span><span class="dot critical"></span> Critical &lt;38.2%</span>
+    </div>
+
+    <h2>System Health</h2>
+    <div class="status-grid" id="health-grid">
+      <div class="card"><h3>Loading...</h3><div class="value loading">--</div></div>
+    </div>
+
+    <h2>Metrics <span class="endpoint-badge">GET /singularity/metrics</span></h2>
+    <div class="status-grid" id="metrics-grid">
+      <div class="card"><h3>Loading...</h3><div class="value loading">--</div></div>
+    </div>
+
+    <h2>Recent Alerts <span class="endpoint-badge">GET /singularity/alerts</span></h2>
+    <div class="alerts-section" id="alerts-list">
+      <div class="alert-item info">Loading alerts...</div>
+    </div>
+
+    <div class="nav-links">
+      <a href="/singularity/">← 3D Dashboard</a>
+      <a href="/singularity/health">Health API</a>
+      <a href="/singularity/metrics">Metrics API</a>
+      <a href="/singularity/alerts">Alerts API</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { PHI_INV, API_BASE } from './js/constants.js';
+
+    const REFRESH_INTERVAL = Math.round(PHI_INV * 10000); // 6180ms
+
+    // Safe DOM creation helper
+    function createCard(className, title, value, label) {
+      const card = document.createElement('div');
+      card.className = `card ${className}`;
+
+      const h3 = document.createElement('h3');
+      h3.textContent = title;
+
+      const valueDiv = document.createElement('div');
+      valueDiv.className = `value ${className}`;
+      valueDiv.textContent = value;
+
+      const labelDiv = document.createElement('div');
+      labelDiv.className = 'label';
+      labelDiv.textContent = label;
+
+      card.appendChild(h3);
+      card.appendChild(valueDiv);
+      card.appendChild(labelDiv);
+      return card;
+    }
+
+    function createAlertItem(severity, message, time) {
+      const item = document.createElement('div');
+      item.className = `alert-item ${severity}`;
+
+      const msgSpan = document.createElement('span');
+      msgSpan.textContent = message;
+
+      const timeSpan = document.createElement('span');
+      timeSpan.className = 'alert-time';
+      timeSpan.textContent = time;
+
+      item.appendChild(msgSpan);
+      item.appendChild(timeSpan);
+      return item;
+    }
+
+    function getStatusClass(score) {
+      if (score >= 75) return 'healthy';
+      if (score >= 38.2) return 'warning';
+      return 'critical';
+    }
+
+    async function fetchHealth() {
+      const grid = document.getElementById('health-grid');
+      try {
+        const res = await fetch(`${API_BASE}/singularity/health`);
+        const data = await res.json();
+
+        grid.replaceChildren(); // Clear safely
+
+        const statusClass = getStatusClass(data.healthScore);
+
+        // Overall health card
+        grid.appendChild(createCard(
+          statusClass,
+          'Overall Health',
+          `${data.healthScore}%`,
+          `Status: ${data.status}`
+        ));
+
+        // Uptime card
+        const uptimeMin = Math.floor(data.uptime / 60);
+        grid.appendChild(createCard(
+          'healthy',
+          'Uptime',
+          `${uptimeMin}m`,
+          `${data.uptime}s total`
+        ));
+
+        // Response time
+        grid.appendChild(createCard(
+          'healthy',
+          'Response Time',
+          data.responseTime,
+          'Health check latency'
+        ));
+
+        // Individual checks
+        for (const [name, check] of Object.entries(data.checks || {})) {
+          const checkClass = check.status === 'ok' ? 'healthy' :
+                            check.status === 'warning' ? 'warning' : 'critical';
+          grid.appendChild(createCard(
+            checkClass,
+            name.toUpperCase(),
+            check.status.toUpperCase(),
+            check.message
+          ));
+        }
+      } catch (err) {
+        grid.replaceChildren();
+        grid.appendChild(createCard('critical', 'Error', 'OFFLINE', 'Failed to fetch health'));
+      }
+    }
+
+    async function fetchMetrics() {
+      const grid = document.getElementById('metrics-grid');
+      try {
+        const res = await fetch(`${API_BASE}/singularity/metrics?period=1h`);
+        const data = await res.json();
+        const m = data.metrics;
+
+        grid.replaceChildren();
+
+        // Judgments
+        grid.appendChild(createCard(
+          'healthy',
+          'Judgments',
+          String(m.judgments.total),
+          `Avg confidence: ${m.judgments.avgConfidence}%`
+        ));
+
+        // Residuals
+        const residualPct = (m.residuals.average * 100).toFixed(1);
+        const residualClass = m.residuals.anomalies > 0 ? 'warning' : 'healthy';
+        grid.appendChild(createCard(
+          residualClass,
+          'Avg Residual',
+          `${residualPct}%`,
+          `Anomalies: ${m.residuals.anomalies}`
+        ));
+
+        // Latency
+        grid.appendChild(createCard(
+          'healthy',
+          'Avg Latency',
+          `${m.latency.avgMs}ms`,
+          `${m.latency.samples} samples`
+        ));
+
+        // Alerts summary
+        const alertClass = m.alerts.bySeverity.critical > 0 ? 'critical' :
+                          m.alerts.bySeverity.warning > 0 ? 'warning' : 'healthy';
+        grid.appendChild(createCard(
+          alertClass,
+          'Alerts (1h)',
+          String(m.alerts.total),
+          `C:${m.alerts.bySeverity.critical} W:${m.alerts.bySeverity.warning}`
+        ));
+      } catch (err) {
+        grid.replaceChildren();
+        grid.appendChild(createCard('warning', 'Metrics', '--', 'Failed to load'));
+      }
+    }
+
+    async function fetchAlerts() {
+      const list = document.getElementById('alerts-list');
+      try {
+        const res = await fetch(`${API_BASE}/singularity/alerts?limit=10`);
+        const data = await res.json();
+
+        list.replaceChildren();
+
+        if (!data.recent || data.recent.length === 0) {
+          list.appendChild(createAlertItem('info', '🐕 No recent alerts - all clear!', ''));
+          return;
+        }
+
+        for (const alert of data.recent) {
+          const time = new Date(alert.timestamp).toLocaleTimeString();
+          list.appendChild(createAlertItem(alert.severity || 'info', alert.message, time));
+        }
+      } catch (err) {
+        list.replaceChildren();
+        list.appendChild(createAlertItem('critical', 'Failed to load alerts', ''));
+      }
+    }
+
+    // Initial fetch
+    fetchHealth();
+    fetchMetrics();
+    fetchAlerts();
+
+    // Auto-refresh at φ⁻¹ interval
+    setInterval(() => {
+      fetchHealth();
+      fetchMetrics();
+      fetchAlerts();
+    }, REFRESH_INTERVAL);
+  </script>
+</body>
+</html>

@@ -134,7 +134,20 @@
             "Anomaly injection → buffer accumulation",
             "Discovery → dimension proposals",
             "Human validation → accept/reject"
-          ]
+          ],
+          "monitoring": {
+            "health": "GET /singularity/health - Comprehensive system health check",
+            "metrics": "GET /singularity/metrics - Time-series metrics (1h/6h/24h)",
+            "alerts": "GET/POST /singularity/alerts - Alert history and manual triggers",
+            "metricsRecord": "POST /singularity/metrics/record - Internal metric recording",
+            "dashboard": "GET /singularity/monitor.html - Visual monitoring dashboard",
+            "phiThresholds": {
+              "critical": "φ⁻² = 38.2%",
+              "warning": "φ⁻¹ = 61.8%",
+              "healthy": "≥75%"
+            },
+            "autoRefresh": "φ⁻¹ × 10s = 6.18s interval"
+          }
         }
       }
     ]

@@ -1365,6 +1365,359 @@ app.get('/singularity/api/patterns', (req, res) => {
 });
 
 // =============================================================================
+// SINGULARITY MONITORING & ALERTS (Level 5 PRODUCTION)
+// =============================================================================
+
+// φ-derived monitoring constants
+const MONITORING = {
+  PHI: 1.618033988749895,
+  THRESHOLDS: {
+    CRITICAL: 0.382,  // φ⁻² - Critical alert
+    WARNING: 0.618,   // φ⁻¹ - Warning alert
+    HEALTHY: 0.75,    // Above this = healthy
+  },
+  INTERVALS: {
+    HEARTBEAT: 1618,  // φ × 1000
+    METRICS: 6180,    // φ⁻¹ × 10000
+    ALERT_CHECK: 3820,// φ⁻² × 10000
+  },
+};
+
+// In-memory metrics buffer (persists during runtime)
+const metricsBuffer = {
+  judgments: [],      // Last N judgments
+  residuals: [],      // Last N residual values
+  errors: [],         // Last N errors
+  latencies: [],      // API response times
+  startTime: Date.now(),
+  maxBuffer: 100,     // Keep last 100 of each
+};
+
+// Helper to add metrics with buffer limit
+function addMetric(type, value) {
+  if (!metricsBuffer[type]) metricsBuffer[type] = [];
+  metricsBuffer[type].push({ value, timestamp: Date.now() });
+  if (metricsBuffer[type].length > metricsBuffer.maxBuffer) {
+    metricsBuffer[type].shift();
+  }
+}
+
+// Comprehensive health check endpoint
+app.get('/singularity/health', async (req, res) => {
+  const startTime = Date.now();
+  try {
+    const { residualDetector, innommable, matrix } = getSingularityModules();
+
+    // Check each subsystem
+    const checks = {
+      cynic: { status: 'ok', message: 'CYNIC module loaded' },
+      residualDetector: { status: 'ok', message: 'ResidualDetector active' },
+      innommable: { status: 'ok', message: 'THE_INNOMMABLE connected' },
+      matrix: { status: 'ok', message: 'Harmony matrix available' },
+      files: { status: 'ok', message: 'Knowledge files accessible' },
+    };
+
+    // Verify ResidualDetector
+    try {
+      const anomalyStats = residualDetector.anomalyBuffer.getStats();
+      checks.residualDetector.details = {
+        anomalyCount: anomalyStats.count || 0,
+        canCluster: residualDetector.anomalyBuffer.shouldCluster(),
+      };
+    } catch (e) {
+      checks.residualDetector = { status: 'error', message: e.message };
+    }
+
+    // Verify THE_INNOMMABLE
+    try {
+      const innommableStatus = innommable.getStatus();
+      checks.innommable.details = {
+        accepted: innommableStatus.accepted || 0,
+        rejected: innommableStatus.rejected || 0,
+        pending: innommableStatus.pending || 0,
+      };
+    } catch (e) {
+      checks.innommable = { status: 'error', message: e.message };
+    }
+
+    // Verify matrix
+    try {
+      const matrixStats = matrix.getMatrixStats?.() || {};
+      checks.matrix.details = {
+        dimensions: Object.keys(matrixStats.dimensionScores || {}).length,
+        lastCalibration: matrixStats.lastCalibration || null,
+      };
+    } catch (e) {
+      checks.matrix = { status: 'error', message: e.message };
+    }
+
+    // Check critical files
+    const criticalFiles = [
+      'knowledge/cynic/architect/roadmap.json',
+      'knowledge/live/git-state.json',
+      'knowledge/cynic/error-learning/patterns.json',
+    ];
+
+    let filesOk = 0;
+    for (const file of criticalFiles) {
+      if (fs.existsSync(path.join(__dirname, file))) filesOk++;
+    }
+    checks.files.details = { accessible: filesOk, total: criticalFiles.length };
+    if (filesOk < criticalFiles.length) {
+      checks.files.status = 'warning';
+      checks.files.message = `${criticalFiles.length - filesOk} files missing`;
+    }
+
+    // Calculate overall health score
+    const statusValues = { ok: 1, warning: 0.6, error: 0 };
+    const scores = Object.values(checks).map(c => statusValues[c.status] || 0);
+    const healthScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+
+    // Determine overall status
+    let overallStatus = 'healthy';
+    if (healthScore < MONITORING.THRESHOLDS.CRITICAL) overallStatus = 'critical';
+    else if (healthScore < MONITORING.THRESHOLDS.WARNING) overallStatus = 'degraded';
+    else if (healthScore < MONITORING.THRESHOLDS.HEALTHY) overallStatus = 'warning';
+
+    const responseTime = Date.now() - startTime;
+    addMetric('latencies', responseTime);
+
+    res.json({
+      status: overallStatus,
+      healthScore: Math.round(healthScore * 100),
+      uptime: Math.round((Date.now() - metricsBuffer.startTime) / 1000),
+      checks,
+      phi: {
+        thresholds: MONITORING.THRESHOLDS,
+        intervals: MONITORING.INTERVALS,
+      },
+      responseTime: `${responseTime}ms`,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      healthScore: 0,
+      error: error.message,
+      timestamp: new Date().toISOString(),
+    });
+  }
+});
+
+// Metrics endpoint - time-series data
+app.get('/singularity/metrics', async (req, res) => {
+  try {
+    const { residualDetector } = getSingularityModules();
+    const period = req.query.period || '1h'; // 1h, 6h, 24h
+
+    // Calculate time window
+    const windows = { '1h': 3600000, '6h': 21600000, '24h': 86400000 };
+    const windowMs = windows[period] || 3600000;
+    const cutoff = Date.now() - windowMs;
+
+    // Filter metrics by time window
+    const filterByTime = (arr) => arr.filter(m => m.timestamp > cutoff);
+
+    // Get judgment history
+    const judgmentHistoryPath = path.join(__dirname, 'knowledge/cynic/judgments/history.jsonl');
+    let judgmentHistory = [];
+    try {
+      const lines = fs.readFileSync(judgmentHistoryPath, 'utf8').split('\n').filter(Boolean);
+      judgmentHistory = lines.slice(-100).map(l => {
+        try { return JSON.parse(l); } catch { return null; }
+      }).filter(Boolean);
+    } catch {}
+
+    // Get alert history
+    const alertsPath = path.join(__dirname, 'knowledge/live/alerts/alerts.jsonl');
+    let alertHistory = [];
+    try {
+      const lines = fs.readFileSync(alertsPath, 'utf8').split('\n').filter(Boolean);
+      alertHistory = lines.slice(-50).map(l => {
+        try { return JSON.parse(l); } catch { return null; }
+      }).filter(Boolean);
+    } catch {}
+
+    // Calculate statistics
+    const recentJudgments = judgmentHistory.slice(-20);
+    const avgConfidence = recentJudgments.length > 0
+      ? recentJudgments.reduce((a, j) => a + (j.confidence || 61.8), 0) / recentJudgments.length
+      : 61.8;
+
+    const recentResiduals = filterByTime(metricsBuffer.residuals);
+    const avgResidual = recentResiduals.length > 0
+      ? recentResiduals.reduce((a, r) => a + r.value, 0) / recentResiduals.length
+      : 0;
+
+    const recentLatencies = filterByTime(metricsBuffer.latencies);
+    const avgLatency = recentLatencies.length > 0
+      ? Math.round(recentLatencies.reduce((a, l) => a + l.value, 0) / recentLatencies.length)
+      : 0;
+
+    // Get anomaly buffer stats
+    let anomalyStats = { count: 0 };
+    try {
+      anomalyStats = residualDetector.anomalyBuffer.getStats();
+    } catch {}
+
+    res.json({
+      period,
+      windowMs,
+      metrics: {
+        judgments: {
+          total: judgmentHistory.length,
+          recent: recentJudgments.length,
+          avgConfidence: Math.round(avgConfidence * 10) / 10,
+        },
+        residuals: {
+          samples: recentResiduals.length,
+          average: Math.round(avgResidual * 1000) / 1000,
+          anomalies: anomalyStats.count || 0,
+        },
+        latency: {
+          samples: recentLatencies.length,
+          avgMs: avgLatency,
+        },
+        alerts: {
+          total: alertHistory.length,
+          bySeverity: {
+            critical: alertHistory.filter(a => a.severity === 'critical').length,
+            warning: alertHistory.filter(a => a.severity === 'warning').length,
+            info: alertHistory.filter(a => a.severity === 'info').length,
+          },
+        },
+      },
+      buffer: {
+        size: metricsBuffer.maxBuffer,
+        judgments: metricsBuffer.judgments.length,
+        residuals: metricsBuffer.residuals.length,
+        latencies: metricsBuffer.latencies.length,
+      },
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Active alerts endpoint
+app.get('/singularity/alerts', async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 50;
+    const severity = req.query.severity; // critical, warning, info
+
+    // Read alert history
+    const alertsPath = path.join(__dirname, 'knowledge/live/alerts/alerts.jsonl');
+    let alerts = [];
+    try {
+      const lines = fs.readFileSync(alertsPath, 'utf8').split('\n').filter(Boolean);
+      alerts = lines.slice(-500).map(l => {
+        try { return JSON.parse(l); } catch { return null; }
+      }).filter(Boolean);
+    } catch {}
+
+    // Filter by severity if specified
+    if (severity) {
+      alerts = alerts.filter(a => a.severity === severity);
+    }
+
+    // Get most recent
+    alerts = alerts.slice(-limit).reverse();
+
+    // Group by rule for summary
+    const byRule = {};
+    for (const alert of alerts) {
+      const rule = alert.rule || 'unknown';
+      if (!byRule[rule]) byRule[rule] = { count: 0, lastSeen: null };
+      byRule[rule].count++;
+      if (!byRule[rule].lastSeen || alert.timestamp > byRule[rule].lastSeen) {
+        byRule[rule].lastSeen = alert.timestamp;
+      }
+    }
+
+    // Check for active alerts (last hour)
+    const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
+    const activeAlerts = alerts.filter(a => a.timestamp > oneHourAgo);
+
+    res.json({
+      activeCount: activeAlerts.length,
+      totalCount: alerts.length,
+      bySeverity: {
+        critical: alerts.filter(a => a.severity === 'critical').length,
+        warning: alerts.filter(a => a.severity === 'warning').length,
+        info: alerts.filter(a => a.severity === 'info').length,
+      },
+      byRule,
+      recent: alerts.slice(0, 20),
+      thresholds: MONITORING.THRESHOLDS,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Trigger alert endpoint (for testing/manual alerts)
+app.post('/singularity/alerts', express.json(), async (req, res) => {
+  try {
+    const { severity = 'info', rule = 'manual', message, context = {} } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: 'message required' });
+    }
+
+    const alert = {
+      timestamp: new Date().toISOString(),
+      severity,
+      rule,
+      message,
+      context,
+    };
+
+    // Append to alerts file
+    const alertsPath = path.join(__dirname, 'knowledge/live/alerts/alerts.jsonl');
+    fs.appendFileSync(alertsPath, JSON.stringify(alert) + '\n');
+
+    res.json({
+      created: true,
+      alert,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Record a metric (called internally after judgments)
+app.post('/singularity/metrics/record', express.json(), async (req, res) => {
+  try {
+    const { type, value } = req.body;
+
+    if (!type || value === undefined) {
+      return res.status(400).json({ error: 'type and value required' });
+    }
+
+    addMetric(type, value);
+
+    // Check if we should trigger an alert
+    if (type === 'residuals' && value > MONITORING.THRESHOLDS.WARNING) {
+      const alertsPath = path.join(__dirname, 'knowledge/live/alerts/alerts.jsonl');
+      const alert = {
+        timestamp: new Date().toISOString(),
+        severity: value > (1 - MONITORING.THRESHOLDS.CRITICAL) ? 'critical' : 'warning',
+        rule: 'high_residual',
+        message: `High residual detected: ${(value * 100).toFixed(1)}%`,
+        context: { residual: value, threshold: MONITORING.THRESHOLDS.WARNING },
+      };
+      fs.appendFileSync(alertsPath, JSON.stringify(alert) + '\n');
+    }
+
+    res.json({ recorded: true, type, bufferSize: metricsBuffer[type]?.length || 0 });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// =============================================================================
 // MCP OVER SSE
 // =============================================================================
 
