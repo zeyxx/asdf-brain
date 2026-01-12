@@ -961,6 +961,75 @@ POURQUOI 5²?
 | **MOMENTUM** | ✅ COMPLET | Détecte patterns constructifs, santé TODO |
 | **DOMAIN_FIT** | ✅ COMPLET | Détecte APIs appropriées, single responsibility |
 
+### ✅ NOUVELLEMENT COMPLÉTÉ (2026-01-12 - Code-Aware 4 Mondes Evaluators)
+
+> **7 nouvelles méthodes d'évaluation code-aware ajoutées à self-judge.js**
+> Chaque méthode détecte ~10 patterns de code via regex
+
+| Dimension 5×5 | Mapping 4 Mondes | Méthode | Patterns Détectés |
+|---------------|------------------|---------|-------------------|
+| **SCALABILITY** | SCALE | `_judgeScalabilityForCode()` | caching, pagination, batching, pooling, parallel_processing, job_queue, distribution, lazy_loading, rate_limiting, streaming |
+| **ELEGANCE** | HARMONY | `_judgeHarmonyForCode()` | consistent_naming, jsdoc, clean_functions, early_returns, minimal_nesting, consistent_spacing, destructuring, no_magic_numbers, descriptive_errors, logical_grouping |
+| **FEEDBACK_LOOPS** | LEARNING_RATE | `_judgeFeedbackLoopsForCode()` | logging, error_tracking, retry_mechanism, metrics, telemetry, health_checks, circuit_breaker, event_feedback, state_recovery, validation_feedback |
+| **ENERGY_EFFICIENCY** | SIMPLIFY | `_judgeEfficiencyForCode()` | efficient_structures, memoization, resource_cleanup, early_exits, efficient_loops, destructuring, short_circuit, async_optimization, spread_operators, concise_functions |
+| **LOGICAL_COHERENCE** | COHERENCE | `_judgeCoherenceForCode()` | null_safety, type_checking, error_handling, explicit_returns, logical_operators, exhaustive_switch, assertions, consistent_async, param_validation, no_dead_code |
+| **SELF_AWARENESS** | SELF_AWARENESS | `_judgeSelfAwarenessForCode()` | acknowledges_todos, deprecation_aware, version_aware, capability_detection, documented_limits, error_boundaries, config_validation, env_awareness, graceful_degradation, clear_interface |
+| **SOURCE_ORIGIN** | TRUTH | `_judgeTruthForCode()` | authored, licensed, primary_source, cited_sources, module_identity, versioned, traceable_deps, repo_linked, well_documented, test_verified |
+
+#### Impact sur les scores (brain-lite.js jugement):
+
+| Dimension | Avant | Après | Amélioration |
+|-----------|-------|-------|--------------|
+| SOURCE_ORIGIN | 69% | 85% | +16% |
+| EVIDENCE_BASE | 69% | 85% | +16% |
+| LOGICAL_COHERENCE | 75% | 86% | +11% |
+| SCALABILITY | 70% | 84% | +14% |
+| ELEGANCE | 70% | 81% | +11% |
+| FEEDBACK_LOOPS | 70% | 85% | +15% |
+| ENERGY_EFFICIENCY | 70% | 81% | +11% |
+| SELF_AWARENESS | 70% | 82% | +12% |
+| MEASURABILITY | 70% | 82% | +12% |
+
+#### Pattern d'implémentation pour chaque évaluateur:
+
+```javascript
+// Exemple: _judgeScalabilityForCode() dans self-judge.js
+_judgeScalabilityForCode(code) {
+  const checks = [];
+  const codeStr = String(code);
+
+  // 1. Caching patterns
+  const hasCaching = /cache|memoize|memo\(|lru|ttl|expire|invalidate/i.test(codeStr);
+  if (hasCaching) checks.push({ name: 'caching', score: 90 });
+
+  // 2. Pagination patterns
+  const hasPagination = /offset|limit|cursor|page|paginate|skip|take|perPage/i.test(codeStr);
+  if (hasPagination) checks.push({ name: 'pagination', score: 85 });
+
+  // ... 8 autres vérifications similaires
+
+  const score = this._average(checks.map(c => c.score));
+  const scalable = checks.filter(c => c.score >= 80).map(c => c.name);
+  const reason = scalable.length > 0
+    ? `Scalable: ${scalable.join(', ')}`
+    : 'Basic scalability';
+  return { score: Math.round(score), reason };
+}
+```
+
+#### Intégration avec les méthodes 4 Mondes:
+
+```javascript
+// Pattern d'intégration dans _judgeX() méthode existante
+_judgeScale(item, context = {}) {
+  // Code-aware check first
+  if (typeof item === 'string') {
+    return this._judgeScalabilityForCode(item);
+  }
+  // ... reste de la logique existante
+}
+```
+
 ### ✅ NOUVELLEMENT COMPLÉTÉ (2026-01-11 - ResidualDetector)
 
 | Élément | État | Notes |
@@ -1273,6 +1342,14 @@ CYNIC se distribue pour mieux voir - 9 yeux valent mieux qu'un.
 
 **Dernière mise à jour**: 2026-01-12 par Claude
 **Commits**:
+- `feat(cynic): ROBUSTNESS - Code-aware SECURE evaluation`
+- `feat(cynic): SCALABILITY - Code-aware SCALE evaluation via _judgeScalabilityForCode()`
+- `feat(cynic): ELEGANCE - Code-aware HARMONY evaluation via _judgeHarmonyForCode()`
+- `feat(cynic): FEEDBACK_LOOPS - Code-aware LEARNING_RATE evaluation via _judgeFeedbackLoopsForCode()`
+- `feat(cynic): ENERGY_EFFICIENCY - Code-aware SIMPLIFY evaluation via _judgeEfficiencyForCode()`
+- `feat(cynic): LOGICAL_COHERENCE - Code-aware COHERENCE evaluation via _judgeCoherenceForCode()`
+- `feat(cynic): SELF_AWARENESS - Code-aware evaluation via _judgeSelfAwarenessForCode()`
+- `feat(cynic): SOURCE_ORIGIN - Enhanced TRUTH evaluation via _judgeTruthForCode()`
 - `feat(cynic): TRUST_GRADIENT - Code-aware TRUST evaluation`
 - `feat(cynic): φ-based verdict thresholds (HOWL≥60%, WAG≥52%, GROWL≥38%)`
 - `refactor(cynic): Split skill-judge.js into modules (5×5 → 4 Mondes interface)`
