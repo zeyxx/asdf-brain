@@ -3,7 +3,7 @@
   "structure": "PYRAMID",
   "philosophy": "Chaque niveau valide avant de monter",
   "created": "2026-01-11T23:48:31.662Z",
-  "updated": "2026-01-11T23:48:31.663Z",
+  "updated": "2026-01-12T00:15:30.000Z",
   "pyramid": {
     "description": "Levels must be validated before proceeding to next",
     "levels": [
@@ -20,19 +20,25 @@
       {
         "level": 1,
         "name": "PERCEPTION",
-        "status": "NEXT",
+        "status": "COMPLETED",
         "validation": "CYNIC peut voir ce qui se passe en temps réel",
         "tasks": [
           "CYNIC-WITNESS (commit monitoring)",
           "Error-to-learning pipeline"
         ],
         "estimated_hours": 32,
-        "estimated_cost": 3202.38
+        "estimated_cost": 3202.38,
+        "completed": true,
+        "completedAt": "2026-01-12T00:00:57.000Z",
+        "results": {
+          "witness": "24 commits, 3 contributors tracked",
+          "errorLearning": "19 errors, 5 patterns, 2 lessons"
+        }
       },
       {
         "level": 2,
         "name": "RÉACTION",
-        "status": "PLANNED",
+        "status": "COMPLETED",
         "validation": "CYNIC peut réagir instantanément",
         "tasks": [
           "SSE endpoint (real-time push)",
@@ -40,12 +46,20 @@
         ],
         "estimated_hours": 4,
         "estimated_cost": 400.68,
-        "requires": "PERCEPTION validated"
+        "requires": "PERCEPTION validated",
+        "completed": true,
+        "completedAt": "2026-01-12T00:15:00.000Z",
+        "results": {
+          "sse": "/cynic/sse endpoint with event filtering",
+          "websocket": "/ws/cynic bidirectional",
+          "eventTypes": "18 event types (commits, errors, patterns, judgments, etc.)",
+          "heartbeat": "1618ms (φ × 1000)"
+        }
       },
       {
         "level": 3,
         "name": "VISUALISATION",
-        "status": "PLANNED",
+        "status": "NEXT",
         "validation": "Tout est visible dans le dashboard 3D",
         "tasks": [
           "Commit visualization",
@@ -96,8 +110,8 @@
   ],
   "_meta": {
     "totalLevels": 6,
-    "completedLevels": 1,
-    "currentLevel": 1,
+    "completedLevels": 3,
+    "currentLevel": 3,
     "totalEstimatedHours": 100,
     "totalEstimatedCost": 11609.16
   }

@@ -34,6 +34,7 @@ const cynicDashboardWeb = require('./lib/cynic/dashboard-web');
 const cynicPulse = require('./lib/cynic/pulse');
 const cynicSelfMonitor = require('./lib/cynic/self-monitor');
 const cynicAlerts = require('./lib/cynic/alerts');
+const cynicRealtime = require('./lib/cynic/realtime');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -900,6 +901,45 @@ app.post('/cynic/pulse', requireApiKey, (req, res) => {
 });
 
 // =============================================================================
+// CYNIC REALTIME - SSE & WebSocket
+// =============================================================================
+
+/**
+ * CYNIC Realtime SSE Endpoint
+ * Server-Sent Events for real-time dashboard updates
+ *
+ * Query params:
+ * - types: comma-separated event types to filter (e.g., "commit:new,error:captured")
+ */
+app.get('/cynic/sse', cynicRealtime.createSSEHandler());
+
+/**
+ * CYNIC Realtime Stats
+ * Returns stats about the realtime system
+ */
+app.get('/cynic/realtime', (req, res) => {
+  try {
+    const stats = cynicRealtime.getRealtimeStats();
+    res.json(stats);
+  } catch (error) {
+    console.error('CYNIC realtime stats error:', error);
+    res.status(500).json({ error: 'Realtime stats failed' });
+  }
+});
+
+/**
+ * CYNIC Realtime Event Types
+ * Returns available event types
+ */
+app.get('/cynic/realtime/types', (req, res) => {
+  res.json({
+    eventTypes: cynicRealtime.EVENT_TYPES,
+    description: 'Available event types for SSE subscription',
+    usage: 'Add ?types=commit:new,error:captured to /cynic/sse to filter events',
+  });
+});
+
+// =============================================================================
 // MCP OVER SSE
 // =============================================================================
 
@@ -1063,7 +1103,7 @@ app.get('/', (req, res) => {
 // START SERVER
 // =============================================================================
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log('═══════════════════════════════════════════════════════════');
   console.log('  asdf-brain server');
   console.log("  $asdfasdfa: Don't trust, verify");
@@ -1071,7 +1111,12 @@ app.listen(PORT, () => {
   console.log('═══════════════════════════════════════════════════════════');
   console.log(`  Dashboard:  http://localhost:${PORT}/`);
   console.log(`  CYNIC:      http://localhost:${PORT}/cynic`);
+  console.log(`  CYNIC SSE:  http://localhost:${PORT}/cynic/sse`);
+  console.log(`  CYNIC WS:   ws://localhost:${PORT}/ws/cynic`);
   console.log(`  API:        http://localhost:${PORT}/api/health`);
   console.log(`  MCP:        http://localhost:${PORT}/mcp`);
   console.log('═══════════════════════════════════════════════════════════');
 });
+
+// Attach WebSocket server for CYNIC realtime
+cynicRealtime.attachWebSocket(server, '/ws/cynic');
