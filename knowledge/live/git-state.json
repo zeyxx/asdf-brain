@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-12T01:29:56.147Z",
+  "timestamp": "2026-01-12T04:42:59.030Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-12T01:29:55.213Z",
+      "timestamp": "2026-01-12T04:42:58.219Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -15,7 +15,7 @@
         "lastCommit": {
           "hash": "274d7b7",
           "subject": "fix(rpc): Disable bulk K-Score updates - save 320k cr/day",
-          "relative": "27 hours ago"
+          "relative": "30 hours ago"
         }
       },
       "pr": {
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-12T01:29:55.624Z",
+      "timestamp": "2026-01-12T04:42:58.575Z",
       "branch": {
         "branch": "main",
         "modified": 4,
@@ -87,7 +87,7 @@
         "lastCommit": {
           "hash": "5d6474e",
           "subject": "chore: Add .mcp.json to gitignore",
-          "relative": "33 hours ago"
+          "relative": "2 days ago"
         }
       },
       "pr": null,
@@ -108,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-12T01:29:56.147Z",
+      "timestamp": "2026-01-12T04:42:59.030Z",
       "branch": {
         "branch": "main",
-        "modified": 1,
-        "untracked": 0,
+        "modified": 10,
+        "untracked": 1,
         "staged": 1,
         "ahead": 0,
         "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "9b04974",
-          "subject": "feat(cynic): Self-judgment + Dual-view dashboard toggle",
-          "relative": "9 minutes ago"
+          "hash": "c41a2df",
+          "subject": "refactor(handlers): Extract handlers into modular lib/handlers/",
+          "relative": "13 minutes ago"
         }
       },
       "pr": null,
@@ -140,7 +140,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "1 modified, 1 staged",
+          "message": "10 modified, 1 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -173,15 +173,18 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "1 modified, 1 staged",
+      "message": "10 modified, 1 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
   ],
+  "alertable": [],
+  "cynicEnabled": false,
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
     "mediumPriority": 1,
-    "lowPriority": 3
+    "lowPriority": 3,
+    "cynicAlerts": 0
   }
 }

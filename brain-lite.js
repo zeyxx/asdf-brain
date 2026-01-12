@@ -1638,6 +1638,78 @@ const TOOLS = {
     },
     phi_weight: PHI_INV,
   },
+
+  // =============================================================================
+  // GIT INTELLIGENCE TOOLS (CYNIC-enabled)
+  // =============================================================================
+
+  brain_git_scan: {
+    pardes: 'R',
+    name: 'brain_git_scan',
+    description: '[GIT] Full ecosystem git scan with CYNIC judgment. Analyzes all repos for problems. "Don\'t wait, anticipate."',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        repos: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Specific repos to scan (default: all)'
+        },
+        judge: {
+          type: 'boolean',
+          default: true,
+          description: 'Enable CYNIC judgment of git problems'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_git_status: {
+    pardes: 'P',
+    name: 'brain_git_status',
+    description: '[GIT] Get current git state for a repo. Branch info, PRs, drift, uncommitted changes.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        repo: {
+          type: 'string',
+          default: 'brain',
+          description: 'Repo name (brain, holdex, gasdf)'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_git_problems: {
+    pardes: 'R',
+    name: 'brain_git_problems',
+    description: '[GIT] Get all git problems across ecosystem, filtered by CYNIC. "φ qui surveille le code."',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        severity: {
+          type: 'string',
+          enum: ['all', 'high', 'medium', 'low'],
+          default: 'all',
+          description: 'Filter by severity level'
+        }
+      }
+    },
+    phi_weight: PHI_INV,
+  },
+
+  brain_git_drift: {
+    pardes: 'R',
+    name: 'brain_git_drift',
+    description: '[GIT] Check production drift across all repos. "Drift is debt. Pay it early."',
+    inputSchema: {
+      type: 'object',
+      properties: {}
+    },
+    phi_weight: PHI_INV,
+  },
 };
 
 // =============================================================================

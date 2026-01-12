@@ -5,8 +5,8 @@
     "version": "1.1.0",
     "status": "EVOLVING",
     "created": "2026-01-11",
-    "lastUpdated": "2026-01-12T01:46:04.595Z",
-    "updateCount": 24,
+    "lastUpdated": "2026-01-12T03:16:24.630Z",
+    "updateCount": 96,
     "philosophy": "Starts at zero, learns correlations from judgments (FIFA chemistry)",
     "lastMerged": "2026-01-11T21:09:31.457Z",
     "mergeCount": 3,
@@ -891,6 +891,366 @@
     {
       "timestamp": 1768182364594,
       "scoresCount": 9,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768182943880,
+      "scoresCount": 245,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768182981122,
+      "scoresCount": 245,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183196818,
+      "scoresCount": 276,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183248222,
+      "scoresCount": 276,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183393166,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183437004,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183567135,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183608744,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183718367,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183760802,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183946268,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768183985543,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184304966,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184311186,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184317917,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184521046,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184529267,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184529277,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184538175,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184549887,
+      "scoresCount": 298,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184549894,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184998279,
+      "scoresCount": 298,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184998290,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768184998316,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185011852,
+      "scoresCount": 280,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185011864,
+      "scoresCount": 294,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185034713,
+      "scoresCount": 280,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185034720,
+      "scoresCount": 294,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185034723,
+      "scoresCount": 298,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185034733,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185034742,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185048662,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185048681,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185048695,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185232038,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185232054,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185232064,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185232075,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185245018,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185245053,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185245070,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185245273,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185268503,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185268521,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185268528,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185268542,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185268865,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185268889,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185282611,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185282621,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185456928,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185507189,
+      "scoresCount": 10,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185575294,
+      "scoresCount": 10,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185588496,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185750165,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768185890507,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186145116,
+      "scoresCount": 45,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186177282,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186365071,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186396498,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186404896,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186550730,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186745404,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186859838,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768186936155,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768187029121,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768187139353,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768187255091,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768187400242,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768187755738,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768187762816,
+      "scoresCount": 300,
+      "updatesCount": 0
+    },
+    {
+      "timestamp": 1768187784630,
+      "scoresCount": 300,
       "updatesCount": 0
     }
   ]
