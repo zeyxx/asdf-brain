@@ -878,6 +878,65 @@ app.get('/cynic/store', async (req, res) => {
 });
 
 /**
+ * CYNIC Store Judgments
+ * Query recent judgments from the store
+ */
+app.get('/cynic/store/judgments', async (req, res) => {
+  try {
+    if (!cynicStore) {
+      return res.status(503).json({ error: 'Store not initialized' });
+    }
+
+    const limit = parseInt(req.query.limit) || 10;
+    const judgments = await cynicStore.listJudgments({ limit });
+
+    res.json({
+      count: judgments.length,
+      judgments,
+      mode: cynicStore.memoryMode ? 'memory' : 'postgres'
+    });
+  } catch (error) {
+    console.error('CYNIC store judgments error:', error);
+    res.status(500).json({ error: 'Failed to fetch judgments', message: error.message });
+  }
+});
+
+/**
+ * CYNIC Store Test - Save a test judgment
+ */
+app.post('/cynic/store/test', async (req, res) => {
+  try {
+    if (!cynicStore) {
+      return res.status(503).json({ error: 'Store not initialized' });
+    }
+
+    const testJudgment = {
+      item_hash: crypto.randomBytes(8).toString('hex'),
+      item_type: 'test',
+      scores: { test_dimension: 58 },
+      global: 58,
+      verdict: 'TEST',
+      confidence: PHI_INV,
+      mode: 'test',
+      cynic_says: 'Woof! This is a test judgment to verify persistence.'
+    };
+
+    const saved = await cynicStore.saveJudgment(testJudgment);
+    console.log('[CYNIC-STORE] Test judgment saved:', saved?.id || 'memory');
+
+    res.json({
+      success: true,
+      saved: saved || testJudgment,
+      message: 'Test judgment persisted',
+      mode: cynicStore.memoryMode ? 'memory' : 'postgres'
+    });
+  } catch (error) {
+    console.error('CYNIC store test error:', error);
+    res.status(500).json({ error: 'Failed to save test judgment', message: error.message });
+  }
+});
+
+/**
  * CYNIC Alerts - Active alerts
  */
 app.get('/cynic/alerts', (req, res) => {
