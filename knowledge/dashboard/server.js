@@ -19,13 +19,16 @@ const path = require('path');
 let cynic = null;
 let matrix = null;
 let residualDetector = null;
+let innommable = null;
 
 try {
   cynic = require('../../lib/cynic');
   matrix = require('../../lib/cynic/matrix');
   const { ResidualDetector } = require('../../lib/cynic/residual-detector');
+  const { getInnommable } = require('../../lib/cynic/innommable');
   residualDetector = new ResidualDetector();
-  console.log('[Server] CYNIC modules loaded');
+  innommable = getInnommable();
+  console.log('[Server] CYNIC modules loaded (including THE_INNOMMABLE)');
 } catch (e) {
   console.error('[Server] Failed to load CYNIC:', e.message);
 }
@@ -223,6 +226,99 @@ async function handleRequest(req, res) {
     }
   }
 
+  // API: THE_INNOMMABLE (residual detection and dimension emergence)
+  if (url.pathname === '/api/innommable') {
+    try {
+      const response = {
+        timestamp: new Date().toISOString(),
+        residualDetector: residualDetector ? {
+          stats: residualDetector.getStats(),
+          bufferStatus: residualDetector.anomalyBuffer?.getStats() || { count: 0 },
+          discoveredDimensions: residualDetector.getDiscoveredDimensions(),
+          canDiscover: residualDetector.anomalyBuffer?.shouldCluster() || false,
+        } : null,
+        innommable: innommable ? {
+          status: innommable.getStatus(),
+          summary: innommable.summarize(),
+          pending: innommable.getPending(),
+        } : null,
+        _phi: {
+          anomalyThreshold: 0.382,  // φ⁻²
+          clusterMinCount: 3,       // φ²
+          maxConfidence: 0.618,     // φ⁻¹
+          philosophy: 'φ qui doute de φ',
+        },
+      };
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(response, null, 2));
+      return;
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+      return;
+    }
+  }
+
+  // API: Trigger dimension discovery (POST)
+  if (url.pathname === '/api/innommable/discover' && req.method === 'POST') {
+    try {
+      if (!residualDetector) {
+        res.writeHead(503, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'ResidualDetector not available' }));
+        return;
+      }
+
+      const discoveryResult = residualDetector.discoverDimensions();
+
+      // If dimensions discovered, send to THE_INNOMMABLE for human validation
+      if (discoveryResult.discovered && discoveryResult.candidates && innommable) {
+        for (const candidate of discoveryResult.candidates) {
+          await innommable.receiveDimensionProposal(candidate);
+        }
+        discoveryResult.sentToInnommable = true;
+        discoveryResult.pendingCount = innommable.getPending().length;
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(discoveryResult, null, 2));
+      return;
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+      return;
+    }
+  }
+
+  // API: Validate dimension proposal (POST)
+  if (url.pathname === '/api/innommable/validate' && req.method === 'POST') {
+    try {
+      if (!innommable) {
+        res.writeHead(503, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'THE_INNOMMABLE not available' }));
+        return;
+      }
+
+      let body = '';
+      req.on('data', chunk => body += chunk);
+      req.on('end', async () => {
+        try {
+          const { proposalId, accept, feedback } = JSON.parse(body);
+          const result = await innommable.humanValidate(proposalId, { accept, feedback });
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(result, null, 2));
+        } catch (e) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: e.message }));
+        }
+      });
+      return;
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: e.message }));
+      return;
+    }
+  }
+
   // API: Roadmap (pyramid levels and progress)
   if (url.pathname === '/api/roadmap') {
     try {
@@ -306,12 +402,14 @@ server.listen(PORT, () => {
 ╔═══════════════════════════════════════════════════════════╗
 ║         CYNIC SINGULARITY DASHBOARD SERVER                ║
 ╠═══════════════════════════════════════════════════════════╣
-║  Dashboard:   http://localhost:${PORT}/                      ║
-║  API State:   http://localhost:${PORT}/api/cynic             ║
-║  API Judge:   http://localhost:${PORT}/api/judge             ║
-║  API Roadmap: http://localhost:${PORT}/api/roadmap           ║
+║  Dashboard:     http://localhost:${PORT}/                    ║
+║  API State:     http://localhost:${PORT}/api/cynic           ║
+║  API Judge:     http://localhost:${PORT}/api/judge           ║
+║  API Roadmap:   http://localhost:${PORT}/api/roadmap         ║
+║  API Innommable: http://localhost:${PORT}/api/innommable     ║
 ╠═══════════════════════════════════════════════════════════╣
 ║  φ = 1.618 | Max Confidence = 61.8% | Min Doubt = 38.2%   ║
+║  THE_INNOMMABLE: φ qui doute de φ                         ║
 ╚═══════════════════════════════════════════════════════════╝
   `);
 });

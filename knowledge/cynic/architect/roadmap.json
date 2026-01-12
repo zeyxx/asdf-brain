@@ -81,7 +81,7 @@
       {
         "level": 4,
         "name": "ÉMERGENCE",
-        "status": "NEXT",
+        "status": "ACTIVE",
         "validation": "CYNIC détecte des patterns inconnus",
         "tasks": [
           "Pattern emergence detection",
@@ -90,7 +90,14 @@
         ],
         "estimated_hours": 32,
         "estimated_cost": 4803.4,
-        "requires": "VISUALISATION validated"
+        "requires": "VISUALISATION validated",
+        "startedAt": "2026-01-12T06:45:00.000Z",
+        "progress": {
+          "api": "/api/innommable endpoint active",
+          "visualization": "Frontier ring, portal, anomaly particles",
+          "residualDetector": "Connected and operational",
+          "innommable": "Singleton instance active"
+        }
       },
       {
         "level": 5,
