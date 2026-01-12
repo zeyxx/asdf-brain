@@ -119,7 +119,22 @@
         "progress": {
           "singularityRoutes": "/singularity/* routes added to main server.js",
           "apiBase": "Dynamic API_BASE detection in constants.js",
-          "renderYaml": "render.yaml configured for auto-deploy"
+          "renderYaml": "render.yaml configured for auto-deploy",
+          "cspFixed": "Content-Security-Policy allows CDN for Three.js and fonts",
+          "endpoints": {
+            "dashboard": "GET /singularity/ - 3D visualization working",
+            "judge": "GET/POST /singularity/api/judge - Judgment with residuals",
+            "innommable": "GET /singularity/api/innommable - THE_INNOMMABLE status",
+            "testAnomaly": "POST /singularity/api/innommable/test-anomaly - Inject anomalies",
+            "discover": "POST /singularity/api/innommable/discover - Trigger dimension discovery",
+            "validate": "POST /singularity/api/innommable/validate - Accept/reject dimensions"
+          },
+          "testedFlows": [
+            "Judgment → residual calculation",
+            "Anomaly injection → buffer accumulation",
+            "Discovery → dimension proposals",
+            "Human validation → accept/reject"
+          ]
         }
       }
     ]
