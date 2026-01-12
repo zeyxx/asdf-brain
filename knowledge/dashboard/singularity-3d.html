@@ -124,8 +124,20 @@
 
   <div class="hud hud-tl">
     <h3>CYNIC SINGULARITY</h3>
-    <div class="label">25 Dimensions - Harmony Matrix</div>
-    <div class="category-legend">
+    <div class="label" id="view-label">4 MONDES - Internal View</div>
+    <div id="view-toggle" style="margin: 10px 0; pointer-events: auto;">
+      <button id="toggle-view" style="
+        background: transparent;
+        border: 1px solid #d4a017;
+        color: #d4a017;
+        padding: 5px 10px;
+        font-family: 'Orbitron', monospace;
+        font-size: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+      ">Switch to 5×5 Matrix</button>
+    </div>
+    <div class="category-legend" id="legend-4mondes">
       <div class="category-item active" data-category="ALL">
         <span class="category-dot" style="background: #d4a017;"></span>
         <span>ALL (25)</span>
@@ -202,7 +214,37 @@
   </div>
 
   <div id="instructions">
-    Drag/Scroll = navigate | 1-5 filter | 0 reset | J = judgment | H = hands
+    Drag/Scroll = navigate | 1-5 filter | 0 reset | J = judgment | H = hands | V = view toggle
+  </div>
+
+  <!-- 5x5 Legend (hidden by default) -->
+  <div id="legend-5x5" style="display: none; position: fixed; top: 100px; left: 20px; z-index: 100;">
+    <div class="category-legend">
+      <div class="category-item active" data-category="ALL" data-view="5x5">
+        <span class="category-dot" style="background: #d4a017;"></span>
+        <span>ALL (25)</span>
+      </div>
+      <div class="category-item" data-category="FOUNDATION" data-view="5x5">
+        <span class="category-dot" style="background: #ff6b6b;"></span>
+        <span>FOUNDATION (5)</span>
+      </div>
+      <div class="category-item" data-category="STRUCTURE" data-view="5x5">
+        <span class="category-dot" style="background: #4ecdc4;"></span>
+        <span>STRUCTURE (5)</span>
+      </div>
+      <div class="category-item" data-category="DYNAMICS" data-view="5x5">
+        <span class="category-dot" style="background: #45b7d1;"></span>
+        <span>DYNAMICS (5)</span>
+      </div>
+      <div class="category-item" data-category="RELATIONSHIPS" data-view="5x5">
+        <span class="category-dot" style="background: #96ceb4;"></span>
+        <span>RELATIONSHIPS (5)</span>
+      </div>
+      <div class="category-item" data-category="META_5x5" data-view="5x5">
+        <span class="category-dot" style="background: #dda0dd;"></span>
+        <span>META (5)</span>
+      </div>
+    </div>
   </div>
 
   <div class="loading" id="loading">Loading CYNIC Singularity...</div>
@@ -262,7 +304,11 @@
     let lastLeftFingers = 0, lastRightFingers = 0;
     let gestureDebounce = 0;
 
-    const DIMENSIONS = {
+    // Current view mode: '4mondes' or '5x5'
+    let currentView = '4mondes';
+
+    // 4 MONDES dimensions (internal)
+    const DIMENSIONS_4MONDES = {
       HARMONY:    { category: 'PRIMARY', weight: PHI_SQ, world: 'ATZILUT', color: 0xffd700 },
       COHERENCE:  { category: 'PRIMARY', weight: PHI_SQ, world: 'ATZILUT', color: 0xffd700 },
       TRUTH:      { category: 'PRIMARY', weight: PHI_SQ, world: 'BERIAH', color: 0xffd700 },
@@ -290,6 +336,43 @@
       DISCOVERY: { category: 'DISCOVERY', weight: PHI_CUBE, world: 'DAAT', color: 0xff3366 },
     };
 
+    // 5×5 MATRIX dimensions (universal interface)
+    const DIMENSIONS_5x5 = {
+      // ROW 1: FOUNDATION
+      SOURCE_ORIGIN:     { category: 'FOUNDATION', weight: PHI_SQ, world: 'BERIAH', color: 0xff6b6b, maps_to: 'TRUTH' },
+      EVIDENCE_BASE:     { category: 'FOUNDATION', weight: PHI_SQ, world: 'BERIAH', color: 0xff6b6b, maps_to: 'INTEGRITY' },
+      LOGICAL_COHERENCE: { category: 'FOUNDATION', weight: PHI_SQ, world: 'ATZILUT', color: 0xff6b6b, maps_to: 'COHERENCE' },
+      TEMPORAL_VALIDITY: { category: 'FOUNDATION', weight: PHI, world: 'ASSIAH', color: 0xff6b6b, maps_to: 'PROGRESS' },
+      DOMAIN_FIT:        { category: 'FOUNDATION', weight: PHI, world: 'ASSIAH', color: 0xff6b6b, maps_to: 'ALIGNMENT' },
+      // ROW 2: STRUCTURE
+      SIMPLICITY:    { category: 'STRUCTURE', weight: PHI, world: 'YETZIRAH', color: 0x4ecdc4, maps_to: 'SIMPLIFY' },
+      MODULARITY:    { category: 'STRUCTURE', weight: PHI, world: 'ASSIAH', color: 0x4ecdc4, maps_to: 'SCALE' },
+      EXTENSIBILITY: { category: 'STRUCTURE', weight: PHI, world: 'YETZIRAH', color: 0x4ecdc4, maps_to: 'ENABLE' },
+      ROBUSTNESS:    { category: 'STRUCTURE', weight: PHI, world: 'BERIAH', color: 0x4ecdc4, maps_to: 'SECURE' },
+      ELEGANCE:      { category: 'STRUCTURE', weight: PHI_SQ, world: 'ATZILUT', color: 0x4ecdc4, maps_to: 'HARMONY' },
+      // ROW 3: DYNAMICS
+      ADAPTABILITY:     { category: 'DYNAMICS', weight: PHI, world: 'ASSIAH', color: 0x45b7d1, maps_to: 'PROGRESS' },
+      SCALABILITY:      { category: 'DYNAMICS', weight: PHI, world: 'ASSIAH', color: 0x45b7d1, maps_to: 'SCALE' },
+      FEEDBACK_LOOPS:   { category: 'DYNAMICS', weight: 1.0, world: 'META', color: 0x45b7d1, maps_to: 'LEARNING_RATE' },
+      ENERGY_EFFICIENCY: { category: 'DYNAMICS', weight: PHI, world: 'YETZIRAH', color: 0x45b7d1, maps_to: 'SIMPLIFY' },
+      MOMENTUM:         { category: 'DYNAMICS', weight: PHI, world: 'YETZIRAH', color: 0x45b7d1, maps_to: 'OPTIMISM' },
+      // ROW 4: RELATIONSHIPS
+      DEPENDENCY_HEALTH: { category: 'RELATIONSHIPS', weight: PHI, world: 'BERIAH', color: 0x96ceb4, maps_to: 'SECURE' },
+      INTERFACE_CLARITY: { category: 'RELATIONSHIPS', weight: PHI, world: 'YETZIRAH', color: 0x96ceb4, maps_to: 'SIMPLIFY' },
+      NETWORK_EFFECTS:   { category: 'RELATIONSHIPS', weight: PHI, world: 'ASSIAH', color: 0x96ceb4, maps_to: 'SCALE' },
+      COMPOSABILITY:     { category: 'RELATIONSHIPS', weight: PHI, world: 'YETZIRAH', color: 0x96ceb4, maps_to: 'ENABLE' },
+      TRUST_GRADIENT:    { category: 'RELATIONSHIPS', weight: PHI, world: 'BERIAH', color: 0x96ceb4, maps_to: 'TRUST' },
+      // ROW 5: META
+      SELF_AWARENESS_5x5: { category: 'META_5x5', weight: 1.0, world: 'ATZILUT', color: 0xdda0dd, maps_to: 'SELF_AWARENESS' },
+      REVERSIBILITY:      { category: 'META_5x5', weight: PHI, world: 'BERIAH', color: 0xdda0dd, maps_to: 'SECURE' },
+      MEASURABILITY:      { category: 'META_5x5', weight: PHI, world: 'BERIAH', color: 0xdda0dd, maps_to: 'INTEGRITY' },
+      LEARNABILITY:       { category: 'META_5x5', weight: 1.0, world: 'META', color: 0xdda0dd, maps_to: 'LEARNING_RATE' },
+      ALIGNMENT_5x5:      { category: 'META_5x5', weight: PHI, world: 'ASSIAH', color: 0xdda0dd, maps_to: 'ALIGNMENT' },
+    };
+
+    // Active dimensions (switches based on view)
+    let DIMENSIONS = DIMENSIONS_4MONDES;
+
     let currentScores = {
       HARMONY: 75, COHERENCE: 80, TRUTH: 85, INTEGRITY: 70,
       ETHICS: 100, OPTIMISM: 65, ALIGNMENT: 72, PROGRESS: 68,
@@ -312,39 +395,115 @@
       const positions = {};
       const dimNames = Object.keys(DIMENSIONS);
 
-      const groups = {
-        PRIMARY: dimNames.filter(d => DIMENSIONS[d].category === 'PRIMARY'),
-        SECONDARY: dimNames.filter(d => DIMENSIONS[d].category === 'SECONDARY'),
-        META: dimNames.filter(d => DIMENSIONS[d].category === 'META'),
-        HUMAN_LLM: dimNames.filter(d => DIMENSIONS[d].category === 'HUMAN_LLM'),
-        DISCOVERY: dimNames.filter(d => DIMENSIONS[d].category === 'DISCOVERY'),
+      // Layout configs for different category types
+      const LAYOUT_4MONDES = {
+        PRIMARY:   { radius: 120, y: 0, offset: 0 },
+        SECONDARY: { radius: 180, y: -60, offset: 0.3 },
+        META:      { radius: 60, y: 120, offset: 0 },
+        HUMAN_LLM: { radius: 150, y: -130, offset: 0.2 },
+        DISCOVERY: { radius: 0, y: 180, offset: 0 },
       };
 
-      groups.PRIMARY.forEach((name, i) => {
-        const angle = (i / groups.PRIMARY.length) * Math.PI * 2;
-        positions[name] = { x: Math.cos(angle) * 120, y: 0, z: Math.sin(angle) * 120 };
+      const LAYOUT_5x5 = {
+        FOUNDATION:    { radius: 140, y: 80, offset: 0 },
+        STRUCTURE:     { radius: 140, y: 40, offset: Math.PI / 5 },
+        DYNAMICS:      { radius: 140, y: 0, offset: 2 * Math.PI / 5 },
+        RELATIONSHIPS: { radius: 140, y: -40, offset: 3 * Math.PI / 5 },
+        META_5x5:      { radius: 140, y: -80, offset: 4 * Math.PI / 5 },
+      };
+
+      const layout = currentView === '5x5' ? LAYOUT_5x5 : LAYOUT_4MONDES;
+
+      // Group dimensions by category
+      const groups = {};
+      dimNames.forEach(d => {
+        const cat = DIMENSIONS[d].category;
+        if (!groups[cat]) groups[cat] = [];
+        groups[cat].push(d);
       });
 
-      groups.SECONDARY.forEach((name, i) => {
-        const angle = (i / groups.SECONDARY.length) * Math.PI * 2 + 0.3;
-        positions[name] = { x: Math.cos(angle) * 180, y: -60, z: Math.sin(angle) * 180 };
-      });
+      // Position each group
+      for (const [category, dims] of Object.entries(groups)) {
+        const cfg = layout[category];
+        if (!cfg) {
+          // Fallback for unknown categories
+          dims.forEach((name, i) => {
+            positions[name] = { x: Math.random() * 100, y: Math.random() * 100, z: Math.random() * 100 };
+          });
+          continue;
+        }
 
-      groups.META.forEach((name, i) => {
-        const angle = (i / groups.META.length) * Math.PI * 2;
-        positions[name] = { x: Math.cos(angle) * 60, y: 120, z: Math.sin(angle) * 60 };
-      });
-
-      groups.HUMAN_LLM.forEach((name, i) => {
-        const angle = (i / groups.HUMAN_LLM.length) * Math.PI * 2 + 0.2;
-        positions[name] = { x: Math.cos(angle) * 150, y: -130, z: Math.sin(angle) * 150 };
-      });
-
-      groups.DISCOVERY.forEach((name) => {
-        positions[name] = { x: 0, y: 180, z: 0 };
-      });
+        if (cfg.radius === 0) {
+          // Center position (e.g., DISCOVERY)
+          dims.forEach(name => {
+            positions[name] = { x: 0, y: cfg.y, z: 0 };
+          });
+        } else {
+          dims.forEach((name, i) => {
+            const angle = (i / dims.length) * Math.PI * 2 + cfg.offset;
+            positions[name] = {
+              x: Math.cos(angle) * cfg.radius,
+              y: cfg.y,
+              z: Math.sin(angle) * cfg.radius
+            };
+          });
+        }
+      }
 
       return positions;
+    }
+
+    // Toggle between 4 Mondes and 5×5 views
+    function toggleView() {
+      currentView = currentView === '4mondes' ? '5x5' : '4mondes';
+      DIMENSIONS = currentView === '4mondes' ? DIMENSIONS_4MONDES : DIMENSIONS_5x5;
+
+      // Update UI
+      const btn = document.getElementById('toggle-view');
+      const label = document.getElementById('view-label');
+      const legend4 = document.getElementById('legend-4mondes');
+      const legend5 = document.getElementById('legend-5x5');
+
+      if (currentView === '5x5') {
+        btn.textContent = 'Switch to 4 Mondes';
+        label.textContent = '5×5 MATRIX - Universal Interface';
+        if (legend4) legend4.style.display = 'none';
+        if (legend5) legend5.style.display = 'block';
+      } else {
+        btn.textContent = 'Switch to 5×5 Matrix';
+        label.textContent = '4 MONDES - Internal View';
+        if (legend4) legend4.style.display = 'block';
+        if (legend5) legend5.style.display = 'none';
+      }
+
+      // Rebuild the scene
+      rebuildScene();
+
+      console.log('[View] Switched to:', currentView);
+    }
+
+    function rebuildScene() {
+      // Remove old dimension meshes
+      for (const [name, mesh] of Object.entries(dimensionMeshes)) {
+        if (name === '_core') continue;
+        scene.remove(mesh);
+      }
+
+      // Remove old labels (sprites)
+      scene.children.filter(c => c.userData && c.userData.isLabel).forEach(s => scene.remove(s));
+
+      // Remove old edges
+      edgeLines.forEach(line => scene.remove(line));
+      edgeLines = [];
+
+      // Clear meshes (keep core)
+      const core = dimensionMeshes._core;
+      dimensionMeshes = core ? { _core: core } : {};
+
+      // Recreate
+      createDimensionNodes();
+      createHarmonyEdges();
+      updateHUD();
     }
 
     function init() {
@@ -383,6 +542,7 @@
       window.addEventListener('resize', onResize);
       renderer.domElement.addEventListener('click', onClick);
       document.addEventListener('keydown', onKeyDown);
+      document.getElementById('toggle-view').addEventListener('click', toggleView);
 
       document.querySelectorAll('.category-item').forEach(item => {
         item.addEventListener('click', () => {
@@ -690,6 +850,11 @@
         });
         updateVisibility();
         document.getElementById('detail-panel').classList.remove('visible');
+      }
+
+      // V = toggle view (4 Mondes ↔ 5×5)
+      if (key === 'v' || key === 'V') {
+        toggleView();
       }
     }
 
