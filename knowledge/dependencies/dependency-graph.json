@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T06:40:18.307Z",
+    "generated": "2026-01-12T07:12:17.360Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -507,7 +507,7 @@
           "./dimensions.js": 1,
           "../../lib/cynic": 1,
           "../../lib/cynic/matrix": 1,
-          "../../lib/cynic/residual-detector": 1,
+          "../../lib/cynic/judge": 1,
           "../../lib/cynic/innommable": 1,
           "./temporal": 7,
           "./merkle-proofs": 1,
@@ -524,7 +524,7 @@
           "./residual-detector": 2,
           "./gate": 2,
           "./score": 2,
-          "./judge": 2,
+          "./judge": 3,
           "./shield": 1,
           "./matrix": 3,
           "./learn": 1,
