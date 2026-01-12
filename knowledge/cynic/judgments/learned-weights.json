@@ -1,28 +1,38 @@
 {
   "adjustments": {
     "SIMPLIFY": {
-      "factor": 0.05729490168751576,
-      "samples": 1,
+      "factor": 0.07360679774997897,
+      "samples": 2,
       "history": [
         {
           "timestamp": "2026-01-12T01:31:20.613Z",
           "delta": 0.15,
           "outcome": "partial"
+        },
+        {
+          "timestamp": "2026-01-12T01:40:11.634Z",
+          "delta": 0.1,
+          "outcome": "confirmed"
         }
       ]
     },
     "TRUTH": {
-      "factor": -0.03819660112501051,
-      "samples": 1,
+      "factor": -0.04270509831248423,
+      "samples": 2,
       "history": [
         {
           "timestamp": "2026-01-12T01:31:20.613Z",
           "delta": -0.1,
           "outcome": "partial"
+        },
+        {
+          "timestamp": "2026-01-12T01:40:11.634Z",
+          "delta": -0.05,
+          "outcome": "confirmed"
         }
       ]
     }
   },
-  "version": 2,
-  "updated": "2026-01-12T01:31:20.613Z"
+  "version": 8,
+  "updated": "2026-01-12T01:40:11.650Z"
 }

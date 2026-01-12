@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "created": "2026-01-12T01:40:11.618Z",
+  "updated": "2026-01-12T01:40:11.649Z",
+  "calibration": {
+    "buckets": {
+      "0-20": {
+        "predictions": 0,
+        "correct": 0
+      },
+      "20-40": {
+        "predictions": 0,
+        "correct": 0
+      },
+      "40-60": {
+        "predictions": 6,
+        "correct": 4
+      },
+      "60-80": {
+        "predictions": 0,
+        "correct": 0
+      }
+    },
+    "expectedCalibrationError": 0.16666666666666663
+  },
+  "verdicts": {
+    "HOWL": {
+      "total": 0,
+      "confirmed": 0,
+      "refuted": 0,
+      "partial": 0
+    },
+    "WAG": {
+      "total": 6,
+      "confirmed": 4,
+      "refuted": 0,
+      "partial": 2
+    },
+    "GROWL": {
+      "total": 0,
+      "confirmed": 0,
+      "refuted": 0,
+      "partial": 0
+    },
+    "BARK": {
+      "total": 0,
+      "confirmed": 0,
+      "refuted": 0,
+      "partial": 0
+    }
+  },
+  "dimensions": {
+    "SIMPLICITY": {
+      "validations": 1,
+      "totalError": 10,
+      "meanAbsoluteError": 10
+    },
+    "SOURCE_ORIGIN": {
+      "validations": 1,
+      "totalError": 5,
+      "meanAbsoluteError": 5
+    }
+  },
+  "metrics": {
+    "totalValidated": 6,
+    "accuracyRate": 0.6666666666666666,
+    "brierScore": 0.1537333333333333,
+    "lastValidation": "2026-01-12T01:40:11.649Z"
+  }
+}
