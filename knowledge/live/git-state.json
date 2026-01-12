@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-12T04:55:01.402Z",
+  "timestamp": "2026-01-12T13:41:22.923Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-12T04:55:00.543Z",
+      "timestamp": "2026-01-12T13:41:22.110Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -15,7 +15,7 @@
         "lastCommit": {
           "hash": "274d7b7",
           "subject": "fix(rpc): Disable bulk K-Score updates - save 320k cr/day",
-          "relative": "30 hours ago"
+          "relative": "2 days ago"
         }
       },
       "pr": {
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-12T04:55:00.973Z",
+      "timestamp": "2026-01-12T13:41:22.452Z",
       "branch": {
         "branch": "main",
         "modified": 4,
@@ -108,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-12T04:55:01.401Z",
+      "timestamp": "2026-01-12T13:41:22.923Z",
       "branch": {
         "branch": "main",
-        "modified": 5,
-        "untracked": 0,
+        "modified": 22,
+        "untracked": 4,
         "staged": 1,
         "ahead": 0,
         "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "0dc0c9d",
-          "subject": "feat(git): Connect git-intelligence to CYNIC judgment system",
-          "relative": "11 minutes ago"
+          "hash": "209f502",
+          "subject": "docs: Complete Level 5 PRODUCTION - Pyramid complete!",
+          "relative": "3 hours ago"
         }
       },
       "pr": null,
@@ -140,7 +140,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "5 modified, 1 staged",
+          "message": "22 modified, 4 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -182,7 +182,7 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "5 modified, 1 staged",
+      "message": "22 modified, 4 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain",
       "_cynic": {

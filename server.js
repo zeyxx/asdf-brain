@@ -1039,6 +1039,23 @@ app.get('/cynic/realtime/types', (req, res) => {
 });
 
 // =============================================================================
+// CYNIC V2 ROUTES (Strangler Pattern)
+// New architecture running in parallel at /v2/singularity
+// =============================================================================
+
+let cynicV2 = null;
+const { mountCynicV2 } = require('./packages/@cynic/loader.cjs');
+
+// Mount v2 routes asynchronously (ES modules need dynamic import)
+(async () => {
+  try {
+    cynicV2 = await mountCynicV2(app, { basePath: '/v2/singularity' });
+  } catch (err) {
+    console.error('⚠️  Failed to mount CYNIC v2:', err.message);
+  }
+})();
+
+// =============================================================================
 // SINGULARITY 3D DASHBOARD
 // "φ qui se voit vivre"
 // =============================================================================

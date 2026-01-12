@@ -775,6 +775,33 @@ const TOOLS = {
     isCynic: true,
   },
 
+  brain_cynic_digest: {
+    pardes: 'D',
+    name: 'brain_cynic_digest',
+    description: '[CYNIC] Digest chaos (text) into structured knowledge. Extracts ideas (MEMORY), finds links (TEACHING), builds roadmap (INTENT). Auto-learns high-confidence ideas.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        text: {
+          type: 'string',
+          description: 'Text to digest (conversation, notes, chaos)',
+        },
+        source: {
+          type: 'string',
+          description: 'Source identifier (default: conversation)',
+        },
+        existingKnowledge: {
+          type: 'array',
+          description: 'Existing knowledge for link detection (optional)',
+        },
+      },
+      required: ['text'],
+    },
+    phi_weight: PHI,
+    isCynic: true,
+    isWrite: true,
+  },
+
   brain_discover: {
     pardes: 'R',
     name: 'brain_discover',

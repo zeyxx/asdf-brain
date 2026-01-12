@@ -1,14 +1,14 @@
 {
   "alive": true,
-  "lastPulse": "2026-01-12T04:55:40.626Z",
-  "lastPulseMs": 13,
-  "pulseCount": 3,
-  "currentHealth": 62,
-  "uptimeMs": 123760,
+  "lastPulse": "2026-01-12T13:42:19.130Z",
+  "lastPulseMs": 2,
+  "pulseCount": 145,
+  "currentHealth": 52,
+  "uptimeMs": 8899672,
   "subsystems": {
     "observation": {
       "registered": true,
-      "lastCheck": "2026-01-12T04:55:40.626Z",
+      "lastCheck": "2026-01-12T13:42:19.130Z",
       "healthy": true,
       "details": {
         "residuals": {
@@ -19,7 +19,7 @@
         "innommable": {
           "pending": 0,
           "accepted": 1,
-          "rejected": 0
+          "rejected": 1
         },
         "status": "observing"
       },
@@ -27,7 +27,7 @@
     },
     "dashboard": {
       "registered": true,
-      "lastCheck": "2026-01-12T04:55:40.626Z",
+      "lastCheck": "2026-01-12T13:42:19.130Z",
       "healthy": true,
       "details": {
         "path": "/workspaces/asdf-brain/knowledge/dashboard/dimensions.html",
@@ -43,13 +43,13 @@
             "philosophy": "Cache should serve φ⁻¹ of requests"
           }
         },
-        "refreshedAt": "2026-01-12T04:55:40.632Z"
+        "refreshedAt": "2026-01-12T13:42:19.131Z"
       },
       "consecutiveFailures": 0
     },
     "filesystem": {
       "registered": true,
-      "lastCheck": "2026-01-12T04:55:40.626Z",
+      "lastCheck": "2026-01-12T13:42:19.130Z",
       "healthy": true,
       "details": {
         "path": "/workspaces/asdf-brain/knowledge",
@@ -60,19 +60,19 @@
     },
     "memory": {
       "registered": true,
-      "lastCheck": "2026-01-12T04:55:40.626Z",
-      "healthy": true,
+      "lastCheck": "2026-01-12T13:42:19.130Z",
+      "healthy": false,
       "details": {
-        "heapUsedMB": 11,
+        "heapUsedMB": 15,
         "heapTotalMB": 17,
-        "heapPercent": 63,
-        "rssMB": 65
+        "heapPercent": 86,
+        "rssMB": 73
       },
-      "consecutiveFailures": 0
+      "consecutiveFailures": 39
     },
     "eventLoop": {
       "registered": true,
-      "lastCheck": "2026-01-12T04:55:40.626Z",
+      "lastCheck": "2026-01-12T13:42:19.130Z",
       "healthy": true,
       "details": {
         "latencyMs": 0,
@@ -82,11 +82,11 @@
     },
     "knowledge": {
       "registered": true,
-      "lastCheck": "2026-01-12T04:55:40.626Z",
+      "lastCheck": "2026-01-12T13:42:19.130Z",
       "healthy": true,
       "details": {
         "fileCount": 7,
-        "newestUpdateMs": 1768193701402.1838,
+        "newestUpdateMs": 1768225282922.8628,
         "ageHours": 0,
         "status": "fresh"
       },
@@ -98,8 +98,89 @@
     "totalEvents": 0,
     "totalErrors": 0,
     "avgResponseMs": 0,
-    "uptimeMs": 123760
+    "uptimeMs": 8899672
   },
-  "anomalyCount": 0,
-  "recentAnomalies": []
+  "anomalyCount": 136,
+  "recentAnomalies": [
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 30,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:33:02.901Z",
+      "pulseId": 136
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 31,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:34:04.704Z",
+      "pulseId": 137
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 32,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:35:06.508Z",
+      "pulseId": 138
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 33,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:36:08.310Z",
+      "pulseId": 139
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 34,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:37:10.114Z",
+      "pulseId": 140
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 35,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:38:11.916Z",
+      "pulseId": 141
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 36,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:39:13.720Z",
+      "pulseId": 142
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 37,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:40:15.523Z",
+      "pulseId": 143
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 38,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:41:17.327Z",
+      "pulseId": 144
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 39,
+      "severity": "critical",
+      "timestamp": "2026-01-12T13:42:19.130Z",
+      "pulseId": 145
+    }
+  ]
 }

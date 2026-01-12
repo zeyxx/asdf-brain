@@ -1,7 +1,9 @@
 {
   "pendingDimensions": [],
-  "rejectedPatterns": [],
+  "rejectedPatterns": [
+    "8926262f06508a0e"
+  ],
   "acceptedCount": 1,
-  "rejectedCount": 0,
-  "lastUpdated": 1768172435719
+  "rejectedCount": 1,
+  "lastUpdated": 1768201277804
 }
