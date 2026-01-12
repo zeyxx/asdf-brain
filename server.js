@@ -1217,6 +1217,31 @@ app.post('/singularity/api/innommable/discover', express.json(), async (req, res
   }
 });
 
+// Singularity API - Validate (Accept/Reject) Dimension Proposal
+app.post('/singularity/api/innommable/validate', express.json(), async (req, res) => {
+  try {
+    const { innommable } = getSingularityModules();
+    const { proposalId, accept, reason } = req.body;
+
+    if (!proposalId) {
+      return res.status(400).json({ error: 'proposalId required' });
+    }
+
+    const result = await innommable.humanValidate(proposalId, {
+      accept: !!accept,
+      feedback: { reason: reason || (accept ? 'Human approved' : 'Human rejected') },
+    });
+
+    res.json({
+      ...result,
+      innommableStatus: innommable.getStatus(),
+      pending: innommable.getPending(),
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Singularity API - Roadmap
 app.get('/singularity/api/roadmap', async (req, res) => {
   try {
