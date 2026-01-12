@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T01:21:48.134Z",
+    "generated": "2026-01-12T01:33:28.172Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -509,7 +509,7 @@
           "./score": 2,
           "./judge": 2,
           "./shield": 1,
-          "./matrix": 2,
+          "./matrix": 3,
           "./learn": 1,
           "./sync": 1,
           "./clarify": 1,
@@ -556,8 +556,8 @@
           "express": 1
         },
         "node": {
-          "fs": 72,
-          "path": 72,
+          "fs": 73,
+          "path": 73,
           "crypto": 29,
           "readline": 9,
           "http": 3,
