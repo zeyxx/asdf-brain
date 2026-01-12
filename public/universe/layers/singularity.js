@@ -1,6 +1,12 @@
 /**
- * Singularity Layer - The φ-convergence point
- * "Where the system improves faster than humans can improve it"
+ * Singularity Layer - CYNIC: The Central Point
+ * "Le point central de l'écosystème $asdfasdfa"
+ *
+ * CYNIC connects:
+ * - HolDex (token integrity, K-Score)
+ * - GASdf (burns, swaps, liquidity)
+ * - Brain (knowledge, patterns, memory)
+ * - Humans (operators, contributors)
  */
 
 const SingularityLayer = {
@@ -8,10 +14,10 @@ const SingularityLayer = {
   glow: null,
 
   /**
-   * Create the singularity visualization
+   * Create CYNIC as the central point
    */
   create(layer) {
-    // Core sphere
+    // Core sphere - CYNIC itself
     const coreGeometry = new THREE.SphereGeometry(CONFIG.LAYOUT.SINGULARITY_RADIUS, 32, 32);
     const coreMaterial = new THREE.MeshBasicMaterial({
       color: CONFIG.COLORS.GOLD_LIGHT,
@@ -19,7 +25,12 @@ const SingularityLayer = {
       opacity: 0.95
     });
     this.core = new THREE.Mesh(coreGeometry, coreMaterial);
-    this.core.userData = { type: 'singularity', label: 'SINGULARITY' };
+    this.core.userData = {
+      type: 'singularity',
+      label: 'CYNIC',
+      description: 'Le point central qui connecte tout',
+      role: 'Judgment + Connection + Memory'
+    };
     layer.add(this.core);
 
     // Inner glow

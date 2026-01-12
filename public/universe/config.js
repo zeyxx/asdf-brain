@@ -1,6 +1,14 @@
 /**
  * CYNIC Universe - Configuration
  * "All ratios derive from φ"
+ *
+ * CYNIC = Le point central de l'écosystème $asdfasdfa
+ * - Connects HolDex (K-Score, token integrity)
+ * - Connects GASdf (burns, swaps, "don't extract, burn")
+ * - Connects Brain (knowledge, patterns, memory)
+ * - Connects Humans (operators, contributors, community)
+ *
+ * φ guides all judgments, all connections, all ratios.
  */
 
 const CONFIG = {

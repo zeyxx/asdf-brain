@@ -210,8 +210,8 @@ const Scene = {
 
     switch (data.type) {
       case 'singularity':
-        strong.textContent = 'SINGULARITY';
-        details.textContent = 'The φ-convergence point';
+        strong.textContent = 'CYNIC';
+        details.textContent = 'Le point central | Judgment + Connection + Memory';
         break;
       case 'dimension':
         strong.textContent = data.name || 'DIMENSION';
