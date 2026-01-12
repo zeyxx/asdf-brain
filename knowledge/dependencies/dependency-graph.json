@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T15:30:25.862Z",
+    "generated": "2026-01-12T15:42:44.357Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -516,8 +516,9 @@
           "./cynic/data-adapter": 1,
           "./alerts": 3,
           "../../temporal": 4,
+          "../realtime": 1,
+          "../matrices/live-matrix": 3,
           "./activation": 1,
-          "../matrices/live-matrix": 2,
           "../dimensions/base": 3,
           "./index": 1,
           "../pulse": 2,
@@ -617,7 +618,11 @@
           "./lib/cynic/realtime": 1,
           "./lib/cynic/judge": 1,
           "./lib/cynic/innommable": 1,
-          "./lib/cynic/matrix": 1
+          "./lib/cynic/matrix": 1,
+          "../../lib/cynic/core": 1,
+          "../../lib/cynic/core/dashboard-connector": 1,
+          "../../lib/cynic/realtime": 1,
+          "../../lib/cynic/matrices/live-matrix": 1
         },
         "external": {
           "@coral-xyz/anchor": 4,
