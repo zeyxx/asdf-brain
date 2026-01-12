@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-11T20:51:19.597Z",
+  "timestamp": "2026-01-12T01:01:59.514Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T20:51:17.565Z"
+      "discoveredAt": "2026-01-12T01:01:57.087Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T20:51:17.826Z"
+      "discoveredAt": "2026-01-12T01:01:57.204Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -291,14 +291,12 @@
             "jeanterre552"
           ],
           "patterns": {
-            "hotfixes": 2,
-            "features": 12,
-            "structured": 18,
+            "hotfixes": 0,
+            "features": 9,
+            "structured": 20,
             "quickFixes": 0
           },
-          "avgMessageLength": 52.95,
-          "inferredRole": "production",
-          "prodScore": 6
+          "avgMessageLength": 50.55
         }
       },
       "operators": {
@@ -317,7 +315,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T20:51:17.852Z"
+      "discoveredAt": "2026-01-12T01:01:57.242Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -367,7 +365,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T20:51:17.879Z"
+      "discoveredAt": "2026-01-12T01:01:57.272Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5936,7 +5934,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-11T20:51:19.597Z"
+      "discoveredAt": "2026-01-12T01:01:59.513Z"
     }
   },
   "crossRepoSync": {},
@@ -5951,11 +5949,6 @@
         "branch": "NewDEX",
         "remote": "upstream",
         "confidence": 0.705
-      },
-      "asdf-brain": {
-        "branch": "main",
-        "remote": "origin",
-        "confidence": 0.06
       },
       "claude-mem": {
         "branch": "backup/4.3.0-borked-sad-face",

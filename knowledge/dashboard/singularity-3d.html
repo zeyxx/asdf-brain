@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYNIC Singularity - 25D Meta Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      overflow: hidden;
+      background: #050508;
+      font-family: 'Orbitron', monospace;
+      color: #d4a017;
+    }
+
+    #container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+
+    .hud {
+      position: fixed;
+      font-size: 11px;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .hud-tl { top: 20px; left: 20px; }
+    .hud-tr { top: 20px; right: 20px; text-align: right; }
+    .hud-bl { bottom: 20px; left: 20px; }
+    .hud-br { bottom: 20px; right: 20px; text-align: right; }
+
+    .hud h3 { font-size: 18px; margin-bottom: 8px; }
+    .hud .value { font-size: 24px; font-weight: bold; }
+    .hud .label { color: #666; font-size: 10px; }
+
+    .category-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 15px;
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      pointer-events: auto;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .category-item:hover { opacity: 1; }
+    .category-item.active { opacity: 1; }
+
+    .category-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    #detail-panel {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(5, 5, 8, 0.95);
+      border: 1px solid #d4a017;
+      border-radius: 8px;
+      padding: 20px;
+      width: 280px;
+      display: none;
+      z-index: 200;
+    }
+
+    #detail-panel.visible { display: block; }
+
+    #detail-panel h4 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+
+    .detail-row .label { color: #888; }
+
+    .harmony-list {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #333;
+    }
+
+    #instructions {
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 10px;
+      color: #555;
+      z-index: 100;
+    }
+
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      color: #d4a017;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+
+  <div class="hud hud-tl">
+    <h3>CYNIC SINGULARITY</h3>
+    <div class="label">25 Dimensions - Harmony Matrix</div>
+    <div class="category-legend">
+      <div class="category-item active" data-category="ALL">
+        <span class="category-dot" style="background: #d4a017;"></span>
+        <span>ALL (25)</span>
+      </div>
+      <div class="category-item" data-category="PRIMARY">
+        <span class="category-dot" style="background: #ffd700;"></span>
+        <span>PRIMARY (8)</span>
+      </div>
+      <div class="category-item" data-category="SECONDARY">
+        <span class="category-dot" style="background: #00aaff;"></span>
+        <span>SECONDARY (5)</span>
+      </div>
+      <div class="category-item" data-category="META">
+        <span class="category-dot" style="background: #aa00ff;"></span>
+        <span>META (3)</span>
+      </div>
+      <div class="category-item" data-category="HUMAN_LLM">
+        <span class="category-dot" style="background: #00ff88;"></span>
+        <span>HUMAN_LLM (8)</span>
+      </div>
+      <div class="category-item" data-category="DISCOVERY">
+        <span class="category-dot" style="background: #ff3366;"></span>
+        <span>DISCOVERY (1)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hud hud-tr">
+    <div class="label">GLOBAL SCORE</div>
+    <div class="value" id="global-score">--</div>
+    <div class="label" style="margin-top: 15px;">VERDICT</div>
+    <div class="value" id="verdict" style="font-size: 16px;">--</div>
+    <div class="label" style="margin-top: 15px;">CONFIDENCE</div>
+    <div id="confidence">--</div>
+    <div class="label" style="margin-top: 15px;">DOUBT (min 38.2%)</div>
+    <div id="doubt">--</div>
+  </div>
+
+  <div class="hud hud-bl">
+    <div class="label">HARMONY CONNECTIONS</div>
+    <div id="connections">--</div>
+    <div class="label" style="margin-top: 10px;">RESIDUALS</div>
+    <div id="residuals">--</div>
+  </div>
+
+  <div class="hud hud-br">
+    <div class="label">phi = 1.618</div>
+    <div class="label">max conf = 61.8%</div>
+    <div class="label">min doubt = 38.2%</div>
+  </div>
+
+  <div id="detail-panel">
+    <h4 id="detail-name">DIMENSION</h4>
+    <div class="detail-row">
+      <span class="label">Score</span>
+      <span id="detail-score">--</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Weight</span>
+      <span id="detail-weight">--</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Category</span>
+      <span id="detail-category">--</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">World</span>
+      <span id="detail-world">--</span>
+    </div>
+    <div class="harmony-list">
+      <div class="label">Top Harmonies</div>
+      <div id="harmony-items"></div>
+    </div>
+  </div>
+
+  <div id="instructions">
+    Drag/Scroll = navigate | 1-5 filter | 0 reset | J = judgment | H = hands
+  </div>
+
+  <div class="loading" id="loading">Loading CYNIC Singularity...</div>
+
+  <!-- Video for hand tracking -->
+  <video id="video" autoplay playsinline style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 160px;
+    border: 2px solid #d4a017;
+    border-radius: 8px;
+    opacity: 0.7;
+    transform: scaleX(-1);
+    z-index: 100;
+    display: none;
+  "></video>
+
+  <!-- Hand tracking HUD -->
+  <div id="hand-hud" style="
+    position: fixed;
+    bottom: 200px;
+    right: 20px;
+    font-size: 10px;
+    color: #d4a017;
+    z-index: 100;
+    text-align: right;
+    display: none;
+  ">
+    <div>LEFT: <span id="left-fingers">--</span></div>
+    <div>RIGHT: <span id="right-fingers">--</span></div>
+    <div style="margin-top: 5px; color: #666;">H = toggle hands</div>
+  </div>
+
+  <!-- MediaPipe Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const PHI = 1.618033988749895;
+    const PHI_SQ = PHI * PHI;
+    const PHI_CUBE = PHI_SQ * PHI;
+    const PHI_INV = 1 / PHI;
+
+    // Hand tracking state
+    let handTrackingEnabled = false;
+    let handsInstance = null;
+    let cameraInstance = null;
+    let leftFingers = 0, rightFingers = 0;
+    let leftHandPos = null, rightHandPos = null;
+    let lastLeftFingers = 0, lastRightFingers = 0;
+    let gestureDebounce = 0;
+
+    const DIMENSIONS = {
+      HARMONY:    { category: 'PRIMARY', weight: PHI_SQ, world: 'ATZILUT', color: 0xffd700 },
+      COHERENCE:  { category: 'PRIMARY', weight: PHI_SQ, world: 'ATZILUT', color: 0xffd700 },
+      TRUTH:      { category: 'PRIMARY', weight: PHI_SQ, world: 'BERIAH', color: 0xffd700 },
+      INTEGRITY:  { category: 'PRIMARY', weight: PHI_SQ, world: 'BERIAH', color: 0xffd700 },
+      ETHICS:     { category: 'PRIMARY', weight: PHI_SQ, world: 'YETZIRAH', color: 0xffd700 },
+      OPTIMISM:   { category: 'PRIMARY', weight: PHI_SQ, world: 'YETZIRAH', color: 0xffd700 },
+      ALIGNMENT:  { category: 'PRIMARY', weight: PHI_SQ, world: 'ASSIAH', color: 0xffd700 },
+      PROGRESS:   { category: 'PRIMARY', weight: PHI_SQ, world: 'ASSIAH', color: 0xffd700 },
+      SECURE:     { category: 'SECONDARY', weight: PHI, world: 'BERIAH', color: 0x00aaff },
+      PRIVATE:    { category: 'SECONDARY', weight: PHI, world: 'BERIAH', color: 0x00aaff },
+      SCALE:      { category: 'SECONDARY', weight: PHI, world: 'ASSIAH', color: 0x00aaff },
+      SIMPLIFY:   { category: 'SECONDARY', weight: PHI, world: 'YETZIRAH', color: 0x00aaff },
+      ENABLE:     { category: 'SECONDARY', weight: PHI, world: 'YETZIRAH', color: 0x00aaff },
+      SELF_AWARENESS:      { category: 'META', weight: 1.0, world: 'ATZILUT', color: 0xaa00ff },
+      LEARNING_RATE:       { category: 'META', weight: 1.0, world: 'BERIAH', color: 0xaa00ff },
+      SINGULARITY_DISTANCE: { category: 'META', weight: 1.0, world: 'ATZILUT', color: 0xaa00ff },
+      MEMORY:          { category: 'HUMAN_LLM', weight: PHI, world: 'BERIAH', color: 0x00ff88 },
+      TEACHING:        { category: 'HUMAN_LLM', weight: PHI, world: 'YETZIRAH', color: 0x00ff88 },
+      INTENT:          { category: 'HUMAN_LLM', weight: PHI, world: 'ATZILUT', color: 0x00ff88 },
+      TRUST:           { category: 'HUMAN_LLM', weight: PHI, world: 'BERIAH', color: 0x00ff88 },
+      PROACTIVITY:     { category: 'HUMAN_LLM', weight: PHI, world: 'ASSIAH', color: 0x00ff88 },
+      COMPLEMENTARITY: { category: 'HUMAN_LLM', weight: PHI, world: 'YETZIRAH', color: 0x00ff88 },
+      DELEGATION:      { category: 'HUMAN_LLM', weight: PHI, world: 'ASSIAH', color: 0x00ff88 },
+      BOUNDARIES:      { category: 'HUMAN_LLM', weight: PHI, world: 'BERIAH', color: 0x00ff88 },
+      DISCOVERY: { category: 'DISCOVERY', weight: PHI_CUBE, world: 'DAAT', color: 0xff3366 },
+    };
+
+    let currentScores = {
+      HARMONY: 75, COHERENCE: 80, TRUTH: 85, INTEGRITY: 70,
+      ETHICS: 100, OPTIMISM: 65, ALIGNMENT: 72, PROGRESS: 68,
+      SECURE: 78, PRIVATE: 82, SCALE: 60, SIMPLIFY: 75, ENABLE: 88,
+      SELF_AWARENESS: 55, LEARNING_RATE: 62, SINGULARITY_DISTANCE: 88,
+      MEMORY: 70, TEACHING: 65, INTENT: 80, TRUST: 75,
+      PROACTIVITY: 58, COMPLEMENTARITY: 72, DELEGATION: 68, BOUNDARIES: 85,
+      DISCOVERY: 50
+    };
+
+    let scene, camera, renderer, controls;
+    let dimensionMeshes = {};
+    let edgeLines = [];
+    let coreParticles;
+    let raycaster, mouse;
+    let selectedDimension = null;
+    let activeCategory = 'ALL';
+
+    function calculatePositions() {
+      const positions = {};
+      const dimNames = Object.keys(DIMENSIONS);
+
+      const groups = {
+        PRIMARY: dimNames.filter(d => DIMENSIONS[d].category === 'PRIMARY'),
+        SECONDARY: dimNames.filter(d => DIMENSIONS[d].category === 'SECONDARY'),
+        META: dimNames.filter(d => DIMENSIONS[d].category === 'META'),
+        HUMAN_LLM: dimNames.filter(d => DIMENSIONS[d].category === 'HUMAN_LLM'),
+        DISCOVERY: dimNames.filter(d => DIMENSIONS[d].category === 'DISCOVERY'),
+      };
+
+      groups.PRIMARY.forEach((name, i) => {
+        const angle = (i / groups.PRIMARY.length) * Math.PI * 2;
+        positions[name] = { x: Math.cos(angle) * 120, y: 0, z: Math.sin(angle) * 120 };
+      });
+
+      groups.SECONDARY.forEach((name, i) => {
+        const angle = (i / groups.SECONDARY.length) * Math.PI * 2 + 0.3;
+        positions[name] = { x: Math.cos(angle) * 180, y: -60, z: Math.sin(angle) * 180 };
+      });
+
+      groups.META.forEach((name, i) => {
+        const angle = (i / groups.META.length) * Math.PI * 2;
+        positions[name] = { x: Math.cos(angle) * 60, y: 120, z: Math.sin(angle) * 60 };
+      });
+
+      groups.HUMAN_LLM.forEach((name, i) => {
+        const angle = (i / groups.HUMAN_LLM.length) * Math.PI * 2 + 0.2;
+        positions[name] = { x: Math.cos(angle) * 150, y: -130, z: Math.sin(angle) * 150 };
+      });
+
+      groups.DISCOVERY.forEach((name) => {
+        positions[name] = { x: 0, y: 180, z: 0 };
+      });
+
+      return positions;
+    }
+
+    function init() {
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x050508);
+
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
+      camera.position.set(0, 100, 400);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      document.getElementById('container').appendChild(renderer.domElement);
+
+      controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.minDistance = 150;
+      controls.maxDistance = 800;
+
+      raycaster = new THREE.Raycaster();
+      mouse = new THREE.Vector2();
+
+      createDimensionNodes();
+      createHarmonyEdges();
+      createCoreSingularity();
+      createAmbientParticles();
+
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+      scene.add(ambientLight);
+
+      const pointLight = new THREE.PointLight(0xd4a017, 1, 500);
+      pointLight.position.set(0, 50, 0);
+      scene.add(pointLight);
+
+      window.addEventListener('resize', onResize);
+      renderer.domElement.addEventListener('click', onClick);
+      document.addEventListener('keydown', onKeyDown);
+
+      document.querySelectorAll('.category-item').forEach(item => {
+        item.addEventListener('click', () => {
+          document.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+          activeCategory = item.dataset.category;
+          updateVisibility();
+        });
+      });
+
+      updateHUD();
+      document.getElementById('loading').style.display = 'none';
+      animate();
+    }
+
+    function createDimensionNodes() {
+      const positions = calculatePositions();
+
+      for (const [name, config] of Object.entries(DIMENSIONS)) {
+        const pos = positions[name];
+        const score = currentScores[name] || 50;
+        const baseSize = 8 + (score / 100) * 12;
+        const size = baseSize * (config.weight / PHI);
+
+        const geometry = new THREE.SphereGeometry(size, 32, 32);
+        const material = new THREE.MeshPhongMaterial({
+          color: config.color,
+          emissive: config.color,
+          emissiveIntensity: 0.3 + (score / 100) * 0.4,
+          transparent: true,
+          opacity: 0.9,
+        });
+
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(pos.x, pos.y, pos.z);
+        mesh.userData = { name, config, score };
+
+        scene.add(mesh);
+        dimensionMeshes[name] = mesh;
+
+        createLabel(name, pos, config.color);
+      }
+    }
+
+    function createLabel(text, position, color) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 256;
+      canvas.height = 64;
+
+      ctx.fillStyle = 'transparent';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = '20px Orbitron';
+      ctx.fillStyle = '#' + color.toString(16).padStart(6, '0');
+      ctx.textAlign = 'center';
+      ctx.fillText(text.replace(/_/g, ' '), canvas.width / 2, canvas.height / 2 + 8);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.7 });
+      const sprite = new THREE.Sprite(material);
+
+      sprite.position.set(position.x, position.y + 25, position.z);
+      sprite.scale.set(50, 12, 1);
+      sprite.userData = { isLabel: true, parentDim: text };
+
+      scene.add(sprite);
+    }
+
+    function createHarmonyEdges() {
+      const positions = calculatePositions();
+
+      const edgeMaterial = new THREE.LineBasicMaterial({
+        color: 0x333333,
+        transparent: true,
+        opacity: 0.3,
+      });
+
+      for (const [name1, config1] of Object.entries(DIMENSIONS)) {
+        for (const [name2, config2] of Object.entries(DIMENSIONS)) {
+          if (name1 >= name2) continue;
+
+          const sameCategory = config1.category === config2.category;
+          const harmony = Math.random() * 0.5 + 0.3;
+
+          if (sameCategory && harmony > 0.4) {
+            const pos1 = positions[name1];
+            const pos2 = positions[name2];
+
+            const points = [
+              new THREE.Vector3(pos1.x, pos1.y, pos1.z),
+              new THREE.Vector3(pos2.x, pos2.y, pos2.z)
+            ];
+
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            const line = new THREE.Line(geometry, edgeMaterial.clone());
+            line.material.opacity = harmony * 0.5;
+            line.userData = { from: name1, to: name2, harmony };
+
+            scene.add(line);
+            edgeLines.push(line);
+          }
+        }
+      }
+
+      document.getElementById('connections').textContent = edgeLines.length.toString();
+    }
+
+    function createCoreSingularity() {
+      const coreGeometry = new THREE.SphereGeometry(30, 64, 64);
+      const coreMaterial = new THREE.MeshPhongMaterial({
+        color: 0xd4a017,
+        emissive: 0xd4a017,
+        emissiveIntensity: 0.5,
+        transparent: true,
+        opacity: 0.6,
+      });
+
+      const core = new THREE.Mesh(coreGeometry, coreMaterial);
+      core.position.set(0, 0, 0);
+      scene.add(core);
+
+      const wireGeometry = new THREE.IcosahedronGeometry(35, 1);
+      const wireMaterial = new THREE.MeshBasicMaterial({
+        color: 0xd4a017,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.3,
+      });
+
+      const wireframe = new THREE.Mesh(wireGeometry, wireMaterial);
+      scene.add(wireframe);
+
+      core.userData.wireframe = wireframe;
+      dimensionMeshes._core = core;
+    }
+
+    function createAmbientParticles() {
+      const count = 1000;
+      const positions = new Float32Array(count * 3);
+
+      for (let i = 0; i < count; i++) {
+        const i3 = i * 3;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const r = 100 + Math.random() * 200;
+
+        positions[i3] = r * Math.sin(phi) * Math.cos(theta);
+        positions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.5;
+        positions[i3 + 2] = r * Math.cos(phi);
+      }
+
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+      const material = new THREE.PointsMaterial({
+        color: 0xd4a017,
+        size: 1.5,
+        transparent: true,
+        opacity: 0.4,
+        blending: THREE.AdditiveBlending,
+      });
+
+      coreParticles = new THREE.Points(geometry, material);
+      scene.add(coreParticles);
+    }
+
+    function updateVisibility() {
+      for (const [name, mesh] of Object.entries(dimensionMeshes)) {
+        if (name === '_core') continue;
+
+        const config = DIMENSIONS[name];
+        if (!config) continue;
+
+        const visible = activeCategory === 'ALL' || config.category === activeCategory;
+        mesh.visible = visible;
+        mesh.material.opacity = visible ? 0.9 : 0.1;
+      }
+
+      edgeLines.forEach(line => {
+        const fromConfig = DIMENSIONS[line.userData.from];
+        const toConfig = DIMENSIONS[line.userData.to];
+
+        const visible = activeCategory === 'ALL' ||
+          fromConfig.category === activeCategory ||
+          toConfig.category === activeCategory;
+
+        line.visible = visible;
+      });
+    }
+
+    function updateHUD() {
+      let weightedLogSum = 0;
+      let totalWeight = 0;
+
+      for (const [name, config] of Object.entries(DIMENSIONS)) {
+        const score = currentScores[name] || 50;
+        weightedLogSum += config.weight * Math.log(Math.max(1, score));
+        totalWeight += config.weight;
+      }
+
+      const globalScore = Math.exp(weightedLogSum / totalWeight);
+      const confidence = Math.min(PHI_INV * 100, 61.8);
+      const doubt = 100 - confidence;
+
+      document.getElementById('global-score').textContent = Math.round(globalScore).toString();
+      document.getElementById('confidence').textContent = confidence.toFixed(1) + '%';
+      document.getElementById('doubt').textContent = doubt.toFixed(1) + '%';
+
+      let verdict = 'TRANSFORM';
+      if (globalScore >= 75) verdict = 'TRUST';
+      if (globalScore < 40) verdict = 'REJECT';
+
+      const verdictEl = document.getElementById('verdict');
+      verdictEl.textContent = verdict;
+      verdictEl.style.color = verdict === 'TRUST' ? '#00ff88' : verdict === 'REJECT' ? '#ff3366' : '#d4a017';
+
+      document.getElementById('residuals').textContent = '0';
+    }
+
+    function showDimensionDetail(name) {
+      const config = DIMENSIONS[name];
+      const score = currentScores[name] || 50;
+
+      document.getElementById('detail-name').textContent = name.replace(/_/g, ' ');
+      document.getElementById('detail-score').textContent = score + '/100';
+      document.getElementById('detail-weight').textContent = config.weight.toFixed(3);
+      document.getElementById('detail-category').textContent = config.category;
+      document.getElementById('detail-category').style.color = '#' + config.color.toString(16).padStart(6, '0');
+      document.getElementById('detail-world').textContent = config.world;
+
+      const harmonies = edgeLines
+        .filter(l => l.userData.from === name || l.userData.to === name)
+        .map(l => ({
+          other: l.userData.from === name ? l.userData.to : l.userData.from,
+          value: l.userData.harmony
+        }))
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 4);
+
+      const container = document.getElementById('harmony-items');
+      container.replaceChildren();
+
+      harmonies.forEach(h => {
+        const item = document.createElement('div');
+        item.style.cssText = 'display: flex; justify-content: space-between; font-size: 10px; color: #888; margin-bottom: 4px;';
+
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = h.other.replace(/_/g, ' ');
+
+        const barContainer = document.createElement('div');
+        barContainer.style.cssText = 'width: 60px; height: 4px; background: #222; border-radius: 2px; overflow: hidden;';
+
+        const barFill = document.createElement('div');
+        barFill.style.cssText = 'height: 100%; background: linear-gradient(90deg, #d4a017, #00ffff); width: ' + (h.value * 100) + '%;';
+
+        barContainer.appendChild(barFill);
+        item.appendChild(nameSpan);
+        item.appendChild(barContainer);
+        container.appendChild(item);
+      });
+
+      document.getElementById('detail-panel').classList.add('visible');
+    }
+
+    function onClick(event) {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+
+      const meshes = Object.values(dimensionMeshes).filter(m => m.userData.name);
+      const intersects = raycaster.intersectObjects(meshes);
+
+      if (intersects.length > 0) {
+        const name = intersects[0].object.userData.name;
+        if (name) {
+          selectedDimension = name;
+          showDimensionDetail(name);
+        }
+      } else {
+        document.getElementById('detail-panel').classList.remove('visible');
+        selectedDimension = null;
+      }
+    }
+
+    function onKeyDown(event) {
+      const key = event.key;
+
+      if (key >= '1' && key <= '5') {
+        const categories = ['PRIMARY', 'SECONDARY', 'META', 'HUMAN_LLM', 'DISCOVERY'];
+        activeCategory = categories[parseInt(key) - 1];
+
+        document.querySelectorAll('.category-item').forEach(item => {
+          item.classList.toggle('active', item.dataset.category === activeCategory);
+        });
+
+        updateVisibility();
+      }
+
+      if (key === '0' || key === 'Escape') {
+        activeCategory = 'ALL';
+        document.querySelectorAll('.category-item').forEach(item => {
+          item.classList.toggle('active', item.dataset.category === 'ALL');
+        });
+        updateVisibility();
+        document.getElementById('detail-panel').classList.remove('visible');
+      }
+    }
+
+    function onResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const time = Date.now() * 0.001;
+
+      if (dimensionMeshes._core) {
+        dimensionMeshes._core.rotation.y = time * 0.2;
+        if (dimensionMeshes._core.userData.wireframe) {
+          dimensionMeshes._core.userData.wireframe.rotation.y = -time * 0.15;
+          dimensionMeshes._core.userData.wireframe.rotation.x = time * 0.1;
+        }
+      }
+
+      for (const [name, mesh] of Object.entries(dimensionMeshes)) {
+        if (name === '_core' || !mesh.userData.score) continue;
+
+        const pulse = 1 + Math.sin(time * 2 + mesh.userData.score * 0.1) * 0.05;
+        mesh.scale.setScalar(pulse);
+
+        if (name === selectedDimension) {
+          mesh.material.emissiveIntensity = 0.5 + Math.sin(time * 4) * 0.3;
+        }
+      }
+
+      if (coreParticles) {
+        coreParticles.rotation.y = time * 0.05;
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    // =========================================================================
+    // LIVE DATA CONNECTION
+    // =========================================================================
+
+    const API_BASE = window.location.port === '8888' ? '' : 'http://localhost:8888';
+    const POLL_INTERVAL = Math.round(PHI_INV * 10000); // 6.18 seconds
+    let isLive = false;
+    let lastUpdate = null;
+
+    async function fetchCynicData() {
+      try {
+        const response = await fetch(API_BASE + '/api/cynic');
+        if (!response.ok) throw new Error('API error');
+        return await response.json();
+      } catch (e) {
+        console.warn('[Live] Fetch failed:', e.message);
+        return null;
+      }
+    }
+
+    async function triggerJudgment() {
+      try {
+        const response = await fetch(API_BASE + '/api/judge');
+        if (!response.ok) throw new Error('API error');
+        const data = await response.json();
+        console.log('[Live] Judgment triggered:', data.verdict);
+        return data;
+      } catch (e) {
+        console.warn('[Live] Judgment failed:', e.message);
+        return null;
+      }
+    }
+
+    function updateFromLiveData(data) {
+      if (!data) return;
+
+      isLive = true;
+      lastUpdate = new Date();
+
+      // Update scores
+      if (data.scores) {
+        currentScores = { ...currentScores, ...data.scores };
+
+        // Update mesh sizes based on new scores
+        for (const [name, mesh] of Object.entries(dimensionMeshes)) {
+          if (name === '_core' || !DIMENSIONS[name]) continue;
+
+          const score = currentScores[name] || 50;
+          const config = DIMENSIONS[name];
+          const baseSize = 8 + (score / 100) * 12;
+          const size = baseSize * (config.weight / PHI);
+
+          // Smooth transition
+          mesh.userData.targetScale = size / mesh.geometry.parameters.radius;
+          mesh.userData.score = score;
+          mesh.material.emissiveIntensity = 0.3 + (score / 100) * 0.4;
+        }
+      }
+
+      // Update HUD
+      if (data.globalScore !== undefined) {
+        document.getElementById('global-score').textContent = Math.round(data.globalScore).toString();
+      }
+
+      if (data.verdict) {
+        const verdictEl = document.getElementById('verdict');
+        // Handle verdict as object or string
+        const verdictText = typeof data.verdict === 'object' ? data.verdict.action : data.verdict;
+        verdictEl.textContent = verdictText;
+        verdictEl.style.color = verdictText === 'TRUST' ? '#00ff88' :
+                                verdictText === 'REJECT' ? '#ff3366' : '#d4a017';
+      }
+
+      if (data.confidence !== undefined) {
+        document.getElementById('confidence').textContent = data.confidence.toFixed(1) + '%';
+        document.getElementById('doubt').textContent = (100 - data.confidence).toFixed(1) + '%';
+      }
+
+      if (data.harmony) {
+        document.getElementById('connections').textContent = data.harmony.connections.toString();
+      }
+
+      if (data.residuals) {
+        document.getElementById('residuals').textContent = data.residuals.count.toString();
+      }
+
+      // Update live indicator
+      updateLiveIndicator();
+    }
+
+    function updateLiveIndicator() {
+      let indicator = document.getElementById('live-indicator');
+      if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'live-indicator';
+        indicator.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); font-size: 10px; z-index: 100;';
+        document.body.appendChild(indicator);
+      }
+
+      if (isLive) {
+        indicator.style.color = '#00ff88';
+        indicator.textContent = 'LIVE - Last update: ' + lastUpdate.toLocaleTimeString();
+      } else {
+        indicator.style.color = '#ff3366';
+        indicator.textContent = 'OFFLINE - Using sample data';
+      }
+    }
+
+    async function startLivePolling() {
+      // Initial fetch
+      const data = await fetchCynicData();
+      updateFromLiveData(data);
+
+      // Poll every POLL_INTERVAL (6.18s)
+      setInterval(async () => {
+        const data = await fetchCynicData();
+        updateFromLiveData(data);
+      }, POLL_INTERVAL);
+
+      console.log('[Live] Polling started, interval:', POLL_INTERVAL, 'ms');
+    }
+
+    // Keyboard shortcut to trigger judgment and toggle hands
+    document.addEventListener('keydown', async (e) => {
+      if (e.key === 'j' || e.key === 'J') {
+        console.log('[Live] Manual judgment triggered');
+        const result = await triggerJudgment();
+        if (result && result.scores) {
+          updateFromLiveData(result);
+        }
+      }
+
+      if (e.key === 'h' || e.key === 'H') {
+        toggleHandTracking();
+      }
+    });
+
+    // =========================================================================
+    // HAND TRACKING (MediaPipe Hands)
+    // =========================================================================
+
+    function countFingers(landmarks) {
+      const fingerTips = [8, 12, 16, 20];
+      const fingerPips = [6, 10, 14, 18];
+      let count = 0;
+
+      // Thumb (different logic - horizontal)
+      if (landmarks[4].x < landmarks[3].x) count++;
+
+      // Other fingers (vertical)
+      for (let i = 0; i < 4; i++) {
+        if (landmarks[fingerTips[i]].y < landmarks[fingerPips[i]].y) {
+          count++;
+        }
+      }
+
+      return count;
+    }
+
+    function onHandsResults(results) {
+      leftFingers = 0;
+      rightFingers = 0;
+      leftHandPos = null;
+      rightHandPos = null;
+
+      if (results.multiHandLandmarks && results.multiHandedness) {
+        for (let i = 0; i < results.multiHandLandmarks.length; i++) {
+          const landmarks = results.multiHandLandmarks[i];
+          const handedness = results.multiHandedness[i].label;
+          const fingers = countFingers(landmarks);
+
+          // Mirror: Right in camera = Left hand
+          if (handedness === 'Right') {
+            leftFingers = fingers;
+            leftHandPos = landmarks[9]; // Palm center
+            document.getElementById('left-fingers').textContent = fingers + ' fingers';
+          } else {
+            rightFingers = fingers;
+            rightHandPos = landmarks[9];
+            document.getElementById('right-fingers').textContent = fingers + ' fingers';
+          }
+        }
+      } else {
+        document.getElementById('left-fingers').textContent = '--';
+        document.getElementById('right-fingers').textContent = '--';
+      }
+
+      // Process gestures with debounce
+      processHandGestures();
+    }
+
+    function processHandGestures() {
+      const now = Date.now();
+      if (now - gestureDebounce < 500) return; // 500ms debounce
+
+      // Left hand: 1-5 fingers = filter categories
+      if (leftFingers !== lastLeftFingers && leftFingers >= 1 && leftFingers <= 5) {
+        const categories = ['PRIMARY', 'SECONDARY', 'META', 'HUMAN_LLM', 'DISCOVERY'];
+        activeCategory = categories[leftFingers - 1];
+
+        document.querySelectorAll('.category-item').forEach(item => {
+          item.classList.toggle('active', item.dataset.category === activeCategory);
+        });
+
+        updateVisibility();
+        gestureDebounce = now;
+        console.log('[Hands] Filter:', activeCategory);
+      }
+
+      // Right hand: 5 fingers = trigger judgment
+      if (rightFingers === 5 && lastRightFingers !== 5) {
+        console.log('[Hands] Judgment gesture detected');
+        triggerJudgment().then(result => {
+          if (result && result.scores) {
+            updateFromLiveData(result);
+          }
+        });
+        gestureDebounce = now;
+      }
+
+      // Both hands open (5+5) = reset to ALL
+      if (leftFingers === 5 && rightFingers === 5) {
+        activeCategory = 'ALL';
+        document.querySelectorAll('.category-item').forEach(item => {
+          item.classList.toggle('active', item.dataset.category === 'ALL');
+        });
+        updateVisibility();
+        gestureDebounce = now;
+      }
+
+      // Right hand position controls camera rotation
+      if (rightHandPos && controls) {
+        const rotX = (rightHandPos.x - 0.5) * Math.PI * 0.5;
+        const rotY = (rightHandPos.y - 0.5) * Math.PI * 0.5;
+        // Subtle influence on auto-rotation
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = rotX * 5;
+      } else if (controls) {
+        controls.autoRotate = false;
+      }
+
+      lastLeftFingers = leftFingers;
+      lastRightFingers = rightFingers;
+    }
+
+    async function initHandTracking() {
+      const video = document.getElementById('video');
+
+      handsInstance = new Hands({
+        locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+      });
+
+      handsInstance.setOptions({
+        maxNumHands: 2,
+        modelComplexity: 1,
+        minDetectionConfidence: 0.7,
+        minTrackingConfidence: 0.5,
+      });
+
+      handsInstance.onResults(onHandsResults);
+
+      cameraInstance = new Camera(video, {
+        onFrame: async () => {
+          await handsInstance.send({ image: video });
+        },
+        width: 640,
+        height: 480,
+      });
+
+      await cameraInstance.start();
+      console.log('[Hands] Camera started');
+    }
+
+    async function toggleHandTracking() {
+      handTrackingEnabled = !handTrackingEnabled;
+
+      const video = document.getElementById('video');
+      const handHud = document.getElementById('hand-hud');
+
+      if (handTrackingEnabled) {
+        video.style.display = 'block';
+        handHud.style.display = 'block';
+
+        if (!handsInstance) {
+          try {
+            await initHandTracking();
+            console.log('[Hands] Tracking enabled');
+          } catch (e) {
+            console.error('[Hands] Failed to init:', e.message);
+            handTrackingEnabled = false;
+            video.style.display = 'none';
+            handHud.style.display = 'none';
+            alert('Camera not available: ' + e.message);
+          }
+        } else {
+          await cameraInstance.start();
+        }
+      } else {
+        video.style.display = 'none';
+        handHud.style.display = 'none';
+        if (cameraInstance) {
+          cameraInstance.stop();
+        }
+        console.log('[Hands] Tracking disabled');
+      }
+    }
+
+    // =========================================================================
+
+    init();
+    startLivePolling();
+  </script>
+</body>
+</html>

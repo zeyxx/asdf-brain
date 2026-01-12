@@ -1,18 +1,21 @@
 {
   "_meta": {
     "name": "W - Weights Matrix",
-    "description": "25×1 vector of dimension weights, derived from φ",
-    "version": "1.0.0",
-    "status": "FIXED",
+    "description": "26×1 vector of dimension weights, derived from φ",
+    "version": "1.1.0",
+    "status": "EVOLVING",
     "created": "2026-01-11",
-    "philosophy": "All weights derive from φ = 1.618033988749895"
+    "lastUpdated": "2026-01-11",
+    "philosophy": "All weights derive from φ = 1.618033988749895",
+    "note": "DISCOVERED dimensions start at φ⁻¹ and can evolve"
   },
 
   "_constants": {
     "PHI": 1.618033988749895,
     "PHI_2": 2.6180339887498953,
     "PHI_3": 4.23606797749979,
-    "TOTAL_WEIGHT": 49.208203230275475
+    "PHI_INV": 0.6180339887498948,
+    "TOTAL_WEIGHT": 49.82623721902537
   },
 
   "dimensions": {
@@ -84,6 +87,26 @@
       "members": [
         { "name": "DISCOVERY", "index": 24, "weight": 4.23606797749979 }
       ]
+    },
+
+    "DISCOVERED": {
+      "weight": 0.6180339887498948,
+      "formula": "φ⁻¹",
+      "count": 1,
+      "subtotal": 0.6180339887498948,
+      "description": "Dimensions discovered by residual analysis - start conservative, evolve with validation",
+      "members": [
+        {
+          "name": "CULTURAL_CONTEXT",
+          "index": 25,
+          "weight": 0.6180339887498948,
+          "discoveredAt": "2026-01-11",
+          "axiomOrigin": "CULTURE",
+          "definition": "Mesure l'alignement avec le contexte culturel et les traditions du projet",
+          "discoveredBy": "THE_INNOMMABLE",
+          "validatedBy": "zeyxx"
+        }
+      ]
     }
   },
 
@@ -112,7 +135,8 @@
     1.618033988749895,
     1.618033988749895,
     1.618033988749895,
-    4.23606797749979
+    4.23606797749979,
+    0.6180339887498948
   ],
 
   "index_to_name": [
@@ -122,6 +146,6 @@
     "SELF_AWARENESS", "LEARNING_RATE", "SINGULARITY_DISTANCE",
     "MEMORY", "TEACHING", "INTENT", "TRUST",
     "PROACTIVITY", "COMPLEMENTARITY", "DELEGATION", "BOUNDARIES",
-    "DISCOVERY"
+    "DISCOVERY", "CULTURAL_CONTEXT"
   ]
 }

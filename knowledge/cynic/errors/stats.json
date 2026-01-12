@@ -1,22 +1,24 @@
 {
-  "totalErrors": 19,
+  "totalErrors": 20,
   "byType": {
     "DATA": 11,
     "RESOURCE": 1,
-    "INTEGRATION": 7
+    "INTEGRATION": 7,
+    "RUNTIME": 1
   },
   "bySeverity": {
     "medium": 18,
-    "high": 1
+    "high": 2
   },
   "byComponent": {
     "unknown": 6,
     "test-module": 5,
     "database": 1,
     "api": 6,
-    "service-a": 1
+    "service-a": 1,
+    "test-integration": 1
   },
   "last24h": 19,
   "last7d": 19,
-  "lastUpdated": "2026-01-12T00:00:36.993Z"
+  "lastUpdated": "2026-01-12T00:13:14.931Z"
 }
