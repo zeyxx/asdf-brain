@@ -140,7 +140,7 @@
     <div class="category-legend" id="legend-4mondes">
       <div class="category-item active" data-category="ALL">
         <span class="category-dot" style="background: #d4a017;"></span>
-        <span>ALL (25)</span>
+        <span>ALL (26)</span>
       </div>
       <div class="category-item" data-category="PRIMARY">
         <span class="category-dot" style="background: #ffd700;"></span>
@@ -161,6 +161,10 @@
       <div class="category-item" data-category="DISCOVERY">
         <span class="category-dot" style="background: #ff3366;"></span>
         <span>DISCOVERY (1)</span>
+      </div>
+      <div class="category-item" data-category="DISCOVERED">
+        <span class="category-dot" style="background: #ff8c00;"></span>
+        <span>DISCOVERED (1+)</span>
       </div>
     </div>
   </div>
@@ -334,6 +338,8 @@
       DELEGATION:      { category: 'HUMAN_LLM', weight: PHI, world: 'ASSIAH', color: 0x00ff88 },
       BOUNDARIES:      { category: 'HUMAN_LLM', weight: PHI, world: 'BERIAH', color: 0x00ff88 },
       DISCOVERY: { category: 'DISCOVERY', weight: PHI_CUBE, world: 'DAAT', color: 0xff3366 },
+      // DISCOVERED dimensions (from THE_INNOMMABLE)
+      CULTURAL_CONTEXT: { category: 'DISCOVERED', weight: PHI_INV, world: 'YETZIRAH', color: 0xff8c00, axiomOrigin: 'CULTURE' },
     };
 
     // 5×5 MATRIX dimensions (universal interface)
@@ -380,7 +386,9 @@
       SELF_AWARENESS: 55, LEARNING_RATE: 62, SINGULARITY_DISTANCE: 88,
       MEMORY: 70, TEACHING: 65, INTENT: 80, TRUST: 75,
       PROACTIVITY: 58, COMPLEMENTARITY: 72, DELEGATION: 68, BOUNDARIES: 85,
-      DISCOVERY: 50
+      DISCOVERY: 50,
+      // DISCOVERED dimensions
+      CULTURAL_CONTEXT: 45
     };
 
     let scene, camera, renderer, controls;
@@ -402,6 +410,7 @@
         META:      { radius: 60, y: 120, offset: 0 },
         HUMAN_LLM: { radius: 150, y: -130, offset: 0.2 },
         DISCOVERY: { radius: 0, y: 180, offset: 0 },
+        DISCOVERED: { radius: 90, y: 160, offset: Math.PI / 4 },  // Orbiting near DISCOVERY
       };
 
       const LAYOUT_5x5 = {
@@ -832,8 +841,8 @@
     function onKeyDown(event) {
       const key = event.key;
 
-      if (key >= '1' && key <= '5') {
-        const categories = ['PRIMARY', 'SECONDARY', 'META', 'HUMAN_LLM', 'DISCOVERY'];
+      if (key >= '1' && key <= '6') {
+        const categories = ['PRIMARY', 'SECONDARY', 'META', 'HUMAN_LLM', 'DISCOVERY', 'DISCOVERED'];
         activeCategory = categories[parseInt(key) - 1];
 
         document.querySelectorAll('.category-item').forEach(item => {
@@ -982,6 +991,11 @@
         document.getElementById('residuals').textContent = data.residuals.count.toString();
       }
 
+      // Process dynamically discovered dimensions from THE_INNOMMABLE
+      if (data.discovered_dimensions) {
+        processDiscoveredDimensions(data.discovered_dimensions);
+      }
+
       // Update live indicator
       updateLiveIndicator();
     }
@@ -1001,6 +1015,125 @@
       } else {
         indicator.style.color = '#ff3366';
         indicator.textContent = 'OFFLINE - Using sample data';
+      }
+    }
+
+    // =========================================================================
+    // DYNAMIC DISCOVERED DIMENSIONS
+    // =========================================================================
+
+    /**
+     * Dynamically adds a new DISCOVERED dimension to the 3D scene.
+     * Called when THE_INNOMMABLE discovers new dimensions via API.
+     * @param {string} name - Dimension name (e.g., 'CULTURAL_CONTEXT')
+     * @param {object} config - Dimension config { weight, world, axiomOrigin }
+     * @param {number} initialScore - Initial score (default 50)
+     */
+    function addDiscoveredDimension(name, config = {}, initialScore = 50) {
+      // Skip if already exists
+      if (DIMENSIONS[name]) {
+        console.log('[DISCOVERED] Dimension already exists:', name);
+        return false;
+      }
+
+      // Default config for DISCOVERED dimensions
+      const dimConfig = {
+        category: 'DISCOVERED',
+        weight: config.weight || PHI_INV,  // φ⁻¹ default for discovered
+        world: config.world || 'YETZIRAH',
+        color: 0xff8c00,  // Orange for DISCOVERED
+        axiomOrigin: config.axiomOrigin || 'UNKNOWN',
+        discoveredAt: new Date().toISOString()
+      };
+
+      // Add to DIMENSIONS
+      DIMENSIONS[name] = dimConfig;
+      DIMENSIONS_4MONDES[name] = dimConfig;
+
+      // Add to currentScores
+      currentScores[name] = initialScore;
+
+      // Calculate position for the new dimension
+      const positions = calculatePositions();
+      const pos = positions[name];
+
+      if (!pos) {
+        console.error('[DISCOVERED] Could not calculate position for:', name);
+        return false;
+      }
+
+      // Create the 3D mesh
+      const score = initialScore;
+      const baseSize = 8 + (score / 100) * 12;
+      const size = baseSize * (dimConfig.weight / PHI);
+
+      const geometry = new THREE.SphereGeometry(size, 32, 32);
+      const material = new THREE.MeshPhongMaterial({
+        color: dimConfig.color,
+        emissive: dimConfig.color,
+        emissiveIntensity: 0.3 + (score / 100) * 0.4,
+        transparent: true,
+        opacity: 0.9,
+      });
+
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(pos.x, pos.y, pos.z);
+      mesh.userData = { name, config: dimConfig, score };
+
+      scene.add(mesh);
+      dimensionMeshes[name] = mesh;
+
+      // Create label
+      createLabel(name, pos, dimConfig.color);
+
+      // Update legend count
+      updateDiscoveredCount();
+
+      console.log('[DISCOVERED] New dimension added:', name, dimConfig);
+      return true;
+    }
+
+    /**
+     * Updates the DISCOVERED count in the legend
+     */
+    function updateDiscoveredCount() {
+      const discoveredDims = Object.entries(DIMENSIONS)
+        .filter(([_, cfg]) => cfg.category === 'DISCOVERED');
+
+      const countEl = document.querySelector('[data-category="DISCOVERED"] span');
+      if (countEl) {
+        countEl.textContent = `DISCOVERED (${discoveredDims.length})`;
+      }
+
+      // Update ALL count
+      const allCount = Object.keys(DIMENSIONS).length;
+      const allEl = document.querySelector('[data-category="ALL"] span');
+      if (allEl) {
+        allEl.textContent = `ALL (${allCount})`;
+      }
+    }
+
+    /**
+     * Processes discovered_dimensions from API response
+     * @param {array} discoveredDimensions - Array of { name, weight, world, axiomOrigin, score }
+     */
+    function processDiscoveredDimensions(discoveredDimensions) {
+      if (!Array.isArray(discoveredDimensions)) return;
+
+      let added = 0;
+      for (const dim of discoveredDimensions) {
+        if (addDiscoveredDimension(dim.name, {
+          weight: dim.weight,
+          world: dim.world,
+          axiomOrigin: dim.axiomOrigin
+        }, dim.score || 50)) {
+          added++;
+        }
+      }
+
+      if (added > 0) {
+        console.log(`[DISCOVERED] Added ${added} new dimensions from API`);
+        updateVisibility();  // Refresh visibility based on active category
       }
     }
 
