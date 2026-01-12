@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYNIC Universe - φ-Guided 3D Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <!-- Info Panel -->
+  <div id="info-panel" class="panel top-left">
+    <h1>CYNIC UNIVERSE</h1>
+    <p class="phi">φ = 1.618... | Max: 61.8% | Burn: 38.2%</p>
+    <div id="selection-info">Click an object to inspect</div>
+  </div>
+
+  <!-- Stats Panel -->
+  <div id="stats-panel" class="panel top-right">
+    <div class="stat"><span class="label">Health:</span> <span id="stat-health" class="value">--</span></div>
+    <div class="stat"><span class="label">Nodes:</span> <span id="stat-nodes" class="value">--</span></div>
+    <div class="stat"><span class="label">Judgments:</span> <span id="stat-judgments" class="value">--</span></div>
+    <div class="stat"><span class="label">Burns:</span> <span id="stat-burns" class="value">--</span></div>
+  </div>
+
+  <!-- Layer Toggle -->
+  <div id="layer-panel" class="panel bottom-left">
+    <div class="panel-title">LAYERS</div>
+    <label><input type="checkbox" id="layer-singularity" checked> Singularity</label>
+    <label><input type="checkbox" id="layer-knowledge" checked> Knowledge (N-Score)</label>
+    <label><input type="checkbox" id="layer-dimensions" checked> Dimensions (24D)</label>
+    <label><input type="checkbox" id="layer-ecosystem" checked> Ecosystem</label>
+    <label><input type="checkbox" id="layer-activity" checked> Activity</label>
+  </div>
+
+  <!-- Controls -->
+  <div id="controls-panel" class="panel bottom-right">
+    <button id="btn-reset">Reset View</button>
+    <button id="btn-rotate">Toggle Rotation</button>
+    <button id="btn-refresh">Refresh Data</button>
+  </div>
+
+  <!-- Loading -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>Loading CYNIC Universe...</p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="scene.js"></script>
+  <script src="layers/singularity.js"></script>
+  <script src="layers/knowledge.js"></script>
+  <script src="layers/dimensions.js"></script>
+  <script src="layers/ecosystem.js"></script>
+  <script src="layers/activity.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

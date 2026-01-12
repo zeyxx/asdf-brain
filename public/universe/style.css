@@ -1,0 +1,141 @@
+/* CYNIC Universe - φ-Golden Theme */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --phi: 1.618033988749895;
+  --gold: #c9a227;
+  --gold-light: #ffd700;
+  --bg-dark: #0a0a0f;
+  --bg-panel: rgba(10, 10, 15, 0.9);
+  --keep: #44ff44;
+  --transform: #ffaa00;
+  --burn: #ff4444;
+}
+
+body {
+  background: var(--bg-dark);
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  color: var(--gold);
+}
+
+#canvas-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Panels */
+.panel {
+  position: absolute;
+  background: var(--bg-panel);
+  border: 1px solid var(--gold);
+  padding: 15px;
+  border-radius: 4px;
+  z-index: 100;
+  max-width: 280px;
+}
+
+.top-left { top: 20px; left: 20px; }
+.top-right { top: 20px; right: 20px; }
+.bottom-left { bottom: 20px; left: 20px; }
+.bottom-right { bottom: 20px; right: 20px; }
+
+.panel h1 {
+  font-size: 16px;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+
+.panel .phi {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.panel-title {
+  font-size: 12px;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Stats */
+.stat {
+  font-size: 12px;
+  margin: 4px 0;
+}
+.stat .label { color: #888; }
+.stat .value { color: var(--gold-light); }
+
+/* Layer toggles */
+#layer-panel label {
+  display: block;
+  font-size: 11px;
+  margin: 6px 0;
+  cursor: pointer;
+}
+#layer-panel input { margin-right: 8px; }
+
+/* Buttons */
+button {
+  background: #1a1a2e;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 8px 14px;
+  margin: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+button:hover {
+  background: var(--gold);
+  color: var(--bg-dark);
+}
+
+/* Selection info */
+#selection-info {
+  font-size: 11px;
+  padding: 8px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 2px;
+  min-height: 40px;
+}
+
+/* Loading */
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.5s;
+}
+#loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gold);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Verdict colors */
+.verdict-keep { color: var(--keep); }
+.verdict-transform { color: var(--transform); }
+.verdict-burn { color: var(--burn); }

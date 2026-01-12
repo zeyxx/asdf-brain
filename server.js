@@ -1043,17 +1043,8 @@ app.get('/cynic/realtime/types', (req, res) => {
 // New architecture running in parallel at /v2/singularity
 // =============================================================================
 
-let cynicV2 = null;
-const { mountCynicV2 } = require('./packages/@cynic/loader.cjs');
-
-// Mount v2 routes asynchronously (ES modules need dynamic import)
-(async () => {
-  try {
-    cynicV2 = await mountCynicV2(app, { basePath: '/v2/singularity' });
-  } catch (err) {
-    console.error('⚠️  Failed to mount CYNIC v2:', err.message);
-  }
-})();
+// NOTE: packages/@cynic was BURNed - incompatible structure with lib/cynic
+// CYNIC functionality is now in lib/cynic/* and loaded via handlers
 
 // =============================================================================
 // SINGULARITY 3D DASHBOARD
@@ -1894,6 +1885,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// CYNIC Universe - 3D Visualization Dashboard
+app.get('/universe', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'universe', 'index.html'));
+});
+
 // =============================================================================
 // START SERVER
 // =============================================================================
@@ -1905,6 +1901,7 @@ const server = app.listen(PORT, async () => {
   console.log('  CYNIC: φ qui se méfie de φ');
   console.log('═══════════════════════════════════════════════════════════');
   console.log(`  Dashboard:  http://localhost:${PORT}/`);
+  console.log(`  Universe:   http://localhost:${PORT}/universe`);
   console.log(`  CYNIC:      http://localhost:${PORT}/cynic`);
   console.log(`  CYNIC SSE:  http://localhost:${PORT}/cynic/sse`);
   console.log(`  CYNIC WS:   ws://localhost:${PORT}/ws/cynic`);
