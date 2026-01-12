@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-12T13:42:45.355Z",
+    "generated": "2026-01-12T13:46:57.753Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -584,7 +584,9 @@
           "./dashboard-handlers": 1,
           "./store-handlers": 1,
           "./git-handlers": 1,
+          "./nscore-handlers": 1,
           "../integration": 2,
+          "../cynic/n-score": 1,
           "../privacy": 4,
           "../merkle-proofs": 1,
           "./holdex-connector": 1,
@@ -621,8 +623,8 @@
           "express": 1
         },
         "node": {
-          "fs": 76,
-          "path": 76,
+          "fs": 77,
+          "path": 77,
           "crypto": 32,
           "readline": 10,
           "http": 3,
