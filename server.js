@@ -1175,6 +1175,47 @@ app.post('/singularity/api/innommable/test-anomaly', express.json(), async (req,
   }
 });
 
+// Singularity API - Discover Dimensions from Anomalies
+app.post('/singularity/api/innommable/discover', express.json(), async (req, res) => {
+  try {
+    const { residualDetector, innommable } = getSingularityModules();
+
+    // Check if ready to discover
+    if (!residualDetector.anomalyBuffer.shouldCluster()) {
+      return res.json({
+        discovered: false,
+        reason: 'Insufficient anomalies (need >= φ² = 3)',
+        bufferStats: residualDetector.anomalyBuffer.getStats(),
+      });
+    }
+
+    // Trigger dimension discovery
+    const discoveryResult = residualDetector.discoverDimensions();
+
+    // If dimensions proposed, send to THE_INNOMMABLE
+    if (discoveryResult.discovered && discoveryResult.candidates?.length > 0) {
+      for (const candidate of discoveryResult.candidates) {
+        innommable.propose({
+          name: candidate.proposedName || 'UNNAMED_DIMENSION',
+          source: 'residual_clustering',
+          features: candidate.features,
+          anomalyCount: candidate.anomalyCount,
+          confidence: candidate.confidence,
+          timestamp: new Date().toISOString(),
+        });
+      }
+    }
+
+    res.json({
+      ...discoveryResult,
+      innommableStatus: innommable.getStatus(),
+      pending: innommable.getPending(),
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Singularity API - Roadmap
 app.get('/singularity/api/roadmap', async (req, res) => {
   try {
