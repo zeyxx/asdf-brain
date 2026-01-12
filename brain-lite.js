@@ -1737,6 +1737,74 @@ const TOOLS = {
     },
     phi_weight: PHI_INV,
   },
+
+  // ===========================================================================
+  // N-SCORE - K-Score for Knowledge
+  // ===========================================================================
+
+  brain_nscore_calculate: {
+    pardes: 'R',
+    name: 'brain_nscore_calculate',
+    description: '[N-SCORE] Calculate N-Score for knowledge nodes. Formula: N = 100 × ∛(U × C × T). Like K-Score but for knowledge.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        nodeId: {
+          type: 'string',
+          description: 'Optional: Calculate for specific node ID. If omitted, scores all nodes.',
+        },
+        limit: {
+          type: 'number',
+          description: 'Max nodes to return (default: 20)',
+        },
+      },
+    },
+    phi_weight: PHI,
+  },
+
+  brain_nscore_health: {
+    pardes: 'R',
+    name: 'brain_nscore_health',
+    description: '[N-SCORE] Get knowledge graph health summary. Shows distribution of KEEP/TRANSFORM/BURN nodes.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+    },
+    phi_weight: PHI,
+  },
+
+  brain_nscore_burn_candidates: {
+    pardes: 'D',
+    name: 'brain_nscore_burn_candidates',
+    description: '[N-SCORE] Get nodes that should be burned (N < φ⁻² = 38.2%). Low utilization, isolated, or unverified.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          description: 'Max candidates to return (default: 10)',
+        },
+      },
+    },
+    phi_weight: PHI_SQ,
+    isWrite: false,
+  },
+
+  brain_nscore_transform_candidates: {
+    pardes: 'D',
+    name: 'brain_nscore_transform_candidates',
+    description: '[N-SCORE] Get nodes in TRANSFORM range (38.2% < N < 61.8%). Consider consolidating with similar nodes.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'number',
+          description: 'Max candidates to return (default: 10)',
+        },
+      },
+    },
+    phi_weight: PHI,
+  },
 };
 
 // =============================================================================
