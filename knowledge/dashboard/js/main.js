@@ -81,47 +81,91 @@ function onKeyDown(event) {
 
   // T = toggle Tree of Life view
   if (key === 't' || key === 'T') {
-    isTreeViewActive = TreeOfLife.toggleTreeView(state.scene, state.camera, state.controls);
+    const domElement = state.renderer?.domElement || document.body;
+    isTreeViewActive = TreeOfLife.toggleTreeView(state.scene, state.camera, state.controls, domElement);
     console.log(`[CYNIC] Tree of Life: ${isTreeViewActive ? 'ACTIVE' : 'HIDDEN'}`);
     // Update visibility of regular dimension meshes
     updateVisibility(!isTreeViewActive);
   }
 
-  // World view shortcuts (when tree is active)
+  // Tree view shortcuts (when tree is active)
   if (isTreeViewActive) {
-    // 7 = ATZILUT, 8 = BERIAH, 9 = YETZIRAH, - = ASSIAH
+    // View mode cycling
+    // M = cycle through view modes (TREE → WORLD → AXIOM → FLOW)
+    if (key === 'm' || key === 'M') {
+      const mode = TreeOfLife.cycleViewMode();
+      console.log(`[Tree] View mode: ${mode}`);
+    }
+
+    // W = cycle through worlds
+    if (key === 'w' || key === 'W') {
+      const world = TreeOfLife.cycleWorld();
+      console.log(`[Tree] Showing world: ${world}`);
+    }
+
+    // A = cycle through axioms
+    if (key === 'a' || key === 'A') {
+      const axiom = TreeOfLife.cycleAxiom();
+      console.log(`[Tree] Showing axiom: ${axiom}`);
+    }
+
+    // World quick access: 7 = ATZILUT, 8 = BERIAH, 9 = YETZIRAH, - = ASSIAH
     if (key === '7') {
-      TreeOfLife.highlightWorld('ATZILUT');
-      console.log('[Tree] Highlighting ATZILUT (PHI)');
+      TreeOfLife.showATZILUT();
+      console.log('[Tree] ATZILUT (PHI) - Émanation');
     }
     if (key === '8') {
-      TreeOfLife.highlightWorld('BERIAH');
-      console.log('[Tree] Highlighting BERIAH (VERIFY)');
+      TreeOfLife.showBERIAH();
+      console.log('[Tree] BERIAH (VERIFY) - Création');
     }
     if (key === '9') {
-      TreeOfLife.highlightWorld('YETZIRAH');
-      console.log('[Tree] Highlighting YETZIRAH (CULTURE)');
+      TreeOfLife.showYETZIRAH();
+      console.log('[Tree] YETZIRAH (CULTURE) - Formation');
     }
-    if (key === '-') {
-      TreeOfLife.highlightWorld('ASSIAH');
-      console.log('[Tree] Highlighting ASSIAH (BURN)');
+    if (key === '-' || key === '0') {
+      TreeOfLife.showASSIAH();
+      console.log('[Tree] ASSIAH (BURN) - Action');
     }
-    // F = Flow mode (animate energy)
+
+    // F = Flow mode (start continuous flow animation)
     if (key === 'f' || key === 'F') {
-      TreeOfLife.animateJudgmentFlow();
-      console.log('[Tree] Animating judgment flow');
+      TreeOfLife.startContinuousFlow();
+      console.log('[Tree] Continuous flow started (press R to stop)');
     }
-    // B = Burn flow
+
+    // B = Burn burst
     if (key === 'b' || key === 'B') {
-      TreeOfLife.animateBurnFlow();
-      TreeOfLife.onBurnEvent({});
-      console.log('[Tree] Animating burn flow');
+      TreeOfLife.triggerBurnBurst(1.5);
+      TreeOfLife.onBurnEvent({ amount: 1000 });
+      console.log('[Tree] Burn burst triggered');
     }
-    // R = Reset highlights
+
+    // R = Reset to full tree view
     if (key === 'r' || key === 'R') {
+      TreeOfLife.stopContinuousFlow();
       TreeOfLife.resetHighlights();
       TreeOfLife.resetPaths();
-      console.log('[Tree] Reset to full view');
+      console.log('[Tree] Reset to full tree view');
+    }
+
+    // Axiom quick access: Shift + number
+    if (event.shiftKey) {
+      if (key === '!') { // Shift+1
+        TreeOfLife.showPHI();
+        console.log('[Tree] Axiom: PHI (φ qui gouverne tout)');
+      }
+      if (key === '@') { // Shift+2
+        TreeOfLife.showVERIFY();
+        console.log('[Tree] Axiom: VERIFY (Don\'t trust, verify)');
+      }
+      if (key === '#') { // Shift+3
+        TreeOfLife.showCULTURE();
+        console.log('[Tree] Axiom: CULTURE (Culture is a moat)');
+      }
+      if (key === '$') { // Shift+4
+        TreeOfLife.showBURN();
+        console.log('[Tree] Axiom: BURN (Don\'t extract, burn)');
+      }
     }
   }
 }
@@ -228,7 +272,9 @@ function init() {
   console.log('[CYNIC] Level 3 VISUALISATION: Commits, Errors, Patterns active');
   console.log('[CYNIC] ROADMAP: Pyramid visualization active (left side)');
   console.log('[CYNIC] Level 4 ÉMERGENCE: THE_INNOMMABLE frontier active (outer ring)');
-  console.log('[CYNIC] 🌳 Tree of Life: Press T to toggle. 7-9/- for worlds, F flow, B burn, R reset');
+  console.log('[CYNIC] 🌳 Tree of Life: Press T to toggle');
+  console.log('[CYNIC] Tree shortcuts: M=mode, W=world, A=axiom, 7-9/0=worlds, Shift+1-4=axioms');
+  console.log('[CYNIC] Tree actions: F=flow, B=burn, R=reset, click sefirot/paths for info');
 }
 
 // Initialize when DOM is ready

@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-13T15:45:29.925Z",
+  "timestamp": "2026-01-13T18:55:55.873Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-13T15:45:29.340Z",
+      "timestamp": "2026-01-13T18:55:55.312Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -75,10 +75,10 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-13T15:45:29.582Z",
+      "timestamp": "2026-01-13T18:55:55.543Z",
       "branch": {
-        "branch": "main",
-        "modified": 4,
+        "branch": "test/web3-compat-swap",
+        "modified": 15,
         "untracked": 0,
         "staged": 1,
         "ahead": 0,
@@ -94,13 +94,15 @@
       "postMergeCommits": [],
       "drift": {
         "drift": 0,
+        "ahead": 0,
+        "behind": 0,
         "direction": "same"
       },
       "suggestions": [
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "4 modified, 1 staged",
+          "message": "15 modified, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -108,19 +110,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-13T15:45:29.925Z",
+      "timestamp": "2026-01-13T18:55:55.873Z",
       "branch": {
         "branch": "main",
-        "modified": 52,
-        "untracked": 29,
+        "modified": 8,
+        "untracked": 2,
         "staged": 1,
-        "ahead": 0,
+        "ahead": 6,
         "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "9b7b15e",
-          "subject": "test(cynic): Add vitest test framework and initial tests",
-          "relative": "6 hours ago"
+          "hash": "f616962",
+          "subject": "feat(dashboard): Tree of Life visualization - Phase 1 & 2",
+          "relative": "9 minutes ago"
         }
       },
       "pr": null,
@@ -132,6 +134,13 @@
       "suggestions": [
         {
           "priority": "medium",
+          "type": "push_needed",
+          "message": "6 unpushed commits on 'main'",
+          "action": "Push changes to remote",
+          "command": "git push"
+        },
+        {
+          "priority": "medium",
           "type": "pull_needed",
           "message": "1 commits behind remote",
           "action": "Pull latest changes",
@@ -140,7 +149,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "52 modified, 29 untracked, 1 staged",
+          "message": "8 modified, 2 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -148,6 +157,14 @@
     }
   },
   "suggestions": [
+    {
+      "priority": "medium",
+      "type": "push_needed",
+      "message": "6 unpushed commits on 'main'",
+      "action": "Push changes to remote",
+      "command": "git push",
+      "repo": "brain"
+    },
     {
       "priority": "medium",
       "type": "pull_needed",
@@ -166,14 +183,14 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "4 modified, 1 staged",
+      "message": "15 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "gasdf"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "52 modified, 29 untracked, 1 staged",
+      "message": "8 modified, 2 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
@@ -183,7 +200,7 @@
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 1,
+    "mediumPriority": 2,
     "lowPriority": 3,
     "cynicAlerts": 0
   }

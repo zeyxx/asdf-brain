@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-13T15:45:32.152Z",
+  "timestamp": "2026-01-13T18:55:58.000Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -12,7 +12,8 @@
       },
       "branches": {
         "local": [
-          "main"
+          "main",
+          "test/web3-compat-swap"
         ],
         "remote": {
           "origin": [
@@ -50,8 +51,8 @@
           ]
         }
       },
-      "currentBranch": "main",
-      "discoveredAt": "2026-01-13T15:45:29.950Z"
+      "currentBranch": "test/web3-compat-swap",
+      "discoveredAt": "2026-01-13T18:55:55.905Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -260,7 +261,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T15:45:30.094Z"
+      "discoveredAt": "2026-01-13T18:55:55.990Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -293,31 +294,29 @@
           "patterns": {
             "hotfixes": 0,
             "features": 4,
-            "structured": 19,
+            "structured": 20,
             "quickFixes": 0
           },
-          "avgMessageLength": 45.95,
-          "inferredRole": "production",
-          "prodScore": 1.0000000000000009
+          "avgMessageLength": 47.5
         }
       },
       "operators": {
         "origin/main": {
-          "primary": "asdf-brain[bot]",
+          "primary": "jeanterre552",
           "contributors": [
             {
-              "name": "asdf-brain[bot]",
-              "commits": 25
+              "name": "jeanterre552",
+              "commits": 28
             },
             {
-              "name": "jeanterre552",
-              "commits": 25
+              "name": "asdf-brain[bot]",
+              "commits": 22
             }
           ]
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T15:45:30.119Z"
+      "discoveredAt": "2026-01-13T18:55:56.021Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -367,7 +366,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T15:45:30.141Z"
+      "discoveredAt": "2026-01-13T18:55:56.040Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5936,7 +5935,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T15:45:31.635Z"
+      "discoveredAt": "2026-01-13T18:55:57.513Z"
     },
     "framework-kit": {
       "name": "framework-kit",
@@ -8971,7 +8970,7 @@
         }
       },
       "currentBranch": "feat/web3-compat-full-connection",
-      "discoveredAt": "2026-01-13T15:45:32.131Z"
+      "discoveredAt": "2026-01-13T18:55:57.982Z"
     },
     "solana-dev-skill": {
       "name": "solana-dev-skill",
@@ -9023,7 +9022,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T15:45:32.152Z"
+      "discoveredAt": "2026-01-13T18:55:58.000Z"
     }
   },
   "crossRepoSync": {},
@@ -9038,11 +9037,6 @@
         "branch": "NewDEX",
         "remote": "upstream",
         "confidence": 0.705
-      },
-      "asdf-brain": {
-        "branch": "main",
-        "remote": "origin",
-        "confidence": 0.010000000000000009
       },
       "claude-mem": {
         "branch": "backup/4.3.0-borked-sad-face",
@@ -9073,7 +9067,7 @@
         "upstream/main": "jeanterre552"
       },
       "asdf-brain": {
-        "origin/main": "asdf-brain[bot]"
+        "origin/main": "jeanterre552"
       },
       "asdf-manifesto": {
         "origin/main": "jeanterre552"

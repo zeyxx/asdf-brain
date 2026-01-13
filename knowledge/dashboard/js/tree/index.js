@@ -57,6 +57,34 @@ import {
   destroyVitals,
 } from './vitals.js';
 
+import {
+  initViews,
+  setView,
+  cycleViewMode,
+  cycleWorld,
+  cycleAxiom,
+  showTreeView as showTreeViewMode,
+  startContinuousFlow,
+  stopContinuousFlow,
+  getCurrentViewInfo,
+  showATZILUT,
+  showBERIAH,
+  showYETZIRAH,
+  showASSIAH,
+  showPHI,
+  showVERIFY,
+  showCULTURE,
+  showBURN,
+} from './views.js';
+
+import {
+  initNavigation,
+  destroyNavigation,
+  setInfoCallback,
+  enableNavigation,
+  disableNavigation,
+} from './navigation.js';
+
 // =============================================================================
 // STATE
 // =============================================================================
@@ -67,19 +95,24 @@ let heartbeatInterval = null;
 let sceneRef = null;
 let cameraRef = null;
 let controlsRef = null;
+let domElementRef = null;
 
 // Store original camera position for restoration
 let originalCameraPosition = null;
 let originalControlsTarget = null;
 
+// Info panel callback (set by main.js)
+let infoPanelCallback = null;
+
 // =============================================================================
 // INITIALIZE TREE VIEW
 // =============================================================================
 
-export function initTreeView(scene, camera, controls) {
+export function initTreeView(scene, camera, controls, domElement = null) {
   sceneRef = scene;
   cameraRef = camera;
   controlsRef = controls;
+  domElementRef = domElement || document.body;
 
   // Create all sefirot and paths
   createAllSefirot(scene);
@@ -90,6 +123,17 @@ export function initTreeView(scene, camera, controls) {
 
   // Add world background planes (subtle, for context)
   createWorldBackgrounds(scene);
+
+  // Initialize views module (camera animations)
+  initViews(camera, controls);
+
+  // Initialize navigation (click/hover handlers)
+  initNavigation(scene, camera, domElementRef);
+
+  // Set up info panel callback for navigation
+  if (infoPanelCallback) {
+    setInfoCallback(infoPanelCallback);
+  }
 
   // Position camera for optimal tree view
   positionCameraForTree();
@@ -119,12 +163,15 @@ export function initTreeView(scene, camera, controls) {
 export function destroyTreeView(scene) {
   stopHeartbeat();
   stopVitalsHeartbeat();
+  stopContinuousFlow();
   destroyVitals(scene);
+  destroyNavigation();
   clearAllSefirot(scene);
   clearAllPaths(scene);
   clearWorldBackgrounds(scene);
 
   isTreeViewActive = false;
+  domElementRef = null;
   console.log('🌳 Tree of Life destroyed');
 }
 
@@ -132,16 +179,24 @@ export function destroyTreeView(scene) {
 // TOGGLE TREE VIEW
 // =============================================================================
 
-export function toggleTreeView(scene, camera, controls) {
+export function toggleTreeView(scene, camera, controls, domElement = null) {
   if (isTreeViewActive) {
     destroyTreeView(scene);
     restoreCamera();
     return false;
   } else {
     saveCameraPosition();
-    initTreeView(scene, camera, controls);
+    initTreeView(scene, camera, controls, domElement);
     return true;
   }
+}
+
+/**
+ * Set callback for info panel updates (called when user clicks on sefirah/path)
+ */
+export function setTreeInfoCallback(callback) {
+  infoPanelCallback = callback;
+  setInfoCallback(callback);
 }
 
 // =============================================================================
@@ -456,12 +511,32 @@ export {
   updateVitals,
   updateHealthGlow,
   triggerBurnBurst,
+  // Re-export views functions
+  setView,
+  cycleViewMode,
+  cycleWorld,
+  cycleAxiom,
+  startContinuousFlow,
+  stopContinuousFlow,
+  getCurrentViewInfo,
+  showATZILUT,
+  showBERIAH,
+  showYETZIRAH,
+  showASSIAH,
+  showPHI,
+  showVERIFY,
+  showCULTURE,
+  showBURN,
+  // Re-export navigation functions
+  enableNavigation,
+  disableNavigation,
 };
 
 export default {
   initTreeView,
   destroyTreeView,
   toggleTreeView,
+  setTreeInfoCallback,
   setViewMode,
   updateTreeScores,
   onBurnEvent,
@@ -485,6 +560,27 @@ export default {
   resetPaths,
   animateJudgmentFlow,
   animateBurnFlow,
+  // Views (4 modes)
+  setView,
+  cycleViewMode,
+  cycleWorld,
+  cycleAxiom,
+  startContinuousFlow,
+  stopContinuousFlow,
+  getCurrentViewInfo,
+  // World shortcuts
+  showATZILUT,
+  showBERIAH,
+  showYETZIRAH,
+  showASSIAH,
+  // Axiom shortcuts
+  showPHI,
+  showVERIFY,
+  showCULTURE,
+  showBURN,
+  // Navigation
+  enableNavigation,
+  disableNavigation,
   // State getters
   isTreeViewActive: () => isTreeViewActive,
   currentViewMode: () => currentViewMode,
