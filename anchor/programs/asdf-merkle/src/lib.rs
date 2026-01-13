@@ -1,6 +1,8 @@
 use anchor_lang::prelude::*;
+use anchor_lang::solana_program::clock::Clock;
+use solana_sha256_hasher::hashv;
 
-declare_id!("ASDFMerk1eRootStorageProgram11111111111111");
+declare_id!("9VNpXtrW4gVqSuS8LHieN6R78WzU9d815DzrcdmqFDN");
 
 /// asdf-brain Merkle Root Storage Program
 ///
@@ -169,12 +171,9 @@ fn compute_merkle_root(leaf: [u8; 32], proof: &[[u8; 32]], leaf_index: u32) -> [
     current
 }
 
-/// Hash two nodes together (using keccak256 for compatibility with JS)
+/// Hash two nodes together (using sha256 for Solana compatibility)
 fn hash_pair(left: &[u8; 32], right: &[u8; 32]) -> [u8; 32] {
-    let mut combined = [0u8; 64];
-    combined[..32].copy_from_slice(left);
-    combined[32..].copy_from_slice(right);
-    anchor_lang::solana_program::keccak::hash(&combined).to_bytes()
+    hashv(&[left, right]).to_bytes()
 }
 
 // ============================================================================
@@ -212,7 +211,7 @@ pub struct StoreSnapshot<'info> {
         init,
         payer = authority,
         space = 8 + Snapshot::INIT_SPACE,
-        seeds = [b"snapshot", &week_number.to_le_bytes()],
+        seeds = [b"snapshot", week_number.to_le_bytes().as_ref()],
         bump
     )]
     pub snapshot: Account<'info, Snapshot>,

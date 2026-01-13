@@ -3,13 +3,13 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-asdf_merkle = "ASDFMerk1eRootStorageProgram11111111111111"
+asdf_merkle = "9VNpXtrW4gVqSuS8LHieN6R78WzU9d815DzrcdmqFDN"
 
 [programs.devnet]
-asdf_merkle = "ASDFMerk1eRootStorageProgram11111111111111"
+asdf_merkle = "9VNpXtrW4gVqSuS8LHieN6R78WzU9d815DzrcdmqFDN"
 
 [programs.mainnet]
-asdf_merkle = "ASDFMerk1eRootStorageProgram11111111111111"
+asdf_merkle = "9VNpXtrW4gVqSuS8LHieN6R78WzU9d815DzrcdmqFDN"
 
 [registry]
 url = "https://api.apr.dev"
