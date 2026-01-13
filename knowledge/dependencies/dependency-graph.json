@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-13T09:38:46.857Z",
+    "generated": "2026-01-13T09:43:57.842Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -515,6 +515,7 @@
           "./contributors": 1,
           "./cynic/data-adapter": 1,
           "./alerts": 3,
+          "./constants": 1,
           "./index": 4,
           "../../temporal": 12,
           "../realtime": 1,
@@ -618,6 +619,7 @@
           "./claude-mem-connector": 1,
           "./hasher": 1,
           "./ephemeral": 1,
+          "./cynic/axioms/constants": 1,
           "./lib/cynic": 3,
           "./lib/self-judge": 1,
           "../lib/temporal": 7,
