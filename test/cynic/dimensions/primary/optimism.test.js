@@ -197,13 +197,21 @@ describe('OPTIMISM Dimension', () => {
       expect(growthResult.score).toBeGreaterThan(fixedResult.score);
     });
 
-    it('should detect text-based growth indicators', async () => {
-      const observation = { content: 'we learn from failures, iterate quickly, and adapt to change' };
-      const result = await evaluator.evaluate(observation);
+    // NOTE: Text-based detection removed from growth mindset to avoid overlap
+    // with sentiment/constructive evaluators. Use explicit flags instead.
+    it('should use explicit flags, not text scanning (BURN: no duplication)', async () => {
+      // Text content alone should NOT boost growth mindset scores
+      const textOnly = { content: 'we learn from failures, iterate quickly, and adapt to change' };
+      // Explicit flags SHOULD boost scores
+      const flagged = { learns: true, iterates: true, adapts: true };
 
-      expect(result.details.growthMindset.traitScores.LEARNING).toBeGreaterThan(50);
-      expect(result.details.growthMindset.traitScores.ITERATION).toBeGreaterThan(50);
-      expect(result.details.growthMindset.traitScores.ADAPTABILITY).toBeGreaterThan(50);
+      const textResult = await evaluator.evaluate(textOnly);
+      const flagResult = await evaluator.evaluate(flagged);
+
+      // Text alone stays at baseline (50)
+      expect(textResult.details.growthMindset.traitScores.LEARNING).toBe(50);
+      // Explicit flags boost scores
+      expect(flagResult.details.growthMindset.traitScores.LEARNING).toBeGreaterThan(50);
     });
 
     it('should include growth mindset info in reasoning when GROWTH', async () => {
