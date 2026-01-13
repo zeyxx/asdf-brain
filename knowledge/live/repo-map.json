@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-13T01:21:09.013Z",
+  "timestamp": "2026-01-13T09:20:55.685Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T01:21:07.067Z"
+      "discoveredAt": "2026-01-13T09:20:53.936Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T01:21:07.144Z"
+      "discoveredAt": "2026-01-13T09:20:54.183Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -292,11 +292,13 @@
           ],
           "patterns": {
             "hotfixes": 0,
-            "features": 4,
-            "structured": 20,
+            "features": 3,
+            "structured": 19,
             "quickFixes": 0
           },
-          "avgMessageLength": 44.45
+          "avgMessageLength": 45.85,
+          "inferredRole": "production",
+          "prodScore": 1.0000000000000009
         }
       },
       "operators": {
@@ -305,17 +307,17 @@
           "contributors": [
             {
               "name": "asdf-brain[bot]",
-              "commits": 26
+              "commits": 25
             },
             {
               "name": "jeanterre552",
-              "commits": 24
+              "commits": 25
             }
           ]
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T01:21:07.168Z"
+      "discoveredAt": "2026-01-13T09:20:54.205Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -365,7 +367,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T01:21:07.192Z"
+      "discoveredAt": "2026-01-13T09:20:54.241Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5934,7 +5936,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T01:21:09.013Z"
+      "discoveredAt": "2026-01-13T09:20:55.685Z"
     }
   },
   "crossRepoSync": {},
@@ -5949,6 +5951,11 @@
         "branch": "NewDEX",
         "remote": "upstream",
         "confidence": 0.705
+      },
+      "asdf-brain": {
+        "branch": "main",
+        "remote": "origin",
+        "confidence": 0.010000000000000009
       },
       "claude-mem": {
         "branch": "backup/4.3.0-borked-sad-face",

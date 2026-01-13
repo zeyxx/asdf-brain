@@ -17,12 +17,13 @@
 │                         CYNIC EVOLUTION PHASES                           │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
-│  PHASE 1.5: CYNIC Refactoring                            [████████] 95% │
+│  PHASE 1.5: CYNIC Refactoring                            [██████████] ✅ │
 │  ├── 24/24 dimensions (PRIMARY/SECONDARY/META/HUMAN_LLM)            ✅  │
 │  ├── φ-constrained judgment (max 61.8%)                             ✅  │
 │  ├── Modular dimension evaluators                                   ✅  │
 │  ├── Live-matrix for real-time visibility                           ✅  │
-│  └── Remaining: state.js, World modules extraction                  ⏳  │
+│  ├── Observable persistent state (state.js)                         ✅  │
+│  └── 4 World modules (ATZILUT, BERIAH, YETZIRAH, ASSIAH)           ✅  │
 │                                                                          │
 │  PHASE 2: Autonomous Organism                            [██████████] ✅ │
 │  ├── Pulse daemon with φ intervals (61.8s)                          ✅  │
@@ -59,13 +60,14 @@
 
 ---
 
-## Phase 1.5: CYNIC Refactoring (95% Complete)
+## Phase 1.5: CYNIC Refactoring (Complete)
 
 ### What Was Done
 
 **Core Activation:**
 - `lib/cynic/core/activation.js` - States: SLEEP → AWAKE → JUDGING → LEARNING
-- `lib/cynic/core/index.js` - Lightweight orchestrator (~230 lines)
+- `lib/cynic/core/index.js` - Lightweight orchestrator (~400 lines)
+- `lib/cynic/core/state.js` - Observable persistent state with φ-decay
 
 **Modular Dimensions (24/24):**
 ```
@@ -82,14 +84,25 @@ lib/cynic/dimensions/
     └── memory, teaching, intent, trust, proactivity, complementarity, delegation, boundaries
 ```
 
+**4 Worlds (Kabbalah):**
+```
+lib/cynic/worlds/
+├── base.js     # World base class with coherence checking
+├── atzilut.js  # אצילות - PHI axiom - Divine Proportion
+├── beriah.js   # בריאה - VERIFY axiom - Verification
+├── yetzirah.js # יצירה - CULTURE axiom - Cultural Moat
+├── assiah.js   # עשייה - BURN axiom - Convergence
+└── index.js    # WorldManager + exports
+```
+
 **Live Matrix:**
 - `lib/cynic/matrices/live-matrix.js` - Real-time 24×24 visibility
 
-### What Remains
+### Completed Tasks
 
-- [ ] Create `lib/cynic/core/state.js` (observable persistent state)
-- [ ] Extract 4 World modules (ATZILUT, BERIAH, YETZIRAH, ASSIAH)
-- [ ] Integrate with /universe dashboard SSE
+- [x] Create `lib/cynic/core/state.js` (observable persistent state)
+- [x] Extract 4 World modules (ATZILUT, BERIAH, YETZIRAH, ASSIAH)
+- [x] Integrate with CYNICCore (worlds + state wired up)
 
 ---
 
