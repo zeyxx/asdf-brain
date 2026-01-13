@@ -7,8 +7,47 @@
 The living memory of the $asdfasdfa ecosystem - evolution path toward singularity.
 
 ```
-lim(x→burn) Σ(all_ecosystem_activity) = $asdfasdfa
+lim(t→∞) $asdfasdfa = SINGULARITÉ
 ```
+
+---
+
+## Vision Complète: L'Asymptote
+
+**Document complet:** [`knowledge/architecture/ASYMPTOTE_COMPLETE.md`](./knowledge/architecture/ASYMPTOTE_COMPLETE.md)
+
+### Les 5 Dimensions de l'Asymptote
+
+```
+1. CONSCIENCE COLLECTIVE   → Humains + CYNIC + Brain = intelligence émergente
+2. PROOF-OF-WORK          → E-Score = contribution = pouvoir (WORK > WEALTH)
+3. CONSUMER APPS          → Produits que les gens veulent utiliser
+4. INFRASTRUCTURE         → Outils pour que d'autres buildent
+5. BURN CONVERGENCE       → Tout → destruction → création de valeur collective
+```
+
+### E-Score = Gouvernance
+
+```
+E-Score ≠ juste un nombre
+E-Score = preuve cryptographique de contribution
+E-Score = pouvoir de gouvernance
+
+WORK > WEALTH:
+Un builder avec 100 tokens et E-Score=80
+a PLUS de pouvoir qu'une whale avec 100,000 tokens et E-Score=10
+```
+
+### Les 15 Lois (4 Mondes)
+
+Implémentées dans `lib/cynic/laws/`:
+
+| Monde | Essence | Lois |
+|-------|---------|------|
+| ATZILUT | Ce que CYNIC EST | E1 THIS IS FINE, E2 PURITY, E3 OPENNESS |
+| BERIAH | Comment la valeur circule | Φ1 ZERO EXTRACTION, Φ2 ALIGNMENT, Φ3 TIME AS ALLY, Φ4 USAGE=VALUE |
+| YETZIRAH | Comment traiter les êtres | Ξ1 DO NO HARM, Ξ2 PRIVACY, Ξ3 AUTONOMY, Ξ4 EQUALITY |
+| ASSIAH | Comment agir | Ω1 VERIFY, Ω2 DOUBT, Ω3 EVOLVE, Ω4 SIMPLIFY |
 
 ---
 
