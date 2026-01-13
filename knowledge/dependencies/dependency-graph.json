@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-13T16:45:57.508Z",
+    "generated": "2026-01-13T19:01:58.059Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -507,6 +507,7 @@
           "./state.js": 11,
           "./hud.js": 4,
           "./discovered.js": 1,
+          "./tree/index.js": 2,
           "./scene.js": 5,
           "./api.js": 2,
           "./hands.js": 1,
@@ -516,6 +517,7 @@
           "./roadmap.js": 1,
           "./innommable.js": 1,
           "./dimensions.js": 1,
+          "./config.js": 5,
           "../../lib/cynic": 1,
           "../../lib/cynic/matrix": 1,
           "../../lib/cynic/judge": 1,
@@ -544,6 +546,7 @@
           "./self-monitor": 2,
           "./metrics": 2,
           "./base": 7,
+          "../../axioms/constants": 2,
           "./dimensions/registry": 2,
           "./realtime": 2,
           "../llm/provider": 2,
@@ -702,7 +705,7 @@
           "chai": 1,
           "pg": 4,
           "dotenv": 4,
-          "three": 8,
+          "three": 14,
           "ws": 1,
           "better-sqlite3": 1,
           "@solana/web3.js": 1,
