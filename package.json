@@ -38,7 +38,11 @@
     "brain:solana:init": "node scripts/publish-to-solana.js --init",
     "brain:weekly": "node scripts/weekly-snapshot.js",
     "brain:weekly:dry": "node scripts/weekly-snapshot.js --dry-run",
-    "brain:all": "npm run brain:index && npm run brain:intent && npm run brain:patterns && npm run brain:errors && npm run brain:evolution && npm run brain:philosophy && npm run brain:deps && npm run brain:health && npm run brain:vision && npm run brain:merkle"
+    "brain:all": "npm run brain:index && npm run brain:intent && npm run brain:patterns && npm run brain:errors && npm run brain:evolution && npm run brain:philosophy && npm run brain:deps && npm run brain:health && npm run brain:vision && npm run brain:merkle",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "keywords": [
     "asdfasdfa",
@@ -57,5 +61,9 @@
     "ioredis": "^5.9.1",
     "js-sha3": "^0.9.3",
     "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.17",
+    "vitest": "^4.0.17"
   }
 }
