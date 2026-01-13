@@ -1,14 +1,14 @@
 {
   "alive": true,
-  "lastPulse": "2026-01-13T16:01:26.939Z",
+  "lastPulse": "2026-01-13T16:02:28.743Z",
   "lastPulseMs": 2,
-  "pulseCount": 289,
+  "pulseCount": 290,
   "currentHealth": 52,
-  "uptimeMs": 17799399,
+  "uptimeMs": 17861203,
   "subsystems": {
     "observation": {
       "registered": true,
-      "lastCheck": "2026-01-13T16:01:26.939Z",
+      "lastCheck": "2026-01-13T16:02:28.743Z",
       "healthy": true,
       "details": {
         "residuals": {
@@ -27,7 +27,7 @@
     },
     "dashboard": {
       "registered": true,
-      "lastCheck": "2026-01-13T16:01:26.939Z",
+      "lastCheck": "2026-01-13T16:02:28.743Z",
       "healthy": true,
       "details": {
         "path": "/workspaces/asdf-brain/knowledge/dashboard/dimensions.html",
@@ -43,13 +43,13 @@
             "philosophy": "Cache should serve φ⁻¹ of requests"
           }
         },
-        "refreshedAt": "2026-01-13T16:01:26.940Z"
+        "refreshedAt": "2026-01-13T16:02:28.744Z"
       },
       "consecutiveFailures": 0
     },
     "filesystem": {
       "registered": true,
-      "lastCheck": "2026-01-13T16:01:26.939Z",
+      "lastCheck": "2026-01-13T16:02:28.743Z",
       "healthy": true,
       "details": {
         "path": "/workspaces/asdf-brain/knowledge",
@@ -60,29 +60,29 @@
     },
     "memory": {
       "registered": true,
-      "lastCheck": "2026-01-13T16:01:26.939Z",
+      "lastCheck": "2026-01-13T16:02:28.743Z",
       "healthy": false,
       "details": {
         "heapUsedMB": 12,
         "heapTotalMB": 14,
-        "heapPercent": 92,
+        "heapPercent": 88,
         "rssMB": 69
       },
-      "consecutiveFailures": 15
+      "consecutiveFailures": 16
     },
     "eventLoop": {
       "registered": true,
-      "lastCheck": "2026-01-13T16:01:26.939Z",
+      "lastCheck": "2026-01-13T16:02:28.743Z",
       "healthy": true,
       "details": {
-        "latencyMs": 0,
+        "latencyMs": 1,
         "status": "excellent"
       },
       "consecutiveFailures": 0
     },
     "knowledge": {
       "registered": true,
-      "lastCheck": "2026-01-13T16:01:26.939Z",
+      "lastCheck": "2026-01-13T16:02:28.743Z",
       "healthy": true,
       "details": {
         "fileCount": 7,
@@ -98,18 +98,10 @@
     "totalEvents": 0,
     "totalErrors": 0,
     "avgResponseMs": 0,
-    "uptimeMs": 17799399
+    "uptimeMs": 17861203
   },
-  "anomalyCount": 278,
+  "anomalyCount": 279,
   "recentAnomalies": [
-    {
-      "type": "subsystem_degraded",
-      "subsystem": "memory",
-      "failures": 7,
-      "severity": "critical",
-      "timestamp": "2026-01-13T15:53:12.513Z",
-      "pulseId": 281
-    },
     {
       "type": "subsystem_degraded",
       "subsystem": "memory",
@@ -182,6 +174,14 @@
       "severity": "critical",
       "timestamp": "2026-01-13T16:01:26.939Z",
       "pulseId": 289
+    },
+    {
+      "type": "subsystem_degraded",
+      "subsystem": "memory",
+      "failures": 16,
+      "severity": "critical",
+      "timestamp": "2026-01-13T16:02:28.743Z",
+      "pulseId": 290
     }
   ]
 }
