@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-13T21:49:41.620Z",
+    "generated": "2026-01-13T22:05:27.423Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -682,6 +682,7 @@
           "../../../../lib/cynic/dimensions/secondary/scale": 1,
           "../../../../lib/cynic/dimensions/secondary/secure": 1,
           "../../../../lib/cynic/dimensions/secondary/simplify": 1,
+          "../../lib/cynic/identity.js": 1,
           "../../../lib/cynic/judge/evidence": 1,
           "../../../lib/cynic/judge/index": 1,
           "../../../lib/cynic/laws/checker": 1,
@@ -710,11 +711,11 @@
           "better-sqlite3": 1,
           "@solana/web3.js": 1,
           "express": 1,
-          "vitest": 39
+          "vitest": 43
         },
         "node": {
-          "fs": 80,
-          "path": 81,
+          "fs": 83,
+          "path": 84,
           "crypto": 33,
           "readline": 10,
           "http": 4,
