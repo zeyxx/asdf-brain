@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/plugin.json",
   "name": "asdf-brain",
   "displayName": "ASDF Brain - CYNIC κυνικός",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "CYNIC the skeptical dog (κυνικός). Loyal to truth, not to comfort. Culture is a moat.",
   "author": "zeyxx",
   "repository": "https://github.com/zeyxx/asdf-brain",
@@ -37,6 +37,29 @@
       "name": "health",
       "path": "skills/health.md",
       "description": "🐕 CYNIC health - system status dashboard (pulse, anomalies, subsystems)"
+    }
+  ],
+
+  "agents": [
+    {
+      "name": "cynic-observer",
+      "path": "agents/cynic-observer.md",
+      "description": "🐕 Silent observer - watches tool usage, detects patterns, never blocks"
+    },
+    {
+      "name": "cynic-digester",
+      "path": "agents/cynic-digester.md",
+      "description": "🐕 Conversation digester - extracts knowledge at end of session"
+    },
+    {
+      "name": "cynic-guardian",
+      "path": "agents/cynic-guardian.md",
+      "description": "🐕 Guardian - protects against risky operations, watchdog for danger"
+    },
+    {
+      "name": "cynic-mentor",
+      "path": "agents/cynic-mentor.md",
+      "description": "🐕 Proactive mentor - suggests improvements based on patterns"
     }
   ],
 
