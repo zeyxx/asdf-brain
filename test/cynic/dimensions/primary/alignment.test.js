@@ -79,4 +79,107 @@ describe('ALIGNMENT Dimension', () => {
       expect(evaluator.passes(40)).toBe(false);
     });
   });
+
+  describe('Four Axioms Evaluation', () => {
+    it('should include axioms in details', async () => {
+      const observation = { content: 'test' };
+      const result = await evaluator.evaluate(observation);
+      expect(result.details).toHaveProperty('axioms');
+      expect(result.details.axioms).toHaveProperty('axiomScores');
+      expect(result.details.axioms).toHaveProperty('summary');
+    });
+
+    it('should reward PHI alignment', async () => {
+      const phiAligned = { phiAligned: true, harmonious: true, balanced: true };
+      const chaotic = { chaotic: true, unbalanced: true };
+
+      const alignedResult = await evaluator.evaluate(phiAligned);
+      const chaoticResult = await evaluator.evaluate(chaotic);
+
+      expect(alignedResult.details.axioms.axiomScores.PHI).toBeGreaterThan(
+        chaoticResult.details.axioms.axiomScores.PHI
+      );
+    });
+
+    it('should reward VERIFY alignment', async () => {
+      const verified = { verified: true, transparent: true, auditable: true };
+      const opaque = { opaque: true, unverifiable: true };
+
+      const verifiedResult = await evaluator.evaluate(verified);
+      const opaqueResult = await evaluator.evaluate(opaque);
+
+      expect(verifiedResult.details.axioms.axiomScores.VERIFY).toBeGreaterThan(
+        opaqueResult.details.axioms.axiomScores.VERIFY
+      );
+    });
+
+    it('should reward CULTURE alignment', async () => {
+      const cultural = { cultureAligned: true, communityDriven: true, memeticValue: true };
+      const antiCommunity = { antiCommunity: true, extractive: true };
+
+      const culturalResult = await evaluator.evaluate(cultural);
+      const antiResult = await evaluator.evaluate(antiCommunity);
+
+      expect(culturalResult.details.axioms.axiomScores.CULTURE).toBeGreaterThan(
+        antiResult.details.axioms.axiomScores.CULTURE
+      );
+    });
+
+    it('should reward BURN alignment', async () => {
+      const burning = { burns: true, deflationary: true, contributes: true };
+      const extracting = { extracts: true, rentSeeking: true };
+
+      const burnResult = await evaluator.evaluate(burning);
+      const extractResult = await evaluator.evaluate(extracting);
+
+      expect(burnResult.details.axioms.axiomScores.BURN).toBeGreaterThan(
+        extractResult.details.axioms.axiomScores.BURN
+      );
+    });
+
+    it('should count aligned and violated axioms', async () => {
+      const fullyAligned = {
+        phiAligned: true,
+        verified: true,
+        cultureAligned: true,
+        burns: true,
+      };
+
+      const result = await evaluator.evaluate(fullyAligned);
+
+      expect(result.details.axioms.summary.total).toBe(4);
+      expect(result.details.axioms.summary.aligned).toBeGreaterThanOrEqual(3);
+    });
+
+    it('should give higher overall score for axiom-aligned observations', async () => {
+      const aligned = {
+        phiAligned: true,
+        verified: true,
+        cultureAligned: true,
+        burns: true,
+      };
+      const misaligned = {
+        chaotic: true,
+        opaque: true,
+        antiCommunity: true,
+        extracts: true,
+      };
+
+      const alignedResult = await evaluator.evaluate(aligned);
+      const misalignedResult = await evaluator.evaluate(misaligned);
+
+      expect(alignedResult.score).toBeGreaterThan(misalignedResult.score);
+    });
+
+    it('should include axiom info in reasoning when violated', async () => {
+      const violated = {
+        chaotic: true,
+        opaque: true,
+        extracts: true,
+      };
+
+      const result = await evaluator.evaluate(violated);
+      expect(result.reasoning).toContain('axiom');
+    });
+  });
 });
