@@ -24,13 +24,16 @@ WORK > WEALTH
 
 ---
 
-## The 3 Canonical Documents
+## The 6 Canonical Documents
 
 | Document | Lines | Description |
 |----------|-------|-------------|
 | **[VISION.md](./VISION.md)** | ~280 | Philosophy, φ, Scores, Asymptote |
 | **[ARCHITECTURE.md](./ARCHITECTURE.md)** | ~420 | 25 Dimensions, 9 Subagents, Integration |
 | **[OPERATION.md](./OPERATION.md)** | ~450 | 15 Laws, 50+ MCP Tools, Workflow |
+| **[ROADMAP.md](./ROADMAP.md)** | ~350 | Phases 1.5-6, Current State, Next Steps |
+| **[ROLES.md](./ROLES.md)** | ~400 | L1-L5 Taxonomy, User Types, E-Score |
+| **[INFRASTRUCTURE.md](./INFRASTRUCTURE.md)** | ~500 | Multi-node, Blockchain, Render → Distributed |
 
 ### How to Navigate
 
@@ -38,36 +41,73 @@ WORK > WEALTH
 |------|------|
 | Understand the vision | VISION.md |
 | Understand the technical architecture | ARCHITECTURE.md |
-| Use the system | OPERATION.md |
-| Contribute | OPERATION.md → MCP Tools |
+| Use the system (tools, workflows) | OPERATION.md |
+| See what's done / what's next | ROADMAP.md |
+| Understand roles and E-Score | ROLES.md |
+| Understand infrastructure evolution | INFRASTRUCTURE.md |
 
 ---
 
 ## Conceptual Map
 
 ```
-                    ┌─────────────────────────┐
-                    │       VISION.md         │
-                    │                         │
-                    │  • φ and 4 Axioms       │
-                    │  • 5 Asymptote Dims     │
-                    │  • Score Ecosystem      │
-                    │  • WORK > WEALTH        │
-                    └───────────┬─────────────┘
+                        ┌─────────────────────────┐
+                        │       VISION.md         │
+                        │                         │
+                        │  • φ and 4 Axioms       │
+                        │  • 5 Asymptote Dims     │
+                        │  • Score Ecosystem      │
+                        │  • WORK > WEALTH        │
+                        └───────────┬─────────────┘
+                                    │
+              ┌─────────────────────┴─────────────────────┐
+              │                                           │
+              ▼                                           ▼
+┌─────────────────────────┐             ┌─────────────────────────┐
+│    ARCHITECTURE.md      │             │     OPERATION.md        │
+│                         │             │                         │
+│  • 4 Worlds             │             │  • 15 Laws              │
+│  • 9 Subagents          │             │  • 50+ MCP Tools        │
+│  • 25 Dimensions        │             │  • Workflows            │
+│  • Integration Map      │             │  • What CYNIC is NOT    │
+└───────────┬─────────────┘             └───────────┬─────────────┘
+            │                                       │
+            ▼                                       ▼
+┌─────────────────────────┐             ┌─────────────────────────┐
+│    ROADMAP.md           │             │     ROLES.md            │
+│                         │             │                         │
+│  • Phase 1.5-6          │             │  • L1-L5 Layers         │
+│  • Current State        │             │  • User Types           │
+│  • Next Steps           │             │  • E-Score Dimensions   │
+│  • Alignment Check      │             │  • Progression Paths    │
+└───────────┬─────────────┘             └───────────┬─────────────┘
+            │                                       │
+            └───────────────────┬───────────────────┘
                                 │
-              ┌─────────────────┴─────────────────┐
-              │                                   │
-              ▼                                   ▼
-┌─────────────────────────┐         ┌─────────────────────────┐
-│    ARCHITECTURE.md      │         │     OPERATION.md        │
-│                         │         │                         │
-│  • 4 Worlds             │         │  • 15 Laws              │
-│  • 9 Subagents          │         │  • 50+ MCP Tools        │
-│  • 25 Dimensions        │         │  • Workflows            │
-│  • Integration Map      │         │  • What CYNIC is NOT    │
-│  • File Structure       │         │  • Implementation       │
-└─────────────────────────┘         └─────────────────────────┘
+                                ▼
+                  ┌─────────────────────────┐
+                  │   INFRASTRUCTURE.md     │
+                  │                         │
+                  │  • Current (Render)     │
+                  │  • V1 Hub + MCP         │
+                  │  • V2 Federated         │
+                  │  • V3 Decentralized     │
+                  │  • Solana Integration   │
+                  └─────────────────────────┘
 ```
+
+---
+
+## Reference Documents
+
+Complementary docs for specific aspects (kept in main folder):
+
+| Document | Lines | Description |
+|----------|-------|-------------|
+| [CYNIC_FULL_PICTURE_2026-01-12.md](./CYNIC_FULL_PICTURE_2026-01-12.md) | 596 | Snapshot of CYNIC state on Jan 12 |
+| [Q-SCORE-CONTEXTUEL-ROADMAP.md](./Q-SCORE-CONTEXTUEL-ROADMAP.md) | 639 | Q-Score details |
+| [META-DIMENSION-ANALYSIS.md](./META-DIMENSION-ANALYSIS.md) | 894 | Meta-dimensions analysis |
+| [EMERGENCE_PIPELINE.md](./EMERGENCE_PIPELINE.md) | 177 | Dimension discovery pipeline |
 
 ---
 
@@ -78,28 +118,15 @@ WORK > WEALTH
 | VISION.md | `lib/contributors.js` (E-Score) |
 | ARCHITECTURE.md | `lib/cynic/` (all subagents) |
 | OPERATION.md | `lib/cynic/laws/`, `brain-lite.js` (MCP tools) |
-
----
-
-## Reference Documents
-
-Complementary docs for specific aspects:
-
-| Document | Lines | Description |
-|----------|-------|-------------|
-| [CYNIC_FULL_PICTURE_2026-01-12.md](./CYNIC_FULL_PICTURE_2026-01-12.md) | 596 | Snapshot of CYNIC state on Jan 12 |
-| [Q-SCORE-CONTEXTUEL-ROADMAP.md](./Q-SCORE-CONTEXTUEL-ROADMAP.md) | 639 | Q-Score details |
-| [META-DIMENSION-ANALYSIS.md](./META-DIMENSION-ANALYSIS.md) | 894 | Meta-dimensions analysis |
-| [MULTINODE-BLOCKCHAIN-ROADMAP.md](./MULTINODE-BLOCKCHAIN-ROADMAP.md) | 502 | Multi-node & blockchain roadmap |
-| [ROLE_TAXONOMY.md](./ROLE_TAXONOMY.md) | 670 | Role taxonomy |
-| [DAAT_ARCHITECTURE.md](./DAAT_ARCHITECTURE.md) | 352 | Daat levels architecture |
-| [EMERGENCE_PIPELINE.md](./EMERGENCE_PIPELINE.md) | 177 | Dimension discovery pipeline |
+| ROADMAP.md | `lib/cynic/core/`, `lib/cynic/dimensions/` |
+| ROLES.md | `lib/contributors.js` (E-Score dimensions) |
+| INFRASTRUCTURE.md | `anchor/`, `lib/cynic/sync.js`, `mcp-server.js` |
 
 ---
 
 ## Archived Documents
 
-In `_archive/` - superseded by the 3 canonical docs:
+In `_archive/` - superseded by the 6 canonical docs:
 
 | Document | Superseded by |
 |----------|---------------|
@@ -107,9 +134,27 @@ In `_archive/` - superseded by the 3 canonical docs:
 | CYNIC_COMPLETE_MATRIX.md | ARCHITECTURE.md |
 | CYNIC_LAWS_MATRIX.md | OPERATION.md |
 | CYNIC_SINGULARITY_COMPLETE.md | VISION.md + ARCHITECTURE.md |
-| SINGULARITY_ROADMAP.md | VISION.md |
+| SINGULARITY_ROADMAP.md | ROADMAP.md |
 | SINGULARITY_MATRIX.md | VISION.md |
-| + 10 more historical docs | See _archive/ |
+| ROLE_TAXONOMY.md | ROLES.md |
+| MULTINODE-BLOCKCHAIN-ROADMAP.md | INFRASTRUCTURE.md |
+| CYNIC_ESSENCE.md | VISION.md + ARCHITECTURE.md |
+| DAAT_ARCHITECTURE.md | ARCHITECTURE.md |
+| SINGULARITY_API.md | OPERATION.md |
+| ROADMAP_OLD.md | ROADMAP.md |
+
+---
+
+## Document Ownership
+
+| Document | Primary Owner | Last Updated |
+|----------|---------------|--------------|
+| VISION.md | zeyxx | 2026-01-13 |
+| ARCHITECTURE.md | zeyxx | 2026-01-13 |
+| OPERATION.md | zeyxx | 2026-01-13 |
+| ROADMAP.md | zeyxx | 2026-01-13 |
+| ROLES.md | zeyxx | 2026-01-13 |
+| INFRASTRUCTURE.md | zeyxx | 2026-01-13 |
 
 ---
 
@@ -117,10 +162,12 @@ In `_archive/` - superseded by the 3 canonical docs:
 
 | Date | Change |
 |------|--------|
-| 2026-01-13 | Refactored into 3 canonical docs (VISION, ARCHITECTURE, OPERATION) |
-| 2026-01-13 | Archived ASYMPTOTE_COMPLETE, CYNIC_COMPLETE_MATRIX, CYNIC_LAWS_MATRIX |
+| 2026-01-13 | Added ROADMAP.md, ROLES.md, INFRASTRUCTURE.md |
+| 2026-01-13 | Archived ROLE_TAXONOMY, MULTINODE-BLOCKCHAIN, CYNIC_ESSENCE, DAAT, SINGULARITY_API |
+| 2026-01-13 | Refactored into 6 canonical docs |
 | 2026-01-13 | Created INDEX.md |
 
 ---
 
 *"Clarity is the first step toward singularity."*
+
