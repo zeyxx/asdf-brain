@@ -1,75 +1,124 @@
-#!/usr/bin/env node
 /**
- * asdf-brain post-conversation hook
+ * CYNIC Post-Conversation Hook
  *
- * Automatically extracts learnings from conversations
- * Runs silently after each significant conversation
+ * Extracts knowledge from completed conversations using brain_cynic_digest.
+ * Triggered automatically when a conversation ends.
  *
- * Following $asdfasdfa: "Don't trust, verify" - learn from actual data
+ * @event PostConversation
+ * @behavior non-blocking
+ * @module cynic/hooks/post-conversation
  */
 
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
+const MIN_MESSAGES_FOR_DIGEST = 5;
+const MIN_CONTENT_LENGTH = 500;
 
-const BRAIN_DIR = path.join(__dirname, '../..');
-const LEARNINGS_FILE = path.join(BRAIN_DIR, 'knowledge/realtime/latest-learnings.jsonl');
+/**
+ * Extract relevant text from conversation messages
+ */
+function extractConversationText(messages) {
+  if (!Array.isArray(messages)) return '';
 
-// Ensure directory exists
-const realtimeDir = path.dirname(LEARNINGS_FILE);
-if (!fs.existsSync(realtimeDir)) {
-  fs.mkdirSync(realtimeDir, { recursive: true });
+  return messages
+    .filter(m => m.role === 'user' || m.role === 'assistant')
+    .map(m => {
+      if (typeof m.content === 'string') return m.content;
+      if (Array.isArray(m.content)) {
+        return m.content
+          .filter(c => c.type === 'text')
+          .map(c => c.text)
+          .join('\n');
+      }
+      return '';
+    })
+    .join('\n\n---\n\n');
 }
 
-// Read conversation from stdin
-let input = '';
-process.stdin.setEncoding('utf8');
+/**
+ * Detect project context from conversation
+ */
+function detectProject(text) {
+  const patterns = {
+    holdex: /holdex|k-?score|token.*integrit/i,
+    gasdf: /gasdf|swap|burn.*token|liquidity/i,
+    brain: /cynic|brain|judgment|dimension/i
+  };
 
-process.stdin.on('data', (chunk) => {
-  input += chunk;
-});
-
-process.stdin.on('end', () => {
-  try {
-    const data = JSON.parse(input);
-
-    // Extract key learnings
-    const learning = {
-      timestamp: new Date().toISOString(),
-      session_id: data.session_id || 'unknown',
-      type: detectType(data),
-      summary: extractSummary(data),
-    };
-
-    // Append to learnings file
-    fs.appendFileSync(LEARNINGS_FILE, JSON.stringify(learning) + '\n');
-
-    // Silent success
-    process.exit(0);
-  } catch (e) {
-    // Silent failure - don't block conversation
-    process.exit(0);
+  for (const [project, pattern] of Object.entries(patterns)) {
+    if (pattern.test(text)) return project;
   }
-});
-
-function detectType(data) {
-  const content = JSON.stringify(data).toLowerCase();
-
-  if (content.includes('fix') || content.includes('bug')) return 'bug_fix';
-  if (content.includes('feature') || content.includes('add')) return 'feature';
-  if (content.includes('refactor')) return 'refactor';
-  if (content.includes('security')) return 'security';
-  if (content.includes('k-score') || content.includes('kscore')) return 'kscore';
-  if (content.includes('webhook')) return 'webhook';
-  if (content.includes('asdfasdfa') || content.includes('burn')) return 'ecosystem';
-
   return 'general';
 }
 
-function extractSummary(data) {
-  // Extract first meaningful line
-  const text = data.user?.content || data.content || '';
-  const lines = text.split('\n').filter((l) => l.trim().length > 10);
-  return lines[0]?.slice(0, 200) || 'No summary';
+/**
+ * Check if conversation is worth digesting
+ */
+function shouldDigest(messages, text) {
+  if (messages.length < MIN_MESSAGES_FOR_DIGEST) return false;
+  if (text.length < MIN_CONTENT_LENGTH) return false;
+
+  // Skip if mostly tool usage without discussion
+  const userMessages = messages.filter(m => m.role === 'user');
+  const avgLength = userMessages.reduce((sum, m) => {
+    const content = typeof m.content === 'string' ? m.content : '';
+    return sum + content.length;
+  }, 0) / userMessages.length;
+
+  if (avgLength < 50) return false;
+
+  return true;
 }
+
+/**
+ * Main hook handler
+ */
+async function handler(context) {
+  const { messages, sessionId, mcpClient } = context;
+
+  if (!messages || !mcpClient) {
+    return { success: false, reason: 'Missing required context' };
+  }
+
+  const text = extractConversationText(messages);
+
+  if (!shouldDigest(messages, text)) {
+    return {
+      success: true,
+      skipped: true,
+      reason: 'Conversation too short or simple for digestion'
+    };
+  }
+
+  const project = detectProject(text);
+
+  try {
+    // Call brain_cynic_digest MCP tool
+    const result = await mcpClient.callTool('asdf-brain', 'brain_cynic_digest', {
+      text: text,
+      source: \`conversation:\${sessionId || 'unknown'}\`,
+      existingKnowledge: []
+    });
+
+    // Log digest summary
+    const digest = JSON.parse(result.content || '{}');
+
+    return {
+      success: true,
+      project,
+      ideas: digest.ideas?.length || 0,
+      links: digest.links?.length || 0,
+      roadmap: digest.roadmap?.length || 0,
+      autoLearned: digest.autoLearned?.length || 0
+    };
+
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+      reason: 'Digest failed but conversation continues'
+    };
+  }
+}
+
+module.exports = { handler };
