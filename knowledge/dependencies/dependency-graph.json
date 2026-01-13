@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-13T09:19:03.781Z",
+    "generated": "2026-01-13T09:32:25.790Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -516,11 +516,13 @@
           "./cynic/data-adapter": 1,
           "./alerts": 3,
           "./index": 4,
-          "../../temporal": 5,
+          "../../temporal": 12,
           "../realtime": 1,
           "../matrices/live-matrix": 3,
           "./activation": 1,
+          "./state": 1,
           "../dimensions/base": 3,
+          "../worlds": 1,
           "../pulse": 2,
           "../residual-detector": 1,
           "../dimensions/emergent": 1,
@@ -528,7 +530,7 @@
           "./pulse": 2,
           "./self-monitor": 2,
           "./metrics": 2,
-          "./base": 2,
+          "./base": 7,
           "./dimensions/registry": 1,
           "./realtime": 2,
           "../llm/provider": 2,
@@ -564,6 +566,10 @@
           "./judge/matrix-5x5": 1,
           "./judge/cache": 1,
           "./judge/evidence": 1,
+          "./atzilut": 1,
+          "./beriah": 1,
+          "./yetzirah": 1,
+          "./assiah": 1,
           "./cynic": 1,
           "../repo-discovery": 1,
           "../git-intelligence": 3,
@@ -649,14 +655,14 @@
           "express": 1
         },
         "node": {
-          "fs": 80,
-          "path": 80,
+          "fs": 81,
+          "path": 81,
           "crypto": 33,
           "readline": 10,
           "http": 3,
           "child_process": 16,
           "os": 1,
-          "events": 6,
+          "events": 8,
           "https": 2
         }
       }
