@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-13T16:36:03.782Z",
+    "generated": "2026-01-13T16:45:57.508Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -663,6 +663,7 @@
           "../../../../lib/cynic/dimensions/human-llm/proactivity": 1,
           "../../../../lib/cynic/dimensions/human-llm/teaching": 1,
           "../../../../lib/cynic/dimensions/human-llm/trust": 1,
+          "../../../../lib/cynic/dimensions/meta/adaptation-velocity": 1,
           "../../../../lib/cynic/dimensions/meta/self-awareness": 1,
           "../../../../lib/cynic/dimensions/meta/singularity-distance": 1,
           "../../../../lib/cynic/dimensions/primary/alignment": 1,
@@ -706,7 +707,7 @@
           "better-sqlite3": 1,
           "@solana/web3.js": 1,
           "express": 1,
-          "vitest": 38
+          "vitest": 39
         },
         "node": {
           "fs": 81,
