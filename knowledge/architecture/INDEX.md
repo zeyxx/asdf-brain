@@ -24,7 +24,7 @@ WORK > WEALTH
 
 ---
 
-## The 6 Canonical Documents
+## The 7 Canonical Documents
 
 | Document | Lines | Description |
 |----------|-------|-------------|
@@ -34,6 +34,7 @@ WORK > WEALTH
 | **[ROADMAP.md](./ROADMAP.md)** | ~350 | Phases 1.5-6, Current State, Next Steps |
 | **[ROLES.md](./ROLES.md)** | ~400 | L1-L5 Taxonomy, User Types, E-Score |
 | **[INFRASTRUCTURE.md](./INFRASTRUCTURE.md)** | ~500 | Multi-node, Blockchain, Render → Distributed |
+| **[META.md](./META.md)** | ~450 | Emergence, Meta-Dimensions, Q-Score Contextuel |
 
 ### How to Navigate
 
@@ -45,6 +46,7 @@ WORK > WEALTH
 | See what's done / what's next | ROADMAP.md |
 | Understand roles and E-Score | ROLES.md |
 | Understand infrastructure evolution | INFRASTRUCTURE.md |
+| Understand emergence and self-awareness | META.md |
 
 ---
 
@@ -72,6 +74,8 @@ WORK > WEALTH
 │  • Integration Map      │             │  • What CYNIC is NOT    │
 └───────────┬─────────────┘             └───────────┬─────────────┘
             │                                       │
+            ├───────────────────────────────────────┤
+            │                                       │
             ▼                                       ▼
 ┌─────────────────────────┐             ┌─────────────────────────┐
 │    ROADMAP.md           │             │     ROLES.md            │
@@ -84,16 +88,18 @@ WORK > WEALTH
             │                                       │
             └───────────────────┬───────────────────┘
                                 │
-                                ▼
-                  ┌─────────────────────────┐
-                  │   INFRASTRUCTURE.md     │
-                  │                         │
-                  │  • Current (Render)     │
-                  │  • V1 Hub + MCP         │
-                  │  • V2 Federated         │
-                  │  • V3 Decentralized     │
-                  │  • Solana Integration   │
-                  └─────────────────────────┘
+              ┌─────────────────┴─────────────────┐
+              │                                   │
+              ▼                                   ▼
+┌─────────────────────────┐       ┌─────────────────────────┐
+│   INFRASTRUCTURE.md     │       │       META.md           │
+│                         │       │                         │
+│  • Current (Render)     │       │  • Emergence Pipeline   │
+│  • V1 Hub + MCP         │       │  • THE_INNOMMABLE       │
+│  • V2 Federated         │       │  • 8 Meta-Dimensions    │
+│  • V3 Decentralized     │       │  • Q-Score Contextuel   │
+│  • Solana Integration   │       │  • O/C/N Scores         │
+└─────────────────────────┘       └─────────────────────────┘
 ```
 
 ---
@@ -121,6 +127,7 @@ Complementary docs for specific aspects (kept in main folder):
 | ROADMAP.md | `lib/cynic/core/`, `lib/cynic/dimensions/` |
 | ROLES.md | `lib/contributors.js` (E-Score dimensions) |
 | INFRASTRUCTURE.md | `anchor/`, `lib/cynic/sync.js`, `mcp-server.js` |
+| META.md | `lib/cynic/core/residual-*.js`, `lib/cynic/dimensions/discovery/` |
 
 ---
 
@@ -155,6 +162,7 @@ In `_archive/` - superseded by the 6 canonical docs:
 | ROADMAP.md | zeyxx | 2026-01-13 |
 | ROLES.md | zeyxx | 2026-01-13 |
 | INFRASTRUCTURE.md | zeyxx | 2026-01-13 |
+| META.md | zeyxx | 2026-01-13 |
 
 ---
 
@@ -162,9 +170,10 @@ In `_archive/` - superseded by the 6 canonical docs:
 
 | Date | Change |
 |------|--------|
+| 2026-01-13 | Added META.md (Emergence, Meta-Dimensions, Q-Score Contextuel) |
+| 2026-01-13 | Refactored into 7 canonical docs |
 | 2026-01-13 | Added ROADMAP.md, ROLES.md, INFRASTRUCTURE.md |
 | 2026-01-13 | Archived ROLE_TAXONOMY, MULTINODE-BLOCKCHAIN, CYNIC_ESSENCE, DAAT, SINGULARITY_API |
-| 2026-01-13 | Refactored into 6 canonical docs |
 | 2026-01-13 | Created INDEX.md |
 
 ---
