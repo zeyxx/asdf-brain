@@ -13,6 +13,10 @@ import { animateErrors, fetchAndVisualizeErrors } from './errors.js';
 import { animatePatterns, fetchAndVisualizePatterns } from './patterns.js';
 import { initPyramid, animatePyramid, fetchAndUpdateRoadmap } from './roadmap.js';
 import { initInnommable, animateInnommable, fetchAndUpdateInnommable } from './innommable.js';
+import TreeOfLife from './tree/index.js';
+
+// Tree of Life state
+let isTreeViewActive = false;
 
 /**
  * Handle click events for dimension selection
@@ -73,6 +77,52 @@ function onKeyDown(event) {
   // H = toggle hand tracking
   if (key === 'h' || key === 'H') {
     toggleHandTracking();
+  }
+
+  // T = toggle Tree of Life view
+  if (key === 't' || key === 'T') {
+    isTreeViewActive = TreeOfLife.toggleTreeView(state.scene, state.camera, state.controls);
+    console.log(`[CYNIC] Tree of Life: ${isTreeViewActive ? 'ACTIVE' : 'HIDDEN'}`);
+    // Update visibility of regular dimension meshes
+    updateVisibility(!isTreeViewActive);
+  }
+
+  // World view shortcuts (when tree is active)
+  if (isTreeViewActive) {
+    // 7 = ATZILUT, 8 = BERIAH, 9 = YETZIRAH, - = ASSIAH
+    if (key === '7') {
+      TreeOfLife.highlightWorld('ATZILUT');
+      console.log('[Tree] Highlighting ATZILUT (PHI)');
+    }
+    if (key === '8') {
+      TreeOfLife.highlightWorld('BERIAH');
+      console.log('[Tree] Highlighting BERIAH (VERIFY)');
+    }
+    if (key === '9') {
+      TreeOfLife.highlightWorld('YETZIRAH');
+      console.log('[Tree] Highlighting YETZIRAH (CULTURE)');
+    }
+    if (key === '-') {
+      TreeOfLife.highlightWorld('ASSIAH');
+      console.log('[Tree] Highlighting ASSIAH (BURN)');
+    }
+    // F = Flow mode (animate energy)
+    if (key === 'f' || key === 'F') {
+      TreeOfLife.animateJudgmentFlow();
+      console.log('[Tree] Animating judgment flow');
+    }
+    // B = Burn flow
+    if (key === 'b' || key === 'B') {
+      TreeOfLife.animateBurnFlow();
+      TreeOfLife.onBurnEvent({});
+      console.log('[Tree] Animating burn flow');
+    }
+    // R = Reset highlights
+    if (key === 'r' || key === 'R') {
+      TreeOfLife.resetHighlights();
+      TreeOfLife.resetPaths();
+      console.log('[Tree] Reset to full view');
+    }
   }
 }
 
@@ -174,10 +224,11 @@ function init() {
   // Start visualization polling
   startVisualizationPolling();
 
-  console.log('[CYNIC] Dashboard ready. Keys: 1-6 filter, V view, J judge, H hands');
+  console.log('[CYNIC] Dashboard ready. Keys: 1-6 filter, V view, J judge, H hands, T tree');
   console.log('[CYNIC] Level 3 VISUALISATION: Commits, Errors, Patterns active');
   console.log('[CYNIC] ROADMAP: Pyramid visualization active (left side)');
   console.log('[CYNIC] Level 4 ÉMERGENCE: THE_INNOMMABLE frontier active (outer ring)');
+  console.log('[CYNIC] 🌳 Tree of Life: Press T to toggle. 7-9/- for worlds, F flow, B burn, R reset');
 }
 
 // Initialize when DOM is ready

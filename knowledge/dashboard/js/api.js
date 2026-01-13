@@ -7,6 +7,7 @@ import { PHI, API_BASE, POLL_INTERVAL } from './constants.js';
 import * as state from './state.js';
 import { updateHUD, updateLiveIndicator } from './hud.js';
 import { processDiscoveredDimensions } from './discovered.js';
+import TreeOfLife from './tree/index.js';
 
 /**
  * Fetch CYNIC data from API
@@ -97,6 +98,27 @@ export function updateFromLiveData(data) {
   // Process dynamically discovered dimensions from THE_INNOMMABLE
   if (data.discovered_dimensions) {
     processDiscoveredDimensions(data.discovered_dimensions);
+  }
+
+  // === Tree of Life Integration ===
+  // Update tree scores if tree is active
+  if (TreeOfLife.isTreeViewActive() && data.scores) {
+    TreeOfLife.updateTreeScores(data.scores);
+  }
+
+  // Update health glow based on Q-Score
+  if (TreeOfLife.isTreeViewActive() && data.globalScore !== undefined) {
+    TreeOfLife.updateHealthGlow(data.globalScore);
+  }
+
+  // Trigger judgment visualization if verdict changed
+  if (TreeOfLife.isTreeViewActive() && data.verdict) {
+    TreeOfLife.onJudgmentEvent(data);
+  }
+
+  // Trigger burn visualization if burn data present
+  if (TreeOfLife.isTreeViewActive() && data.burns) {
+    TreeOfLife.onBurnEvent(data.burns);
   }
 
   // Update live indicator
