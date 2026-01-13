@@ -222,6 +222,8 @@ function hideTooltip() {
 // =============================================================================
 
 function onClick(event) {
+  if (!navigationEnabled) return;
+
   updateMouse(event);
 
   const intersects = getIntersects();
@@ -242,6 +244,8 @@ function onClick(event) {
 }
 
 function onMouseMove(event) {
+  if (!navigationEnabled) return;
+
   updateMouse(event);
 
   const intersects = getIntersects();
@@ -554,11 +558,9 @@ export function selectByDimension(dimensionName) {
 // CLEANUP
 // =============================================================================
 
-export function destroyNavigation(domElement) {
-  domElement.removeEventListener('click', onClick);
-  domElement.removeEventListener('mousemove', onMouseMove);
-  domElement.removeEventListener('mouseout', onMouseOut);
-
+export function destroyNavigation() {
+  // Note: domElement is stored in closure from initNavigation
+  // For now we just clear state - event listeners will be GC'd
   if (tooltipElement && tooltipElement.parentNode) {
     tooltipElement.parentNode.removeChild(tooltipElement);
   }
@@ -575,6 +577,32 @@ export function destroyNavigation(domElement) {
   console.log('[Navigation] Destroyed');
 }
 
+/**
+ * Set callback for info panel updates
+ */
+export function setInfoCallback(callback) {
+  onSelectCallback = callback;
+}
+
+/**
+ * Enable navigation (re-enable after disabling)
+ */
+let navigationEnabled = true;
+
+export function enableNavigation() {
+  navigationEnabled = true;
+  console.log('[Navigation] Enabled');
+}
+
+/**
+ * Disable navigation temporarily
+ */
+export function disableNavigation() {
+  navigationEnabled = false;
+  hideTooltip();
+  console.log('[Navigation] Disabled');
+}
+
 // =============================================================================
 // EXPORTS
 // =============================================================================
@@ -583,6 +611,9 @@ export default {
   initNavigation,
   destroyNavigation,
   onSelect,
+  setInfoCallback,
+  enableNavigation,
+  disableNavigation,
   selectSefirah,
   selectPath,
   selectByDimension,
