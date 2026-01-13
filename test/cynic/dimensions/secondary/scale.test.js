@@ -69,4 +69,69 @@ describe('SCALE Dimension', () => {
       expect(evaluator.passes(40)).toBe(false);
     });
   });
+
+  describe('Scale Transition Recognition', () => {
+    it('should reduce penalty for systems in transition', async () => {
+      const staticCentralized = {
+        singleNode: true,
+        centralized: true,
+      };
+      const transitioningCentralized = {
+        singleNode: true,
+        transitionPhase: true,
+        roadmapToScale: { phases: ['single', 'multi-region'] },
+      };
+
+      const staticResult = await evaluator.evaluate(staticCentralized);
+      const transitionResult = await evaluator.evaluate(transitioningCentralized);
+
+      expect(transitionResult.score).toBeGreaterThan(staticResult.score);
+    });
+
+    it('should give bonus for roadmapToScale', async () => {
+      const withRoadmap = {
+        roadmapToScale: { phases: ['phase1', 'phase2'] },
+      };
+      const withoutRoadmap = {};
+
+      const withResult = await evaluator.evaluate(withRoadmap);
+      const withoutResult = await evaluator.evaluate(withoutRoadmap);
+
+      expect(withResult.score).toBeGreaterThan(withoutResult.score);
+    });
+
+    it('should give bonus for event-driven architecture', async () => {
+      const eventDriven = { eventDriven: true };
+      const basic = {};
+
+      const eventResult = await evaluator.evaluate(eventDriven);
+      const basicResult = await evaluator.evaluate(basic);
+
+      expect(eventResult.score).toBeGreaterThan(basicResult.score);
+    });
+
+    it('should give bonus for prepared-for-scale', async () => {
+      const prepared = { preparedForScale: true, scaleReady: true };
+      const unprepared = {};
+
+      const prepResult = await evaluator.evaluate(prepared);
+      const unprepResult = await evaluator.evaluate(unprepared);
+
+      expect(prepResult.score).toBeGreaterThan(unprepResult.score);
+    });
+
+    it('should recognize migration in progress', async () => {
+      const migrating = {
+        singleNode: true,
+        migrationInProgress: true,
+      };
+
+      const result = await evaluator.evaluate(migrating);
+      // Check that at least one reason mentions transitioning
+      const hasTransition = result.details.scalability.reasons.some(r =>
+        r.includes('transitioning')
+      );
+      expect(hasTransition).toBe(true);
+    });
+  });
 });

@@ -81,4 +81,111 @@ describe('BOUNDARIES Dimension', () => {
       expect(evaluator.passes(evaluator.threshold - 20)).toBe(false);
     });
   });
+
+  describe('LLM Action Boundaries', () => {
+    it('should include llmActions in details', async () => {
+      const observation = { content: 'test' };
+      const result = await evaluator.evaluate(observation, {});
+      expect(result.details).toHaveProperty('llmActions');
+      expect(result.details.llmActions).toHaveProperty('score');
+      expect(result.details.llmActions).toHaveProperty('reasons');
+    });
+
+    it('should reward tool usage limits', async () => {
+      const withLimits = {
+        toolUsageLimits: { maxCallsPerMinute: 10 },
+        requiresToolApproval: true,
+      };
+      const withoutLimits = {};
+
+      const withResult = await evaluator.evaluate(withLimits, {});
+      const withoutResult = await evaluator.evaluate(withoutLimits, {});
+
+      expect(withResult.score).toBeGreaterThan(withoutResult.score);
+    });
+
+    it('should reward sandboxed execution', async () => {
+      const sandboxed = { sandboxed: true, codeExecutionLimits: { timeout: 5000 } };
+      const unsandboxed = {};
+
+      const sandboxResult = await evaluator.evaluate(sandboxed, {});
+      const unsandboxResult = await evaluator.evaluate(unsandboxed, {});
+
+      expect(sandboxResult.score).toBeGreaterThan(unsandboxResult.score);
+    });
+
+    it('should reward permission system', async () => {
+      const withPermissions = {
+        hasPermissionSystem: true,
+        requiresConfirmation: true,
+      };
+      const noPermissions = {};
+
+      const withResult = await evaluator.evaluate(withPermissions, {});
+      const withoutResult = await evaluator.evaluate(noPermissions, {});
+
+      expect(withResult.score).toBeGreaterThan(withoutResult.score);
+    });
+
+    it('should penalize unrestricted access', async () => {
+      const restricted = { sandboxed: true, toolsWhitelisted: true };
+      const unrestricted = { unrestrictedAccess: true, noToolLimits: true };
+
+      const restrictedResult = await evaluator.evaluate(restricted, {});
+      const unrestrictedResult = await evaluator.evaluate(unrestricted, {});
+
+      expect(restrictedResult.score).toBeGreaterThan(unrestrictedResult.score);
+    });
+
+    it('should penalize arbitrary execution without sandbox', async () => {
+      const safe = { canExecuteArbitrary: true, sandboxed: true };
+      const unsafe = { canExecuteArbitrary: true, sandboxed: false };
+
+      const safeResult = await evaluator.evaluate(safe, {});
+      const unsafeResult = await evaluator.evaluate(unsafe, {});
+
+      expect(safeResult.score).toBeGreaterThan(unsafeResult.score);
+    });
+
+    it('should reward protected paths definition', async () => {
+      const withProtected = {
+        protectedPaths: ['/etc', '/root', '~/.ssh'],
+        fileModificationLimits: { maxFiles: 10 },
+      };
+      const withoutProtected = {};
+
+      const withResult = await evaluator.evaluate(withProtected, {});
+      const withoutResult = await evaluator.evaluate(withoutProtected, {});
+
+      expect(withResult.score).toBeGreaterThan(withoutResult.score);
+    });
+
+    it('should reward API whitelist', async () => {
+      const withWhitelist = {
+        apiWhitelist: ['api.helius.xyz', 'api.github.com'],
+        networkRestricted: true,
+      };
+      const noWhitelist = {};
+
+      const withResult = await evaluator.evaluate(withWhitelist, {});
+      const withoutResult = await evaluator.evaluate(noWhitelist, {});
+
+      expect(withResult.score).toBeGreaterThan(withoutResult.score);
+    });
+
+    it('should include limits in details when defined', async () => {
+      const withLimits = {
+        toolUsageLimits: { maxCalls: 100 },
+        protectedPaths: ['/secret'],
+        apiWhitelist: ['safe.api.com'],
+      };
+
+      const result = await evaluator.evaluate(withLimits, {});
+
+      expect(result.details.llmActions.limits).toBeDefined();
+      expect(result.details.llmActions.limits.tools).toEqual({ maxCalls: 100 });
+      expect(result.details.llmActions.limits.protectedPaths).toEqual(['/secret']);
+      expect(result.details.llmActions.limits.apiWhitelist).toEqual(['safe.api.com']);
+    });
+  });
 });
