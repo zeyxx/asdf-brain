@@ -1,23 +1,23 @@
 /**
- * Tests for lib/cynic/dimensions/primary/ethics.js
+ * Tests for lib/cynic/dimensions/primary/optimism.js
  *
- * ETHICS Dimension - "La culture est-elle respectée?"
+ * OPTIMISM Dimension - "Le ton est-il constructif?"
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
 
-const { EthicsEvaluator } = require('../../../../lib/cynic/dimensions/primary/ethics');
+const { OptimismEvaluator } = require('../../../../lib/cynic/dimensions/primary/optimism');
 
-describe('ETHICS Dimension', () => {
+describe('OPTIMISM Dimension', () => {
   let evaluator;
 
   beforeEach(() => {
-    evaluator = new EthicsEvaluator();
+    evaluator = new OptimismEvaluator();
   });
 
   describe('Metadata', () => {
-    it('should have name ETHICS', () => {
-      expect(evaluator.name).toBe('ETHICS');
+    it('should have name OPTIMISM', () => {
+      expect(evaluator.name).toBe('OPTIMISM');
     });
 
     it('should be PRIMARY category', () => {
@@ -34,31 +34,32 @@ describe('ETHICS Dimension', () => {
   });
 
   describe('evaluate()', () => {
-    it('should give high score for ethical content', async () => {
+    it('should give high score for positive content', async () => {
       const observation = {
-        content: 'Building a community that helps everyone',
-        intent: 'positive',
+        content: 'We will succeed and build great things',
+        sentiment: 'positive',
       };
       const result = await evaluator.evaluate(observation);
-      expect(result.dimension).toBe('ETHICS');
+      expect(result.dimension).toBe('OPTIMISM');
       expect(result.score).toBeGreaterThan(50);
     });
 
-    it('should penalize harmful content', async () => {
+    it('should detect constructive tone', async () => {
       const observation = {
-        content: 'scam exploit rug pull',
+        content: 'Let us improve and grow together',
+        constructive: true,
+      };
+      const result = await evaluator.evaluate(observation);
+      expect(result.score).toBeGreaterThan(40);
+    });
+
+    it('should penalize pessimistic content', async () => {
+      const observation = {
+        content: 'Everything will fail and collapse',
+        sentiment: 'negative',
       };
       const result = await evaluator.evaluate(observation);
       expect(result.score).toBeLessThan(70);
-    });
-
-    it('should detect positive indicators', async () => {
-      const observation = {
-        content: 'open source community contribution',
-        tags: ['opensource', 'contribution'],
-      };
-      const result = await evaluator.evaluate(observation);
-      expect(result.score).toBeGreaterThan(50);
     });
 
     it('should provide reasoning', async () => {
@@ -69,12 +70,12 @@ describe('ETHICS Dimension', () => {
   });
 
   describe('passes()', () => {
-    it('should pass for ethical score', () => {
-      expect(evaluator.passes(80)).toBe(true);
+    it('should pass for optimistic score', () => {
+      expect(evaluator.passes(75)).toBe(true);
     });
 
-    it('should fail for unethical score', () => {
-      expect(evaluator.passes(60)).toBe(false);
+    it('should fail for pessimistic score', () => {
+      expect(evaluator.passes(30)).toBe(false);
     });
   });
 });
