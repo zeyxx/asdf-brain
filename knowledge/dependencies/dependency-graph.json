@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-13T08:46:35.335Z",
+    "generated": "2026-01-13T09:19:03.781Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -461,7 +461,7 @@
       "imports": {
         "internal": {
           "./client": 1,
-          "../target/types/asdf_merkle": 1,
+          "../target/types/asdf_merkle": 2,
           "./lib/context-layer": 1,
           "./lib/merkle-proofs": 1,
           "./lib/daat-levels": 1,
@@ -637,8 +637,8 @@
           "../../lib/contributors": 1
         },
         "external": {
-          "@coral-xyz/anchor": 4,
-          "js-sha3": 3,
+          "@coral-xyz/anchor": 6,
+          "js-sha3": 2,
           "chai": 1,
           "pg": 4,
           "dotenv": 4,
@@ -649,8 +649,8 @@
           "express": 1
         },
         "node": {
-          "fs": 79,
-          "path": 79,
+          "fs": 80,
+          "path": 80,
           "crypto": 33,
           "readline": 10,
           "http": 3,
