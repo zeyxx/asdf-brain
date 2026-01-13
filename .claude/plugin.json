@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/plugin.json",
   "name": "asdf-brain",
   "displayName": "ASDF Brain - CYNIC κυνικός",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "CYNIC the skeptical dog (κυνικός). Loyal to truth, not to comfort. Culture is a moat.",
   "author": "zeyxx",
   "repository": "https://github.com/zeyxx/asdf-brain",
@@ -11,7 +11,32 @@
     {
       "name": "judge",
       "path": "skills/judge.md",
-      "description": "🐕 CYNIC judgment - evaluate knowledge, patterns, decisions with the skeptical dog"
+      "description": "🐕 CYNIC judgment - evaluate knowledge, patterns, decisions with 25 dimensions across 4 Mondes"
+    },
+    {
+      "name": "digest",
+      "path": "skills/digest.md",
+      "description": "🐕 CYNIC digestion - transform chaos into structured knowledge (ideas, links, roadmap)"
+    },
+    {
+      "name": "learn",
+      "path": "skills/learn.md",
+      "description": "🐕 CYNIC learning - provide feedback on past judgments to improve accuracy"
+    },
+    {
+      "name": "search",
+      "path": "skills/search.md",
+      "description": "🐕 CYNIC search - sniff through knowledge base for patterns, decisions, insights"
+    },
+    {
+      "name": "patterns",
+      "path": "skills/patterns.md",
+      "description": "🐕 CYNIC patterns - view detected patterns (technical, process, issues, solutions)"
+    },
+    {
+      "name": "health",
+      "path": "skills/health.md",
+      "description": "🐕 CYNIC health - system status dashboard (pulse, anomalies, subsystems)"
     }
   ],
 
@@ -31,13 +56,22 @@
       "name": "CYNIC",
       "greek": "κυνικός",
       "meaning": "comme un chien",
-      "emoji": "🐕"
+      "emoji": "🐕",
+      "tagline": "Loyal to truth, not to comfort"
     },
     "axioms": {
       "PHI": "φ - All ratios derive from 1.618...",
       "BURN": "Don't extract, burn",
       "VERIFY": "Don't trust, verify",
       "CULTURE": "Culture is a moat"
+    },
+    "constants": {
+      "PHI": 1.618033988749895,
+      "PHI_INV": 0.618033988749895,
+      "PHI_INV_2": 0.381966011250105,
+      "MAX_CONFIDENCE": "61.8%",
+      "MIN_DOUBT": "38.2%",
+      "HEARTBEAT": "61.8s"
     },
     "philosophy": "φ qui se méfie de φ - Rendre autonome, pas automatiser"
   }
