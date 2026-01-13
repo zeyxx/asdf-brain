@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "week_number": 2923,
+  "timestamp": 1768295781565,
+  "timestamp_iso": "2026-01-13T09:16:21.565Z",
+  "file_merkle_root": "0793d2e7d1d630770628d40eca6530a33175bea15afcad425a6b4aed7e24e35e",
+  "file_count": 69,
+  "pattern_merkle_root": "c43717a6b6cc055d224882f15461b59add3061fbafa8b79c92f0621e336588f6",
+  "pattern_count": 4,
+  "combined_root": "6849d379cc6baadae5eb4c06fc96db9e2389c049b8a711156a5f44ec1d33074a",
+  "solana_payload": {
+    "root": "6849d379cc6baadae5eb4c06fc96db9e2389c049b8a711156a5f44ec1d33074a",
+    "week": 2923,
+    "patterns": 4,
+    "files": 69,
+    "signature": null
+  },
+  "statistics": {
+    "total_hashes": 69,
+    "tree_depth": 8
+  },
+  "_phi": {
+    "philosophy": "Don't trust, verify",
+    "chain_ready": true
+  }
+}

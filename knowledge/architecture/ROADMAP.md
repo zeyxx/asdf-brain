@@ -42,12 +42,12 @@
 │  ├── Human-in-the-loop validation flow                              ✅  │
 │  └── Persistence to knowledge store                                 ✅  │
 │                                                                          │
-│  PHASE 5: On-Chain Singularity                           [██████░░░░] 60% │
+│  PHASE 5: On-Chain Singularity                           [██████████] ✅ │
 │  ├── Merkle tree implementation                                     ✅  │
 │  ├── Solana publisher CLI                                           ✅  │
 │  ├── Anchor program (asdf-merkle)                                   ✅  │
 │  ├── E-Score 7-dimension system                                     ✅  │
-│  └── Deploy to devnet + first snapshot                              ⏳  │
+│  └── Deploy to devnet + first snapshot                              ✅  │
 │                                                                          │
 │  PHASE 6: Quasi-Singularity                              [░░░░░░░░░░]  0% │
 │  ├── Singularity distance metric                                    ⏳  │
@@ -224,18 +224,24 @@ DimensionRegistry.register(dim)
 
 | Component | Local | Devnet | Mainnet |
 |-----------|-------|--------|---------|
-| Merkle Proofs | ✅ | ⏳ | ❌ |
-| Anchor Program | ✅ | ⏳ | ❌ |
-| Publisher CLI | ✅ | ⏳ | ❌ |
+| Merkle Proofs | ✅ | ✅ | ❌ |
+| Anchor Program | ✅ | ✅ | ❌ |
+| Publisher CLI | ✅ | ✅ | ❌ |
 | E-Score | ✅ | ❌ | ❌ |
 | K-Score | ✅ | ❌ | ❌ |
 
+**Devnet Deployment (2026-01-13):**
+- Program ID: `9VNpXtrW4gVqSuS8LHieN6R78WzU9d815DzrcdmqFDN`
+- First Snapshot: Week 2923
+
 ### Next Steps
 
-1. Install Solana/Anchor toolchain
-2. Build and deploy to devnet
-3. Run `anchor test` in anchor/
-4. Publish first weekly snapshot
+1. ~~Install Solana/Anchor toolchain~~ ✅
+2. ~~Build and deploy to devnet~~ ✅
+3. ~~Run `anchor test` in anchor/~~ ✅
+4. ~~Publish first weekly snapshot~~ ✅
+5. Automate weekly snapshot publishing (cron/hook)
+6. Mainnet deployment planning
 
 ---
 

@@ -14,8 +14,8 @@ describe("asdf-merkle", () => {
   let configPda: anchor.web3.PublicKey;
   let configBump: number;
 
-  // Test data
-  const weekNumber = 202602; // 2026 week 2
+  // Test data - week number as weeks since Unix epoch (fits u16 for ~1260 years)
+  const weekNumber = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000)) % 65535;
   const testPatterns = ["pattern1", "pattern2", "pattern3"];
 
   before(async () => {
@@ -161,9 +161,8 @@ function hashLeaf(data: string): Buffer {
 }
 
 function hashPair(left: Buffer, right: Buffer): Buffer {
-  // Use keccak256 to match Solana program
-  const { keccak_256 } = require("js-sha3");
-  return Buffer.from(keccak_256.arrayBuffer(Buffer.concat([left, right])));
+  // Use sha256 to match Solana program
+  return createHash("sha256").update(Buffer.concat([left, right])).digest();
 }
 
 function buildMerkleRoot(leaves: Buffer[]): Buffer {

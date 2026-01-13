@@ -1,10 +1,185 @@
 {
-  "timestamp": "2026-01-08T14:41:03.951Z",
+  "timestamp": "2026-01-13T09:16:21.565Z",
   "files": {
+    "burns/stats.json": {
+      "hash": "aafa216c265ae2db2ffc7f428dc552abdb013a1484bc12ceb65c75e41c0024a5",
+      "size": 1809,
+      "modified": "2026-01-13T08:46:23.712Z"
+    },
+    "community/contributors.json": {
+      "hash": "3aaf3a65dc709dfa7351930e2a0fdbf6b3cc581442426d7895e495c0d0018edf",
+      "size": 8068,
+      "modified": "2026-01-10T11:53:41.350Z"
+    },
+    "context/learnings.json": {
+      "hash": "e330b2734acca862db4c628e93e6182bd700e823c7507d138f72a8e0b99b1844",
+      "size": 559,
+      "modified": "2026-01-11T12:51:37.192Z"
+    },
+    "context/projects/brain.json": {
+      "hash": "62af2d2ea9d96536f7295f320b90ad921d11086f51c4b015148d348603f1906b",
+      "size": 143,
+      "modified": "2026-01-11T12:51:37.192Z"
+    },
+    "context/projects/gasdf.json": {
+      "hash": "c1216b4f5d3edd1118ea61139ad66674227fa3c3048a62dd06e74443f9871103",
+      "size": 169,
+      "modified": "2026-01-11T12:51:37.192Z"
+    },
+    "context/projects/holdex.json": {
+      "hash": "a4ede5edaf6ebc5c516c8c002cf34253f65b8e37ae74a5ff59d4127fc67d601b",
+      "size": 355,
+      "modified": "2026-01-11T12:51:37.192Z"
+    },
+    "context/schema.json": {
+      "hash": "3d80f9773217dc7848b32dbc0db219ecddd8bbd10ccd21c30c7fd9be7aab7744",
+      "size": 2387,
+      "modified": "2026-01-08T14:50:57.251Z"
+    },
+    "context/sessions.json": {
+      "hash": "2810c98a0a711fff1336719fe06749224601e06425e8a6845d0f625b2e768b73",
+      "size": 309,
+      "modified": "2026-01-11T12:52:47.392Z"
+    },
+    "cynic/architect/roadmap.json": {
+      "hash": "4af358c300af0c6c448298bc746f5c5e5ccbab5e500a5e5d3482bb6430b7e0a0",
+      "size": 6626,
+      "modified": "2026-01-12T10:17:05.530Z"
+    },
+    "cynic/collective/harmony.json": {
+      "hash": "fa87b36603ad57f9551190ccc82f9ad2e3f23b709f9ac639d33ef700c86650c8",
+      "size": 7664,
+      "modified": "2026-01-11T20:35:08.386Z"
+    },
+    "cynic/collective/thresholds.json": {
+      "hash": "c7b6f1a197b169e006d5f3fcdeb0737192a6a04d4d8d5d98a78be46f42ce228a",
+      "size": 7965,
+      "modified": "2026-01-11T20:35:08.395Z"
+    },
+    "cynic/collective/wisdom.json": {
+      "hash": "3e7b936e44afc5f1b8c5220704804b6a1b01e7c1ba23344a2bcaf27529d897ed",
+      "size": 472,
+      "modified": "2026-01-11T20:35:08.397Z"
+    },
+    "cynic/errors/lessons.json": {
+      "hash": "9b3e38518b0304fc26d84c4d37598b2d00478a44d45983ae93a891fe33f5b6ad",
+      "size": 1505,
+      "modified": "2026-01-12T00:03:09.794Z"
+    },
+    "cynic/errors/patterns.json": {
+      "hash": "b531c6aac535e52d7806ba98edfc8d119e3fe2f03733d55481d8e7fd41cbf20c",
+      "size": 3088,
+      "modified": "2026-01-12T00:14:09.868Z"
+    },
+    "cynic/errors/stats.json": {
+      "hash": "c194c38538c623707a0c3a08e83b50a66058a8a3410e73211d02e373181dc018",
+      "size": 392,
+      "modified": "2026-01-12T00:14:09.868Z"
+    },
+    "cynic/judgments/evidence.json": {
+      "hash": "1416aa6f5fa7601e2820f3b0c6e44c58363460d7a183de9d0075ea801d4b20e2",
+      "size": 1316,
+      "modified": "2026-01-12T01:46:27.966Z"
+    },
+    "cynic/judgments/learned-weights.json": {
+      "hash": "5dd9acd0ee40b59270ea8c8556fa85544da0d776927646aadfac7397c068145f",
+      "size": 941,
+      "modified": "2026-01-12T01:46:27.966Z"
+    },
+    "cynic/learning/escores.json": {
+      "hash": "b27609b3effef0b38624e3de95728c86349566559875d0416d7e54da0ccaf36c",
+      "size": 2159,
+      "modified": "2026-01-11T21:18:23.811Z"
+    },
+    "cynic/learning/evolution.json": {
+      "hash": "13c7e6ad719a61aa639d09e1ae9e2184a8deb97d985ac17bd613f9bf18fd6850",
+      "size": 467,
+      "modified": "2026-01-11T20:35:08.357Z"
+    },
+    "cynic/matrices/harmony.json": {
+      "hash": "545e9a5624adab58b9b9b2ad8f7730c3af160298e812320dffa6bf2351afce75",
+      "size": 19111,
+      "modified": "2026-01-12T13:42:34.293Z"
+    },
+    "cynic/matrices/thresholds.json": {
+      "hash": "4b59c41a966325ef590e14fc30fb4a5879d8325d0fd463511fd9194ca570ab42",
+      "size": 26147,
+      "modified": "2026-01-11T21:18:23.812Z"
+    },
+    "cynic/matrices/weights.json": {
+      "hash": "9cd21af932e68a5d1a4d6aa43d110acf230e9477dd12861c06dc447dde55ab5c",
+      "size": 4851,
+      "modified": "2026-01-12T00:14:09.868Z"
+    },
+    "cynic/observations/pending-dimensions.json": {
+      "hash": "74f1c11ad0961d323d1d488abfaad4413f918683dded7994cebb815ad6fe51e4",
+      "size": 157,
+      "modified": "2026-01-12T13:42:34.294Z"
+    },
+    "cynic/self-judgments/baseline-2026-01-12.json": {
+      "hash": "14870879eab88c84f235dd6c9fa2bfbc2a062d1590dafcd4ab7bcde7adfac99d",
+      "size": 3802,
+      "modified": "2026-01-12T01:21:34.558Z"
+    },
+    "cynic/sync/state.json": {
+      "hash": "82a9c5891ce6ce6aee769a16396fc5c44d12b2eb88c86a4812f9307d73220bab",
+      "size": 412,
+      "modified": "2026-01-11T21:18:23.812Z"
+    },
+    "cynic/witness/contributors.json": {
+      "hash": "3d2c9b9c8d9ebd7f5e1a1b1425a03cf9d666581038cf36430cbbd4b99fb3b231",
+      "size": 1791,
+      "modified": "2026-01-12T00:03:09.794Z"
+    },
+    "cynic/witness/state.json": {
+      "hash": "e743c570e95f05fad0c5f288adaa3e11849c1bf63dcd037aafd6bbf0b3354614",
+      "size": 479,
+      "modified": "2026-01-12T00:03:09.794Z"
+    },
+    "cynic-learning-state.json": {
+      "hash": "177b2e1a8cc97a3362f7e4858b8a4ed1b51f4e5c64fa2e7f464a2fe62d196f08",
+      "size": 39264,
+      "modified": "2026-01-13T08:46:23.712Z"
+    },
     "dependencies/dependency-graph.json": {
-      "hash": "fed9a39377cd533462155e3562190d0fdf39c7076c30b0e1774bfbcfc91b6bdd",
-      "size": 22142,
-      "modified": "2026-01-08T14:34:04.830Z"
+      "hash": "f0d6a964df60dce287233c05e8ee24668772843510378276b7b5ea6f4b2e2a8a",
+      "size": 31223,
+      "modified": "2026-01-13T08:46:23.696Z"
+    },
+    "discovered/_summary.json": {
+      "hash": "3da17801dc9f30668454040b34e6a62ff7d6fbfe35f8845addb32b131f938fbe",
+      "size": 518,
+      "modified": "2026-01-11T00:18:39.551Z"
+    },
+    "discovered/asdf-brain.json": {
+      "hash": "91eaddc53c1a8eb5b0a8cd43fd8e792b740565a4993a5e10a3fdbdc3f9f6e5a0",
+      "size": 6589,
+      "modified": "2026-01-10T19:18:04.425Z"
+    },
+    "discovered/asdf-manifesto.json": {
+      "hash": "d581b4f612b64366b524d71cf4704fc09ca91ffcba040a8fd0a1ce14efd0c1c4",
+      "size": 812,
+      "modified": "2026-01-10T19:18:04.427Z"
+    },
+    "discovered/claude-mem.json": {
+      "hash": "211cb2b5c62489c1fbc37a262955dfd8ed6720e930c5219a17f5fa22d68ad498",
+      "size": 11382,
+      "modified": "2026-01-10T19:18:04.427Z"
+    },
+    "discovered/gasdf.json": {
+      "hash": "b47460ed02b5a066daf8f729e51aa183c1f4902e6eecb61e87e242046f8ad822",
+      "size": 8644,
+      "modified": "2026-01-11T00:18:39.551Z"
+    },
+    "discovered/holdex.json": {
+      "hash": "10d964c2a850bd47812167e74e3e5c53f9611c3373fca0b4941f7710c613d97c",
+      "size": 8149,
+      "modified": "2026-01-10T19:18:04.427Z"
+    },
+    "docs/holdex/INDEX.json": {
+      "hash": "a99b5db3cad139eccd50cb853b67fc5deb1cbdefb36bd82fb6c440889ae8bca8",
+      "size": 2410,
+      "modified": "2026-01-09T13:28:04.146Z"
     },
     "errors/post-mortems.json": {
       "hash": "0724cfe05f450a610a26751a9598905984025c56de867e4b788da8af39f5fa22",
@@ -12,29 +187,129 @@
       "modified": "2026-01-08T14:40:41.822Z"
     },
     "health/ecosystem-health.json": {
-      "hash": "b7f55d8ac44dee2749fdaca8a14ce2143ce12f56e11e4919230b6a1edb38c65e",
-      "size": 1057,
-      "modified": "2026-01-08T14:34:04.877Z"
+      "hash": "d7385c2873a93d5ecb51238c5339a24e70c0af4a54ba34ba584c31a9added6a7",
+      "size": 1060,
+      "modified": "2026-01-13T08:46:23.696Z"
+    },
+    "integrations/claude-mem/stats.json": {
+      "hash": "7de3be0a34af7bdf712644b755dbaead650730a40cdfc25bec20248c5d84b647",
+      "size": 226,
+      "modified": "2026-01-10T21:44:01.699Z"
+    },
+    "integrations/claude-mem/sync-state.json": {
+      "hash": "c67b3d62e617657ca01d1f08f61a9aea5244eaaebb557bd659953b5413285a81",
+      "size": 265,
+      "modified": "2026-01-10T21:44:01.701Z"
+    },
+    "integrations/gasdf/stats.json": {
+      "hash": "59299d4197b7484c85051e36541391b2fdc11bf6c097a6ca548af71545b3640e",
+      "size": 498,
+      "modified": "2026-01-11T12:52:47.395Z"
+    },
+    "integrations/holdex/stats.json": {
+      "hash": "669459c8ec4eb8481118f2cda0ba330dcf43a001fc74c35ea502e35f24d5429f",
+      "size": 368,
+      "modified": "2026-01-11T12:52:47.396Z"
     },
     "intent/extracted-intents.json": {
-      "hash": "1ee608ea13abe114d07261bb058a3db8e547257f59123e3ed088fcd6ebf8e367",
-      "size": 25485,
-      "modified": "2026-01-08T14:37:44.682Z"
+      "hash": "a88053ad93e6b209dac5cdc11956f0f9e17fba34e347061e04d1bcf165ac7136",
+      "size": 25447,
+      "modified": "2026-01-08T21:43:11.404Z"
+    },
+    "live/git-state.json": {
+      "hash": "db157dd5436c9b96143b62a53ff77dfed5e758528db27e6a1dabdccb050332ba",
+      "size": 5279,
+      "modified": "2026-01-13T08:46:23.715Z"
+    },
+    "live/holdex-chaos-analysis.json": {
+      "hash": "68dd2d3d9b00196259b6283663352993bee95dd1dde27e55e4fa8fd35014f084",
+      "size": 7251,
+      "modified": "2026-01-09T12:41:39.399Z"
+    },
+    "live/i-infra-status.json": {
+      "hash": "3733895513f88892f211a8b9a8927216935feb39ccd482b528480fd7399381a0",
+      "size": 3696,
+      "modified": "2026-01-09T03:09:08.915Z"
+    },
+    "live/pulse/current.json": {
+      "hash": "ada3d4221c94d1c2b14462885b1173a52b886ec65493227a5efa6b95bcb1942c",
+      "size": 4518,
+      "modified": "2026-01-13T09:15:36.879Z"
+    },
+    "live/repo-map.json": {
+      "hash": "ca544d40e5877507761ff0d0974f1f194414f14636ee21e860600b84cb40ff1a",
+      "size": 165370,
+      "modified": "2026-01-13T08:46:23.717Z"
+    },
+    "operators/identity-matrix.json": {
+      "hash": "3dc5121c21f3cd929113d420cbb8d76cf6de86ccaaa2cae74637c56694634b66",
+      "size": 2102,
+      "modified": "2026-01-09T13:36:11.486Z"
+    },
+    "operators/op_7f3a2b1c/context.json": {
+      "hash": "abe8e1b47441dba9aed332cf21e450d7cca4603c24a90c7735f3d750768a976c",
+      "size": 2567,
+      "modified": "2026-01-09T13:26:50.304Z"
     },
     "patterns/extracted-patterns.json": {
       "hash": "694fc3eb6c412d6529453fb7c6986be9a1fdd95a167976f705927a83883238a7",
       "size": 7932,
       "modified": "2026-01-08T14:40:38.482Z"
     },
+    "patterns/test-cross-project.json": {
+      "hash": "60d36e0ce47dff605ec522a1e621beeb44dccb587a667fe2249c71f6bd9ad69d",
+      "size": 1983,
+      "modified": "2026-01-09T03:09:08.915Z"
+    },
+    "philosophy/completeness-analysis.json": {
+      "hash": "9e16bef764652b07e7d69b978775c91b7aad64d7287090ed17e2229a6321583e",
+      "size": 11377,
+      "modified": "2026-01-08T17:23:47.297Z"
+    },
+    "philosophy/gap-analysis-and-organic-plan.json": {
+      "hash": "43864aebfeb86b9934a98ef67f33308cf571749274ea64946a31e3dc60f36875",
+      "size": 14001,
+      "modified": "2026-01-08T15:48:01.848Z"
+    },
     "philosophy/manifesto-mapping.json": {
-      "hash": "057a5fa6abd128a3b4dc3e7ea01553ef8ebc28fd5032a3b39b05181f743a0263",
-      "size": 17894,
-      "modified": "2026-01-08T02:22:18.672Z"
+      "hash": "dfe00205234b51b1605a8a43db9f44aa4829b18d9ba0fb13f29d8228fa3c31fa",
+      "size": 32078,
+      "modified": "2026-01-10T13:14:04.404Z"
+    },
+    "philosophy/omniscient-brain-architecture.json": {
+      "hash": "ab6820a4b115d7135e342745dad3c2d4de076dbe3bee789f0b46237c66010ceb",
+      "size": 19567,
+      "modified": "2026-01-08T15:41:05.130Z"
+    },
+    "philosophy/phi-scaling-unified-vision.json": {
+      "hash": "8756328b1995dcff6a384ede1c9d746a4b1b468f84d5ed4849ef3ee15d663e7f",
+      "size": 12935,
+      "modified": "2026-01-09T01:49:13.378Z"
+    },
+    "philosophy/self-sustainable-architecture.json": {
+      "hash": "aae8d21136a2f48ddcab26c7951731973ff04c4c96d032baec78bc2b7b8b106a",
+      "size": 11961,
+      "modified": "2026-01-08T15:25:50.245Z"
+    },
+    "philosophy/singularity-analysis.json": {
+      "hash": "1e0e78fd6404271a1f9b973cc5880b9d50b0ca5db0a6af5597b4106f3b35d484",
+      "size": 14430,
+      "modified": "2026-01-08T17:00:49.243Z"
+    },
+    "philosophy/unified-score-system.json": {
+      "hash": "b68b5709905056328345f4f869deb7c9845f7cf549f42cf02370d5c5b3f49d22",
+      "size": 2122,
+      "modified": "2026-01-08T17:34:56.861Z"
+    },
+    "philosophy/value-based-burn-deep-analysis.json": {
+      "hash": "c4f9ba45d359fce6e02f5ba6bf231610602afe01086e5f340b2bbff024ddb347",
+      "size": 11197,
+      "modified": "2026-01-08T15:29:47.559Z"
     },
     "provenance/merkle-state.json": {
-      "hash": "cb234631bb77ad7212566b48de69de79ca88bd1c35ba5dedb80b9443d5f8ffb1",
-      "size": 3450,
-      "modified": "2026-01-08T14:34:20.643Z"
+      "hash": "9a4c210517e80150b6137e5502335f73be801e67bc43743caf9311a5a9076deb",
+      "size": 3443,
+      "modified": "2026-01-08T14:41:03.955Z"
     },
     "provenance/registry.json": {
       "hash": "907a1908b7aa963c96cc9ccb2fc7e4bd5107c9ce923ac0a0e8b17c9161fef83d",
@@ -47,14 +322,24 @@
       "modified": "2026-01-08T14:20:03.762Z"
     },
     "relations/ecosystem-graph.json": {
-      "hash": "214a0c037dce3b2f5e5b6f873afd0ab4d8518aac7441ea5af4ddd5cb5224ef9b",
-      "size": 8424,
-      "modified": "2026-01-08T14:18:18.756Z"
+      "hash": "90e1cd275e8cfd839112aea0e59ed14083b06d8e5b1a89a29760d480459601a7",
+      "size": 16623,
+      "modified": "2026-01-10T11:53:41.352Z"
+    },
+    "relations/infrastructure-tokens.json": {
+      "hash": "9cdfd6ff63e82bd3bf5132fbcfcc771bab658b9de080fdbf00f8869b3a81c8af",
+      "size": 9922,
+      "modified": "2026-01-08T17:01:46.974Z"
+    },
+    "relations/pattern-links.json": {
+      "hash": "5a386b7d1d002b74395a995aa0bef8cf9a20c35a7fc2d2d0e9f4a80ea9caa811",
+      "size": 1928,
+      "modified": "2026-01-09T03:09:08.916Z"
     },
     "temporal/evolution.json": {
-      "hash": "bab11896a59ced46767640b0ba30befaac5311eb7825979415805f54409d1b19",
-      "size": 7076,
-      "modified": "2026-01-08T14:34:04.760Z"
+      "hash": "fd62487e2703b6c45dd6c828fbe439878e9711a26995f9d9b34c2c92af330cb7",
+      "size": 8032,
+      "modified": "2026-01-09T03:09:08.916Z"
     },
     "vision/roadmap.json": {
       "hash": "79b4dea84eece16d914cf9ff4d1b76aad31089fe7d5dc19e63b9ba174ccc02ce",
@@ -63,24 +348,132 @@
     }
   },
   "hashes": [
-    "fed9a39377cd533462155e3562190d0fdf39c7076c30b0e1774bfbcfc91b6bdd",
+    "aafa216c265ae2db2ffc7f428dc552abdb013a1484bc12ceb65c75e41c0024a5",
+    "3aaf3a65dc709dfa7351930e2a0fdbf6b3cc581442426d7895e495c0d0018edf",
+    "e330b2734acca862db4c628e93e6182bd700e823c7507d138f72a8e0b99b1844",
+    "62af2d2ea9d96536f7295f320b90ad921d11086f51c4b015148d348603f1906b",
+    "c1216b4f5d3edd1118ea61139ad66674227fa3c3048a62dd06e74443f9871103",
+    "a4ede5edaf6ebc5c516c8c002cf34253f65b8e37ae74a5ff59d4127fc67d601b",
+    "3d80f9773217dc7848b32dbc0db219ecddd8bbd10ccd21c30c7fd9be7aab7744",
+    "2810c98a0a711fff1336719fe06749224601e06425e8a6845d0f625b2e768b73",
+    "4af358c300af0c6c448298bc746f5c5e5ccbab5e500a5e5d3482bb6430b7e0a0",
+    "fa87b36603ad57f9551190ccc82f9ad2e3f23b709f9ac639d33ef700c86650c8",
+    "c7b6f1a197b169e006d5f3fcdeb0737192a6a04d4d8d5d98a78be46f42ce228a",
+    "3e7b936e44afc5f1b8c5220704804b6a1b01e7c1ba23344a2bcaf27529d897ed",
+    "9b3e38518b0304fc26d84c4d37598b2d00478a44d45983ae93a891fe33f5b6ad",
+    "b531c6aac535e52d7806ba98edfc8d119e3fe2f03733d55481d8e7fd41cbf20c",
+    "c194c38538c623707a0c3a08e83b50a66058a8a3410e73211d02e373181dc018",
+    "1416aa6f5fa7601e2820f3b0c6e44c58363460d7a183de9d0075ea801d4b20e2",
+    "5dd9acd0ee40b59270ea8c8556fa85544da0d776927646aadfac7397c068145f",
+    "b27609b3effef0b38624e3de95728c86349566559875d0416d7e54da0ccaf36c",
+    "13c7e6ad719a61aa639d09e1ae9e2184a8deb97d985ac17bd613f9bf18fd6850",
+    "545e9a5624adab58b9b9b2ad8f7730c3af160298e812320dffa6bf2351afce75",
+    "4b59c41a966325ef590e14fc30fb4a5879d8325d0fd463511fd9194ca570ab42",
+    "9cd21af932e68a5d1a4d6aa43d110acf230e9477dd12861c06dc447dde55ab5c",
+    "74f1c11ad0961d323d1d488abfaad4413f918683dded7994cebb815ad6fe51e4",
+    "14870879eab88c84f235dd6c9fa2bfbc2a062d1590dafcd4ab7bcde7adfac99d",
+    "82a9c5891ce6ce6aee769a16396fc5c44d12b2eb88c86a4812f9307d73220bab",
+    "3d2c9b9c8d9ebd7f5e1a1b1425a03cf9d666581038cf36430cbbd4b99fb3b231",
+    "e743c570e95f05fad0c5f288adaa3e11849c1bf63dcd037aafd6bbf0b3354614",
+    "177b2e1a8cc97a3362f7e4858b8a4ed1b51f4e5c64fa2e7f464a2fe62d196f08",
+    "f0d6a964df60dce287233c05e8ee24668772843510378276b7b5ea6f4b2e2a8a",
+    "3da17801dc9f30668454040b34e6a62ff7d6fbfe35f8845addb32b131f938fbe",
+    "91eaddc53c1a8eb5b0a8cd43fd8e792b740565a4993a5e10a3fdbdc3f9f6e5a0",
+    "d581b4f612b64366b524d71cf4704fc09ca91ffcba040a8fd0a1ce14efd0c1c4",
+    "211cb2b5c62489c1fbc37a262955dfd8ed6720e930c5219a17f5fa22d68ad498",
+    "b47460ed02b5a066daf8f729e51aa183c1f4902e6eecb61e87e242046f8ad822",
+    "10d964c2a850bd47812167e74e3e5c53f9611c3373fca0b4941f7710c613d97c",
+    "a99b5db3cad139eccd50cb853b67fc5deb1cbdefb36bd82fb6c440889ae8bca8",
     "0724cfe05f450a610a26751a9598905984025c56de867e4b788da8af39f5fa22",
-    "b7f55d8ac44dee2749fdaca8a14ce2143ce12f56e11e4919230b6a1edb38c65e",
-    "1ee608ea13abe114d07261bb058a3db8e547257f59123e3ed088fcd6ebf8e367",
+    "d7385c2873a93d5ecb51238c5339a24e70c0af4a54ba34ba584c31a9added6a7",
+    "7de3be0a34af7bdf712644b755dbaead650730a40cdfc25bec20248c5d84b647",
+    "c67b3d62e617657ca01d1f08f61a9aea5244eaaebb557bd659953b5413285a81",
+    "59299d4197b7484c85051e36541391b2fdc11bf6c097a6ca548af71545b3640e",
+    "669459c8ec4eb8481118f2cda0ba330dcf43a001fc74c35ea502e35f24d5429f",
+    "a88053ad93e6b209dac5cdc11956f0f9e17fba34e347061e04d1bcf165ac7136",
+    "db157dd5436c9b96143b62a53ff77dfed5e758528db27e6a1dabdccb050332ba",
+    "68dd2d3d9b00196259b6283663352993bee95dd1dde27e55e4fa8fd35014f084",
+    "3733895513f88892f211a8b9a8927216935feb39ccd482b528480fd7399381a0",
+    "ada3d4221c94d1c2b14462885b1173a52b886ec65493227a5efa6b95bcb1942c",
+    "ca544d40e5877507761ff0d0974f1f194414f14636ee21e860600b84cb40ff1a",
+    "3dc5121c21f3cd929113d420cbb8d76cf6de86ccaaa2cae74637c56694634b66",
+    "abe8e1b47441dba9aed332cf21e450d7cca4603c24a90c7735f3d750768a976c",
     "694fc3eb6c412d6529453fb7c6986be9a1fdd95a167976f705927a83883238a7",
-    "057a5fa6abd128a3b4dc3e7ea01553ef8ebc28fd5032a3b39b05181f743a0263",
-    "cb234631bb77ad7212566b48de69de79ca88bd1c35ba5dedb80b9443d5f8ffb1",
+    "60d36e0ce47dff605ec522a1e621beeb44dccb587a667fe2249c71f6bd9ad69d",
+    "9e16bef764652b07e7d69b978775c91b7aad64d7287090ed17e2229a6321583e",
+    "43864aebfeb86b9934a98ef67f33308cf571749274ea64946a31e3dc60f36875",
+    "dfe00205234b51b1605a8a43db9f44aa4829b18d9ba0fb13f29d8228fa3c31fa",
+    "ab6820a4b115d7135e342745dad3c2d4de076dbe3bee789f0b46237c66010ceb",
+    "8756328b1995dcff6a384ede1c9d746a4b1b468f84d5ed4849ef3ee15d663e7f",
+    "aae8d21136a2f48ddcab26c7951731973ff04c4c96d032baec78bc2b7b8b106a",
+    "1e0e78fd6404271a1f9b973cc5880b9d50b0ca5db0a6af5597b4106f3b35d484",
+    "b68b5709905056328345f4f869deb7c9845f7cf549f42cf02370d5c5b3f49d22",
+    "c4f9ba45d359fce6e02f5ba6bf231610602afe01086e5f340b2bbff024ddb347",
+    "9a4c210517e80150b6137e5502335f73be801e67bc43743caf9311a5a9076deb",
     "907a1908b7aa963c96cc9ccb2fc7e4bd5107c9ce923ac0a0e8b17c9161fef83d",
     "9a1241cbd87eca73383d0e3156cb73c9995489b9d6814109f44ff332bffd1720",
-    "214a0c037dce3b2f5e5b6f873afd0ab4d8518aac7441ea5af4ddd5cb5224ef9b",
-    "bab11896a59ced46767640b0ba30befaac5311eb7825979415805f54409d1b19",
+    "90e1cd275e8cfd839112aea0e59ed14083b06d8e5b1a89a29760d480459601a7",
+    "9cdfd6ff63e82bd3bf5132fbcfcc771bab658b9de080fdbf00f8869b3a81c8af",
+    "5a386b7d1d002b74395a995aa0bef8cf9a20c35a7fc2d2d0e9f4a80ea9caa811",
+    "fd62487e2703b6c45dd6c828fbe439878e9711a26995f9d9b34c2c92af330cb7",
     "79b4dea84eece16d914cf9ff4d1b76aad31089fe7d5dc19e63b9ba174ccc02ce"
   ],
-  "merkle_root": "09fb1b51b0fb88c4d138313f73f24aee39968170ee77885e0833d9baad863a82",
-  "file_count": 12,
+  "merkle_root": "0793d2e7d1d630770628d40eca6530a33175bea15afcad425a6b4aed7e24e35e",
+  "file_count": 69,
   "verification": {
     "algorithm": "SHA256",
-    "tree_depth": 5,
+    "tree_depth": 8,
     "chain_ready": true
-  }
+  },
+  "pattern_proofs": {
+    "39ecad56454078b1": {
+      "leaf_hash": "81e675443a66e10bdc48aaf2b0c40ff36d6aa20ce136d969ca3dddb3da7c0012",
+      "proof": [
+        {
+          "hash": "e0b7cb70e79ee55a0e6c31490b736b0455983a9412345e721b67c135bfc6a44e",
+          "direction": "right"
+        }
+      ],
+      "index": 0
+    },
+    "161b127061e4a145": {
+      "leaf_hash": "e0b7cb70e79ee55a0e6c31490b736b0455983a9412345e721b67c135bfc6a44e",
+      "proof": [
+        {
+          "hash": "5724e1fc826b93354bb3718f025c974b7182455cce9e50330d0418735ac8d4ab",
+          "direction": "left"
+        }
+      ],
+      "index": 1
+    },
+    "5100e936a58c51f3": {
+      "leaf_hash": "8cbe69f6ad786807f3455fcc77e75c1f130141f603ddb4c034d9327eb9e25a86",
+      "proof": [
+        {
+          "hash": "3e6706975ce4d04d581b04b1158c081d925491e37a06d4583909b1991bf3d985",
+          "direction": "right"
+        },
+        {
+          "hash": "3e6706975ce4d04d581b04b1158c081d925491e37a06d4583909b1991bf3d985",
+          "direction": "right"
+        }
+      ],
+      "index": 2
+    },
+    "612d05d7384debca": {
+      "leaf_hash": "3e6706975ce4d04d581b04b1158c081d925491e37a06d4583909b1991bf3d985",
+      "proof": [
+        {
+          "hash": "8cbe69f6ad786807f3455fcc77e75c1f130141f603ddb4c034d9327eb9e25a86",
+          "direction": "left"
+        },
+        {
+          "hash": "8cbe69f6ad786807f3455fcc77e75c1f130141f603ddb4c034d9327eb9e25a86",
+          "direction": "left"
+        }
+      ],
+      "index": 3
+    }
+  },
+  "root": "6849d379cc6baadae5eb4c06fc96db9e2389c049b8a711156a5f44ec1d33074a"
 }
