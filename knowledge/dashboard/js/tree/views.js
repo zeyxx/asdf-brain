@@ -110,7 +110,7 @@ export function cycleViewMode() {
 // TREE VIEW (Full)
 // =============================================================================
 
-function showTreeView() {
+export function showTreeView() {
   currentWorld = null;
   currentAxiom = null;
 
