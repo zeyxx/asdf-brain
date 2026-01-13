@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-12T13:41:22.923Z",
+  "timestamp": "2026-01-13T01:21:07.045Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-12T13:41:22.110Z",
+      "timestamp": "2026-01-13T01:21:06.515Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-12T13:41:22.452Z",
+      "timestamp": "2026-01-13T01:21:06.752Z",
       "branch": {
         "branch": "main",
         "modified": 4,
@@ -108,19 +108,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-12T13:41:22.923Z",
+      "timestamp": "2026-01-13T01:21:07.044Z",
       "branch": {
         "branch": "main",
-        "modified": 22,
-        "untracked": 4,
+        "modified": 14,
+        "untracked": 3,
         "staged": 1,
-        "ahead": 0,
-        "behind": 1,
+        "ahead": 1,
+        "behind": 2,
         "clean": false,
         "lastCommit": {
-          "hash": "209f502",
-          "subject": "docs: Complete Level 5 PRODUCTION - Pyramid complete!",
-          "relative": "3 hours ago"
+          "hash": "99f667d",
+          "subject": "docs: Add 3 harmonized docs (ROADMAP, ROLES, INFRASTRUCTURE)",
+          "relative": "8 minutes ago"
         }
       },
       "pr": null,
@@ -132,15 +132,22 @@
       "suggestions": [
         {
           "priority": "medium",
+          "type": "push_needed",
+          "message": "1 unpushed commits on 'main'",
+          "action": "Push changes to remote",
+          "command": "git push"
+        },
+        {
+          "priority": "medium",
           "type": "pull_needed",
-          "message": "1 commits behind remote",
+          "message": "2 commits behind remote",
           "action": "Pull latest changes",
           "command": "git pull"
         },
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "22 modified, 4 untracked, 1 staged",
+          "message": "14 modified, 3 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -150,52 +157,48 @@
   "suggestions": [
     {
       "priority": "medium",
+      "type": "push_needed",
+      "message": "1 unpushed commits on 'main'",
+      "action": "Push changes to remote",
+      "command": "git push",
+      "repo": "brain"
+    },
+    {
+      "priority": "medium",
       "type": "pull_needed",
-      "message": "1 commits behind remote",
+      "message": "2 commits behind remote",
       "action": "Pull latest changes",
       "command": "git pull",
-      "repo": "brain",
-      "_cynic": {
-        "shouldAlert": false
-      }
+      "repo": "brain"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
       "message": "1 modified, 1 staged",
       "action": "Review and commit changes",
-      "repo": "holdex",
-      "_cynic": {
-        "shouldAlert": false
-      }
+      "repo": "holdex"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
       "message": "4 modified, 1 staged",
       "action": "Review and commit changes",
-      "repo": "gasdf",
-      "_cynic": {
-        "shouldAlert": false
-      }
+      "repo": "gasdf"
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "22 modified, 4 untracked, 1 staged",
+      "message": "14 modified, 3 untracked, 1 staged",
       "action": "Review and commit changes",
-      "repo": "brain",
-      "_cynic": {
-        "shouldAlert": false
-      }
+      "repo": "brain"
     }
   ],
   "alertable": [],
-  "cynicEnabled": true,
+  "cynicEnabled": false,
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 1,
+    "mediumPriority": 2,
     "lowPriority": 3,
     "cynicAlerts": 0
   }
