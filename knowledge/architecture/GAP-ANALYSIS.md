@@ -6,7 +6,7 @@
 
 ## In One Sentence
 
-**Phase 0 CLEANUP à 40%, Phase 6 à 0%, Meta-dimensions non implémentées.**
+**Phase 0 CLEANUP axioms/ complete, Tests à 0%, Phase 6 à 0%, Meta-dimensions non implémentées.**
 
 ---
 
@@ -18,26 +18,25 @@
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │   Audit complet:                  [████████░░] 80%                      │
-│   Refactor lib/cynic/ (axioms/):  [████░░░░░░] 40%                      │
+│   Refactor lib/cynic/ (axioms/):  [██████████] 100% ✅                  │
 │   Tests 30% coverage:             [░░░░░░░░░░]  0%                      │
 │   Q-Score hierarchical:           [░░░░░░░░░░]  0%                      │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### What "Refactor lib/cynic/" Means
+### What "Refactor lib/cynic/" Means ✅ COMPLETE
 
-The goal is to make `lib/cynic/axioms/` the **single source of truth** for:
-- φ-derived constants
-- 4 Axioms (PHI, BURN, VERIFY, CULTURE)
-- 15 Laws
-- Score formulas
+`lib/cynic/axioms/constants.js` is now the **single source of truth** for:
+- φ-derived constants (PHI, PHI_2, PHI_3, PHI_INV, etc.)
+- All thresholds (MAX_CONFIDENCE, MIN_DOUBT, ANOMALY_THRESHOLD)
+- Temporal constants, Fibonacci constants, Weight constants
 
-Currently:
-- `lib/temporal.js` exports PHI, PHI_INV, etc.
-- `lib/cynic/self-judge.js` re-exports them
-- `lib/cynic/axioms/` exists but is not fully integrated
-- Duplication across modules
+Structure:
+- `lib/cynic/axioms/constants.js` - THE source
+- `lib/cynic/axioms/index.js` - Imports from constants.js + adds AXIOMS
+- `lib/temporal.js` - Re-exports from constants.js (backward compat)
+- All other modules import from temporal.js or axioms/
 
 ---
 
