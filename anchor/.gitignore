@@ -1,0 +1,16 @@
+# Build artifacts
+target/
+Cargo.lock
+
+# Node
+node_modules/
+yarn.lock
+package-lock.json
+
+# Anchor
+.anchor/
+test-ledger/
+
+# IDE
+.idea/
+*.swp
