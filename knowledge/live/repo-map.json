@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-13T09:20:55.685Z",
+  "timestamp": "2026-01-13T15:45:32.152Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -51,7 +51,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T09:20:53.936Z"
+      "discoveredAt": "2026-01-13T15:45:29.950Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -260,7 +260,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T09:20:54.183Z"
+      "discoveredAt": "2026-01-13T15:45:30.094Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -292,11 +292,11 @@
           ],
           "patterns": {
             "hotfixes": 0,
-            "features": 3,
+            "features": 4,
             "structured": 19,
             "quickFixes": 0
           },
-          "avgMessageLength": 45.85,
+          "avgMessageLength": 45.95,
           "inferredRole": "production",
           "prodScore": 1.0000000000000009
         }
@@ -317,7 +317,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T09:20:54.205Z"
+      "discoveredAt": "2026-01-13T15:45:30.119Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -367,7 +367,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T09:20:54.241Z"
+      "discoveredAt": "2026-01-13T15:45:30.141Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5936,7 +5936,3094 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-13T09:20:55.685Z"
+      "discoveredAt": "2026-01-13T15:45:31.635Z"
+    },
+    "framework-kit": {
+      "name": "framework-kit",
+      "path": "/workspaces/framework-kit",
+      "remotes": {
+        "origin": {
+          "url": "https://github.com/solana-foundation/framework-kit.git",
+          "ownerRepo": "solana-foundation/framework-kit"
+        }
+      },
+      "branches": {
+        "local": [
+          "feat/web3-compat-full-connection",
+          "main"
+        ],
+        "remote": {
+          "origin": [
+            "changeset-release/main",
+            "changeset/metamask-connector",
+            "chore/add-changeset-pr4",
+            "chore/add-issue-pr-templates",
+            "chore/allow-web3-compat-publish",
+            "chore/client-readme-alignment",
+            "chore/dependency-audit-ci",
+            "ci/add-test-coverage",
+            "client-hooks",
+            "docs-hooks-jsdoc",
+            "docs-site",
+            "docs/add-website-link",
+            "docs/comprehensive-jsdoc",
+            "docs/fix-layout-max-width",
+            "docs/minor-tweaks",
+            "docs/readme-dx-improvements",
+            "docs/readme-fixes-113-115-108-110",
+            "docs/transaction-hooks-119-120-121",
+            "docs/useSplToken-readme-114",
+            "feat/autodiscover-filter-helper",
+            "feat/client-action-wrappers",
+            "feat/hooks-suspense-opt-in",
+            "feat/server-helpers-subpath",
+            "feat/state-persistence-integration",
+            "feat/swr-hook-consistency",
+            "feat/token-2022-support",
+            "feat/web3-compat-full-connection",
+            "feat/wrap-sol-helper",
+            "fix-autoconnect-rc3",
+            "fix/autoconnect",
+            "fix/autoconnect-and-typecheck",
+            "fix/docs-build",
+            "fix/exclude-js-sourcemaps-from-npm",
+            "fix/no-major-hooks",
+            "fix/peer-dependency-warnings-106",
+            "fix/publish-web3-compat-block",
+            "fix/security-vulnerabilities",
+            "fix/ssr-default-export",
+            "fix/ssr-hydration-wallet-connection",
+            "fix/tests-default-config",
+            "fix/typecheck-build-dependency",
+            "fix/useaccount-incomplete-data",
+            "fix/useaccount-null-values",
+            "fix/usebalance-invalid-address-handling",
+            "fix/web3-compat-repo-url",
+            "issue/19-core-types",
+            "issue/21-connector-hardening",
+            "issue/22-simplify-init",
+            "issue/23-ssr-persistence",
+            "issue/27-type-naming",
+            "issue/28-v1-docs",
+            "main",
+            "optimize/bundle-size",
+            "publish-husky-skip",
+            "rc-1-bump",
+            "release-client-hooks-1.0",
+            "remove-cluster-log"
+          ]
+        }
+      },
+      "branchRoles": {
+        "origin/changeset-release/main": {
+          "branch": "changeset-release/main",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 7,
+            "structured": 11,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 50.7
+        },
+        "origin/changeset/metamask-connector": {
+          "branch": "changeset/metamask-connector",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Mohammad Shahbaz Alam",
+            "Gui Bibeau",
+            "Raj",
+            "Leandro Gavidia Santamaria"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 6,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 37.4
+        },
+        "origin/chore/add-changeset-pr4": {
+          "branch": "chore/add-changeset-pr4",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Tomide Oladipo",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Opeyemi Stephen",
+            "Tadej Polajnar"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 3,
+            "structured": 7,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 45.8
+        },
+        "origin/chore/add-issue-pr-templates": {
+          "branch": "chore/add-issue-pr-templates",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Leandro Gavidia"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 6,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 53.45
+        },
+        "origin/chore/allow-web3-compat-publish": {
+          "branch": "chore/allow-web3-compat-publish",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Leandro Gavidia"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 4,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 57
+        },
+        "origin/chore/client-readme-alignment": {
+          "branch": "chore/client-readme-alignment",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 7,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 40.75
+        },
+        "origin/chore/dependency-audit-ci": {
+          "branch": "chore/dependency-audit-ci",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 0,
+            "structured": 9,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 48.1
+        },
+        "origin/ci/add-test-coverage": {
+          "branch": "ci/add-test-coverage",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "Raj",
+            "github-actions[bot]",
+            "Leandro Gavidia Santamaria",
+            "meowy"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 6,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 41.2
+        },
+        "origin/client-hooks": {
+          "branch": "client-hooks",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 2,
+            "structured": 7,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 39.75
+        },
+        "origin/docs-hooks-jsdoc": {
+          "branch": "docs-hooks-jsdoc",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 8,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 47.85
+        },
+        "origin/docs-site": {
+          "branch": "docs-site",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 6,
+            "structured": 13,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 48.9
+        },
+        "origin/docs/add-website-link": {
+          "branch": "docs/add-website-link",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 7,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 52.35
+        },
+        "origin/docs/comprehensive-jsdoc": {
+          "branch": "docs/comprehensive-jsdoc",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "N DIVIJ",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Tomide Oladipo",
+            "Opeyemi Stephen"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 4,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 49.35
+        },
+        "origin/docs/fix-layout-max-width": {
+          "branch": "docs/fix-layout-max-width",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 6,
+            "structured": 10,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 53.4
+        },
+        "origin/docs/minor-tweaks": {
+          "branch": "docs/minor-tweaks",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 6,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 52.45
+        },
+        "origin/docs/readme-dx-improvements": {
+          "branch": "docs/readme-dx-improvements",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "resourcefulmind",
+            "Tadej Polajnar",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Mohammad Shahbaz Alam",
+            "Raj"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 3,
+            "structured": 6,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 40.4
+        },
+        "origin/docs/readme-fixes-113-115-108-110": {
+          "branch": "docs/readme-fixes-113-115-108-110",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Opeyemi Stephen",
+            "Tadej Polajnar",
+            "Mohammad Shahbaz Alam"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 6,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 41.6
+        },
+        "origin/docs/transaction-hooks-119-120-121": {
+          "branch": "docs/transaction-hooks-119-120-121",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Opeyemi Stephen",
+            "Tadej Polajnar",
+            "Mohammad Shahbaz Alam"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 6,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 43.35
+        },
+        "origin/docs/useSplToken-readme-114": {
+          "branch": "docs/useSplToken-readme-114",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "N DIVIJ",
+            "github-actions[bot]",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 4,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.75
+        },
+        "origin/feat/autodiscover-filter-helper": {
+          "branch": "feat/autodiscover-filter-helper",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 4,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 53.05
+        },
+        "origin/feat/client-action-wrappers": {
+          "branch": "feat/client-action-wrappers",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 0,
+            "structured": 4,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 53.6
+        },
+        "origin/feat/hooks-suspense-opt-in": {
+          "branch": "feat/hooks-suspense-opt-in",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 1,
+            "structured": 6,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 45.5
+        },
+        "origin/feat/server-helpers-subpath": {
+          "branch": "feat/server-helpers-subpath",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 1,
+            "structured": 7,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 42.75
+        },
+        "origin/feat/state-persistence-integration": {
+          "branch": "feat/state-persistence-integration",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 48.8
+        },
+        "origin/feat/swr-hook-consistency": {
+          "branch": "feat/swr-hook-consistency",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 0,
+            "structured": 5,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 48.45
+        },
+        "origin/feat/token-2022-support": {
+          "branch": "feat/token-2022-support",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 7,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 53.9
+        },
+        "origin/feat/web3-compat-full-connection": {
+          "branch": "feat/web3-compat-full-connection",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "guibibeau",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 7,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 57.9
+        },
+        "origin/feat/wrap-sol-helper": {
+          "branch": "feat/wrap-sol-helper",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "Tomide Oladipo",
+            "github-actions[bot]",
+            "Opeyemi Stephen",
+            "Tadej Polajnar"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 4,
+            "structured": 8,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 47.8
+        },
+        "origin/fix-autoconnect-rc3": {
+          "branch": "fix-autoconnect-rc3",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 7,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 46.35
+        },
+        "origin/fix/autoconnect": {
+          "branch": "fix/autoconnect",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Leandro Gavidia Santamaria",
+            "meowy",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 4,
+            "structured": 6,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 41
+        },
+        "origin/fix/autoconnect-and-typecheck": {
+          "branch": "fix/autoconnect-and-typecheck",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Leandro Gavidia Santamaria",
+            "meowy"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 4,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 41.8
+        },
+        "origin/fix/docs-build": {
+          "branch": "fix/docs-build",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 6,
+            "structured": 11,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 50.9
+        },
+        "origin/fix/exclude-js-sourcemaps-from-npm": {
+          "branch": "fix/exclude-js-sourcemaps-from-npm",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Raj",
+            "Leandro Gavidia Santamaria",
+            "meowy"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 4,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 38.8
+        },
+        "origin/fix/no-major-hooks": {
+          "branch": "fix/no-major-hooks",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 0,
+            "structured": 2,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 48.6
+        },
+        "origin/fix/peer-dependency-warnings-106": {
+          "branch": "fix/peer-dependency-warnings-106",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 4,
+            "structured": 9,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 51.05
+        },
+        "origin/fix/publish-web3-compat-block": {
+          "branch": "fix/publish-web3-compat-block",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Leandro Gavidia"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 7,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 52.45
+        },
+        "origin/fix/security-vulnerabilities": {
+          "branch": "fix/security-vulnerabilities",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Raj",
+            "Leandro Gavidia Santamaria",
+            "meowy"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 4,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 38.4
+        },
+        "origin/fix/ssr-default-export": {
+          "branch": "fix/ssr-default-export",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Opeyemi Stephen",
+            "Tadej Polajnar",
+            "Gui Bibeau",
+            "Mohammad Shahbaz Alam",
+            "Raj"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 7,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 39.1
+        },
+        "origin/fix/ssr-hydration-wallet-connection": {
+          "branch": "fix/ssr-hydration-wallet-connection",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 6,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 52.35
+        },
+        "origin/fix/tests-default-config": {
+          "branch": "fix/tests-default-config",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 7,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 46.5
+        },
+        "origin/fix/typecheck-build-dependency": {
+          "branch": "fix/typecheck-build-dependency",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Leandro Gavidia Santamaria",
+            "meowy"
+          ],
+          "patterns": {
+            "hotfixes": 3,
+            "features": 2,
+            "structured": 4,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 43.05
+        },
+        "origin/fix/useaccount-incomplete-data": {
+          "branch": "fix/useaccount-incomplete-data",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Opeyemi Stephen",
+            "Tadej Polajnar",
+            "Mohammad Shahbaz Alam"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 3,
+            "structured": 5,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 40.6
+        },
+        "origin/fix/useaccount-null-values": {
+          "branch": "fix/useaccount-null-values",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Opeyemi Stephen",
+            "Tadej Polajnar",
+            "Mohammad Shahbaz Alam"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 2,
+            "structured": 5,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 40.85
+        },
+        "origin/fix/usebalance-invalid-address-handling": {
+          "branch": "fix/usebalance-invalid-address-handling",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Opeyemi Stephen",
+            "Tadej Polajnar",
+            "Mohammad Shahbaz Alam"
+          ],
+          "patterns": {
+            "hotfixes": 6,
+            "features": 2,
+            "structured": 5,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 40.5
+        },
+        "origin/fix/web3-compat-repo-url": {
+          "branch": "fix/web3-compat-repo-url",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 0,
+            "structured": 4,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 54.2
+        },
+        "origin/issue/19-core-types": {
+          "branch": "issue/19-core-types",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "Leandro Gavidia"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 2,
+            "structured": 7,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 53
+        },
+        "origin/issue/21-connector-hardening": {
+          "branch": "issue/21-connector-hardening",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Leandro Gavidia"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 1,
+            "structured": 6,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 53.25
+        },
+        "origin/issue/22-simplify-init": {
+          "branch": "issue/22-simplify-init",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 0,
+            "structured": 4,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 52.8
+        },
+        "origin/issue/23-ssr-persistence": {
+          "branch": "issue/23-ssr-persistence",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Leandro Gavidia"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 3,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 57.15
+        },
+        "origin/issue/27-type-naming": {
+          "branch": "issue/27-type-naming",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 0,
+            "structured": 6,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 49.85
+        },
+        "origin/issue/28-v1-docs": {
+          "branch": "issue/28-v1-docs",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 2,
+            "structured": 10,
+            "quickFixes": 1
+          },
+          "avgMessageLength": 45.15
+        },
+        "origin/main": {
+          "branch": "main",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "N DIVIJ",
+            "Tomide Oladipo"
+          ],
+          "patterns": {
+            "hotfixes": 2,
+            "features": 7,
+            "structured": 12,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 54.25
+        },
+        "origin/optimize/bundle-size": {
+          "branch": "optimize/bundle-size",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Raj",
+            "Leandro Gavidia Santamaria",
+            "meowy"
+          ],
+          "patterns": {
+            "hotfixes": 5,
+            "features": 3,
+            "structured": 3,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 43.25,
+          "inferredRole": "production",
+          "prodScore": 30
+        },
+        "origin/publish-husky-skip": {
+          "branch": "publish-husky-skip",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 7,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 45.05
+        },
+        "origin/rc-1-bump": {
+          "branch": "rc-1-bump",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 1,
+            "structured": 6,
+            "quickFixes": 2
+          },
+          "avgMessageLength": 46.75
+        },
+        "origin/release-client-hooks-1.0": {
+          "branch": "release-client-hooks-1.0",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "github-actions[bot]",
+            "Gui Bibeau",
+            "Efe",
+            "catmcgee"
+          ],
+          "patterns": {
+            "hotfixes": 1,
+            "features": 1,
+            "structured": 7,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 45.55
+        },
+        "origin/remove-cluster-log": {
+          "branch": "remove-cluster-log",
+          "remote": "origin",
+          "commits": 20,
+          "authors": [
+            "guibibeau",
+            "Gui Bibeau",
+            "github-actions[bot]"
+          ],
+          "patterns": {
+            "hotfixes": 4,
+            "features": 1,
+            "structured": 5,
+            "quickFixes": 3
+          },
+          "avgMessageLength": 39.95
+        }
+      },
+      "operators": {
+        "origin/changeset-release/main": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 24
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 20
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/changeset/metamask-connector": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 24
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 13
+            },
+            {
+              "name": "guibibeau",
+              "commits": 7
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/chore/add-changeset-pr4": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 18
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/chore/add-issue-pr-templates": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 30
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 12
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/chore/allow-web3-compat-publish": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 28
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 14
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/chore/client-readme-alignment": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 22
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 20
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 6
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/chore/dependency-audit-ci": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 26
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 18
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 6
+            }
+          ]
+        },
+        "origin/ci/add-test-coverage": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "guibibeau",
+              "commits": 15
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 8
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/client-hooks": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 32
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 2
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/docs-hooks-jsdoc": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 25
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 18
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs-site": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 20
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 5
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/add-website-link": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/comprehensive-jsdoc": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 21
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/fix-layout-max-width": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 3
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/minor-tweaks": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 20
+            },
+            {
+              "name": "guibibeau",
+              "commits": 1
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/readme-dx-improvements": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 24
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 13
+            },
+            {
+              "name": "guibibeau",
+              "commits": 5
+            },
+            {
+              "name": "resourcefulmind",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/readme-fixes-113-115-108-110": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 17
+            },
+            {
+              "name": "guibibeau",
+              "commits": 4
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/transaction-hooks-119-120-121": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 24
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 18
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/docs/useSplToken-readme-114": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 21
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feat/autodiscover-filter-helper": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 18
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feat/client-action-wrappers": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 25
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 17
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/feat/hooks-suspense-opt-in": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 35
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 8
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 4
+            },
+            {
+              "name": "catmcgee",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/feat/server-helpers-subpath": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 36
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 7
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 4
+            },
+            {
+              "name": "catmcgee",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/feat/state-persistence-integration": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 32
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 14
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 3
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feat/swr-hook-consistency": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 27
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 18
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            }
+          ]
+        },
+        "origin/feat/token-2022-support": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 24
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 1
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feat/web3-compat-full-connection": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 21
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 4
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/feat/wrap-sol-helper": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 18
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix-autoconnect-rc3": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 23
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 20
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/autoconnect": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 21
+            },
+            {
+              "name": "guibibeau",
+              "commits": 19
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 6
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/autoconnect-and-typecheck": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "guibibeau",
+              "commits": 17
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 7
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/docs-build": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 20
+            },
+            {
+              "name": "guibibeau",
+              "commits": 1
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/exclude-js-sourcemaps-from-npm": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "guibibeau",
+              "commits": 12
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 10
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/no-major-hooks": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 27
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 17
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/peer-dependency-warnings-106": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 21
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 20
+            },
+            {
+              "name": "guibibeau",
+              "commits": 1
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/publish-web3-compat-block": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 30
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 11
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/security-vulnerabilities": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 24
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 11
+            },
+            {
+              "name": "guibibeau",
+              "commits": 10
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/ssr-default-export": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 14
+            },
+            {
+              "name": "guibibeau",
+              "commits": 6
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/ssr-hydration-wallet-connection": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 21
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "guibibeau",
+              "commits": 2
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/tests-default-config": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 25
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 18
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/typecheck-build-dependency": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "guibibeau",
+              "commits": 17
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 7
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/useaccount-incomplete-data": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 16
+            },
+            {
+              "name": "guibibeau",
+              "commits": 3
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/useaccount-null-values": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 15
+            },
+            {
+              "name": "guibibeau",
+              "commits": 4
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/usebalance-invalid-address-handling": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 23
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 14
+            },
+            {
+              "name": "guibibeau",
+              "commits": 5
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/fix/web3-compat-repo-url": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 24
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 17
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 6
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/issue/19-core-types": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 31
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 10
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 4
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            },
+            {
+              "name": "catmcgee",
+              "commits": 2
+            }
+          ]
+        },
+        "origin/issue/21-connector-hardening": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 30
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 11
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/issue/22-simplify-init": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 25
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 17
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/issue/23-ssr-persistence": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 28
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 14
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Leandro Gavidia",
+              "commits": 3
+            }
+          ]
+        },
+        "origin/issue/27-type-naming": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 28
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 17
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            }
+          ]
+        },
+        "origin/issue/28-v1-docs": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 28
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 15
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/main": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 25
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 19
+            },
+            {
+              "name": "N DIVIJ",
+              "commits": 1
+            },
+            {
+              "name": "Tomide Oladipo",
+              "commits": 1
+            },
+            {
+              "name": "Opeyemi Stephen",
+              "commits": 1
+            },
+            {
+              "name": "Tadej Polajnar",
+              "commits": 1
+            },
+            {
+              "name": "Mohammad Shahbaz Alam",
+              "commits": 1
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/optimize/bundle-size": {
+          "primary": "Gui Bibeau",
+          "contributors": [
+            {
+              "name": "Gui Bibeau",
+              "commits": 22
+            },
+            {
+              "name": "guibibeau",
+              "commits": 15
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 8
+            },
+            {
+              "name": "Raj",
+              "commits": 1
+            },
+            {
+              "name": "Leandro Gavidia Santamaria",
+              "commits": 1
+            },
+            {
+              "name": "meowy",
+              "commits": 1
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/publish-husky-skip": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 24
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 19
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/rc-1-bump": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 25
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 18
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 5
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/release-client-hooks-1.0": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 22
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 20
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 6
+            },
+            {
+              "name": "Efe",
+              "commits": 1
+            },
+            {
+              "name": "catmcgee",
+              "commits": 1
+            }
+          ]
+        },
+        "origin/remove-cluster-log": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 33
+            },
+            {
+              "name": "Gui Bibeau",
+              "commits": 4
+            },
+            {
+              "name": "github-actions[bot]",
+              "commits": 3
+            }
+          ]
+        }
+      },
+      "currentBranch": "feat/web3-compat-full-connection",
+      "discoveredAt": "2026-01-13T15:45:32.131Z"
+    },
+    "solana-dev-skill": {
+      "name": "solana-dev-skill",
+      "path": "/workspaces/solana-dev-skill",
+      "remotes": {
+        "origin": {
+          "url": "https://github.com/GuiBibeau/solana-dev-skill.git",
+          "ownerRepo": "GuiBibeau/solana-dev-skill"
+        }
+      },
+      "branches": {
+        "local": [
+          "main"
+        ],
+        "remote": {
+          "origin": [
+            "main"
+          ]
+        }
+      },
+      "branchRoles": {
+        "origin/main": {
+          "branch": "main",
+          "remote": "origin",
+          "commits": 2,
+          "authors": [
+            "guibibeau"
+          ],
+          "patterns": {
+            "hotfixes": 0,
+            "features": 0,
+            "structured": 0,
+            "quickFixes": 0
+          },
+          "avgMessageLength": 64,
+          "inferredRole": "production",
+          "prodScore": 20
+        }
+      },
+      "operators": {
+        "origin/main": {
+          "primary": "guibibeau",
+          "contributors": [
+            {
+              "name": "guibibeau",
+              "commits": 2
+            }
+          ]
+        }
+      },
+      "currentBranch": "main",
+      "discoveredAt": "2026-01-13T15:45:32.152Z"
     }
   },
   "crossRepoSync": {},
@@ -5961,6 +9048,16 @@
         "branch": "backup/4.3.0-borked-sad-face",
         "remote": "origin",
         "confidence": 0.385
+      },
+      "framework-kit": {
+        "branch": "optimize/bundle-size",
+        "remote": "origin",
+        "confidence": 0.3
+      },
+      "solana-dev-skill": {
+        "branch": "main",
+        "remote": "origin",
+        "confidence": 0.2
       }
     },
     "primaryOperators": {
@@ -6138,6 +9235,68 @@
         "origin/upgrade/agent-sdk-ts-v2": "Alex Newman",
         "origin/viewer-ui": "Alex Newman",
         "origin/working/v5-docs": "Alex Newman"
+      },
+      "framework-kit": {
+        "origin/changeset-release/main": "Gui Bibeau",
+        "origin/changeset/metamask-connector": "Gui Bibeau",
+        "origin/chore/add-changeset-pr4": "Gui Bibeau",
+        "origin/chore/add-issue-pr-templates": "guibibeau",
+        "origin/chore/allow-web3-compat-publish": "guibibeau",
+        "origin/chore/client-readme-alignment": "guibibeau",
+        "origin/chore/dependency-audit-ci": "guibibeau",
+        "origin/ci/add-test-coverage": "Gui Bibeau",
+        "origin/client-hooks": "guibibeau",
+        "origin/docs-hooks-jsdoc": "guibibeau",
+        "origin/docs-site": "Gui Bibeau",
+        "origin/docs/add-website-link": "Gui Bibeau",
+        "origin/docs/comprehensive-jsdoc": "Gui Bibeau",
+        "origin/docs/fix-layout-max-width": "Gui Bibeau",
+        "origin/docs/minor-tweaks": "Gui Bibeau",
+        "origin/docs/readme-dx-improvements": "Gui Bibeau",
+        "origin/docs/readme-fixes-113-115-108-110": "Gui Bibeau",
+        "origin/docs/transaction-hooks-119-120-121": "Gui Bibeau",
+        "origin/docs/useSplToken-readme-114": "Gui Bibeau",
+        "origin/feat/autodiscover-filter-helper": "Gui Bibeau",
+        "origin/feat/client-action-wrappers": "guibibeau",
+        "origin/feat/hooks-suspense-opt-in": "guibibeau",
+        "origin/feat/server-helpers-subpath": "guibibeau",
+        "origin/feat/state-persistence-integration": "guibibeau",
+        "origin/feat/swr-hook-consistency": "guibibeau",
+        "origin/feat/token-2022-support": "Gui Bibeau",
+        "origin/feat/web3-compat-full-connection": "Gui Bibeau",
+        "origin/feat/wrap-sol-helper": "Gui Bibeau",
+        "origin/fix-autoconnect-rc3": "guibibeau",
+        "origin/fix/autoconnect": "Gui Bibeau",
+        "origin/fix/autoconnect-and-typecheck": "Gui Bibeau",
+        "origin/fix/docs-build": "Gui Bibeau",
+        "origin/fix/exclude-js-sourcemaps-from-npm": "Gui Bibeau",
+        "origin/fix/no-major-hooks": "guibibeau",
+        "origin/fix/peer-dependency-warnings-106": "Gui Bibeau",
+        "origin/fix/publish-web3-compat-block": "guibibeau",
+        "origin/fix/security-vulnerabilities": "Gui Bibeau",
+        "origin/fix/ssr-default-export": "Gui Bibeau",
+        "origin/fix/ssr-hydration-wallet-connection": "Gui Bibeau",
+        "origin/fix/tests-default-config": "guibibeau",
+        "origin/fix/typecheck-build-dependency": "Gui Bibeau",
+        "origin/fix/useaccount-incomplete-data": "Gui Bibeau",
+        "origin/fix/useaccount-null-values": "Gui Bibeau",
+        "origin/fix/usebalance-invalid-address-handling": "Gui Bibeau",
+        "origin/fix/web3-compat-repo-url": "guibibeau",
+        "origin/issue/19-core-types": "guibibeau",
+        "origin/issue/21-connector-hardening": "guibibeau",
+        "origin/issue/22-simplify-init": "guibibeau",
+        "origin/issue/23-ssr-persistence": "guibibeau",
+        "origin/issue/27-type-naming": "guibibeau",
+        "origin/issue/28-v1-docs": "guibibeau",
+        "origin/main": "Gui Bibeau",
+        "origin/optimize/bundle-size": "Gui Bibeau",
+        "origin/publish-husky-skip": "guibibeau",
+        "origin/rc-1-bump": "guibibeau",
+        "origin/release-client-hooks-1.0": "guibibeau",
+        "origin/remove-cluster-log": "guibibeau"
+      },
+      "solana-dev-skill": {
+        "origin/main": "guibibeau"
       }
     }
   }

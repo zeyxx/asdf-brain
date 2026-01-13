@@ -6,7 +6,7 @@
 
 ## In One Sentence
 
-**Phase 0 CLEANUP axioms/ complete, Tests à 0%, Phase 6 à 0%, Meta-dimensions non implémentées.**
+**Phase 0 CLEANUP axioms/ complete, Tests à 16.69% (546 passing), Phase 6 à 0%, Meta-dimensions non implémentées.**
 
 ---
 
