@@ -7,10 +7,10 @@
  * @philosophy Each Sefirah is a node of consciousness, each path a law of transformation
  */
 
-// Import PHI constants from CYNIC
-const PHI = 1.618033988749895;
-const PHI_INV = 1 / PHI;           // 0.618
-const PHI_INV_2 = PHI_INV * PHI_INV; // 0.382
+// PHI constants - exported for use across tree modules
+export const PHI = 1.618033988749895;
+export const PHI_INV = 1 / PHI;           // 0.618
+export const PHI_INV_2 = PHI_INV * PHI_INV; // 0.382
 
 // =============================================================================
 // SEFIROT CONFIGURATION
