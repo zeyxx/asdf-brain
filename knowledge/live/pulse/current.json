@@ -1,14 +1,14 @@
 {
   "alive": true,
-  "lastPulse": "2026-01-13T18:57:35.311Z",
-  "lastPulseMs": 1,
-  "pulseCount": 460,
+  "lastPulse": "2026-01-13T18:59:38.917Z",
+  "lastPulseMs": 2,
+  "pulseCount": 462,
   "currentHealth": 52,
-  "uptimeMs": 28367771,
+  "uptimeMs": 28491377,
   "subsystems": {
     "observation": {
       "registered": true,
-      "lastCheck": "2026-01-13T18:57:35.311Z",
+      "lastCheck": "2026-01-13T18:59:38.917Z",
       "healthy": true,
       "details": {
         "residuals": {
@@ -27,7 +27,7 @@
     },
     "dashboard": {
       "registered": true,
-      "lastCheck": "2026-01-13T18:57:35.311Z",
+      "lastCheck": "2026-01-13T18:59:38.917Z",
       "healthy": true,
       "details": {
         "path": "/workspaces/asdf-brain/knowledge/dashboard/dimensions.html",
@@ -43,13 +43,13 @@
             "philosophy": "Cache should serve φ⁻¹ of requests"
           }
         },
-        "refreshedAt": "2026-01-13T18:57:35.312Z"
+        "refreshedAt": "2026-01-13T18:59:38.918Z"
       },
       "consecutiveFailures": 0
     },
     "filesystem": {
       "registered": true,
-      "lastCheck": "2026-01-13T18:57:35.311Z",
+      "lastCheck": "2026-01-13T18:59:38.917Z",
       "healthy": true,
       "details": {
         "path": "/workspaces/asdf-brain/knowledge",
@@ -60,19 +60,19 @@
     },
     "memory": {
       "registered": true,
-      "lastCheck": "2026-01-13T18:57:35.311Z",
+      "lastCheck": "2026-01-13T18:59:38.917Z",
       "healthy": false,
       "details": {
         "heapUsedMB": 13,
-        "heapTotalMB": 14,
-        "heapPercent": 93,
+        "heapTotalMB": 15,
+        "heapPercent": 86,
         "rssMB": 70
       },
-      "consecutiveFailures": 16
+      "consecutiveFailures": 1
     },
     "eventLoop": {
       "registered": true,
-      "lastCheck": "2026-01-13T18:57:35.311Z",
+      "lastCheck": "2026-01-13T18:59:38.917Z",
       "healthy": true,
       "details": {
         "latencyMs": 0,
@@ -82,12 +82,12 @@
     },
     "knowledge": {
       "registered": true,
-      "lastCheck": "2026-01-13T18:57:35.311Z",
+      "lastCheck": "2026-01-13T18:59:38.917Z",
       "healthy": true,
       "details": {
         "fileCount": 7,
         "newestUpdateMs": 1768330558001.274,
-        "ageHours": 0,
+        "ageHours": 0.1,
         "status": "fresh"
       },
       "consecutiveFailures": 0
@@ -98,7 +98,7 @@
     "totalEvents": 0,
     "totalErrors": 0,
     "avgResponseMs": 0,
-    "uptimeMs": 28367771
+    "uptimeMs": 28491377
   },
   "anomalyCount": 445,
   "recentAnomalies": [

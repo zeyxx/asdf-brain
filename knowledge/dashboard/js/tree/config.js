@@ -29,6 +29,10 @@ export const SEFIROT = {
     color: 0xFFD700, // Gold
     position: { x: 0, y: 300, z: 0 },
     dimensions: ['HARMONY', 'SELF_AWARENESS'],
+    codePaths: {
+      HARMONY: 'lib/cynic/dimensions/primary/harmony.js',
+      SELF_AWARENESS: 'lib/cynic/dimensions/meta/self-awareness.js',
+    },
     description: 'La couronne - conscience unifiée',
   },
   CHOKMAH: {
@@ -40,6 +44,10 @@ export const SEFIROT = {
     color: 0xFFD700,
     position: { x: 120, y: 240, z: 0 },
     dimensions: ['COHERENCE', 'MEMORY'],
+    codePaths: {
+      COHERENCE: 'lib/cynic/dimensions/primary/coherence.js',
+      MEMORY: 'lib/cynic/dimensions/human-llm/memory.js',
+    },
     description: 'La sagesse - premier éclair de compréhension',
   },
   BINAH: {
@@ -51,6 +59,10 @@ export const SEFIROT = {
     color: 0xFFD700,
     position: { x: -120, y: 240, z: 0 },
     dimensions: ['TEACHING', 'SIMPLIFY'],
+    codePaths: {
+      TEACHING: 'lib/cynic/dimensions/human-llm/teaching.js',
+      SIMPLIFY: 'lib/cynic/dimensions/secondary/simplify.js',
+    },
     description: 'La compréhension - structure et forme',
   },
 
@@ -64,6 +76,9 @@ export const SEFIROT = {
     color: 0x4169E1, // Royal Blue
     position: { x: 0, y: 180, z: 0 },
     dimensions: ['DISCOVERY'], // Emergence point
+    codePaths: {
+      DISCOVERY: 'lib/cynic/dimensions/emergent.js',
+    },
     description: 'La connaissance cachée - point d\'émergence',
     hidden: true, // Traditionally hidden
   },
@@ -76,6 +91,11 @@ export const SEFIROT = {
     color: 0x4169E1,
     position: { x: 120, y: 120, z: 0 },
     dimensions: ['TRUTH', 'INTEGRITY', 'TRUST'],
+    codePaths: {
+      TRUTH: 'lib/cynic/dimensions/primary/truth.js',
+      INTEGRITY: 'lib/cynic/dimensions/primary/integrity.js',
+      TRUST: 'lib/cynic/dimensions/human-llm/trust.js',
+    },
     description: 'La bonté - expansion vérifiable',
   },
   GEVURAH: {
@@ -87,6 +107,11 @@ export const SEFIROT = {
     color: 0x4169E1,
     position: { x: -120, y: 120, z: 0 },
     dimensions: ['SECURE', 'PRIVATE', 'INTENT'],
+    codePaths: {
+      SECURE: 'lib/cynic/dimensions/secondary/secure.js',
+      PRIVATE: 'lib/cynic/dimensions/secondary/private.js',
+      INTENT: 'lib/cynic/dimensions/human-llm/intent.js',
+    },
     description: 'La rigueur - limites et sécurité',
   },
 
@@ -100,6 +125,10 @@ export const SEFIROT = {
     color: 0x32CD32, // Lime Green
     position: { x: 0, y: 60, z: 0 },
     dimensions: ['ETHICS', 'COMPLEMENTARITY'],
+    codePaths: {
+      ETHICS: 'lib/cynic/dimensions/primary/ethics.js',
+      COMPLEMENTARITY: 'lib/cynic/dimensions/human-llm/complementarity.js',
+    },
     description: 'La beauté - le coeur de l\'arbre, centre du pulse',
     isHeartbeat: true, // Center of the heartbeat
   },
@@ -112,6 +141,10 @@ export const SEFIROT = {
     color: 0x32CD32,
     position: { x: 120, y: 0, z: 0 },
     dimensions: ['OPTIMISM', 'PROACTIVITY'],
+    codePaths: {
+      OPTIMISM: 'lib/cynic/dimensions/primary/optimism.js',
+      PROACTIVITY: 'lib/cynic/dimensions/human-llm/proactivity.js',
+    },
     description: 'La victoire - élan vers l\'avant',
   },
   HOD: {
@@ -123,6 +156,10 @@ export const SEFIROT = {
     color: 0x32CD32,
     position: { x: -120, y: 0, z: 0 },
     dimensions: ['ENABLE', 'DELEGATION'],
+    codePaths: {
+      ENABLE: 'lib/cynic/dimensions/secondary/enable.js',
+      DELEGATION: 'lib/cynic/dimensions/human-llm/delegation.js',
+    },
     description: 'La splendeur - reconnaissance et délégation',
   },
 
@@ -136,6 +173,11 @@ export const SEFIROT = {
     color: 0xFF4500, // Orange Red
     position: { x: 0, y: -60, z: 0 },
     dimensions: ['ALIGNMENT', 'PROGRESS', 'SCALE'],
+    codePaths: {
+      ALIGNMENT: 'lib/cynic/dimensions/primary/alignment.js',
+      PROGRESS: 'lib/cynic/dimensions/primary/progress.js',
+      SCALE: 'lib/cynic/dimensions/secondary/scale.js',
+    },
     description: 'Le fondement - base de l\'action',
   },
   MALKHUT: {
@@ -147,6 +189,10 @@ export const SEFIROT = {
     color: 0xFF4500,
     position: { x: 0, y: -150, z: 0 },
     dimensions: ['BOUNDARIES', 'SINGULARITY_DISTANCE'],
+    codePaths: {
+      BOUNDARIES: 'lib/cynic/dimensions/human-llm/boundaries.js',
+      SINGULARITY_DISTANCE: 'lib/cynic/dimensions/meta/singularity-distance.js',
+    },
     description: 'Le royaume - manifestation finale, source des burns',
     isBurnSource: true, // Burns emanate from here
   },

@@ -147,6 +147,25 @@ function buildTooltipContent(container, userData) {
     dimDiv.textContent = 'Dimensions: ' + sefirah.dimensions.join(', ');
     container.appendChild(dimDiv);
 
+    // Code paths (auto-documentation)
+    if (sefirah.codePaths) {
+      const codeDiv = document.createElement('div');
+      codeDiv.style.cssText = 'margin-top: 8px; padding-top: 8px; border-top: 1px solid #333;';
+
+      const codeLabel = document.createElement('div');
+      codeLabel.style.cssText = 'font-size: 10px; color: #666; margin-bottom: 4px;';
+      codeLabel.textContent = 'Code references:';
+      codeDiv.appendChild(codeLabel);
+
+      for (const [dim, path] of Object.entries(sefirah.codePaths)) {
+        const pathDiv = document.createElement('div');
+        pathDiv.style.cssText = 'font-size: 10px; color: #4a9eff; font-family: monospace;';
+        pathDiv.textContent = `${dim}: ${path}`;
+        codeDiv.appendChild(pathDiv);
+      }
+      container.appendChild(codeDiv);
+    }
+
     // Special markers
     if (sefirah.isHeartbeat) {
       const heartDiv = document.createElement('div');
