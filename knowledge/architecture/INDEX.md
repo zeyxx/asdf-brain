@@ -24,7 +24,7 @@ WORK > WEALTH
 
 ---
 
-## The 7 Canonical Documents
+## The 8 Canonical Documents
 
 | Document | Lines | Description |
 |----------|-------|-------------|
@@ -35,6 +35,7 @@ WORK > WEALTH
 | **[ROLES.md](./ROLES.md)** | ~400 | L1-L5 Taxonomy, User Types, E-Score |
 | **[INFRASTRUCTURE.md](./INFRASTRUCTURE.md)** | ~500 | Multi-node, Blockchain, Render → Distributed |
 | **[META.md](./META.md)** | ~450 | Emergence, Meta-Dimensions, Q-Score Contextuel |
+| **[GAP-ANALYSIS.md](./GAP-ANALYSIS.md)** | ~280 | Documentation vs Implementation gaps |
 
 ### How to Navigate
 
@@ -47,6 +48,7 @@ WORK > WEALTH
 | Understand roles and E-Score | ROLES.md |
 | Understand infrastructure evolution | INFRASTRUCTURE.md |
 | Understand emergence and self-awareness | META.md |
+| See gaps between docs and code | GAP-ANALYSIS.md |
 
 ---
 
@@ -128,6 +130,7 @@ Complementary docs for specific aspects (kept in main folder):
 | ROLES.md | `lib/contributors.js` (E-Score dimensions) |
 | INFRASTRUCTURE.md | `anchor/`, `lib/cynic/sync.js`, `mcp-server.js` |
 | META.md | `lib/cynic/core/residual-*.js`, `lib/cynic/dimensions/discovery/` |
+| GAP-ANALYSIS.md | Analysis document - references all above |
 
 ---
 
@@ -163,6 +166,7 @@ In `_archive/` - superseded by the 6 canonical docs:
 | ROLES.md | zeyxx | 2026-01-13 |
 | INFRASTRUCTURE.md | zeyxx | 2026-01-13 |
 | META.md | zeyxx | 2026-01-13 |
+| GAP-ANALYSIS.md | zeyxx | 2026-01-13 |
 
 ---
 
@@ -170,8 +174,9 @@ In `_archive/` - superseded by the 6 canonical docs:
 
 | Date | Change |
 |------|--------|
+| 2026-01-13 | Added GAP-ANALYSIS.md (Documentation vs Implementation gaps) |
 | 2026-01-13 | Added META.md (Emergence, Meta-Dimensions, Q-Score Contextuel) |
-| 2026-01-13 | Refactored into 7 canonical docs |
+| 2026-01-13 | Refactored into 8 canonical docs |
 | 2026-01-13 | Added ROADMAP.md, ROLES.md, INFRASTRUCTURE.md |
 | 2026-01-13 | Archived ROLE_TAXONOMY, MULTINODE-BLOCKCHAIN, CYNIC_ESSENCE, DAAT, SINGULARITY_API |
 | 2026-01-13 | Created INDEX.md |
