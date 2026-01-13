@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Test coverage reports
+coverage/
+
 # Cloned prod repos (re-cloned on demand)
 repos-prod/
 

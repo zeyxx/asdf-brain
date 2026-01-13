@@ -1,111 +1,93 @@
 {
   "_meta": {
     "name": "W - Weights Matrix",
-    "description": "26×1 vector of dimension weights, derived from φ",
-    "version": "1.1.0",
-    "status": "EVOLVING",
+    "description": "24×1 vector of dimension weights, unified AXIOM-based architecture",
+    "version": "2.0.0",
+    "status": "STABLE",
     "created": "2026-01-11",
-    "lastUpdated": "2026-01-11",
-    "philosophy": "All weights derive from φ = 1.618033988749895",
-    "note": "DISCOVERED dimensions start at φ⁻¹ and can evolve"
+    "lastUpdated": "2026-01-13",
+    "philosophy": "DIMENSION → AXIOM → WEIGHT. Total = 42 = 6 × L₄ (Lucas number)",
+    "architecture": "6 dimensions × 4 axioms = 24 dimensions"
   },
 
   "_constants": {
     "PHI": 1.618033988749895,
     "PHI_2": 2.6180339887498953,
-    "PHI_3": 4.23606797749979,
-    "PHI_INV": 0.6180339887498948,
-    "TOTAL_WEIGHT": 49.82623721902537
+    "PHI_INV_4": 0.14589803375031545,
+    "LUCAS_4": 7.0,
+    "LUCAS_BURN": 1.1458980337503155,
+    "TOTAL_WEIGHT": 42
   },
 
-  "dimensions": {
-    "PRIMARY": {
+  "_axiom_weights": {
+    "PHI": { "weight": 2.6180339887498953, "formula": "φ²", "world": "ATZILUT", "name": "Essence" },
+    "VERIFY": { "weight": 1.618033988749895, "formula": "φ", "world": "BERIAH", "name": "Economics" },
+    "CULTURE": { "weight": 1.618033988749895, "formula": "φ", "world": "YETZIRAH", "name": "Ethics" },
+    "BURN": { "weight": 1.1458980337503155, "formula": "1 + φ⁻⁴", "world": "ASSIAH", "name": "Operation" }
+  },
+
+  "axioms": {
+    "PHI": {
       "weight": 2.6180339887498953,
       "formula": "φ²",
-      "count": 8,
-      "subtotal": 20.944271909999162,
+      "world": "ATZILUT",
+      "count": 6,
+      "subtotal": 15.708203932499372,
       "members": [
         { "name": "HARMONY", "index": 0, "weight": 2.6180339887498953 },
         { "name": "COHERENCE", "index": 1, "weight": 2.6180339887498953 },
-        { "name": "TRUTH", "index": 2, "weight": 2.6180339887498953 },
-        { "name": "INTEGRITY", "index": 3, "weight": 2.6180339887498953 },
-        { "name": "ETHICS", "index": 4, "weight": 2.6180339887498953 },
-        { "name": "OPTIMISM", "index": 5, "weight": 2.6180339887498953 },
-        { "name": "ALIGNMENT", "index": 6, "weight": 2.6180339887498953 },
-        { "name": "PROGRESS", "index": 7, "weight": 2.6180339887498953 }
+        { "name": "MEMORY", "index": 2, "weight": 2.6180339887498953 },
+        { "name": "TEACHING", "index": 3, "weight": 2.6180339887498953 },
+        { "name": "SIMPLIFY", "index": 4, "weight": 2.6180339887498953 },
+        { "name": "SELF_AWARENESS", "index": 5, "weight": 2.6180339887498953 }
       ]
     },
 
-    "SECONDARY": {
+    "VERIFY": {
       "weight": 1.618033988749895,
       "formula": "φ",
-      "count": 5,
-      "subtotal": 8.090169943749475,
+      "world": "BERIAH",
+      "count": 6,
+      "subtotal": 9.70820393249937,
       "members": [
+        { "name": "TRUTH", "index": 6, "weight": 1.618033988749895 },
+        { "name": "INTEGRITY", "index": 7, "weight": 1.618033988749895 },
         { "name": "SECURE", "index": 8, "weight": 1.618033988749895 },
         { "name": "PRIVATE", "index": 9, "weight": 1.618033988749895 },
-        { "name": "SCALE", "index": 10, "weight": 1.618033988749895 },
-        { "name": "SIMPLIFY", "index": 11, "weight": 1.618033988749895 },
-        { "name": "ENABLE", "index": 12, "weight": 1.618033988749895 }
+        { "name": "INTENT", "index": 10, "weight": 1.618033988749895 },
+        { "name": "TRUST", "index": 11, "weight": 1.618033988749895 }
       ]
     },
 
-    "META": {
-      "weight": 1.0,
-      "formula": "1",
-      "count": 3,
-      "subtotal": 3.0,
-      "members": [
-        { "name": "SELF_AWARENESS", "index": 13, "weight": 1.0 },
-        { "name": "LEARNING_RATE", "index": 14, "weight": 1.0 },
-        { "name": "SINGULARITY_DISTANCE", "index": 15, "weight": 1.0 }
-      ]
-    },
-
-    "HUMAN_LLM": {
+    "CULTURE": {
       "weight": 1.618033988749895,
       "formula": "φ",
-      "count": 8,
-      "subtotal": 12.94427190999916,
+      "world": "YETZIRAH",
+      "count": 6,
+      "subtotal": 9.70820393249937,
       "members": [
-        { "name": "MEMORY", "index": 16, "weight": 1.618033988749895 },
-        { "name": "TEACHING", "index": 17, "weight": 1.618033988749895 },
-        { "name": "INTENT", "index": 18, "weight": 1.618033988749895 },
-        { "name": "TRUST", "index": 19, "weight": 1.618033988749895 },
-        { "name": "PROACTIVITY", "index": 20, "weight": 1.618033988749895 },
-        { "name": "COMPLEMENTARITY", "index": 21, "weight": 1.618033988749895 },
-        { "name": "DELEGATION", "index": 22, "weight": 1.618033988749895 },
-        { "name": "BOUNDARIES", "index": 23, "weight": 1.618033988749895 }
+        { "name": "ETHICS", "index": 12, "weight": 1.618033988749895 },
+        { "name": "OPTIMISM", "index": 13, "weight": 1.618033988749895 },
+        { "name": "ENABLE", "index": 14, "weight": 1.618033988749895 },
+        { "name": "PROACTIVITY", "index": 15, "weight": 1.618033988749895 },
+        { "name": "COMPLEMENTARITY", "index": 16, "weight": 1.618033988749895 },
+        { "name": "DELEGATION", "index": 17, "weight": 1.618033988749895 }
       ]
     },
 
-    "DISCOVERY": {
-      "weight": 4.23606797749979,
-      "formula": "φ³",
-      "count": 1,
-      "subtotal": 4.23606797749979,
+    "BURN": {
+      "weight": 1.1458980337503155,
+      "formula": "1 + φ⁻⁴",
+      "world": "ASSIAH",
+      "count": 6,
+      "subtotal": 6.875388202501893,
       "members": [
-        { "name": "DISCOVERY", "index": 24, "weight": 4.23606797749979 }
-      ]
-    },
-
-    "DISCOVERED": {
-      "weight": 0.6180339887498948,
-      "formula": "φ⁻¹",
-      "count": 1,
-      "subtotal": 0.6180339887498948,
-      "description": "Dimensions discovered by residual analysis - start conservative, evolve with validation",
-      "members": [
-        {
-          "name": "CULTURAL_CONTEXT",
-          "index": 25,
-          "weight": 0.6180339887498948,
-          "discoveredAt": "2026-01-11",
-          "axiomOrigin": "CULTURE",
-          "definition": "Mesure l'alignement avec le contexte culturel et les traditions du projet",
-          "discoveredBy": "THE_INNOMMABLE",
-          "validatedBy": "zeyxx"
-        }
+        { "name": "ALIGNMENT", "index": 18, "weight": 1.1458980337503155 },
+        { "name": "PROGRESS", "index": 19, "weight": 1.1458980337503155 },
+        { "name": "SCALE", "index": 20, "weight": 1.1458980337503155 },
+        { "name": "BOUNDARIES", "index": 21, "weight": 1.1458980337503155 },
+        { "name": "SINGULARITY_DISTANCE", "index": 22, "weight": 1.1458980337503155 },
+        { "name": "ADAPTATION_VELOCITY", "index": 23, "weight": 1.1458980337503155 }
       ]
     }
   },
@@ -117,16 +99,6 @@
     2.6180339887498953,
     2.6180339887498953,
     2.6180339887498953,
-    2.6180339887498953,
-    2.6180339887498953,
-    1.618033988749895,
-    1.618033988749895,
-    1.618033988749895,
-    1.618033988749895,
-    1.618033988749895,
-    1.0,
-    1.0,
-    1.0,
     1.618033988749895,
     1.618033988749895,
     1.618033988749895,
@@ -135,17 +107,29 @@
     1.618033988749895,
     1.618033988749895,
     1.618033988749895,
-    4.23606797749979,
-    0.6180339887498948
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.618033988749895,
+    1.1458980337503155,
+    1.1458980337503155,
+    1.1458980337503155,
+    1.1458980337503155,
+    1.1458980337503155,
+    1.1458980337503155
   ],
 
   "index_to_name": [
-    "HARMONY", "COHERENCE", "TRUTH", "INTEGRITY",
-    "ETHICS", "OPTIMISM", "ALIGNMENT", "PROGRESS",
-    "SECURE", "PRIVATE", "SCALE", "SIMPLIFY", "ENABLE",
-    "SELF_AWARENESS", "LEARNING_RATE", "SINGULARITY_DISTANCE",
-    "MEMORY", "TEACHING", "INTENT", "TRUST",
-    "PROACTIVITY", "COMPLEMENTARITY", "DELEGATION", "BOUNDARIES",
-    "DISCOVERY", "CULTURAL_CONTEXT"
+    "HARMONY", "COHERENCE", "MEMORY", "TEACHING", "SIMPLIFY", "SELF_AWARENESS",
+    "TRUTH", "INTEGRITY", "SECURE", "PRIVATE", "INTENT", "TRUST",
+    "ETHICS", "OPTIMISM", "ENABLE", "PROACTIVITY", "COMPLEMENTARITY", "DELEGATION",
+    "ALIGNMENT", "PROGRESS", "SCALE", "BOUNDARIES", "SINGULARITY_DISTANCE", "ADAPTATION_VELOCITY"
+  ],
+
+  "index_to_axiom": [
+    "PHI", "PHI", "PHI", "PHI", "PHI", "PHI",
+    "VERIFY", "VERIFY", "VERIFY", "VERIFY", "VERIFY", "VERIFY",
+    "CULTURE", "CULTURE", "CULTURE", "CULTURE", "CULTURE", "CULTURE",
+    "BURN", "BURN", "BURN", "BURN", "BURN", "BURN"
   ]
 }
