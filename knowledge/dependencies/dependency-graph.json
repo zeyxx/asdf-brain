@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-14T03:19:29.016Z",
+    "generated": "2026-01-14T13:10:54.220Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -636,7 +636,7 @@
           "../cynic/alert-rules": 2,
           "../cynic/metrics": 1,
           "../daat-levels": 1,
-          "./_shared": 4,
+          "./_shared": 5,
           "../cynic/residual-detector": 1,
           "../cynic/index": 1,
           "./learn-handlers": 3,
@@ -760,7 +760,7 @@
           "fs": 86,
           "path": 87,
           "child_process": 17,
-          "crypto": 33,
+          "crypto": 34,
           "readline": 10,
           "http": 4,
           "url": 1,
