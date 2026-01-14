@@ -11,32 +11,42 @@
     {
       "name": "judge",
       "path": "skills/judge.md",
-      "description": "🐕 CYNIC judgment - evaluate knowledge, patterns, decisions with 25 dimensions across 4 Mondes"
+      "description": "CYNIC judgment - challenge assumptions with skepticism"
     },
     {
       "name": "digest",
       "path": "skills/digest.md",
-      "description": "🐕 CYNIC digestion - transform chaos into structured knowledge (ideas, links, roadmap)"
+      "description": "CYNIC digestion - transform chaos into structured knowledge"
     },
     {
       "name": "learn",
       "path": "skills/learn.md",
-      "description": "🐕 CYNIC learning - provide feedback on past judgments to improve accuracy"
+      "description": "CYNIC learning - provide feedback to improve future judgments"
     },
     {
       "name": "search",
       "path": "skills/search.md",
-      "description": "🐕 CYNIC search - sniff through knowledge base for patterns, decisions, insights"
+      "description": "CYNIC search - find patterns, decisions, and insights"
     },
     {
       "name": "patterns",
       "path": "skills/patterns.md",
-      "description": "🐕 CYNIC patterns - view detected patterns (technical, process, issues, solutions)"
+      "description": "CYNIC patterns - view detected patterns across the ecosystem"
     },
     {
       "name": "health",
       "path": "skills/health.md",
-      "description": "🐕 CYNIC health - system status dashboard (pulse, anomalies, subsystems)"
+      "description": "CYNIC health - system status dashboard"
+    },
+    {
+      "name": "think",
+      "path": "skills/think.md",
+      "description": "CYNIC deep thinking - Claude for thinking, not just doing"
+    },
+    {
+      "name": "reset",
+      "path": "skills/reset.md",
+      "description": "CYNIC context reset - clear context, paste back what matters"
     }
   ],
 
@@ -65,12 +75,16 @@
 
   "hooks": [
     {
-      "event": "PostConversation",
-      "path": "hooks/post-conversation.js"
+      "event": "PreToolUse",
+      "path": "hooks/pre-tool-use.js"
     },
     {
       "event": "PostToolUse",
       "path": "hooks/observe-action.js"
+    },
+    {
+      "event": "PostConversation",
+      "path": "hooks/post-conversation.js"
     }
   ],
 
