@@ -24,9 +24,6 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const gitIntel = require('../lib/git-intelligence');
-const repoDiscovery = require('../lib/repo-discovery');
-const { getOperatorLoader } = require('../lib/operator-loader');
 
 // =============================================================================
 // CONFIGURATION
@@ -35,13 +32,11 @@ const { getOperatorLoader } = require('../lib/operator-loader');
 const BRAIN_ROOT = path.join(__dirname, '..');
 const KNOWLEDGE_ROOT = path.join(BRAIN_ROOT, 'knowledge');
 
-// φ severity classification (from temporal.js - single source of truth)
-const {
-  PHI_THRESHOLDS,
-  classifySeverity,
-  classifyCountSeverity,
-  trackSeverity,
-} = require('../lib/temporal');
+// φ thresholds for alert severity
+const PHI = 1.618033988749895;
+const THRESHOLD_HIGH = 0.618;    // φ⁻¹ - Act immediately
+const THRESHOLD_MEDIUM = 0.382;  // φ⁻² - Verify soon
+const THRESHOLD_LOW = 0.236;     // φ⁻³ - Research when time
 
 // =============================================================================
 // LOGGING - Emoji-based severity (aligned with HolDex conventions)
@@ -72,22 +67,6 @@ function detectProject(cwd) {
   if (cwdLower.includes('forecast')) return 'asdforecast';
 
   return 'ecosystem';
-}
-
-/**
- * Detect operator from git config (hardcoded command - safe from injection)
- */
-function detectOperatorFromGit() {
-  try {
-    // Hardcoded git command - no user input - safe
-    const username = execSync('git config user.name', {
-      encoding: 'utf-8',
-      stdio: ['pipe', 'pipe', 'pipe']
-    }).trim();
-    return username || null;
-  } catch (e) {
-    return null;
-  }
 }
 
 // =============================================================================
@@ -139,46 +118,6 @@ function analyzeGitState(repoPath) {
   } catch (e) {
     return null;
   }
-}
-
-// =============================================================================
-// GITHUB PR/FORK STATUS (requires gh CLI)
-// =============================================================================
-
-// Fork relationships - CRITICAL KNOWLEDGE
-const FORK_MAP = {
-  'HolDex': {
-    upstream: 'sollama58/HolDex',
-    fork: 'zeyxx/HolDex',
-    targetBranch: 'NewDexSOCKETS',
-  },
-};
-
-function checkGitHubStatus() {
-  const results = { prs: [], forkSync: [] };
-
-  try {
-    // Check for open PRs on upstream repos
-    for (const [name, config] of Object.entries(FORK_MAP)) {
-      try {
-        const prsJson = execSync(`gh api repos/${config.upstream}/pulls --jq '[.[] | {number, title, state, draft}]'`, {
-          encoding: 'utf-8',
-          stdio: ['pipe', 'pipe', 'pipe'],
-          timeout: 5000,
-        });
-        const prs = JSON.parse(prsJson || '[]');
-        if (prs.length > 0) {
-          results.prs.push({ repo: name, upstream: config.upstream, prs });
-        }
-      } catch (e) {
-        // gh CLI not available or API error
-      }
-    }
-  } catch (e) {
-    // Silent fail - gh might not be installed
-  }
-
-  return results;
 }
 
 // =============================================================================
@@ -259,96 +198,33 @@ async function awaken(options = {}) {
   // 1. Project Context
   log.info(`Project detected: ${project.toUpperCase()}`);
   log.info(`Working directory: ${cwd}`);
-
-  // 1b. Operator Context (if available)
-  let operatorContext = null;
-  const operatorId = options.operator || process.env.OPERATOR_ID || detectOperatorFromGit();
-  if (operatorId) {
-    try {
-      const loader = getOperatorLoader();
-      operatorContext = loader.getOperatorSummary(operatorId);
-      if (operatorContext) {
-        log.info(`Operator: ${operatorContext.displayName}`);
-        if (operatorContext.roles?.length > 0) {
-          console.log(`   Roles: ${operatorContext.roles.join(', ')}`);
-        }
-      }
-    } catch (e) {
-      // Operator loading is optional
-    }
-  }
   console.log('');
 
-  // 2. Git Intelligence (branches, PRs, post-merge commits)
-  console.log('── GIT INTELLIGENCE ───────────────────────────────────────');
+  // 2. Git State Analysis
+  const repos = [
+    { name: 'HolDex', path: '/workspaces/HolDex' },
+    { name: 'GASdf', path: '/workspaces/GASdf' },
+    { name: 'asdf-brain', path: '/workspaces/asdf-brain' },
+  ];
+
+  console.log('── GIT STATE ──────────────────────────────────────────────');
   let hasGitAlerts = false;
-  let gitSuggestions = [];
 
-  try {
-    const intel = gitIntel.scanEcosystem();
+  for (const repo of repos) {
+    if (fs.existsSync(repo.path)) {
+      const state = analyzeGitState(repo.path);
+      if (state) {
+        const alerts = [];
+        if (state.modified > 0) alerts.push(`${state.modified} modified`);
+        if (state.untracked > 0) alerts.push(`${state.untracked} untracked`);
+        if (state.drift.behind > 0) alerts.push(`${state.drift.behind} behind`);
+        if (state.drift.ahead > 0) alerts.push(`${state.drift.ahead} ahead`);
 
-    for (const [repoName, data] of Object.entries(intel.repos)) {
-      if (data.error) continue;
-
-      const branch = data.branch;
-      const pr = data.pr;
-
-      // Build status line
-      let status = `${repoName.toUpperCase()} [${branch.branch}]`;
-      if (pr) {
-        status += pr.merged
-          ? ` ← PR #${pr.number} MERGED`
-          : ` ← PR #${pr.number} ${pr.state.toUpperCase()}`;
-      }
-
-      // Determine alert level
-      const alerts = [];
-      if (branch.modified > 0) alerts.push(`${branch.modified} modified`);
-      if (branch.untracked > 0) alerts.push(`${branch.untracked} untracked`);
-      if (branch.behind > 0) alerts.push(`${branch.behind} behind`);
-
-      if (data.postMergeCommits?.length > 0) {
-        // Critical: commits after PR was merged
-        log.alert(`${status}`);
-        console.log(`   🔴 ${data.postMergeCommits.length} commits SINCE PR merged!`);
-        data.postMergeCommits.slice(0, 2).forEach(c => {
-          console.log(`      • ${c.hash} ${c.subject.substring(0, 50)}`);
-        });
-        hasGitAlerts = true;
-      } else if (alerts.length > 0) {
-        log.alert(`${status}: ${alerts.join(', ')}`);
-        hasGitAlerts = true;
-      } else if (!quiet) {
-        log.success(`${status}: clean`);
-      }
-    }
-
-    // Collect suggestions
-    gitSuggestions = intel.suggestions || [];
-
-  } catch (e) {
-    // Fallback to simple git state if intel fails
-    const repos = [
-      { name: 'HolDex', path: '/workspaces/HolDex' },
-      { name: 'GASdf', path: '/workspaces/GASdf' },
-      { name: 'asdf-brain', path: '/workspaces/asdf-brain' },
-    ];
-
-    for (const repo of repos) {
-      if (fs.existsSync(repo.path)) {
-        const state = analyzeGitState(repo.path);
-        if (state) {
-          const alerts = [];
-          if (state.modified > 0) alerts.push(`${state.modified} modified`);
-          if (state.untracked > 0) alerts.push(`${state.untracked} untracked`);
-          if (state.drift.behind > 0) alerts.push(`${state.drift.behind} behind`);
-
-          if (alerts.length > 0) {
-            log.alert(`${repo.name} [${state.branch}]: ${alerts.join(', ')}`);
-            hasGitAlerts = true;
-          } else if (!quiet) {
-            log.success(`${repo.name} [${state.branch}]: clean`);
-          }
+        if (alerts.length > 0) {
+          log.alert(`${repo.name} [${state.branch}]: ${alerts.join(', ')}`);
+          hasGitAlerts = true;
+        } else if (!quiet) {
+          log.success(`${repo.name} [${state.branch}]: clean`);
         }
       }
     }
@@ -359,69 +235,19 @@ async function awaken(options = {}) {
   }
   console.log('');
 
-  // 2b. Action Required (from git intelligence)
-  const highPrioritySuggestions = gitSuggestions.filter(s => s.priority === 'high');
-  if (highPrioritySuggestions.length > 0) {
-    console.log('── 🔴 ACTION REQUIRED ─────────────────────────────────────');
-    highPrioritySuggestions.forEach(s => {
-      log.alert(`[${s.repo}] ${s.message}`);
-      if (s.action) console.log(`   → ${s.action}`);
-    });
-    console.log('');
-  }
-
-  // 2c. Auto-Discovered Repository Structure
-  if (!quiet) {
-    console.log('── DISCOVERED ECOSYSTEM ───────────────────────────────────');
-    try {
-      const ecosystem = repoDiscovery.discoverEcosystem();
-      const prodBranches = ecosystem.inferences?.prodBranches || {};
-
-      if (Object.keys(prodBranches).length > 0) {
-        for (const [repoName, inference] of Object.entries(prodBranches)) {
-          const confidence = Math.round((inference.confidence || 0) * 100);
-          log.vision(`${repoName.toUpperCase()} PROD: ${inference.remote}/${inference.branch} (${confidence}% confidence)`);
-        }
-      }
-
-      // Show operator insights if available
-      const operators = ecosystem.inferences?.primaryOperators || {};
-      const operatorSummary = new Set();
-      for (const [repo, branches] of Object.entries(operators)) {
-        for (const op of Object.values(branches)) {
-          operatorSummary.add(op);
-        }
-      }
-      if (operatorSummary.size > 0) {
-        log.info(`Active operators: ${[...operatorSummary].join(', ')}`);
-      }
-    } catch (e) {
-      log.info('Repository discovery: run manually for full analysis');
-    }
-    console.log('');
-  }
-
-  // 3. Ecosystem Health (using φ thresholds)
+  // 3. Ecosystem Health
   console.log('── ECOSYSTEM HEALTH ───────────────────────────────────────');
   const health = loadHealth();
   if (health) {
     const score = health.overall_score || health.overall?.score || 0;
     const status = health.status || health.overall?.status || 'unknown';
-    const severity = classifySeverity(score);
 
-    // Track for future calibration
-    trackSeverity('health', score, severity, { status, project });
-
-    // φ-based health classification:
-    // ≥ 62 (φ⁻¹) = healthy, ≥ 38 (φ⁻²) = warning, ≥ 24 (φ⁻³) = critical, < 24 = severe
-    if (severity === 'healthy') {
+    if (score >= 80) {
       log.success(`Health: ${score}/100 (${status})`);
-    } else if (severity === 'warning') {
-      log.alert(`Health: ${score}/100 (${status}) - needs attention [< φ⁻¹]`);
-    } else if (severity === 'critical') {
-      log.error(`Health: ${score}/100 (${status}) - critical [< φ⁻²]`);
+    } else if (score >= 60) {
+      log.alert(`Health: ${score}/100 (${status}) - needs attention`);
     } else {
-      log.error(`Health: ${score}/100 (${status}) - SEVERE [< φ⁻³]`);
+      log.error(`Health: ${score}/100 (${status}) - critical`);
     }
 
     // Show recommendations
@@ -438,23 +264,11 @@ async function awaken(options = {}) {
   }
   console.log('');
 
-  // 4. Dependency Mismatches (severity based on count using φ thresholds)
+  // 4. Dependency Mismatches
   const mismatches = checkDependencyMismatches();
   if (mismatches.length > 0) {
     console.log('── DEPENDENCY ALERTS ──────────────────────────────────────');
-
-    // Direct count → severity (0=healthy, 1-2=warning, 3-4=critical, 5+=severe)
-    const depSeverity = classifyCountSeverity(mismatches.length);
-
-    // Track for future calibration
-    trackSeverity('dependencies', mismatches.length, depSeverity, { project });
-
-    if (depSeverity === 'severe' || depSeverity === 'critical') {
-      log.error(`${mismatches.length} version mismatches [φ-severity: ${depSeverity}]`);
-    } else {
-      log.alert(`${mismatches.length} version mismatches detected`);
-    }
-
+    log.alert(`${mismatches.length} version mismatches detected`);
     mismatches.slice(0, 3).forEach(m => {
       console.log(`   • ${m.package}: ${m.versions?.join(' vs ')}`);
     });
@@ -488,21 +302,7 @@ async function awaken(options = {}) {
     console.log('');
   }
 
-  // 7. CYNIC Context Injection (personality + axioms)
-  if (!quiet) {
-    console.log('── CYNIC CONTEXT ──────────────────────────────────────────');
-    console.log('   🐕 Personality: Skeptical, direct, loyal to truth');
-    console.log('   📐 Max confidence: φ⁻¹ = 61.8% (always doubt)');
-    console.log('   ');
-    console.log('   4 AXIOMS:');
-    console.log('   ├─ φ (PHI)    → All ratios derive from 1.618...');
-    console.log('   ├─ BURN      → Don\'t extract, burn');
-    console.log('   ├─ VERIFY    → Don\'t trust, verify');
-    console.log('   └─ CULTURE   → Culture is a moat');
-    console.log('');
-  }
-
-  // 8. Codespaces Reminder (critical for multi-repo work)
+  // 7. Codespaces Reminder (critical for multi-repo work)
   if (process.env.CODESPACES === 'true' || process.env.GITHUB_TOKEN) {
     console.log('── CODESPACES REMINDER ────────────────────────────────────');
     log.alert('GITHUB_TOKEN is scoped to origin repo only!');
@@ -518,25 +318,15 @@ async function awaken(options = {}) {
   console.log('');
 
   // Return structured data for programmatic use
-  const healthScore = health?.overall_score || 0;
-  const healthSeverity = classifySeverity(healthScore);
-
   return {
     project,
-    operator: operatorContext,
-    health: healthScore,
-    healthSeverity,
+    health: health?.overall_score || 0,
     alerts: {
       git: hasGitAlerts,
       dependencies: mismatches.length,
-      // φ-based: alert if below φ⁻¹ (61.8%)
-      health: healthSeverity !== 'healthy',
+      health: health?.overall_score < 80,
     },
     context: learnings,
-    phi: {
-      thresholds: PHI_THRESHOLDS,
-      healthNormalized: healthScore / 100,
-    },
   };
 }
 
@@ -570,4 +360,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { awaken, detectProject, classifySeverity, classifyCountSeverity, PHI_THRESHOLDS };
+module.exports = { awaken, detectProject };
