@@ -92,11 +92,7 @@
       "event": "PostToolUse",
       "path": "hooks/observe-action.js"
     },
-    {
-      "event": "PostConversation",
-      "path": "hooks/post-conversation.js"
-    },
-    {
+        {
       "event": "Stop",
       "path": "hooks/stop.js"
     }

@@ -1,0 +1,1 @@
+{"timestamp":"2026-01-14T04:04:56.207Z","burns":{"code":1,"ego":1,"time":0,"total":2},"events":[{"type":"code","action":"simplification detected"},{"type":"ego","action":"assumption challenged"}],"digest":{"project":"ecosystem","decisions":2,"patterns":2,"errors":1,"total":5},"cumulativeTotal":2}
