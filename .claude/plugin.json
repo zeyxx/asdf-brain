@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/plugin.json",
   "name": "asdf-brain",
   "displayName": "ASDF Brain - CYNIC κυνικός",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "CYNIC the skeptical dog (κυνικός). Loyal to truth, not to comfort. Culture is a moat.",
   "author": "zeyxx",
   "repository": "https://github.com/zeyxx/asdf-brain",
@@ -73,7 +73,17 @@
     }
   ],
 
+  "systemInstructions": "cynic-system.md",
+
   "hooks": [
+    {
+      "event": "SessionStart",
+      "path": "hooks/session-start.js"
+    },
+    {
+      "event": "UserPromptSubmit",
+      "path": "hooks/user-prompt-submit.js"
+    },
     {
       "event": "PreToolUse",
       "path": "hooks/pre-tool-use.js"
@@ -85,6 +95,10 @@
     {
       "event": "PostConversation",
       "path": "hooks/post-conversation.js"
+    },
+    {
+      "event": "Stop",
+      "path": "hooks/stop.js"
     }
   ],
 
