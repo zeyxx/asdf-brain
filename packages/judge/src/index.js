@@ -467,7 +467,7 @@ function judge(input, options = {}) {
     },
   };
 
-  // Optional: Residual detection
+  // Residual detection (optional - requires ResidualDetector configured)
   const detector = getResidualDetector();
   if (detector) {
     try {
@@ -491,8 +491,11 @@ function judge(input, options = {}) {
         isWarning: residualResult.isWarning,
       };
     } catch (err) {
-      result.residual = { error: 'detection_failed' };
+      result.residual = { error: 'detection_failed', value: 0 };
     }
+  } else {
+    // Stub value when ResidualDetector not configured
+    result.residual = { value: 0, isAnomaly: false, isWarning: false, stub: true };
   }
 
   return result;
