@@ -31,8 +31,8 @@ describe('CYNIC Integration', () => {
       expect(version[0]).toBeGreaterThanOrEqual(2);
     });
 
-    it('should register 6 skills', () => {
-      expect(manifest.skills).toHaveLength(6);
+    it('should register 8 skills', () => {
+      expect(manifest.skills).toHaveLength(8);
       const skillNames = manifest.skills.map(s => s.name);
       expect(skillNames).toContain('judge');
       expect(skillNames).toContain('digest');
@@ -40,6 +40,8 @@ describe('CYNIC Integration', () => {
       expect(skillNames).toContain('search');
       expect(skillNames).toContain('patterns');
       expect(skillNames).toContain('health');
+      expect(skillNames).toContain('think');
+      expect(skillNames).toContain('reset');
     });
 
     it('should register 4 agents', () => {
@@ -51,11 +53,12 @@ describe('CYNIC Integration', () => {
       expect(agentNames).toContain('cynic-mentor');
     });
 
-    it('should register 2 hooks', () => {
-      expect(manifest.hooks).toHaveLength(2);
+    it('should register 3 hooks', () => {
+      expect(manifest.hooks).toHaveLength(3);
       const events = manifest.hooks.map(h => h.event);
-      expect(events).toContain('PostConversation');
-      expect(events).toContain('PostToolUse');
+      expect(events).toContain('PreToolUse');       // Guardian blocking
+      expect(events).toContain('PostToolUse');       // Observer
+      expect(events).toContain('PostConversation');  // Digester
     });
 
     it('should have metadata with identity', () => {

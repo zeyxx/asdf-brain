@@ -14,6 +14,42 @@
               THIS IS FINE
 ```
 
+---
+
+## CYNIC - The Skeptical Dog
+
+> 🐕 κυνικός | "Loyal to truth, not to comfort"
+
+CYNIC is the judgment engine at the heart of asdf-brain. Like the ancient Greek Cynics who lived honestly like dogs, CYNIC doubts everything—including itself.
+
+### Quick Commands
+
+```bash
+/judge "your decision"    # Challenge assumptions
+/digest                   # Extract wisdom from chaos
+/search "pattern"         # Find past solutions
+/health                   # Check system status
+```
+
+### The 4 Verdicts
+
+| Verdict | Score | Dog Says |
+|---------|-------|----------|
+| **HOWL** | ≥80 | *howls approvingly* |
+| **WAG** | ≥50 | *wags steadily* |
+| **GROWL** | ≥38.2 | *low growl* |
+| **BARK** | <38.2 | *barks warning* |
+
+### φ Constraints
+
+- **Max confidence**: 61.8% (φ⁻¹) - Never trust fully
+- **Min doubt**: 38.2% (φ⁻²) - Always question
+- **Heartbeat**: 61.8 seconds
+
+**[Full Documentation →](./docs/CYNIC-QUICKSTART.md)**
+
+---
+
 ## Philosophy
 
 **Don't trust. Verify.** Every piece of knowledge is traceable to its source.

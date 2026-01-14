@@ -1,8 +1,12 @@
 /**
  * CYNIC Skills Tests
  *
- * Tests for .claude/skills/*.md files
- * Verifies skill definitions are properly structured
+ * Tests for .claude/skills/*.md files (headers)
+ * and docs/skills/*-full.md files (full content)
+ *
+ * Progressive Disclosure Pattern:
+ * - Headers (~100 tokens) in .claude/skills/
+ * - Full docs (lazy-loaded) in docs/skills/
  */
 
 import { describe, it, expect, beforeAll } from 'vitest';
@@ -10,8 +14,26 @@ import fs from 'fs';
 import path from 'path';
 
 const SKILLS_DIR = path.join(process.cwd(), '.claude/skills');
+const DOCS_DIR = path.join(process.cwd(), 'docs/skills');
 
 const EXPECTED_SKILLS = ['judge', 'digest', 'learn', 'search', 'patterns', 'health'];
+
+/**
+ * Helper to get full skill content (header + full doc)
+ */
+function getFullSkillContent(skillName) {
+  const headerPath = path.join(SKILLS_DIR, `${skillName}.md`);
+  const fullPath = path.join(DOCS_DIR, `${skillName}-full.md`);
+
+  let content = '';
+  if (fs.existsSync(headerPath)) {
+    content += fs.readFileSync(headerPath, 'utf8');
+  }
+  if (fs.existsSync(fullPath)) {
+    content += '\n' + fs.readFileSync(fullPath, 'utf8');
+  }
+  return content;
+}
 
 describe('CYNIC Skills', () => {
   describe('Skill Files', () => {
@@ -39,9 +61,9 @@ describe('CYNIC Skills', () => {
           expect(content).toMatch(/description:/);
         });
 
-        it('should contain CYNIC dog emoji', () => {
-          const content = fs.readFileSync(skillPath, 'utf8');
-          expect(content).toContain('🐕');
+        it('should contain CYNIC dog emoji or reference to full docs', () => {
+          const fullContent = getFullSkillContent(skillName);
+          expect(fullContent).toContain('🐕');
         });
 
         it('should have markdown content after frontmatter', () => {
@@ -59,16 +81,25 @@ describe('CYNIC Skills', () => {
       expect(files.length).toBeGreaterThanOrEqual(6);
     });
 
-    it('all skills should reference MCP tools', () => {
+    it('all skills should reference MCP tools (in full docs)', () => {
       EXPECTED_SKILLS.forEach(skillName => {
-        const content = fs.readFileSync(path.join(SKILLS_DIR, `${skillName}.md`), 'utf8');
-        expect(content).toMatch(/brain_\w+/);
+        const fullContent = getFullSkillContent(skillName);
+        expect(fullContent).toMatch(/brain_\w+/);
+      });
+    });
+
+    it('all skills should have progressive disclosure reference', () => {
+      EXPECTED_SKILLS.forEach(skillName => {
+        const headerContent = fs.readFileSync(path.join(SKILLS_DIR, `${skillName}.md`), 'utf8');
+        // Headers should point to full docs
+        expect(headerContent).toMatch(/docs\/skills\/.*-full\.md/);
       });
     });
   });
 
+  // Skill-specific tests now use full content (header + full docs)
   describe('/judge skill', () => {
-    const content = fs.readFileSync(path.join(SKILLS_DIR, 'judge.md'), 'utf8');
+    const content = getFullSkillContent('judge');
 
     it('should reference brain_cynic_judge', () => {
       expect(content).toContain('brain_cynic_judge');
@@ -84,7 +115,7 @@ describe('CYNIC Skills', () => {
   });
 
   describe('/digest skill', () => {
-    const content = fs.readFileSync(path.join(SKILLS_DIR, 'digest.md'), 'utf8');
+    const content = getFullSkillContent('digest');
 
     it('should reference brain_cynic_digest', () => {
       expect(content).toContain('brain_cynic_digest');
@@ -97,7 +128,7 @@ describe('CYNIC Skills', () => {
   });
 
   describe('/learn skill', () => {
-    const content = fs.readFileSync(path.join(SKILLS_DIR, 'learn.md'), 'utf8');
+    const content = getFullSkillContent('learn');
 
     it('should reference brain_cynic_feedback', () => {
       expect(content).toContain('brain_cynic_feedback');
@@ -109,7 +140,7 @@ describe('CYNIC Skills', () => {
   });
 
   describe('/search skill', () => {
-    const content = fs.readFileSync(path.join(SKILLS_DIR, 'search.md'), 'utf8');
+    const content = getFullSkillContent('search');
 
     it('should reference brain_search', () => {
       expect(content).toContain('brain_search');
@@ -121,7 +152,7 @@ describe('CYNIC Skills', () => {
   });
 
   describe('/patterns skill', () => {
-    const content = fs.readFileSync(path.join(SKILLS_DIR, 'patterns.md'), 'utf8');
+    const content = getFullSkillContent('patterns');
 
     it('should reference brain_patterns', () => {
       expect(content).toContain('brain_patterns');
@@ -133,7 +164,7 @@ describe('CYNIC Skills', () => {
   });
 
   describe('/health skill', () => {
-    const content = fs.readFileSync(path.join(SKILLS_DIR, 'health.md'), 'utf8');
+    const content = getFullSkillContent('health');
 
     it('should reference brain_health', () => {
       expect(content).toContain('brain_health');
