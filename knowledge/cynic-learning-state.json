@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "timestamp": 1768325143363,
+  "timestamp": 1768343473414,
   "history": [
     {
       "id": "jdg_1768090661068_an9j11",
@@ -1866,6 +1866,78 @@
       "confidence": 61.8,
       "outcome": "unknown",
       "reward": 0
+    },
+    {
+      "id": "jdg_1768343098370_usegkg",
+      "timestamp": 1768343098370,
+      "item": "item_8htevz",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 80,
+        "INTEGRITY": 0,
+        "ETHICS": 98,
+        "OPTIMISM": 50,
+        "ALIGNMENT": 50,
+        "PROGRESS": 50,
+        "SECURE": 60,
+        "PRIVATE": 70,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 60,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 96,
+        "MEMORY": 50,
+        "TEACHING": 50,
+        "INTENT": 50,
+        "TRUST": 50,
+        "PROACTIVITY": 50,
+        "COMPLEMENTARITY": 50,
+        "DELEGATION": 60,
+        "BOUNDARIES": 70
+      },
+      "global": 62,
+      "verdict": "TRANSFORM",
+      "confidence": 61.8,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768343469590_nzlknb",
+      "timestamp": 1768343469590,
+      "item": "item_ywvltw",
+      "scores": {
+        "HARMONY": 70,
+        "COHERENCE": 75,
+        "TRUTH": 90,
+        "INTEGRITY": 98,
+        "ETHICS": 98,
+        "OPTIMISM": 80,
+        "ALIGNMENT": 90,
+        "PROGRESS": 80,
+        "SECURE": 90,
+        "PRIVATE": 98,
+        "SCALE": 70,
+        "SIMPLIFY": 70,
+        "ENABLE": 98,
+        "SELF_AWARENESS": 70,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 96,
+        "MEMORY": 50,
+        "TEACHING": 50,
+        "INTENT": 50,
+        "TRUST": 50,
+        "PROACTIVITY": 50,
+        "COMPLEMENTARITY": 50,
+        "DELEGATION": 60,
+        "BOUNDARIES": 70
+      },
+      "global": 74,
+      "verdict": "ACCEPT",
+      "confidence": 61.8,
+      "outcome": "unknown",
+      "reward": 0
     }
   ],
   "thresholds": {
@@ -1876,7 +1948,7 @@
     "ENABLE": 69
   },
   "stats": {
-    "totalJudgments": 57,
+    "totalJudgments": 59,
     "correctAccepts": 0,
     "correctTransforms": 1,
     "falsePositives": 1,
