@@ -2,6 +2,25 @@
 
 > "φ qui se méfie de φ" - CYNIC κυνικός
 
+---
+
+## ⚠️ ÉTAT ACTUEL: CHAOS DOCUMENTÉ - RÉÉCRITURE EN COURS
+
+**Lire ces fichiers EN PREMIER:**
+1. `docs/CHAOS-MAP.md` - Inventaire complet du chaos
+2. `docs/REWRITE-SPEC.md` - Spécification de réécriture
+
+**Résumé du chaos (2026-01-14):**
+- Migration lib/cynic/ → packages/ abandonnée à 30%
+- 37 fichiers stubs (< 500 bytes) à supprimer
+- 18,000 lignes dans lib/cynic/ non migrées
+- 23,000 lignes de code critique SANS TESTS
+- 5 définitions de PHI (devrait être 1)
+
+**Prochaine action:** Nettoyer puis réécrire. Voir REWRITE-SPEC.md §5.
+
+---
+
 ## CYNIC - The Skeptical Dog
 
 CYNIC (κυνικός = "comme un chien") is a multi-dimensional judgment system that doubts everything, including itself.
