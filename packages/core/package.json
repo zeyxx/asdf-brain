@@ -1,0 +1,24 @@
+{
+  "name": "@asdf/cynic-core",
+  "version": "1.0.0",
+  "description": "CYNIC Core - Pure judgment engine with no side effects",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./axioms": "./src/axioms/index.js",
+    "./dimensions": "./src/dimensions/index.js",
+    "./scoring": "./src/scoring/index.js",
+    "./judgment": "./src/judgment/index.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": ["cynic", "judgment", "phi", "dimensions"],
+  "author": "ASDF Ecosystem",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {}
+}
