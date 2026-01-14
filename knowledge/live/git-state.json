@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-14T00:53:53.506Z",
+  "timestamp": "2026-01-14T01:22:29.747Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-14T00:53:52.906Z",
+      "timestamp": "2026-01-14T01:22:29.198Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-14T00:53:53.150Z",
+      "timestamp": "2026-01-14T01:22:29.450Z",
       "branch": {
         "branch": "test/web3-compat-swap",
         "modified": 15,
@@ -110,19 +110,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-14T00:53:53.506Z",
+      "timestamp": "2026-01-14T01:22:29.747Z",
       "branch": {
         "branch": "main",
-        "modified": 12,
-        "untracked": 1,
+        "modified": 4,
+        "untracked": 0,
         "staged": 1,
         "ahead": 0,
-        "behind": 1,
+        "behind": 2,
         "clean": false,
         "lastCommit": {
-          "hash": "a0ad6b3",
-          "subject": "docs(cynic): Phase 6 Documentation complete",
-          "relative": "3 hours ago"
+          "hash": "0ced8c0",
+          "subject": "feat(guardian): Implement PreToolUse blocking hook",
+          "relative": "11 minutes ago"
         }
       },
       "pr": null,
@@ -135,14 +135,14 @@
         {
           "priority": "medium",
           "type": "pull_needed",
-          "message": "1 commits behind remote",
+          "message": "2 commits behind remote",
           "action": "Pull latest changes",
           "command": "git pull"
         },
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "12 modified, 1 untracked, 1 staged",
+          "message": "4 modified, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -153,7 +153,7 @@
     {
       "priority": "medium",
       "type": "pull_needed",
-      "message": "1 commits behind remote",
+      "message": "2 commits behind remote",
       "action": "Pull latest changes",
       "command": "git pull",
       "repo": "brain"
@@ -175,7 +175,7 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "12 modified, 1 untracked, 1 staged",
+      "message": "4 modified, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }

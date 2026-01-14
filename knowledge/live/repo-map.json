@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-14T00:53:55.836Z",
+  "timestamp": "2026-01-14T01:22:31.956Z",
   "repos": {
     "gasdf": {
       "name": "GASdf",
@@ -52,7 +52,7 @@
         }
       },
       "currentBranch": "test/web3-compat-swap",
-      "discoveredAt": "2026-01-14T00:53:53.535Z"
+      "discoveredAt": "2026-01-14T01:22:29.771Z"
     },
     "holdex": {
       "name": "HolDex",
@@ -261,7 +261,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-14T00:53:53.608Z"
+      "discoveredAt": "2026-01-14T01:22:29.861Z"
     },
     "asdf-brain": {
       "name": "asdf-brain",
@@ -292,14 +292,12 @@
             "jeanterre552"
           ],
           "patterns": {
-            "hotfixes": 3,
-            "features": 5,
-            "structured": 17,
+            "hotfixes": 0,
+            "features": 6,
+            "structured": 20,
             "quickFixes": 0
           },
-          "avgMessageLength": 40.95,
-          "inferredRole": "production",
-          "prodScore": 9
+          "avgMessageLength": 41.95
         }
       },
       "operators": {
@@ -308,17 +306,17 @@
           "contributors": [
             {
               "name": "jeanterre552",
-              "commits": 31
+              "commits": 33
             },
             {
               "name": "asdf-brain[bot]",
-              "commits": 19
+              "commits": 17
             }
           ]
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-14T00:53:53.638Z"
+      "discoveredAt": "2026-01-14T01:22:29.883Z"
     },
     "asdf-manifesto": {
       "name": "asdf-manifesto",
@@ -368,7 +366,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-14T00:53:53.659Z"
+      "discoveredAt": "2026-01-14T01:22:29.903Z"
     },
     "claude-mem": {
       "name": "claude-mem",
@@ -5937,7 +5935,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-14T00:53:55.043Z"
+      "discoveredAt": "2026-01-14T01:22:31.406Z"
     },
     "framework-kit": {
       "name": "framework-kit",
@@ -8972,7 +8970,7 @@
         }
       },
       "currentBranch": "feat/web3-compat-full-connection",
-      "discoveredAt": "2026-01-14T00:53:55.804Z"
+      "discoveredAt": "2026-01-14T01:22:31.937Z"
     },
     "solana-dev-skill": {
       "name": "solana-dev-skill",
@@ -9024,7 +9022,7 @@
         }
       },
       "currentBranch": "main",
-      "discoveredAt": "2026-01-14T00:53:55.835Z"
+      "discoveredAt": "2026-01-14T01:22:31.956Z"
     }
   },
   "crossRepoSync": {},
@@ -9039,11 +9037,6 @@
         "branch": "NewDEX",
         "remote": "upstream",
         "confidence": 0.705
-      },
-      "asdf-brain": {
-        "branch": "main",
-        "remote": "origin",
-        "confidence": 0.09
       },
       "claude-mem": {
         "branch": "backup/4.3.0-borked-sad-face",
