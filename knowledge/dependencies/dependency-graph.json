@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-14T02:12:32.797Z",
+    "generated": "2026-01-14T02:26:35.343Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -520,7 +520,7 @@
           "./config.js": 5,
           "../../lib/cynic": 1,
           "../../lib/cynic/matrix": 1,
-          "../../lib/cynic/judge": 1,
+          "../../lib/cynic/judge": 2,
           "../../lib/cynic/innommable": 1,
           "./temporal": 7,
           "./merkle-proofs": 1,
@@ -640,11 +640,8 @@
           "./cynic/axioms/constants": 1,
           "./lib/cynic": 3,
           "./lib/self-judge": 1,
-          "../lib/temporal": 7,
+          "../lib/temporal": 6,
           "../lib/lang-detect": 1,
-          "../lib/git-intelligence": 1,
-          "../lib/repo-discovery": 1,
-          "../lib/operator-loader": 1,
           "../lib/context-layer": 1,
           "./lib/data-sources": 4,
           "./publish-to-solana": 1,
@@ -657,6 +654,7 @@
           "../../../lib/cynic/self-judge": 3,
           "../../../lib/cynic/dimensions/registry": 1,
           "../../../lib/cynic/core": 1,
+          "../../lib/cynic/digest": 3,
           "../../../lib/cynic/dimensions/base": 1,
           "../../../../lib/cynic/dimensions/human-llm/boundaries": 1,
           "../../../../lib/cynic/dimensions/human-llm/complementarity": 1,
@@ -689,6 +687,7 @@
           "../../../lib/cynic/laws": 1,
           "../../../lib/cynic/matrices/live-matrix": 1,
           "../../../lib/cynic/scaling": 1,
+          "../../lib/cynic/score": 1,
           "../../../lib/cynic/worlds": 1,
           "../../lib/cynic/core": 2,
           "../../lib/cynic/core/dashboard-connector": 1,
@@ -711,7 +710,7 @@
           "better-sqlite3": 1,
           "@solana/web3.js": 1,
           "express": 1,
-          "vitest": 43
+          "vitest": 46
         },
         "node": {
           "fs": 86,
