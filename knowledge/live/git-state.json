@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-14T01:22:29.747Z",
+  "timestamp": "2026-01-14T02:23:51.009Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-14T01:22:29.198Z",
+      "timestamp": "2026-01-14T02:23:50.424Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-14T01:22:29.450Z",
+      "timestamp": "2026-01-14T02:23:50.669Z",
       "branch": {
         "branch": "test/web3-compat-swap",
         "modified": 15,
@@ -110,19 +110,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-14T01:22:29.747Z",
+      "timestamp": "2026-01-14T02:23:51.009Z",
       "branch": {
         "branch": "main",
-        "modified": 4,
-        "untracked": 0,
+        "modified": 8,
+        "untracked": 3,
         "staged": 1,
-        "ahead": 0,
-        "behind": 2,
+        "ahead": 1,
+        "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "0ced8c0",
-          "subject": "feat(guardian): Implement PreToolUse blocking hook",
-          "relative": "11 minutes ago"
+          "hash": "1bfa70f",
+          "subject": "fix(tests): Update hook count from 3 to 6",
+          "relative": "8 minutes ago"
         }
       },
       "pr": null,
@@ -134,15 +134,22 @@
       "suggestions": [
         {
           "priority": "medium",
+          "type": "push_needed",
+          "message": "1 unpushed commits on 'main'",
+          "action": "Push changes to remote",
+          "command": "git push"
+        },
+        {
+          "priority": "medium",
           "type": "pull_needed",
-          "message": "2 commits behind remote",
+          "message": "1 commits behind remote",
           "action": "Pull latest changes",
           "command": "git pull"
         },
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "4 modified, 1 staged",
+          "message": "8 modified, 3 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -152,8 +159,16 @@
   "suggestions": [
     {
       "priority": "medium",
+      "type": "push_needed",
+      "message": "1 unpushed commits on 'main'",
+      "action": "Push changes to remote",
+      "command": "git push",
+      "repo": "brain"
+    },
+    {
+      "priority": "medium",
       "type": "pull_needed",
-      "message": "2 commits behind remote",
+      "message": "1 commits behind remote",
       "action": "Pull latest changes",
       "command": "git pull",
       "repo": "brain"
@@ -175,7 +190,7 @@
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "4 modified, 1 staged",
+      "message": "8 modified, 3 untracked, 1 staged",
       "action": "Review and commit changes",
       "repo": "brain"
     }
@@ -185,7 +200,7 @@
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,
-    "mediumPriority": 1,
+    "mediumPriority": 2,
     "lowPriority": 3,
     "cynicAlerts": 0
   }
