@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-01-14T03:04:52.427Z",
+    "generated": "2026-01-14T03:15:48.472Z",
     "philosophy": "$asdfasdfa: Don't trust, verify - verify from actual dependencies"
   },
   "repos": {
@@ -579,12 +579,12 @@
           "../llm/provider": 2,
           "./self-judge": 4,
           "./residual-detector": 2,
-          "./gate": 2,
+          "./gate": 3,
           "./score": 3,
           "./judge": 3,
           "./shield": 1,
-          "./matrix": 3,
-          "./learn": 1,
+          "./matrix": 5,
+          "./learn": 2,
           "./sync": 1,
           "./clarify": 1,
           "./vision": 1,
@@ -606,7 +606,7 @@
           "./laws/checker": 1,
           "./worlds": 1,
           "./dimensions/registry": 2,
-          "./scaling": 1,
+          "./scaling": 2,
           "../integration/holdex-connector": 1,
           "../integration/gasdf-connector": 1,
           "../integration/claude-mem-connector": 1,
@@ -677,6 +677,8 @@
           "./scoring": 1,
           "./judgment": 1,
           "./judge-core": 1,
+          "../../core/src/axioms/constants": 5,
+          "../../core/src/scoring/score": 1,
           "../lib/temporal": 6,
           "../lib/lang-detect": 1,
           "../lib/context-layer": 1,
@@ -752,8 +754,8 @@
           "vitest": 46
         },
         "node": {
-          "fs": 86,
-          "path": 87,
+          "fs": 88,
+          "path": 89,
           "child_process": 17,
           "crypto": 33,
           "readline": 10,
