@@ -53,10 +53,15 @@ describe('CYNIC Integration', () => {
       expect(agentNames).toContain('cynic-mentor');
     });
 
-    it('should register 3 hooks', () => {
-      expect(manifest.hooks).toHaveLength(3);
+    it('should register 6 hooks', () => {
+      expect(manifest.hooks).toHaveLength(6);
       const events = manifest.hooks.map(h => h.event);
-      expect(events).toContain('PreToolUse');       // Guardian blocking
+      // Lifecycle hooks
+      expect(events).toContain('SessionStart');      // Awakening
+      expect(events).toContain('UserPromptSubmit');  // Context injection
+      expect(events).toContain('Stop');              // BURN tracking
+      // Core hooks
+      expect(events).toContain('PreToolUse');        // Guardian blocking
       expect(events).toContain('PostToolUse');       // Observer
       expect(events).toContain('PostConversation');  // Digester
     });
