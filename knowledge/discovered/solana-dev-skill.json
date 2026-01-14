@@ -1,0 +1,35 @@
+{
+  "name": "solana-dev-skill",
+  "path": "/workspaces/solana-dev-skill",
+  "scannedAt": "2026-01-14T02:30:52.552Z",
+  "patterns": [],
+  "dependencies": [],
+  "contributors": [
+    {
+      "name": "guibibeau",
+      "commits": 2,
+      "firstSeen": "2026-01-12T18:55:07+07:00",
+      "lastSeen": "2026-01-12T18:55:07+07:00",
+      "emailHash": "h_38362145"
+    }
+  ],
+  "coAuthors": [],
+  "architecture": [],
+  "files": {
+    "total": 14,
+    "byType": {
+      "no-ext": 2,
+      ".md": 11,
+      ".sh": 1
+    }
+  },
+  "cynic": {
+    "available": true,
+    "verdict": {
+      "action": "TRANSFORM",
+      "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+      "blocking": "PRIVATE"
+    },
+    "confidence": 54.6
+  }
+}

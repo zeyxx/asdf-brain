@@ -1,0 +1,23 @@
+{
+  "name": "asdfasdfa-ecosystem",
+  "path": "/workspaces/asdfasdfa-ecosystem",
+  "scannedAt": "2026-01-14T02:30:52.576Z",
+  "patterns": [],
+  "dependencies": [],
+  "contributors": [],
+  "coAuthors": [],
+  "architecture": [],
+  "files": {
+    "total": 0,
+    "byType": {}
+  },
+  "cynic": {
+    "available": true,
+    "verdict": {
+      "action": "TRANSFORM",
+      "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+      "blocking": "PRIVATE"
+    },
+    "confidence": 54.6
+  }
+}

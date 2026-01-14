@@ -24,9 +24,8 @@ const { execSync } = require('child_process');
 const BRAIN_ROOT = process.env.BRAIN_ROOT || path.join(__dirname, '../../');
 const KNOWLEDGE_DIR = path.join(BRAIN_ROOT, 'knowledge');
 
-// φ constants
-const PHI = 1.618033988749895;
-const PHI_INV = 0.618033988749895;
+// φ constants - import from canonical source
+const { PHI, PHI_INV } = require('../../packages/core/src/axioms/constants');
 
 // =============================================================================
 // CONTEXT DETECTION

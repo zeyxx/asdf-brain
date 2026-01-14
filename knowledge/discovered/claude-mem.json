@@ -1,7 +1,7 @@
 {
   "name": "claude-mem",
   "path": "/workspaces/claude-mem",
-  "scannedAt": "2026-01-10T19:15:23.266Z",
+  "scannedAt": "2026-01-14T02:30:51.431Z",
   "patterns": [
     {
       "type": "async",
@@ -486,9 +486,9 @@
     "available": true,
     "verdict": {
       "action": "TRANSFORM",
-      "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+      "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
       "blocking": "PRIVATE"
     },
-    "confidence": 61.8
+    "confidence": 54.6
   }
 }

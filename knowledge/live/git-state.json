@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-01-14T02:23:51.009Z",
+  "timestamp": "2026-01-14T13:07:10.270Z",
   "repos": {
     "holdex": {
       "repo": "holdex",
-      "timestamp": "2026-01-14T02:23:50.424Z",
+      "timestamp": "2026-01-14T13:07:09.678Z",
       "branch": {
         "branch": "main",
         "modified": 1,
@@ -15,7 +15,7 @@
         "lastCommit": {
           "hash": "274d7b7",
           "subject": "fix(rpc): Disable bulk K-Score updates - save 320k cr/day",
-          "relative": "3 days ago"
+          "relative": "4 days ago"
         }
       },
       "pr": {
@@ -75,7 +75,7 @@
     },
     "gasdf": {
       "repo": "gasdf",
-      "timestamp": "2026-01-14T02:23:50.669Z",
+      "timestamp": "2026-01-14T13:07:09.952Z",
       "branch": {
         "branch": "test/web3-compat-swap",
         "modified": 15,
@@ -87,7 +87,7 @@
         "lastCommit": {
           "hash": "5d6474e",
           "subject": "chore: Add .mcp.json to gitignore",
-          "relative": "3 days ago"
+          "relative": "4 days ago"
         }
       },
       "pr": null,
@@ -110,19 +110,19 @@
     },
     "brain": {
       "repo": "brain",
-      "timestamp": "2026-01-14T02:23:51.009Z",
+      "timestamp": "2026-01-14T13:07:10.269Z",
       "branch": {
         "branch": "main",
-        "modified": 8,
-        "untracked": 3,
+        "modified": 14,
+        "untracked": 5,
         "staged": 1,
-        "ahead": 1,
+        "ahead": 2,
         "behind": 1,
         "clean": false,
         "lastCommit": {
-          "hash": "1bfa70f",
-          "subject": "fix(tests): Update hook count from 3 to 6",
-          "relative": "8 minutes ago"
+          "hash": "49a316a",
+          "subject": "docs: CHAOS documented for extinction",
+          "relative": "7 hours ago"
         }
       },
       "pr": null,
@@ -135,7 +135,7 @@
         {
           "priority": "medium",
           "type": "push_needed",
-          "message": "1 unpushed commits on 'main'",
+          "message": "2 unpushed commits on 'main'",
           "action": "Push changes to remote",
           "command": "git push"
         },
@@ -149,7 +149,7 @@
         {
           "priority": "low",
           "type": "uncommitted_changes",
-          "message": "8 modified, 3 untracked, 1 staged",
+          "message": "14 modified, 5 untracked, 1 staged",
           "action": "Review and commit changes"
         }
       ],
@@ -160,10 +160,13 @@
     {
       "priority": "medium",
       "type": "push_needed",
-      "message": "1 unpushed commits on 'main'",
+      "message": "2 unpushed commits on 'main'",
       "action": "Push changes to remote",
       "command": "git push",
-      "repo": "brain"
+      "repo": "brain",
+      "_cynic": {
+        "shouldAlert": false
+      }
     },
     {
       "priority": "medium",
@@ -171,32 +174,44 @@
       "message": "1 commits behind remote",
       "action": "Pull latest changes",
       "command": "git pull",
-      "repo": "brain"
+      "repo": "brain",
+      "_cynic": {
+        "shouldAlert": false
+      }
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
       "message": "1 modified, 1 staged",
       "action": "Review and commit changes",
-      "repo": "holdex"
+      "repo": "holdex",
+      "_cynic": {
+        "shouldAlert": false
+      }
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
       "message": "15 modified, 1 staged",
       "action": "Review and commit changes",
-      "repo": "gasdf"
+      "repo": "gasdf",
+      "_cynic": {
+        "shouldAlert": false
+      }
     },
     {
       "priority": "low",
       "type": "uncommitted_changes",
-      "message": "8 modified, 3 untracked, 1 staged",
+      "message": "14 modified, 5 untracked, 1 staged",
       "action": "Review and commit changes",
-      "repo": "brain"
+      "repo": "brain",
+      "_cynic": {
+        "shouldAlert": false
+      }
     }
   ],
   "alertable": [],
-  "cynicEnabled": false,
+  "cynicEnabled": true,
   "summary": {
     "totalRepos": 3,
     "highPriority": 0,

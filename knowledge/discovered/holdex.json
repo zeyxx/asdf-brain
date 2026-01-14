@@ -1,7 +1,7 @@
 {
   "name": "HolDex",
   "path": "/workspaces/HolDex",
-  "scannedAt": "2026-01-10T19:15:22.301Z",
+  "scannedAt": "2026-01-14T02:30:50.388Z",
   "patterns": [
     {
       "type": "async",
@@ -302,9 +302,9 @@
     },
     {
       "name": "jeanterre552",
-      "commits": 421,
-      "firstSeen": "2026-01-10T18:20:25+00:00",
-      "lastSeen": "2026-01-10T18:20:25+00:00",
+      "commits": 424,
+      "firstSeen": "2026-01-10T22:48:24+00:00",
+      "lastSeen": "2026-01-10T22:48:24+00:00",
       "emailHash": "h_3336e29"
     }
   ],
@@ -313,11 +313,6 @@
       "name": "Claude Opus 4.5",
       "emailHash": "h_4dacd238",
       "count": 97
-    },
-    {
-      "name": "sollama58",
-      "emailHash": "h_199fcfcd",
-      "count": 1
     }
   ],
   "architecture": [
@@ -346,10 +341,10 @@
     }
   ],
   "files": {
-    "total": 186,
+    "total": 188,
     "byType": {
       ".md": 37,
-      ".js": 128,
+      ".js": 130,
       ".json": 4,
       ".example": 1,
       ".yml": 2,
@@ -365,9 +360,9 @@
     "available": true,
     "verdict": {
       "action": "TRANSFORM",
-      "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+      "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
       "blocking": "PRIVATE"
     },
-    "confidence": 61.8
+    "confidence": 54.6
   }
 }

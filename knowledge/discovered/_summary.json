@@ -1,23 +1,143 @@
 {
-  "timestamp": "2026-01-10T23:02:58.241Z",
-  "totalRepos": 1,
-  "totalPatterns": 32,
-  "totalDependencies": 24,
-  "totalContributors": 1,
+  "timestamp": "2026-01-14T02:30:52.643Z",
+  "totalRepos": 9,
+  "totalPatterns": 160,
+  "totalDependencies": 99,
+  "totalContributors": 40,
   "repos": [
     {
       "name": "GASdf",
       "patterns": 32,
-      "dependencies": 24,
+      "dependencies": 34,
       "contributors": 1,
       "cynic": {
         "available": true,
         "verdict": {
           "action": "TRANSFORM",
-          "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
           "blocking": "PRIVATE"
         },
-        "confidence": 61.8
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "HolDex",
+      "patterns": 32,
+      "dependencies": 21,
+      "contributors": 2,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "asdf-brain",
+      "patterns": 32,
+      "dependencies": 9,
+      "contributors": 2,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "claude-mem",
+      "patterns": 32,
+      "dependencies": 18,
+      "contributors": 19,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "framework-kit",
+      "patterns": 32,
+      "dependencies": 17,
+      "contributors": 14,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "solana-dev-skill",
+      "patterns": 0,
+      "dependencies": 0,
+      "contributors": 1,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "asdfasdfa-ecosystem",
+      "patterns": 0,
+      "dependencies": 0,
+      "contributors": 0,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "cynic-marketplace",
+      "patterns": 0,
+      "dependencies": 0,
+      "contributors": 0,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
+      }
+    },
+    {
+      "name": "asdf-manifesto",
+      "patterns": 0,
+      "dependencies": 0,
+      "contributors": 1,
+      "cynic": {
+        "available": true,
+        "verdict": {
+          "action": "TRANSFORM",
+          "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+          "blocking": "PRIVATE"
+        },
+        "confidence": 54.6
       }
     }
   ]

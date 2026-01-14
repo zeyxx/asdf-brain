@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "timestamp": 1768343473414,
+  "timestamp": 1768362640230,
   "history": [
     {
       "id": "jdg_1768090661068_an9j11",
@@ -33,7 +33,7 @@
         "reason": "Test d'apprentissage par burning - faux négatif simulé",
         "philosophy": "Learn by burning errors"
       },
-      "decayWeight": 0.7891355953076522
+      "decayWeight": 0.2204716257679116
     },
     {
       "id": "jdg_1768090915947_ljjrft",
@@ -66,7 +66,7 @@
         "reason": "Test burning #2 - faux positif simulé",
         "philosophy": "Burn to learn"
       },
-      "decayWeight": 0.790256623483952
+      "decayWeight": 0.22078482277236816
     },
     {
       "id": "jdg_1768091615055_cx6ve1",
@@ -99,7 +99,7 @@
         "reason": "Test burning #3 - faux négatif",
         "philosophy": "Accumulate to trigger learn()"
       },
-      "decayWeight": 0.7933396748029768
+      "decayWeight": 0.22164617707025197
     },
     {
       "id": "jdg_1768091628139_7shhzi",
@@ -131,7 +131,7 @@
       "feedback": {
         "reason": "Test burning #4"
       },
-      "decayWeight": 0.7933974894770772
+      "decayWeight": 0.2216623295480618
     },
     {
       "id": "jdg_1768091628203_p182io",
@@ -163,7 +163,7 @@
       "feedback": {
         "reason": "Test burning #5 - should trigger learn()"
       },
-      "decayWeight": 0.7933977722862046
+      "decayWeight": 0.2216624085603234
     },
     {
       "id": "jdg_1768130808025_q7sysh",
@@ -192,7 +192,7 @@
       "confidence": 61.8,
       "outcome": "unknown",
       "reward": 0,
-      "decayWeight": 0.9868715652306158
+      "decayWeight": 0.27571583350728573
     },
     {
       "id": "jdg_1768130916973_0a2kez",
@@ -221,7 +221,7 @@
       "confidence": 59,
       "outcome": "unknown",
       "reward": 0,
-      "decayWeight": 0.9874705754295412
+      "decayWeight": 0.2758831871955415
     },
     {
       "id": "jdg_1768131010995_veoadz",
@@ -250,7 +250,7 @@
       "confidence": 61.8,
       "outcome": "unknown",
       "reward": 0,
-      "decayWeight": 0.9879878128223657
+      "decayWeight": 0.2760276948943224
     },
     {
       "id": "jdg_1768131353161_gud23p",
@@ -279,7 +279,7 @@
       "confidence": 60,
       "outcome": "unknown",
       "reward": 0,
-      "decayWeight": 0.9898724375131145
+      "decayWeight": 0.27655422832153365
     },
     {
       "id": "jdg_1768133180626_wsy42n",
@@ -308,7 +308,7 @@
       "confidence": 60,
       "outcome": "correct",
       "reward": 1.618033988749895,
-      "decayWeight": 0.9999990197541702,
+      "decayWeight": 0.27938343037937213,
       "feedback": {}
     },
     {
@@ -337,7 +337,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2861831041731109
     },
     {
       "id": "jdg_1768137805323_iog2x6",
@@ -365,7 +366,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2866731643718749
     },
     {
       "id": "jdg_1768137855753_u6d29b",
@@ -393,7 +395,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2867536947149664
     },
     {
       "id": "jdg_1768137855886_8a0ni4",
@@ -421,7 +424,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2867539071290815
     },
     {
       "id": "jdg_1768138083895_ty6g8z",
@@ -449,7 +453,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.28711829144039186
     },
     {
       "id": "jdg_1768138644478_f74m5f",
@@ -477,7 +482,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2880161366897526
     },
     {
       "id": "jdg_1768138850126_nytott",
@@ -505,7 +511,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2883462116637241
     },
     {
       "id": "jdg_1768139178735_5lhl0k",
@@ -533,7 +540,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2888744303233727
     },
     {
       "id": "jdg_1768140386597_gmzcmt",
@@ -561,7 +569,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2908243225111332
     },
     {
       "id": "jdg_1768140405701_thj3qz",
@@ -589,7 +598,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.29085526823799035
     },
     {
       "id": "jdg_1768143857594_3iti5k",
@@ -617,7 +627,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2965012345497731
     },
     {
       "id": "jdg_1768143857675_94nmfu",
@@ -645,7 +656,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.29650136831220975
     },
     {
       "id": "jdg_1768143857765_em377e",
@@ -673,7 +685,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2965015169372101
     },
     {
       "id": "jdg_1768144078868_t6p5uh",
@@ -701,7 +714,8 @@
       "verdict": "TRANSFORM",
       "confidence": 60,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2968668689775099
     },
     {
       "id": "jdg_1768144087009_ow5cqu",
@@ -729,7 +743,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.29688032980880175
     },
     {
       "id": "jdg_1768144612342_xw9goj",
@@ -757,7 +772,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.29775023947746954
     },
     {
       "id": "jdg_1768145395474_1qggso",
@@ -785,7 +801,8 @@
       "verdict": "TRANSFORM",
       "confidence": 59,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.2990517782715017
     },
     {
       "id": "jdg_1768216526219_570ov3",
@@ -821,7 +838,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4444267269864837
     },
     {
       "id": "jdg_1768216526220_ndpcxd",
@@ -857,7 +875,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4444267294617545
     },
     {
       "id": "jdg_1768222770451_rk2xyk",
@@ -893,7 +912,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.46015480042001916
     },
     {
       "id": "jdg_1768224312507_aevi87",
@@ -929,7 +949,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4641239115682787
     },
     {
       "id": "jdg_1768224312508_rwjaey",
@@ -965,7 +986,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4641239115682787
     },
     {
       "id": "jdg_1768224312510_p5f2bp",
@@ -1001,7 +1023,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.46412391673823045
     },
     {
       "id": "jdg_1768224312510_y7810p",
@@ -1037,7 +1060,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.46412391673823045
     },
     {
       "id": "jdg_1768224723636_wixlw2",
@@ -1073,7 +1097,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.46518788520906096
     },
     {
       "id": "jdg_1768224988096_ctpdf4",
@@ -1109,7 +1134,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4658735799526943
     },
     {
       "id": "jdg_1768224988185_kfntv7",
@@ -1145,7 +1171,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4658738108829012
     },
     {
       "id": "jdg_1768225028493_rcn17j",
@@ -1181,7 +1208,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.46597841068088736
     },
     {
       "id": "jdg_1768225068929_tgx0ru",
@@ -1217,7 +1245,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4660833662377263
     },
     {
       "id": "jdg_1768225282924_mg51g0",
@@ -1253,7 +1282,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4666392047238528
     },
     {
       "id": "jdg_1768225282924_vnt38n",
@@ -1289,7 +1319,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4666392047238528
     },
     {
       "id": "jdg_1768225282925_r3geed",
@@ -1325,7 +1356,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4666392073228378
     },
     {
       "id": "jdg_1768225282925_stxfr6",
@@ -1361,7 +1393,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4666392073228378
     },
     {
       "id": "jdg_1768226351159_f0awbg",
@@ -1397,7 +1430,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.46942380690795343
     },
     {
       "id": "jdg_1768227982960_gphudf",
@@ -1433,7 +1467,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.4737095869757922
     },
     {
       "id": "jdg_1768254396506_4vbzyp",
@@ -1469,7 +1504,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.5487850530341365
     },
     {
       "id": "jdg_1768254546465_yspz2a",
@@ -1505,7 +1541,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.5492435946259248
     },
     {
       "id": "jdg_1768255852689_6llrxh",
@@ -1541,7 +1578,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.553253978436875
     },
     {
       "id": "jdg_1768256481855_rjtkx8",
@@ -1577,7 +1615,8 @@
       "verdict": "ACCEPT",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.5551960869283441
     },
     {
       "id": "jdg_1768303702700_q1m3hg",
@@ -1613,7 +1652,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.7222141465712746
     },
     {
       "id": "jdg_1768303760091_7xkct4",
@@ -1649,7 +1689,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.7224450347740523
     },
     {
       "id": "jdg_1768303836811_gbatbt",
@@ -1685,7 +1726,8 @@
       "verdict": "TRANSFORM",
       "confidence": 61.8,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.7227538002561371
     },
     {
       "id": "jdg_1768304377337_kamix9",
@@ -1721,7 +1763,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.724932931601531
     },
     {
       "id": "jdg_1768304933017_vogirk",
@@ -1757,7 +1800,8 @@
       "verdict": "TRANSFORM",
       "confidence": 58,
       "outcome": "unknown",
-      "reward": 0
+      "reward": 0,
+      "decayWeight": 0.7271800055603588
     },
     {
       "id": "jdg_1768304956199_lgwtdi",
@@ -1792,8 +1836,13 @@
       "global": 64,
       "verdict": "TRANSFORM",
       "confidence": 61.8,
-      "outcome": "unknown",
-      "reward": 0
+      "outcome": "correct",
+      "reward": 1.618033988749895,
+      "decayWeight": 0.7272739007657084,
+      "feedback": {
+        "reason": "Correct TRANSFORM (global=64). Mid-range score appropriately flagged for transformation.",
+        "source": "brain-diagnostic"
+      }
     },
     {
       "id": "jdg_1768324549248_7sv112",
@@ -1828,8 +1877,13 @@
       "global": 73,
       "verdict": "ACCEPT",
       "confidence": 61.8,
-      "outcome": "unknown",
-      "reward": 0
+      "outcome": "correct",
+      "reward": 1.618033988749895,
+      "feedback": {
+        "reason": "Valid ACCEPT (global=73) with high INTEGRITY/ETHICS",
+        "source": "brain-diagnostic"
+      },
+      "decayWeight": 0.8111299218905468
     },
     {
       "id": "jdg_1768325139540_rz1zsk",
@@ -1864,8 +1918,13 @@
       "global": 74,
       "verdict": "ACCEPT",
       "confidence": 61.8,
-      "outcome": "unknown",
-      "reward": 0
+      "outcome": "correct",
+      "reward": 1.618033988749895,
+      "feedback": {
+        "reason": "Strong ACCEPT (global=74) with well-balanced scores",
+        "source": "brain-diagnostic"
+      },
+      "decayWeight": 0.8138010454288688
     },
     {
       "id": "jdg_1768343098370_usegkg",
@@ -1900,8 +1959,13 @@
       "global": 62,
       "verdict": "TRANSFORM",
       "confidence": 61.8,
-      "outcome": "unknown",
-      "reward": 0
+      "outcome": "correct",
+      "reward": 1.618033988749895,
+      "decayWeight": 0.8994100821039056,
+      "feedback": {
+        "reason": "Correct TRANSFORM (global=62, INTEGRITY=0). Items with INTEGRITY=0 need transformation.",
+        "source": "brain-diagnostic"
+      }
     },
     {
       "id": "jdg_1768343469590_nzlknb",
@@ -1936,6 +2000,191 @@
       "global": 74,
       "verdict": "ACCEPT",
       "confidence": 61.8,
+      "outcome": "correct",
+      "reward": 1.618033988749895,
+      "feedback": {
+        "reason": "High-scoring ACCEPT (global=74) with consistent dimension scores. Valid pattern.",
+        "source": "brain-diagnostic"
+      },
+      "decayWeight": 0.9012715720904678
+    },
+    {
+      "id": "jdg_1768362566213_ackkgt",
+      "timestamp": 1768362566213,
+      "item": "item_ffbhgb",
+      "scores": {
+        "HARMONY": 65.71428571428571,
+        "COHERENCE": 67.05882352941177,
+        "TRUTH": 17.04,
+        "INTEGRITY": 22.250000000000004,
+        "ETHICS": 60.204081632653065,
+        "OPTIMISM": 52.5,
+        "ALIGNMENT": 53,
+        "PROGRESS": 56.17647058823529,
+        "SECURE": 70.33333333333333,
+        "PRIVATE": 73.66666666666667,
+        "SCALE": 56,
+        "SIMPLIFY": 83,
+        "ENABLE": 55,
+        "SELF_AWARENESS": 54.333333333333336,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 52.666666666666664,
+        "MEMORY": 54.666666666666664,
+        "TEACHING": 56.333333333333336,
+        "INTENT": 58,
+        "TRUST": 54.333333333333336,
+        "PROACTIVITY": 54.666666666666664,
+        "COMPLEMENTARITY": 56.666666666666664,
+        "DELEGATION": 58,
+        "BOUNDARIES": 59.779411764705884
+      },
+      "global": 53.6,
+      "verdict": "TRANSFORM",
+      "confidence": 53.6,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768362566215_ky7lq1",
+      "timestamp": 1768362566215,
+      "item": "item_q2mt80",
+      "scores": {
+        "HARMONY": 65.71428571428571,
+        "COHERENCE": 67.05882352941177,
+        "TRUTH": 17.04,
+        "INTEGRITY": 22.250000000000004,
+        "ETHICS": 60.204081632653065,
+        "OPTIMISM": 52.5,
+        "ALIGNMENT": 53,
+        "PROGRESS": 56.17647058823529,
+        "SECURE": 70.33333333333333,
+        "PRIVATE": 73.66666666666667,
+        "SCALE": 56,
+        "SIMPLIFY": 83,
+        "ENABLE": 55,
+        "SELF_AWARENESS": 54.333333333333336,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 52.666666666666664,
+        "MEMORY": 54.666666666666664,
+        "TEACHING": 56.333333333333336,
+        "INTENT": 58,
+        "TRUST": 54.333333333333336,
+        "PROACTIVITY": 54.666666666666664,
+        "COMPLEMENTARITY": 56.666666666666664,
+        "DELEGATION": 58,
+        "BOUNDARIES": 59.779411764705884
+      },
+      "global": 53.6,
+      "verdict": "TRANSFORM",
+      "confidence": 53.6,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768362566216_2rrdl1",
+      "timestamp": 1768362566216,
+      "item": "item_lxz156",
+      "scores": {
+        "HARMONY": 65.71428571428571,
+        "COHERENCE": 67.05882352941177,
+        "TRUTH": 17.04,
+        "INTEGRITY": 22.250000000000004,
+        "ETHICS": 60.204081632653065,
+        "OPTIMISM": 52.5,
+        "ALIGNMENT": 53,
+        "PROGRESS": 56.17647058823529,
+        "SECURE": 70.33333333333333,
+        "PRIVATE": 73.66666666666667,
+        "SCALE": 56,
+        "SIMPLIFY": 83,
+        "ENABLE": 55,
+        "SELF_AWARENESS": 54.333333333333336,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 52.666666666666664,
+        "MEMORY": 54.666666666666664,
+        "TEACHING": 56.333333333333336,
+        "INTENT": 58,
+        "TRUST": 54.333333333333336,
+        "PROACTIVITY": 54.666666666666664,
+        "COMPLEMENTARITY": 56.666666666666664,
+        "DELEGATION": 58,
+        "BOUNDARIES": 59.779411764705884
+      },
+      "global": 53.6,
+      "verdict": "TRANSFORM",
+      "confidence": 53.6,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768362566216_b8dt97",
+      "timestamp": 1768362566216,
+      "item": "item_c0fu4u",
+      "scores": {
+        "HARMONY": 65.71428571428571,
+        "COHERENCE": 67.05882352941177,
+        "TRUTH": 17.04,
+        "INTEGRITY": 22.250000000000004,
+        "ETHICS": 60.204081632653065,
+        "OPTIMISM": 52.5,
+        "ALIGNMENT": 53,
+        "PROGRESS": 56.17647058823529,
+        "SECURE": 70.33333333333333,
+        "PRIVATE": 73.66666666666667,
+        "SCALE": 56,
+        "SIMPLIFY": 83,
+        "ENABLE": 55,
+        "SELF_AWARENESS": 54.333333333333336,
+        "LEARNING_RATE": 70,
+        "SINGULARITY_DISTANCE": 52.666666666666664,
+        "MEMORY": 54.666666666666664,
+        "TEACHING": 56.333333333333336,
+        "INTENT": 58,
+        "TRUST": 54.333333333333336,
+        "PROACTIVITY": 54.666666666666664,
+        "COMPLEMENTARITY": 56.666666666666664,
+        "DELEGATION": 58,
+        "BOUNDARIES": 59.779411764705884
+      },
+      "global": 53.6,
+      "verdict": "TRANSFORM",
+      "confidence": 53.6,
+      "outcome": "unknown",
+      "reward": 0
+    },
+    {
+      "id": "jdg_1768362636406_2a7u5b",
+      "timestamp": 1768362636406,
+      "item": "item_gu65wn",
+      "scores": {
+        "HARMONY": 66.02407913844836,
+        "COHERENCE": 62.02658957248216,
+        "TRUTH": 36.99692797151275,
+        "INTEGRITY": 31.905931358470742,
+        "ETHICS": 41.96760867701631,
+        "OPTIMISM": 52.95196935659514,
+        "ALIGNMENT": 49.5742691988914,
+        "PROGRESS": 59.168434881048576,
+        "SECURE": 74.16079076740364,
+        "PRIVATE": 81.16990936941906,
+        "SCALE": 56.06031771847468,
+        "SIMPLIFY": 68.08486449499938,
+        "ENABLE": 60.01680308590743,
+        "SELF_AWARENESS": 54.121738974081076,
+        "LEARNING_RATE": 70.08813927831629,
+        "SINGULARITY_DISTANCE": 52.98554704329606,
+        "MEMORY": 54.990890683397126,
+        "TEACHING": 56.12689785597181,
+        "INTENT": 58.06511256927749,
+        "TRUST": 54.121738974081076,
+        "PROACTIVITY": 54.990890683397126,
+        "COMPLEMENTARITY": 56.995860388170065,
+        "DELEGATION": 58.06511256927749,
+        "BOUNDARIES": 60.02535448173585
+      },
+      "global": 55,
+      "verdict": "TRANSFORM",
+      "confidence": 55,
       "outcome": "unknown",
       "reward": 0
     }
@@ -1948,13 +2197,13 @@
     "ENABLE": 69
   },
   "stats": {
-    "totalJudgments": 59,
-    "correctAccepts": 0,
-    "correctTransforms": 1,
+    "totalJudgments": 64,
+    "correctAccepts": 3,
+    "correctTransforms": 3,
     "falsePositives": 1,
     "falseNegatives": 4,
-    "totalReward": -7.47213595499958,
-    "learningIterations": 2,
+    "totalReward": 0.6180339887498949,
+    "learningIterations": 3,
     "thresholdAdjustments": {
       "INTEGRITY": {
         "up": 0,

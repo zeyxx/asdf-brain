@@ -1,0 +1,448 @@
+{
+  "name": "framework-kit",
+  "path": "/workspaces/framework-kit",
+  "scannedAt": "2026-01-14T02:30:52.353Z",
+  "patterns": [
+    {
+      "type": "export",
+      "value": "export function formatTransferFeedback",
+      "file": "examples/vite-react/src/components/demoUi.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function formatSplBalanceStatus",
+      "file": "examples/vite-react/src/components/demoUi.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function formatSplTransferStatus",
+      "file": "examples/vite-react/src/components/demoUi.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function computeSplAmountStep",
+      "file": "examples/vite-react/src/components/demoUi.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function isWalletConnected",
+      "file": "examples/vite-react/src/components/demoUi.ts"
+    },
+    {
+      "type": "import",
+      "value": "import type { SplTokenBalance } from '@solana/client'",
+      "file": "examples/vite-react/src/components/demoUi.ts"
+    },
+    {
+      "type": "import",
+      "value": "import type { WalletSession } from '@solana/react-hooks'",
+      "file": "examples/vite-react/src/components/demoUi.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function cn",
+      "file": "examples/vite-react/src/lib/utils.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function formatAccountData",
+      "file": "examples/vite-react/src/lib/utils.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { type ClassValue, clsx } from 'clsx'",
+      "file": "examples/vite-react/src/lib/utils.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { twMerge } from 'tailwind-merge'",
+      "file": "examples/vite-react/src/lib/utils.ts"
+    },
+    {
+      "type": "import",
+      "value": "import type { Config } from 'tailwindcss'",
+      "file": "examples/vite-react/tailwind.config.ts"
+    },
+    {
+      "type": "import",
+      "value": "import animate from 'tailwindcss-animate'",
+      "file": "examples/vite-react/tailwind.config.ts"
+    },
+    {
+      "type": "import",
+      "value": "import path from 'node:path'",
+      "file": "examples/vite-react/vite.config.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { fileURLToPath } from 'node:url'",
+      "file": "examples/vite-react/vite.config.ts"
+    },
+    {
+      "type": "import",
+      "value": "import react from '@vitejs/plugin-react-swc'",
+      "file": "examples/vite-react/vite.config.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { defineConfig } from 'vite'",
+      "file": "examples/vite-react/vite.config.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { basename } from 'node:path'",
+      "file": "packages/build-scripts/tsup.config.package.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { defineConfig } from 'tsup'",
+      "file": "packages/build-scripts/tsup.config.package.ts"
+    },
+    {
+      "type": "import",
+      "value": "import type { Address, ClusterUrl, Lamports, SendableTransaction, Signature, Transaction } from '@solana/kit'",
+      "file": "packages/client/src/actions.test.ts"
+    },
+    {
+      "type": "import",
+      "value": "import type { TransactionWithLastValidBlockHeight } from '@solana/transaction-confirmation'",
+      "file": "packages/client/src/actions.test.ts"
+    },
+    {
+      "type": "import",
+      "value": "import { beforeEach, describe, expect, it, vi } from 'vitest'",
+      "file": "packages/client/src/actions.test.ts"
+    },
+    {
+      "type": "import",
+      "value": "import type { AccountCacheEntry, ClientActions, SolanaClient } from './types'",
+      "file": "packages/client/src/actions.test.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function connectWallet",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function disconnectWallet",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function fetchAccount",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function fetchBalance",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function fetchLookupTable",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function fetchLookupTables",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function fetchNonceAccount",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function requestAirdrop",
+      "file": "packages/client/src/actions.ts"
+    },
+    {
+      "type": "export",
+      "value": "export function sendTransaction",
+      "file": "packages/client/src/actions.ts"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@biomejs/biome",
+      "version": "^2.3.4",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@changesets/changelog-github",
+      "version": "^0.5.1",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@changesets/cli",
+      "version": "^2.29.7",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@size-limit/preset-small-lib",
+      "version": "^12.0.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/codecs-strings",
+      "version": "^5.0.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@testing-library/jest-dom",
+      "version": "^6.6.3",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@testing-library/react",
+      "version": "^16.1.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@testing-library/user-event",
+      "version": "^14.5.2",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@vitest/coverage-v8",
+      "version": "^4.0.7",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "bs58",
+      "version": "^6.0.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "husky",
+      "version": "^9.1.7",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "jsdom",
+      "version": "^24.1.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "size-limit",
+      "version": "^12.0.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "tsup",
+      "version": "^8.5.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "turbo",
+      "version": "^2.6.0",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "typescript",
+      "version": "^5.6.3",
+      "type": "development",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "vitest",
+      "version": "^4.0.7",
+      "type": "development",
+      "ecosystem": "npm"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Gui Bibeau",
+      "commits": 218,
+      "firstSeen": "2026-01-07T11:36:50-05:00",
+      "lastSeen": "2026-01-07T11:36:50-05:00",
+      "emailHash": "h_38362145"
+    },
+    {
+      "name": "github-actions[bot]",
+      "commits": 35,
+      "firstSeen": null,
+      "lastSeen": null,
+      "emailHash": "h_7900d6fc"
+    },
+    {
+      "name": "catmcgee",
+      "commits": 4,
+      "firstSeen": "2025-11-26T13:33:36-03:00",
+      "lastSeen": "2025-11-26T13:33:36-03:00",
+      "emailHash": "h_5195e7e7"
+    },
+    {
+      "name": "Leandro Gavidia",
+      "commits": 3,
+      "firstSeen": "2025-11-21T16:45:16-04:00",
+      "lastSeen": "2025-11-21T16:45:16-04:00",
+      "emailHash": "h_58e044fb"
+    },
+    {
+      "name": "N DIVIJ",
+      "commits": 1,
+      "firstSeen": "2026-01-05T14:20:00+05:30",
+      "lastSeen": "2026-01-05T14:20:00+05:30",
+      "emailHash": "h_5cd18be6"
+    },
+    {
+      "name": "Tomide Oladipo",
+      "commits": 1,
+      "firstSeen": "2026-01-05T06:17:58+00:00",
+      "lastSeen": "2026-01-05T06:17:58+00:00",
+      "emailHash": "h_50baaae0"
+    },
+    {
+      "name": "Opeyemi Stephen",
+      "commits": 1,
+      "firstSeen": "2025-12-22T09:38:22+01:00",
+      "lastSeen": "2025-12-22T09:38:22+01:00",
+      "emailHash": "h_14f3612f"
+    },
+    {
+      "name": "resourcefulmind",
+      "commits": 1,
+      "firstSeen": null,
+      "lastSeen": null,
+      "emailHash": "h_4773e95b"
+    },
+    {
+      "name": "Tadej Polajnar",
+      "commits": 1,
+      "firstSeen": "2025-12-22T16:28:21+08:00",
+      "lastSeen": "2025-12-22T16:28:21+08:00",
+      "emailHash": "h_1bb87a98"
+    },
+    {
+      "name": "Mohammad Shahbaz Alam",
+      "commits": 1,
+      "firstSeen": "2025-12-16T21:02:00+04:00",
+      "lastSeen": "2025-12-16T21:02:00+04:00",
+      "emailHash": "h_673da804"
+    },
+    {
+      "name": "Raj",
+      "commits": 1,
+      "firstSeen": "2025-12-04T16:37:20+05:30",
+      "lastSeen": "2025-12-04T16:37:20+05:30",
+      "emailHash": "h_3b55c6d2"
+    },
+    {
+      "name": "Leandro Gavidia Santamaria",
+      "commits": 1,
+      "firstSeen": "2025-12-03T11:52:19-04:00",
+      "lastSeen": "2025-12-03T11:52:19-04:00",
+      "emailHash": "h_5883cae2"
+    },
+    {
+      "name": "meowy",
+      "commits": 1,
+      "firstSeen": "2025-12-03T21:50:51+06:00",
+      "lastSeen": "2025-12-03T21:50:51+06:00",
+      "emailHash": "h_2b7993ec"
+    },
+    {
+      "name": "Efe",
+      "commits": 1,
+      "firstSeen": "2025-11-26T18:01:21+01:00",
+      "lastSeen": "2025-11-26T18:01:21+01:00",
+      "emailHash": "h_2dde6115"
+    }
+  ],
+  "coAuthors": [
+    {
+      "name": "github-actions[bot]",
+      "emailHash": "h_7900d6fc",
+      "count": 23
+    },
+    {
+      "name": "Gui Bibeau",
+      "emailHash": "h_38362145",
+      "count": 4
+    },
+    {
+      "name": "Claude Opus 4.5",
+      "emailHash": "h_4dacd238",
+      "count": 3
+    }
+  ],
+  "architecture": [
+    {
+      "type": "architecture",
+      "value": "library-pattern",
+      "evidence": [
+        "examples/vite-react/src/lib"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "src-pattern",
+      "evidence": [
+        "examples/vite-react/src",
+        "examples/vite-react/src/components",
+        "examples/vite-react/src/components/icons"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "mvc-pattern",
+      "evidence": [
+        "packages/client/src/controllers"
+      ]
+    },
+    {
+      "type": "architecture",
+      "value": "test-coverage",
+      "evidence": [
+        "tests",
+        "tests/types-smoke",
+        "tests/types-smoke/src"
+      ]
+    }
+  ],
+  "files": {
+    "total": 241,
+    "byType": {
+      ".md": 17,
+      ".json": 29,
+      ".yml": 9,
+      ".jpg": 1,
+      "no-ext": 6,
+      ".tsx": 49,
+      ".css": 2,
+      ".ts": 122,
+      ".mjs": 1,
+      ".js": 2,
+      ".html": 1,
+      ".yaml": 2
+    }
+  },
+  "cynic": {
+    "available": true,
+    "verdict": {
+      "action": "TRANSFORM",
+      "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
+      "blocking": "PRIVATE"
+    },
+    "confidence": 54.6
+  }
+}

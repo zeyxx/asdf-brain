@@ -23,9 +23,8 @@ const path = require('path');
 const BRAIN_ROOT = process.env.BRAIN_ROOT || path.join(__dirname, '../../');
 const KNOWLEDGE_DIR = path.join(BRAIN_ROOT, 'knowledge');
 
-// φ constants
-const PHI_INV = 0.618033988749895;
-const PHI_INV_2 = 0.381966011250105;
+// φ constants - import from canonical source
+const { PHI_INV, PHI_INV_2 } = require('../../packages/core/src/axioms/constants');
 
 // Keywords that trigger context injection
 const TRIGGER_KEYWORDS = {

@@ -1,7 +1,7 @@
 {
   "name": "GASdf",
   "path": "/workspaces/GASdf",
-  "scannedAt": "2026-01-10T23:02:57.696Z",
+  "scannedAt": "2026-01-14T02:30:49.827Z",
   "patterns": [
     {
       "type": "async",
@@ -178,8 +178,68 @@
       "ecosystem": "npm"
     },
     {
+      "name": "@solana-program/address-lookup-table",
+      "version": "^0.10.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana-program/system",
+      "version": "^0.10.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/addresses",
+      "version": "^5.3.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/client",
+      "version": "^1.6.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/codecs-strings",
+      "version": "^5.3.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/compat",
+      "version": "^5.3.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/kit",
+      "version": "^5.3.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
       "name": "@solana/spl-token",
       "version": "^0.4.8",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/transaction-confirmation",
+      "version": "^5.3.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/transactions",
+      "version": "^5.3.0",
+      "type": "production",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "@solana/web3-compat",
+      "version": "file:../framework-kit/packages/web3-compat",
       "type": "production",
       "ecosystem": "npm"
     },
@@ -313,7 +373,7 @@
   "contributors": [
     {
       "name": "jeanterre552",
-      "commits": 278,
+      "commits": 280,
       "firstSeen": "2026-01-10T16:30:54+00:00",
       "lastSeen": "2026-01-10T16:30:54+00:00",
       "emailHash": "h_3336e29"
@@ -384,9 +444,9 @@
     "available": true,
     "verdict": {
       "action": "TRANSFORM",
-      "reason": "Critical dimension PRIVATE below threshold (70 < 90)",
+      "reason": "Critical dimension PRIVATE below threshold (73.66666666666667 < 90)",
       "blocking": "PRIVATE"
     },
-    "confidence": 61.8
+    "confidence": 54.6
   }
 }
